@@ -1,0 +1,574 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5695BE7320429F1B0036D54B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BE7220429F1B0036D54B /* AppDelegate.m */; };
+		5695BE7620429F1B0036D54B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BE7520429F1B0036D54B /* ViewController.m */; };
+		5695BE7920429F1B0036D54B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5695BE7720429F1B0036D54B /* Main.storyboard */; };
+		5695BE7C20429F1B0036D54B /* IONMarketTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5695BE7A20429F1B0036D54B /* IONMarketTest.xcdatamodeld */; };
+		5695BE7E20429F1B0036D54B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5695BE7D20429F1B0036D54B /* Assets.xcassets */; };
+		5695BE8120429F1B0036D54B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5695BE7F20429F1B0036D54B /* LaunchScreen.storyboard */; };
+		5695BE8420429F1B0036D54B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BE8320429F1B0036D54B /* main.m */; };
+		5695BE8E20429F1B0036D54B /* IONMarketTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BE8D20429F1B0036D54B /* IONMarketTestTests.m */; };
+		5695BE9920429F1B0036D54B /* IONMarketTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BE9820429F1B0036D54B /* IONMarketTestUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5695BE8A20429F1B0036D54B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5695BE6620429F1B0036D54B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5695BE6D20429F1B0036D54B;
+			remoteInfo = IONMarketTest;
+		};
+		5695BE9520429F1B0036D54B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5695BE6620429F1B0036D54B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5695BE6D20429F1B0036D54B;
+			remoteInfo = IONMarketTest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5695BE6E20429F1B0036D54B /* IONMarketTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IONMarketTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5695BE7120429F1B0036D54B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5695BE7220429F1B0036D54B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5695BE7420429F1B0036D54B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5695BE7520429F1B0036D54B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5695BE7820429F1B0036D54B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5695BE7B20429F1B0036D54B /* IONMarketTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IONMarketTest.xcdatamodel; sourceTree = "<group>"; };
+		5695BE7D20429F1B0036D54B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5695BE8020429F1B0036D54B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5695BE8220429F1B0036D54B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5695BE8320429F1B0036D54B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5695BE8920429F1B0036D54B /* IONMarketTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IONMarketTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5695BE8D20429F1B0036D54B /* IONMarketTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IONMarketTestTests.m; sourceTree = "<group>"; };
+		5695BE8F20429F1B0036D54B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5695BE9420429F1B0036D54B /* IONMarketTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IONMarketTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5695BE9820429F1B0036D54B /* IONMarketTestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IONMarketTestUITests.m; sourceTree = "<group>"; };
+		5695BE9A20429F1B0036D54B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5695BE6B20429F1B0036D54B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5695BE8620429F1B0036D54B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5695BE9120429F1B0036D54B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5695BE6520429F1B0036D54B = {
+			isa = PBXGroup;
+			children = (
+				5695BE7020429F1B0036D54B /* IONMarketTest */,
+				5695BE8C20429F1B0036D54B /* IONMarketTestTests */,
+				5695BE9720429F1B0036D54B /* IONMarketTestUITests */,
+				5695BE6F20429F1B0036D54B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5695BE6F20429F1B0036D54B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5695BE6E20429F1B0036D54B /* IONMarketTest.app */,
+				5695BE8920429F1B0036D54B /* IONMarketTestTests.xctest */,
+				5695BE9420429F1B0036D54B /* IONMarketTestUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5695BE7020429F1B0036D54B /* IONMarketTest */ = {
+			isa = PBXGroup;
+			children = (
+				5695BE7120429F1B0036D54B /* AppDelegate.h */,
+				5695BE7220429F1B0036D54B /* AppDelegate.m */,
+				5695BE7420429F1B0036D54B /* ViewController.h */,
+				5695BE7520429F1B0036D54B /* ViewController.m */,
+				5695BE7720429F1B0036D54B /* Main.storyboard */,
+				5695BE7D20429F1B0036D54B /* Assets.xcassets */,
+				5695BE7F20429F1B0036D54B /* LaunchScreen.storyboard */,
+				5695BE8220429F1B0036D54B /* Info.plist */,
+				5695BE8320429F1B0036D54B /* main.m */,
+				5695BE7A20429F1B0036D54B /* IONMarketTest.xcdatamodeld */,
+			);
+			path = IONMarketTest;
+			sourceTree = "<group>";
+		};
+		5695BE8C20429F1B0036D54B /* IONMarketTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				5695BE8D20429F1B0036D54B /* IONMarketTestTests.m */,
+				5695BE8F20429F1B0036D54B /* Info.plist */,
+			);
+			path = IONMarketTestTests;
+			sourceTree = "<group>";
+		};
+		5695BE9720429F1B0036D54B /* IONMarketTestUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5695BE9820429F1B0036D54B /* IONMarketTestUITests.m */,
+				5695BE9A20429F1B0036D54B /* Info.plist */,
+			);
+			path = IONMarketTestUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5695BE6D20429F1B0036D54B /* IONMarketTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5695BE9D20429F1B0036D54B /* Build configuration list for PBXNativeTarget "IONMarketTest" */;
+			buildPhases = (
+				5695BE6A20429F1B0036D54B /* Sources */,
+				5695BE6B20429F1B0036D54B /* Frameworks */,
+				5695BE6C20429F1B0036D54B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IONMarketTest;
+			productName = IONMarketTest;
+			productReference = 5695BE6E20429F1B0036D54B /* IONMarketTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5695BE8820429F1B0036D54B /* IONMarketTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5695BEA020429F1B0036D54B /* Build configuration list for PBXNativeTarget "IONMarketTestTests" */;
+			buildPhases = (
+				5695BE8520429F1B0036D54B /* Sources */,
+				5695BE8620429F1B0036D54B /* Frameworks */,
+				5695BE8720429F1B0036D54B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5695BE8B20429F1B0036D54B /* PBXTargetDependency */,
+			);
+			name = IONMarketTestTests;
+			productName = IONMarketTestTests;
+			productReference = 5695BE8920429F1B0036D54B /* IONMarketTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5695BE9320429F1B0036D54B /* IONMarketTestUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5695BEA320429F1B0036D54B /* Build configuration list for PBXNativeTarget "IONMarketTestUITests" */;
+			buildPhases = (
+				5695BE9020429F1B0036D54B /* Sources */,
+				5695BE9120429F1B0036D54B /* Frameworks */,
+				5695BE9220429F1B0036D54B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5695BE9620429F1B0036D54B /* PBXTargetDependency */,
+			);
+			name = IONMarketTestUITests;
+			productName = IONMarketTestUITests;
+			productReference = 5695BE9420429F1B0036D54B /* IONMarketTestUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5695BE6620429F1B0036D54B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "赵越";
+				TargetAttributes = {
+					5695BE6D20429F1B0036D54B = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					5695BE8820429F1B0036D54B = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5695BE6D20429F1B0036D54B;
+					};
+					5695BE9320429F1B0036D54B = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5695BE6D20429F1B0036D54B;
+					};
+				};
+			};
+			buildConfigurationList = 5695BE6920429F1B0036D54B /* Build configuration list for PBXProject "IONMarketTest" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5695BE6520429F1B0036D54B;
+			productRefGroup = 5695BE6F20429F1B0036D54B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5695BE6D20429F1B0036D54B /* IONMarketTest */,
+				5695BE8820429F1B0036D54B /* IONMarketTestTests */,
+				5695BE9320429F1B0036D54B /* IONMarketTestUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5695BE6C20429F1B0036D54B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5695BE8120429F1B0036D54B /* LaunchScreen.storyboard in Resources */,
+				5695BE7E20429F1B0036D54B /* Assets.xcassets in Resources */,
+				5695BE7920429F1B0036D54B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5695BE8720429F1B0036D54B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5695BE9220429F1B0036D54B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5695BE6A20429F1B0036D54B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5695BE7C20429F1B0036D54B /* IONMarketTest.xcdatamodeld in Sources */,
+				5695BE7620429F1B0036D54B /* ViewController.m in Sources */,
+				5695BE8420429F1B0036D54B /* main.m in Sources */,
+				5695BE7320429F1B0036D54B /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5695BE8520429F1B0036D54B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5695BE8E20429F1B0036D54B /* IONMarketTestTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5695BE9020429F1B0036D54B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5695BE9920429F1B0036D54B /* IONMarketTestUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5695BE8B20429F1B0036D54B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5695BE6D20429F1B0036D54B /* IONMarketTest */;
+			targetProxy = 5695BE8A20429F1B0036D54B /* PBXContainerItemProxy */;
+		};
+		5695BE9620429F1B0036D54B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5695BE6D20429F1B0036D54B /* IONMarketTest */;
+			targetProxy = 5695BE9520429F1B0036D54B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5695BE7720429F1B0036D54B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5695BE7820429F1B0036D54B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5695BE7F20429F1B0036D54B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5695BE8020429F1B0036D54B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5695BE9B20429F1B0036D54B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5695BE9C20429F1B0036D54B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5695BE9E20429F1B0036D54B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F66NLE8FYB;
+				INFOPLIST_FILE = IONMarketTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.IONMarketTest";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5695BE9F20429F1B0036D54B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F66NLE8FYB;
+				INFOPLIST_FILE = IONMarketTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.IONMarketTest";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5695BEA120429F1B0036D54B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F66NLE8FYB;
+				INFOPLIST_FILE = IONMarketTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.IONMarketTestTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IONMarketTest.app/IONMarketTest";
+			};
+			name = Debug;
+		};
+		5695BEA220429F1B0036D54B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F66NLE8FYB;
+				INFOPLIST_FILE = IONMarketTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.IONMarketTestTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IONMarketTest.app/IONMarketTest";
+			};
+			name = Release;
+		};
+		5695BEA420429F1B0036D54B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F66NLE8FYB;
+				INFOPLIST_FILE = IONMarketTestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.IONMarketTestUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = IONMarketTest;
+			};
+			name = Debug;
+		};
+		5695BEA520429F1B0036D54B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F66NLE8FYB;
+				INFOPLIST_FILE = IONMarketTestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.IONMarketTestUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = IONMarketTest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5695BE6920429F1B0036D54B /* Build configuration list for PBXProject "IONMarketTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5695BE9B20429F1B0036D54B /* Debug */,
+				5695BE9C20429F1B0036D54B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5695BE9D20429F1B0036D54B /* Build configuration list for PBXNativeTarget "IONMarketTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5695BE9E20429F1B0036D54B /* Debug */,
+				5695BE9F20429F1B0036D54B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5695BEA020429F1B0036D54B /* Build configuration list for PBXNativeTarget "IONMarketTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5695BEA120429F1B0036D54B /* Debug */,
+				5695BEA220429F1B0036D54B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5695BEA320429F1B0036D54B /* Build configuration list for PBXNativeTarget "IONMarketTestUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5695BEA420429F1B0036D54B /* Debug */,
+				5695BEA520429F1B0036D54B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5695BE7A20429F1B0036D54B /* IONMarketTest.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5695BE7B20429F1B0036D54B /* IONMarketTest.xcdatamodel */,
+			);
+			currentVersion = 5695BE7B20429F1B0036D54B /* IONMarketTest.xcdatamodel */;
+			path = IONMarketTest.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5695BE6620429F1B0036D54B /* Project object */;
+}
