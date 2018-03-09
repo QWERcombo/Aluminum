@@ -18,9 +18,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    TBTabBarController *baseTBC = [[TBTabBarController alloc] init];
-    [baseTBC setupchildVc:nil];
-    self.window.rootViewController = baseTBC;
     
     return YES;
 }

@@ -16,4 +16,6 @@
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath;
 
+
+
 @end

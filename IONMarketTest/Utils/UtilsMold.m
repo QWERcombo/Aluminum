@@ -18,16 +18,16 @@ DEF_SINGLETON(UtilsMold);
 + (UITableViewCell *)creatCell:(NSString *)type  table:(UITableView *)tableView deledate:(UIViewController *)deledate model:(NSObject *)model data:(id)data andCliker:(ShowBlock)clue
 {
     
-    if ([type isEqualToString:@"BaseCell"]) {
-        static NSString *IDs = @"BaseCell";
-        BaseCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
+    if ([type isEqualToString:@"MainItemCell"]) {
+        static NSString *IDs = @"MainItemCell";
+        MainItemCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
         if (cell == nil) {
-            cell = [[BaseCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:IDs];
+            cell = [[NSBundle mainBundle] loadNibNamed:type owner:nil options:nil].firstObject;
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        [cell loadData:model andCliker:^(NSString *clueStr) {
-//
-//        }];
+        [cell loadData:model andCliker:^(NSString *clueStr) {
+
+        }];
         return cell;
     }
     
@@ -50,8 +50,8 @@ DEF_SINGLETON(UtilsMold);
 + (float)getCellHight:(NSString *)type data:(id)data model:(NSObject *)model indexPath:(NSIndexPath *)indexpath;
 {
     
-    if ([type isEqualToString:@"BaseCell"]) {
-        return [BaseCell getCellHight:data Model:model indexPath:indexpath];
+    if ([type isEqualToString:@"MainItemCell"]) {
+        return [MainItemCell getCellHight:data Model:model indexPath:indexpath];
     }
     
     
@@ -78,16 +78,15 @@ DEF_SINGLETON(UtilsMold);
         for (int i = 0; i < dataSource.count; i ++) {
             [IMGArr addObject:[dataSource objectAtIndex:i]];
         }
-        ABBannerView *bannerView = nil;
-//        ABBannerView *bannerView = [[ABBannerView alloc] initPageViewFrame:CGRectMake(0, 0, SCREEN_WIGHT, [delegate isKindOfClass:[MainViewController class]]?175:133) webImageStr:IMGArr titleStr:nil didSelectPageViewAction:^(NSInteger index) {
-//            NSLog(@"click---%ld", index);
-//        }];
+        ABBannerView *bannerView = [[ABBannerView alloc] initPageViewFrame:CGRectMake(0, 0, SCREEN_WIGHT, 160) webImageStr:IMGArr titleStr:nil didSelectPageViewAction:^(NSInteger index) {
+            NSLog(@"click---%ld", index);
+            
+        }];
         
         bannerView.duration = 5.0;
         bannerView.selfBackgroundColor = [UIColor Grey_BackColor1];
         bannerView.pageIndicatorTintColor = [UIColor lightTextColor];
         bannerView.currentPageColor = [UIColor mianColor:1];
-//        [backView addSubview:bannerView];
         backView = bannerView;
         
         return backView;

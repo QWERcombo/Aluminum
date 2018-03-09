@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 
-@interface MainViewController ()
+@interface MainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -17,8 +17,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"首页";
+
+    
 }
+
+
+#pragma mark --- Delegate&DataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return section==0?2:5;                                
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [UtilsMold creatCell:@"MainItemCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+        
+    }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [UtilsMold getCellHight:@"MainItemCell" data:nil model:nil indexPath:indexPath];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

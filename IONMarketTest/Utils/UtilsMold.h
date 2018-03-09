@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 //Cell
-
+#import "MainItemCell.h"
 
 
 
