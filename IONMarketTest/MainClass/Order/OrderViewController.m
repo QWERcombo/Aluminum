@@ -18,6 +18,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    SlideSwitchView *slide = (SlideSwitchView *)[[UtilsMold sharedInstance] creatView:@"SlideSwitchView" data:nil model:@[@"全部",@"待付款",@"待收货",@"完成"] deleGate:self andCliker:^(NSDictionary *clueDic) {
+        
+    }];
+    [self.view addSubview:slide];
+    
 }
 
 - (void)didReceiveMemoryWarning {

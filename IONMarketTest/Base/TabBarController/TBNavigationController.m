@@ -23,6 +23,7 @@
     self.popDelegate = self.interactivePopGestureRecognizer.delegate;
     self.delegate = self;
 }
+
 +(void)initialize
 {
     UINavigationBar *bar = [UINavigationBar appearance];

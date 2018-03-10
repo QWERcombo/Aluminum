@@ -261,7 +261,7 @@ DEF_SINGLETON(PublicFuntionTool);
     
     LYEmptyView *empty = nil;
     if (mode==WHShowEmptyMode_noData) {
-        empty = [LYEmptyView emptyViewWithImageStr:@"Nothing_NoContent" titleStr:@"" detailStr:@""];
+        empty = [LYEmptyView emptyViewWithImageStr:@"Nothing_NoContent" titleStr:@"购物车还是空的 快去购买" detailStr:@""];
     } else {
         empty = [LYEmptyView emptyViewWithImageStr:@"Nothing_NoNetWork" titleStr:@"" detailStr:@""];
     }

@@ -95,18 +95,19 @@ DEF_SINGLETON(UtilsMold);
     else if ([type isEqualToString:@"SlideSwitchView"]){
         SlideSwitchView *slideView;
         NSMutableArray *dataAr = [NSMutableArray array];
-
-            for (NSInteger i=0; i<3; i++) {
-//                BillListViewController *circle = [[BillListViewController alloc] init];
-//                circle.delegate = delegate;
-//                circle.nameTitle = SINT(i);
-//                [dataAr addObject:circle];
+        NSArray *topName = [model mutableCopy];
+            for (NSInteger i=0; i<4; i++) {
+                OrderListViewController *circle = [[OrderListViewController alloc] init];
+                circle.delegate = delegate;
+                circle.nameTitle = [topName objectAtIndex:i];
+                [dataAr addObject:circle];
             }
-            slideView = [[SlideSwitchView alloc] initWithFrame:CGRectZero];
-            slideView.tabItemNormalColor = [UIColor Black_WordColor];
-            slideView.tabItemSelectedColor = [UIColor mianColor:1];
+        UIViewController *mainViewController = (UIViewController *)delegate;
+            slideView = [[SlideSwitchView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIGHT, mainViewController.view.size.height-64-50)];
+            slideView.tabItemNormalColor = [UIColor mianColor:2];
+            slideView.tabItemSelectedColor = [UIColor mianColor:2];
             slideView.tabItemBannerNormalColor = [UIColor whiteColor];
-            slideView.tabItemBannerSelectedColor = [UIColor mianColor:1];
+            slideView.tabItemBannerSelectedColor = [UIColor mianColor:2];
             [slideView buildUIWithViews:dataAr andClikBlock:^(NSString *clueStr) {
                 
             }];

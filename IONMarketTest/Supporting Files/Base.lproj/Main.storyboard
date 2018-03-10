@@ -23,12 +23,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="USs-PL-OW7">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="CSJ-zq-kPe">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="152"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </imageView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="dZD-jY-eew"/>
@@ -44,7 +39,13 @@
                             <constraint firstItem="USs-PL-OW7" firstAttribute="top" secondItem="9WN-kX-ccJ" secondAttribute="bottom" id="xbz-tT-6K8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="首页" id="zpn-MS-Qgs"/>
+                    <navigationItem key="navigationItem" title="首页" id="zpn-MS-Qgs">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="Main_message" id="Aqh-MS-t0H">
+                            <connections>
+                                <action selector="GoIntoMessage:" destination="BYZ-38-t0r" id="Zk6-AE-uv2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,7 +83,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" title="订单" id="rhz-jE-4Z2"/>
+                    <navigationItem key="navigationItem" title="订单" id="rhz-jE-4Z2">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="Main_message" id="J4B-vv-nzt"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yQ-Ju-6i4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,7 +104,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" title="购物车" id="3Q3-vb-FxW"/>
+                    <navigationItem key="navigationItem" title="购物车" id="3Q3-vb-FxW">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="Main_message" id="5WJ-XU-6Ez"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hv5-xQ-frS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -118,9 +123,15 @@
                     <view key="view" contentMode="scaleToFill" id="OYy-5c-zsb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.90337413549423218" green="0.94424313306808472" blue="0.98824238777160645" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
-                    <navigationItem key="navigationItem" title="我的" id="nvv-ee-mvC"/>
+                    <navigationItem key="navigationItem" title="我的" id="nvv-ee-mvC">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="Main_message" id="QIb-pN-Rfh">
+                            <connections>
+                                <action selector="message_action:" destination="lMC-hC-ALC" id="IWJ-ZQ-a5j"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uyj-6h-cS5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -129,7 +140,7 @@
         <!--订单-->
         <scene sceneID="Mbl-Pc-AeO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gIb-O6-ztQ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gIb-O6-ztQ" customClass="TBNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="订单" id="Dyc-fs-pcF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="goB-HL-t1h">
@@ -148,7 +159,7 @@
         <!--购物车-->
         <scene sceneID="AvH-hr-Vpf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FA4-RX-g6M" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FA4-RX-g6M" customClass="TBNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="购物车" id="hsB-rV-eor"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XoK-Ei-Kk8">
@@ -167,7 +178,7 @@
         <!--我的-->
         <scene sceneID="T6w-bA-n0V">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YvP-Ry-1jc" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YvP-Ry-1jc" customClass="TBNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" id="cF0-ko-pXx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Y5r-qL-UkF">
@@ -189,6 +200,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="rdQ-ny-eFn" customClass="TBTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1fE-9J-OLP" customClass="TBTabBar">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -204,4 +216,7 @@
             <point key="canvasLocation" x="113" y="1145"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Main_message" width="24" height="24"/>
+    </resources>
 </document>

@@ -10,7 +10,12 @@
 
 @interface MainItemCell : BaseCell
 
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *button1x;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *describLabel;
+@property (weak, nonatomic) IBOutlet UILabel *leftData;
+@property (weak, nonatomic) IBOutlet UILabel *rightData;
+
+
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click;
 

@@ -178,7 +178,7 @@
     return cell;
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(nonnull UITableViewCell *)cell forRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    ((BaseCell *)cell).hidenLine = (indexPath.row==self.dataMuArr.count-1);
+//    ((BaseCell *)cell).hidenLine = (indexPath.row==self.dataMuArr.count-1);
 }
 
 - (BOOL) isBlankString:(NSString *)string {//判断是否有空字符

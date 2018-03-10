@@ -118,7 +118,7 @@
 + (UIColor *)mianColor:(colorTypes)type
 {
     if (type == 1) {
-        return  [UIColor colorWithHexString:@"#f6f8f8"];
+        return  [UIColor colorWithR:230 G:241 B:252 A:1];
     } else if(type==2) {
         return  [UIColor colorWithHexString:@"#2c98f8"];
     } else {

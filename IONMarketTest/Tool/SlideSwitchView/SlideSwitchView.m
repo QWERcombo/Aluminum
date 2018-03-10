@@ -196,6 +196,7 @@ static const NSUInteger kTagOfRightSideButton = 999;
         float width = [UILabel getSizeWithText:vc.title andFont:FONT_ArialMT(kFontSizeOfTabButton) andSize:CGSizeMake(0,kFontSizeOfTabButton)].width + spacing;
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//        button.backgroundColor = [UIColor cyanColor];
         //设置按钮尺寸
         button.frame = CGRectMake(xOffset, 0, width, kHeightOfTopScrollView);
         [_topScrollView addSubview:button];
@@ -212,7 +213,7 @@ static const NSUInteger kTagOfRightSideButton = 999;
         }else{
             button.titleLabel.font = [UIFont systemFontOfSize:kFontSizeOfTabButton];
         }
-        
+//        NSLog(@"%@", vc.title);
         [button setTitle:vc.title forState:UIControlStateNormal];
         [button setTitleColor:self.tabItemNormalColor forState:UIControlStateNormal];
         [button setTitleColor:self.tabItemSelectedColor forState:UIControlStateSelected];

@@ -155,7 +155,7 @@
 - (void)setupPromptImageView:(UIImage *)img{
 
     self.promptImageView.image = img;
-    
+//    self.promptImageView.backgroundColor = [UIColor purpleColor];
     CGFloat imgViewWidth = img.size.width;
     CGFloat imgViewHeight = img.size.height;
     if (self.imageSize.width && self.imageSize.height) {

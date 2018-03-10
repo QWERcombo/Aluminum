@@ -22,7 +22,7 @@
 }
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 100;
+    return 55;
 }
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
