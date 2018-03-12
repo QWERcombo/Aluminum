@@ -22,12 +22,12 @@ DEF_SINGLETON(UtilsMold);
         static NSString *IDs = @"MainItemCell";
         MainItemCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
         if (cell == nil) {
-            cell = [[NSBundle mainBundle] loadNibNamed:type owner:nil options:nil].firstObject;
+            cell = [MainItemCell MainItemCell];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell loadData:model andCliker:^(NSString *clueStr) {
-
-        }];
+//        [cell loadData:model andCliker:^(NSString *clueStr) {
+//
+//        }];
         return cell;
     }
     

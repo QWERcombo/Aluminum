@@ -2,7 +2,7 @@
 //  MainItemCell.m
 //  IONMarketTest
 //
-//  Created by 瓜豆2018 on 2018/3/9.
+//  Created by 瓜豆2018 on 2018/3/12.
 //  Copyright © 2018年 赵越. All rights reserved.
 //
 
@@ -21,14 +21,8 @@
     // Configure the view for the selected state
 }
 
-+ (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 55;
-}
-
-- (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
-    NSLog(@"123123321321");
-    
-    
++ (instancetype)MainItemCell {
+    return [[[NSBundle mainBundle] loadNibNamed:@"MainItemCell" owner:nil options:nil] firstObject];
 }
 
 @end

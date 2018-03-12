@@ -35,9 +35,9 @@
 
 - (BOOL) isBlankString:(NSString *)string ;//判断是否有空字符
 
--(UIView *)createReloadButton;
+//-(UIView *)createReloadButton;
 
--(UIView *)createNothingView;
+//-(UIView *)createNothingView;
 
 
 @end

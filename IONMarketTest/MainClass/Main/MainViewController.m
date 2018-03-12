@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "SelectedItem.h"
+#import "MainItemViewController.h"
 
 @interface MainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -66,7 +67,9 @@
             SelectedItem *item = [[SelectedItem alloc] initWithFrame:CGRectMake((Item_Margin+40)*j+Item_Margin, ((65+(70/3))*i)+140+35, 40, 65)];
             item.item_name.text = [nameArr objectAtIndex:i*4+j];
             [item loadData:nil andCliker:^(NSString *clueStr) {
-                NSLog(@"---%@", [nameArr objectAtIndex:clueStr.integerValue]);
+                MainItemViewController *main_item = [[MainItemViewController alloc] init];
+                main_item.titleStr = [nameArr objectAtIndex:clueStr.integerValue-1];
+                [self.navigationController pushViewController:main_item animated:YES];
             }];
             [mainView addSubview:item];
         }
@@ -101,9 +104,7 @@
 
 #pragma mark ---- Action
 
-- (IBAction)GoIntoMessage:(UIBarButtonItem *)sender {
-    NSLog(@"message");
-}
+
 
 - (void)moreAction:(UIButton *)sender {
     NSLog(@"查看更多");

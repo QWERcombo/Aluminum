@@ -8,6 +8,9 @@
 
 #import "MineViewController.h"
 #import "MineDescrController.h"
+#import "UserInfoViewController.h"
+
+
 
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSArray *titleArr;
@@ -102,12 +105,17 @@
         make.bottom.equalTo(user_imgv.mas_bottom);
     }];
     
+    UITapGestureRecognizer *userInfo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goIntoUserInfo)];
+    [userVIew addGestureRecognizer:userInfo];
+    
     return userVIew;
 }
 
 #pragma mark ---- Action
-- (IBAction)message_action:(id)sender {
-    NSLog(@"message");
+- (void)goIntoUserInfo {
+    UserInfoViewController *descri =[UserInfoViewController new];
+    descri.titleStr = @"个人资料";
+    [self.navigationController pushViewController:descri animated:YES];
 }
 
 

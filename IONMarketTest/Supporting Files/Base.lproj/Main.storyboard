@@ -9,6 +9,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--消息-->
+        <scene sceneID="5nO-jj-GXD">
+            <objects>
+                <viewController id="8Aj-1J-Us8" customClass="MessageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aeo-8N-xAw"/>
+                        <viewControllerLayoutGuide type="bottom" id="be3-iZ-fkC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gsZ-QH-Fuk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="消息" id="s9m-fP-WFe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9qz-2a-cg7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1860" y="-575"/>
+        </scene>
         <!--首页-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -24,6 +43,32 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="USs-PL-OW7">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="fnn-ZO-Glx" detailTextLabel="dFx-FD-bcH" style="IBUITableViewCellStyleValue1" id="ONh-xf-Y6u">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ONh-xf-Y6u" id="rvF-E4-cCw">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fnn-ZO-Glx">
+                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dFx-FD-bcH">
+                                                    <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="dZD-jY-eew"/>
@@ -42,7 +87,7 @@
                     <navigationItem key="navigationItem" title="首页" id="zpn-MS-Qgs">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="Main_message" id="Aqh-MS-t0H">
                             <connections>
-                                <action selector="GoIntoMessage:" destination="BYZ-38-t0r" id="Zk6-AE-uv2"/>
+                                <segue destination="8Aj-1J-Us8" kind="show" id="Szh-dB-IjC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -84,7 +129,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" title="订单" id="rhz-jE-4Z2">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="Main_message" id="J4B-vv-nzt"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="Main_message" id="J4B-vv-nzt">
+                            <connections>
+                                <segue destination="8Aj-1J-Us8" kind="show" id="OMI-lb-PpP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yQ-Ju-6i4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -105,7 +154,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" title="购物车" id="3Q3-vb-FxW">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="Main_message" id="5WJ-XU-6Ez"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="Main_message" id="5WJ-XU-6Ez">
+                            <connections>
+                                <segue destination="8Aj-1J-Us8" kind="show" id="h11-RC-GaO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hv5-xQ-frS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -123,12 +176,11 @@
                     <view key="view" contentMode="scaleToFill" id="OYy-5c-zsb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.90337413549423218" green="0.94424313306808472" blue="0.98824238777160645" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <navigationItem key="navigationItem" title="我的" id="nvv-ee-mvC">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="Main_message" id="QIb-pN-Rfh">
                             <connections>
-                                <action selector="message_action:" destination="lMC-hC-ALC" id="IWJ-ZQ-a5j"/>
+                                <segue destination="8Aj-1J-Us8" kind="show" id="4fs-FY-EBa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -219,4 +271,7 @@
     <resources>
         <image name="Main_message" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Szh-dB-IjC"/>
+    </inferredMetricsTieBreakers>
 </document>
