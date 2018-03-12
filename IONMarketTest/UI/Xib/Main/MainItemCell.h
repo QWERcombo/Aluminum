@@ -11,5 +11,9 @@
 @interface MainItemCell : BaseCell
 
 + (instancetype)MainItemCell;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabrl;
+@property (weak, nonatomic) IBOutlet UILabel *descriLabel;
+@property (weak, nonatomic) IBOutlet UILabel *leftCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rightCountLabel;
 
 @end

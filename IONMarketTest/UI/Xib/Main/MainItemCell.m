@@ -21,6 +21,10 @@
     // Configure the view for the selected state
 }
 
++(float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
+    return 55;
+}
+
 + (instancetype)MainItemCell {
     return [[[NSBundle mainBundle] loadNibNamed:@"MainItemCell" owner:nil options:nil] firstObject];
 }

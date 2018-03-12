@@ -39,12 +39,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *IDs = @"cell";
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:IDs];
-
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.textColor = [UIColor mianColor:2];
     cell.textLabel.text = [self.dataMuArr objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = [self.dataMuArr objectAtIndex:indexPath.row];
-//    [cell layoutSubviews];
     UIView *line = [[UIView alloc] init];
     [cell.contentView addSubview:line];
     line.backgroundColor = [UIColor mianColor:1];
