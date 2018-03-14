@@ -9,8 +9,13 @@
 #import "MineViewController.h"
 #import "MineDescrController.h"
 #import "UserInfoViewController.h"
-
-
+#import "WalletViewController.h"
+#import "WhiteBarViewController.h"
+#import "TicketViewController.h"
+#import "AddressViewController.h"
+#import "BankCardViewController.h"
+#import "ShareViewController.h"
+#import "SettingTableViewController.h"
 
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSArray *titleArr;
@@ -25,7 +30,8 @@
     self.tabView.backgroundColor = [UIColor mianColor:1];
     [self.view addSubview:self.tabView];
     [self.tabView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"BasicCell"];
-    
+    self.tabView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tabView.tableFooterView = [UIView new];
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.equalTo(self.view);
     }];
@@ -46,7 +52,7 @@
     if (cell == nil) {
         cell = [tableView dequeueReusableCellWithIdentifier:IDs];
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.textColor = [UIColor mianColor:2];
     cell.textLabel.text = [self.titleArr objectAtIndex:indexPath.row];
@@ -63,9 +69,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    MineDescrController *descri =[MineDescrController new];
-    descri.titleStr = [self.titleArr objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:descri animated:YES];
+    
+    NSArray *classArray = @[[WalletViewController class],[WhiteBarViewController class],[TicketViewController class],[AddressViewController class],[BankCardViewController class],[ShareViewController class],[SettingTableViewController class]];
+    UIViewController *nextController = (UIViewController *)[[NSClassFromString(NSStringFromClass([classArray objectAtIndex:indexPath.row])) alloc] init];
+    nextController.title = [self.titleArr objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:nextController animated:YES];
+    
 }
 
 

@@ -8,7 +8,9 @@
 
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
-#import "Defines.h"
+#import "Defines.h"//宏
+#import "InterfaceDefines.h"//接口
+
 
 //Frameworks
 #import "AFNetworking.h"

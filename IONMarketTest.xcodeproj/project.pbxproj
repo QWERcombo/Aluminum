@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5602129020594CF6009EF75D /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602128F20594CF6009EF75D /* ShareViewController.m */; };
+		5602129320594D02009EF75D /* BankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602129220594D02009EF75D /* BankCardViewController.m */; };
+		5602129620594D0C009EF75D /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602129520594D0C009EF75D /* AddressViewController.m */; };
+		5602129920594D1C009EF75D /* TicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602129820594D1C009EF75D /* TicketViewController.m */; };
+		5602129C20594D2B009EF75D /* WhiteBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602129B20594D2B009EF75D /* WhiteBarViewController.m */; };
+		5602129F20594D37009EF75D /* WalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602129E20594D37009EF75D /* WalletViewController.m */; };
+		560212A3205961D9009EF75D /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560212A2205961D9009EF75D /* SettingTableViewController.m */; };
+		560212A620596537009EF75D /* ChangeCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560212A520596537009EF75D /* ChangeCodeViewController.m */; };
+		560212A920596550009EF75D /* SettingDescribViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560212A820596550009EF75D /* SettingDescribViewController.m */; };
 		5657412B20538D8A007CB488 /* SelectedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5657412A20538D8A007CB488 /* SelectedItem.m */; };
 		5657413820539313007CB488 /* SelectedItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5657413720539313007CB488 /* SelectedItem.xib */; };
 		5657413B2053AF0E007CB488 /* MineDescrController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5657413A2053AF0E007CB488 /* MineDescrController.m */; };
@@ -104,6 +113,25 @@
 
 /* Begin PBXFileReference section */
 		05E5DB35DC8D4328FE7679C7 /* Pods-IONMarketTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IONMarketTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest.debug.xcconfig"; sourceTree = "<group>"; };
+		5602128E20594CF6009EF75D /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		5602128F20594CF6009EF75D /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		5602129120594D02009EF75D /* BankCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankCardViewController.h; sourceTree = "<group>"; };
+		5602129220594D02009EF75D /* BankCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardViewController.m; sourceTree = "<group>"; };
+		5602129420594D0C009EF75D /* AddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
+		5602129520594D0C009EF75D /* AddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
+		5602129720594D1C009EF75D /* TicketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketViewController.h; sourceTree = "<group>"; };
+		5602129820594D1C009EF75D /* TicketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketViewController.m; sourceTree = "<group>"; };
+		5602129A20594D2B009EF75D /* WhiteBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WhiteBarViewController.h; sourceTree = "<group>"; };
+		5602129B20594D2B009EF75D /* WhiteBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WhiteBarViewController.m; sourceTree = "<group>"; };
+		5602129D20594D37009EF75D /* WalletViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletViewController.h; sourceTree = "<group>"; };
+		5602129E20594D37009EF75D /* WalletViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletViewController.m; sourceTree = "<group>"; };
+		560212A020594D9E009EF75D /* InterfaceDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceDefines.h; sourceTree = "<group>"; };
+		560212A1205961D9009EF75D /* SettingTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
+		560212A2205961D9009EF75D /* SettingTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
+		560212A420596537009EF75D /* ChangeCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeCodeViewController.h; sourceTree = "<group>"; };
+		560212A520596537009EF75D /* ChangeCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeCodeViewController.m; sourceTree = "<group>"; };
+		560212A720596550009EF75D /* SettingDescribViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingDescribViewController.h; sourceTree = "<group>"; };
+		560212A820596550009EF75D /* SettingDescribViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingDescribViewController.m; sourceTree = "<group>"; };
 		5657412920538D8A007CB488 /* SelectedItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedItem.h; sourceTree = "<group>"; };
 		5657412A20538D8A007CB488 /* SelectedItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectedItem.m; sourceTree = "<group>"; };
 		5657413720539313007CB488 /* SelectedItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedItem.xib; sourceTree = "<group>"; };
@@ -304,6 +332,84 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5602128320594C7A009EF75D /* 钱包 */ = {
+			isa = PBXGroup;
+			children = (
+				5602129D20594D37009EF75D /* WalletViewController.h */,
+				5602129E20594D37009EF75D /* WalletViewController.m */,
+			);
+			path = "钱包";
+			sourceTree = "<group>";
+		};
+		5602128420594C85009EF75D /* 白条 */ = {
+			isa = PBXGroup;
+			children = (
+				5602129A20594D2B009EF75D /* WhiteBarViewController.h */,
+				5602129B20594D2B009EF75D /* WhiteBarViewController.m */,
+			);
+			path = "白条";
+			sourceTree = "<group>";
+		};
+		5602128520594C8D009EF75D /* 开票 */ = {
+			isa = PBXGroup;
+			children = (
+				5602129720594D1C009EF75D /* TicketViewController.h */,
+				5602129820594D1C009EF75D /* TicketViewController.m */,
+			);
+			path = "开票";
+			sourceTree = "<group>";
+		};
+		5602128620594C94009EF75D /* 收货地址 */ = {
+			isa = PBXGroup;
+			children = (
+				5602129420594D0C009EF75D /* AddressViewController.h */,
+				5602129520594D0C009EF75D /* AddressViewController.m */,
+			);
+			path = "收货地址";
+			sourceTree = "<group>";
+		};
+		5602128720594C9D009EF75D /* 银行卡 */ = {
+			isa = PBXGroup;
+			children = (
+				5602129120594D02009EF75D /* BankCardViewController.h */,
+				5602129220594D02009EF75D /* BankCardViewController.m */,
+			);
+			path = "银行卡";
+			sourceTree = "<group>";
+		};
+		5602128820594CA4009EF75D /* 分享推广 */ = {
+			isa = PBXGroup;
+			children = (
+				5602128E20594CF6009EF75D /* ShareViewController.h */,
+				5602128F20594CF6009EF75D /* ShareViewController.m */,
+			);
+			path = "分享推广";
+			sourceTree = "<group>";
+		};
+		5602128920594CAF009EF75D /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				560212A1205961D9009EF75D /* SettingTableViewController.h */,
+				560212A2205961D9009EF75D /* SettingTableViewController.m */,
+				560212A420596537009EF75D /* ChangeCodeViewController.h */,
+				560212A520596537009EF75D /* ChangeCodeViewController.m */,
+				560212A720596550009EF75D /* SettingDescribViewController.h */,
+				560212A820596550009EF75D /* SettingDescribViewController.m */,
+			);
+			path = "设置";
+			sourceTree = "<group>";
+		};
+		5602128A20594CBD009EF75D /* 个人信息 */ = {
+			isa = PBXGroup;
+			children = (
+				A2AC1C6620564AB900A3B2F9 /* UserInfoViewController.h */,
+				A2AC1C6720564AB900A3B2F9 /* UserInfoViewController.m */,
+				A2AC1C6920564B8A00A3B2F9 /* UserInfoSettingViewController.h */,
+				A2AC1C6A20564B8A00A3B2F9 /* UserInfoSettingViewController.m */,
+			);
+			path = "个人信息";
+			sourceTree = "<group>";
+		};
 		56940BFA20515D8F00DFA6D6 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,12 +514,16 @@
 		56940C4320515F7400DFA6D6 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				5602128A20594CBD009EF75D /* 个人信息 */,
+				5602128920594CAF009EF75D /* 设置 */,
+				5602128820594CA4009EF75D /* 分享推广 */,
+				5602128720594C9D009EF75D /* 银行卡 */,
+				5602128620594C94009EF75D /* 收货地址 */,
+				5602128520594C8D009EF75D /* 开票 */,
+				5602128420594C85009EF75D /* 白条 */,
+				5602128320594C7A009EF75D /* 钱包 */,
 				56940C442051603600DFA6D6 /* MineViewController.h */,
 				56940C452051603600DFA6D6 /* MineViewController.m */,
-				A2AC1C6620564AB900A3B2F9 /* UserInfoViewController.h */,
-				A2AC1C6720564AB900A3B2F9 /* UserInfoViewController.m */,
-				A2AC1C6920564B8A00A3B2F9 /* UserInfoSettingViewController.h */,
-				A2AC1C6A20564B8A00A3B2F9 /* UserInfoSettingViewController.m */,
 				565741392053AF0E007CB488 /* MineDescrController.h */,
 				5657413A2053AF0E007CB488 /* MineDescrController.m */,
 			);
@@ -449,6 +559,7 @@
 				5695BE7220429F1B0036D54B /* AppDelegate.m */,
 				5695BEAB2042A2B40036D54B /* Info.plist */,
 				5695BEBA2042A5050036D54B /* Defines.h */,
+				560212A020594D9E009EF75D /* InterfaceDefines.h */,
 				5695BE7D20429F1B0036D54B /* Assets.xcassets */,
 				5695BEB12042A3A20036D54B /* Base */,
 				5695BEB32042A3C60036D54B /* Categories */,
@@ -920,6 +1031,7 @@
 				56940C3320515E1800DFA6D6 /* NSTimer+WeakTimer.m in Sources */,
 				5695BF312042AC120036D54B /* ABBannerView.m in Sources */,
 				56940C3520515E1800DFA6D6 /* UIButton+Badge.m in Sources */,
+				5602129920594D1C009EF75D /* TicketViewController.m in Sources */,
 				56940C2B20515DF900DFA6D6 /* UIColor+YXP.m in Sources */,
 				56940C0220515DB300DFA6D6 /* TBTabBarController.m in Sources */,
 				56940C4F2051609E00DFA6D6 /* MainViewController.m in Sources */,
@@ -940,6 +1052,8 @@
 				56940C3420515E1800DFA6D6 /* UIBarButtonItem+Badge.m in Sources */,
 				5695BF0F2042AB0E0036D54B /* NSData+NEUAES.m in Sources */,
 				5695BF552042AC1D0036D54B /* EasyShowAlertView.m in Sources */,
+				560212A3205961D9009EF75D /* SettingTableViewController.m in Sources */,
+				560212A920596550009EF75D /* SettingDescribViewController.m in Sources */,
 				5695BF0D2042AB0E0036D54B /* NEUBase64.m in Sources */,
 				5695BF3E2042AC180036D54B /* LYEmptyView.m in Sources */,
 				5695BF142042AB340036D54B /* CIImage+Extension.m in Sources */,
@@ -949,6 +1063,7 @@
 				56940C3E20515E6900DFA6D6 /* PublicFuntionTool.m in Sources */,
 				56940C0120515DB300DFA6D6 /* TBTabBar.m in Sources */,
 				5657413E2053B431007CB488 /* OrderListViewController.m in Sources */,
+				5602129F20594D37009EF75D /* WalletViewController.m in Sources */,
 				5695BF5C2042AC1D0036D54B /* EasyShowUtils.m in Sources */,
 				5695BF632042AF8C0036D54B /* DataSend.m in Sources */,
 				56940C2120515DF900DFA6D6 /* UILabel+YXP.m in Sources */,
@@ -956,12 +1071,15 @@
 				5695BF2B2042AC0A0036D54B /* SlideSwitchView.m in Sources */,
 				A2AC1C7520565E4600A3B2F9 /* MainItemCell.m in Sources */,
 				A2AC1C652056481B00A3B2F9 /* MainItemViewController.m in Sources */,
+				560212A620596537009EF75D /* ChangeCodeViewController.m in Sources */,
 				5695BEAF2042A30A0036D54B /* main.m in Sources */,
 				56940C2420515DF900DFA6D6 /* UICollectionView+TB.m in Sources */,
 				5695BF3F2042AC180036D54B /* UIScrollView+Empty.m in Sources */,
 				5695BEC22042A5300036D54B /* BaseCell.m in Sources */,
 				5695BF582042AC1D0036D54B /* EasyShowOptions.m in Sources */,
+				5602129320594D02009EF75D /* BankCardViewController.m in Sources */,
 				5695BF112042AB0E0036D54B /* RSAEncryptor.m in Sources */,
+				5602129020594CF6009EF75D /* ShareViewController.m in Sources */,
 				5695BEC12042A5300036D54B /* BaseModel.m in Sources */,
 				56940C2920515DF900DFA6D6 /* UIImage+YXP.m in Sources */,
 				56940C3D20515E6900DFA6D6 /* DataForFMDB.m in Sources */,
@@ -970,9 +1088,11 @@
 				5695BF012042A9E50036D54B /* UITextField+Extension.m in Sources */,
 				5695BF592042AC1D0036D54B /* EasyShowTextBgView.m in Sources */,
 				5695BE7320429F1B0036D54B /* AppDelegate.m in Sources */,
+				5602129C20594D2B009EF75D /* WhiteBarViewController.m in Sources */,
 				5657412B20538D8A007CB488 /* SelectedItem.m in Sources */,
 				5695BF202042ABAB0036D54B /* YXPUtil.m in Sources */,
 				56940C492051605B00DFA6D6 /* ShopCarViewController.m in Sources */,
+				5602129620594D0C009EF75D /* AddressViewController.m in Sources */,
 				5695BF642042AF8C0036D54B /* Reachability.m in Sources */,
 				5695BF562042AC1D0036D54B /* EasyShowLabel.m in Sources */,
 			);
