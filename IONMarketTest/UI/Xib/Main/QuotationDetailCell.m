@@ -1,14 +1,14 @@
 //
-//  MainItemCell.m
+//  QuotationDetailCell.m
 //  IONMarketTest
 //
-//  Created by 瓜豆2018 on 2018/3/12.
+//  Created by 赵越 on 2018/3/15.
 //  Copyright © 2018年 赵越. All rights reserved.
 //
 
-#import "MainItemCell.h"
+#import "QuotationDetailCell.h"
 
-@implementation MainItemCell
+@implementation QuotationDetailCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -22,15 +22,16 @@
 }
 
 +(float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 55;
+    return 40;
 }
 
-+ (instancetype)MainItemCell {
-    return [[[NSBundle mainBundle] loadNibNamed:@"MainItemCell" owner:nil options:nil] firstObject];
++ (instancetype)getQuotationDetailCell {
+    
+    return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] firstObject];
+    
 }
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
-    
     
     
 }

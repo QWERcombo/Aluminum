@@ -9,6 +9,8 @@
 #import "MainViewController.h"
 #import "SelectedItem.h"
 #import "MainItemViewController.h"
+#import "SetOrderViewController.h"
+#import "QuotationViewController.h"
 
 @interface MainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -67,9 +69,18 @@
             SelectedItem *item = [[SelectedItem alloc] initWithFrame:CGRectMake((Item_Margin+40)*j+Item_Margin, ((65+(70/3))*i)+140+35, 40, 65)];
             item.item_name.text = [nameArr objectAtIndex:i*4+j];
             [item loadData:nil andCliker:^(NSString *clueStr) {
-                MainItemViewController *main_item = [[MainItemViewController alloc] init];
-                main_item.titleStr = [nameArr objectAtIndex:clueStr.integerValue-1];
-                [self.navigationController pushViewController:main_item animated:YES];
+                NSString *name = [nameArr objectAtIndex:clueStr.integerValue-1];
+                if ([name isEqualToString:@"自动下单"]) {
+                    SetOrderViewController *set = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SetOrder"];
+                    [self.navigationController pushViewController:set animated:YES];
+                    
+                } else {
+                    
+                    MainItemViewController *main_item = [[MainItemViewController alloc] init];
+                    main_item.titleStr = name;
+                    [self.navigationController pushViewController:main_item animated:YES];
+                    
+                }
             }];
             [mainView addSubview:item];
         }
@@ -104,10 +115,11 @@
 
 #pragma mark ---- Action
 
-
-
 - (void)moreAction:(UIButton *)sender {
     NSLog(@"查看更多");
+    QuotationViewController *quo = [QuotationViewController new];
+    [self.navigationController pushViewController:quo animated:YES];
+    
 }
 
 

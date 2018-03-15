@@ -25,11 +25,31 @@ DEF_SINGLETON(UtilsMold);
             cell = [MainItemCell MainItemCell];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        [cell loadData:model andCliker:^(NSString *clueStr) {
-//
-//        }];
+        [cell loadData:model andCliker:^(NSString *clueStr) {
+
+        }];
         return cell;
     }
+    else if ([type isEqualToString:@"QuotationDetailCell"]) {
+        static NSString *IDs = @"QuotationDetailCell";
+        QuotationDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
+        if (cell == nil) {
+            cell = [QuotationDetailCell getQuotationDetailCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell loadData:model andCliker:^(NSString *clueStr) {
+            
+        }];
+        return cell;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     else
