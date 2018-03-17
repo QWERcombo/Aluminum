@@ -11,6 +11,8 @@
 //Cell
 #import "MainItemCell.h"
 #import "QuotationDetailCell.h"
+#import "OrderListCell.h"
+#import "OrderDetailCell.h"
 
 
 
@@ -18,9 +20,6 @@
 
 
 
-
-
-#import "OrderListViewController.h"
 
 
 

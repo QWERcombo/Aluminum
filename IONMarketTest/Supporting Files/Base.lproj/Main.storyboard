@@ -100,7 +100,7 @@
         <scene sceneID="bve-Yg-hEJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RFE-7g-Sgo" customClass="TBNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="首页" id="dn2-eX-hmz"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="image_main_0" selectedImage="image_main_1" id="dn2-eX-hmz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="cPk-wB-CMh">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -193,7 +193,7 @@
         <scene sceneID="Mbl-Pc-AeO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gIb-O6-ztQ" customClass="TBNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="订单" id="Dyc-fs-pcF"/>
+                    <tabBarItem key="tabBarItem" title="订单" image="image_order_0" selectedImage="image_order_1" id="Dyc-fs-pcF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="goB-HL-t1h">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -212,7 +212,7 @@
         <scene sceneID="AvH-hr-Vpf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FA4-RX-g6M" customClass="TBNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="购物车" id="hsB-rV-eor"/>
+                    <tabBarItem key="tabBarItem" title="购物车" image="image_car_0" selectedImage="image_car_1" id="hsB-rV-eor"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="XoK-Ei-Kk8">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -240,7 +240,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqy-k8-ecX">
-                                <rect key="frame" x="0.0" y="64" width="375" height="180"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="原来密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuA-Oz-xiu">
                                         <rect key="frame" x="15" y="23" width="70" height="40"/>
@@ -310,28 +310,28 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="0Bz-cf-0XR"/>
                                     <constraint firstItem="3R9-iX-SRA" firstAttribute="centerY" secondItem="foG-P7-Ufv" secondAttribute="centerY" id="0gY-J8-J3a"/>
                                     <constraint firstItem="bmM-oH-pdv" firstAttribute="leading" secondItem="3R9-iX-SRA" secondAttribute="leading" id="4pI-xV-knn"/>
-                                    <constraint firstItem="3R9-iX-SRA" firstAttribute="top" secondItem="tqy-k8-ecX" secondAttribute="top" constant="85" id="JZz-zB-fZg"/>
+                                    <constraint firstItem="3R9-iX-SRA" firstAttribute="top" secondItem="tqy-k8-ecX" secondAttribute="top" constant="85" id="5Zz-e8-nyN"/>
                                     <constraint firstItem="bmM-oH-pdv" firstAttribute="leading" secondItem="VuA-Oz-xiu" secondAttribute="trailing" constant="37" id="LKN-rZ-QuC"/>
+                                    <constraint firstAttribute="height" constant="180" id="NzP-ei-fPU"/>
                                     <constraint firstItem="acE-be-cNs" firstAttribute="leading" secondItem="Rin-Rx-fuP" secondAttribute="trailing" constant="20" id="RKj-cx-e2x"/>
+                                    <constraint firstAttribute="trailing" secondItem="3R9-iX-SRA" secondAttribute="trailing" constant="15" id="YRw-wa-4VU"/>
                                     <constraint firstItem="3R9-iX-SRA" firstAttribute="leading" secondItem="foG-P7-Ufv" secondAttribute="trailing" constant="55" id="aU9-fv-8wj"/>
                                     <constraint firstItem="bmM-oH-pdv" firstAttribute="trailing" secondItem="3R9-iX-SRA" secondAttribute="trailing" id="cT5-3T-Piz"/>
                                     <constraint firstItem="acE-be-cNs" firstAttribute="trailing" secondItem="3R9-iX-SRA" secondAttribute="trailing" id="cgi-yc-tko"/>
                                     <constraint firstItem="Rin-Rx-fuP" firstAttribute="top" secondItem="foG-P7-Ufv" secondAttribute="bottom" constant="22.5" id="iF8-i4-Inw"/>
                                     <constraint firstItem="acE-be-cNs" firstAttribute="centerY" secondItem="Rin-Rx-fuP" secondAttribute="centerY" id="jeM-JW-x0q"/>
                                     <constraint firstItem="foG-P7-Ufv" firstAttribute="top" secondItem="VuA-Oz-xiu" secondAttribute="bottom" constant="22.5" id="mg7-TO-Ars"/>
-                                    <constraint firstAttribute="trailing" secondItem="3R9-iX-SRA" secondAttribute="trailing" constant="15" id="qLZ-Wx-Fxy"/>
                                     <constraint firstItem="bmM-oH-pdv" firstAttribute="centerY" secondItem="VuA-Oz-xiu" secondAttribute="centerY" id="shT-Q5-aHq"/>
                                     <constraint firstItem="acE-be-cNs" firstAttribute="leading" secondItem="3R9-iX-SRA" secondAttribute="leading" id="xml-s2-RAx"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imu-Vt-q0O">
-                                <rect key="frame" x="20" y="284" width="335" height="45"/>
+                                <rect key="frame" x="20" y="220" width="335" height="45"/>
                                 <color key="backgroundColor" red="0.35491353269999998" green="0.623277843" blue="0.94517052170000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="bYZ-PG-TCW"/>
+                                    <constraint firstAttribute="height" constant="45" id="8Tf-aR-Qcl"/>
                                 </constraints>
                                 <state key="normal" title="确认修改"/>
                                 <userDefinedRuntimeAttributes>
@@ -347,12 +347,12 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Imu-Vt-q0O" secondAttribute="trailing" constant="20" id="G2U-Iq-zJX"/>
-                            <constraint firstItem="tqy-k8-ecX" firstAttribute="top" secondItem="dqA-kz-xpX" secondAttribute="top" constant="64" id="KZB-Wq-7cf"/>
-                            <constraint firstItem="tqy-k8-ecX" firstAttribute="leading" secondItem="dqA-kz-xpX" secondAttribute="leading" id="Kr0-jR-zm7"/>
-                            <constraint firstItem="Imu-Vt-q0O" firstAttribute="top" secondItem="tqy-k8-ecX" secondAttribute="bottom" constant="40" id="LFG-ZS-5Zj"/>
-                            <constraint firstItem="Imu-Vt-q0O" firstAttribute="leading" secondItem="dqA-kz-xpX" secondAttribute="leading" constant="20" id="evO-cY-w6v"/>
-                            <constraint firstAttribute="trailing" secondItem="tqy-k8-ecX" secondAttribute="trailing" id="z6z-2K-LP7"/>
+                            <constraint firstItem="tqy-k8-ecX" firstAttribute="top" secondItem="dqA-kz-xpX" secondAttribute="top" id="8Vv-3h-h96"/>
+                            <constraint firstItem="tqy-k8-ecX" firstAttribute="leading" secondItem="dqA-kz-xpX" secondAttribute="leading" id="Mlu-2S-VBB"/>
+                            <constraint firstItem="Imu-Vt-q0O" firstAttribute="top" secondItem="tqy-k8-ecX" secondAttribute="bottom" constant="40" id="VXD-Oa-QTr"/>
+                            <constraint firstItem="Imu-Vt-q0O" firstAttribute="leading" secondItem="dqA-kz-xpX" secondAttribute="leading" constant="20" id="dVh-As-RQk"/>
+                            <constraint firstAttribute="trailing" secondItem="tqy-k8-ecX" secondAttribute="trailing" id="dth-Ph-EQW"/>
+                            <constraint firstAttribute="trailing" secondItem="Imu-Vt-q0O" secondAttribute="trailing" constant="20" id="x3L-GW-ShH"/>
                         </constraints>
                     </view>
                     <connections>
@@ -509,7 +509,7 @@
         <scene sceneID="T6w-bA-n0V">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YvP-Ry-1jc" customClass="TBNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" id="cF0-ko-pXx"/>
+                    <tabBarItem key="tabBarItem" title="我的" image="image_mine_0" selectedImage="image_mine_1" id="cF0-ko-pXx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Y5r-qL-UkF">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -548,6 +548,14 @@
     </scenes>
     <resources>
         <image name="Main_message" width="24" height="24"/>
+        <image name="image_car_0" width="24" height="24"/>
+        <image name="image_car_1" width="24" height="24"/>
+        <image name="image_main_0" width="24" height="24"/>
+        <image name="image_main_1" width="24" height="24"/>
+        <image name="image_mine_0" width="24" height="24"/>
+        <image name="image_mine_1" width="24" height="24"/>
+        <image name="image_order_0" width="24" height="24"/>
+        <image name="image_order_1" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Szh-dB-IjC"/>

@@ -1,28 +1,23 @@
 //
-//  OrderListViewController.m
+//  SpecialMakeViewController.m
 //  IONMarketTest
 //
-//  Created by 赵越 on 2018/3/10.
+//  Created by 赵越 on 2018/3/17.
 //  Copyright © 2018年 赵越. All rights reserved.
 //
 
-#import "OrderListViewController.h"
+#import "SpecialMakeViewController.h"
 
-@interface OrderListViewController ()
+@interface SpecialMakeViewController ()
 
 @end
 
-@implementation OrderListViewController
+@implementation SpecialMakeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = self.nameTitle;
-    if ([self.nameTitle isEqualToString:@"全部"]||[self.nameTitle isEqualToString:@"待收货"]) {
-        self.view.backgroundColor = [UIColor purpleColor];
-    } else {
-        self.view.backgroundColor = [UIColor whiteColor];
-    }
+    self.title = @"特殊定制";
 }
 
 - (void)didReceiveMemoryWarning {

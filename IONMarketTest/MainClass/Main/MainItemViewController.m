@@ -7,9 +7,10 @@
 //
 
 #import "MainItemViewController.h"
+#import "SpecialMakeViewController.h"
 
 @interface MainItemViewController ()
-
+@property (nonatomic, assign) NSInteger lastSelected;
 @end
 
 #define ITEM_WIDTH  60
@@ -52,18 +53,15 @@
     UIButton *lastBtn = nil;
     for (NSInteger i=0; i<5; i++) {
         
-        UIButton *button = [UIButton buttonWithTitle:[array objectAtIndex:i] andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+        UIButton *button = [UIButton buttonWithTitle:[array objectAtIndex:i] andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
         
-        if (i==0) {
-            [button setHighlighted:YES];
+        if (i==self.selectedNum) {
+            button.backgroundColor = [UIColor mianColor:2];
+            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         }
         
-        [button setBackgroundImage:[UIImage imageWithColor:[UIColor mianColor:2]] forState:UIControlStateHighlighted];
-//        button.backgroundColor = [UIColor mianColor:2];
         [button addTarget:self action:@selector(buttonCliker:) forControlEvents:UIControlEventTouchUpInside];
-        
         button.tag = 100+i;
-        
         [topView addSubview:button];
         
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -79,7 +77,7 @@
         
         lastBtn = button;
     }
-    
+    self.lastSelected = 100+self.selectedNum;
     
     
     [self.view addSubview:topView];
@@ -95,7 +93,19 @@
 
 - (void)buttonCliker:(UIButton *)sender {
     NSLog(@"%@", sender.currentTitle);
-    
+    if (sender.tag==1010) {
+        SpecialMakeViewController *special = [SpecialMakeViewController new];
+        [self.navigationController pushViewController:special animated:YES];
+    } else {
+        [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        sender.backgroundColor = [UIColor mianColor:2];
+        
+        UIButton *lastButton = [self.view viewWithTag:self.lastSelected];
+        [lastButton setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
+        lastButton.backgroundColor = [UIColor whiteColor];
+        
+        self.lastSelected = sender.tag;
+    }
     
     
 }

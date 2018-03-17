@@ -122,7 +122,7 @@
     } else if(type==2) {
         return  [UIColor colorWithHexString:@"#2c98f8"];
     } else {
-        return [UIColor whiteColor];
+        return [UIColor colorWithR:177 G:206 B:234 A:1];
     }
 }
 

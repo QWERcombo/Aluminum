@@ -25,7 +25,7 @@
     [self.view addSubview:self.tabView];
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
-        make.top.equalTo(self.view.mas_top).offset(64);
+        make.top.equalTo(self.view.mas_top).offset(0);
     }];
     self.tabView.backgroundColor = [UIColor mianColor:1];
 }
@@ -60,7 +60,7 @@
 
 - (UIView *)createSectionView {
     UIView *imageview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 190)];
-    imageview.backgroundColor = [UIColor whiteColor];
+    imageview.backgroundColor = [UIColor mianColor:2];
     
     UIImageView *imagev = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 180)];
     imagev.backgroundColor = [UIColor whiteColor];

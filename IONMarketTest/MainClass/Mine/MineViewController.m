@@ -52,7 +52,7 @@
     if (cell == nil) {
         cell = [tableView dequeueReusableCellWithIdentifier:IDs];
     }
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.textColor = [UIColor mianColor:2];
     cell.textLabel.text = [self.titleArr objectAtIndex:indexPath.row];

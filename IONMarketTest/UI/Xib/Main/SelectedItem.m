@@ -36,7 +36,7 @@
     CGPoint point = [sender locationInView:self.superview];
     NSInteger index = point.x/(width+margin);
     if (point.y>240) {
-        _click(SINT(index+5));
+        _click(SINT(index+4));
     } else {
         _click(SINT(index));
     }

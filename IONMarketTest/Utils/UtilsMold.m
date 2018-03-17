@@ -42,8 +42,30 @@ DEF_SINGLETON(UtilsMold);
         }];
         return cell;
     }
-    
-    
+    else if ([type isEqualToString:@"OrderListCell"]) {
+        static NSString *IDs = @"OrderListCell";
+        OrderListCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
+        if (cell == nil) {
+            cell = [OrderListCell OrderListCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell loadData:model andCliker:^(NSString *clueStr) {
+            clue(@{@"key":clueStr});
+        }];
+        return cell;
+    }
+    else if ([type isEqualToString:@"OrderDetailCell"]) {
+        static NSString *IDs = @"OrderDetailCell";
+        OrderDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
+        if (cell == nil) {
+            cell = [OrderDetailCell getOrderDetailCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell loadData:model andCliker:^(NSString *clueStr) {
+//            clue(@{@"key":clueStr});
+        }];
+        return cell;
+    }
     
     
     
@@ -72,6 +94,12 @@ DEF_SINGLETON(UtilsMold);
     
     if ([type isEqualToString:@"MainItemCell"]) {
         return [MainItemCell getCellHight:data Model:model indexPath:indexpath];
+    } else if ([type isEqualToString:@"OrderListCell"]) {
+        return [OrderListCell getCellHight:data Model:model indexPath:indexpath];
+    } else if ([type isEqualToString:@"QuotationDetailCell"]) {
+        return [QuotationDetailCell getCellHight:data Model:model indexPath:indexpath];
+    } else if ([type isEqualToString:@"OrderDetailCell"]) {
+        return [OrderDetailCell getCellHight:data Model:model indexPath:indexpath];
     }
     
     
@@ -115,15 +143,15 @@ DEF_SINGLETON(UtilsMold);
     else if ([type isEqualToString:@"SlideSwitchView"]){
         SlideSwitchView *slideView;
         NSMutableArray *dataAr = [NSMutableArray array];
-        NSArray *topName = [model mutableCopy];
+//        NSArray *topName = [model mutableCopy];
             for (NSInteger i=0; i<4; i++) {
-                OrderListViewController *circle = [[OrderListViewController alloc] init];
-                circle.delegate = delegate;
-                circle.nameTitle = [topName objectAtIndex:i];
-                [dataAr addObject:circle];
+//                OrderListViewController *circle = [[OrderListViewController alloc] init];
+//                circle.delegate = delegate;
+//                circle.nameTitle = [topName objectAtIndex:i];
+//                [dataAr addObject:circle];
             }
         UIViewController *mainViewController = (UIViewController *)delegate;
-            slideView = [[SlideSwitchView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIGHT, mainViewController.view.size.height-64-50)];
+            slideView = [[SlideSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, mainViewController.view.size.height-50)];
             slideView.tabItemNormalColor = [UIColor mianColor:2];
             slideView.tabItemSelectedColor = [UIColor mianColor:2];
             slideView.tabItemBannerNormalColor = [UIColor whiteColor];
