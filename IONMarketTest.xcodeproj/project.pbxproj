@@ -27,6 +27,10 @@
 		565086A2205CD98400FD8497 /* OrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565086A0205CD98400FD8497 /* OrderListCell.xib */; };
 		565086A9205CFF1800FD8497 /* OrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 565086A7205CFF1800FD8497 /* OrderDetailCell.m */; };
 		565086AA205CFF1800FD8497 /* OrderDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565086A8205CFF1800FD8497 /* OrderDetailCell.xib */; };
+		565086AD205D3A8F00FD8497 /* MainItemView__WholeBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 565086AC205D3A8F00FD8497 /* MainItemView__WholeBoard.m */; };
+		565086B0205D3AED00FD8497 /* MainItem__Single.m in Sources */ = {isa = PBXBuildFile; fileRef = 565086AF205D3AED00FD8497 /* MainItem__Single.m */; };
+		565086B2205D3B1D00FD8497 /* MainItemView__WholeBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565086B1205D3B1D00FD8497 /* MainItemView__WholeBoard.xib */; };
+		565086B4205D3B3A00FD8497 /* MainItem__Single.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565086B3205D3B3A00FD8497 /* MainItem__Single.xib */; };
 		5657412B20538D8A007CB488 /* SelectedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5657412A20538D8A007CB488 /* SelectedItem.m */; };
 		5657413820539313007CB488 /* SelectedItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5657413720539313007CB488 /* SelectedItem.xib */; };
 		5657413B2053AF0E007CB488 /* MineDescrController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5657413A2053AF0E007CB488 /* MineDescrController.m */; };
@@ -161,6 +165,12 @@
 		565086A6205CFF1800FD8497 /* OrderDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailCell.h; sourceTree = "<group>"; };
 		565086A7205CFF1800FD8497 /* OrderDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailCell.m; sourceTree = "<group>"; };
 		565086A8205CFF1800FD8497 /* OrderDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailCell.xib; sourceTree = "<group>"; };
+		565086AB205D3A8F00FD8497 /* MainItemView__WholeBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItemView__WholeBoard.h; sourceTree = "<group>"; };
+		565086AC205D3A8F00FD8497 /* MainItemView__WholeBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainItemView__WholeBoard.m; sourceTree = "<group>"; };
+		565086AE205D3AED00FD8497 /* MainItem__Single.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItem__Single.h; sourceTree = "<group>"; };
+		565086AF205D3AED00FD8497 /* MainItem__Single.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainItem__Single.m; sourceTree = "<group>"; };
+		565086B1205D3B1D00FD8497 /* MainItemView__WholeBoard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItemView__WholeBoard.xib; sourceTree = "<group>"; };
+		565086B3205D3B3A00FD8497 /* MainItem__Single.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItem__Single.xib; sourceTree = "<group>"; };
 		5657412920538D8A007CB488 /* SelectedItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedItem.h; sourceTree = "<group>"; };
 		5657412A20538D8A007CB488 /* SelectedItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectedItem.m; sourceTree = "<group>"; };
 		5657413720539313007CB488 /* SelectedItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedItem.xib; sourceTree = "<group>"; };
@@ -847,6 +857,12 @@
 				5632BFB6205AB6180009CD34 /* QuotationDetailCell.h */,
 				5632BFB7205AB6180009CD34 /* QuotationDetailCell.m */,
 				5632BFB8205AB6180009CD34 /* QuotationDetailCell.xib */,
+				565086AB205D3A8F00FD8497 /* MainItemView__WholeBoard.h */,
+				565086AC205D3A8F00FD8497 /* MainItemView__WholeBoard.m */,
+				565086B1205D3B1D00FD8497 /* MainItemView__WholeBoard.xib */,
+				565086AE205D3AED00FD8497 /* MainItem__Single.h */,
+				565086AF205D3AED00FD8497 /* MainItem__Single.m */,
+				565086B3205D3B3A00FD8497 /* MainItem__Single.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -973,11 +989,13 @@
 				5695BE8120429F1B0036D54B /* LaunchScreen.storyboard in Resources */,
 				A2AC1C7620565E4600A3B2F9 /* MainItemCell.xib in Resources */,
 				565086A2205CD98400FD8497 /* OrderListCell.xib in Resources */,
+				565086B4205D3B3A00FD8497 /* MainItem__Single.xib in Resources */,
 				5632BFBA205AB6180009CD34 /* QuotationDetailCell.xib in Resources */,
 				5695BE7E20429F1B0036D54B /* Assets.xcassets in Resources */,
 				5695BE7920429F1B0036D54B /* Main.storyboard in Resources */,
 				5695BF102042AB0E0036D54B /* rsa_public_key.der in Resources */,
 				5657413820539313007CB488 /* SelectedItem.xib in Resources */,
+				565086B2205D3B1D00FD8497 /* MainItemView__WholeBoard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1116,6 +1134,7 @@
 				5695BF112042AB0E0036D54B /* RSAEncryptor.m in Sources */,
 				5602129020594CF6009EF75D /* ShareViewController.m in Sources */,
 				5695BEC12042A5300036D54B /* BaseModel.m in Sources */,
+				565086B0205D3AED00FD8497 /* MainItem__Single.m in Sources */,
 				56940C2920515DF900DFA6D6 /* UIImage+YXP.m in Sources */,
 				565086A1205CD98400FD8497 /* OrderListCell.m in Sources */,
 				56940C3D20515E6900DFA6D6 /* DataForFMDB.m in Sources */,
@@ -1123,6 +1142,7 @@
 				56940C0320515DB300DFA6D6 /* TBNavigationController.m in Sources */,
 				5695BF012042A9E50036D54B /* UITextField+Extension.m in Sources */,
 				5695BF592042AC1D0036D54B /* EasyShowTextBgView.m in Sources */,
+				565086AD205D3A8F00FD8497 /* MainItemView__WholeBoard.m in Sources */,
 				5632BFB9205AB6180009CD34 /* QuotationDetailCell.m in Sources */,
 				5695BE7320429F1B0036D54B /* AppDelegate.m in Sources */,
 				5602129C20594D2B009EF75D /* WhiteBarViewController.m in Sources */,

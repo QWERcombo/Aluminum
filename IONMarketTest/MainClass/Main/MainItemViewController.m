@@ -8,21 +8,32 @@
 
 #import "MainItemViewController.h"
 #import "SpecialMakeViewController.h"
+#import "MainItem__Single.h"
+#import "MainItemView__WholeBoard.h"
 
 @interface MainItemViewController ()
 @property (nonatomic, assign) NSInteger lastSelected;
+
+@property (nonatomic, strong) UIScrollView *sctollView;
 @end
 
 #define ITEM_WIDTH  60
 #define ITEM_HEIGHT  30
 
-@implementation MainItemViewController
+#define CAR_Color  [UIColor colorWithR:97 G:177 B:225 A:1]
+
+@implementation MainItemViewController {
+    UIButton *radiusButton;
+    UILabel *priceLabel;
+    UILabel *infoLabel;
+    
+    UIView *bottomView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"下单";
-    
     UIButton *rightButton = [UIButton buttonWithTitle:@"特殊定制" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
     rightButton.tag = 1010;
     [rightButton addTarget:self action:@selector(buttonCliker:) forControlEvents:UIControlEventTouchUpInside];
@@ -37,9 +48,11 @@
 
 - (void)setSubviews {
     
-    [self createTopActionView];
+    [self createTopActionView];//顶部选择
     
-    [self createScrollLayoutView];
+    [self createScrollLayoutView];//中部变化
+    
+    [self createBottomView];//底部购买
 }
 
 - (void)createTopActionView {
@@ -84,10 +97,98 @@
 }
 
 - (void)createScrollLayoutView {
+    [self.sctollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    self.sctollView = [[UIScrollView alloc] init];
+    [self.view addSubview:self.sctollView];
+    [_sctollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.view.mas_bottom).offset(-50);
+        make.top.equalTo(self.view.mas_top).offset(100);
+    }];
     
+    if (self.lastSelected==100) {
+        MainItemView__WholeBoard *single = [[MainItemView__WholeBoard alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, SCREEN_HEIGHT)];
+        [single loadData:nil andCliker:^(NSString *clueStr) {
+            
+        }];
+        [_sctollView addSubview:single];
+        
+        [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, SCREEN_HEIGHT)];
+    } else {
+        MainItem__Single *single = [[MainItem__Single alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, SCREEN_HEIGHT)];
+        [single loadData:nil andCliker:^(NSString *clueStr) {
+            
+        }];
+        [_sctollView addSubview:single];
+        
+        [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, SCREEN_HEIGHT)];
+    }
     
     
 }
+
+
+- (void)createBottomView {
+    bottomView = [[UIView alloc] init];
+    [self.view addSubview:bottomView];
+    bottomView.backgroundColor = [UIColor whiteColor];
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(50));
+        make.bottom.left.right.equalTo(self.view);
+    }];
+    
+    
+    UIButton *buyButton = [UIButton buttonWithTitle:@"立即购买" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+    buyButton.backgroundColor = [UIColor mianColor:2];
+    [buyButton addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:buyButton];
+    [buyButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.right.equalTo(bottomView);
+        make.width.equalTo(@(90));
+    }];
+    UIButton *carButton = [UIButton buttonWithTitle:@"加入购物车" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+    carButton.backgroundColor = CAR_Color;
+    [carButton addTarget:self action:@selector(carAction:) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:carButton];
+    [carButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.equalTo(bottomView);
+        make.width.equalTo(@(90));
+        make.right.equalTo(buyButton.mas_left);
+    }];
+    
+    radiusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    radiusButton.backgroundColor = CAR_Color;
+    radiusButton.layer.cornerRadius = 25;
+    radiusButton.layer.masksToBounds = YES;
+    [bottomView addSubview:radiusButton];
+    [radiusButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.equalTo(@(50));
+        make.left.equalTo(bottomView.mas_left).offset(5);
+        make.bottom.equalTo(bottomView.mas_bottom).offset(-20);
+    }];
+    radiusButton.badgeValue = @"21";
+    radiusButton.badgeFont = FONT_ArialMT(13);
+    radiusButton.badgeBGColor = [UIColor mianColor:2];
+    radiusButton.badgeOriginX = 35;
+    
+    priceLabel = [UILabel lableWithText:@"￥7676.00" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
+    [bottomView addSubview:priceLabel];
+    [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(radiusButton.mas_right).offset(10);
+        make.top.equalTo(bottomView.mas_top).offset(10);
+    }];
+    infoLabel = [UILabel lableWithText:@"76766kg" Font:FONT_ArialMT(13) TextColor:[UIColor mianColor:2]];
+    [bottomView addSubview:infoLabel];
+    [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(priceLabel.mas_left);
+        make.top.equalTo(priceLabel.mas_bottom);
+    }];
+    
+    
+}
+
+
+
 
 #pragma mark --- Action
 
@@ -107,10 +208,19 @@
         self.lastSelected = sender.tag;
     }
     
+    [self createScrollLayoutView];
+    [self.view bringSubviewToFront:bottomView];
+}
+
+- (void)buyAction:(UIButton *)sender {
+    NSLog(@"%@", sender.currentTitle);
     
 }
 
-
+- (void)carAction:(UIButton *)sender {
+    NSLog(@"%@", sender.currentTitle);
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
