@@ -19,7 +19,35 @@
     // Override point for customization after application launch.
     [NSThread sleepForTimeInterval:2];
     
+    [self settingEasyShowOptions];//配置菊花
+    
+    
     return YES;
+}
+
+
+//配置指示样式
+- (void)settingEasyShowOptions {
+    
+    EasyShowOptions *options = [EasyShowOptions sharedEasyShowOptions];
+    //在展示消息的时候，界面上是否可以事件。默认为YES，如果你想在展示消息的时候不让用户有手势交互，可设为NO
+    options.textSuperViewReceiveEvent = NO ;
+    //显示/隐藏的动画形式。有无动画，渐变，抖动，三种样式。
+    options.textAnimationType = TextAnimationTypeFade;
+    //提示框所在的位置。有上，中，下，状态栏上，导航条上，五种选择。
+    options.textStatusType = ShowTextStatusTypeMidden;
+    //文字大小
+    options.textTitleFount = FONT_ArialMT(18);
+    //文字颜色
+    options.textTitleColor = [UIColor whiteColor];
+    //背景颜色
+    options.textBackGroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+    //阴影颜色。(为clearcolor的时候不显示阴影)
+    options.textShadowColor = [UIColor mianColor:1];
+    //在显示加载框的时候，superview能否接收事件。
+    options.lodingSuperViewReceiveEvent = NO;
+    //是否将加载框显示到window上面
+    options.lodingShowOnWindow = YES;
 }
 
 
