@@ -19,6 +19,8 @@
 
 #define ITEM_WIDTH  60
 #define ITEM_HEIGHT  30
+//型号间隔
+#define ITEM_TYPE_MARGIN 20
 
 #define CAR_Color  [UIColor colorWithR:97 G:177 B:225 A:1]
 
@@ -62,9 +64,9 @@
     line.backgroundColor = [UIColor lightTextColor];
     [topView addSubview:line];
     
-    NSArray *array = @[@"整板",@"零切",@"圆棒",@"型材",@"管材"];
+    NSArray *array = @[@"零切",@"圆棒",@"型材",@"管材"];
     UIButton *lastBtn = nil;
-    for (NSInteger i=0; i<5; i++) {
+    for (NSInteger i=0; i<array.count; i++) {
         
         UIButton *button = [UIButton buttonWithTitle:[array objectAtIndex:i] andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
         
@@ -82,18 +84,49 @@
             make.height.equalTo(@(ITEM_HEIGHT));
             make.top.equalTo(topView.mas_top).offset(10);
             if (lastBtn) {
-                make.left.equalTo(lastBtn.mas_right).offset((SCREEN_WIGHT-ITEM_WIDTH*5)/6);
+                make.left.equalTo(lastBtn.mas_right).offset((SCREEN_WIGHT-ITEM_WIDTH*4)/5);
             } else {
-                make.left.equalTo(topView.mas_left).offset((SCREEN_WIGHT-ITEM_WIDTH*5)/6);
+                make.left.equalTo(topView.mas_left).offset((SCREEN_WIGHT-ITEM_WIDTH*4)/5);
             }
         }];
         
         lastBtn = button;
     }
     self.lastSelected = 100+self.selectedNum;
-    
-    
     [self.view addSubview:topView];
+    
+    
+    NSArray *typeArr = @[@"6061",@"7075",@"7050",@"2A12",@"5052",@"1060",@"1526"];
+    UIScrollView *typeScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 50.5, SCREEN_WIGHT, 49.5)];
+    
+    CGFloat scroll_width = (typeArr.count+1)*ITEM_TYPE_MARGIN;
+    UIButton *lastTypeButton = nil;
+    for (NSInteger i=0; i<typeArr.count; i++) {
+        NSString *typeName = [typeArr objectAtIndex:i];
+        CGSize typeSize = [UILabel getSizeWithText:typeName andFont:FONT_ArialMT(15) andSize:CGSizeMake(0, ITEM_HEIGHT)];
+        scroll_width += (typeSize.width+10);
+        UIButton *typeButton = [UIButton buttonWithTitle:[typeArr objectAtIndex:i] andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
+        typeButton.tag = 200+i;
+        [typeButton addTarget:self action:@selector(buttonCliker:) forControlEvents:UIControlEventTouchUpInside];
+        [typeScrollView addSubview:typeButton];
+        [typeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(@(typeSize.width+10));
+            make.height.equalTo(@(ITEM_HEIGHT));
+            make.bottom.equalTo(topView.mas_bottom).offset(10);
+            if (lastTypeButton) {
+                make.left.equalTo(lastTypeButton.mas_right).offset(ITEM_TYPE_MARGIN);
+            } else {
+                make.left.equalTo(topView.mas_left).offset(ITEM_TYPE_MARGIN);
+            }
+        }];
+        
+        lastTypeButton = typeButton;
+    }
+    
+    [typeScrollView setContentSize:CGSizeMake(scroll_width, 49.5)];
+    
+    [self.view addSubview:typeScrollView];
+    
 }
 
 - (void)createScrollLayoutView {

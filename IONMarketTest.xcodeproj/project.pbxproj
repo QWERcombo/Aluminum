@@ -99,6 +99,7 @@
 		5695BF5D2042AC1D0036D54B /* UIView+EasyShowExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF542042AC1D0036D54B /* UIView+EasyShowExt.m */; };
 		5695BF632042AF8C0036D54B /* DataSend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF602042AF8B0036D54B /* DataSend.m */; };
 		5695BF642042AF8C0036D54B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF622042AF8B0036D54B /* Reachability.m */; };
+		A26CECC5205FAA5A00B7AF91 /* InventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A26CECC4205FAA5A00B7AF91 /* InventoryViewController.m */; };
 		A2AC1C622056476F00A3B2F9 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C612056476F00A3B2F9 /* MessageViewController.m */; };
 		A2AC1C652056481B00A3B2F9 /* MainItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C642056481B00A3B2F9 /* MainItemViewController.m */; };
 		A2AC1C6820564AB900A3B2F9 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C6720564AB900A3B2F9 /* UserInfoViewController.m */; };
@@ -311,6 +312,8 @@
 		5695BF602042AF8B0036D54B /* DataSend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSend.m; sourceTree = "<group>"; };
 		5695BF612042AF8B0036D54B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		5695BF622042AF8B0036D54B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		A26CECC3205FAA5A00B7AF91 /* InventoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InventoryViewController.h; sourceTree = "<group>"; };
+		A26CECC4205FAA5A00B7AF91 /* InventoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InventoryViewController.m; sourceTree = "<group>"; };
 		A2AC1C602056476F00A3B2F9 /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		A2AC1C612056476F00A3B2F9 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		A2AC1C632056481B00A3B2F9 /* MainItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItemViewController.h; sourceTree = "<group>"; };
@@ -545,6 +548,8 @@
 				5632BFB1205AB5920009CD34 /* QuotationDetailViewController.m */,
 				56508697205CBEC500FD8497 /* SpecialMakeViewController.h */,
 				56508698205CBEC500FD8497 /* SpecialMakeViewController.m */,
+				A26CECC3205FAA5A00B7AF91 /* InventoryViewController.h */,
+				A26CECC4205FAA5A00B7AF91 /* InventoryViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1115,6 +1120,7 @@
 				56940C3E20515E6900DFA6D6 /* PublicFuntionTool.m in Sources */,
 				56940C0120515DB300DFA6D6 /* TBTabBar.m in Sources */,
 				5602129F20594D37009EF75D /* WalletViewController.m in Sources */,
+				A26CECC5205FAA5A00B7AF91 /* InventoryViewController.m in Sources */,
 				5695BF5C2042AC1D0036D54B /* EasyShowUtils.m in Sources */,
 				5695BF632042AF8C0036D54B /* DataSend.m in Sources */,
 				56940C2120515DF900DFA6D6 /* UILabel+YXP.m in Sources */,

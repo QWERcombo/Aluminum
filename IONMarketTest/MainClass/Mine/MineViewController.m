@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.titleArr = @[@"钱包",@"白条",@"开票",@"收货地址",@"银行卡",@"分享推广",@"设置"];
+    self.titleArr = @[@[@"钱包",@"白条",@"开票"],@[@"收货地址",@"银行卡"],@[@"分享推广",@"设置"]];
     self.tabView.backgroundColor = [UIColor mianColor:1];
     [self.view addSubview:self.tabView];
     [self.tabView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"BasicCell"];
@@ -40,10 +40,18 @@
 
 #pragma mark --- Delegate&DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section==0?0:7;
+    if (section==0) {
+        return 0;
+    } else if (section==1) {
+        return 3;
+    } else if (section==2) {
+        return 2;
+    } else {
+        return 2;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -55,17 +63,18 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.textColor = [UIColor mianColor:2];
-    cell.textLabel.text = [self.titleArr objectAtIndex:indexPath.row];
+    cell.imageView.image = [UIImage imageWithColor:[UIColor yellowColor]];
+    cell.textLabel.text = [self.titleArr objectAtIndex:indexPath.section-1][indexPath.row];
     return cell;
 }
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return [self createUserView];
+    return section==0?[self createUserView]:nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return section==0?120:0;
+    return section==0?120:10;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -82,10 +91,8 @@
 
 #pragma mark ---- subviews
 - (UIView *)createUserView {
-    UIView *userVIew = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 120)];
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 110)];
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 120)];
     contentView.backgroundColor = [UIColor whiteColor];
-    [userVIew addSubview:contentView];
     
     UIImageView *user_imgv = [[UIImageView alloc] init];
     user_imgv.layer.cornerRadius = 30;
@@ -94,8 +101,8 @@
     [contentView addSubview:user_imgv];
     [user_imgv mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.equalTo(@(60));
-        make.left.equalTo(userVIew.mas_left).offset(20);
-        make.centerY.equalTo(userVIew.mas_centerY);
+        make.left.equalTo(contentView.mas_left).offset(20);
+        make.centerY.equalTo(contentView.mas_centerY);
     }];
     
     UILabel *nameLabel = [UILabel lableWithText:@"用户名称" Font:FONT_ArialMT(16) TextColor:[UIColor mianColor:2]];
@@ -115,9 +122,9 @@
     }];
     
     UITapGestureRecognizer *userInfo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goIntoUserInfo)];
-    [userVIew addGestureRecognizer:userInfo];
+    [contentView addGestureRecognizer:userInfo];
     
-    return userVIew;
+    return contentView;
 }
 
 #pragma mark ---- Action

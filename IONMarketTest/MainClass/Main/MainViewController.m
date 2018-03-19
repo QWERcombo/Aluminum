@@ -14,7 +14,7 @@
 #import "QuotationDetailViewController.h"
 #import "MessageViewController.h"
 #import "SpecialMakeViewController.h"
-
+#import "InventoryViewController.h"
 
 @interface MainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -66,10 +66,12 @@
 - (UIView *)createTopView {
     UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 340)];
     mainView.backgroundColor = [UIColor whiteColor];
-    ABBannerView *bannerView = (ABBannerView *)[[UtilsMold sharedInstance] creatView:@"ABBannerView" data:nil model:@[[UIImage imageWithColor:[UIColor purpleColor]],[UIImage imageWithColor:[UIColor mianColor:2]]] deleGate:self andCliker:^(NSDictionary *clueDic) {
-        
-    }];
-    bannerView.frame = CGRectMake(0, 0, SCREEN_WIGHT, 140);
+//    ABBannerView *bannerView = (ABBannerView *)[[UtilsMold sharedInstance] creatView:@"ABBannerView" data:nil model:@[[UIImage imageWithColor:[UIColor purpleColor]],[UIImage imageWithColor:[UIColor mianColor:2]]] deleGate:self andCliker:^(NSDictionary *clueDic) {
+//
+//    }];
+//    bannerView.frame = CGRectMake(0, 0, SCREEN_WIGHT, 140);
+    UIImageView *bannerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 140)];
+    bannerView.backgroundColor = [UIColor purpleColor];
     [mainView addSubview:bannerView];
     
     NSArray *nameArr = @[@"整板",@"零切",@"圆棒",@"型材",@"管材",@"特殊定制",@"自动下单",@"询价"];
@@ -86,20 +88,20 @@
                 if ([name isEqualToString:@"自动下单"]) {
                     SetOrderViewController *set = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SetOrder"];
                     [self.navigationController pushViewController:set animated:YES];
-                    
                 } else if ([name isEqualToString:@"特殊定制"]) {
                     SpecialMakeViewController *special = [SpecialMakeViewController new];
                     [self.navigationController pushViewController:special animated:YES];
                 } else if ([name isEqualToString:@"询价"]) {
                     MessageViewController *message = [MessageViewController new];
                     [self.navigationController pushViewController:message animated:YES];
+                } else if ([name isEqualToString:@"整板"]) {
+                    InventoryViewController *inven = [InventoryViewController new];
+                    [self.navigationController pushViewController:inven animated:YES];
                 } else {
-                    
                     MainItemViewController *main_item = [[MainItemViewController alloc] init];
                     main_item.titleStr = name;
                     main_item.selectedNum = [clueStr integerValue];
                     [self.navigationController pushViewController:main_item animated:YES];
-                    
                 }
             }];
             [mainView addSubview:item];
