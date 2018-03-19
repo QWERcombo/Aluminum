@@ -7,6 +7,7 @@
 //
 
 #import "InventoryViewController.h"
+#import "WholeBoardViewController.h"
 
 @interface InventoryViewController ()
 
@@ -19,8 +20,39 @@
     // Do any additional setup after loading the view.
     self.title = @"库存";
     
-    
+    [self setupSubviews];
 }
+
+- (void)setupSubviews {
+    [self.view addSubview:self.tabView];
+    [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.equalTo(self.view);
+    }];
+    self.tabView.backgroundColor = [UIColor mianColor:1];
+}
+
+
+#pragma mark ----delegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [UtilsMold creatCell:@"InventoryCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+        
+    }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [UtilsMold getCellHight:@"InventoryCell" data:nil model:nil indexPath:indexPath];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    WholeBoardViewController *whole = [WholeBoardViewController new];
+    [self.navigationController pushViewController:whole animated:YES];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

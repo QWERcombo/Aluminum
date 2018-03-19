@@ -66,6 +66,18 @@ DEF_SINGLETON(UtilsMold);
         }];
         return cell;
     }
+    else if ([type isEqualToString:@"InventoryCell"]) {
+        static NSString *IDs = @"InventoryCell";
+        InventoryCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
+        if (cell == nil) {
+            cell = [InventoryCell getInventoryCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell loadData:model andCliker:^(NSString *clueStr) {
+//            clue(@{@"key":clueStr});
+        }];
+        return cell;
+    }
     
     
     
@@ -93,13 +105,20 @@ DEF_SINGLETON(UtilsMold);
 {
     
     if ([type isEqualToString:@"MainItemCell"]) {
+        
         return [MainItemCell getCellHight:data Model:model indexPath:indexpath];
     } else if ([type isEqualToString:@"OrderListCell"]) {
+        
         return [OrderListCell getCellHight:data Model:model indexPath:indexpath];
     } else if ([type isEqualToString:@"QuotationDetailCell"]) {
+        
         return [QuotationDetailCell getCellHight:data Model:model indexPath:indexpath];
     } else if ([type isEqualToString:@"OrderDetailCell"]) {
+        
         return [OrderDetailCell getCellHight:data Model:model indexPath:indexpath];
+    } else if ([type isEqualToString:@"InventoryCell"]) {
+        
+        return [InventoryCell getCellHight:data Model:model indexPath:indexpath];
     }
     
     

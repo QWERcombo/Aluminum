@@ -29,7 +29,7 @@
     UINavigationBar *bar = [UINavigationBar appearance];
 
     // 设置背景
-    [bar setBackgroundImage:[UIImage imageWithColor:[UIColor mianColor:2]] forBarMetrics:UIBarMetricsDefault];
+    [bar setBackgroundImage:[UIImage imageNamed:@"Navi_bg"] forBarMetrics:UIBarMetricsDefault];
     [bar setShadowImage:[[UIImage alloc] init]];
 
     // 设置标题文字属性

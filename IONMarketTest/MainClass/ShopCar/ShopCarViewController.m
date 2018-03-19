@@ -14,7 +14,7 @@
 
 @property (nonatomic, assign) NSInteger refreshSection;//刷新的分区
 
-
+@property (nonatomic, strong) NSMutableDictionary *sortDic;
 
 @end
 
@@ -23,6 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.sortDic = [NSMutableDictionary dictionary];
+    [self.sortDic setValue:@[@"1",@"2",@"3",@"4",@"5"] forKey:@"1"];
+    [self.sortDic setValue:@[@"1",@"2",@"3",@"4",@"5"] forKey:@"2"];
+    [self.sortDic setValue:@[@"1",@"2",@"3",@"4",@"5"] forKey:@"3"];
+    self.dataMuArr = [self.sortDic allKeys];
+    
     [self setupSubViews];
 }
 
@@ -67,20 +73,26 @@
 
 #pragma mark --- UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return self.dataMuArr.count;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section==self.refreshSection) {
-        if (self.isDisplay) {
-            return 5;
-        } else {
-            return 3;
-        }
+    NSArray *arr = self.sortDic[[self.dataMuArr objectAtIndex:section]];
+    if (self.isDisplay) {
+        return arr.count;
     } else {
         return 3;
     }
+//    if (section==self.refreshSection) {
+//        if (self.isDisplay) {
+//            return 5;
+//        } else {
+//            return 3;
+//        }
+//    } else {
+//        return 3;
+//    }
     
 }
 
@@ -116,10 +128,10 @@
 #pragma mark ----- Action
 - (void)displayAction:(UIButton *)sender {
 //    NSLog(@"display:----%ld", sender.tag);
-    self.refreshSection = sender.tag-100;
-    self.isDisplay = !self.isDisplay;
-    NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:sender.tag-100];
-    [self.tabView reloadSections:set withRowAnimation:UITableViewRowAnimationAutomatic];
+//    self.refreshSection = sender.tag-100;
+//    self.isDisplay = !self.isDisplay;
+//    NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:sender.tag-100];
+//    [self.tabView reloadSections:set withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)moreAction:(UIButton *)sender {

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="KGk-i7-Jjw" customClass="InventoryCell">
+            <rect key="frame" x="0.0" y="0.0" width="394" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="394" height="109.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CeW-JA-Bbq">
+                        <rect key="frame" x="0.0" y="0.0" width="394" height="108.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="铝板  1060  24H  国标" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V38-2L-i9s">
+                                <rect key="frame" x="15" y="10" width="167" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="规格：3.0*1220*2554" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1K1-d6-tgN">
+                                <rect key="frame" x="15" y="46" width="169" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商家：苏州铝业" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njf-Qp-e5y">
+                                <rect key="frame" x="15" y="82" width="122" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网上订货协商" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yjj-dn-zVv">
+                                <rect key="frame" x="275" y="10" width="104" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1小时前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTL-Ke-iiu">
+                                <rect key="frame" x="319" y="82" width="60" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="V38-2L-i9s" firstAttribute="top" secondItem="CeW-JA-Bbq" secondAttribute="top" constant="10" id="2h5-Yd-HXM"/>
+                            <constraint firstItem="V38-2L-i9s" firstAttribute="leading" secondItem="CeW-JA-Bbq" secondAttribute="leading" constant="15" id="3eW-7s-Qy9"/>
+                            <constraint firstItem="njf-Qp-e5y" firstAttribute="top" secondItem="1K1-d6-tgN" secondAttribute="bottom" constant="15" id="Jsr-eN-kbY"/>
+                            <constraint firstAttribute="trailing" secondItem="OTL-Ke-iiu" secondAttribute="trailing" constant="15" id="Sq5-lR-1yl"/>
+                            <constraint firstItem="1K1-d6-tgN" firstAttribute="leading" secondItem="CeW-JA-Bbq" secondAttribute="leading" constant="15" id="eF0-PV-6rX"/>
+                            <constraint firstItem="1K1-d6-tgN" firstAttribute="top" secondItem="V38-2L-i9s" secondAttribute="bottom" constant="15" id="lS5-dt-bxw"/>
+                            <constraint firstItem="njf-Qp-e5y" firstAttribute="leading" secondItem="CeW-JA-Bbq" secondAttribute="leading" constant="15" id="qDm-Cf-Gdb"/>
+                            <constraint firstItem="Yjj-dn-zVv" firstAttribute="top" secondItem="CeW-JA-Bbq" secondAttribute="top" constant="10" id="uff-Pb-CpM"/>
+                            <constraint firstItem="OTL-Ke-iiu" firstAttribute="centerY" secondItem="njf-Qp-e5y" secondAttribute="centerY" id="uqu-SJ-eHN"/>
+                            <constraint firstAttribute="trailing" secondItem="Yjj-dn-zVv" secondAttribute="trailing" constant="15" id="zge-ae-sfh"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="CeW-JA-Bbq" secondAttribute="trailing" id="GAW-Sf-XpY"/>
+                    <constraint firstAttribute="bottom" secondItem="CeW-JA-Bbq" secondAttribute="bottom" constant="1" id="PdD-74-dpU"/>
+                    <constraint firstItem="CeW-JA-Bbq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="W3i-c6-aI2"/>
+                    <constraint firstItem="CeW-JA-Bbq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="s9V-0W-Mv9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="comparyLabel" destination="njf-Qp-e5y" id="Glv-ti-9iT"/>
+                <outlet property="dateLabel" destination="OTL-Ke-iiu" id="PKm-Rr-48I"/>
+                <outlet property="infoLabel" destination="Yjj-dn-zVv" id="noi-Ew-K8h"/>
+                <outlet property="nameLabel" destination="V38-2L-i9s" id="eWQ-dN-CEA"/>
+                <outlet property="typeLabel" destination="1K1-d6-tgN" id="erA-9b-LCm"/>
+            </connections>
+            <point key="canvasLocation" x="5" y="15"/>
+        </tableViewCell>
+    </objects>
+</document>

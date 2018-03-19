@@ -13,7 +13,7 @@
 
 @interface MainItemViewController ()
 @property (nonatomic, assign) NSInteger lastSelected;
-
+@property (nonatomic, assign) NSInteger lastTypeSelected;
 @property (nonatomic, strong) UIScrollView *sctollView;
 @end
 
@@ -61,7 +61,7 @@
     UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 100)];
     topView.backgroundColor = [UIColor whiteColor];
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 49.5, SCREEN_WIGHT, 1)];
-    line.backgroundColor = [UIColor lightTextColor];
+    line.backgroundColor = [UIColor lightGrayColor];
     [topView addSubview:line];
     
     NSArray *array = @[@"零切",@"圆棒",@"型材",@"管材"];
@@ -71,7 +71,7 @@
         UIButton *button = [UIButton buttonWithTitle:[array objectAtIndex:i] andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
         
         if (i==self.selectedNum) {
-            button.backgroundColor = [UIColor mianColor:2];
+            [button setBackgroundImage:IMG(@"Main_button_bg") forState:UIControlStateNormal];
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         }
         
@@ -104,19 +104,26 @@
     for (NSInteger i=0; i<typeArr.count; i++) {
         NSString *typeName = [typeArr objectAtIndex:i];
         CGSize typeSize = [UILabel getSizeWithText:typeName andFont:FONT_ArialMT(15) andSize:CGSizeMake(0, ITEM_HEIGHT)];
-        scroll_width += (typeSize.width+10);
+        scroll_width += (typeSize.width+20);
+        
         UIButton *typeButton = [UIButton buttonWithTitle:[typeArr objectAtIndex:i] andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
+        if (i==0) {
+            [typeButton setBackgroundImage:IMG(@"Main_button_bg") forState:UIControlStateNormal];
+            [typeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        }
+        
         typeButton.tag = 200+i;
         [typeButton addTarget:self action:@selector(buttonCliker:) forControlEvents:UIControlEventTouchUpInside];
+        
         [typeScrollView addSubview:typeButton];
         [typeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.equalTo(@(typeSize.width+10));
+            make.width.equalTo(@(typeSize.width+20));
             make.height.equalTo(@(ITEM_HEIGHT));
-            make.bottom.equalTo(topView.mas_bottom).offset(10);
+            make.top.equalTo(typeScrollView.mas_top).offset(10);
             if (lastTypeButton) {
                 make.left.equalTo(lastTypeButton.mas_right).offset(ITEM_TYPE_MARGIN);
             } else {
-                make.left.equalTo(topView.mas_left).offset(ITEM_TYPE_MARGIN);
+                make.left.equalTo(typeScrollView.mas_left).offset(ITEM_TYPE_MARGIN);
             }
         }];
         
@@ -124,7 +131,7 @@
     }
     
     [typeScrollView setContentSize:CGSizeMake(scroll_width, 49.5)];
-    
+    self.lastTypeSelected = 200;
     [self.view addSubview:typeScrollView];
     
 }
@@ -171,21 +178,19 @@
     }];
     
     
-    UIButton *buyButton = [UIButton buttonWithTitle:@"立即购买" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
-    buyButton.backgroundColor = [UIColor mianColor:2];
+    UIButton *buyButton = [UIButton buttonWithTitle:@"立即购买" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:IMG(@"Main_buy") andHighlightedImage:IMG(@"Main_buy")];
     [buyButton addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:buyButton];
     [buyButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.right.equalTo(bottomView);
-        make.width.equalTo(@(90));
+        make.width.equalTo(@(100));
     }];
-    UIButton *carButton = [UIButton buttonWithTitle:@"加入购物车" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
-    carButton.backgroundColor = CAR_Color;
+    UIButton *carButton = [UIButton buttonWithTitle:@"加入购物车" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:IMG(@"Main_shop_car") andHighlightedImage:IMG(@"Main_shop_car")];
     [carButton addTarget:self action:@selector(carAction:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:carButton];
     [carButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.equalTo(bottomView);
-        make.width.equalTo(@(90));
+        make.width.equalTo(@(100));
         make.right.equalTo(buyButton.mas_left);
     }];
     
@@ -232,13 +237,18 @@
         [self.navigationController pushViewController:special animated:YES];
     } else {
         [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        sender.backgroundColor = [UIColor mianColor:2];
+        [sender setBackgroundImage:IMG(@"Main_button_bg") forState:UIControlStateNormal];
         
-        UIButton *lastButton = [self.view viewWithTag:self.lastSelected];
+        UIButton *lastButton = [self.view viewWithTag:sender.tag<200?self.lastSelected:self.lastTypeSelected];
         [lastButton setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
-        lastButton.backgroundColor = [UIColor whiteColor];
+        [lastButton setBackgroundImage:nil forState:UIControlStateNormal];
         
-        self.lastSelected = sender.tag;
+        if (sender.tag<200) {
+            self.lastSelected = sender.tag;
+        } else {
+            self.lastTypeSelected = sender.tag;
+        }
+        
     }
     
     [self createScrollLayoutView];
