@@ -109,6 +109,10 @@
 		5695BF632042AF8C0036D54B /* DataSend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF602042AF8B0036D54B /* DataSend.m */; };
 		5695BF642042AF8C0036D54B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF622042AF8B0036D54B /* Reachability.m */; };
 		A26CECC5205FAA5A00B7AF91 /* InventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A26CECC4205FAA5A00B7AF91 /* InventoryViewController.m */; };
+		A283488E2060AAB200C228AD /* ShopCarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A283488D2060AAB200C228AD /* ShopCarDetailViewController.m */; };
+		A283489220610A8300C228AD /* TradeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A283489120610A8300C228AD /* TradeListViewController.m */; };
+		A283489620610F6900C228AD /* WallentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A283489420610F6900C228AD /* WallentListCell.m */; };
+		A283489720610F6900C228AD /* WallentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A283489520610F6900C228AD /* WallentListCell.xib */; };
 		A2AC1C622056476F00A3B2F9 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C612056476F00A3B2F9 /* MessageViewController.m */; };
 		A2AC1C652056481B00A3B2F9 /* MainItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C642056481B00A3B2F9 /* MainItemViewController.m */; };
 		A2AC1C6820564AB900A3B2F9 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C6720564AB900A3B2F9 /* UserInfoViewController.m */; };
@@ -337,6 +341,13 @@
 		5695BF622042AF8B0036D54B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A26CECC3205FAA5A00B7AF91 /* InventoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InventoryViewController.h; sourceTree = "<group>"; };
 		A26CECC4205FAA5A00B7AF91 /* InventoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InventoryViewController.m; sourceTree = "<group>"; };
+		A283488C2060AAB200C228AD /* ShopCarDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCarDetailViewController.h; sourceTree = "<group>"; };
+		A283488D2060AAB200C228AD /* ShopCarDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCarDetailViewController.m; sourceTree = "<group>"; };
+		A283489020610A8300C228AD /* TradeListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TradeListViewController.h; sourceTree = "<group>"; };
+		A283489120610A8300C228AD /* TradeListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TradeListViewController.m; sourceTree = "<group>"; };
+		A283489320610F6900C228AD /* WallentListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WallentListCell.h; sourceTree = "<group>"; };
+		A283489420610F6900C228AD /* WallentListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WallentListCell.m; sourceTree = "<group>"; };
+		A283489520610F6900C228AD /* WallentListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallentListCell.xib; sourceTree = "<group>"; };
 		A2AC1C602056476F00A3B2F9 /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		A2AC1C612056476F00A3B2F9 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		A2AC1C632056481B00A3B2F9 /* MainItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItemViewController.h; sourceTree = "<group>"; };
@@ -400,6 +411,8 @@
 			children = (
 				5602129D20594D37009EF75D /* WalletViewController.h */,
 				5602129E20594D37009EF75D /* WalletViewController.m */,
+				A283489020610A8300C228AD /* TradeListViewController.h */,
+				A283489120610A8300C228AD /* TradeListViewController.m */,
 			);
 			path = "钱包";
 			sourceTree = "<group>";
@@ -617,6 +630,8 @@
 			children = (
 				56940C472051605B00DFA6D6 /* ShopCarViewController.h */,
 				56940C482051605B00DFA6D6 /* ShopCarViewController.m */,
+				A283488C2060AAB200C228AD /* ShopCarDetailViewController.h */,
+				A283488D2060AAB200C228AD /* ShopCarDetailViewController.m */,
 			);
 			path = ShopCar;
 			sourceTree = "<group>";
@@ -891,6 +906,7 @@
 		A23C393A20525A02000A5E99 /* Xib */ = {
 			isa = PBXGroup;
 			children = (
+				A283488F2060F31B00C228AD /* Mine */,
 				5650869D205CD96500FD8497 /* Order */,
 				A23C393C20525A22000A5E99 /* Main */,
 			);
@@ -915,6 +931,16 @@
 				5671DBBA205FF1C7005F1760 /* InventoryCell.xib */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		A283488F2060F31B00C228AD /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				A283489320610F6900C228AD /* WallentListCell.h */,
+				A283489420610F6900C228AD /* WallentListCell.m */,
+				A283489520610F6900C228AD /* WallentListCell.xib */,
+			);
+			path = Mine;
 			sourceTree = "<group>";
 		};
 		A2AC1C5F2056471000A3B2F9 /* Message */ = {
@@ -1042,6 +1068,7 @@
 				5671DBCF2060011D005F1760 /* MainItemView__Matter.xib in Resources */,
 				565086B4205D3B3A00FD8497 /* MainItem__Single.xib in Resources */,
 				5632BFBA205AB6180009CD34 /* QuotationDetailCell.xib in Resources */,
+				A283489720610F6900C228AD /* WallentListCell.xib in Resources */,
 				5671DBC520600073005F1760 /* MainItemView__Pole.xib in Resources */,
 				5695BE7E20429F1B0036D54B /* Assets.xcassets in Resources */,
 				5695BE7920429F1B0036D54B /* Main.storyboard in Resources */,
@@ -1139,6 +1166,7 @@
 				5602129920594D1C009EF75D /* TicketViewController.m in Sources */,
 				56940C2B20515DF900DFA6D6 /* UIColor+YXP.m in Sources */,
 				5671DBC32060005A005F1760 /* MainItemView__Pole.m in Sources */,
+				A283489220610A8300C228AD /* TradeListViewController.m in Sources */,
 				56940C0220515DB300DFA6D6 /* TBTabBarController.m in Sources */,
 				56940C4F2051609E00DFA6D6 /* MainViewController.m in Sources */,
 				5657413B2053AF0E007CB488 /* MineDescrController.m in Sources */,
@@ -1190,6 +1218,7 @@
 				5695BF582042AC1D0036D54B /* EasyShowOptions.m in Sources */,
 				5602129320594D02009EF75D /* BankCardViewController.m in Sources */,
 				5695BF112042AB0E0036D54B /* RSAEncryptor.m in Sources */,
+				A283489620610F6900C228AD /* WallentListCell.m in Sources */,
 				5671DBC8206000D9005F1760 /* MainItemView__Tube.m in Sources */,
 				5602129020594CF6009EF75D /* ShareViewController.m in Sources */,
 				5695BEC12042A5300036D54B /* BaseModel.m in Sources */,
@@ -1212,6 +1241,7 @@
 				56940C492051605B00DFA6D6 /* ShopCarViewController.m in Sources */,
 				5602129620594D0C009EF75D /* AddressViewController.m in Sources */,
 				5695BF642042AF8C0036D54B /* Reachability.m in Sources */,
+				A283488E2060AAB200C228AD /* ShopCarDetailViewController.m in Sources */,
 				5695BF562042AC1D0036D54B /* EasyShowLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -33,10 +33,10 @@
 
 #pragma mark --- Delegate&DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section==0?0:10;
+    return section==2?10:0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -50,11 +50,23 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return section==0?[self createTopView]:[self createSectionView];
+    if (section==0) {
+        return [self createTopView];
+    } else if (section==1) {
+        return [self createSectionView];
+    } else {
+        return nil;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return section==0?340:40;
+    if (section==0) {
+        return 340;
+    } else if (section==1) {
+        return 40;
+    } else {
+        return 0;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -66,10 +78,7 @@
 - (UIView *)createTopView {
     UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 340)];
     mainView.backgroundColor = [UIColor whiteColor];
-//    ABBannerView *bannerView = (ABBannerView *)[[UtilsMold sharedInstance] creatView:@"ABBannerView" data:nil model:@[[UIImage imageWithColor:[UIColor purpleColor]],[UIImage imageWithColor:[UIColor mianColor:2]]] deleGate:self andCliker:^(NSDictionary *clueDic) {
-//
-//    }];
-//    bannerView.frame = CGRectMake(0, 0, SCREEN_WIGHT, 140);
+
     UIImageView *bannerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 140)];
     bannerView.backgroundColor = [UIColor purpleColor];
     [mainView addSubview:bannerView];
@@ -100,7 +109,7 @@
                 } else {
                     MainItemViewController *main_item = [[MainItemViewController alloc] init];
                     main_item.titleStr = name;
-                    main_item.selectedNum = [clueStr integerValue];
+                    main_item.selectedNum = [clueStr integerValue]-1;
                     [self.navigationController pushViewController:main_item animated:YES];
                 }
             }];

@@ -253,7 +253,7 @@ DEF_SINGLETON(PublicFuntionTool);
 }
 
 
-- (LYEmptyView *)getEmptyViewWithType:(WHShowEmptyViewMode)mode withReloadAction:(ReloadDataBlock)reload {
+- (LYEmptyView *)getEmptyViewWithType:(WHShowEmptyViewMode)mode withHintText:(NSString *)titleStr andDetailStr:(NSString *)detailStr withReloadAction:(ReloadDataBlock)reload {
     
     if ([Reachability isMayUseInternet]) {//无网络
         mode = WHShowEmptyMode_noNetWork;
@@ -261,12 +261,16 @@ DEF_SINGLETON(PublicFuntionTool);
     
     LYEmptyView *empty = nil;
     if (mode==WHShowEmptyMode_noData) {
-        empty = [LYEmptyView emptyViewWithImageStr:@"Nothing_NoContent" titleStr:@"购物车还是空的 快去购买" detailStr:@""];
+        empty = [LYEmptyView emptyViewWithImageStr:@"Nothing_NoContent" titleStr:titleStr detailStr:detailStr];
     } else {
-        empty = [LYEmptyView emptyViewWithImageStr:@"Nothing_NoNetWork" titleStr:@"" detailStr:@""];
+        empty = [LYEmptyView emptyViewWithImageStr:@"Nothing_NoNetWork" titleStr:titleStr detailStr:detailStr];
     }
     empty.titleLabTextColor = [UIColor mianColor:2];
-    empty.titleLabFont = FONT_ArialMT(13);
+    empty.titleLabFont = FONT_ArialMT(17);
+    
+    empty.detailLabFont = FONT_ArialMT(15);
+    empty.detailLabTextColor = [UIColor mianColor:2];
+    
     [empty setTapContentViewBlock:^{
         if (reload) {
             reload();

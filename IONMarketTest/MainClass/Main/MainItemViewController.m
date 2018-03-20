@@ -8,17 +8,25 @@
 
 #import "MainItemViewController.h"
 #import "SpecialMakeViewController.h"
-#import "MainItem__Single.h"
-#import "MainItemView__WholeBoard.h"
+#import "MainItem__Single.h"//零切
+#import "MainItemView__Pole.h"//圆棒
+#import "MainItemView__Tube.h"//型材
+#import "MainItemView__Matter.h"//管材
 
 @interface MainItemViewController ()
+
 @property (nonatomic, assign) NSInteger lastSelected;
+
 @property (nonatomic, assign) NSInteger lastTypeSelected;
+
 @property (nonatomic, strong) UIScrollView *sctollView;
+
 @end
 
 #define ITEM_WIDTH  60
+
 #define ITEM_HEIGHT  30
+
 //型号间隔
 #define ITEM_TYPE_MARGIN 20
 
@@ -28,7 +36,6 @@
     UIButton *radiusButton;
     UILabel *priceLabel;
     UILabel *infoLabel;
-    
     UIView *bottomView;
 }
 
@@ -145,24 +152,44 @@
         make.bottom.equalTo(self.view.mas_bottom).offset(-50);
         make.top.equalTo(self.view.mas_top).offset(100);
     }];
+    NSLog(@"+++%ld", self.lastSelected);
     
     if (self.lastSelected==100) {
-        MainItemView__WholeBoard *single = [[MainItemView__WholeBoard alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, SCREEN_HEIGHT)];
+        MainItem__Single *single = [[MainItem__Single alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 300)];
         [single loadData:nil andCliker:^(NSString *clueStr) {
             
+            
         }];
-        [_sctollView addSubview:single];
         
-        [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, SCREEN_HEIGHT)];
+        [_sctollView addSubview:single];
+    } else if (self.lastSelected == 101) {
+        MainItemView__Pole *pole = [[MainItemView__Pole alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 260)];
+        [pole loadData:nil andCliker:^(NSString *clueStr) {
+            
+            
+        }];
+        
+        [_sctollView addSubview:pole];
+    } else if (self.lastSelected == 102) {
+        MainItemView__Tube *tube = [[MainItemView__Tube alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 300)];
+        [tube loadData:nil andCliker:^(NSString *clueStr) {
+            
+            
+        }];
+        
+        [_sctollView addSubview:tube];
     } else {
-        MainItem__Single *single = [[MainItem__Single alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, SCREEN_HEIGHT)];
-        [single loadData:nil andCliker:^(NSString *clueStr) {
+        MainItemView__Matter *matter = [[MainItemView__Matter alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 350)];
+        [matter loadData:nil andCliker:^(NSString *clueStr) {
+            
             
         }];
-        [_sctollView addSubview:single];
         
-        [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, SCREEN_HEIGHT)];
+        [_sctollView addSubview:matter];
     }
+    
+    
+    [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, SCREEN_HEIGHT)];
     
     
 }

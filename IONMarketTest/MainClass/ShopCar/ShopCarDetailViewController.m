@@ -1,0 +1,261 @@
+//
+//  ShopCarDetailViewController.m
+//  IONMarketTest
+//
+//  Created by 瓜豆2018 on 2018/3/20.
+//  Copyright © 2018年 赵越. All rights reserved.
+//
+
+#import "ShopCarDetailViewController.h"
+
+@interface ShopCarDetailViewController ()
+@property (nonatomic, assign) BOOL isAddress;
+
+@end
+
+@implementation ShopCarDetailViewController {
+    UILabel *priceLabel;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.title = @"确认订单";
+    [self setupSubviews];
+}
+
+
+- (void)setupSubviews {
+    [self.view addSubview:self.tabView];
+    self.tabView.backgroundColor = [UIColor mianColor:1];
+    [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.view.mas_bottom).offset(-80);
+    }];
+    
+    [self createBottomView];
+}
+
+- (void)createBottomView {
+    UIView *bottomView = [[UIView alloc] init];
+    [self.view addSubview:bottomView];
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.equalTo(self.view);
+        make.height.equalTo(@(80));
+    }];
+    
+    UIButton *nextButton = [UIButton buttonWithTitle:@"下一步" andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+    nextButton.backgroundColor = [UIColor mianColor:2];
+    [nextButton addTarget:self action:@selector(nextButtonCliker:) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:nextButton];
+    [nextButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.bottom.equalTo(bottomView);
+        make.top.equalTo(bottomView.mas_top).offset(30);
+        make.width.equalTo(@(100));
+    }];
+    
+    priceLabel = [UILabel lableWithText:@"实付款  ￥152151.00元" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
+    [bottomView addSubview:priceLabel];
+    [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(nextButton);
+        make.left.equalTo(bottomView.mas_left).offset(20);
+        make.right.equalTo(nextButton.mas_left).offset(-20);
+    }];
+    priceLabel.attributedText = [UILabel labGetAttributedStringFrom:0 toEnd:3 WithColor:[UIColor mianColor:2] andFont:FONT_ArialMT(17) allFullText:priceLabel.text];
+    
+    
+    NSArray *textArr = @[@"产品：51515.00元",@"加工费：586.00元",@"物流费：848232.00元"];
+    UILabel *lastLabel = nil;
+    for (NSInteger i = 0; i<3; i++) {
+        
+        UILabel *label = [UILabel lableWithText:[textArr objectAtIndex:i] Font:FONT_ArialMT(11) TextColor:[UIColor mianColor:2]];
+        label.textAlignment = NSTextAlignmentCenter;
+        [bottomView addSubview:label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(@((SCREEN_WIGHT-30)/3));
+            make.height.equalTo(@(15));
+            make.top.equalTo(bottomView.mas_top).offset(7.5);
+            if (lastLabel) {
+                make.left.equalTo(lastLabel.mas_right);
+            } else {
+                make.left.equalTo(bottomView.mas_left).offset(15);
+            }
+        }];
+        
+        lastLabel = label;
+    }
+    
+    
+}
+
+
+#pragma mark ----- UITableViewDelegate &
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return section==1?5:0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [UtilsMold creatCell:@"OrderDetailCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+    }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [UtilsMold getCellHight:@"OrderDetailCell" data:nil model:nil indexPath:indexPath];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section== 0) {
+        return [self createAddressView];
+    } else if (section==1) {
+        return [self createSectionView];
+    } else {
+        return [self createOrderInfoView];
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section== 0) {
+        return 100;
+    } else if (section==1) {
+        return 40;
+    } else {
+        return 110;
+    }
+}
+
+#pragma mark ----- Subviews
+- (UIView *)createAddressView {
+    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 100)];
+    mainView.backgroundColor = [UIColor mianColor:1];
+    UIView *content = [self addressContentView];
+    [mainView addSubview:content];
+    [content mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(mainView);
+        make.top.equalTo(mainView.mas_top).offset(10);
+        make.width.equalTo(@(SCREEN_WIGHT));
+        make.height.equalTo(@(90));
+    }];
+    return mainView;
+}
+
+- (UIView *)createSectionView {
+    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 40)];
+    mainView.backgroundColor = [UIColor mianColor:1];
+    UILabel *nameLab = [UILabel lableWithText:@"    整板" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
+    [mainView addSubview:nameLab];
+    nameLab.backgroundColor = [UIColor mianColor:3];
+    nameLab.frame = CGRectMake(0, 10, SCREEN_WIGHT, 30);
+    return mainView;
+}
+
+- (UIView *)createOrderInfoView {
+    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 110)];
+    mainView.backgroundColor = [UIColor mianColor:1];
+    
+    UIView *blank1 = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIGHT, 40)];
+    blank1.backgroundColor = [UIColor whiteColor];
+    [mainView addSubview:blank1];
+    UILabel *label1 = [UILabel lableWithText:@"预计到达时间" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
+    [blank1 addSubview:label1];
+    [label1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(blank1.mas_centerY);
+        make.left.equalTo(blank1.mas_left).offset(20);
+    }];
+    UILabel *label2 = [UILabel lableWithText:@"2018-05-20" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
+    [blank1 addSubview:label2];
+    [label2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(blank1.mas_centerY);
+        make.right.equalTo(blank1.mas_right).offset(-20);
+    }];
+    
+    
+    
+    UIView *blank2 = [[UIView alloc] initWithFrame:CGRectMake(0, 60, SCREEN_WIGHT, 40)];
+    blank2.backgroundColor = [UIColor whiteColor];
+    [mainView addSubview:blank2];
+    UILabel *label3 = [UILabel lableWithText:@"选择支付方式" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
+    [blank2 addSubview:label3];
+    [label3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(blank2.mas_centerY);
+        make.left.equalTo(blank2.mas_left).offset(20);
+    }];
+    UIButton *paywayButton = [UIButton buttonWithTitle:@"支付宝" andFont:FONT_ArialMT(17) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
+    [paywayButton setImage:IMG(@"image_more") forState:UIControlStateNormal];
+
+    [paywayButton addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
+    [blank2 addSubview:paywayButton];
+    [paywayButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(blank2.mas_centerY);
+        make.right.equalTo(blank2.mas_right).offset(-20);
+    }];
+    paywayButton.titleEdgeInsets = UIEdgeInsetsMake(0, -paywayButton.imageView.bounds.size.width, 0, paywayButton.imageView.bounds.size.width);
+    paywayButton.imageEdgeInsets = UIEdgeInsetsMake(0, paywayButton.titleLabel.bounds.size.width, 0, -paywayButton.titleLabel.bounds.size.width);
+    
+    return mainView;
+}
+
+- (UIView *)addressContentView {
+    UIView *blank = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 90)];
+    blank.backgroundColor = [UIColor whiteColor];
+    
+    if (self.isAddress) {
+        
+        
+        
+    } else {
+        UIButton *addButton = [UIButton buttonWithTitle:@"添加收货地址" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
+        [blank addSubview:addButton];
+        [addButton addTarget:self action:@selector(addAddress:) forControlEvents:UIControlEventTouchUpInside];
+        [addButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(blank);
+        }];
+    }
+    
+    return blank;
+}
+
+#pragma mark ----- Action
+- (void)nextButtonCliker:(UIButton *)sender {
+    NSLog(@"%@", sender.currentTitle);
+    
+    
+}
+
+- (void)payCliker:(UIButton *)sender {
+    NSLog(@"%@", sender.currentTitle);
+    
+}
+
+- (void)addAddress:(UIButton *)sender {
+    
+    
+    self.isAddress = YES;
+}
+
+
+#pragma mark ----- DATA
+
+
+
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

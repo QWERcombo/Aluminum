@@ -63,7 +63,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.textColor = [UIColor mianColor:2];
-    cell.imageView.image = [UIImage imageWithColor:[UIColor yellowColor]];
+    cell.imageView.image = [UIImage imageNamed:@"Mine_item_0"];
     cell.textLabel.text = [self.titleArr objectAtIndex:indexPath.section-1][indexPath.row];
     return cell;
 }
@@ -79,10 +79,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSArray *classArray = @[[WalletViewController class],[WhiteBarViewController class],[TicketViewController class],[AddressViewController class],[BankCardViewController class],[ShareViewController class],[SettingTableViewController class]];
-    UIViewController *nextController = (UIViewController *)[[NSClassFromString(NSStringFromClass([classArray objectAtIndex:indexPath.row])) alloc] init];
-    nextController.title = [self.titleArr objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:nextController animated:YES];
+    if (indexPath.section==3 && indexPath.row==0) {
+        
+        ShareViewController *share = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ShareVC"];
+        [self.navigationController pushViewController:share animated:YES];
+    } else {
+        
+        NSArray *classArray = @[@[[WalletViewController class],[WhiteBarViewController class],[TicketViewController class]],@[[AddressViewController class],[BankCardViewController class]],@[[ShareViewController class],[SettingTableViewController class]]];
+        NSArray *sectionArray = [classArray objectAtIndex:indexPath.section-1];
+        
+        UIViewController *nextController = (UIViewController *)[[NSClassFromString(NSStringFromClass([sectionArray objectAtIndex:indexPath.row])) alloc] init];
+        nextController.title = [self.titleArr objectAtIndex:indexPath.section-1][indexPath.row];
+        [self.navigationController pushViewController:nextController animated:YES];
+    }
     
 }
 

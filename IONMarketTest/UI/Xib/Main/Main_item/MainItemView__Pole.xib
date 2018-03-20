@@ -147,13 +147,13 @@
                     <rect key="frame" x="188" y="127" width="187" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sjd-dR-c9S">
-                            <rect key="frame" x="81.5" y="10" width="25" height="18"/>
+                            <rect key="frame" x="81.5" y="5" width="25" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优切(预计1工作日)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLP-Wb-0SX">
-                            <rect key="frame" x="35" y="23" width="117" height="17"/>
+                            <rect key="frame" x="35" y="28" width="117" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -162,8 +162,8 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Sjd-dR-c9S" firstAttribute="centerX" secondItem="fkX-QE-xNe" secondAttribute="centerX" id="AZu-RP-x99"/>
-                        <constraint firstAttribute="bottom" secondItem="kLP-Wb-0SX" secondAttribute="bottom" constant="10" id="CMl-eg-j7v"/>
-                        <constraint firstItem="Sjd-dR-c9S" firstAttribute="top" secondItem="fkX-QE-xNe" secondAttribute="top" constant="10" id="D1e-ML-6cT"/>
+                        <constraint firstAttribute="bottom" secondItem="kLP-Wb-0SX" secondAttribute="bottom" constant="5" id="CMl-eg-j7v"/>
+                        <constraint firstItem="Sjd-dR-c9S" firstAttribute="top" secondItem="fkX-QE-xNe" secondAttribute="top" constant="5" id="D1e-ML-6cT"/>
                         <constraint firstAttribute="height" constant="50" id="uV4-QE-IKB"/>
                         <constraint firstItem="kLP-Wb-0SX" firstAttribute="centerX" secondItem="fkX-QE-xNe" secondAttribute="centerX" id="yXs-W0-Hj0"/>
                     </constraints>

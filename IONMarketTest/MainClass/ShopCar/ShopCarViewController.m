@@ -7,6 +7,7 @@
 //
 
 #import "ShopCarViewController.h"
+#import "ShopCarDetailViewController.h"
 
 @interface ShopCarViewController ()
 
@@ -18,7 +19,10 @@
 
 @end
 
-@implementation ShopCarViewController
+@implementation ShopCarViewController {
+    UILabel *priceLabel;
+    UILabel *infoLabel;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,7 +31,7 @@
     [self.sortDic setValue:@[@"1",@"2",@"3",@"4",@"5"] forKey:@"1"];
     [self.sortDic setValue:@[@"1",@"2",@"3",@"4",@"5"] forKey:@"2"];
     [self.sortDic setValue:@[@"1",@"2",@"3",@"4",@"5"] forKey:@"3"];
-    self.dataMuArr = [self.sortDic allKeys];
+    self.dataMuArr = [[self.sortDic allKeys] mutableCopy];
     
     [self setupSubViews];
 }
@@ -45,8 +49,11 @@
         make.left.top.right.equalTo(self.view);
         make.bottom.equalTo(self.view.mas_bottom).offset(-50-50);
     }];
+    
+    
     [self createBottomView];
-    self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withReloadAction:^{
+    
+    self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"购物车还是空的 快去购买" andDetailStr:@"" withReloadAction:^{
         
     }];
 }
@@ -69,6 +76,40 @@
         make.width.equalTo(@(140));
     }];
     
+    UIButton *allButton = [UIButton buttonWithTitle:@"全选" andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor Black_WordColor] andHighlightedTitle:[UIColor Black_WordColor] andNormaImage:nil andHighlightedImage:nil];
+    [allButton setImage:IMG(@"select_0") forState:UIControlStateNormal];
+    [allButton addTarget:self action:@selector(allButtonCliker:) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:allButton];
+    [allButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(50));
+        make.height.equalTo(@(50));
+        make.left.equalTo(bottomView.mas_left).offset(15);
+        make.centerY.equalTo(bottomView.mas_centerY);
+    }];
+    CGSize titleSize = allButton.titleLabel.bounds.size;
+    CGSize imageSize = allButton.imageView.bounds.size;
+    //button图片的偏移量
+    allButton.imageEdgeInsets = UIEdgeInsetsMake(-((allButton.bounds.size.height-imageSize.height)/2),(allButton.bounds.size.width - imageSize.width)/2, titleSize.height, 0);
+    //button文字的偏移量
+    allButton.titleEdgeInsets = UIEdgeInsetsMake(imageSize.height+5, -((allButton.bounds.size.width-titleSize.width)/2), 0, 0);
+    
+    
+    priceLabel = [UILabel lableWithText:@"￥4545.00元" Font:FONT_ArialMT(15) TextColor:[UIColor Black_WordColor]];
+    [bottomView addSubview:priceLabel];
+    [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(15));
+        make.left.equalTo(allButton.mas_right).offset(10);
+        make.right.equalTo(excuteButton.mas_left).offset(-20);
+        make.top.equalTo(bottomView.mas_top).offset(10);
+    }];
+    infoLabel = [UILabel lableWithText:@"1254545.00kg" Font:FONT_ArialMT(13) TextColor:[UIColor Black_WordColor]];
+    [bottomView addSubview:infoLabel];
+    [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(13));
+        make.left.equalTo(allButton.mas_right).offset(10);
+        make.right.equalTo(excuteButton.mas_left).offset(-20);
+        make.top.equalTo(priceLabel.mas_bottom).offset(5);
+    }];
 }
 
 #pragma mark --- UITableViewDelegate
@@ -122,6 +163,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ShopCarDetailViewController *detail = [[ShopCarDetailViewController alloc] init];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 
@@ -136,8 +179,8 @@
 
 - (void)moreAction:(UIButton *)sender {
     NSLog(@"more:----%ld", sender.tag);
-    
-    
+    ShopCarDetailViewController *detail = [[ShopCarDetailViewController alloc] init];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 - (void)excuteAction:(UIButton *)sender {
@@ -145,6 +188,29 @@
     
     
 }
+
+- (void)selectButtonCliker:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        [sender setBackgroundImage:IMG(@"select_1") forState:UIControlStateSelected];
+    } else {
+        [sender setBackgroundImage:IMG(@"select_0") forState:UIControlStateSelected];
+    }
+    
+}
+
+- (void)allButtonCliker:(UIButton *)sender {
+    
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        [sender setImage:IMG(@"select_1") forState:UIControlStateSelected];
+    } else {
+        [sender setImage:IMG(@"select_0") forState:UIControlStateSelected];
+    }
+    
+}
+
+
 
 #pragma mark ----- Subviews
 - (UIView *)createDisplayFooter:(NSInteger)section {
@@ -164,7 +230,6 @@
     }
     [displayButton setTitleColor:[UIColor Black_WordColor] forState:UIControlStateNormal];
     displayButton.titleLabel.font = FONT_ArialMT(15);
-//    displayButton.imageEdgeInsets = UIEdgeInsetsMake(5, 40, 5, 10);
     [displayButton addTarget:self action:@selector(displayAction:) forControlEvents:UIControlEventTouchUpInside];
     [vvv addSubview:displayButton];
     [displayButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -185,22 +250,33 @@
     UIView *ccc = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIGHT, 30)];
     ccc.backgroundColor = [UIColor mianColor:3];
     [blank addSubview:ccc];
-    
+
     
     UILabel *orderLabel = [UILabel lableWithText:@"订单编号:123424242" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
     [blank addSubview:orderLabel];
     [orderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(ccc);
-        make.left.equalTo(ccc.mas_left).offset(50);
+        make.left.equalTo(ccc.mas_left).offset(60);
     }];
     
-    UIButton *moreButton = [UIButton buttonWithTitle:@">" andFont:FONT_ArialMT(17) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
+    UIButton *selectButton = [UIButton buttonWithTitle:nil andFont:nil andtitleNormaColor:nil andHighlightedTitle:nil andNormaImage:IMG(@"select_0") andHighlightedImage:nil];
+    [blank addSubview:selectButton];
+    selectButton.tag = 300+section;
+    [selectButton addTarget:self action:@selector(selectButtonCliker:) forControlEvents:UIControlEventTouchUpInside];
+    [selectButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.equalTo(@(20));
+        make.centerY.equalTo(orderLabel.mas_centerY);
+        make.left.equalTo(blank.mas_left).offset(10);
+    }];
+    
+    UIButton *moreButton = [UIButton buttonWithTitle:nil andFont:FONT_ArialMT(17) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
     moreButton.tag = 200+section;
+    [moreButton setImage:IMG(@"image_more") forState:UIControlStateNormal];
     [moreButton addTarget:self action:@selector(moreAction:) forControlEvents:UIControlEventTouchUpInside];
     [blank addSubview:moreButton];
     [moreButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.equalTo(@(30));
-        make.right.equalTo(ccc.mas_right).offset(-20);
+        make.right.equalTo(ccc.mas_right).offset(-10);
         make.centerY.equalTo(ccc.mas_centerY);
     }];
     

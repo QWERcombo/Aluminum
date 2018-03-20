@@ -505,6 +505,90 @@
             </objects>
             <point key="canvasLocation" x="344.80000000000001" y="2767.4662668665669"/>
         </scene>
+        <!--分享推广-->
+        <scene sceneID="RVh-8W-OcD">
+            <objects>
+                <viewController storyboardIdentifier="ShareVC" title="分享推广" id="pIl-fS-nD8" customClass="ShareViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bzd-tS-Ngh"/>
+                        <viewControllerLayoutGuide type="bottom" id="rKj-3B-Hsj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ruJ-hL-SvW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JYq-rp-PEi">
+                                <rect key="frame" x="97" y="120" width="180" height="180"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_image" translatesAutoresizingMaskIntoConstraints="NO" id="Mwb-es-GeR">
+                                        <rect key="frame" x="40.5" y="40.5" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="x0Y-dm-x5i"/>
+                                            <constraint firstAttribute="width" constant="100" id="x8Z-al-B9o"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Mwb-es-GeR" firstAttribute="centerY" secondItem="JYq-rp-PEi" secondAttribute="centerY" id="HW6-SR-LS9"/>
+                                    <constraint firstItem="Mwb-es-GeR" firstAttribute="centerX" secondItem="JYq-rp-PEi" secondAttribute="centerX" id="XOE-E4-263"/>
+                                    <constraint firstAttribute="height" constant="180" id="atb-WP-heU"/>
+                                    <constraint firstAttribute="width" constant="180" id="yen-bK-nh5"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的分享二维码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umZ-Rx-gSy">
+                                <rect key="frame" x="126.5" y="320" width="122" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.26374569535255432" green="0.48890727758407593" blue="0.76870256662368774" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zT2-1c-nFC">
+                                <rect key="frame" x="74" y="421" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="朋友圈">
+                                    <color key="titleColor" red="0.26374569539999998" green="0.48890727760000002" blue="0.76870256660000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trR-xL-cbp">
+                                <rect key="frame" x="160" y="421" width="54" height="30"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="QQ好友">
+                                    <color key="titleColor" red="0.26374569539999998" green="0.48890727760000002" blue="0.76870256660000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9X-dt-FlU">
+                                <rect key="frame" x="254" y="421" width="62" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="微信好友">
+                                    <color key="titleColor" red="0.26374569539999998" green="0.48890727760000002" blue="0.76870256660000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95680791139602661" green="0.96072393655776978" blue="0.96469968557357788" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="trR-xL-cbp" firstAttribute="centerX" secondItem="ruJ-hL-SvW" secondAttribute="centerX" id="5vb-65-v9g"/>
+                            <constraint firstItem="trR-xL-cbp" firstAttribute="leading" secondItem="zT2-1c-nFC" secondAttribute="trailing" constant="40" id="HNU-E7-zex"/>
+                            <constraint firstItem="l9X-dt-FlU" firstAttribute="leading" secondItem="trR-xL-cbp" secondAttribute="trailing" constant="40" id="I77-cR-G9Q"/>
+                            <constraint firstItem="umZ-Rx-gSy" firstAttribute="top" secondItem="JYq-rp-PEi" secondAttribute="bottom" constant="20" id="SzU-SY-NWv"/>
+                            <constraint firstItem="trR-xL-cbp" firstAttribute="top" secondItem="umZ-Rx-gSy" secondAttribute="bottom" constant="80" id="To2-Rj-Efz"/>
+                            <constraint firstItem="umZ-Rx-gSy" firstAttribute="centerX" secondItem="ruJ-hL-SvW" secondAttribute="centerX" id="Xkv-9i-lVP"/>
+                            <constraint firstItem="l9X-dt-FlU" firstAttribute="centerY" secondItem="trR-xL-cbp" secondAttribute="centerY" id="c1Z-Kc-6jh"/>
+                            <constraint firstItem="JYq-rp-PEi" firstAttribute="centerX" secondItem="ruJ-hL-SvW" secondAttribute="centerX" id="mTO-gT-DHv"/>
+                            <constraint firstItem="JYq-rp-PEi" firstAttribute="top" secondItem="Bzd-tS-Ngh" secondAttribute="bottom" constant="100" id="rBZ-bI-HqZ"/>
+                            <constraint firstItem="zT2-1c-nFC" firstAttribute="centerY" secondItem="trR-xL-cbp" secondAttribute="centerY" id="xU2-95-XtI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="QQ" destination="trR-xL-cbp" id="7ED-Nk-bRZ"/>
+                        <outlet property="QRImgv" destination="Mwb-es-GeR" id="hUe-fh-Iyf"/>
+                        <outlet property="wechat" destination="l9X-dt-FlU" id="fhj-xe-FDL"/>
+                        <outlet property="wechatFriend" destination="zT2-1c-nFC" id="Vyu-Ko-SkE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N9M-Tc-k3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-498.39999999999998" y="2027.136431784108"/>
+        </scene>
         <!--我的-->
         <scene sceneID="T6w-bA-n0V">
             <objects>
@@ -547,15 +631,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Main_message" width="24" height="24"/>
-        <image name="image_car_0" width="24" height="24"/>
-        <image name="image_car_1" width="24" height="24"/>
-        <image name="image_main_0" width="24" height="24"/>
-        <image name="image_main_1" width="24" height="24"/>
-        <image name="image_mine_0" width="24" height="24"/>
-        <image name="image_mine_1" width="24" height="24"/>
-        <image name="image_order_0" width="24" height="24"/>
-        <image name="image_order_1" width="24" height="24"/>
+        <image name="Main_message" width="16" height="22"/>
+        <image name="empty_image" width="64" height="53"/>
+        <image name="image_car_0" width="25" height="25"/>
+        <image name="image_car_1" width="25" height="25"/>
+        <image name="image_main_0" width="25" height="25"/>
+        <image name="image_main_1" width="25" height="25"/>
+        <image name="image_mine_0" width="25" height="25"/>
+        <image name="image_mine_1" width="25" height="25"/>
+        <image name="image_order_0" width="25" height="25"/>
+        <image name="image_order_1" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Szh-dB-IjC"/>

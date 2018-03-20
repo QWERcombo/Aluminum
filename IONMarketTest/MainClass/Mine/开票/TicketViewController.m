@@ -17,7 +17,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self setupSubviews];
 }
+
+- (void)setupSubviews {
+    [self.view addSubview:self.tabView];
+    self.tabView.backgroundColor = [UIColor mianColor:1];
+    [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.equalTo(self.view);
+        make.top.equalTo(self.view.mas_top).offset(50);
+    }];
+    
+    self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无订单,现在就去订购" andDetailStr:@"" withReloadAction:^{
+        
+    }];
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

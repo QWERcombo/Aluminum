@@ -9,6 +9,10 @@
 #import "ShareViewController.h"
 
 @interface ShareViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *QRImgv;
+@property (weak, nonatomic) IBOutlet UIButton *wechat;
+@property (weak, nonatomic) IBOutlet UIButton *QQ;
+@property (weak, nonatomic) IBOutlet UIButton *wechatFriend;
 
 @end
 
@@ -17,7 +21,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor mianColor:1];
+    
 }
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -79,7 +79,7 @@
         make.top.equalTo(favoriteBtn.mas_bottom).offset(5);
     }];
     
-    self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withReloadAction:^{
+    self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"空空如也" andDetailStr:@"" withReloadAction:^{
         
     }];
     

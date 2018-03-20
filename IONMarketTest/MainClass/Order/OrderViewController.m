@@ -16,8 +16,6 @@
 
 @property (nonatomic, assign) NSInteger lastSelected;
 
-
-
 @end
 
 @implementation OrderViewController

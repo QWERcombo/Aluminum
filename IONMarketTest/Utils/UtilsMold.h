@@ -14,7 +14,7 @@
 #import "OrderListCell.h"
 #import "OrderDetailCell.h"
 #import "InventoryCell.h"
-
+#import "WallentListCell.h"
 
 
 

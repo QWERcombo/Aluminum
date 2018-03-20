@@ -53,7 +53,7 @@ AS_SINGLETON(PublicFuntionTool);
 - (NSDateComponents *)getInfomationFromNowDate;
 
 //返回自定义空视图
-- (LYEmptyView *)getEmptyViewWithType:(WHShowEmptyViewMode)mode withReloadAction:(ReloadDataBlock)reload;
+- (LYEmptyView *)getEmptyViewWithType:(WHShowEmptyViewMode)mode withHintText:(NSString *)titleStr andDetailStr:(NSString *)detailStr withReloadAction:(ReloadDataBlock)reload;
 
 
 @end
