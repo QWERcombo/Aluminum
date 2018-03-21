@@ -7,8 +7,10 @@
 //
 
 #import "TicketViewController.h"
+#import "AddNewTicketViewController.h"
+#import "ApplyTicketViewController.h"
 
-@interface TicketViewController ()
+@interface TicketViewController ()<RadioSelectDelegate>
 
 #define Button_Width  100
 #define Button_Margin  ((SCREEN_WIGHT-100*3)/4)
@@ -17,14 +19,22 @@
 
 @property (nonatomic, strong) NSString *cellType;
 
+@property (nonatomic, strong) NSIndexPath *lastIndexPath;// 选中的index
+
 @end
 
-@implementation TicketViewController
+@implementation TicketViewController {
+    UIButton *applyButton;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.cellType = @"0";
+    for (NSInteger i=0; i<10; i++) {
+        BaseModel *model = [BaseModel new];
+        [self.dataMuArr addObject:model];
+    }
     [self setupSubviews];
 }
 
@@ -89,7 +99,7 @@
     
     
     
-    UIButton *applyButton = [UIButton buttonWithTitle:@"申请发票" andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+    applyButton = [UIButton buttonWithTitle:@"申请发票" andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
     [self.view addSubview:applyButton];
     applyButton.backgroundColor = [UIColor mianColor:2];
     [applyButton addTarget:self action:@selector(applyCliker:) forControlEvents:UIControlEventTouchUpInside];
@@ -97,13 +107,14 @@
         make.height.equalTo(@(50));
         make.left.right.bottom.equalTo(self.view);
     }];
+    
 }
 
 
 
 #pragma mark ----- UITableViewDelegate & DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dataMuArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -113,7 +124,13 @@
     } else if ([self.cellType isEqualToString:@"1"]) {
         cellName = @"EndTicketCell";
     } else {
-        cellName = @"TicketInfoCell";
+        TicketInfoCell *cell = (TicketInfoCell *)[UtilsMold creatCell:@"TicketInfoCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+            NSLog(@"+++%@", clueDic);
+        }];
+        
+        cell.tableView = self.tabView;
+        cell.delegate = self;
+        return cell;
     }
     return [UtilsMold creatCell:cellName table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
         NSLog(@"+++%@", clueDic);
@@ -150,13 +167,42 @@
     self.cellType = SINT(sender.tag-100);
     self.lastSelected = sender.tag;
     [self.tabView reloadData];
-}
-
-- (void)applyCliker:(UIButton *)sender {
+    if (self.lastSelected==102) {
+        [applyButton setTitle:@"新增开票信息" forState:UIControlStateNormal];
+    } else {
+        [applyButton setTitle:@"申请发票" forState:UIControlStateNormal];
+    }
     
 }
 
+- (void)applyCliker:(UIButton *)sender {
+    if (self.lastSelected==102) {
+        ApplyTicketViewController *apply = [[ApplyTicketViewController alloc] initWithNibName:@"ApplyTicketViewController" bundle:nil];
+        [self.navigationController pushViewController:apply animated:YES];
+    } else {
+        AddNewTicketViewController *addnew = [[AddNewTicketViewController alloc] initWithNibName:@"AddNewTicketViewController" bundle:nil];
+        [self.navigationController pushViewController:addnew animated:YES];
+    }
+}
 
+#pragma mark - RadioSelectDelegate
+- (void)radioSelectedWithIndexPath:(NSIndexPath *)indexPath {
+    NSIndexPath *tempIndexPath = self.lastIndexPath;
+    // 改变上一次的
+    if (tempIndexPath && tempIndexPath != indexPath) {
+        BaseModel *model = self.dataMuArr[tempIndexPath.row];
+        model.isSelectedCard = NO;
+        [self.tabView reloadRowsAtIndexPaths:@[tempIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    // 记住这一次的
+    BaseModel *model = self.dataMuArr[indexPath.row];
+    model.isSelectedCard = YES;
+    [self.tabView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    self.lastIndexPath = indexPath;
+    //接下来可以保存你选中的做需要做的事情。
+    
+//    self.selectedCard = model;
+}
 
 #pragma mark ----- DataSource
 

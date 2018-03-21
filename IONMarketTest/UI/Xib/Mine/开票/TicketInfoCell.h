@@ -8,6 +8,8 @@
 
 #import "BaseCell.h"
 
+@protocol RadioSelectDelegate;
+
 @interface TicketInfoCell : BaseCell
 
 @property (weak, nonatomic) IBOutlet UILabel *bankName;
@@ -15,10 +17,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *comparyID;
 @property (weak, nonatomic) IBOutlet UIButton *setDefault;
 
+@property (nonatomic, weak) UITableView *tableView;
+@property (nonatomic, weak) id <RadioSelectDelegate> delegate;
 @property (nonatomic, copy) ClikBlock click;
 
 + (instancetype)getTicketInfoCell;
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click;
+
+@end
+
+
+@protocol RadioSelectDelegate <NSObject>
+
+- (void)radioSelectedWithIndexPath:(NSIndexPath *)indexPath;
 
 @end

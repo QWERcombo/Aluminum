@@ -20,6 +20,13 @@
     self.title = @"新增开票信息";
 }
 
+
+
+- (IBAction)doneAc:(UIButton *)sender {
+    
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
