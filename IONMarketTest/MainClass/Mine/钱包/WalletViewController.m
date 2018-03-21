@@ -8,6 +8,8 @@
 
 #import "WalletViewController.h"
 #import "TradeListViewController.h"
+#import "RemainExplainViewController.h"
+#import "InputViewController.h"
 
 @interface WalletViewController ()
 
@@ -174,14 +176,14 @@
 
 #pragma mark ----- Action
 - (void)inputCliker:(UIButton *)sender {
-    NSLog(@"%@", sender.currentTitle);
-    
-    
+    InputViewController *input = [InputViewController new];
+    input.mode_way = Mode_Input;
+    [self.navigationController pushViewController:input animated:YES];
 }
 - (void)outputCliker:(UIButton *)sender {
-    NSLog(@"%@", sender.currentTitle);
-    
-    
+    InputViewController *input = [InputViewController new];
+    input.mode_way = Mode_Output;
+    [self.navigationController pushViewController:input animated:YES];
 }
 
 - (void)payCliker:(UIButton *)sender {
@@ -190,19 +192,19 @@
 }
 
 - (void)termButtonCliker:(UIButton *)sender {
-    
-    
-    
+    NSLog(@"%@", sender.currentTitle);
+    RemainExplainViewController *explain = [[RemainExplainViewController alloc] init];
+    [self.navigationController pushViewController:explain animated:YES];
     
 }
 
 #pragma mark ----- DataSource
 
-
-
-
-
-
+- (void)getDataSource {
+    
+    
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

@@ -74,7 +74,7 @@ DEF_SINGLETON(UtilsMold);
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell loadData:model andCliker:^(NSString *clueStr) {
-//            clue(@{@"key":clueStr});
+            
         }];
         return cell;
     }
@@ -87,6 +87,78 @@ DEF_SINGLETON(UtilsMold);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell loadData:model andCliker:^(NSString *clueStr) {
 
+        }];
+        return cell;
+    }
+    else if ([type isEqualToString:@"RemainExplainCell"]) {
+        static NSString *IDs = @"RemainExplainCell";
+        RemainExplainCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
+        if (cell == nil) {
+            cell = [RemainExplainCell getRemainExplainCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell loadData:model andCliker:^(NSString *clueStr) {
+            
+        }];
+        return cell;
+    }
+    else if ([type isEqualToString:@"BankCardCell"]) {
+        static NSString *IDs = @"BankCardCell";
+        BankCardCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
+        if (cell == nil) {
+            cell = [BankCardCell getBankCardCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell loadData:model andCliker:^(NSString *clueStr) {
+            
+        }];
+        return cell;
+    }
+    else if ([type isEqualToString:@"AddressCell"]) {
+        static NSString *IDs = @"AddressCell";
+        AddressCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
+        if (cell == nil) {
+            cell = [AddressCell getAddressCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell loadData:model andCliker:^(NSString *clueStr) {
+            clue(@{@"key":clueStr});
+        }];
+        return cell;
+    }
+    else if ([type isEqualToString:@"TicketCell"]) {
+        static NSString *IDs = @"TicketCell";
+        TicketCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
+        if (cell == nil) {
+            cell = [TicketCell getTicketCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell loadData:model andCliker:^(NSString *clueStr) {
+            clue(@{@"key":clueStr});
+        }];
+        return cell;
+    }
+    else if ([type isEqualToString:@"TicketInfoCell"]) {
+        static NSString *IDs = @"TicketInfoCell";
+        TicketInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
+        if (cell == nil) {
+            cell = [TicketInfoCell getTicketInfoCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell loadData:model andCliker:^(NSString *clueStr) {
+            clue(@{@"key":clueStr});
+        }];
+        return cell;
+    }
+    else if ([type isEqualToString:@"EndTicketCell"]) {
+        static NSString *IDs = @"EndTicketCell";
+        EndTicketCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
+        if (cell == nil) {
+            cell = [EndTicketCell getEndTicketCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell loadData:model andCliker:^(NSString *clueStr) {
+            clue(@{@"key":clueStr});
         }];
         return cell;
     }
@@ -133,6 +205,21 @@ DEF_SINGLETON(UtilsMold);
     } else if ([type isEqualToString:@"WallentListCell"]) {
         
         return [WallentListCell getCellHight:data Model:model indexPath:indexpath];
+    } else if ([type isEqualToString:@"BankCardCell"]) {
+        
+        return [BankCardCell getCellHight:data Model:model indexPath:indexpath];
+    } else if ([type isEqualToString:@"AddressCell"]) {
+        
+        return [AddressCell getCellHight:data Model:model indexPath:indexpath];
+    } else if ([type isEqualToString:@"TicketCell"]) {
+        
+        return [TicketCell getCellHight:data Model:model indexPath:indexpath];
+    } else if ([type isEqualToString:@"TicketInfoCell"]) {
+        
+        return [TicketInfoCell getCellHight:data Model:model indexPath:indexpath];
+    } else if ([type isEqualToString:@"EndTicketCell"]) {
+        
+        return [EndTicketCell getCellHight:data Model:model indexPath:indexpath];
     }
     
     

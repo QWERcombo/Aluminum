@@ -15,12 +15,12 @@
 #import "OrderDetailCell.h"
 #import "InventoryCell.h"
 #import "WallentListCell.h"
-
-
-
-
-
-
+#import "RemainExplainCell.h"
+#import "BankCardCell.h"
+#import "AddressCell.h"
+#import "TicketCell.h"
+#import "TicketInfoCell.h"
+#import "EndTicketCell.h"
 
 
 //View

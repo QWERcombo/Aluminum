@@ -80,7 +80,7 @@
     self.view.backgroundColor = [UIColor clearColor];
     [self changeNavMianColor];
 
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor mianColor:1];
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     

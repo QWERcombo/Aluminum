@@ -7,6 +7,7 @@
 //
 
 #import "BankCardViewController.h"
+#import "AddCardViewController.h"
 
 @interface BankCardViewController ()
 
@@ -17,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.view.backgroundColor = [UIColor mianColor:1];
     [self setupSubviews];
 }
 
@@ -25,8 +26,9 @@
     [self.view addSubview:self.tabView];
     self.tabView.backgroundColor = [UIColor mianColor:1];
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.equalTo(self.view);
+        make.left.right.equalTo(self.view);
         make.bottom.equalTo(self.view.mas_bottom).offset(-50);
+        make.top.equalTo(self.view.mas_top).offset(10);
     }];
     
     UIButton *applyButton = [UIButton buttonWithTitle:@"新增绑定银行卡" andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
@@ -44,10 +46,31 @@
     
 }
 
+#pragma mark ----- UITableViewDelegate & DataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [UtilsMold creatCell:@"BankCardCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+        
+    }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [UtilsMold getCellHight:@"BankCardCell" data:nil model:nil indexPath:indexPath];
+}
+
+
+
+
 
 - (void)applyCliker:(UIButton *)sender {
-    
+    AddCardViewController *add = [AddCardViewController new];
+    [self.navigationController pushViewController:add animated:YES];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

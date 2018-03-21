@@ -7,6 +7,7 @@
 //
 
 #import "AddressViewController.h"
+#import "AddAddressViewController.h"
 
 @interface AddressViewController ()
 
@@ -17,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    for (NSInteger i = 0 ; i<10; i++) {
+        [self.dataMuArr addObject:@"1"];
+    }
+    
     [self setupSubviews];
 }
 
@@ -43,11 +48,50 @@
     
 }
 
+#pragma mark ----- UITableViewDelegate & DataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataMuArr.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    __weak typeof(self) weakself = self;
+    
+    return [UtilsMold creatCell:@"AddressCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+        
+        NSString *key = clueDic[@"key"];
+        if ([key isEqualToString:@"0"]) {
+            
+            AddAddressViewController *add = [[AddAddressViewController alloc] initWithNibName:@"AddAddressViewController" bundle:nil];
+            add.mode = Mode_Editor;
+            [weakself.navigationController pushViewController:add animated:YES];
+            
+            
+        } else if ([key isEqualToString:@"1"]) {
+            
+            [weakself.dataMuArr removeObjectAtIndex:indexPath.row];
+            [weakself.tabView reloadData];
+            
+        } else {
+            
+        }
+        
+    }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [UtilsMold getCellHight:@"AddressCell" data:nil model:nil indexPath:indexPath];
+}
+
+
 
 - (void)applyCliker:(UIButton *)sender {
-    
-    
+    AddAddressViewController *add = [[AddAddressViewController alloc] initWithNibName:@"AddAddressViewController" bundle:nil];
+    add.mode = Mode_Set;
+    [self.navigationController pushViewController:add animated:YES];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
