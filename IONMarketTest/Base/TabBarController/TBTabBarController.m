@@ -9,10 +9,7 @@
 #import "TBTabBarController.h"
 #import "TBNavigationController.h"
 #import "TBTabBar.h"
-#import "MainViewController.h"
-#import "OrderViewController.h"
-#import "ShopCarViewController.h"
-#import "MineViewController.h"
+
 
 @interface TBTabBarController ()<UITabBarDelegate>
 
@@ -51,44 +48,43 @@
 
 -(void)setupchildVc:(NSObject *)model
 {
-    NSArray *tabBarItemImages = @[@"first",@"second",@"third",@"four"];
-    NSArray *tabBarItemTitle = @[@"首页",@"账单",@"购物车",@"我的"];
-    
-    for (int i = 0;i < 4; i ++ ) {
+    NSArray *tabBarItemImages = @[@"main",@"car",@"order"];
+    NSArray *tabBarItemTitle = @[@"功能客服",@"电话客服",@"功能反馈"];
+    /*
+    for (int i = 0;i < 3; i ++ ) {
         NSString *titleString = [tabBarItemTitle objectAtIndex:i];
-        NSString *selectedimage = [NSString stringWithFormat:@"%@_selected",[tabBarItemImages objectAtIndex:i]];
-        NSString *unselectedimage = [NSString stringWithFormat:@"%@_normal",[tabBarItemImages objectAtIndex:i]];
+        NSString *selectedimage = [NSString stringWithFormat:@"image_%@_1",[tabBarItemImages objectAtIndex:i]];
+        NSString *unselectedimage = [NSString stringWithFormat:@"image_%@_0",[tabBarItemImages objectAtIndex:i]];
         BaseViewController *newVC = nil;
         if (i == 0) {
-            MainViewController *main = [[MainViewController alloc] init];
+            SmartServiceViewController *main = [[SmartServiceViewController alloc] init];
             newVC = main;
         }else if (i == 1){
-            OrderViewController *order = [[OrderViewController alloc] init];
+            TeleServiceViewController *order = [[TeleServiceViewController alloc] init];
             newVC = order;
         }else if (i == 2){
-            ShopCarViewController *shop = [[ShopCarViewController alloc] init];
+            FeedbackViewController *shop = [[FeedbackViewController alloc] init];
             newVC = shop;
-        }else{
-            MineViewController *mine = [[MineViewController alloc] init];
-            newVC = mine;
         }
         
         
-        newVC.titleStr = i==0?@"":titleString;
+        newVC.titleStr = titleString;
         [self setupChildVC:newVC title:titleString image:unselectedimage image1:selectedimage model:nil];
     }
+     */
+    
 }
 - (void)setupChildVC:(UIViewController*)vc title:(NSString*)title image:(NSString *)normalImage image1:(NSString *)selectImage model:(BaseModel *)model
 {
-    
     TBNavigationController  *nav = [[TBNavigationController alloc]initWithRootViewController:vc];
-    //改变位移
-    //CGFloat offset = 5.0;
-    //nav.tabBarItem.imageInsets = UIEdgeInsetsMake(offset, 0, -offset, 0);
+//    改变位移
+    CGFloat offset = 5.0;
+    nav.tabBarItem.imageInsets = UIEdgeInsetsMake(offset, 0, -offset, 0);
+    nav.title = title;
     nav.tabBarItem.title = title;
     nav.tabBarItem.image = IMG(normalImage);
     nav.tabBarItem.selectedImage = [IMG(selectImage) imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [self addChildViewController:nav];
+    [self addChildViewController:vc];
     
 }
 

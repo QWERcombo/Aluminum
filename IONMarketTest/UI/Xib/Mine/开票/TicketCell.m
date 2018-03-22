@@ -14,15 +14,49 @@
     [super awakeFromNib];
     // Initialization code
 }
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
 }
 
 
+- (IBAction)expressBtnAction:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    
+}
+
+- (IBAction)moreAction:(UIButton *)sender {
+    if (self.click) {
+        self.click(@"0");
+    }
+}
+
+- (IBAction)orderBtnAction:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        self.makeBtn.selected = YES;
+        self.expressBtn.selected = YES;
+        self.ticketBtn.selected = YES;
+    } else {
+        self.makeBtn.selected = NO;
+        self.expressBtn.selected = NO;
+        self.ticketBtn.selected = NO;
+    }
+}
+
+- (IBAction)ticketBtnAction:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    
+}
+
+- (IBAction)makeBtnAction:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    
+}
+
+
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 100;
+    return 160;
 }
 
 + (instancetype)getTicketCell {
@@ -30,6 +64,9 @@
 }
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
+    self.click = click;
+    
+    
     
 }
 

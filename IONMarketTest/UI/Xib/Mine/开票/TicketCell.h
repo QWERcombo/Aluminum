@@ -10,6 +10,14 @@
 
 @interface TicketCell : BaseCell
 
+@property (weak, nonatomic) IBOutlet UILabel *ticketPrice;
+@property (weak, nonatomic) IBOutlet UILabel *expressPrice;
+@property (weak, nonatomic) IBOutlet UILabel *makePrice;
+@property (weak, nonatomic) IBOutlet UILabel *orderID;
+@property (weak, nonatomic) IBOutlet UIButton *orderBtn;
+@property (weak, nonatomic) IBOutlet UIButton *ticketBtn;
+@property (weak, nonatomic) IBOutlet UIButton *expressBtn;
+@property (weak, nonatomic) IBOutlet UIButton *makeBtn;
 
 
 @property (nonatomic, copy) ClikBlock click;

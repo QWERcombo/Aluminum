@@ -10,6 +10,7 @@
 #import <Photos/Photos.h>
 #import "EasyShowView.h"
 #import "EasyShowOptions.h"
+#import "LoginViewController.h"
 
 
 @interface UtilsData ()
@@ -204,22 +205,20 @@ DEF_SINGLETON(UtilsData);
     __loginSuccessBlock = success;
     __loginFailureBlock = failure;
     
-    if ([UserData currentUser].userName.length) {
-        __loginSuccessBlock([UserData currentUser]);
-    }else{
-//        MainLoginViewController *loginVC = [[MainLoginViewController alloc] init];
-//        TBNavigationController *navigat = [[TBNavigationController alloc] initWithRootViewController:loginVC];
-//        MY_WINDOW.rootViewController = navigat;
-//        if ([UserData currentUser].version) {
-//            [[PublicFuntionTool sharedInstance] userLoginOut];
-//        }
-        
-    }
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTICE_USER_LOGIN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LogInTorefresh) name:NOTICE_USER_LOGIN object:nil];//登入
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTICE_USER_LOGOUT object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LoginDismiss) name:NOTICE_USER_LOGOUT object:nil];//登出
+    
+    if ([UserData currentUser].userName.length) {
+        __loginSuccessBlock([UserData currentUser]);
+    }else{
+        
+        [self postLogoutNotice];
+//        LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+//        MY_WINDOW.rootViewController = login;
+    }
     
 }
 

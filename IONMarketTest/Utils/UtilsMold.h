@@ -21,6 +21,15 @@
 #import "TicketCell.h"
 #import "TicketInfoCell.h"
 #import "EndTicketCell.h"
+#import "SmartServiceCell.h"
+
+
+
+
+
+
+
+
 
 
 //View

@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "TBTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -21,8 +23,26 @@
     
     [self settingEasyShowOptions];//配置菊花
     
+    [self setupRootViewController];//设置根视图
     
     return YES;
+}
+
+- (void)setupRootViewController {
+    
+    [[UtilsData sharedInstance] loginPlan:nil success:^(UserData *user) {
+        
+        TBTabBarController *tabBar = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TBtabBar"];
+        self.window.rootViewController = tabBar;
+
+    } failure:^(UserData *user) {
+    
+        LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        self.window.rootViewController = login;
+        
+    }];
+
+    
 }
 
 
