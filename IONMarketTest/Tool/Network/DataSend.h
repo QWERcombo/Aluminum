@@ -17,8 +17,6 @@ typedef void (^FailureBlock)(NSString *error,NSInteger code);
 
 +(NSMutableDictionary *)getPostByParameters:(NSMutableDictionary*)params;//序列
 
-//唤醒握手
-+(void)sendPostRequestToHandShakeWithBaseURL:(NSString *)baseUrl Dictionary:(NSMutableDictionary*)dict  WithType:(NSString*)type showAnimation:(BOOL)animation success:(SuccessBlock)success failure:(FailureBlock)failure;
 
 +(void)sendPostWastedRequestWithBaseURL:(NSString *)baseUrl valueDictionary:(NSMutableDictionary*)dict imageArray:(NSArray *)imgArr WithType:(NSString*)type andCookie:(NSString *)cookie showAnimation:(BOOL)animation success:(SuccessBlock)success failure:(FailureBlock)failure;
 

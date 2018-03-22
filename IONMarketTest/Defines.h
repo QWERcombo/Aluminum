@@ -42,8 +42,8 @@
 //**************    地址   ***********************1️⃣
 
 //《测试环境》
-#define  BASE_URL    @"http://192.168.0.8:8080/api/excute"//本地加密测试
-#define  base_ii     @"http://192.168.0.8:8080/api/handshake"
+//#define  BASE_URL    @"http://192.168.0.8:8080/api/excute"//本地加密测试
+//#define  base_ii     @"http://192.168.0.8:8080/api/handshake"
 
 //#define  BASE_URL      @"https://app.wanhongpay.com/api/excute"
 //#define  base_ii       @"https://app.wanhongpay.com/api/handshake"

@@ -9,9 +9,13 @@
 #ifndef InterfaceDefines_h
 #define InterfaceDefines_h
 
+//《 测试地址 》
+#define  BASE_URL    @"http://118.31.35.233:8080/leqie"
 
-
-
+//登陆
+#define Interface_Login  @"login"
+//获取品型
+#define Interface_CateList  @"cateList"
 
 
 

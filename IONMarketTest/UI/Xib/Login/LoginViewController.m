@@ -25,8 +25,18 @@
 
 //登陆
 - (IBAction)loginAction:(UIButton *)sender {
-    [[UtilsData sharedInstance] postLoginNotice];
     
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:@"18625144206" forKey:@"phone"];
+    [dict setValue:@"123456" forKey:@"password"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Login andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        [[UtilsData sharedInstance] postLoginNotice];
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
     
     
 }
@@ -34,6 +44,7 @@
 //忘记密码
 - (IBAction)forgetAction:(UIButton *)sender {
     NSLog(@"%@", sender.currentTitle);
+    
 }
 
 //注册
