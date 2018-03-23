@@ -383,9 +383,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ywf-Mv-bdc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="格式转发">
-                                    <color key="titleColor" red="0.35491353269999998" green="0.623277843" blue="0.94517052170000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleColor" red="0.52941176469999995" green="0.6705882353" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
                                     <action selector="formatButton:" destination="nj8-eq-AJU" eventType="touchUpInside" id="MPc-Rd-BxD"/>
@@ -393,18 +393,18 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOB-YQ-jSq">
                                 <rect key="frame" x="187.5" y="617" width="187.5" height="50"/>
-                                <color key="backgroundColor" red="0.35491353269999998" green="0.623277843" blue="0.94517052170000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.52941176469999995" green="0.6705882353" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Jqy-zD-QY7"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="上传"/>
                                 <connections>
                                     <action selector="uploadButton:" destination="nj8-eq-AJU" eventType="touchUpInside" id="edg-Dt-zOX"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xxt-gx-USy">
-                                <rect key="frame" x="97" y="194" width="180" height="180"/>
+                                <rect key="frame" x="97" y="130" width="180" height="180"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="Oxs-97-Fgx"/>
@@ -412,7 +412,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LgS-OB-8bk">
-                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgb-dE-l2T">
                                         <rect key="frame" x="33" y="7" width="70" height="33"/>
@@ -461,13 +461,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请上传该格式清晰图片" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRF-1j-Yyn">
-                                <rect key="frame" x="76" y="414" width="223" height="27"/>
+                                <rect key="frame" x="76" y="350" width="223" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="0.35491353269999998" green="0.623277843" blue="0.94517052170000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可以点击放大查看" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCc-Hn-9gZ">
-                                <rect key="frame" x="126" y="456" width="123" height="18"/>
+                                <rect key="frame" x="126" y="392" width="123" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.35491353269999998" green="0.623277843" blue="0.94517052170000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -479,7 +479,7 @@
                             <constraint firstItem="ZOB-YQ-jSq" firstAttribute="height" secondItem="0OO-zf-5y1" secondAttribute="height" id="1zP-8o-EKx"/>
                             <constraint firstItem="Xxt-gx-USy" firstAttribute="top" secondItem="LgS-OB-8bk" secondAttribute="bottom" constant="80" id="7mP-zj-D0b"/>
                             <constraint firstItem="Xxt-gx-USy" firstAttribute="centerX" secondItem="ppR-kZ-oir" secondAttribute="centerX" id="AQ5-BC-flW"/>
-                            <constraint firstItem="LgS-OB-8bk" firstAttribute="top" secondItem="ppR-kZ-oir" secondAttribute="top" constant="64" id="CBl-nH-Eqd"/>
+                            <constraint firstItem="LgS-OB-8bk" firstAttribute="top" secondItem="ppR-kZ-oir" secondAttribute="top" id="CBl-nH-Eqd"/>
                             <constraint firstAttribute="trailing" secondItem="ZOB-YQ-jSq" secondAttribute="trailing" id="CHp-Xv-0T8"/>
                             <constraint firstItem="wCc-Hn-9gZ" firstAttribute="top" secondItem="xRF-1j-Yyn" secondAttribute="bottom" constant="15" id="F1b-qF-nOj"/>
                             <constraint firstItem="wCc-Hn-9gZ" firstAttribute="centerX" secondItem="ppR-kZ-oir" secondAttribute="centerX" id="GBP-KR-r5T"/>

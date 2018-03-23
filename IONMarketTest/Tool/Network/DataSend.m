@@ -14,7 +14,7 @@ static NSOperationQueue *queue;
 
 #pragma mark - POST
 
-+(void)verdictResponseString:(id)response
++ (void)verdictResponseString:(id)response
 {
     if (response == nil) {
         NSLog(@"WARNING:数据为空");
@@ -26,13 +26,13 @@ static NSOperationQueue *queue;
     }
 }
 
-+(NSString *)getPostByWithType:(NSString*)type
++ (NSString *)getPostByWithType:(NSString*)type
 {
     NSString *httpStr = [NSString stringWithFormat:@"%@/%@",BASE_URL,type];
     return httpStr;
 }
 
-+(NSMutableDictionary *)getPostByParameters:(NSMutableDictionary*)params
++ (NSMutableDictionary *)getPostByParameters:(NSMutableDictionary*)params
 {
     [DataSend addBasicParameters:params];
     NSArray *aryKeys = [params allKeys];
@@ -62,19 +62,18 @@ static NSOperationQueue *queue;
     return params;
 }
 
-+(void)sendPostWastedRequestWithBaseURL:(NSString *)baseUrl valueDictionary:(NSMutableDictionary*)dict imageArray:(NSArray *)imgArr WithType:(NSString*)type andCookie:(NSString *)cookie showAnimation:(BOOL)animation success:(SuccessBlock)success failure:(FailureBlock)failure{
-    
-//    NSDictionary *valueDic = [DataSend getPostByParameters:dict];
++ (void)sendPostWastedRequestWithBaseURL:(NSString *)baseUrl valueDictionary:(NSMutableDictionary*)dict imageArray:(NSArray *)imgArr WithType:(NSString*)type andCookie:(NSString *)cookie showAnimation:(BOOL)animation success:(SuccessBlock)success failure:(FailureBlock)failure{
     
     NSString *httpStr = [NSString stringWithFormat:@"%@/%@",baseUrl,type];
-    NSLog(@"链接 🔗🔗 == %@>>",httpStr);
+    
+    NSLog(@"链接 🔗🔗 == %@  >>",httpStr);
     
     [DataSend AFHTTPRequestWithURL:httpStr valueDictionary:dict imageArray:imgArr andCookie:cookie showAnimation:animation success:success failure:failure];
 }
 
 
 
-+(void)AFHTTPRequestWithURL:(NSString *)URLString valueDictionary:(NSDictionary *)valueDic imageArray:(NSArray *)imgArr andCookie:(NSString *)cookie showAnimation:(BOOL)animation success:(SuccessBlock)success failure:(FailureBlock)failure
++ (void)AFHTTPRequestWithURL:(NSString *)URLString valueDictionary:(NSDictionary *)valueDic imageArray:(NSArray *)imgArr andCookie:(NSString *)cookie showAnimation:(BOOL)animation success:(SuccessBlock)success failure:(FailureBlock)failure
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

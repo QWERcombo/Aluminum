@@ -22,6 +22,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"行情";
+    for ( NSInteger i = 0; i<10; i++) {
+        NSString *str = @"";
+        if (i % 2 == 0) {
+            str = @"+ 100";
+        } else {
+            str = @" - 100";
+        }
+        [self.dataMuArr addObject:str];
+    }
     [self setupSubviews];
     
 }
@@ -87,11 +96,11 @@
 
 #pragma mark ----delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dataMuArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold creatCell:@"MainItemCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+    return [UtilsMold creatCell:@"MainItemCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
         
     }];
 }
@@ -111,22 +120,24 @@
     UITableViewRowAction *deleteRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"取消关注"handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         NSLog(@"点击了取消关注");
     }];
+    deleteRowAction.backgroundColor = [UIColor colorWithHexString:@"#87ABE2"];
+    
     // 删除一个置顶按钮
-    UITableViewRowAction *topRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"置顶"handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-        NSLog(@"点击了置顶");
-    }];
-    topRowAction.backgroundColor = [UIColor blueColor];
+//    UITableViewRowAction *topRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"置顶"handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+//        NSLog(@"点击了置顶");
+//    }];
+//    topRowAction.backgroundColor = [UIColor blueColor];
     
     // 添加一个更多按钮
-    UITableViewRowAction *moreRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"拖动"handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-        NSLog(@"点击了拖动");
-        
-        
-    }];
-    moreRowAction.backgroundEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+//    UITableViewRowAction *moreRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"拖动"handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+//        NSLog(@"点击了拖动");
+//
+//
+//    }];
+//    moreRowAction.backgroundEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     
     // 将设置好的按钮放到数组中返回
-    return @[deleteRowAction, topRowAction, moreRowAction];
+    return @[deleteRowAction];
     
 }
 

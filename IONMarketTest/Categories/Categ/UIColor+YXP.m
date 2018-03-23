@@ -120,9 +120,9 @@
     if (type == 1) {
         return  [UIColor colorWithR:244 G:245 B:246 A:1];
     } else if(type==2) {
-        return  [UIColor colorWithHexString:@"#2c98f8"];
+        return  [UIColor colorWithHexString:@"#87ABE2"];
     } else {
-        return [UIColor colorWithR:177 G:206 B:234 A:1];
+        return [UIColor colorWithHexString:@"#969798"];
     }
 }
 

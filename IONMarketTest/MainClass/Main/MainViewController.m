@@ -27,6 +27,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    for (NSInteger i = 0 ; i<10; i++) {
+        NSString *string = @"";
+        if (i%2==0) {
+            string = @"+ 100";
+        } else {
+            string = @" - 100";
+        }
+        [self.dataMuArr addObject:string];
+    }
     [self getDataSource];
 }
 
@@ -36,11 +45,11 @@
     return 3;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section==2?10:0;
+    return section==2?self.dataMuArr.count:0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold creatCell:@"MainItemCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+    return [UtilsMold creatCell:@"MainItemCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
         
     }];
 }
@@ -123,7 +132,7 @@
 
 - (UIView *)createSectionView {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 40)];
-    UILabel *leftlabel = [UILabel lableWithText:@"自选关注" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
+    UILabel *leftlabel = [UILabel lableWithText:@"自选关注" Font:FONT_BoldMT(15) TextColor:[UIColor Black_WordColor]];
     [headerView addSubview:leftlabel];
     [leftlabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(headerView.mas_centerY);
@@ -131,15 +140,19 @@
         make.height.equalTo(@(15));
     }];
     
-    UIButton *rightlabel = [UIButton buttonWithTitle:@"查看全部 >" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
+    UIButton *rightlabel = [UIButton buttonWithTitle:@"查看全部" andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor mianColor:3] andHighlightedTitle:[UIColor mianColor:3] andNormaImage:nil andHighlightedImage:nil];
+    [rightlabel setImage:IMG(@"image_more") forState:UIControlStateNormal];
+    
     [rightlabel addTarget:self action:@selector(moreAction:) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:rightlabel];
     [rightlabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(15));
         make.centerY.equalTo(headerView.mas_centerY);
-        make.right.equalTo(headerView.mas_right).offset(-15);
+        make.right.equalTo(headerView.mas_right).offset(-10);
     }];
     
+    rightlabel.titleEdgeInsets = UIEdgeInsetsMake(0, -rightlabel.imageView.width, 0, rightlabel.imageView.width);
+    rightlabel.imageEdgeInsets = UIEdgeInsetsMake(0, rightlabel.titleLabel.width, 0, -rightlabel.titleLabel.width-5);
     
     return headerView;
 }
