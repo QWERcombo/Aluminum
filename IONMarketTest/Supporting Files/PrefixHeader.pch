@@ -45,7 +45,7 @@
 #import "UIButton+Badge.h"
 #import "NSObject+MemoryLeak.h"
 #import "NSTimer+WeakTimer.h"
-
+#import "CALayer+Addition.h"
 
 
 //Extension
@@ -87,10 +87,10 @@
 
 
 //Model
+#import "MainItemTypeModel.h"
 
 
 
-//Cell
 
 
 

@@ -10,9 +10,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainItemView__Tube">
+            <connections>
+                <outlet property="amountTF" destination="6Xx-vh-F3s" id="x2c-xy-K1N"/>
+                <outlet property="leftImgv" destination="muE-gm-JDY" id="VbY-Mg-MqV"/>
+                <outlet property="left_down_Label" destination="QIX-Z0-FBT" id="uC6-2Y-pKb"/>
+                <outlet property="left_top_Label" destination="oOu-ha-vo6" id="21P-tr-s1k"/>
+                <outlet property="lengthTF" destination="N0l-PI-WDn" id="9m9-S3-Qjd"/>
+                <outlet property="rightImgv" destination="Onm-9l-Bsg" id="4ku-Zw-4b6"/>
+                <outlet property="right_down_Label" destination="Pa7-ZM-K7b" id="3kA-Ok-PO3"/>
+                <outlet property="right_top_Label" destination="ZSx-m0-r6F" id="GbV-Ql-cmm"/>
+                <outlet property="thinTF" destination="TlC-bb-806" id="OkD-us-Egd"/>
+                <outlet property="widthTF" destination="0b6-gM-Exv" id="P9Q-Mt-upo"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MainItemView__Tube">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -156,51 +169,77 @@
                     <rect key="frame" x="0.0" y="169" width="187" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOu-ha-vo6">
-                            <rect key="frame" x="81.5" y="5" width="25" height="18"/>
+                            <rect key="frame" x="81" y="5" width="25" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" red="0.35491353269999998" green="0.623277843" blue="0.94517052170000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="速切(预计1工作日)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIX-Z0-FBT">
-                            <rect key="frame" x="35.5" y="28" width="117" height="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="零切(预计1工作日)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIX-Z0-FBT">
+                            <rect key="frame" x="35" y="28" width="117" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" red="0.35491353269999998" green="0.623277843" blue="0.94517052170000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select_1" translatesAutoresizingMaskIntoConstraints="NO" id="muE-gm-JDY">
+                            <rect key="frame" x="162" y="5" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="VXr-Ra-Hv1"/>
+                                <constraint firstAttribute="width" constant="20" id="ZRj-gb-euA"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="oOu-ha-vo6" firstAttribute="top" secondItem="J4y-0m-ha0" secondAttribute="top" constant="5" id="TBd-PQ-5ec"/>
+                        <constraint firstItem="muE-gm-JDY" firstAttribute="top" secondItem="J4y-0m-ha0" secondAttribute="top" constant="5" id="Vze-kM-weR"/>
                         <constraint firstAttribute="height" constant="50" id="fSg-32-9Qz"/>
+                        <constraint firstAttribute="trailing" secondItem="muE-gm-JDY" secondAttribute="trailing" constant="5" id="sM9-Gj-r4N"/>
                         <constraint firstItem="QIX-Z0-FBT" firstAttribute="centerX" secondItem="J4y-0m-ha0" secondAttribute="centerX" id="u5B-Gg-8Fb"/>
                         <constraint firstAttribute="bottom" secondItem="QIX-Z0-FBT" secondAttribute="bottom" constant="5" id="vqg-tD-QJZ"/>
                         <constraint firstItem="oOu-ha-vo6" firstAttribute="centerX" secondItem="J4y-0m-ha0" secondAttribute="centerX" id="x44-Ky-VX3"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="83e-6C-7tF" appends="YES" id="IVu-tl-ERs"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXD-xP-jy7">
                     <rect key="frame" x="188" y="169" width="187" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSx-m0-r6F">
-                            <rect key="frame" x="81.5" y="5" width="25" height="18"/>
+                            <rect key="frame" x="81" y="5" width="25" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" red="0.58823529409999997" green="0.59215686270000001" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优切(预计1工作日)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pa7-ZM-K7b">
-                            <rect key="frame" x="35.5" y="28" width="117" height="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="整只(预计1工作日)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pa7-ZM-K7b">
+                            <rect key="frame" x="35" y="28" width="117" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" red="0.58823529409999997" green="0.59215686270000001" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select_1" translatesAutoresizingMaskIntoConstraints="NO" id="Onm-9l-Bsg">
+                            <rect key="frame" x="162" y="5" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="YjB-Ep-9b8"/>
+                                <constraint firstAttribute="height" constant="20" id="e1f-uf-4vW"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="Pa7-ZM-K7b" secondAttribute="bottom" constant="5" id="1dB-rT-RHV"/>
                         <constraint firstItem="ZSx-m0-r6F" firstAttribute="centerX" secondItem="dXD-xP-jy7" secondAttribute="centerX" id="J1Q-XV-jvd"/>
                         <constraint firstAttribute="height" constant="50" id="JEY-Ty-5CT"/>
                         <constraint firstItem="Pa7-ZM-K7b" firstAttribute="centerX" secondItem="dXD-xP-jy7" secondAttribute="centerX" id="OUe-g6-7z1"/>
                         <constraint firstItem="ZSx-m0-r6F" firstAttribute="top" secondItem="dXD-xP-jy7" secondAttribute="top" constant="5" id="Y8P-T8-3E0"/>
+                        <constraint firstAttribute="trailing" secondItem="Onm-9l-Bsg" secondAttribute="trailing" constant="5" id="jhp-pQ-RBn"/>
+                        <constraint firstItem="Onm-9l-Bsg" firstAttribute="top" secondItem="dXD-xP-jy7" secondAttribute="top" constant="5" id="xa4-qG-RLK"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="nMw-qX-8zh" appends="YES" id="h1e-71-daq"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OBN-xn-5Lr">
                     <rect key="frame" x="0.0" y="224" width="375" height="40"/>
@@ -234,6 +273,9 @@
                         <constraint firstAttribute="height" constant="45" id="0x4-Tu-v8O"/>
                     </constraints>
                     <state key="normal" title="添加"/>
+                    <connections>
+                        <action selector="AddNewAction:" destination="-1" eventType="touchUpInside" id="WAG-iK-9Iw"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.95698463919999999" green="0.9607076645" blue="0.96470403670000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -267,5 +309,18 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
+        <tapGestureRecognizer id="nMw-qX-8zh">
+            <connections>
+                <action selector="rightTap:" destination="-1" id="6wO-cO-gpW"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="83e-6C-7tF">
+            <connections>
+                <action selector="leftTap:" destination="-1" id="coD-eP-xLY"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
+    <resources>
+        <image name="select_1" width="24" height="24"/>
+    </resources>
 </document>

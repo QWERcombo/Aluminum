@@ -38,12 +38,14 @@
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
     
-    NSArray *array = @[@"全部",@"待付款",@"待收款",@"已完成"];
+    NSArray *array = @[@"全部",@"待付款",@"待收货",@"已完成"];
     UIButton *lastButton = nil;
     for (NSInteger b=0; b<array.count; b++) {
         
-        UIButton *button = [UIButton buttonWithTitle:[array objectAtIndex:b] andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
-        
+        UIButton *button = [UIButton buttonWithTitle:[array objectAtIndex:b] andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor Black_WordColor] andHighlightedTitle:[UIColor Black_WordColor] andNormaImage:nil andHighlightedImage:nil];
+        if (b==0) {
+            [button setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
+        }
         [button addTarget:self action:@selector(buttonCliker:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = 100+b;
         
@@ -112,6 +114,10 @@
 
 - (void)buttonCliker:(UIButton *)sender {
     NSLog(@"%@", sender.currentTitle);
+    [sender setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
+    
+    UIButton *button = [self.view viewWithTag:self.lastSelected];
+    [button setTitleColor:[UIColor Black_WordColor] forState:UIControlStateNormal];
     
     UIView *lastLine = [self.view viewWithTag:self.lastSelected+100];
     lastLine.hidden = YES;

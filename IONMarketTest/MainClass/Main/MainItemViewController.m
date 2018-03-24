@@ -13,7 +13,7 @@
 #import "MainItemView__Tube.h"//型材
 #import "MainItemView__Matter.h"//管材
 
-@interface MainItemViewController ()
+@interface MainItemViewController ()<UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (nonatomic, assign) NSInteger lastSelected;
 
@@ -50,6 +50,8 @@
     
     self.view.backgroundColor = [UIColor mianColor:1];
     
+    self.lastSelected = 100+self.selectedNum;
+    
     [self setSubviews];
 }
 
@@ -57,7 +59,7 @@
 
 - (void)setSubviews {
     
-    [self createTopActionView];//顶部选择
+    [self getDataSource];
     
     [self createScrollLayoutView];//中部变化
     
@@ -103,17 +105,18 @@
     [self.view addSubview:topView];
     
     
-    NSArray *typeArr = @[@"6061",@"7075",@"7050",@"2A12",@"5052",@"1060",@"1526"];
     UIScrollView *typeScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 50.5, SCREEN_WIGHT, 49.5)];
     
-    CGFloat scroll_width = (typeArr.count+1)*ITEM_TYPE_MARGIN;
+    CGFloat scroll_width = (self.dataMuArr.count+1)*ITEM_TYPE_MARGIN;
     UIButton *lastTypeButton = nil;
-    for (NSInteger i=0; i<typeArr.count; i++) {
-        NSString *typeName = [typeArr objectAtIndex:i];
+    for (NSInteger i=0; i<self.dataMuArr.count; i++) {
+        MainItemTypeModel *model = [self.dataMuArr objectAtIndex:i];
+        NSString *typeName = model.name;
+        
         CGSize typeSize = [UILabel getSizeWithText:typeName andFont:FONT_ArialMT(15) andSize:CGSizeMake(0, ITEM_HEIGHT)];
         scroll_width += (typeSize.width+20);
         
-        UIButton *typeButton = [UIButton buttonWithTitle:[typeArr objectAtIndex:i] andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
+        UIButton *typeButton = [UIButton buttonWithTitle:typeName andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
         if (i==0) {
             [typeButton setBackgroundImage:IMG(@"Main_button_bg") forState:UIControlStateNormal];
             [typeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -155,42 +158,41 @@
     NSLog(@"+++%ld", self.lastSelected);
     
     if (self.lastSelected==100) {
-        MainItem__Single *single = [[MainItem__Single alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 300)];
+        MainItem__Single *single = [[MainItem__Single alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 350)];
         [single loadData:nil andCliker:^(NSString *clueStr) {
-            
-            
+            single.thinLabel.text = clueStr;
+            [self selectInfomationForUser];
         }];
         
+        [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, single.height)];
         [_sctollView addSubview:single];
     } else if (self.lastSelected == 101) {
-        MainItemView__Pole *pole = [[MainItemView__Pole alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 260)];
+        MainItemView__Pole *pole = [[MainItemView__Pole alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 350)];
         [pole loadData:nil andCliker:^(NSString *clueStr) {
             
             
         }];
-        
+        [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, pole.height)];
         [_sctollView addSubview:pole];
     } else if (self.lastSelected == 102) {
-        MainItemView__Tube *tube = [[MainItemView__Tube alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 300)];
+        MainItemView__Tube *tube = [[MainItemView__Tube alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 400)];
         [tube loadData:nil andCliker:^(NSString *clueStr) {
             
             
         }];
-        
+        [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, tube.height)];
         [_sctollView addSubview:tube];
     } else {
-        MainItemView__Matter *matter = [[MainItemView__Matter alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 350)];
+        MainItemView__Matter *matter = [[MainItemView__Matter alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 450)];
         [matter loadData:nil andCliker:^(NSString *clueStr) {
             
             
         }];
-        
+        [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, matter.height)];
         [_sctollView addSubview:matter];
     }
     
-    
-    [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, SCREEN_HEIGHT)];
-    
+        
     
 }
 
@@ -274,6 +276,11 @@
             self.lastSelected = sender.tag;
         } else {
             self.lastTypeSelected = sender.tag;
+            
+            MainItemTypeModel *model = [self.dataMuArr objectAtIndex:sender.tag-200];
+            NSLog(@"%@", model);
+            
+//            [self getInfomationWithID:model.id];
         }
         
     }
@@ -291,6 +298,105 @@
     NSLog(@"%@", sender.currentTitle);
     
 }
+
+#pragma mark ----- Data
+- (void)getDataSource {
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"---%@", resultDic);
+        NSArray *dataArr = resultDic[@"list"];
+        
+        for (NSDictionary *dataDic in dataArr) {
+            
+            MainItemTypeModel *model = [[MainItemTypeModel alloc] initWithDictionary:dataDic error:nil];
+            
+            [self.dataMuArr addObject:model];
+            
+        }
+//        [self ahahaha];
+        [self createTopActionView];//顶部选择
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
+}
+
+
+- (void)ahahaha {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:@"100" forKey:@"chang"];
+    [dict setValue:@"100" forKey:@"kuang"];
+    [dict setValue:@"100" forKey:@"hou"];
+    [dict setValue:@"快速" forKey:@"type"];
+    [dict setValue:@"2" forKey:@"amount"];
+    [dict setValue:@"整板" forKey:@"zhonglei"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderMoney andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"+++%@", resultDic);
+        
+        
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+        
+    }];
+    
+    
+}
+
+- (void)getInfomationWithID:(NSString *)infoID {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:infoID forKey:@"id"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_FindDetail andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"+++%@", resultDic);
+        
+        
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+        
+    }];
+    
+}
+
+- (void)selectInfomationForUser {
+    
+    
+    
+    
+}
+
+
+#pragma mark UIPickerViewDataSource 数据源方法
+// 返回多少列
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+    
+}
+
+// 返回多少行
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return 10;
+}
+
+#pragma mark UIPickerViewDelegate 代理方法
+
+// 返回每行的标题
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return @"2222233333";
+}
+// 选中行显示在label上
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    
+    
+}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

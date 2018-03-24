@@ -20,9 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lingqieLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPrice;
 @property (weak, nonatomic) IBOutlet UILabel *singlePrice;
-@property (weak, nonatomic) IBOutlet UIButton *buyButton;
-@property (weak, nonatomic) IBOutlet UIButton *serviceButton;
-@property (weak, nonatomic) IBOutlet UIButton *downloadButton;
 
 
 + (instancetype)OrderListCell;

@@ -43,6 +43,10 @@
 		5671DBCA206000EA005F1760 /* MainItemView__Tube.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5671DBC9206000EA005F1760 /* MainItemView__Tube.xib */; };
 		5671DBCD20600109005F1760 /* MainItemView__Matter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5671DBCC20600109005F1760 /* MainItemView__Matter.m */; };
 		5671DBCF2060011D005F1760 /* MainItemView__Matter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5671DBCE2060011D005F1760 /* MainItemView__Matter.xib */; };
+		568CB08A2065F90900B48318 /* MainItemTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 568CB0892065F90900B48318 /* MainItemTypeModel.m */; };
+		568CB08D2066462300B48318 /* CALayer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 568CB08C2066462300B48318 /* CALayer+Addition.m */; };
+		568CB0902066629900B48318 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 568CB08F2066629900B48318 /* PickerView.m */; };
+		568CB092206662A800B48318 /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568CB091206662A800B48318 /* PickerView.xib */; };
 		56940C0120515DB300DFA6D6 /* TBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940BFC20515DB200DFA6D6 /* TBTabBar.m */; };
 		56940C0220515DB300DFA6D6 /* TBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940BFF20515DB300DFA6D6 /* TBTabBarController.m */; };
 		56940C0320515DB300DFA6D6 /* TBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940C0020515DB300DFA6D6 /* TBNavigationController.m */; };
@@ -240,6 +244,13 @@
 		5671DBCB20600109005F1760 /* MainItemView__Matter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItemView__Matter.h; sourceTree = "<group>"; };
 		5671DBCC20600109005F1760 /* MainItemView__Matter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainItemView__Matter.m; sourceTree = "<group>"; };
 		5671DBCE2060011D005F1760 /* MainItemView__Matter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItemView__Matter.xib; sourceTree = "<group>"; };
+		568CB0882065F90900B48318 /* MainItemTypeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItemTypeModel.h; sourceTree = "<group>"; };
+		568CB0892065F90900B48318 /* MainItemTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainItemTypeModel.m; sourceTree = "<group>"; };
+		568CB08B2066462300B48318 /* CALayer+Addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+Addition.h"; sourceTree = "<group>"; };
+		568CB08C2066462300B48318 /* CALayer+Addition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Addition.m"; sourceTree = "<group>"; };
+		568CB08E2066629900B48318 /* PickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
+		568CB08F2066629900B48318 /* PickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
+		568CB091206662A800B48318 /* PickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
 		56940BFB20515DB200DFA6D6 /* TBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBNavigationController.h; sourceTree = "<group>"; };
 		56940BFC20515DB200DFA6D6 /* TBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTabBar.m; sourceTree = "<group>"; };
 		56940BFD20515DB300DFA6D6 /* TBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTabBar.h; sourceTree = "<group>"; };
@@ -624,8 +635,28 @@
 				5671DBCB20600109005F1760 /* MainItemView__Matter.h */,
 				5671DBCC20600109005F1760 /* MainItemView__Matter.m */,
 				5671DBCE2060011D005F1760 /* MainItemView__Matter.xib */,
+				568CB08E2066629900B48318 /* PickerView.h */,
+				568CB08F2066629900B48318 /* PickerView.m */,
+				568CB091206662A800B48318 /* PickerView.xib */,
 			);
 			path = Main_item;
+			sourceTree = "<group>";
+		};
+		568CB0862065F82D00B48318 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				568CB0872065F84300B48318 /* Main */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		568CB0872065F84300B48318 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				568CB0882065F90900B48318 /* MainItemTypeModel.h */,
+				568CB0892065F90900B48318 /* MainItemTypeModel.m */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		56940BFA20515D8F00DFA6D6 /* TabBarController */ = {
@@ -670,6 +701,8 @@
 				56940C0F20515DF300DFA6D6 /* UITableView+TB.m */,
 				56940C1820515DF600DFA6D6 /* UIView+UIViewAddition.h */,
 				56940C0920515DF100DFA6D6 /* UIView+UIViewAddition.m */,
+				568CB08B2066462300B48318 /* CALayer+Addition.h */,
+				568CB08C2066462300B48318 /* CALayer+Addition.m */,
 			);
 			path = Categ;
 			sourceTree = "<group>";
@@ -796,6 +829,7 @@
 				5695BEB12042A3A20036D54B /* Base */,
 				5695BEB32042A3C60036D54B /* Categories */,
 				5695BEB52042A3FD0036D54B /* Extension */,
+				568CB0862065F82D00B48318 /* Model */,
 				A23C3939205259F4000A5E99 /* UI */,
 				5695BEB42042A3F70036D54B /* MainClass */,
 				5695BEB72042A4BA0036D54B /* Tool */,
@@ -1291,6 +1325,7 @@
 				5671DBBC205FF1C7005F1760 /* InventoryCell.xib in Resources */,
 				5695BF102042AB0E0036D54B /* rsa_public_key.der in Resources */,
 				5657413820539313007CB488 /* SelectedItem.xib in Resources */,
+				568CB092206662A800B48318 /* PickerView.xib in Resources */,
 				A22981A420623A93007B6112 /* BankCardCell.xib in Resources */,
 				A22981D1206261AE007B6112 /* EndTicketCell.xib in Resources */,
 				5671DBCA206000EA005F1760 /* MainItemView__Tube.xib in Resources */,
@@ -1428,6 +1463,7 @@
 				5695BF5A2042AC1D0036D54B /* EasyShowTextView.m in Sources */,
 				5695BF322042AC120036D54B /* BannerPageControl.m in Sources */,
 				56940C3E20515E6900DFA6D6 /* PublicFuntionTool.m in Sources */,
+				568CB0902066629900B48318 /* PickerView.m in Sources */,
 				56940C0120515DB300DFA6D6 /* TBTabBar.m in Sources */,
 				A22981D0206261AE007B6112 /* EndTicketCell.m in Sources */,
 				5602129F20594D37009EF75D /* WalletViewController.m in Sources */,
@@ -1439,6 +1475,7 @@
 				A2301B2020635292006B9F20 /* LoginViewController.m in Sources */,
 				5695BF2B2042AC0A0036D54B /* SlideSwitchView.m in Sources */,
 				A2AC1C7520565E4600A3B2F9 /* MainItemCell.m in Sources */,
+				568CB08A2065F90900B48318 /* MainItemTypeModel.m in Sources */,
 				A2AC1C652056481B00A3B2F9 /* MainItemViewController.m in Sources */,
 				560212A620596537009EF75D /* ChangeCodeViewController.m in Sources */,
 				5632BFAF205AB47D0009CD34 /* QuotationViewController.m in Sources */,
@@ -1448,6 +1485,7 @@
 				5695BF3F2042AC180036D54B /* UIScrollView+Empty.m in Sources */,
 				A2301B3620638923006B9F20 /* TeleServiceViewController.m in Sources */,
 				5695BEC22042A5300036D54B /* BaseCell.m in Sources */,
+				568CB08D2066462300B48318 /* CALayer+Addition.m in Sources */,
 				A22981A720623BAD007B6112 /* AddCardViewController.m in Sources */,
 				5632BFAC205AA3F80009CD34 /* SetOrderViewController.m in Sources */,
 				5695BF582042AC1D0036D54B /* EasyShowOptions.m in Sources */,
@@ -1649,7 +1687,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VZ78Z6H4RD;
+				DEVELOPMENT_TEAM = F66NLE8FYB;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/IONMarketTest/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = IONMarketTest/Info.plist;
@@ -1667,7 +1705,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VZ78Z6H4RD;
+				DEVELOPMENT_TEAM = F66NLE8FYB;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/IONMarketTest/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = IONMarketTest/Info.plist;

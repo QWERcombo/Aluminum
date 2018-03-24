@@ -170,14 +170,6 @@
 
 - (void)getDataSource {
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"---%@", resultDic);
-        
-        
-    } failure:^(NSString *error, NSInteger code) {
-        
-    }];
-    
     
 }
 

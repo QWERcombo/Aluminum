@@ -8,14 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainItem__Single : UIView
+@interface MainItem__Single : UIView<UIPickerViewDelegate,UIPickerViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UITextField *lengthTF;
 @property (weak, nonatomic) IBOutlet UITextField *widthTF;
-@property (weak, nonatomic) IBOutlet UITextField *heightTF;
 @property (weak, nonatomic) IBOutlet UILabel *rightCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *leftCountLabel;
-@property (weak, nonatomic) IBOutlet UIView *leftView;
-@property (weak, nonatomic) IBOutlet UIView *rightView;
+@property (weak, nonatomic) IBOutlet UIImageView *leftImgv;
+@property (weak, nonatomic) IBOutlet UIImageView *rightImgv;
+@property (weak, nonatomic) IBOutlet UILabel *left_top_Label;
+@property (weak, nonatomic) IBOutlet UILabel *left_down_Label;
+@property (weak, nonatomic) IBOutlet UILabel *right_top_Label;
+@property (weak, nonatomic) IBOutlet UILabel *right_down_Label;
+@property (weak, nonatomic) IBOutlet UIButton *selectBtn;
+
+@property (weak, nonatomic) IBOutlet UILabel *thinLabel;
+
+@property (nonatomic, copy) ClikBlock click;
+
 
 
 - (void)loadData:(NSObject *)data andCliker:(ClikBlock)click;

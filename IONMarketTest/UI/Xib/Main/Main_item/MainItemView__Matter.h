@@ -10,6 +10,19 @@
 
 //管材
 @interface MainItemView__Matter : UIView
+@property (weak, nonatomic) IBOutlet UITextField *waiTF;
+@property (weak, nonatomic) IBOutlet UITextField *neiTF;
+@property (weak, nonatomic) IBOutlet UITextField *lengthTF;
+@property (weak, nonatomic) IBOutlet UITextField *amountTF;
+@property (weak, nonatomic) IBOutlet UILabel *left_top_Label;
+@property (weak, nonatomic) IBOutlet UILabel *left_down_Label;
+@property (weak, nonatomic) IBOutlet UIImageView *leftImgv;
+@property (weak, nonatomic) IBOutlet UILabel *right_top_Label;
+@property (weak, nonatomic) IBOutlet UILabel *right_down_Label;
+@property (weak, nonatomic) IBOutlet UIImageView *rightImgv;
+@property (weak, nonatomic) IBOutlet UILabel *leftCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rightCountLabel;
+
 
 
 

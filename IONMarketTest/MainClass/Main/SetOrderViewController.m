@@ -9,11 +9,7 @@
 #import "SetOrderViewController.h"
 
 @interface SetOrderViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *photoButton;
-@property (weak, nonatomic) IBOutlet UIButton *exlButton;
 @property (weak, nonatomic) IBOutlet UIImageView *order_imgv;
-@property (weak, nonatomic) IBOutlet UIView *line_p;
-@property (weak, nonatomic) IBOutlet UIView *line_exl;
 
 @end
 
@@ -28,26 +24,6 @@
 
 
 #pragma mark ---- Action
-
-- (IBAction)photoButtonCliker:(id)sender {
-    NSLog(@"%@", [(UIButton *)sender currentTitle]);
-    self.line_p.hidden = NO;
-    self.line_exl.hidden = YES;
-    
-}
-- (IBAction)exlButtonCliker:(id)sender {
-    NSLog(@"%@", [(UIButton *)sender currentTitle]);
-    self.line_p.hidden = YES;
-    self.line_exl.hidden = NO;
-    
-}
-
-
-- (IBAction)formatButton:(id)sender {
-    NSLog(@"%@", [(UIButton *)sender currentTitle]);
-    
-}
-
 - (IBAction)uploadButton:(id)sender {
     NSLog(@"%@", [(UIButton *)sender currentTitle]);
     

@@ -7,7 +7,7 @@
 //
 
 #import "OrderListCell.h"
-
+#import "CALayer+Addition.h"
 @implementation OrderListCell
 
 - (void)awakeFromNib {
@@ -31,7 +31,7 @@
 
 - (IBAction)statusAction:(id)sender {
     _clikerBlock(((UIButton *)sender).currentTitle);
-    
+//    [self.layer setBorderColorFromUIColor:<#(UIColor *)#>]
 }
 
 - (IBAction)buyAction:(id)sender {
@@ -44,6 +44,8 @@
 
 - (IBAction)downloadAction:(id)sender {
      _clikerBlock(((UIButton *)sender).currentTitle);
+}
+- (IBAction)cancelAction:(UIButton *)sender {
 }
 
 

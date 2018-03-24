@@ -248,7 +248,7 @@
     blank.backgroundColor = [UIColor mianColor:1];
     
     UIView *ccc = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIGHT, 30)];
-    ccc.backgroundColor = [UIColor mianColor:3];
+    ccc.backgroundColor = [UIColor mianColor:1];
     [blank addSubview:ccc];
 
     

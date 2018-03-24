@@ -423,7 +423,6 @@
                 <constraint firstItem="O0o-B7-7mR" firstAttribute="top" secondItem="r3v-Ch-UaF" secondAttribute="bottom" constant="1" id="xub-cN-0FH"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="z2X-bp-gZx" secondAttribute="trailing" id="y1s-iA-h4c"/>
             </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>

@@ -16,7 +16,10 @@
 #define Interface_Login  @"login"
 //获取品型
 #define Interface_CateList  @"cateList"
-
+//获取价格
+#define Interface_OrderMoney @"user/getOrderMoney"
+//获取品型的具体参数
+#define Interface_FindDetail @"findDetailById"
 
 
 

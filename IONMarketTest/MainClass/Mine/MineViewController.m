@@ -19,6 +19,7 @@
 
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSArray *titleArr;
+@property (nonatomic, strong) NSArray *imageArr;
 @end
 
 @implementation MineViewController
@@ -27,6 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.titleArr = @[@[@"钱包",@"白条",@"开票"],@[@"收货地址",@"银行卡"],@[@"分享推广",@"设置"]];
+    self.imageArr = @[@[@"Mine_item_0",@"Mine_item_1",@"Mine_item_2"],@[@"Mine_item_3",@"Mine_item_4"],@[@"Mine_item_5",@"Mine_item_6"]];
     self.tabView.backgroundColor = [UIColor mianColor:1];
     [self.view addSubview:self.tabView];
     [self.tabView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"BasicCell"];
@@ -62,8 +64,8 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.textColor = [UIColor mianColor:2];
-    cell.imageView.image = [UIImage imageNamed:@"Mine_item_0"];
+    cell.textLabel.textColor = [UIColor Black_WordColor];
+    cell.imageView.image = [UIImage imageNamed:[self.imageArr objectAtIndex:indexPath.section-1][indexPath.row]];
     cell.textLabel.text = [self.titleArr objectAtIndex:indexPath.section-1][indexPath.row];
     return cell;
 }
@@ -114,20 +116,28 @@
         make.centerY.equalTo(contentView.mas_centerY);
     }];
     
-    UILabel *nameLabel = [UILabel lableWithText:@"用户名称" Font:FONT_ArialMT(16) TextColor:[UIColor mianColor:2]];
+    UILabel *nameLabel = [UILabel lableWithText:@"用户名称" Font:FONT_BoldMT(16) TextColor:[UIColor mianColor:2]];
     [contentView addSubview:nameLabel];
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(user_imgv.mas_right).offset(15);
-        make.top.equalTo(user_imgv.mas_top);
+        make.top.equalTo(user_imgv.mas_top).offset(8);
         make.height.equalTo(@(16));
     }];
     
-    UILabel *statusLabel = [UILabel lableWithText:@"认证状态" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
+    
+    NSString *statusStr = @"已认证";
+    UILabel *statusLabel = [UILabel lableWithText:statusStr Font:FONT_ArialMT(13) TextColor:[UIColor whiteColor]];
+    CGSize labelSize = [UILabel getSizeWithText:statusStr andFont:FONT_ArialMT(13) andSize:CGSizeMake(0, 20)];
+    statusLabel.backgroundColor = [UIColor mianColor:2];
+    statusLabel.layer.cornerRadius = 10;
+    statusLabel.layer.masksToBounds = YES;
+    statusLabel.textAlignment = NSTextAlignmentCenter;
     [contentView addSubview:statusLabel];
     [statusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@(17));
+        make.height.equalTo(@(20));
+        make.width.equalTo(@(labelSize.width+20));
         make.left.equalTo(nameLabel.mas_left);
-        make.bottom.equalTo(user_imgv.mas_bottom);
+        make.bottom.equalTo(user_imgv.mas_bottom).offset(-8);
     }];
     
     UITapGestureRecognizer *userInfo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goIntoUserInfo)];

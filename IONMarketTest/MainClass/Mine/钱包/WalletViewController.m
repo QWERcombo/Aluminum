@@ -98,7 +98,7 @@
     mainView.backgroundColor = [UIColor mianColor:2];
     
     UIView *topView = [[UIView alloc] init];
-    topView.backgroundColor = [UIColor whiteColor];
+    topView.backgroundColor = [UIColor clearColor];
     topView.layer.cornerRadius = 10;
     topView.layer.masksToBounds = YES;
     [mainView addSubview:topView];
@@ -108,15 +108,23 @@
         make.right.equalTo(mainView.mas_right).offset(-10);
         make.bottom.equalTo(mainView.mas_bottom).offset(-50);
     }];
+    UIImageView *image_bg = [[UIImageView alloc] init];
+    image_bg.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    image_bg.image = IMG(@"Mine_wallent_bg");
+    [topView addSubview:image_bg];
+    [image_bg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.top.equalTo(topView);
+    }];
     
-    UILabel *hint = [UILabel lableWithText:@"当前余额" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
+    
+    UILabel *hint = [UILabel lableWithText:@"当前余额" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:3]];
     [topView addSubview:hint];
     [hint mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(topView.mas_top).offset(10);
         make.left.equalTo(topView.mas_left).offset(10);
     }];
     
-    UIButton *termButton = [UIButton buttonWithTitle:@"余额说明" andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
+    UIButton *termButton = [UIButton buttonWithTitle:@"余额说明" andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor mianColor:3] andHighlightedTitle:[UIColor mianColor:3] andNormaImage:nil andHighlightedImage:nil];
     [termButton setImage:IMG(@"Mine_term") forState:UIControlStateNormal];
     [termButton addTarget:self action:@selector(termButtonCliker:) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:termButton];
@@ -124,12 +132,13 @@
         make.centerY.equalTo(hint.mas_centerY);
         make.right.equalTo(topView.mas_right).offset(-10);
     }];
+    termButton.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);
     
     UILabel *remainLab = [UILabel lableWithText:@"564.25 元" Font:FONT_ArialMT(25) TextColor:[UIColor mianColor:2]];
     [topView addSubview:remainLab];
     [remainLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(topView.mas_centerY).offset(15);
-        make.left.equalTo(topView.mas_left).offset(10);
+        make.centerX.equalTo(topView.mas_centerX);
     }];
     
     
@@ -150,14 +159,14 @@
         make.left.right.bottom.equalTo(downView);
     }];
     
-    UILabel *label3 = [UILabel lableWithText:@"交易明细" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
+    UILabel *label3 = [UILabel lableWithText:@"交易明细" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:3]];
     [downView addSubview:label3];
     [label3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(downView.mas_centerY);
         make.left.equalTo(downView.mas_left).offset(10);
     }];
     
-    UIButton *paywayButton = [UIButton buttonWithTitle:@"查看全部" andFont:FONT_ArialMT(17) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
+    UIButton *paywayButton = [UIButton buttonWithTitle:@"查看全部" andFont:FONT_ArialMT(17) andtitleNormaColor:[UIColor mianColor:3] andHighlightedTitle:[UIColor mianColor:3] andNormaImage:nil andHighlightedImage:nil];
     [paywayButton setImage:IMG(@"image_more") forState:UIControlStateNormal];
     [paywayButton addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
     [downView addSubview:paywayButton];

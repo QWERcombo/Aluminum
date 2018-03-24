@@ -14,11 +14,39 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self addSubview:[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MainItemView__Pole class]) owner:self options:nil].firstObject];
+        [self addSubview:[[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MainItemView__Pole class]) owner:self options:nil] firstObject]];
+//        self.frame = frame;
     }
     
     return self;
 }
+
+
+- (IBAction)leftTap:(UITapGestureRecognizer *)sender {
+    self.rightImgv.hidden = YES;
+    self.leftImgv.hidden = NO;
+    
+    self.right_top_Label.textColor = [UIColor mianColor:3];
+    self.right_down_Label.textColor  =[UIColor mianColor:3];
+    self.left_top_Label.textColor = [UIColor mianColor:2];
+    self.left_down_Label.textColor = [UIColor mianColor:2];
+}
+- (IBAction)addNewAction:(UIButton *)sender {
+    NSLog(@"%@", sender.currentTitle);
+}
+
+- (IBAction)rightTap:(UITapGestureRecognizer *)sender {
+    self.rightImgv.hidden = NO;
+    self.leftImgv.hidden = YES;
+    
+    self.right_top_Label.textColor = [UIColor mianColor:2];
+    self.right_down_Label.textColor  =[UIColor mianColor:2];
+    self.left_top_Label.textColor = [UIColor mianColor:3];
+    self.left_down_Label.textColor = [UIColor mianColor:3];
+}
+
+
+
 
 
 - (void)loadData:(NSObject *)data andCliker:(ClikBlock)click {
