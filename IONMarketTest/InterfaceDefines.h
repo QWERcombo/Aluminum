@@ -20,6 +20,32 @@
 #define Interface_OrderMoney @"user/getOrderMoney"
 //获取品型的具体参数
 #define Interface_FindDetail @"findDetailById"
+//新建收货地址
+#define Interface_SaveAddress   @"user/saveAddress"
+//修改收货地址
+#define Interface_UpdateAddress    @"user/updateAddress"
+//获取收货地址
+#define Interface_GetAddressByPhone  @"user/getAddressByPhone"
+//删除地址
+#define Interface_DeleteAddress   @"user/deleteAddress"
+//查询开票订单
+#define Interface_OrderList    @"user/ordersList"
+//加入购物车
+#define Interface_SaveToGouwuche   @"user/saveToGouwuche"
+//查询购物车
+#define Interface_GetGouwucheByUser   @"user/getGouwucheByUser"
+//直接购买 生成订单
+#define Interface_OrderSave   @"user/ordersSave"
+//查询订单列表
+#define Interface_OrdersList   @"user/ordersList"
+//从购物车生成订单
+#define Interface_SaveFromGouwuche   @"user/saveFromGouwuche"
+//获取物流费
+#define Interface_GetWuliufei  @"user/getWuliufei"
+
+
+
+
 
 
 

@@ -21,6 +21,8 @@
 
 @property (nonatomic, strong) NSIndexPath *lastIndexPath;// 选中的index
 
+@property (nonatomic, strong) TicketModel *selectedModel;
+
 @end
 
 @implementation TicketViewController {
@@ -31,10 +33,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.cellType = @"0";
-    for (NSInteger i=0; i<10; i++) {
-        BaseModel *model = [BaseModel new];
-        [self.dataMuArr addObject:model];
-    }
+    
+    [self getDataSource:@"0"];
     [self setupSubviews];
 }
 
@@ -124,7 +124,8 @@
     } else if ([self.cellType isEqualToString:@"1"]) {
         cellName = @"EndTicketCell";
     } else {
-        TicketInfoCell *cell = (TicketInfoCell *)[UtilsMold creatCell:@"TicketInfoCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+        
+        TicketInfoCell *cell = (TicketInfoCell *)[UtilsMold creatCell:@"TicketInfoCell" table:tableView deledate:self model:self.dataMuArr.count?[self.dataMuArr objectAtIndex:indexPath.row]:nil data:nil andCliker:^(NSDictionary *clueDic) {
             NSLog(@"+++%@", clueDic);
         }];
         
@@ -173,6 +174,7 @@
         [applyButton setTitle:@"申请发票" forState:UIControlStateNormal];
     }
     
+    [self getDataSource:SINT(sender.tag-100)];
 }
 
 - (void)applyCliker:(UIButton *)sender {
@@ -195,20 +197,41 @@
         [self.tabView reloadRowsAtIndexPaths:@[tempIndexPath] withRowAnimation:UITableViewRowAnimationNone];
     }
     // 记住这一次的
-    BaseModel *model = self.dataMuArr[indexPath.row];
+    TicketModel *model = self.dataMuArr[indexPath.row];
     model.isSelectedCard = YES;
     [self.tabView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     self.lastIndexPath = indexPath;
     //接下来可以保存你选中的做需要做的事情。
     
-//    self.selectedCard = model;
+    self.selectedModel = model;
+    
 }
+
 
 #pragma mark ----- DataSource
 
-- (void)getDataSource {
+- (void)getDataSource:(NSString *)status {
     
-    
+    [self.dataMuArr removeAllObjects];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:status forKey:@"fapiaoStatus"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"+++%@", resultDic);
+        
+        NSArray *dataSourceArr = resultDic[@"list"];
+        
+        for (NSDictionary *dic in dataSourceArr) {
+            
+            TicketModel *model = [[TicketModel alloc] initWithDictionary:dic error:nil];
+            
+            [self.dataMuArr addObject:model];
+        }
+        
+        [self.tabView reloadData];
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
     
     
     

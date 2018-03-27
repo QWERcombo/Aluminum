@@ -21,7 +21,7 @@
     for (NSInteger i = 0 ; i<10; i++) {
         [self.dataMuArr addObject:@"1"];
     }
-    
+    [self getData];
     [self setupSubviews];
 }
 
@@ -91,7 +91,18 @@
     [self.navigationController pushViewController:add animated:YES];
 }
 
-
+- (void)getData {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetAddressByPhone andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

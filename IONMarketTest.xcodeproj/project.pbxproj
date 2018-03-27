@@ -16,6 +16,8 @@
 		560212A3205961D9009EF75D /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560212A2205961D9009EF75D /* SettingTableViewController.m */; };
 		560212A620596537009EF75D /* ChangeCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560212A520596537009EF75D /* ChangeCodeViewController.m */; };
 		560212A920596550009EF75D /* SettingDescribViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560212A820596550009EF75D /* SettingDescribViewController.m */; };
+		560264B6206A6A5400F9C405 /* TicketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 560264B5206A6A5400F9C405 /* TicketModel.m */; };
+		560264BA206A7C1D00F9C405 /* ShopCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 560264B9206A7C1D00F9C405 /* ShopCar.m */; };
 		5632BFAC205AA3F80009CD34 /* SetOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFAB205AA3F80009CD34 /* SetOrderViewController.m */; };
 		5632BFAF205AB47D0009CD34 /* QuotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFAE205AB47D0009CD34 /* QuotationViewController.m */; };
 		5632BFB2205AB5920009CD34 /* QuotationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFB1205AB5920009CD34 /* QuotationDetailViewController.m */; };
@@ -200,6 +202,10 @@
 		560212A520596537009EF75D /* ChangeCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeCodeViewController.m; sourceTree = "<group>"; };
 		560212A720596550009EF75D /* SettingDescribViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingDescribViewController.h; sourceTree = "<group>"; };
 		560212A820596550009EF75D /* SettingDescribViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingDescribViewController.m; sourceTree = "<group>"; };
+		560264B4206A6A5400F9C405 /* TicketModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketModel.h; sourceTree = "<group>"; };
+		560264B5206A6A5400F9C405 /* TicketModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketModel.m; sourceTree = "<group>"; };
+		560264B8206A7C1D00F9C405 /* ShopCar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCar.h; sourceTree = "<group>"; };
+		560264B9206A7C1D00F9C405 /* ShopCar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCar.m; sourceTree = "<group>"; };
 		5632BFAA205AA3F80009CD34 /* SetOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetOrderViewController.h; sourceTree = "<group>"; };
 		5632BFAB205AA3F80009CD34 /* SetOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetOrderViewController.m; sourceTree = "<group>"; };
 		5632BFAD205AB47D0009CD34 /* QuotationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuotationViewController.h; sourceTree = "<group>"; };
@@ -604,6 +610,24 @@
 			path = "个人信息";
 			sourceTree = "<group>";
 		};
+		560264B3206A69B500F9C405 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				560264B4206A6A5400F9C405 /* TicketModel.h */,
+				560264B5206A6A5400F9C405 /* TicketModel.m */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		560264B7206A7C0A00F9C405 /* ShopCar */ = {
+			isa = PBXGroup;
+			children = (
+				560264B8206A7C1D00F9C405 /* ShopCar.h */,
+				560264B9206A7C1D00F9C405 /* ShopCar.m */,
+			);
+			path = ShopCar;
+			sourceTree = "<group>";
+		};
 		5650869D205CD96500FD8497 /* Order */ = {
 			isa = PBXGroup;
 			children = (
@@ -645,6 +669,8 @@
 		568CB0862065F82D00B48318 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				560264B7206A7C0A00F9C405 /* ShopCar */,
+				560264B3206A69B500F9C405 /* Mine */,
 				568CB0872065F84300B48318 /* Main */,
 			);
 			path = Model;
@@ -1449,8 +1475,10 @@
 				5695BF1F2042ABAB0036D54B /* UserData.m in Sources */,
 				56940C3420515E1800DFA6D6 /* UIBarButtonItem+Badge.m in Sources */,
 				A22981CB20626193007B6112 /* TicketInfoCell.m in Sources */,
+				560264BA206A7C1D00F9C405 /* ShopCar.m in Sources */,
 				5695BF0F2042AB0E0036D54B /* NSData+NEUAES.m in Sources */,
 				5695BF552042AC1D0036D54B /* EasyShowAlertView.m in Sources */,
+				560264B6206A6A5400F9C405 /* TicketModel.m in Sources */,
 				560212A3205961D9009EF75D /* SettingTableViewController.m in Sources */,
 				560212A920596550009EF75D /* SettingDescribViewController.m in Sources */,
 				5695BF0D2042AB0E0036D54B /* NEUBase64.m in Sources */,

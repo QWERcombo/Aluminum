@@ -32,6 +32,8 @@
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Login andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
+        [[UserData currentUser] giveData:resultDic[@"user"]];
+        
         [[UtilsData sharedInstance] postLoginNotice];
         
     } failure:^(NSString *error, NSInteger code) {

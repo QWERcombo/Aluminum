@@ -14,7 +14,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self addSubview:[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MainItemView__Matter class]) owner:self options:nil].firstObject];
+        self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MainItemView__Matter class]) owner:self options:nil] firstObject];
+        self.frame = frame;
     }
     
     return self;

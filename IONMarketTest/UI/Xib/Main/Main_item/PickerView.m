@@ -15,6 +15,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self = [[[NSBundle mainBundle] loadNibNamed:@"PickerView" owner:self options:nil] firstObject];
+        
+        self.frame = frame;
     }
     return self;
 }

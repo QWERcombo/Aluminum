@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,9 +23,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="DWX-Ie-hwQ">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="DWX-Ie-hwQ">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="DWX-Ie-hwQ" secondAttribute="height" multiplier="375:667" id="I4L-Ma-28y"/>
+                    </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Hf-FK-yWt">
                     <rect key="frame" x="148" y="100" width="80" height="80"/>
@@ -38,14 +41,14 @@
                     <rect key="frame" x="25" y="255" width="325" height="45"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_phone" translatesAutoresizingMaskIntoConstraints="NO" id="qfO-gi-sfo">
-                            <rect key="frame" x="10" y="12.5" width="20" height="20"/>
+                            <rect key="frame" x="10" y="13" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="BmO-0Y-esX"/>
                                 <constraint firstAttribute="width" constant="20" id="FFT-gq-YVa"/>
                             </constraints>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="18625144206" placeholder="请输入手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5gK-SU-rql">
-                            <rect key="frame" x="45" y="14.5" width="260" height="17"/>
+                            <rect key="frame" x="45" y="14" width="260" height="17"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -78,7 +81,7 @@
                             </constraints>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qvd-gf-nsP">
-                            <rect key="frame" x="45" y="13.5" width="260" height="17"/>
+                            <rect key="frame" x="45" y="14" width="260" height="17"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -136,8 +139,10 @@
                 <constraint firstItem="qaa-3M-Zsx" firstAttribute="top" secondItem="OjE-pI-oj2" secondAttribute="bottom" constant="20" id="L1q-cE-YnQ"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="sVo-lT-3dp" secondAttribute="trailing" constant="25" id="Rwa-Vy-XBs"/>
                 <constraint firstItem="9Hf-FK-yWt" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="80" id="UqJ-4q-9tq"/>
+                <constraint firstItem="DWX-Ie-hwQ" firstAttribute="centerX" secondItem="OjE-pI-oj2" secondAttribute="centerX" id="Vq7-Od-90R"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="OjE-pI-oj2" secondAttribute="trailing" constant="25" id="axO-6C-DSE"/>
                 <constraint firstItem="lXU-Wh-seU" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="25" id="fIE-vw-701"/>
+                <constraint firstItem="DWX-Ie-hwQ" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" id="jGo-US-FzV"/>
                 <constraint firstItem="OjE-pI-oj2" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="25" id="nyx-Wh-cJm"/>
                 <constraint firstItem="sVo-lT-3dp" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="25" id="plo-Ew-DE4"/>
                 <constraint firstItem="qaa-3M-Zsx" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="25" id="sG9-E5-unm"/>

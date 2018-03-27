@@ -24,6 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor mianColor:1];
+    [self getDataSource];
     [self setupSubviews];
 }
 
@@ -132,9 +133,15 @@
 
 - (void)getDataSource {
     
-    
-    
-    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:@"18625144206" forKey:@"phone"];
+    [dict setValue:@"0" forKey:@"type"]; // 0未支付   1已支付
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrdersList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"++++%@", resultDic);
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
     
     
 }

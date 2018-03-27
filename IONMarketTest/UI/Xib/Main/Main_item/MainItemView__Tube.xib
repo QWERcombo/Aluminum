@@ -10,22 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainItemView__Tube">
-            <connections>
-                <outlet property="amountTF" destination="6Xx-vh-F3s" id="x2c-xy-K1N"/>
-                <outlet property="leftImgv" destination="muE-gm-JDY" id="VbY-Mg-MqV"/>
-                <outlet property="left_down_Label" destination="QIX-Z0-FBT" id="uC6-2Y-pKb"/>
-                <outlet property="left_top_Label" destination="oOu-ha-vo6" id="21P-tr-s1k"/>
-                <outlet property="lengthTF" destination="N0l-PI-WDn" id="9m9-S3-Qjd"/>
-                <outlet property="rightImgv" destination="Onm-9l-Bsg" id="4ku-Zw-4b6"/>
-                <outlet property="right_down_Label" destination="Pa7-ZM-K7b" id="3kA-Ok-PO3"/>
-                <outlet property="right_top_Label" destination="ZSx-m0-r6F" id="GbV-Ql-cmm"/>
-                <outlet property="thinTF" destination="TlC-bb-806" id="OkD-us-Egd"/>
-                <outlet property="widthTF" destination="0b6-gM-Exv" id="P9Q-Mt-upo"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MainItemView__Tube">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -274,7 +261,7 @@
                     </constraints>
                     <state key="normal" title="添加"/>
                     <connections>
-                        <action selector="AddNewAction:" destination="-1" eventType="touchUpInside" id="WAG-iK-9Iw"/>
+                        <action selector="AddNewAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="1qQ-D8-uUR"/>
                     </connections>
                 </button>
             </subviews>
@@ -307,16 +294,30 @@
                 <constraint firstItem="Ezy-Kd-HVB" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="yLh-Ln-1T4"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="amountTF" destination="6Xx-vh-F3s" id="EBW-ku-gUm"/>
+                <outlet property="leftCountLabel" destination="1RS-LT-knr" id="y5s-wS-TFH"/>
+                <outlet property="leftImgv" destination="muE-gm-JDY" id="lfb-Ab-lqR"/>
+                <outlet property="left_down_Label" destination="QIX-Z0-FBT" id="Qv7-ya-gay"/>
+                <outlet property="left_top_Label" destination="oOu-ha-vo6" id="J3D-KM-X7r"/>
+                <outlet property="lengthTF" destination="N0l-PI-WDn" id="JMH-Zq-FWI"/>
+                <outlet property="rightCountLabel" destination="mwd-5I-Ksj" id="IA6-iL-CBU"/>
+                <outlet property="rightImgv" destination="Onm-9l-Bsg" id="rjh-Ru-ibd"/>
+                <outlet property="right_down_Label" destination="Pa7-ZM-K7b" id="esp-Ab-ajT"/>
+                <outlet property="right_top_Label" destination="ZSx-m0-r6F" id="lks-zO-uZd"/>
+                <outlet property="thinTF" destination="TlC-bb-806" id="qay-by-dgb"/>
+                <outlet property="widthTF" destination="0b6-gM-Exv" id="boj-kT-j7A"/>
+            </connections>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
         <tapGestureRecognizer id="nMw-qX-8zh">
             <connections>
-                <action selector="rightTap:" destination="-1" id="6wO-cO-gpW"/>
+                <action selector="rightTap:" destination="iN0-l3-epB" id="vao-hN-rW0"/>
             </connections>
         </tapGestureRecognizer>
         <tapGestureRecognizer id="83e-6C-7tF">
             <connections>
-                <action selector="leftTap:" destination="-1" id="coD-eP-xLY"/>
+                <action selector="leftTap:" destination="iN0-l3-epB" id="MrJ-Ey-oFH"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

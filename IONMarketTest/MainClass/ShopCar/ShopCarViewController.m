@@ -33,6 +33,7 @@
     [self.sortDic setValue:@[@"1",@"2",@"3",@"4",@"5"] forKey:@"3"];
     self.dataMuArr = [[self.sortDic allKeys] mutableCopy];
     
+    [self getData];
     [self setupSubViews];
 }
 
@@ -283,6 +284,33 @@
     
     return blank;
 }
+
+
+
+- (void) getData {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:@"18625144206" forKey:@"phone"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetGouwucheByUser andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"%@", resultDic);
+        
+        NSArray *dataSource = resultDic[@"result"];
+        
+        for (NSDictionary *dic in dataSource) {
+            
+            ShopCar *model = [[ShopCar alloc] initWithDictionary:dic error:nil];
+            
+            [self.dataMuArr addObject:model];
+        }
+        
+//        [self.tabView reloadData];
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

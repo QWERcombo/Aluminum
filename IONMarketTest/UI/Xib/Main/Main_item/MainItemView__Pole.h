@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *right_top_Label;
 @property (weak, nonatomic) IBOutlet UILabel *right_down_Label;
 @property (weak, nonatomic) IBOutlet UIImageView *rightImgv;
+@property (weak, nonatomic) IBOutlet UILabel *rightCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *leftCountLabel;
 
 
 

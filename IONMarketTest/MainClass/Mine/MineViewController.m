@@ -107,9 +107,9 @@
     
     UIImageView *user_imgv = [[UIImageView alloc] init];
     user_imgv.layer.cornerRadius = 30;
-    user_imgv.backgroundColor = [UIColor mianColor:2];
     user_imgv.clipsToBounds = YES;
     [contentView addSubview:user_imgv];
+    [user_imgv sd_setImageWithURL:URL_STRING([UserData currentUser].headImgUrl)];
     [user_imgv mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.equalTo(@(60));
         make.left.equalTo(contentView.mas_left).offset(20);

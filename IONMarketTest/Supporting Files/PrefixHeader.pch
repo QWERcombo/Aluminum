@@ -88,8 +88,8 @@
 
 //Model
 #import "MainItemTypeModel.h"
-
-
+#import "TicketModel.h"
+#import "ShopCar.h"
 
 
 

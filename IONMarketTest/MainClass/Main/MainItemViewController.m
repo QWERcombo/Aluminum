@@ -13,6 +13,7 @@
 #import "MainItemView__Tube.h"//型材
 #import "MainItemView__Matter.h"//管材
 
+
 @interface MainItemViewController ()<UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (nonatomic, assign) NSInteger lastSelected;
@@ -148,13 +149,9 @@
 
 - (void)createScrollLayoutView {
     [self.sctollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    self.sctollView = [[UIScrollView alloc] init];
+    self.sctollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIGHT, SCREEN_HEIGHT-150-64)];
     [self.view addSubview:self.sctollView];
-    [_sctollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
-        make.bottom.equalTo(self.view.mas_bottom).offset(-50);
-        make.top.equalTo(self.view.mas_top).offset(100);
-    }];
+
     NSLog(@"+++%ld", self.lastSelected);
     
     if (self.lastSelected==100) {
@@ -164,8 +161,9 @@
             [self selectInfomationForUser];
         }];
         
-        [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, single.height)];
-        [_sctollView addSubview:single];
+        [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, 600)];
+        [self.sctollView addSubview:single];
+        
     } else if (self.lastSelected == 101) {
         MainItemView__Pole *pole = [[MainItemView__Pole alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 350)];
         [pole loadData:nil andCliker:^(NSString *clueStr) {
@@ -280,7 +278,7 @@
             MainItemTypeModel *model = [self.dataMuArr objectAtIndex:sender.tag-200];
             NSLog(@"%@", model);
             
-//            [self getInfomationWithID:model.id];
+            [self getInfomationWithID:model.id];
         }
         
     }
@@ -290,12 +288,51 @@
 }
 
 - (void)buyAction:(UIButton *)sender {
-    NSLog(@"%@", sender.currentTitle);
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:@"1000" forKey:@"chang"];
+    [dict setValue:@"1000" forKey:@"kuang"];
+    [dict setValue:@"100" forKey:@"hou"];
+    [dict setValue:@"快速" forKey:@"type"];
+    [dict setValue:@"1000" forKey:@"amount"];
+    [dict setValue:@"零切" forKey:@"zhonglei"];
+    [dict setValue:@"30" forKey:@"erjimulu"];
+    [dict setValue:@"6400" forKey:@"money"];
+    [dict setValue:@"18625144206" forKey:@"phone"];
+//    [dict setValue:@"1" forKey:@"addressId"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderSave andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"+++%@", resultDic);
+        
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:1 aboutType:WHShowViewMode_Text state:YES];
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+        
+    }];
     
 }
 
 - (void)carAction:(UIButton *)sender {
-    NSLog(@"%@", sender.currentTitle);
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:@"1000" forKey:@"chang"];
+    [dict setValue:@"1000" forKey:@"kuang"];
+    [dict setValue:@"100" forKey:@"hou"];
+    [dict setValue:@"快速" forKey:@"type"];
+    [dict setValue:@"1" forKey:@"amount"];
+    [dict setValue:@"零切" forKey:@"zhonglei"];
+    [dict setValue:@"30" forKey:@"erjimulu"];
+    [dict setValue:@"6400" forKey:@"money"];
+    [dict setValue:@"18625144206" forKey:@"phone"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveToGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"+++%@", resultDic);
+        
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:1 aboutType:WHShowViewMode_Text state:YES];
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+        
+    }];
     
 }
 
@@ -312,7 +349,7 @@
             [self.dataMuArr addObject:model];
             
         }
-//        [self ahahaha];
+        [self ahahaha];
         [self createTopActionView];//顶部选择
         
     } failure:^(NSString *error, NSInteger code) {
@@ -324,12 +361,13 @@
 
 - (void)ahahaha {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@"100" forKey:@"chang"];
-    [dict setValue:@"100" forKey:@"kuang"];
-    [dict setValue:@"100" forKey:@"hou"];
+    [dict setValue:@"1000" forKey:@"chang"];
+    [dict setValue:@"1000" forKey:@"kuang"];
+    [dict setValue:@"1000" forKey:@"hou"];
     [dict setValue:@"快速" forKey:@"type"];
-    [dict setValue:@"2" forKey:@"amount"];
-    [dict setValue:@"整板" forKey:@"zhonglei"];
+    [dict setValue:@"10" forKey:@"amount"];
+    [dict setValue:@"零切" forKey:@"zhonglei"];
+    [dict setValue:@"30" forKey:@"erjimulu"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderMoney andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"+++%@", resultDic);
         

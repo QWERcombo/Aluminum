@@ -28,6 +28,9 @@
     if (self.mode == Mode_Set) {
         self.title = @"新增地址";
         self.deleteView.hidden = YES;
+        
+//        self.setDefaultSwitch.on = YES;
+        
     } else {
         self.title = @"修改地址";
         self.deleteView.hidden = NO;
@@ -54,15 +57,31 @@
 }
 - (IBAction)setDefaultAc:(id)sender {
     NSLog(@"%d", ((UISwitch *)sender).on);
-    
+    self.setDefaultSwitch.on = ((UISwitch *)sender).on;
     
 }
 
 
 - (IBAction)saveAc:(id)sender {
-    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"保存成功" time:0.0 aboutType:WHShowViewMode_Text state:YES];
-    [self.navigationController popViewControllerAnimated:YES];
+//    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"保存成功" time:0.0 aboutType:WHShowViewMode_Text state:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:[UserData currentUser].id forKey:@"userId"];
+    [dict setValue:self.phoneTF.text forKey:@"phone"];
+    [dict setValue:self.holderTF.text forKey:@"name"];
+    [dict setValue:self.addressTextView.text forKey:@"address"];
+    [dict setValue:SINT(self.setDefaultSwitch.on) forKey:@"moren"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveAddress andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"%@", resultDic);
+        
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

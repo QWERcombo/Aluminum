@@ -140,7 +140,7 @@ DEF_SINGLETON(PublicFuntionTool);
 - (void)userLoginOut {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
-    [paramDic setObject:[NEUSecurityUtil FormatJSONString:@{@"userToken":[UserData currentUser].userToken}] forKey:@"user.loginOut"];
+//    [paramDic setObject:[NEUSecurityUtil FormatJSONString:@{@"userToken":[UserData currentUser].userToken}] forKey:@"user.loginOut"];
     NSString *json = [NEUSecurityUtil FormatJSONString:paramDic];
     [dict setObject:json forKey:@"key"];
     
@@ -172,11 +172,11 @@ DEF_SINGLETON(PublicFuntionTool);
 //        NSLog(@"++++-----%@", resultDic);
         if ([resultDic[@"resultCode"] integerValue]==0) {
             [[UserData currentUser] giveData:@{@"isCheck":[NSString stringWithFormat:@"%@",resultDic[@"resultData"]]}];
-            if ([[UserData currentUser].uid integerValue]==5) {
-                [self appStorecheck];
-            } else {
-                [[UtilsData sharedInstance] postLoginNotice];
-            }
+//            if ([[UserData currentUser].uid integerValue]==5) {
+//                [self appStorecheck];
+//            } else {
+//                [[UtilsData sharedInstance] postLoginNotice];
+//            }
         }
     } failure:^(NSString *error, NSInteger code) {
         
@@ -186,7 +186,7 @@ DEF_SINGLETON(PublicFuntionTool);
 - (void)appStorecheck {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
-    [paramDic setObject:[NEUSecurityUtil FormatJSONString:@{@"appId":APP_ID,@"userName":[UserData currentUser].userName}] forKey:@"transqury.isCheck2"];
+//    [paramDic setObject:[NEUSecurityUtil FormatJSONString:@{@"appId":APP_ID,@"userName":[UserData currentUser].userName}] forKey:@"transqury.isCheck2"];
     NSString *json = [NEUSecurityUtil FormatJSONString:paramDic];
     [dict setObject:json forKey:@"key"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:@"" andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
