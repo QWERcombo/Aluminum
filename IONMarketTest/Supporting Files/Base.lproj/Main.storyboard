@@ -434,6 +434,120 @@
             </objects>
             <point key="canvasLocation" x="344.80000000000001" y="2767.4662668665669"/>
         </scene>
+        <!--库存-->
+        <scene sceneID="QZb-8t-fRY">
+            <objects>
+                <viewController storyboardIdentifier="InventoryViewController" title="库存" id="VEM-CS-UD2" customClass="InventoryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="01c-Yz-dxi"/>
+                        <viewControllerLayoutGuide type="bottom" id="l7W-dA-unp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q1S-vL-IFq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFs-ej-8jv">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9iS-pz-eC9">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <subviews>
+                                            <searchBar contentMode="redraw" placeholder="  请输入品名、牌号、状态" translatesAutoresizingMaskIntoConstraints="NO" id="8y0-eo-e1C">
+                                                <rect key="frame" x="15" y="0.0" width="345" height="50"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </searchBar>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.78044933080000001" green="0.7801136971" blue="0.80000001190000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="8y0-eo-e1C" firstAttribute="top" secondItem="9iS-pz-eC9" secondAttribute="top" id="Psp-Jf-rK4"/>
+                                            <constraint firstItem="8y0-eo-e1C" firstAttribute="leading" secondItem="9iS-pz-eC9" secondAttribute="leading" constant="15" id="WuD-Sf-J0l"/>
+                                            <constraint firstAttribute="height" constant="50" id="fdb-UV-TCw"/>
+                                            <constraint firstAttribute="trailing" secondItem="8y0-eo-e1C" secondAttribute="trailing" constant="15" id="i6I-SM-9q7"/>
+                                            <constraint firstAttribute="bottom" secondItem="8y0-eo-e1C" secondAttribute="bottom" id="swS-tQ-VhO"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k48-Ce-gP7">
+                                        <rect key="frame" x="20" y="60" width="80" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="WcM-ab-nKk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="时间" image="Main_select">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QxS-3B-eEV">
+                                        <rect key="frame" x="275" y="60" width="80" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="y5C-wP-yqF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="55" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="筛选" image="Main_choose">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQj-lP-vVA">
+                                        <rect key="frame" x="130" y="60" width="80" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="GdT-9g-COY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="价格" image="Main_unselect">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="99" id="40A-2D-ula"/>
+                                    <constraint firstItem="k48-Ce-gP7" firstAttribute="leading" secondItem="eFs-ej-8jv" secondAttribute="leading" constant="20" id="5Zl-v8-zuR"/>
+                                    <constraint firstItem="9iS-pz-eC9" firstAttribute="top" secondItem="eFs-ej-8jv" secondAttribute="top" id="5bN-Uq-M8Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="QxS-3B-eEV" secondAttribute="trailing" constant="20" id="Qk7-7F-HDx"/>
+                                    <constraint firstAttribute="bottom" secondItem="QxS-3B-eEV" secondAttribute="bottom" constant="10" id="SXY-fV-69V"/>
+                                    <constraint firstItem="QxS-3B-eEV" firstAttribute="top" secondItem="9iS-pz-eC9" secondAttribute="bottom" constant="10" id="g4M-Q4-wMK"/>
+                                    <constraint firstAttribute="bottom" secondItem="k48-Ce-gP7" secondAttribute="bottom" constant="10" id="gfa-rO-OpJ"/>
+                                    <constraint firstItem="bQj-lP-vVA" firstAttribute="leading" secondItem="k48-Ce-gP7" secondAttribute="trailing" constant="30" id="lN7-QH-3ed"/>
+                                    <constraint firstItem="bQj-lP-vVA" firstAttribute="top" secondItem="9iS-pz-eC9" secondAttribute="bottom" constant="10" id="pym-83-09q"/>
+                                    <constraint firstItem="9iS-pz-eC9" firstAttribute="leading" secondItem="eFs-ej-8jv" secondAttribute="leading" id="q8T-tl-4I4"/>
+                                    <constraint firstAttribute="bottom" secondItem="bQj-lP-vVA" secondAttribute="bottom" constant="10" id="tVl-Ut-Mmb"/>
+                                    <constraint firstItem="k48-Ce-gP7" firstAttribute="top" secondItem="9iS-pz-eC9" secondAttribute="bottom" constant="10" id="uHh-bI-lKu"/>
+                                    <constraint firstAttribute="trailing" secondItem="9iS-pz-eC9" secondAttribute="trailing" id="uqi-i0-6XJ"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FjZ-Kl-qXg">
+                                <rect key="frame" x="0.0" y="99" width="375" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="VEM-CS-UD2" id="5QK-5G-MRT"/>
+                                    <outlet property="delegate" destination="VEM-CS-UD2" id="OUw-YR-CvL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="l7W-dA-unp" firstAttribute="top" secondItem="FjZ-Kl-qXg" secondAttribute="bottom" id="3Jh-1d-3ZA"/>
+                            <constraint firstItem="eFs-ej-8jv" firstAttribute="leading" secondItem="q1S-vL-IFq" secondAttribute="leading" id="5kC-w1-7HX"/>
+                            <constraint firstItem="eFs-ej-8jv" firstAttribute="top" secondItem="q1S-vL-IFq" secondAttribute="top" id="BLm-Ir-pz5"/>
+                            <constraint firstAttribute="trailing" secondItem="FjZ-Kl-qXg" secondAttribute="trailing" id="HV6-iH-aVz"/>
+                            <constraint firstItem="FjZ-Kl-qXg" firstAttribute="leading" secondItem="q1S-vL-IFq" secondAttribute="leading" id="fZ3-Df-MCp"/>
+                            <constraint firstAttribute="trailing" secondItem="eFs-ej-8jv" secondAttribute="trailing" id="sk3-z1-COJ"/>
+                            <constraint firstItem="FjZ-Kl-qXg" firstAttribute="top" secondItem="eFs-ej-8jv" secondAttribute="bottom" id="zMO-hX-tzo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="FjZ-Kl-qXg" id="BDl-ux-ErN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vBj-uo-jyN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1132" y="2767"/>
+        </scene>
         <!--分享推广-->
         <scene sceneID="RVh-8W-OcD">
             <objects>
@@ -560,7 +674,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Main_choose" width="15" height="13"/>
         <image name="Main_message" width="16" height="22"/>
+        <image name="Main_select" width="4" height="8"/>
+        <image name="Main_unselect" width="4" height="8"/>
         <image name="empty_image" width="64" height="53"/>
         <image name="image_car_0" width="25" height="25"/>
         <image name="image_car_1" width="25" height="25"/>

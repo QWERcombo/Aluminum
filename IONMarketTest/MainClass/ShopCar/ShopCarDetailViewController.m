@@ -44,14 +44,14 @@
         make.height.equalTo(@(80));
     }];
     
-    UIButton *nextButton = [UIButton buttonWithTitle:@"下一步" andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+    UIButton *nextButton = [UIButton buttonWithTitle:@"下一步" andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:IMG(@"Main_shop_car") andHighlightedImage:IMG(@"Main_shop_car")];
     nextButton.backgroundColor = [UIColor mianColor:2];
     [nextButton addTarget:self action:@selector(nextButtonCliker:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:nextButton];
     [nextButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.bottom.equalTo(bottomView);
         make.top.equalTo(bottomView.mas_top).offset(30);
-        make.width.equalTo(@(100));
+        make.width.equalTo(@(120));
     }];
     
     priceLabel = [UILabel lableWithText:@"实付款  ￥152151.00元" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
@@ -147,7 +147,6 @@
     mainView.backgroundColor = [UIColor mianColor:1];
     UILabel *nameLab = [UILabel lableWithText:@"    整板" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
     [mainView addSubview:nameLab];
-    nameLab.backgroundColor = [UIColor mianColor:3];
     nameLab.frame = CGRectMake(0, 10, SCREEN_WIGHT, 30);
     return mainView;
 }

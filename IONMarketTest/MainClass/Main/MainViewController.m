@@ -113,7 +113,7 @@
                     MessageViewController *message = [MessageViewController new];
                     [self.navigationController pushViewController:message animated:YES];
                 } else if ([name isEqualToString:@"整板"]) {
-                    InventoryViewController *inven = [InventoryViewController new];
+                    InventoryViewController *inven = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"InventoryViewController"];
                     [self.navigationController pushViewController:inven animated:YES];
                 } else {
                     MainItemViewController *main_item = [[MainItemViewController alloc] init];

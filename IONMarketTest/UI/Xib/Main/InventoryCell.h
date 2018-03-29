@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *comparyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *infoTypeLabel;
 
 
 + (instancetype)getInventoryCell;

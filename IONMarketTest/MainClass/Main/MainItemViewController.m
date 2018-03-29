@@ -278,7 +278,7 @@
             MainItemTypeModel *model = [self.dataMuArr objectAtIndex:sender.tag-200];
             NSLog(@"%@", model);
             
-            [self getInfomationWithID:model.id];
+//            [self getInfomationWithID:model.id];
         }
         
     }
@@ -338,8 +338,8 @@
 
 #pragma mark ----- Data
 - (void)getDataSource {
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"---%@", resultDic);
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+//        NSLog(@"---%@", resultDic);
         NSArray *dataArr = resultDic[@"list"];
         
         for (NSDictionary *dataDic in dataArr) {
@@ -363,12 +363,12 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:@"1000" forKey:@"chang"];
     [dict setValue:@"1000" forKey:@"kuang"];
-    [dict setValue:@"1000" forKey:@"hou"];
+    [dict setValue:@"100" forKey:@"hou"];
     [dict setValue:@"快速" forKey:@"type"];
     [dict setValue:@"10" forKey:@"amount"];
     [dict setValue:@"零切" forKey:@"zhonglei"];
     [dict setValue:@"30" forKey:@"erjimulu"];
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderMoney andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderMoney andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"+++%@", resultDic);
         
         

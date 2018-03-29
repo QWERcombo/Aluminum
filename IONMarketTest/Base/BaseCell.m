@@ -22,7 +22,7 @@
         [_line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.equalTo(@(1));
             make.bottom.equalTo(self.mas_bottom);
-            make.width.equalTo(@(SCREEN_WIGHT-25));
+            make.width.equalTo(@(SCREEN_WIGHT-40));
             make.centerX.equalTo(self.contentView.mas_centerX);
         }];
         

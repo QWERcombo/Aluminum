@@ -10,6 +10,7 @@
 #import "WholeBoardViewController.h"
 
 @interface InventoryViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -18,19 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"库存";
     
-    [self setupSubviews];
 }
-
-- (void)setupSubviews {
-    [self.view addSubview:self.tabView];
-    [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.bottom.equalTo(self.view);
-    }];
-    self.tabView.backgroundColor = [UIColor mianColor:1];
-}
-
 
 #pragma mark ----delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
