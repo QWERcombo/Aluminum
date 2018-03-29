@@ -25,7 +25,7 @@
 //修改收货地址
 #define Interface_UpdateAddress    @"user/updateAddress"
 //获取收货地址
-#define Interface_GetAddressByPhone  @"user/getAddressByPhone"
+#define Interface_GetAddressByPhone  @"user/getAddressById"
 //删除地址
 #define Interface_DeleteAddress   @"user/deleteAddress"
 //查询开票订单
@@ -43,8 +43,8 @@
 //获取物流费
 #define Interface_GetWuliufei  @"user/getWuliufei"
 
-
-
+//获取个人发票信息
+#define Interface_GetFapiaoByUser  @"user/getFapiaoByUser"
 
 
 

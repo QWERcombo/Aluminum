@@ -50,9 +50,11 @@
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
     self.click = click;
-    
-    
-    
+    AddressModel *dataM = (AddressModel *)model;
+    self.phoneLab.text = [NSString stringWithFormat:@"%@  %@", dataM.name, dataM.phone];
+//    self.cityLab.text = @"";
+    self.detaiLab.text = dataM.address;
+    self.defalut.selected = [dataM.moren intValue];
 }
 
 @end

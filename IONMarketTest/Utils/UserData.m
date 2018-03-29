@@ -24,7 +24,7 @@
         _commission=[aDecoder decodeObjectForKey:@"commission"];
         _deleted=[aDecoder decodeObjectForKey:@"deleted"];
         _headImgUrl=[aDecoder decodeObjectForKey:@"headImgUrl"];
-        
+        _phone=[aDecoder decodeObjectForKey:@"phone"];
         
     }
     return self;
@@ -40,7 +40,7 @@
     if(_commission) [aCoder encodeObject:_commission forKey:@"commission"];
     if(_deleted) [aCoder encodeObject:_deleted forKey:@"deleted"];
     if(_headImgUrl) [aCoder encodeObject:_headImgUrl forKey:@"headImgUrl"];
-    
+    if(_phone) [aCoder encodeObject:_phone forKey:@"phone"];
  }
 
 -(void)giveData:(NSDictionary *)dic{

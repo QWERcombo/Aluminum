@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *phoneLab;
 @property (weak, nonatomic) IBOutlet UILabel *cityLab;
 @property (weak, nonatomic) IBOutlet UILabel *detaiLab;
-
 @property (weak, nonatomic) IBOutlet UIButton *defalut;
 
 

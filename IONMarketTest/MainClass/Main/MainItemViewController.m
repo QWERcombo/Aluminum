@@ -153,12 +153,16 @@
     [self.view addSubview:self.sctollView];
 
     NSLog(@"+++%ld", self.lastSelected);
-    
+    __weak typeof(self) weakself = self;
     if (self.lastSelected==100) {
         MainItem__Single *single = [[MainItem__Single alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 350)];
         [single loadData:nil andCliker:^(NSString *clueStr) {
-            single.thinLabel.text = clueStr;
-            [self selectInfomationForUser];
+            if ([clueStr isEqualToString:@"0"]) {
+                [weakself selectInfomationForUser];
+            } else {
+                [weakself ahahaha];
+            }
+            
         }];
         
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, 600)];
@@ -296,10 +300,10 @@
     [dict setValue:@"快速" forKey:@"type"];
     [dict setValue:@"1000" forKey:@"amount"];
     [dict setValue:@"零切" forKey:@"zhonglei"];
-    [dict setValue:@"30" forKey:@"erjimulu"];
+    [dict setValue:@"6061" forKey:@"erjimulu"];
     [dict setValue:@"6400" forKey:@"money"];
-    [dict setValue:@"18625144206" forKey:@"phone"];
-//    [dict setValue:@"1" forKey:@"addressId"];
+    [dict setValue:[UserData currentUser].phone forKey:@"phone"];
+    [dict setValue:@"9" forKey:@"addressId"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderSave andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"+++%@", resultDic);
         
@@ -323,7 +327,7 @@
     [dict setValue:@"零切" forKey:@"zhonglei"];
     [dict setValue:@"30" forKey:@"erjimulu"];
     [dict setValue:@"6400" forKey:@"money"];
-    [dict setValue:@"18625144206" forKey:@"phone"];
+    [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveToGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"+++%@", resultDic);
         
@@ -349,7 +353,6 @@
             [self.dataMuArr addObject:model];
             
         }
-        [self ahahaha];
         [self createTopActionView];//顶部选择
         
     } failure:^(NSString *error, NSInteger code) {

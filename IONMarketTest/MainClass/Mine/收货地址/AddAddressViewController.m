@@ -34,6 +34,11 @@
     } else {
         self.title = @"修改地址";
         self.deleteView.hidden = NO;
+        
+        self.holderTF.placeholder = self.addressModel.name;
+        self.phoneTF.placeholder = self.addressModel.phone;
+        self.addressTextView.text = self.addressModel.address;
+        self.setDefaultSwitch.on = [self.addressModel.moren intValue];
     }
     
     
@@ -51,31 +56,56 @@
     
     [[UtilsData sharedInstance] showAlertControllerWithTitle:@"提示" detail:@"是否确定删除此收货地址" doneTitle:@"是" cancelTitle:@"否" haveCancel:YES doneAction:^{
         
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:self.addressModel.id forKey:@"id"];
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_DeleteAddress andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            NSLog(@"%@", resultDic);
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0.0 aboutType:WHShowViewMode_Text state:YES];
+            [weakself.navigationController popViewControllerAnimated:YES];
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
         [weakself.navigationController popViewControllerAnimated:YES];
         
     } controller:weakself];
 }
 - (IBAction)setDefaultAc:(id)sender {
-    NSLog(@"%d", ((UISwitch *)sender).on);
+//    NSLog(@"%d", ((UISwitch *)sender).on);
     self.setDefaultSwitch.on = ((UISwitch *)sender).on;
     
+}
+- (IBAction)endEditor:(UITapGestureRecognizer *)sender {
+    [self.view endEditing:YES];
 }
 
 
 - (IBAction)saveAc:(id)sender {
 //    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"保存成功" time:0.0 aboutType:WHShowViewMode_Text state:YES];
 //    [self.navigationController popViewControllerAnimated:YES];
-    
+    NSString *url = @"";
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:[UserData currentUser].id forKey:@"userId"];
-    [dict setValue:self.phoneTF.text forKey:@"phone"];
-    [dict setValue:self.holderTF.text forKey:@"name"];
-    [dict setValue:self.addressTextView.text forKey:@"address"];
-    [dict setValue:SINT(self.setDefaultSwitch.on) forKey:@"moren"];
+    if (self.addressModel) {
+        [dict setValue:self.addressModel.id forKey:@"addressId"];
+        [dict setValue:self.phoneTF.text.length?self.phoneTF.text:self.addressModel.phone forKey:@"phone"];
+        [dict setValue:self.holderTF.text.length?self.holderTF.text:self.addressModel.name forKey:@"name"];
+        [dict setValue:self.addressTextView.text forKey:@"address"];
+        [dict setValue:SINT(self.setDefaultSwitch.on) forKey:@"moren"];
+        url = Interface_UpdateAddress;
+    } else {
+        [dict setValue:[UserData currentUser].id forKey:@"userId"];
+        [dict setValue:self.phoneTF.text forKey:@"phone"];
+        [dict setValue:self.holderTF.text forKey:@"name"];
+        [dict setValue:self.addressTextView.text forKey:@"address"];
+        [dict setValue:SINT(self.setDefaultSwitch.on) forKey:@"moren"];
+        url = Interface_SaveAddress;
+    }
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveAddress andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:url andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"%@", resultDic);
-        
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0.0 aboutType:WHShowViewMode_Text state:YES];
+        [self.navigationController popViewControllerAnimated:YES];
         
     } failure:^(NSString *error, NSInteger code) {
         

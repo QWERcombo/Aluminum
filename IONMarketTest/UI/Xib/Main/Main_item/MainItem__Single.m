@@ -46,7 +46,7 @@
 }
 
 
-- (IBAction)selectAction:(UIButton *)sender {
+- (IBAction)selectAction:(UIButton *)sender {//选择厚度
     if (self.click) {
         self.click(@"0");
     }
@@ -55,8 +55,10 @@
 
 
 - (IBAction)addNew:(UIButton *)sender {
-    NSLog(@"%@--%@---%@", self.lengthTF.text, self.widthTF.text, self.lengthTF.text);
-    
+//    NSLog(@"%@--%@---%@", self.lengthTF.text, self.widthTF.text, self.lengthTF.text);
+    if (self.click) {
+        self.click(@"1");
+    }
 }
 
 

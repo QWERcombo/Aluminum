@@ -76,7 +76,7 @@
                             <rect key="frame" x="110" y="14.5" width="215" height="17"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -194,6 +194,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="fPi-ut-gjn" secondAttribute="trailing" id="08m-Kv-Udf"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="fPi-ut-gjn" secondAttribute="bottom" id="1bH-9C-nEw"/>
@@ -218,8 +219,16 @@
                 <constraint firstItem="NND-fy-Dr2" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="xWO-Zs-vO6"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="T4H-s1-2b3" appends="YES" id="n37-8I-1qz"/>
+            </connections>
             <point key="canvasLocation" x="25.5" y="51.5"/>
         </view>
+        <tapGestureRecognizer id="T4H-s1-2b3">
+            <connections>
+                <action selector="endEditor:" destination="-1" id="sFd-Se-LkT"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="image_more" width="24" height="24"/>

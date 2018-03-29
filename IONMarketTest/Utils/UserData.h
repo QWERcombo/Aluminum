@@ -19,6 +19,12 @@
 //@property (nonatomic,strong)NSString        *createDate;//
 @property (nonatomic,strong)NSString        *deleted;//
 @property (nonatomic,strong)NSString        *headImgUrl;//
+@property (nonatomic,strong)NSString        *phone;
+
+
+
+
+
 
 
 //赋值

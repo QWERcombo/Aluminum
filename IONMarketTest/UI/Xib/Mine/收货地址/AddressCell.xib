@@ -47,6 +47,7 @@
                                 <state key="normal" title="设为默认" image="select_0">
                                     <color key="titleColor" red="0.26374569539999998" green="0.48890727760000002" blue="0.76870256660000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <state key="selected" image="select_1"/>
                                 <connections>
                                     <action selector="setDefault:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="smE-wK-HYX"/>
                                 </connections>
@@ -119,5 +120,6 @@
     </objects>
     <resources>
         <image name="select_0" width="24" height="24"/>
+        <image name="select_1" width="24" height="24"/>
     </resources>
 </document>

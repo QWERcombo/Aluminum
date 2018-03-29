@@ -14,7 +14,7 @@ typedef enum : NSUInteger {
 } View_Mode;
 
 @interface AddAddressViewController : BaseViewController
-
+@property (nonatomic, strong) AddressModel *addressModel;
 @property (nonatomic, assign) View_Mode mode;
 
 @end

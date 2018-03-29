@@ -28,10 +28,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.sortDic = [NSMutableDictionary dictionary];
-    [self.sortDic setValue:@[@"1",@"2",@"3",@"4",@"5"] forKey:@"1"];
-    [self.sortDic setValue:@[@"1",@"2",@"3",@"4",@"5"] forKey:@"2"];
-    [self.sortDic setValue:@[@"1",@"2",@"3",@"4",@"5"] forKey:@"3"];
-    self.dataMuArr = [[self.sortDic allKeys] mutableCopy];
     
     [self getData];
     [self setupSubViews];
@@ -287,13 +283,12 @@
 
 
 
-- (void) getData {
+- (void)getData {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@"18625144206" forKey:@"phone"];
+    [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetGouwucheByUser andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"%@", resultDic);
-        
+//        NSLog(@"%@", resultDic);
         NSArray *dataSource = resultDic[@"result"];
         
         for (NSDictionary *dic in dataSource) {
@@ -303,7 +298,7 @@
             [self.dataMuArr addObject:model];
         }
         
-//        [self.tabView reloadData];
+        [self.tabView reloadData];
     } failure:^(NSString *error, NSInteger code) {
         
     }];

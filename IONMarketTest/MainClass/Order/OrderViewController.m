@@ -134,8 +134,9 @@
 - (void)getDataSource {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@"18625144206" forKey:@"phone"];
+    [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [dict setValue:@"0" forKey:@"type"]; // 0未支付   1已支付
+    [dict setValue:@"3" forKey:@"fapiaoStatus"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrdersList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"++++%@", resultDic);
         

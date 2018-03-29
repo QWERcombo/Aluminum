@@ -27,11 +27,11 @@
 - (IBAction)loginAction:(UIButton *)sender {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@"18625144206" forKey:@"phone"];
+    [dict setValue:@"13164628130" forKey:@"phone"];
     [dict setValue:@"123456" forKey:@"password"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Login andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        
+//        NSLog(@"++++%@", resultDic);
         [[UserData currentUser] giveData:resultDic[@"user"]];
         
         [[UtilsData sharedInstance] postLoginNotice];

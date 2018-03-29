@@ -15,15 +15,17 @@
 
 @implementation AddressViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self getData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    for (NSInteger i = 0 ; i<10; i++) {
-        [self.dataMuArr addObject:@"1"];
-    }
-    [self getData];
     [self setupSubviews];
 }
+
 
 - (void)setupSubviews {
     [self.view addSubview:self.tabView];
@@ -57,21 +59,21 @@
     
     __weak typeof(self) weakself = self;
     
-    return [UtilsMold creatCell:@"AddressCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+    return [UtilsMold creatCell:@"AddressCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
         
         NSString *key = clueDic[@"key"];
         if ([key isEqualToString:@"0"]) {
             
             AddAddressViewController *add = [[AddAddressViewController alloc] initWithNibName:@"AddAddressViewController" bundle:nil];
             add.mode = Mode_Editor;
+            add.addressModel = [weakself.dataMuArr objectAtIndex:indexPath.row];
             [weakself.navigationController pushViewController:add animated:YES];
-            
             
         } else if ([key isEqualToString:@"1"]) {
             
-            [weakself.dataMuArr removeObjectAtIndex:indexPath.row];
-            [weakself.tabView reloadData];
+            AddressModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
             
+            [weakself deleteAddressWithID:model.id andIndex:indexPath.row];
         } else {
             
         }
@@ -93,16 +95,44 @@
 
 - (void)getData {
     
+    [self.dataMuArr removeAllObjects];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    
+    [dict setValue:[UserData currentUser].id forKey:@"userId"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetAddressByPhone andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"%@", resultDic);
+        NSArray *dataSource = resultDic[@"result"];
         
+        for (NSDictionary *dic in dataSource) {
+            
+            AddressModel *model = [[AddressModel alloc] initWithDictionary:dic error:nil];
+            
+            [self.dataMuArr addObject:model];
+        }
         
+        [self.tabView reloadData];
         
     } failure:^(NSString *error, NSInteger code) {
         
     }];
 }
+
+- (void)deleteAddressWithID:(NSString *)addressID andIndex:(NSInteger)index {
+    NSLog(@"-----%ld", index);
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:addressID forKey:@"id"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_DeleteAddress andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"%@", resultDic);
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0.0 aboutType:WHShowViewMode_Text state:YES];
+        [self.dataMuArr removeObjectAtIndex:index];
+        
+        [self.tabView reloadData];
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

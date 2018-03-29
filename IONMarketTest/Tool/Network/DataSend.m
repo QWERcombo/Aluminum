@@ -66,7 +66,7 @@ static NSOperationQueue *queue;
     
     NSString *httpStr = [NSString stringWithFormat:@"%@/%@",baseUrl,type];
     
-//    NSLog(@"链接 🔗🔗 == %@  -----%@",httpStr, dict);
+    NSLog(@"链接 🔗🔗 == %@  -----%@",httpStr, dict);
     
     [DataSend AFHTTPRequestWithURL:httpStr valueDictionary:dict imageArray:imgArr andCookie:cookie showAnimation:animation success:success failure:failure];
 }
@@ -98,13 +98,12 @@ static NSOperationQueue *queue;
             [DataSend verdictResponseString:responseObject];
             
             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
-//            NSLog(@" 🍔🍔 %@", result);
+            NSLog(@" 🍔🍔 %@", result);
             NSString *status = [NSString stringWithFormat:@"%@", [result objectForKey:@"status"]];//1为成功
-            NSString *msg = [NSString stringWithFormat:@"%@", [result objectForKey:@"message"]];//返回信息
+            NSString *msg = [NSString stringWithFormat:@"%@", [result objectForKey:@"msg"]];//返回信息
 //            success(result,msg);
             
             if ([status isEqualToString:@"1"]) {   //成功
-//                [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0.0 aboutType:WHShowViewMode_Text state:YES];
                 
                 success(result,msg);
                 

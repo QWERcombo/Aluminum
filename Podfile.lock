@@ -14,7 +14,6 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - FBRetainCycleDetector (0.1.3)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
@@ -23,8 +22,6 @@ PODS:
   - MBProgressHUD (1.0.0)
   - MHTextField (0.6)
   - MJRefresh (3.1.12)
-  - MLeaksFinder (0.2.1):
-    - FBRetainCycleDetector
   - PYSearch (0.8.2)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
@@ -38,23 +35,32 @@ DEPENDENCIES:
   - MBProgressHUD
   - MHTextField
   - MJRefresh (~> 3.1.0)
-  - MLeaksFinder
   - PYSearch
   - SDWebImage
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - FMDB
+    - JSONModel
+    - Masonry
+    - MBProgressHUD
+    - MHTextField
+    - MJRefresh
+    - PYSearch
+    - SDWebImage
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  FBRetainCycleDetector: f0c7b290bf48ae77f6ae060843ce34ae341781eb
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MHTextField: c13dad029b2a3da5e6a1c7adc7fa499ca8a976e5
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  MLeaksFinder: 0850e2f2abc7227adc4d4e2d1992b431264eb4d5
   PYSearch: 6abe3721eb6a2f2a77f06a095b734cdb8faf3c81
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: aa8bf99bc2dec876b9efe863ca3d8cae13993020
+PODFILE CHECKSUM: 77eda9fdd05a89c8ec1d3a08c3fd4abf70f41e44
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.0.beta.1

@@ -114,6 +114,7 @@
 		5695BF5D2042AC1D0036D54B /* UIView+EasyShowExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF542042AC1D0036D54B /* UIView+EasyShowExt.m */; };
 		5695BF632042AF8C0036D54B /* DataSend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF602042AF8B0036D54B /* DataSend.m */; };
 		5695BF642042AF8C0036D54B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF622042AF8B0036D54B /* Reachability.m */; };
+		56EC993C206D121D00F2D2D0 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC993B206D121D00F2D2D0 /* AddressModel.m */; };
 		A22981862061FE97007B6112 /* RemainExplainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A22981852061FE97007B6112 /* RemainExplainViewController.m */; };
 		A229818A2061FF2B007B6112 /* RemainExplainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A22981882061FF2B007B6112 /* RemainExplainCell.m */; };
 		A229818B2061FF2B007B6112 /* RemainExplainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22981892061FF2B007B6112 /* RemainExplainCell.xib */; };
@@ -392,6 +393,8 @@
 		5695BF602042AF8B0036D54B /* DataSend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSend.m; sourceTree = "<group>"; };
 		5695BF612042AF8B0036D54B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		5695BF622042AF8B0036D54B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		56EC993A206D121D00F2D2D0 /* AddressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressModel.h; sourceTree = "<group>"; };
+		56EC993B206D121D00F2D2D0 /* AddressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
 		A22981842061FE97007B6112 /* RemainExplainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemainExplainViewController.h; sourceTree = "<group>"; };
 		A22981852061FE97007B6112 /* RemainExplainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemainExplainViewController.m; sourceTree = "<group>"; };
 		A22981872061FF2B007B6112 /* RemainExplainCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemainExplainCell.h; sourceTree = "<group>"; };
@@ -615,6 +618,8 @@
 			children = (
 				560264B4206A6A5400F9C405 /* TicketModel.h */,
 				560264B5206A6A5400F9C405 /* TicketModel.m */,
+				56EC993A206D121D00F2D2D0 /* AddressModel.h */,
+				56EC993B206D121D00F2D2D0 /* AddressModel.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1229,7 +1234,6 @@
 				5695BE6A20429F1B0036D54B /* Sources */,
 				5695BE6B20429F1B0036D54B /* Frameworks */,
 				5695BE6C20429F1B0036D54B /* Resources */,
-				62B8BAC2F7E12A45FAC1741C /* [CP] Embed Pods Frameworks */,
 				40E05663B3723EE7CF21BF87 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -1385,28 +1389,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/PYSearch/PYSearch/PYSearch.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PYSearch.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		62B8BAC2F7E12A45FAC1741C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CB912A6F22B0E499BE7214FE /* [CP] Check Pods Manifest.lock */ = {
@@ -1415,13 +1409,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IONMarketTest-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1437,6 +1434,7 @@
 				56940C2320515DF900DFA6D6 /* NSBundle+Language.m in Sources */,
 				56940C2C20515DF900DFA6D6 /* UIFont+YXP.m in Sources */,
 				56940C2820515DF900DFA6D6 /* UIImageView+YXP.m in Sources */,
+				56EC993C206D121D00F2D2D0 /* AddressModel.m in Sources */,
 				56940C2020515DF900DFA6D6 /* NSString+MD5.m in Sources */,
 				5695BF1E2042ABAB0036D54B /* UtilsMold.m in Sources */,
 				56940C2520515DF900DFA6D6 /* UITabBar+TB.m in Sources */,
