@@ -49,6 +49,10 @@
 		568CB08D2066462300B48318 /* CALayer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 568CB08C2066462300B48318 /* CALayer+Addition.m */; };
 		568CB0902066629900B48318 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 568CB08F2066629900B48318 /* PickerView.m */; };
 		568CB092206662A800B48318 /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568CB091206662A800B48318 /* PickerView.xib */; };
+		568EFDF5206F1851007E437F /* GFAddressPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 568EFDF2206F1850007E437F /* GFAddressPicker.m */; };
+		568EFDF6206F1851007E437F /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 568EFDF3206F1850007E437F /* Address.plist */; };
+		568EFDF9206F1F06007E437F /* UnitsPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 568EFDF8206F1F06007E437F /* UnitsPickerView.m */; };
+		568EFDFB206F1FEF007E437F /* UnitsPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568EFDFA206F1FEF007E437F /* UnitsPickerView.xib */; };
 		56940C0120515DB300DFA6D6 /* TBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940BFC20515DB200DFA6D6 /* TBTabBar.m */; };
 		56940C0220515DB300DFA6D6 /* TBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940BFF20515DB300DFA6D6 /* TBTabBarController.m */; };
 		56940C0320515DB300DFA6D6 /* TBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940C0020515DB300DFA6D6 /* TBNavigationController.m */; };
@@ -258,6 +262,12 @@
 		568CB08E2066629900B48318 /* PickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
 		568CB08F2066629900B48318 /* PickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
 		568CB091206662A800B48318 /* PickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
+		568EFDF2206F1850007E437F /* GFAddressPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFAddressPicker.m; sourceTree = "<group>"; };
+		568EFDF3206F1850007E437F /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
+		568EFDF4206F1850007E437F /* GFAddressPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFAddressPicker.h; sourceTree = "<group>"; };
+		568EFDF7206F1F06007E437F /* UnitsPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitsPickerView.h; sourceTree = "<group>"; };
+		568EFDF8206F1F06007E437F /* UnitsPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitsPickerView.m; sourceTree = "<group>"; };
+		568EFDFA206F1FEF007E437F /* UnitsPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnitsPickerView.xib; sourceTree = "<group>"; };
 		56940BFB20515DB200DFA6D6 /* TBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBNavigationController.h; sourceTree = "<group>"; };
 		56940BFC20515DB200DFA6D6 /* TBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTabBar.m; sourceTree = "<group>"; };
 		56940BFD20515DB300DFA6D6 /* TBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTabBar.h; sourceTree = "<group>"; };
@@ -690,6 +700,19 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		568EFDF1206F1836007E437F /* cityPicker */ = {
+			isa = PBXGroup;
+			children = (
+				568EFDF3206F1850007E437F /* Address.plist */,
+				568EFDF4206F1850007E437F /* GFAddressPicker.h */,
+				568EFDF2206F1850007E437F /* GFAddressPicker.m */,
+				568EFDF7206F1F06007E437F /* UnitsPickerView.h */,
+				568EFDF8206F1F06007E437F /* UnitsPickerView.m */,
+				568EFDFA206F1FEF007E437F /* UnitsPickerView.xib */,
+			);
+			path = cityPicker;
+			sourceTree = "<group>";
+		};
 		56940BFA20515D8F00DFA6D6 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -952,6 +975,7 @@
 		5695BEB72042A4BA0036D54B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				568EFDF1206F1836007E437F /* cityPicker */,
 				5695BF5E2042AF8B0036D54B /* Network */,
 				5695BF412042AC1D0036D54B /* WHShowView */,
 				5695BF332042AC180036D54B /* LYEmptyView */,
@@ -1331,6 +1355,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				568EFDF6206F1851007E437F /* Address.plist in Resources */,
 				A2298198206205A2007B6112 /* InOutputView.xib in Resources */,
 				A2301B3C20638AB3006B9F20 /* SmartServiceCell.xib in Resources */,
 				565086AA205CFF1800FD8497 /* OrderDetailCell.xib in Resources */,
@@ -1352,6 +1377,7 @@
 				5695BE7E20429F1B0036D54B /* Assets.xcassets in Resources */,
 				5695BE7920429F1B0036D54B /* Main.storyboard in Resources */,
 				A2301B3320637EE0006B9F20 /* FeedbackViewController.xib in Resources */,
+				568EFDFB206F1FEF007E437F /* UnitsPickerView.xib in Resources */,
 				5671DBBC205FF1C7005F1760 /* InventoryCell.xib in Resources */,
 				5695BF102042AB0E0036D54B /* rsa_public_key.der in Resources */,
 				5657413820539313007CB488 /* SelectedItem.xib in Resources */,
@@ -1481,6 +1507,7 @@
 				560212A920596550009EF75D /* SettingDescribViewController.m in Sources */,
 				5695BF0D2042AB0E0036D54B /* NEUBase64.m in Sources */,
 				A22981C6206260E3007B6112 /* AddNewTicketViewController.m in Sources */,
+				568EFDF5206F1851007E437F /* GFAddressPicker.m in Sources */,
 				5632BFB2205AB5920009CD34 /* QuotationDetailViewController.m in Sources */,
 				5695BF3E2042AC180036D54B /* LYEmptyView.m in Sources */,
 				5695BF142042AB340036D54B /* CIImage+Extension.m in Sources */,
@@ -1536,6 +1563,7 @@
 				A22981BC20624B48007B6112 /* AddAddressViewController.m in Sources */,
 				A2301B2E20637ED1006B9F20 /* SmartViewController.m in Sources */,
 				5695BE7320429F1B0036D54B /* AppDelegate.m in Sources */,
+				568EFDF9206F1F06007E437F /* UnitsPickerView.m in Sources */,
 				5602129C20594D2B009EF75D /* WhiteBarViewController.m in Sources */,
 				5657412B20538D8A007CB488 /* SelectedItem.m in Sources */,
 				5695BF202042ABAB0036D54B /* YXPUtil.m in Sources */,

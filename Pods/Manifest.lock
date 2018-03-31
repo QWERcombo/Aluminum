@@ -38,6 +38,18 @@ DEPENDENCIES:
   - PYSearch
   - SDWebImage
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - FMDB
+    - JSONModel
+    - Masonry
+    - MBProgressHUD
+    - MHTextField
+    - MJRefresh
+    - PYSearch
+    - SDWebImage
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
@@ -51,4 +63,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 77eda9fdd05a89c8ec1d3a08c3fd4abf70f41e44
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.0.beta.1

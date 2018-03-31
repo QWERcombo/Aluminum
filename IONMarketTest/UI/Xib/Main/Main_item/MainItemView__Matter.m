@@ -47,11 +47,21 @@
     
 }
 
+- (IBAction)waiClicker:(UIButton *)sender {
+    if (self.click) {
+        self.click(@"0");
+    }
+}
 
+- (IBAction)neiClicker:(UIButton *)sender {
+    if (self.click) {
+        self.click(@"1");
+    }
+}
 
 
 - (void)loadData:(NSObject *)data andCliker:(ClikBlock)click {
-    
+    self.click = click;
     
     
 }

@@ -7,8 +7,9 @@
 //
 
 #import "AddAddressViewController.h"
+#import "GFAddressPicker.h"
 
-@interface AddAddressViewController ()
+@interface AddAddressViewController ()<GFAddressPickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *holderTF;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
@@ -17,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UISwitch *setDefaultSwitch;
 @property (weak, nonatomic) IBOutlet UIView *deleteView;
 
+@property (nonatomic, strong) GFAddressPicker *pickerView;
+@property (nonatomic, strong) NSString *cityString;
 
 @end
 
@@ -47,8 +50,29 @@
 
 - (IBAction)chooseCity:(id)sender {
     NSLog(@"city");
-    
+    self.pickerView = [[GFAddressPicker alloc] initWithFrame:self.view.bounds];
+    NSArray *cityArray = [self.cityString componentsSeparatedByString:@"-"];
+    if (self.cityString) {
+        [self.pickerView updateAddressAtProvince:cityArray[0] city:cityArray[1] town:cityArray[2]];
+    } else {
+        [self.pickerView updateAddressAtProvince:@"北京市" city:@"北京市" town:@"东城区"];
+    }
+    self.pickerView.delegate = self;
+    self.pickerView.font = FONT_ArialMT(16);
+    [self.view addSubview:self.pickerView];
 }
+
+- (void)GFAddressPickerCancleAction {
+    [self.pickerView removeFromSuperview];
+}
+
+- (void)GFAddressPickerWithProvince:(NSString *)province
+                               city:(NSString *)city area:(NSString *)area {
+    [self.pickerView removeFromSuperview];
+    self.addressLab.text = [NSString stringWithFormat:@"%@ %@ %@", province,city,area];
+    self.cityString = [NSString stringWithFormat:@"%@-%@-%@", province,city,area];
+}
+
 
 - (IBAction)deleteAc:(id)sender {
     
@@ -96,7 +120,7 @@
         [dict setValue:[UserData currentUser].id forKey:@"userId"];
         [dict setValue:self.phoneTF.text forKey:@"phone"];
         [dict setValue:self.holderTF.text forKey:@"name"];
-        [dict setValue:self.addressTextView.text forKey:@"address"];
+        [dict setValue:[NSString stringWithFormat:@"%@\n%@", self.cityString,self.addressTextView.text] forKey:@"address"];
         [dict setValue:SINT(self.setDefaultSwitch.on) forKey:@"moren"];
         url = Interface_SaveAddress;
     }

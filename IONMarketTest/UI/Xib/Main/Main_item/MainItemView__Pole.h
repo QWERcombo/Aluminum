@@ -10,7 +10,8 @@
 
 @interface MainItemView__Pole : UIView
 
-@property (weak, nonatomic) IBOutlet UITextField *radiusTF;
+@property (weak, nonatomic) IBOutlet UILabel *lengthLabel;
+
 @property (weak, nonatomic) IBOutlet UITextField *lengthTF;
 @property (weak, nonatomic) IBOutlet UITextField *amountTF;
 @property (weak, nonatomic) IBOutlet UILabel *left_top_Label;
@@ -22,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *rightCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *leftCountLabel;
 
-
+@property (nonatomic, copy) ClikBlock click;
 
 
 - (void)loadData:(NSObject *)data andCliker:(ClikBlock)click;

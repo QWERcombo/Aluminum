@@ -46,11 +46,16 @@
 }
 
 
+- (IBAction)buttonClicker:(UIButton *)sender {
+    if (self.click) {
+        self.click(@"0");
+    }
+}
 
 
 
 - (void)loadData:(NSObject *)data andCliker:(ClikBlock)click {
-    
+    self.click = click;
     
     
 }

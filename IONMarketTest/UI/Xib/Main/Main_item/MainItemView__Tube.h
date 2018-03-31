@@ -11,8 +11,8 @@
 //型材
 @interface MainItemView__Tube : UIView
 
-@property (weak, nonatomic) IBOutlet UITextField *thinTF;
-@property (weak, nonatomic) IBOutlet UITextField *widthTF;
+@property (weak, nonatomic) IBOutlet UILabel *thinLabel;
+@property (weak, nonatomic) IBOutlet UILabel *widthLabel;
 @property (weak, nonatomic) IBOutlet UITextField *lengthTF;
 @property (weak, nonatomic) IBOutlet UITextField *amountTF;
 @property (weak, nonatomic) IBOutlet UILabel *left_top_Label;
@@ -24,7 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *leftCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightCountLabel;
 
+@property (nonatomic, copy) ClikBlock click;
 
 
 - (void)loadData:(NSObject *)data andCliker:(ClikBlock)click;
+
 @end

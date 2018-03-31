@@ -9,7 +9,6 @@ pod 'MBProgressHUD'
 pod 'MHTextField'
 pod 'FMDB'
 pod 'PYSearch'
-pod 'SGQRCode'
 
 end
 #$ pod update 或  $ pod install

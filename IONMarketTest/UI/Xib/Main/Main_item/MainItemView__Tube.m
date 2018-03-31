@@ -45,11 +45,21 @@
     self.left_down_Label.textColor = [UIColor mianColor:2];
 }
 
+- (IBAction)thinClicker:(UIButton *)sender {
+    if (self.click) {
+        self.click(@"0");
+    }
+}
 
+- (IBAction)widthClicker:(UIButton *)sender {
+    if (self.click) {
+        self.click(@"1");
+    }
+}
 
 
 - (void)loadData:(NSObject *)data andCliker:(ClikBlock)click {
-    self.lengthTF.text = @"2323";
+    self.click = click;
     
     
 }

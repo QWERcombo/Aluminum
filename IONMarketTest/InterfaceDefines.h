@@ -20,6 +20,8 @@
 #define Interface_OrderMoney @"user/getOrderMoney"
 //获取品型的具体参数
 #define Interface_FindDetail @"findDetailById"
+//下单，根据种类和型号获取滚动字段
+#define Interface_GetByZhongleiAndXinghao   @"user/getByZhongleiAndXinghao"
 //新建收货地址
 #define Interface_SaveAddress   @"user/saveAddress"
 //修改收货地址

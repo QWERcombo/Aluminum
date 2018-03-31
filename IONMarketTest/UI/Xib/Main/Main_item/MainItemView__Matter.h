@@ -10,8 +10,9 @@
 
 //管材
 @interface MainItemView__Matter : UIView
-@property (weak, nonatomic) IBOutlet UITextField *waiTF;
-@property (weak, nonatomic) IBOutlet UITextField *neiTF;
+
+@property (weak, nonatomic) IBOutlet UILabel *neiLabel;
+@property (weak, nonatomic) IBOutlet UILabel *waiLabel;
 @property (weak, nonatomic) IBOutlet UITextField *lengthTF;
 @property (weak, nonatomic) IBOutlet UITextField *amountTF;
 @property (weak, nonatomic) IBOutlet UILabel *left_top_Label;
@@ -23,8 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *leftCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightCountLabel;
 
-
+@property (nonatomic, copy) ClikBlock click;
 
 
 - (void)loadData:(NSObject *)data andCliker:(ClikBlock)click;
+
 @end

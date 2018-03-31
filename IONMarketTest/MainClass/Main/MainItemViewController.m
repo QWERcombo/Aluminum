@@ -14,7 +14,7 @@
 #import "MainItemView__Matter.h"//管材
 
 
-@interface MainItemViewController ()<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface MainItemViewController ()
 
 @property (nonatomic, assign) NSInteger lastSelected;
 
@@ -22,6 +22,11 @@
 
 @property (nonatomic, strong) UIScrollView *sctollView;
 
+@property (nonatomic, strong) NSString *typeStr;//种类
+
+@property (nonatomic, strong) NSString *xinghaoStr;//型号
+
+@property (nonatomic, copy) void(^passValue)(NSString *value);
 @end
 
 #define ITEM_WIDTH  60
@@ -103,6 +108,7 @@
         lastBtn = button;
     }
     self.lastSelected = 100+self.selectedNum;
+    self.typeStr = [array objectAtIndex:self.selectedNum];
     [self.view addSubview:topView];
     
     
@@ -159,9 +165,15 @@
         [single loadData:nil andCliker:^(NSString *clueStr) {
             if ([clueStr isEqualToString:@"0"]) {
                 [weakself selectInfomationForUser];
+                
+                weakself.passValue = ^(NSString *value) {
+                    single.thinLabel.text = value;
+                };
+                
             } else {
                 [weakself ahahaha];
             }
+            
             
         }];
         
@@ -172,6 +184,12 @@
         MainItemView__Pole *pole = [[MainItemView__Pole alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 350)];
         [pole loadData:nil andCliker:^(NSString *clueStr) {
             
+            if ([clueStr isEqualToString:@"0"]) {
+                [weakself selectInfomationForUser];
+                weakself.passValue = ^(NSString *value) {
+                    pole.lengthLabel.text = value;
+                };
+            }
             
         }];
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, pole.height)];
@@ -180,6 +198,18 @@
         MainItemView__Tube *tube = [[MainItemView__Tube alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 400)];
         [tube loadData:nil andCliker:^(NSString *clueStr) {
             
+            [weakself selectInfomationForUser];
+            
+            if ([clueStr isEqualToString:@"0"]) { //厚度
+                weakself.passValue = ^(NSString *value) {
+                    tube.thinLabel.text = value;
+                };
+            }
+            if ([clueStr isEqualToString:@"1"]) { //宽度
+                weakself.passValue = ^(NSString *value) {
+                    tube.widthLabel.text = value;
+                };
+            }
             
         }];
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, tube.height)];
@@ -188,14 +218,24 @@
         MainItemView__Matter *matter = [[MainItemView__Matter alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 450)];
         [matter loadData:nil andCliker:^(NSString *clueStr) {
             
+            [weakself selectInfomationForUser];
+            
+            if ([clueStr isEqualToString:@"0"]) { //外径
+                weakself.passValue = ^(NSString *value) {
+                    matter.waiLabel.text = value;
+                };
+            }
+            if ([clueStr isEqualToString:@"1"]) { //内径
+                weakself.passValue = ^(NSString *value) {
+                    matter.neiLabel.text = value;
+                };
+            }
             
         }];
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, matter.height)];
         [_sctollView addSubview:matter];
     }
-    
         
-    
 }
 
 
@@ -253,16 +293,14 @@
         make.top.equalTo(priceLabel.mas_bottom);
     }];
     
-    
 }
-
 
 
 
 #pragma mark --- Action
 
 - (void)buttonCliker:(UIButton *)sender {
-    NSLog(@"%@", sender.currentTitle);
+//    NSLog(@"%@", sender.currentTitle);
     if (sender.tag==1010) {
         SpecialMakeViewController *special = [SpecialMakeViewController new];
         [self.navigationController pushViewController:special animated:YES];
@@ -276,13 +314,15 @@
         
         if (sender.tag<200) {
             self.lastSelected = sender.tag;
+            
+            self.typeStr = sender.currentTitle;
         } else {
             self.lastTypeSelected = sender.tag;
             
             MainItemTypeModel *model = [self.dataMuArr objectAtIndex:sender.tag-200];
-            NSLog(@"%@", model);
-            
-//            [self getInfomationWithID:model.id];
+//            NSLog(@"%@", model);
+            self.xinghaoStr = model.id;
+
         }
         
     }
@@ -291,6 +331,7 @@
     [self.view bringSubviewToFront:bottomView];
 }
 
+//直接购买
 - (void)buyAction:(UIButton *)sender {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -316,6 +357,7 @@
     
 }
 
+//购物车
 - (void)carAction:(UIButton *)sender {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -340,7 +382,10 @@
     
 }
 
+
+
 #pragma mark ----- Data
+//获取型号列表
 - (void)getDataSource {
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"---%@", resultDic);
@@ -354,6 +399,7 @@
             
         }
         [self createTopActionView];//顶部选择
+        self.xinghaoStr = ((MainItemTypeModel *)[self.dataMuArr firstObject]).id;
         
     } failure:^(NSString *error, NSInteger code) {
         
@@ -361,7 +407,7 @@
     
 }
 
-
+//获取订单金额
 - (void)ahahaha {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:@"1000" forKey:@"chang"];
@@ -400,42 +446,33 @@
     
 }
 
+
+//选择单位
 - (void)selectInfomationForUser {
-    
-    
-    
+    __weak typeof(self) weakself = self;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:self.typeStr forKey:@"zhonglei"];
+    [dict setValue:self.xinghaoStr forKey:@"xinghao"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetByZhongleiAndXinghao andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"--%@", resultDic);
+        
+        NSArray *dataArr = resultDic[@"houdus"];
+        NSArray *sortArr = [dataArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            return [obj2 compare:obj1];
+        }];
+        
+        UnitsPickerView *pv = [[UnitsPickerView alloc] initWithFrame:self.view.bounds withDataSource:sortArr];
+        [pv loadData:nil andClickBlock:^(NSString *clueStr) {
+            NSLog(@"++%@", clueStr);
+            weakself.passValue(clueStr);
+        }];
+        [weakself.view addSubview:pv];
+        
+    } failure:^(NSString *error, NSInteger code) {
+
+    }];
     
 }
-
-
-#pragma mark UIPickerViewDataSource 数据源方法
-// 返回多少列
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-    
-}
-
-// 返回多少行
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    return 10;
-}
-
-#pragma mark UIPickerViewDelegate 代理方法
-
-// 返回每行的标题
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    return @"2222233333";
-}
-// 选中行显示在label上
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    
-    
-}
-
 
 
 

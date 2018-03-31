@@ -64,7 +64,6 @@
 
 - (void)loadData:(NSObject *)data andCliker:(ClikBlock)click {
     self.click = click;
-    self.thinLabel.text = @"2222";
     
 }
 
