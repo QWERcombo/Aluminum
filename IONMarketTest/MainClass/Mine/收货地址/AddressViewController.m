@@ -85,7 +85,10 @@
     return [UtilsMold getCellHight:@"AddressCell" data:nil model:nil indexPath:indexPath];
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+}
 
 - (void)applyCliker:(UIButton *)sender {
     AddAddressViewController *add = [[AddAddressViewController alloc] initWithNibName:@"AddAddressViewController" bundle:nil];

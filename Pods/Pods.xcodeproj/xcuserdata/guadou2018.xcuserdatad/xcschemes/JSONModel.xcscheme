@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF37FBAADCDC9B2E3C34955EBCF572A4"
-               BlueprintName = "Pods-IONMarketTest"
+               BlueprintIdentifier = "55E3CFFEDC2629EE0C17B343EC00595B"
+               BlueprintName = "JSONModel"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libPods-IONMarketTest.a">
+               BuildableName = "libJSONModel.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -22,7 +22,6 @@ PODS:
   - MBProgressHUD (1.0.0)
   - MHTextField (0.6)
   - MJRefresh (3.1.12)
-  - PYSearch (0.8.2)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
@@ -35,7 +34,6 @@ DEPENDENCIES:
   - MBProgressHUD
   - MHTextField
   - MJRefresh (~> 3.1.0)
-  - PYSearch
   - SDWebImage
 
 SPEC REPOS:
@@ -47,7 +45,6 @@ SPEC REPOS:
     - MBProgressHUD
     - MHTextField
     - MJRefresh
-    - PYSearch
     - SDWebImage
 
 SPEC CHECKSUMS:
@@ -58,9 +55,8 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MHTextField: c13dad029b2a3da5e6a1c7adc7fa499ca8a976e5
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  PYSearch: 6abe3721eb6a2f2a77f06a095b734cdb8faf3c81
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: 77eda9fdd05a89c8ec1d3a08c3fd4abf70f41e44
+PODFILE CHECKSUM: 6026ffaeb35b2d6bd6f0890ee524a297ab6fd605
 
 COCOAPODS: 1.5.0.beta.1
