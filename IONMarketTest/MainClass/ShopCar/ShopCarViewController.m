@@ -24,12 +24,16 @@
     UILabel *infoLabel;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self getData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.sortDic = [NSMutableDictionary dictionary];
     
-    [self getData];
     [self setupSubViews];
 }
 

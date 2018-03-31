@@ -32,6 +32,9 @@
     self.right_down_Label.textColor  =[UIColor mianColor:2];
     self.left_top_Label.textColor = [UIColor mianColor:3];
     self.left_down_Label.textColor = [UIColor mianColor:3];
+    if (self.click) {
+        self.click(@"优切");
+    }
 }
 
 
@@ -43,6 +46,12 @@
     self.right_down_Label.textColor  =[UIColor mianColor:3];
     self.left_top_Label.textColor = [UIColor mianColor:2];
     self.left_down_Label.textColor = [UIColor mianColor:2];
+    
+    self.amountTF.userInteractionEnabled = NO;
+    self.rightCountLabel.text = @"0 元";
+    if (self.click) {
+        self.click(@"快速");
+    }
 }
 
 

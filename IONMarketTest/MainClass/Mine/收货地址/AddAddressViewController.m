@@ -105,8 +105,6 @@
 
 
 - (IBAction)saveAc:(id)sender {
-//    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"保存成功" time:0.0 aboutType:WHShowViewMode_Text state:YES];
-//    [self.navigationController popViewControllerAnimated:YES];
     NSString *url = @"";
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     if (self.addressModel) {

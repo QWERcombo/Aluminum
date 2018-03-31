@@ -7,6 +7,7 @@
 //
 
 #import "ShopCarDetailViewController.h"
+#import "AddressViewController.h"
 
 @interface ShopCarDetailViewController ()
 @property (nonatomic, assign) BOOL isAddress;
@@ -231,6 +232,8 @@
 
 - (void)addAddress:(UIButton *)sender {
     
+    AddressViewController *address = [AddressViewController new];
+    [self.navigationController pushViewController:address animated:YES];
     
     self.isAddress = YES;
 }

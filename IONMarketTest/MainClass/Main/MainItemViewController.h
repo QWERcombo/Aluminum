@@ -8,6 +8,16 @@
 
 #import "BaseViewController.h"
 
+typedef enum : NSUInteger {
+    Mode_Single, //零切
+    Mode_Pole, //圆棒
+    Mode_Tube, //型材
+    Mode_Matter, //管材
+} GetWholeBoardMode;
+
+
 @interface MainItemViewController : BaseViewController
+
 @property (nonatomic, assign) NSInteger selectedNum;
+
 @end

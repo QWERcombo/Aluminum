@@ -33,6 +33,13 @@
     self.right_down_Label.textColor  =[UIColor mianColor:2];
     self.left_top_Label.textColor = [UIColor mianColor:3];
     self.left_down_Label.textColor = [UIColor mianColor:3];
+    
+    self.amountTF.userInteractionEnabled = NO;
+    self.rightCountLabel.text = @"0 元";
+    
+    if (self.click) {
+        self.click(@"整只");
+    }
 }
 
 - (IBAction)leftTap:(UITapGestureRecognizer *)sender {
@@ -43,6 +50,9 @@
     self.right_down_Label.textColor  =[UIColor mianColor:3];
     self.left_top_Label.textColor = [UIColor mianColor:2];
     self.left_down_Label.textColor = [UIColor mianColor:2];
+    if (self.click) {
+        self.click(@"零切");
+    }
 }
 
 - (IBAction)thinClicker:(UIButton *)sender {

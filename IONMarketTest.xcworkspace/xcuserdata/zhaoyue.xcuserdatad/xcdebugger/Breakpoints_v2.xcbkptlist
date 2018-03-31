@@ -13,5 +13,53 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IONMarketTest/MainClass/Main/MainItemViewController.m"
+            timestampString = "544175584.64867"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "623"
+            endingLineNumber = "623"
+            landmarkName = "-automaticateLengthByWhole:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MainItemViewController automaticateLengthByWhole:]"
+                  moduleName = "IONMarketTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhaoyue/Documents/Aluminum/IONMarketTest/MainClass/Main/MainItemViewController.m"
+                  timestampString = "544175584.759524"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "624"
+                  endingLineNumber = "624"
+                  offsetFromSymbolStart = "1698">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__52-[MainItemViewController automaticateLengthByWhole:]_block_invoke"
+                  moduleName = "IONMarketTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhaoyue/Documents/Aluminum/IONMarketTest/MainClass/Main/MainItemViewController.m"
+                  timestampString = "544175584.763945"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "625"
+                  endingLineNumber = "625"
+                  offsetFromSymbolStart = "82">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

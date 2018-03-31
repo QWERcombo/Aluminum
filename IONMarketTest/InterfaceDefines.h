@@ -22,6 +22,8 @@
 #define Interface_FindDetail @"findDetailById"
 //下单，根据种类和型号获取滚动字段
 #define Interface_GetByZhongleiAndXinghao   @"user/getByZhongleiAndXinghao"
+//下整只的时候，自动选择长度
+#define Inuterface_GetLengthByOthers  @"user/getLengthByOthers"
 //新建收货地址
 #define Interface_SaveAddress   @"user/saveAddress"
 //修改收货地址
@@ -44,6 +46,7 @@
 #define Interface_SaveFromGouwuche   @"user/saveFromGouwuche"
 //获取物流费
 #define Interface_GetWuliufei  @"user/getWuliufei"
+
 
 //获取个人发票信息
 #define Interface_GetFapiaoByUser  @"user/getFapiaoByUser"
