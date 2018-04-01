@@ -10,10 +10,12 @@
 
 @interface AddressModel : BaseModel
 
-@property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSString *detailAddress;
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *moren;// 0非默认  1默认
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *phone;
-
+@property (nonatomic, strong) NSString *sheng;
+@property (nonatomic, strong) NSString *shi;
+@property (nonatomic, strong) NSString *qu;
 @end

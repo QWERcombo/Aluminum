@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddAddressViewController">
             <connections>
-                <outlet property="addressLab" destination="TGu-df-Dnl" id="cjB-bm-A80"/>
+                <outlet property="addressBtn" destination="nxB-li-b2w" id="ag9-QV-Za2"/>
                 <outlet property="addressTextView" destination="kse-m2-HcY" id="loj-hF-T59"/>
                 <outlet property="deleteView" destination="bmO-LO-c2b" id="BIq-gC-BbU"/>
                 <outlet property="holderTF" destination="srN-Uf-aAU" id="LOu-jA-R79"/>
@@ -98,33 +98,29 @@
                             <color key="textColor" red="0.26374569539999998" green="0.48890727760000002" blue="0.76870256660000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGu-df-Dnl">
-                            <rect key="frame" x="110" y="14" width="210" height="18"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqJ-eo-trY">
-                            <rect key="frame" x="340" y="13" width="20" height="20"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxB-li-b2w">
+                            <rect key="frame" x="110" y="2" width="245" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="20" id="0RQ-Tw-dLl"/>
-                                <constraint firstAttribute="width" constant="20" id="6Kj-gP-Ecl"/>
+                                <constraint firstAttribute="height" constant="40" id="SU2-1y-Qij"/>
                             </constraints>
-                            <state key="normal" title="Button" image="image_more"/>
+                            <inset key="titleEdgeInsets" minX="-200" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="220" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="请选择" image="image_more">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <connections>
-                                <action selector="chooseCity:" destination="-1" eventType="touchUpInside" id="p77-Gu-N4P"/>
+                                <action selector="chooseCity:" destination="-1" eventType="touchUpInside" id="Fl1-c2-zQl"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="TGu-df-Dnl" firstAttribute="centerY" secondItem="gYS-dD-qYL" secondAttribute="centerY" id="6p3-yK-wLA"/>
-                        <constraint firstItem="TGu-df-Dnl" firstAttribute="leading" secondItem="gYS-dD-qYL" secondAttribute="leading" constant="110" id="7oi-9g-0UV"/>
                         <constraint firstItem="SoQ-Ng-pgy" firstAttribute="leading" secondItem="gYS-dD-qYL" secondAttribute="leading" constant="15" id="BKO-hw-Yxs"/>
-                        <constraint firstAttribute="trailing" secondItem="nqJ-eo-trY" secondAttribute="trailing" constant="15" id="Qne-eO-ug3"/>
+                        <constraint firstItem="nxB-li-b2w" firstAttribute="centerY" secondItem="gYS-dD-qYL" secondAttribute="centerY" id="Vvk-C5-T2n"/>
                         <constraint firstAttribute="height" constant="45" id="a16-b6-BaL"/>
-                        <constraint firstItem="nqJ-eo-trY" firstAttribute="centerY" secondItem="gYS-dD-qYL" secondAttribute="centerY" id="cv3-CM-7Fs"/>
-                        <constraint firstItem="nqJ-eo-trY" firstAttribute="leading" secondItem="TGu-df-Dnl" secondAttribute="trailing" constant="20" id="lzb-ih-8lW"/>
+                        <constraint firstAttribute="trailing" secondItem="nxB-li-b2w" secondAttribute="trailing" constant="20" id="d3t-oT-PrF"/>
                         <constraint firstItem="SoQ-Ng-pgy" firstAttribute="centerY" secondItem="gYS-dD-qYL" secondAttribute="centerY" id="mup-q3-6IB"/>
+                        <constraint firstItem="nxB-li-b2w" firstAttribute="leading" secondItem="gYS-dD-qYL" secondAttribute="leading" constant="110" id="v8c-aK-3ya"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4b-4O-A6r">
@@ -178,6 +174,7 @@
                         </label>
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G1m-23-8np">
                             <rect key="frame" x="311" y="7" width="51" height="31"/>
+                            <color key="onTintColor" red="0.35491353269999998" green="0.623277843" blue="0.94517052170000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="setDefaultAc:" destination="-1" eventType="valueChanged" id="niu-HE-RsR"/>
                             </connections>

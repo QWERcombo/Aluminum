@@ -18,6 +18,7 @@
 		560212A920596550009EF75D /* SettingDescribViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560212A820596550009EF75D /* SettingDescribViewController.m */; };
 		560264B6206A6A5400F9C405 /* TicketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 560264B5206A6A5400F9C405 /* TicketModel.m */; };
 		560264BA206A7C1D00F9C405 /* ShopCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 560264B9206A7C1D00F9C405 /* ShopCar.m */; };
+		561CC0D5206FD24900DB0998 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 561CC0D4206FD24900DB0998 /* MainModel.m */; };
 		5632BFAC205AA3F80009CD34 /* SetOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFAB205AA3F80009CD34 /* SetOrderViewController.m */; };
 		5632BFAF205AB47D0009CD34 /* QuotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFAE205AB47D0009CD34 /* QuotationViewController.m */; };
 		5632BFB2205AB5920009CD34 /* QuotationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFB1205AB5920009CD34 /* QuotationDetailViewController.m */; };
@@ -211,6 +212,8 @@
 		560264B5206A6A5400F9C405 /* TicketModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketModel.m; sourceTree = "<group>"; };
 		560264B8206A7C1D00F9C405 /* ShopCar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCar.h; sourceTree = "<group>"; };
 		560264B9206A7C1D00F9C405 /* ShopCar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCar.m; sourceTree = "<group>"; };
+		561CC0D3206FD24900DB0998 /* MainModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
+		561CC0D4206FD24900DB0998 /* MainModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
 		5632BFAA205AA3F80009CD34 /* SetOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetOrderViewController.h; sourceTree = "<group>"; };
 		5632BFAB205AA3F80009CD34 /* SetOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetOrderViewController.m; sourceTree = "<group>"; };
 		5632BFAD205AB47D0009CD34 /* QuotationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuotationViewController.h; sourceTree = "<group>"; };
@@ -696,6 +699,8 @@
 			children = (
 				568CB0882065F90900B48318 /* MainItemTypeModel.h */,
 				568CB0892065F90900B48318 /* MainItemTypeModel.m */,
+				561CC0D3206FD24900DB0998 /* MainModel.h */,
+				561CC0D4206FD24900DB0998 /* MainModel.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1480,6 +1485,7 @@
 				A22981AF20624447007B6112 /* AddBankCardUploadView.m in Sources */,
 				A22981862061FE97007B6112 /* RemainExplainViewController.m in Sources */,
 				A2AC1C6820564AB900A3B2F9 /* UserInfoViewController.m in Sources */,
+				561CC0D5206FD24900DB0998 /* MainModel.m in Sources */,
 				56940C2220515DF900DFA6D6 /* UIView+UIViewAddition.m in Sources */,
 				56940C4C2051607500DFA6D6 /* OrderViewController.m in Sources */,
 				56940C462051603600DFA6D6 /* MineViewController.m in Sources */,

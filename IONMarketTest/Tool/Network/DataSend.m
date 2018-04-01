@@ -77,7 +77,7 @@ static NSOperationQueue *queue;
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//        if (cookie)[manager.requestSerializer setValue:cookie forHTTPHeaderField:@"cookie"];
+//
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         manager.requestSerializer.timeoutInterval = 20.f;
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json", nil];
@@ -96,7 +96,7 @@ static NSOperationQueue *queue;
             
             //请求成功
             [DataSend verdictResponseString:responseObject];
-            
+            NSLog(@"%@", responseObject);
             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
             NSLog(@" 🍔🍔 %@", result);
             NSString *status = [NSString stringWithFormat:@"%@", [result objectForKey:@"status"]];//1为成功
@@ -127,6 +127,7 @@ static NSOperationQueue *queue;
     } else {
         [[UtilsData sharedInstance] hideAlert];
     }
+    
 }
 
 

@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *holderTF;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
-@property (weak, nonatomic) IBOutlet UILabel *addressLab;
+@property (weak, nonatomic) IBOutlet UIButton *addressBtn;
 @property (weak, nonatomic) IBOutlet UITextView *addressTextView;
 @property (weak, nonatomic) IBOutlet UISwitch *setDefaultSwitch;
 @property (weak, nonatomic) IBOutlet UIView *deleteView;
@@ -32,15 +32,14 @@
         self.title = @"新增地址";
         self.deleteView.hidden = YES;
         
-//        self.setDefaultSwitch.on = YES;
-        
     } else {
         self.title = @"修改地址";
         self.deleteView.hidden = NO;
         
+        [self.addressBtn setTitle:[NSString stringWithFormat:@"%@ %@ %@",self.addressModel.sheng, self.addressModel.shi, self.addressModel.qu] forState:UIControlStateNormal];
         self.holderTF.placeholder = self.addressModel.name;
         self.phoneTF.placeholder = self.addressModel.phone;
-        self.addressTextView.text = self.addressModel.address;
+        self.addressTextView.text = self.addressModel.detailAddress;
         self.setDefaultSwitch.on = [self.addressModel.moren intValue];
     }
     
@@ -49,11 +48,10 @@
 
 
 - (IBAction)chooseCity:(id)sender {
-    NSLog(@"city");
+//    NSLog(@"city");
     self.pickerView = [[GFAddressPicker alloc] initWithFrame:self.view.bounds];
-    NSArray *cityArray = [self.cityString componentsSeparatedByString:@"-"];
-    if (self.cityString) {
-        [self.pickerView updateAddressAtProvince:cityArray[0] city:cityArray[1] town:cityArray[2]];
+    if (self.addressModel) {
+        [self.pickerView updateAddressAtProvince:self.addressModel.sheng city:self.addressModel.shi town:self.addressModel.qu];
     } else {
         [self.pickerView updateAddressAtProvince:@"北京市" city:@"北京市" town:@"东城区"];
     }
@@ -69,7 +67,7 @@
 - (void)GFAddressPickerWithProvince:(NSString *)province
                                city:(NSString *)city area:(NSString *)area {
     [self.pickerView removeFromSuperview];
-    self.addressLab.text = [NSString stringWithFormat:@"%@ %@ %@", province,city,area];
+    [self.addressBtn setTitle:[NSString stringWithFormat:@"%@ %@ %@",province, city, area] forState:UIControlStateNormal];
     self.cityString = [NSString stringWithFormat:@"%@-%@-%@", province,city,area];
 }
 
@@ -107,18 +105,30 @@
 - (IBAction)saveAc:(id)sender {
     NSString *url = @"";
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    NSArray *cityArray = [self.cityString componentsSeparatedByString:@"-"];
+    
     if (self.addressModel) {
         [dict setValue:self.addressModel.id forKey:@"addressId"];
         [dict setValue:self.phoneTF.text.length?self.phoneTF.text:self.addressModel.phone forKey:@"phone"];
         [dict setValue:self.holderTF.text.length?self.holderTF.text:self.addressModel.name forKey:@"name"];
-        [dict setValue:self.addressTextView.text forKey:@"address"];
+        [dict setValue:self.addressTextView.text forKey:@"detailAddress"];
+        [dict setValue:cityArray[0] forKey:@"sheng"];
+        [dict setValue:cityArray[1] forKey:@"shi"];
+        [dict setValue:cityArray[2] forKey:@"qu"];
         [dict setValue:SINT(self.setDefaultSwitch.on) forKey:@"moren"];
         url = Interface_UpdateAddress;
     } else {
+        
         [dict setValue:[UserData currentUser].id forKey:@"userId"];
         [dict setValue:self.phoneTF.text forKey:@"phone"];
         [dict setValue:self.holderTF.text forKey:@"name"];
-        [dict setValue:[NSString stringWithFormat:@"%@\n%@", self.cityString,self.addressTextView.text] forKey:@"address"];
+//        [dict setValue:[NSString stringWithFormat:@"%@\n%@", self.cityString,self.addressTextView.text] forKey:@"address"];
+        [dict setValue:[NSString stringWithFormat:@"%@", self.addressTextView.text] forKey:@"detailAddress"];
+        [dict setValue:cityArray[0] forKey:@"sheng"];
+        [dict setValue:cityArray[1] forKey:@"shi"];
+        [dict setValue:cityArray[2] forKey:@"qu"];
+        
         [dict setValue:SINT(self.setDefaultSwitch.on) forKey:@"moren"];
         url = Interface_SaveAddress;
     }

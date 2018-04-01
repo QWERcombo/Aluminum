@@ -470,11 +470,12 @@
 
 //获取订单金额
 - (void)getOrderMoneyWithType:(NSString *)type withMode:(GetWholeBoardMode)mode {
+    
     __weak typeof(self) weakself = self;
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@"1000" forKey:@"chang"];
+    [dict setValue:@"100" forKey:@"chang"];
     [dict setValue:@"100" forKey:@"kuang"];
-    [dict setValue:@"100" forKey:@"hou"];
+    [dict setValue:@"10" forKey:@"hou"];
     [dict setValue:type forKey:@"type"]; //快速
     [dict setValue:@"10" forKey:@"amount"];
     [dict setValue:self.typeStr forKey:@"zhonglei"];  //零切
@@ -507,9 +508,7 @@
         NSLog(@"+++%@", resultDic);
         
         
-        
     } failure:^(NSString *error, NSInteger code) {
-        
         
     }];
     
@@ -520,10 +519,8 @@
 - (void)selectInfomationForUser:(NSString *)type {
     __weak typeof(self) weakself = self;
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    [dict setValue:self.typeStr forKey:@"zhonglei"];
-//    [dict setValue:self.xinghaoStr forKey:@"xinghao"];
-    [dict setValue:@"型材" forKey:@"zhonglei"];
-    [dict setValue:@"30" forKey:@"xinghao"];
+    [dict setValue:self.typeStr forKey:@"zhonglei"];
+    [dict setValue:self.xinghaoStr forKey:@"xinghao"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetByZhongleiAndXinghao andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"--%@", resultDic);
         
@@ -559,6 +556,8 @@
                 weakself.passValue(clueStr);
             }];
             [weakself.view addSubview:pv];
+        } else {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"暂无数据" time:0 aboutType:WHShowViewMode_Text state:NO];
         }
         
     } failure:^(NSString *error, NSInteger code) {
@@ -569,6 +568,7 @@
 
 //下整只的时候，自动选择长度
 - (void)automaticateLengthByWhole:(GetWholeBoardMode)mode {
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:self.typeStr forKey:@"zhonglei"];
     [dict setValue:self.xinghaoStr forKey:@"xinghao"];

@@ -90,7 +90,7 @@
 #import "TicketModel.h"
 #import "ShopCar.h"
 #import "AddressModel.h"
-
+#import "MainModel.h"
 
 
 //customView

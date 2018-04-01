@@ -10,6 +10,8 @@
 
 @interface MainItem__Single : UIView
 
+typedef void (^MainBlock)(MainModel *info);
+
 @property (weak, nonatomic) IBOutlet UITextField *lengthTF;
 @property (weak, nonatomic) IBOutlet UITextField *widthTF;
 @property (weak, nonatomic) IBOutlet UILabel *rightCountLabel;
@@ -22,11 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *right_down_Label;
 @property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 @property (weak, nonatomic) IBOutlet UITextField *amountTF;
-
 @property (weak, nonatomic) IBOutlet UILabel *thinLabel;
 
 @property (nonatomic, copy) ClikBlock click;
-
 
 
 - (void)loadData:(NSObject *)data andCliker:(ClikBlock)click;
