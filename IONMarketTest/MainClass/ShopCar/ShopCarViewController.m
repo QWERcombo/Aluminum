@@ -149,11 +149,6 @@
     return 0;
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    ShopCarDetailViewController *detail = [[ShopCarDetailViewController alloc] init];
-//    [self.navigationController pushViewController:detail animated:YES];
-//}
-
 
 #pragma mark ----- Action
 
@@ -171,13 +166,13 @@
     [self.navigationController pushViewController:detail animated:YES];
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@[@"15",@"16"] forKey:@"gouwucheIds"];
+    [dict setValue:@"15,16" forKey:@"gouwucheIds"];
     [dict setValue:@"40" forKey:@"addressId"];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveFromGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"---%@", resultDic);
         
-        
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0 aboutType:WHShowViewMode_Text state:YES];
         
     } failure:^(NSString *error, NSInteger code) {
         
@@ -260,7 +255,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetGouwucheByUser andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-//        NSLog(@"++---%@", resultDic);
+        NSLog(@"++---%@", resultDic);
         NSArray *dataSource = resultDic[@"result"];
         
         for (NSDictionary *dic in dataSource) {

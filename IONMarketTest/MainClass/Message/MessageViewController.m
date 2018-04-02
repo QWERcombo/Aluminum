@@ -50,7 +50,6 @@
     }];
     
     NSArray *array = @[@"智能客服",@"电话客服",@"功能反馈"];
-    NSArray *imageArr = @[@"main",@"car",@"order"];
     UIButton *lastButton = nil;
     
     for (NSInteger i=0; i<3; i++) {
@@ -58,8 +57,8 @@
         UIButton *button = [UIButton buttonWithTitle:[array objectAtIndex:i] andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
         [button addTarget:self action:@selector(buttonCliker:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = 100+i;
-        NSString *selectImg = [NSString stringWithFormat:@"image_%@_1", [imageArr objectAtIndex:i]];
-        NSString *unselectImg = [NSString stringWithFormat:@"image_%@_0", [imageArr objectAtIndex:i]];
+        NSString *selectImg = [NSString stringWithFormat:@"Message_%ld_1", i];
+        NSString *unselectImg = [NSString stringWithFormat:@"Message_%ld_0", i];
         [button setImage:IMG(unselectImg) forState:UIControlStateNormal];
         [button setImage:IMG(selectImg) forState:UIControlStateSelected];
         

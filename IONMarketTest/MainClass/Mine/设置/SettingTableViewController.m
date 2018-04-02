@@ -51,6 +51,9 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.text = [self.titleArr objectAtIndex:indexPath.row];
     cell.textLabel.textColor = [UIColor mianColor:2];
+    NSString *imageName = [NSString stringWithFormat:@"Settings_%ld", indexPath.row];
+    cell.imageView.image = IMG(imageName);
+    
     if (indexPath.row==self.titleArr.count-2) {
         cell.detailTextLabel.text = @"1.11M";
     }

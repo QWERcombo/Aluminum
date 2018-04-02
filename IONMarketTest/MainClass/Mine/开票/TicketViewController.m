@@ -214,8 +214,9 @@
     
     [self.dataMuArr removeAllObjects];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:status forKey:@"fapiaoStatus"];
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+//    [dict setValue:[UserData currentUser].id forKey:@"userId"];
+    [dict setValue:@"3" forKey:@"kaipiaoStatus"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"+++%@", resultDic);
         
         NSArray *dataSourceArr = resultDic[@"list"];
