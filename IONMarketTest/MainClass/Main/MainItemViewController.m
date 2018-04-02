@@ -26,23 +26,19 @@
 
 @property (nonatomic, strong) NSString *xinghaoStr;//型号
 
-@property (nonatomic, strong) NSString *chang;//长度
+@property (nonatomic, strong) MainModel *mainM;
 
-@property (nonatomic, strong) NSString *kuang;//宽度
-
-@property (nonatomic, strong) NSString *hou;//厚度
-
-@property (nonatomic, strong) NSString *amout;//数量
-
-@property (nonatomic, strong) NSString *zhijing;//直径
-
-@property (nonatomic, strong) NSString *waijing;//外径
-
-@property (nonatomic, strong) NSString *neijing;//内径
+@property (nonatomic, strong) NSString *getOrderType;// 快速(整只) 优切(拼切)
 
 @property (nonatomic, copy) void(^passValue)(NSString *value);//选择数据
+
 @property (nonatomic, copy) void(^passTotalPrice)(NSString *value);//总价
+
 @property (nonatomic, copy) void(^passWeight)(NSString *value);//重量
+
+@property (nonatomic, assign) BOOL isGetOrderMoney; // 已经添加完才能加入购物车或直接购买
+
+@property (nonatomic, strong) NSString *orderMoney; // 订单金额
 
 @end
 
@@ -66,8 +62,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"下单";
+    
+    self.mainM = [[MainModel alloc] init];
+    
     UIButton *rightButton = [UIButton buttonWithTitle:@"特殊定制" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
     rightButton.tag = 1010;
+   
     [rightButton addTarget:self action:@selector(buttonCliker:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
     
@@ -184,25 +184,43 @@
             
             if (clueStr.length == 2) {
                 
-                [weakself getOrderMoneyWithType:clueStr withMode:Mode_Single];
+                weakself.getOrderType = clueStr;
                 
+                [weakself.view endEditing:YES];
+
             } else {
                 
                 if ([clueStr isEqualToString:@"0"]) {
+                    
                     [weakself selectInfomationForUser:@"0"];
                     
                     weakself.passValue = ^(NSString *value) {
                         single.thinLabel.text = value;
-                        weakself.hou = value;
+                        single.thinLabel.textColor = [UIColor blackColor];
+                        weakself.mainM.houdu = value;
                     };
                     
+                } else if ([clueStr isEqualToString:@"1"]) { //添加 ----> 调取获取金额接口
+                    
+                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Single];
+                    
+                } else {
+                    
                 }
-                
             }
             
+        } andMainBlock:^(MainModel *info, BOOL lengthIsChanged) {
+            
+            if (lengthIsChanged) {
+                weakself.mainM.changdu = info.changdu;
+            }
+            weakself.mainM.kuandu = info.kuandu;
+            weakself.mainM.shuliang = info.shuliang;
+            
         }];
+        
         self.passTotalPrice = ^(NSString *value) {//总价
-            single.rightCountLabel.text = value;
+            single.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", value];
         };
         
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, 600)];
@@ -214,22 +232,54 @@
             
             if (clueStr.length == 2) {
                 
-                [weakself getOrderMoneyWithType:clueStr withMode:Mode_Pole];
+                if ([clueStr isEqualToString:@"-1"]) {
+                    //获取选择长度
+                    [weakself automaticateLengthByWhole:Mode_Pole];
+                    
+                    weakself.passValue = ^(NSString *value) {
+                        [pole.lengthBtn setTitle:value forState:UIControlStateNormal];
+                        weakself.mainM.changdu = value;
+                    };
+                    
+                } else {
+                    
+                    weakself.getOrderType = clueStr;
+                    
+                    [weakself.view endEditing:YES];
+                }
                 
             } else {
                 
                 if ([clueStr isEqualToString:@"0"]) {
+                    
                     [weakself selectInfomationForUser:@"0"];
+                    
                     weakself.passValue = ^(NSString *value) {
                         pole.lengthLabel.text = value;
-                        weakself.zhijing = value;
+                        pole.lengthLabel.textColor = [UIColor blackColor];
+                        weakself.mainM.zhijing = value;
                     };
+                    
+                } else if ([clueStr isEqualToString:@"1"]) {
+                    
+                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Pole];
+                
                 }
                 
-                
             }
+        } andMainBlock:^(MainModel *info, BOOL lengthIsChanged) {
+            
+            if (lengthIsChanged) {
+                weakself.mainM.changdu = info.changdu;
+            }
+            weakself.mainM.shuliang = info.shuliang;
             
         }];
+        
+        self.passTotalPrice = ^(NSString *value) {//总价
+            pole.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", value];
+        };
+        
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, pole.height)];
         [_sctollView addSubview:pole];
     } else if (self.lastSelected == 102) { //型材
@@ -238,39 +288,88 @@
             
             if (clueStr.length == 2) {
                 
-                [weakself getOrderMoneyWithType:clueStr withMode:Mode_Tube];
+                if ([clueStr isEqualToString:@"-1"]) {
+                    //获取选择长度
+                    [weakself automaticateLengthByWhole:Mode_Tube];
+                    
+                    weakself.passValue = ^(NSString *value) {
+                        [tube.lengthBtn setTitle:value forState:UIControlStateNormal];
+                        weakself.mainM.changdu = value;
+                    };
+                    
+                } else {
+                    
+                    weakself.getOrderType = clueStr;
+                    
+                    [weakself.view endEditing:YES];
+                    
+                }
                 
             } else {
                 
                 if ([clueStr isEqualToString:@"0"]) { //厚度
+                    
                     [weakself selectInfomationForUser:@"0"];
+                    
                     weakself.passValue = ^(NSString *value) {
                         tube.thinLabel.text = value;
-                        weakself.hou = value;
+                        tube.thinLabel.textColor = [UIColor blackColor];
+                        weakself.mainM.houdu = value;
                     };
                 } else if ([clueStr isEqualToString:@"1"]) { //宽度
+                    
                     [weakself selectInfomationForUser:@"1"];
+                    
                     weakself.passValue = ^(NSString *value) {
                         tube.widthLabel.text = value;
-                        weakself.kuang = value;
+                        tube.widthLabel.textColor = [UIColor blackColor];
+                        weakself.mainM.kuandu = value;
                     };
+                } else if ([clueStr isEqualToString:@"2"]) {
+                    
+                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Tube];
+                    
                 } else {
                     
                 }
-                
-                
             }
             
+        } andMainBlock:^(MainModel *info, BOOL lengthIsChanged) {
+            
+            if (lengthIsChanged) {
+                weakself.mainM.changdu = info.changdu;
+            }
+            weakself.mainM.shuliang = info.shuliang;
+            
         }];
+        
+        self.passTotalPrice = ^(NSString *value) {//总价
+            tube.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", value];
+        };
+        
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, tube.height)];
         [_sctollView addSubview:tube];
     } else {//管材
         MainItemView__Matter *matter = [[MainItemView__Matter alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 450)];
         [matter loadData:nil andCliker:^(NSString *clueStr) {
-            
             if (clueStr.length == 2) {
                 
-                [weakself getOrderMoneyWithType:clueStr withMode:Mode_Matter];
+                if ([clueStr isEqualToString:@"-1"]) {
+                    
+                    [weakself automaticateLengthByWhole:Mode_Matter];
+                    
+                    weakself.passValue = ^(NSString *value) {
+                        [matter.lengthBtn setTitle:value forState:UIControlStateNormal];
+                        weakself.mainM.changdu = value;
+                    };
+                    
+                } else {
+                    
+                    weakself.getOrderType = clueStr;
+                    
+                    [weakself.view endEditing:YES];
+                    
+                }
                 
             } else {
                 
@@ -278,21 +377,39 @@
                     [weakself selectInfomationForUser:@"0"];
                     weakself.passValue = ^(NSString *value) {
                         matter.waiLabel.text = value;
-                        weakself.waijing = value;
+                        matter.waiLabel.textColor = [UIColor blackColor];
+                        weakself.mainM.waijing = value;
                     };
                 } else if ([clueStr isEqualToString:@"1"]) { //内径
                     [weakself selectInfomationForUser:@"1"];
                     weakself.passValue = ^(NSString *value) {
                         matter.neiLabel.text = value;
-                        weakself.neijing = value;
+                        matter.neiLabel.textColor = [UIColor blackColor];
+                        weakself.mainM.neijing = value;
                     };
+                } else if ([clueStr isEqualToString:@"2"]) {
+                    
+                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Matter];
+                    
                 } else {
                     
                 }
                 
             }
             
+        } andMainBlock:^(MainModel *info, BOOL lengthIsChanged) {
+            
+            if (lengthIsChanged) {
+                weakself.mainM.changdu = info.changdu;
+            }
+            weakself.mainM.shuliang = info.shuliang;
+
         }];
+        
+        self.passTotalPrice = ^(NSString *value) {//总价
+            matter.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", value];
+        };
+        
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, matter.height)];
         [_sctollView addSubview:matter];
     }
@@ -381,13 +498,15 @@
             self.lastTypeSelected = sender.tag;
             
             MainItemTypeModel *model = [self.dataMuArr objectAtIndex:sender.tag-200];
-//            NSLog(@"%@", model);
             self.xinghaoStr = model.id;
 
         }
         
     }
     
+    
+    self.isGetOrderMoney = NO;
+    self.getOrderType = @"";
     [self createScrollLayoutView];
     [self.view bringSubviewToFront:bottomView];
 }
@@ -395,19 +514,24 @@
 //直接购买
 - (void)buyAction:(UIButton *)sender {
     
+    if (!self.isGetOrderMoney) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先点击添加按钮完成添加操作！" time:0.0 aboutType:WHShowViewMode_Text state:NO];
+        return;
+    }
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@"1000" forKey:@"chang"];
-    [dict setValue:@"1000" forKey:@"kuang"];
-    [dict setValue:@"100" forKey:@"hou"];
-    [dict setValue:@"快速" forKey:@"type"];
-    [dict setValue:@"1000" forKey:@"amount"];
-    [dict setValue:@"零切" forKey:@"zhonglei"];
-    [dict setValue:@"6061" forKey:@"erjimulu"];
-    [dict setValue:@"6400" forKey:@"money"];
+    [dict setValue:self.mainM.changdu forKey:@"chang"];
+    [dict setValue:self.mainM.kuandu forKey:@"kuang"];
+    [dict setValue:self.mainM.houdu forKey:@"hou"];
+    [dict setValue:self.getOrderType forKey:@"type"];
+    [dict setValue:self.mainM.shuliang forKey:@"amount"];
+    [dict setValue:self.typeStr forKey:@"zhonglei"];
+    [dict setValue:self.xinghaoStr forKey:@"erjimulu"];
+    [dict setValue:self.orderMoney forKey:@"money"];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
-    [dict setValue:@"9" forKey:@"addressId"];
+    [dict setValue:@"40" forKey:@"addressId"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderSave andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"+++%@", resultDic);
+        NSLog(@"buy: +++%@", resultDic);
         
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:1 aboutType:WHShowViewMode_Text state:YES];
         
@@ -421,18 +545,23 @@
 //购物车
 - (void)carAction:(UIButton *)sender {
     
+    if (!self.isGetOrderMoney) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先点击添加按钮完成添加操作！" time:0.0 aboutType:WHShowViewMode_Text state:NO];
+        return;
+    }
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@"1000" forKey:@"chang"];
-    [dict setValue:@"1000" forKey:@"kuang"];
-    [dict setValue:@"100" forKey:@"hou"];
-    [dict setValue:@"快速" forKey:@"type"];
-    [dict setValue:@"1" forKey:@"amount"];
-    [dict setValue:@"零切" forKey:@"zhonglei"];
-    [dict setValue:@"30" forKey:@"erjimulu"];
-    [dict setValue:@"6400" forKey:@"money"];
+    [dict setValue:self.mainM.changdu forKey:@"chang"];
+    [dict setValue:self.mainM.kuandu forKey:@"kuang"];
+    [dict setValue:self.mainM.houdu forKey:@"hou"];
+    [dict setValue:self.getOrderType forKey:@"type"];
+    [dict setValue:self.mainM.shuliang forKey:@"amount"];
+    [dict setValue:self.typeStr forKey:@"zhonglei"];
+    [dict setValue:self.xinghaoStr forKey:@"erjimulu"];
+    [dict setValue:self.orderMoney forKey:@"money"];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveToGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"+++%@", resultDic);
+        NSLog(@"car: +++%@", resultDic);
         
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:1 aboutType:WHShowViewMode_Text state:YES];
         
@@ -468,36 +597,78 @@
     
 }
 
+//检查各配置参数是否完整
+- (BOOL)checkInfo:(GetWholeBoardMode)mode {
+    
+    if (!self.getOrderType.length) {
+        [self showAlert:@"请选择方式"];
+        return NO;
+    }
+    
+    switch (mode) {
+        case Mode_Single:
+            if (self.mainM.houdu.length && self.mainM.changdu.length && self.mainM.kuandu.length && self.mainM.shuliang.length) {
+                
+                return YES;
+            }
+            break;
+        case Mode_Pole:
+            if (self.mainM.changdu.length && self.mainM.zhijing.length && self.mainM.shuliang.length) {
+                
+                return YES;
+            }
+            break;
+        case Mode_Tube:
+            if (self.mainM.houdu.length && self.mainM.changdu.length && self.mainM.kuandu.length && self.mainM.shuliang.length) {
+                
+                return YES;
+            }
+            break;
+        case Mode_Matter:
+            if (self.mainM.waijing.length && self.mainM.changdu.length && self.mainM.neijing.length && self.mainM.shuliang.length) {
+                
+                return YES;
+            }
+            break;
+        default:
+            return NO;
+            break;
+    }
+    
+    return NO;
+    
+}
+
 //获取订单金额
 - (void)getOrderMoneyWithType:(NSString *)type withMode:(GetWholeBoardMode)mode {
     
+    if (![self checkInfo:mode]) {
+        [self showAlert:@"请完整配置各参数！"];
+        return;
+    }
+    
+    self.isGetOrderMoney = NO;
     __weak typeof(self) weakself = self;
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@"100" forKey:@"chang"];
-    [dict setValue:@"100" forKey:@"kuang"];
-    [dict setValue:@"10" forKey:@"hou"];
-    [dict setValue:type forKey:@"type"]; //快速
-    [dict setValue:@"10" forKey:@"amount"];
+    [dict setValue:self.mainM.changdu forKey:@"chang"];
+    [dict setValue:self.mainM.kuandu forKey:@"kuang"];
+    [dict setValue:self.mainM.houdu forKey:@"hou"];
+    [dict setValue:self.getOrderType forKey:@"type"]; //快速
+    [dict setValue:self.mainM.shuliang forKey:@"amount"];
     [dict setValue:self.typeStr forKey:@"zhonglei"];  //零切
     [dict setValue:self.xinghaoStr forKey:@"erjimulu"]; //30
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderMoney andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"+++%@", resultDic);
+//        NSLog(@"+++%@", resultDic);
         NSString *orderMoney = [NSString stringWithFormat:@"%@", resultDic[@"orderMoney"]];
         if (weakself.passTotalPrice) {
             weakself.passTotalPrice(orderMoney);
+            weakself.orderMoney = orderMoney;
+            weakself.isGetOrderMoney = YES;
         }
         
     } failure:^(NSString *error, NSInteger code) {
         
-        
     }];
-    
-    if ([type isEqualToString:@"快速"] || [type isEqualToString:@"整只"]) {
-        
-        [self automaticateLengthByWhole:mode];
-        
-    }
-    
 }
 
 - (void)getInfomationWithID:(NSString *)infoID {
@@ -505,7 +676,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:infoID forKey:@"id"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_FindDetail andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"+++%@", resultDic);
+//        NSLog(@"+++%@", resultDic);
         
         
     } failure:^(NSString *error, NSInteger code) {
@@ -574,55 +745,48 @@
     [dict setValue:self.xinghaoStr forKey:@"xinghao"];
     switch (mode) {
         case Mode_Single:
-            if (self.hou) {
-                [dict setValue:self.hou forKey:@"hou"];
-            } else {
-                [self showAlert:@"厚度"];
-                return;
-            }
+            [dict setValue:self.mainM.houdu forKey:@"hou"];
             break;
         case Mode_Pole:
-            if (self.zhijing) {
-                [dict setValue:self.zhijing forKey:@"zhijing"];
-            } else {
-                [self showAlert:@"直径"];
-                return;
-            }
+            [dict setValue:self.mainM.zhijing forKey:@"zhijing"];
             break;
         case Mode_Tube:
-            if (self.hou) {
-                [dict setValue:self.hou forKey:@"hou"];
-            } else {
-                [self showAlert:@"厚度"];
-                return;
-            }
-            if (self.kuang) {
-                [dict setValue:self.kuang forKey:@"kuang"];
-            } else {
-                [self showAlert:@"宽度"];
-                return;
-            }
+            [dict setValue:self.mainM.houdu forKey:@"hou"];
+            [dict setValue:self.mainM.kuandu forKey:@"kuang"];
             break;
         case Mode_Matter:
-            if (self.waijing) {
-                [dict setValue:self.waijing forKey:@"waijing"];
-            } else {
-                [self showAlert:@"外径"];
-                return;
-            }
-            if (self.neijing) {
-                [dict setValue:self.waijing forKey:@"neijing"];
-            } else {
-                [self showAlert:@"内径"];
-                return;
-            }
+            [dict setValue:self.mainM.waijing forKey:@"waijing"];
+            [dict setValue:self.mainM.neijing forKey:@"neijing"];
             break;
         default:
             break;
     }
     
+    __weak typeof(self) weakself = self;
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Inuterface_GetLengthByOthers andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"++++%@", resultDic);
+//        NSLog(@"changdu:  ++++%@", resultDic);
+        NSArray *dataSourceArr = resultDic[@"changdus"];
+        
+        if (dataSourceArr.count) {
+            NSArray *sortArr = [dataSourceArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                if ([obj2 integerValue] < [obj1 integerValue])
+                {
+                    return NSOrderedDescending;
+                }
+                else
+                {
+                    return NSOrderedAscending;
+                }
+            }];
+            UnitsPickerView *pv = [[UnitsPickerView alloc] initWithFrame:self.view.bounds withDataSource:sortArr];
+            [pv loadData:nil andClickBlock:^(NSString *clueStr) {
+//                NSLog(@"++%@", clueStr);
+                weakself.passValue(clueStr);
+            }];
+            [weakself.view addSubview:pv];
+        } else {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"暂无数据" time:0.0 aboutType:WHShowViewMode_Text state:NO];
+        }
         
         
     } failure:^(NSString *error, NSInteger code) {

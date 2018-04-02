@@ -30,7 +30,14 @@
 - (IBAction)done:(UIButton *)sender {
     if (self.click) {
         [self removeFromSuperview];
-        self.click(self.selectStr);
+        
+        NSString *string = @"";
+        if (self.selectStr.length) {
+            string = self.selectStr;
+        } else {
+            string = [self.dataSource firstObject];
+        }
+        self.click(string);
     }
 }
 

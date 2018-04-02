@@ -87,7 +87,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择内径" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAb-b8-xXz">
                             <rect key="frame" x="70" y="12" width="57.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" red="0.48627450979999998" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="textColor" red="0.58823529409999997" green="0.59215686270000001" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -123,12 +123,27 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLs-JE-lRj">
+                            <rect key="frame" x="70" y="0.0" width="183" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="4L9-RX-YkS"/>
+                            </constraints>
+                            <state key="normal" title="选择长度">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="getLength:" destination="iN0-l3-epB" eventType="touchUpInside" id="zIT-C1-IKy"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="YXr-Hr-Sc7" firstAttribute="centerY" secondItem="1Xg-zh-fl2" secondAttribute="centerY" id="0xp-E4-ODR"/>
+                        <constraint firstItem="RLs-JE-lRj" firstAttribute="leading" secondItem="IGO-Hx-I9E" secondAttribute="trailing" constant="20" id="89y-zP-So2"/>
                         <constraint firstItem="4hb-jt-fuV" firstAttribute="centerY" secondItem="1Xg-zh-fl2" secondAttribute="centerY" id="CjW-Mc-snQ"/>
                         <constraint firstItem="IGO-Hx-I9E" firstAttribute="centerY" secondItem="1Xg-zh-fl2" secondAttribute="centerY" id="FTK-zy-Epf"/>
+                        <constraint firstItem="RLs-JE-lRj" firstAttribute="centerY" secondItem="1Xg-zh-fl2" secondAttribute="centerY" id="cOy-fc-rCT"/>
+                        <constraint firstItem="YXr-Hr-Sc7" firstAttribute="leading" secondItem="RLs-JE-lRj" secondAttribute="trailing" constant="20" id="foh-ug-ahW"/>
                         <constraint firstItem="4hb-jt-fuV" firstAttribute="leading" secondItem="IGO-Hx-I9E" secondAttribute="trailing" constant="20" id="hG4-GO-GQf"/>
                         <constraint firstItem="IGO-Hx-I9E" firstAttribute="leading" secondItem="1Xg-zh-fl2" secondAttribute="leading" constant="15" id="hwZ-Wk-o0P"/>
                         <constraint firstAttribute="height" constant="40" id="u0T-7V-Y7i"/>
@@ -319,6 +334,7 @@
                 <outlet property="leftImgv" destination="PPN-bp-Ffn" id="gml-Oq-cbf"/>
                 <outlet property="left_down_Label" destination="ODX-kq-arF" id="Fht-6k-CSK"/>
                 <outlet property="left_top_Label" destination="Ut8-Vb-bYr" id="VVb-cG-io8"/>
+                <outlet property="lengthBtn" destination="RLs-JE-lRj" id="eD6-54-8EF"/>
                 <outlet property="lengthTF" destination="4hb-jt-fuV" id="mKo-cR-5is"/>
                 <outlet property="neiLabel" destination="DAb-b8-xXz" id="Aab-2U-Z5D"/>
                 <outlet property="rightCountLabel" destination="xXC-Kh-ESh" id="kED-wH-PKk"/>

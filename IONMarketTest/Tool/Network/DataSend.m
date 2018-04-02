@@ -96,12 +96,11 @@ static NSOperationQueue *queue;
             
             //请求成功
             [DataSend verdictResponseString:responseObject];
-            NSLog(@"%@", responseObject);
+            
             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
             NSLog(@" 🍔🍔 %@", result);
             NSString *status = [NSString stringWithFormat:@"%@", [result objectForKey:@"status"]];//1为成功
             NSString *msg = [NSString stringWithFormat:@"%@", [result objectForKey:@"msg"]];//返回信息
-//            success(result,msg);
             
             if ([status isEqualToString:@"1"]) {   //成功
                 
@@ -118,7 +117,8 @@ static NSOperationQueue *queue;
             [[UtilsData sharedInstance] hideAlert];
             //请求失败
             failure(error.localizedFailureReason,1);
-            [[UtilsData sharedInstance]showAlertTitle:@"" detailsText:@"加载失败，请检查网络是否通畅" time:2.5 aboutType:WHShowViewMode_Text state:NO];
+//            [[UtilsData sharedInstance]showAlertTitle:@"" detailsText:@"加载失败，请检查网络是否通畅" time:2.5 aboutType:WHShowViewMode_Text state:NO];
+            [[UtilsData sharedInstance]showAlertTitle:@"" detailsText:@"暂无数据" time:2.5 aboutType:WHShowViewMode_Text state:NO];
             NSLog(@"failure about error~%@",error);
         }];
     });

@@ -50,7 +50,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择直径" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fP-7w-sWh">
                             <rect key="frame" x="70" y="12" width="57.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" red="0.48627450979999998" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="textColor" red="0.78044933080000001" green="0.7801136971" blue="0.80000001190000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -88,14 +88,29 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTv-DA-nCD">
+                            <rect key="frame" x="70" y="0.0" width="183" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="sxN-Ky-hpA"/>
+                            </constraints>
+                            <state key="normal" title="选择长度">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="getLength:" destination="iN0-l3-epB" eventType="touchUpInside" id="7SD-3Z-3JR"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="pTv-DA-nCD" firstAttribute="centerY" secondItem="JYQ-q1-vWe" secondAttribute="centerY" id="9j7-Bj-Gf3"/>
                         <constraint firstItem="6pt-gh-a43" firstAttribute="leading" secondItem="Wak-ot-JHc" secondAttribute="trailing" constant="20" id="N04-HG-2oT"/>
                         <constraint firstItem="Wak-ot-JHc" firstAttribute="centerY" secondItem="JYQ-q1-vWe" secondAttribute="centerY" id="RuE-0t-SlU"/>
                         <constraint firstItem="Wak-ot-JHc" firstAttribute="leading" secondItem="gW3-va-V6n" secondAttribute="trailing" constant="20" id="XcL-mI-pot"/>
+                        <constraint firstItem="pTv-DA-nCD" firstAttribute="leading" secondItem="gW3-va-V6n" secondAttribute="trailing" constant="20" id="aSS-zo-APf"/>
                         <constraint firstItem="gW3-va-V6n" firstAttribute="centerY" secondItem="JYQ-q1-vWe" secondAttribute="centerY" id="all-7F-X7J"/>
                         <constraint firstAttribute="height" constant="40" id="b3L-ff-nTi"/>
+                        <constraint firstItem="6pt-gh-a43" firstAttribute="leading" secondItem="pTv-DA-nCD" secondAttribute="trailing" constant="20" id="fbx-gd-EQg"/>
                         <constraint firstItem="gW3-va-V6n" firstAttribute="leading" secondItem="JYQ-q1-vWe" secondAttribute="leading" constant="15" id="pkt-IU-7qT"/>
                         <constraint firstAttribute="trailing" secondItem="6pt-gh-a43" secondAttribute="trailing" constant="15" id="wBK-sv-e94"/>
                         <constraint firstItem="6pt-gh-a43" firstAttribute="centerY" secondItem="JYQ-q1-vWe" secondAttribute="centerY" id="xDq-oE-zTJ"/>
@@ -280,6 +295,7 @@
                 <outlet property="leftImgv" destination="Otn-Dp-0sv" id="9Yt-le-z47"/>
                 <outlet property="left_down_Label" destination="4D5-JI-pkm" id="Ec4-XG-DjC"/>
                 <outlet property="left_top_Label" destination="8B2-1B-i6T" id="PuC-YQ-Ng1"/>
+                <outlet property="lengthBtn" destination="pTv-DA-nCD" id="E48-Q5-x24"/>
                 <outlet property="lengthLabel" destination="0fP-7w-sWh" id="A9h-vH-beH"/>
                 <outlet property="lengthTF" destination="Wak-ot-JHc" id="v0F-WS-kR1"/>
                 <outlet property="rightCountLabel" destination="9pZ-aW-IUV" id="plR-7n-goY"/>

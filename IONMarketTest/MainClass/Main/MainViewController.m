@@ -89,7 +89,7 @@
     mainView.backgroundColor = [UIColor whiteColor];
 
     UIImageView *bannerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 140)];
-    bannerView.backgroundColor = [UIColor purpleColor];
+    bannerView.backgroundColor = [UIColor mianColor:2];
     [mainView addSubview:bannerView];
     
     NSArray *nameArr = @[@"整板",@"零切",@"圆棒",@"型材",@"管材",@"特殊定制",@"自动下单",@"询价"];

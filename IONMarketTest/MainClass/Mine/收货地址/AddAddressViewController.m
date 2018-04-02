@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
     if (self.mode == Mode_Set) {
         self.title = @"新增地址";
         self.deleteView.hidden = YES;
@@ -43,7 +44,10 @@
         self.setDefaultSwitch.on = [self.addressModel.moren intValue];
     }
     
-    
+    CGFloat width = SCREEN_WIGHT-110-20;
+    CGFloat off_left = width-self.addressBtn.imageView.width;
+    self.addressBtn.imageEdgeInsets = UIEdgeInsetsMake(0, off_left, 0, -off_left);
+    self.addressBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -self.addressBtn.imageView.width, 0, self.addressBtn.imageView.width);
 }
 
 

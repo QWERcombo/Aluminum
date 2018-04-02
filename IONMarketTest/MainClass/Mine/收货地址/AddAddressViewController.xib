@@ -98,13 +98,11 @@
                             <color key="textColor" red="0.26374569539999998" green="0.48890727760000002" blue="0.76870256660000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxB-li-b2w">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxB-li-b2w">
                             <rect key="frame" x="110" y="2" width="245" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="SU2-1y-Qij"/>
                             </constraints>
-                            <inset key="titleEdgeInsets" minX="-200" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <inset key="imageEdgeInsets" minX="220" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="请选择" image="image_more">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>

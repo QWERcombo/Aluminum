@@ -11,6 +11,9 @@
 //型材
 @interface MainItemView__Tube : UIView
 
+typedef void (^JudgeBlock)(MainModel *info, BOOL lengthIsChanged); // bool yes改变 no未变
+
+@property (weak, nonatomic) IBOutlet UIButton *lengthBtn;
 @property (weak, nonatomic) IBOutlet UILabel *thinLabel;
 @property (weak, nonatomic) IBOutlet UILabel *widthLabel;
 @property (weak, nonatomic) IBOutlet UITextField *lengthTF;
@@ -25,8 +28,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *rightCountLabel;
 
 @property (nonatomic, copy) ClikBlock click;
+@property (nonatomic, strong) MainModel *mainM;
+@property (nonatomic, copy) JudgeBlock mainBlock;
+@property (nonatomic, assign) BOOL lengthIsChanged;
 
-
-- (void)loadData:(NSObject *)data andCliker:(ClikBlock)click;
+- (void)loadData:(NSObject *)data andCliker:(ClikBlock)click andMainBlock:(JudgeBlock)mainB;
 
 @end

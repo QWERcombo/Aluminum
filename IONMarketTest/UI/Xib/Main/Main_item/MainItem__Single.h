@@ -10,7 +10,7 @@
 
 @interface MainItem__Single : UIView
 
-typedef void (^MainBlock)(MainModel *info);
+typedef void (^JudgeBlock)(MainModel *info, BOOL lengthIsChanged); // bool yes改变 no未变
 
 @property (weak, nonatomic) IBOutlet UITextField *lengthTF;
 @property (weak, nonatomic) IBOutlet UITextField *widthTF;
@@ -27,8 +27,10 @@ typedef void (^MainBlock)(MainModel *info);
 @property (weak, nonatomic) IBOutlet UILabel *thinLabel;
 
 @property (nonatomic, copy) ClikBlock click;
+@property (nonatomic, copy) JudgeBlock mainBlock;
+@property (nonatomic, strong) MainModel *mainM;
+@property (nonatomic, assign) BOOL lengthIsChanged;
 
-
-- (void)loadData:(NSObject *)data andCliker:(ClikBlock)click;
+- (void)loadData:(NSObject *)data andCliker:(ClikBlock)click andMainBlock:(JudgeBlock)mainB;
 
 @end

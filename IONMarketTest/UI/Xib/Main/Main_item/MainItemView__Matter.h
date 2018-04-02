@@ -11,6 +11,8 @@
 //管材
 @interface MainItemView__Matter : UIView
 
+typedef void (^JudgeBlock)(MainModel *info, BOOL lengthIsChanged); // bool yes改变 no未变
+
 @property (weak, nonatomic) IBOutlet UILabel *neiLabel;
 @property (weak, nonatomic) IBOutlet UILabel *waiLabel;
 @property (weak, nonatomic) IBOutlet UITextField *lengthTF;
@@ -23,10 +25,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *rightImgv;
 @property (weak, nonatomic) IBOutlet UILabel *leftCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightCountLabel;
+@property (weak, nonatomic) IBOutlet UIButton *lengthBtn;
 
 @property (nonatomic, copy) ClikBlock click;
+@property (nonatomic, strong) MainModel *mainM;
+@property (nonatomic, copy) JudgeBlock mainBlock;
+@property (nonatomic, assign) BOOL lengthIsChanged;
 
-
-- (void)loadData:(NSObject *)data andCliker:(ClikBlock)click;
+- (void)loadData:(NSObject *)data andCliker:(ClikBlock)click andMainBlock:(JudgeBlock)mainB;
 
 @end
