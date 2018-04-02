@@ -30,8 +30,11 @@
 }
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
-    self.countLabel.numberOfLines = 0;
-    self.countLabel.text = @"200x541x56 (cm) \n 456kgx10";
+    ShopCar *dataM = (ShopCar *)model;
+
+    self.nameLabel.text = dataM.type;
+    self.countLabel.text = [NSString stringWithFormat:@"%@x%@x%@(mm)\n *%@", dataM.length, dataM.width, dataM.height, dataM.productNum];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@元", dataM.money];
     
 }
 

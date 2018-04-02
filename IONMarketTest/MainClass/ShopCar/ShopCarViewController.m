@@ -120,26 +120,12 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *arr = self.sortDic[[self.dataMuArr objectAtIndex:section]];
-    if (self.isDisplay) {
-        return arr.count;
-    } else {
-        return 3;
-    }
-//    if (section==self.refreshSection) {
-//        if (self.isDisplay) {
-//            return 5;
-//        } else {
-//            return 3;
-//        }
-//    } else {
-//        return 3;
-//    }
+    return 1;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold creatCell:@"OrderDetailCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+    return [UtilsMold creatCell:@"OrderDetailCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.section] data:nil andCliker:^(NSDictionary *clueDic) {
     }];
 }
 
@@ -163,20 +149,13 @@
     return 0;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ShopCarDetailViewController *detail = [[ShopCarDetailViewController alloc] init];
-    [self.navigationController pushViewController:detail animated:YES];
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    ShopCarDetailViewController *detail = [[ShopCarDetailViewController alloc] init];
+//    [self.navigationController pushViewController:detail animated:YES];
+//}
 
 
 #pragma mark ----- Action
-- (void)displayAction:(UIButton *)sender {
-//    NSLog(@"display:----%ld", sender.tag);
-//    self.refreshSection = sender.tag-100;
-//    self.isDisplay = !self.isDisplay;
-//    NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:sender.tag-100];
-//    [self.tabView reloadSections:set withRowAnimation:UITableViewRowAnimationAutomatic];
-}
 
 - (void)moreAction:(UIButton *)sender {
     NSLog(@"more:----%ld", sender.tag);
@@ -184,9 +163,25 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
+
+//去结算
 - (void)excuteAction:(UIButton *)sender {
-    NSLog(@"%@", sender.currentTitle);
     
+    ShopCarDetailViewController *detail = [[ShopCarDetailViewController alloc] init];
+    [self.navigationController pushViewController:detail animated:YES];
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:@[@"15",@"16"] forKey:@"gouwucheIds"];
+    [dict setValue:@"40" forKey:@"addressId"];
+    [dict setValue:[UserData currentUser].phone forKey:@"phone"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveFromGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"---%@", resultDic);
+        
+        
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
     
 }
 
@@ -201,8 +196,8 @@
 }
 
 - (void)allButtonCliker:(UIButton *)sender {
-    
     sender.selected = !sender.selected;
+    
     if (sender.selected) {
         [sender setImage:IMG(@"select_1") forState:UIControlStateSelected];
     } else {
@@ -214,50 +209,23 @@
 
 
 #pragma mark ----- Subviews
-- (UIView *)createDisplayFooter:(NSInteger)section {
-    UIView *vvv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 40)];
-    vvv.backgroundColor = [UIColor whiteColor];
-    
-    UIButton *displayButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    displayButton.tag = 100+section;
-    [displayButton setTitle:@"展开" forState:UIControlStateNormal];
-    [displayButton setImage:IMG(@"display_0") forState:UIControlStateNormal];
-    
-    if (self.refreshSection == section) {
-        if (self.isDisplay) {
-            [displayButton setTitle:@"收起" forState:UIControlStateNormal];
-            [displayButton setImage:IMG(@"display_1") forState:UIControlStateNormal];
-        }
-    }
-    [displayButton setTitleColor:[UIColor Black_WordColor] forState:UIControlStateNormal];
-    displayButton.titleLabel.font = FONT_ArialMT(15);
-    [displayButton addTarget:self action:@selector(displayAction:) forControlEvents:UIControlEventTouchUpInside];
-    [vvv addSubview:displayButton];
-    [displayButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(vvv);
-        make.width.equalTo(@(100));
-        make.height.equalTo(@(30));
-    }];
-    
-    
-    return vvv;
-}
-
-
 - (UIView *)createDisplayHeader:(NSInteger)section {
     UIView *blank = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 40)];
-    blank.backgroundColor = [UIColor mianColor:1];
+    blank.backgroundColor = [UIColor whiteColor];
     
     UIView *ccc = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIGHT, 30)];
-    ccc.backgroundColor = [UIColor mianColor:1];
+    ccc.backgroundColor = [UIColor whiteColor];
     [blank addSubview:ccc];
-
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 29.5, SCREEN_WIGHT, 0.5)];
+    line.backgroundColor = [UIColor lightTextColor];
+    [ccc addSubview:line];
     
-    UILabel *orderLabel = [UILabel lableWithText:@"订单编号:123424242" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
+    ShopCar *model = [self.dataMuArr objectAtIndex:section];
+    UILabel *orderLabel = [UILabel lableWithText:model.type Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
     [blank addSubview:orderLabel];
     [orderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(ccc);
-        make.left.equalTo(ccc.mas_left).offset(60);
+        make.left.equalTo(ccc.mas_left).offset(40);
     }];
     
     UIButton *selectButton = [UIButton buttonWithTitle:nil andFont:nil andtitleNormaColor:nil andHighlightedTitle:nil andNormaImage:IMG(@"select_0") andHighlightedImage:nil];
@@ -292,7 +260,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetGouwucheByUser andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-//        NSLog(@"%@", resultDic);
+//        NSLog(@"++---%@", resultDic);
         NSArray *dataSource = resultDic[@"result"];
         
         for (NSDictionary *dic in dataSource) {

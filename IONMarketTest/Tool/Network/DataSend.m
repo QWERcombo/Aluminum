@@ -102,6 +102,7 @@ static NSOperationQueue *queue;
             NSString *status = [NSString stringWithFormat:@"%@", [result objectForKey:@"status"]];//1为成功
             NSString *msg = [NSString stringWithFormat:@"%@", [result objectForKey:@"msg"]];//返回信息
             
+//            success(result,msg);
             if ([status isEqualToString:@"1"]) {   //成功
                 
                 success(result,msg);

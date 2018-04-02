@@ -17,9 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *processPrice;
 @property (weak, nonatomic) IBOutlet UILabel *expressPrice;
 @property (weak, nonatomic) IBOutlet UILabel *zhengbanLabel;
-@property (weak, nonatomic) IBOutlet UILabel *lingqieLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPrice;
-@property (weak, nonatomic) IBOutlet UILabel *singlePrice;
 
 
 + (instancetype)OrderListCell;

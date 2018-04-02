@@ -10,7 +10,7 @@
 #import "OrderDetailViewController.h"
 
 #define Button_Width  80
-#define Button_Margin  ((SCREEN_WIGHT-80*4)/5)
+#define Button_Margin  ((SCREEN_WIGHT-80*3)/4)
 
 @interface OrderViewController ()
 
@@ -20,11 +20,15 @@
 
 @implementation OrderViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self getDataSource];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor mianColor:1];
-    [self getDataSource];
     [self setupSubviews];
 }
 
@@ -39,7 +43,7 @@
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
     
-    NSArray *array = @[@"全部",@"待付款",@"待收货",@"已完成"];
+    NSArray *array = @[@"全部",@"待付款",@"已付款"];
     UIButton *lastButton = nil;
     for (NSInteger b=0; b<array.count; b++) {
         
@@ -92,12 +96,15 @@
 #pragma mark --- UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return self.dataMuArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold creatCell:@"OrderListCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+    
+    return [UtilsMold creatCell:@"OrderListCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
         NSLog(@"%@---%ld", clueDic, indexPath.row);
+        
+        
     }];
 }
 
@@ -136,12 +143,19 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [dict setValue:@"0" forKey:@"type"]; // 0未支付   1已支付
-    [dict setValue:@"3" forKey:@"fapiaoStatus"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrdersList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"++++%@", resultDic);
+        NSArray *dataSourceArr = resultDic[@"result"];
         
+        for (NSDictionary *dict in dataSourceArr) {
+            
+            OrderModel *model = [[OrderModel alloc] initWithDictionary:dict error:nil];
+            
+            [self.dataMuArr addObject:model];
+            
+        }
         
-        
+        [self.tabView reloadData];
     } failure:^(NSString *error, NSInteger code) {
         
     }];

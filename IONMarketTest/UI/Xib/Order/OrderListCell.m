@@ -13,6 +13,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    self.statusButton.titleEdgeInsets = UIEdgeInsetsMake(0, -self.statusButton.imageView.width, 0, self.statusButton.imageView.width);
+    self.statusButton.imageEdgeInsets = UIEdgeInsetsMake(0, self.statusButton.titleLabel.width, 0, -self.statusButton.titleLabel.width);
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -21,7 +25,7 @@
 }
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 185;
+    return 145;
 }
 
 
@@ -31,7 +35,8 @@
 
 - (IBAction)statusAction:(id)sender {
     _clikerBlock(((UIButton *)sender).currentTitle);
-//    [self.layer setBorderColorFromUIColor:<#(UIColor *)#>]
+
+    
 }
 
 - (IBAction)buyAction:(id)sender {
@@ -51,10 +56,19 @@
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
     _clikerBlock = click;
+    OrderModel *dataM = (OrderModel *)model;
     
+    self.orderIDLabel.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
+    if ([dataM.status integerValue] == 0) {
+        [self.statusButton setTitle:@"代付款" forState:UIControlStateNormal];
+    } else {
+        [self.statusButton setTitle:@"已付款" forState:UIControlStateNormal];
+    }
+    self.processPrice.text = [NSString stringWithFormat:@"%@元", dataM.money];
+    self.expressPrice.text = [NSString stringWithFormat:@"%@元", dataM.wuliufei];
+    self.zhengbanLabel.text = [NSString stringWithFormat:@"%@*%@", dataM.zhonglei, dataM.productNum];
+    self.totalPrice.text = [NSString stringWithFormat:@"%@元", dataM.money];
     
 }
-
-
 
 @end

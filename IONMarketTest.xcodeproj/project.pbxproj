@@ -156,6 +156,7 @@
 		A2301B3B20638AB3006B9F20 /* SmartServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2301B3920638AB3006B9F20 /* SmartServiceCell.m */; };
 		A2301B3C20638AB3006B9F20 /* SmartServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2301B3A20638AB3006B9F20 /* SmartServiceCell.xib */; };
 		A2301B3F20638FA5006B9F20 /* TeleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2301B3E20638FA5006B9F20 /* TeleDetailViewController.m */; };
+		A24B0B6B20722C01009ECD41 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A24B0B6A20722C01009ECD41 /* OrderModel.m */; };
 		A26CECC5205FAA5A00B7AF91 /* InventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A26CECC4205FAA5A00B7AF91 /* InventoryViewController.m */; };
 		A283488E2060AAB200C228AD /* ShopCarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A283488D2060AAB200C228AD /* ShopCarDetailViewController.m */; };
 		A283489220610A8300C228AD /* TradeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A283489120610A8300C228AD /* TradeListViewController.m */; };
@@ -465,6 +466,8 @@
 		A2301B3A20638AB3006B9F20 /* SmartServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmartServiceCell.xib; sourceTree = "<group>"; };
 		A2301B3D20638FA5006B9F20 /* TeleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeleDetailViewController.h; sourceTree = "<group>"; };
 		A2301B3E20638FA5006B9F20 /* TeleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeleDetailViewController.m; sourceTree = "<group>"; };
+		A24B0B6920722C01009ECD41 /* OrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
+		A24B0B6A20722C01009ECD41 /* OrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
 		A26CECC3205FAA5A00B7AF91 /* InventoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InventoryViewController.h; sourceTree = "<group>"; };
 		A26CECC4205FAA5A00B7AF91 /* InventoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InventoryViewController.m; sourceTree = "<group>"; };
 		A283488C2060AAB200C228AD /* ShopCarDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCarDetailViewController.h; sourceTree = "<group>"; };
@@ -687,6 +690,7 @@
 		568CB0862065F82D00B48318 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A24B0B6820722BD3009ECD41 /* Order */,
 				560264B7206A7C0A00F9C405 /* ShopCar */,
 				560264B3206A69B500F9C405 /* Mine */,
 				568CB0872065F84300B48318 /* Main */,
@@ -1222,6 +1226,15 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		A24B0B6820722BD3009ECD41 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				A24B0B6920722C01009ECD41 /* OrderModel.h */,
+				A24B0B6A20722C01009ECD41 /* OrderModel.m */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
 		A283488F2060F31B00C228AD /* Mine */ = {
 			isa = PBXGroup;
 			children = (
@@ -1464,6 +1477,7 @@
 				56940C2C20515DF900DFA6D6 /* UIFont+YXP.m in Sources */,
 				56940C2820515DF900DFA6D6 /* UIImageView+YXP.m in Sources */,
 				56EC993C206D121D00F2D2D0 /* AddressModel.m in Sources */,
+				A24B0B6B20722C01009ECD41 /* OrderModel.m in Sources */,
 				56940C2020515DF900DFA6D6 /* NSString+MD5.m in Sources */,
 				5695BF1E2042ABAB0036D54B /* UtilsMold.m in Sources */,
 				56940C2520515DF900DFA6D6 /* UITabBar+TB.m in Sources */,
