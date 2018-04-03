@@ -86,7 +86,7 @@
                             <rect key="frame" x="70" y="12" width="183" height="17"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTv-DA-nCD">
                             <rect key="frame" x="70" y="0.0" width="183" height="40"/>
@@ -135,7 +135,7 @@
                             <rect key="frame" x="70" y="12" width="171" height="17"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -303,7 +303,7 @@
                 <outlet property="right_down_Label" destination="kLP-Wb-0SX" id="XNK-b3-dau"/>
                 <outlet property="right_top_Label" destination="Sjd-dR-c9S" id="vpb-hJ-B0F"/>
             </connections>
-            <point key="canvasLocation" x="34.5" y="54.5"/>
+            <point key="canvasLocation" x="-242" y="24"/>
         </view>
         <tapGestureRecognizer id="0kK-59-1qc">
             <connections>

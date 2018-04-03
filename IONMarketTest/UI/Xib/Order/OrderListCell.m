@@ -64,8 +64,9 @@
     } else {
         [self.statusButton setTitle:@"已付款" forState:UIControlStateNormal];
     }
-    self.processPrice.text = [NSString stringWithFormat:@"%@元", dataM.money];
-    self.expressPrice.text = [NSString stringWithFormat:@"%@元", dataM.wuliufei];
+    self.productPrice.text = [NSString stringWithFormat:@"产品: %@元", dataM.money];
+    self.expressPrice.text = [NSString stringWithFormat:@"物流费: %@元", dataM.wuliufei];
+    
     self.zhengbanLabel.text = [NSString stringWithFormat:@"%@*%@", dataM.zhonglei, dataM.productNum];
     self.totalPrice.text = [NSString stringWithFormat:@"%@元", dataM.money];
     

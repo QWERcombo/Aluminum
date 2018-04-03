@@ -42,6 +42,7 @@
         self.phoneTF.placeholder = self.addressModel.phone;
         self.addressTextView.text = self.addressModel.detailAddress;
         self.setDefaultSwitch.on = [self.addressModel.moren intValue];
+        self.cityString = [NSString stringWithFormat:@"%@-%@-%@", self.addressModel.sheng, self.addressModel.shi, self.addressModel.qu];
     }
     
     CGFloat width = SCREEN_WIGHT-110-20;

@@ -40,6 +40,8 @@
 
 @property (nonatomic, strong) NSString *orderMoney; // 订单金额
 
+@property (nonatomic, strong) NSString *erjimulu; // 加入购物车和直接购买接口传
+
 @end
 
 #define ITEM_WIDTH  60
@@ -499,7 +501,8 @@
             
             MainItemTypeModel *model = [self.dataMuArr objectAtIndex:sender.tag-200];
             self.xinghaoStr = model.id;
-
+            self.erjimulu = model.name;
+            
         }
         
     }
@@ -557,12 +560,11 @@
     [dict setValue:self.getOrderType forKey:@"type"];
     [dict setValue:self.mainM.shuliang forKey:@"amount"];
     [dict setValue:self.typeStr forKey:@"zhonglei"];
-    [dict setValue:self.xinghaoStr forKey:@"erjimulu"];
+    [dict setValue:self.erjimulu forKey:@"erjimulu"];
     [dict setValue:self.orderMoney forKey:@"money"];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveToGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"car: +++%@", resultDic);
-        
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:1 aboutType:WHShowViewMode_Text state:YES];
         
     } failure:^(NSString *error, NSInteger code) {

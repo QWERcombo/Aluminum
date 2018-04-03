@@ -50,7 +50,7 @@
         make.left.top.right.equalTo(self.view);
         make.bottom.equalTo(self.view.mas_bottom).offset(-50-50);
     }];
-    
+//    self.tabView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self createBottomView];
     
@@ -114,40 +114,37 @@
 }
 
 #pragma mark --- UITableViewDelegate
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataMuArr.count;
-}
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.dataMuArr.count;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold creatCell:@"OrderDetailCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.section] data:nil andCliker:^(NSDictionary *clueDic) {
+    
+    return [UtilsMold creatCell:@"ShopCarListCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.section] data:nil andCliker:^(NSDictionary *clueDic) {
+        
     }];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold getCellHight:@"OrderDetailCell" data:nil model:nil indexPath:indexPath];
+    return [UtilsMold getCellHight:@"ShopCarListCell" data:nil model:nil indexPath:indexPath];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return [self createDisplayHeader:section];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     return nil;
 }
-
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+//    return nil;
+//}
+//
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 40;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0;
 }
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return 0;
+//}
 
 
 #pragma mark ----- Action
@@ -166,7 +163,7 @@
     [self.navigationController pushViewController:detail animated:YES];
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@"15,16" forKey:@"gouwucheIds"];
+    [dict setValue:@"25,26,27" forKey:@"gouwucheIds"];
     [dict setValue:@"40" forKey:@"addressId"];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveFromGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
@@ -252,6 +249,7 @@
 
 - (void)getData {
     
+    [self.dataMuArr removeAllObjects];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetGouwucheByUser andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {

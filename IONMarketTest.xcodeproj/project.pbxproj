@@ -162,6 +162,8 @@
 		A283489220610A8300C228AD /* TradeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A283489120610A8300C228AD /* TradeListViewController.m */; };
 		A283489620610F6900C228AD /* WallentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A283489420610F6900C228AD /* WallentListCell.m */; };
 		A283489720610F6900C228AD /* WallentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A283489520610F6900C228AD /* WallentListCell.xib */; };
+		A29996FE207381140003B96C /* ShopCarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A29996FC207381140003B96C /* ShopCarListCell.m */; };
+		A29996FF207381140003B96C /* ShopCarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A29996FD207381140003B96C /* ShopCarListCell.xib */; };
 		A2AC1C622056476F00A3B2F9 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C612056476F00A3B2F9 /* MessageViewController.m */; };
 		A2AC1C652056481B00A3B2F9 /* MainItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C642056481B00A3B2F9 /* MainItemViewController.m */; };
 		A2AC1C6820564AB900A3B2F9 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C6720564AB900A3B2F9 /* UserInfoViewController.m */; };
@@ -477,6 +479,9 @@
 		A283489320610F6900C228AD /* WallentListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WallentListCell.h; sourceTree = "<group>"; };
 		A283489420610F6900C228AD /* WallentListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WallentListCell.m; sourceTree = "<group>"; };
 		A283489520610F6900C228AD /* WallentListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallentListCell.xib; sourceTree = "<group>"; };
+		A29996FB207381140003B96C /* ShopCarListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCarListCell.h; sourceTree = "<group>"; };
+		A29996FC207381140003B96C /* ShopCarListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCarListCell.m; sourceTree = "<group>"; };
+		A29996FD207381140003B96C /* ShopCarListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCarListCell.xib; sourceTree = "<group>"; };
 		A2AC1C602056476F00A3B2F9 /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		A2AC1C612056476F00A3B2F9 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		A2AC1C632056481B00A3B2F9 /* MainItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItemViewController.h; sourceTree = "<group>"; };
@@ -1198,6 +1203,7 @@
 		A23C393A20525A02000A5E99 /* Xib */ = {
 			isa = PBXGroup;
 			children = (
+				A29996FA207380E70003B96C /* ShopCar */,
 				A2301B1C20635260006B9F20 /* Login */,
 				A283488F2060F31B00C228AD /* Mine */,
 				5650869D205CD96500FD8497 /* Order */,
@@ -1245,6 +1251,16 @@
 				A229819E20623A69007B6112 /* 钱包 */,
 			);
 			path = Mine;
+			sourceTree = "<group>";
+		};
+		A29996FA207380E70003B96C /* ShopCar */ = {
+			isa = PBXGroup;
+			children = (
+				A29996FB207381140003B96C /* ShopCarListCell.h */,
+				A29996FC207381140003B96C /* ShopCarListCell.m */,
+				A29996FD207381140003B96C /* ShopCarListCell.xib */,
+			);
+			path = ShopCar;
 			sourceTree = "<group>";
 		};
 		A2AC1C5F2056471000A3B2F9 /* Message */ = {
@@ -1380,6 +1396,7 @@
 				5695BE8120429F1B0036D54B /* LaunchScreen.storyboard in Resources */,
 				A2301B2120635292006B9F20 /* LoginViewController.xib in Resources */,
 				A22981D6206261C1007B6112 /* TicketCell.xib in Resources */,
+				A29996FF207381140003B96C /* ShopCarListCell.xib in Resources */,
 				A2AC1C7620565E4600A3B2F9 /* MainItemCell.xib in Resources */,
 				565086A2205CD98400FD8497 /* OrderListCell.xib in Resources */,
 				A22981BD20624B48007B6112 /* AddAddressViewController.xib in Resources */,
@@ -1578,6 +1595,7 @@
 				565086AD205D3A8F00FD8497 /* MainItemView__WholeBoard.m in Sources */,
 				5671DBCD20600109005F1760 /* MainItemView__Matter.m in Sources */,
 				5632BFB9205AB6180009CD34 /* QuotationDetailCell.m in Sources */,
+				A29996FE207381140003B96C /* ShopCarListCell.m in Sources */,
 				A22981BC20624B48007B6112 /* AddAddressViewController.m in Sources */,
 				A2301B2E20637ED1006B9F20 /* SmartViewController.m in Sources */,
 				5695BE7320429F1B0036D54B /* AppDelegate.m in Sources */,

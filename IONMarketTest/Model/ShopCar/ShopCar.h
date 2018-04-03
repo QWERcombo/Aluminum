@@ -30,5 +30,6 @@
 
 @property (nonatomic, strong) NSString *userPhone;
 
+@property (nonatomic, strong) NSString *erjimulu;
 
 @end

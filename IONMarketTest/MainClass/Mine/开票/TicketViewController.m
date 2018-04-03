@@ -114,7 +114,7 @@
 
 #pragma mark ----- UITableViewDelegate & DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataMuArr.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -219,16 +219,16 @@
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"+++%@", resultDic);
         
-        NSArray *dataSourceArr = resultDic[@"list"];
-        
-        for (NSDictionary *dic in dataSourceArr) {
-            
-            TicketModel *model = [[TicketModel alloc] initWithDictionary:dic error:nil];
-            
-            [self.dataMuArr addObject:model];
-        }
-        
-        [self.tabView reloadData];
+//        NSArray *dataSourceArr = resultDic[@"list"];
+//
+//        for (NSDictionary *dic in dataSourceArr) {
+//
+//            TicketModel *model = [[TicketModel alloc] initWithDictionary:dic error:nil];
+//
+//            [self.dataMuArr addObject:model];
+//        }
+//
+//        [self.tabView reloadData];
         
     } failure:^(NSString *error, NSInteger code) {
         

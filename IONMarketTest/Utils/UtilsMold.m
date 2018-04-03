@@ -174,7 +174,18 @@ DEF_SINGLETON(UtilsMold);
         }];
         return cell;
     }
-    
+    else if ([type isEqualToString:@"ShopCarListCell"]) {
+        static NSString *IDs = @"ShopCarListCell";
+        ShopCarListCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
+        if (cell == nil) {
+            cell = [ShopCarListCell getShopCarListCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell loadData:model andCliker:^(NSString *clueStr) {
+            
+        }];
+        return cell;
+    }
     
     
     
@@ -234,6 +245,9 @@ DEF_SINGLETON(UtilsMold);
     } else if ([type isEqualToString:@"SmartServiceCell"]) {
         
         return [SmartServiceCell getCellHight:data Model:model indexPath:indexpath];
+    } else if ([type isEqualToString:@"ShopCarListCell"]) {
+        
+        return [ShopCarListCell getCellHight:data Model:model indexPath:indexpath];
     }
     
     

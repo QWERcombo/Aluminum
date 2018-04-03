@@ -79,12 +79,7 @@
             make.height.equalTo(@(3));
             make.bottom.equalTo(topView.mas_bottom);
         }];
-        
-        
-        
-        
     }
-    
     
     self.lastSelected = 100;
 }
@@ -100,10 +95,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    OrderModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
+    __weak typeof(self) weakself = self;
     
-    return [UtilsMold creatCell:@"OrderListCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+    return [UtilsMold creatCell:@"OrderListCell" table:tableView deledate:self model:model data:nil andCliker:^(NSDictionary *clueDic) {
         NSLog(@"%@---%ld", clueDic, indexPath.row);
-        
+        [weakself getExpressMoney:model.id];
         
     }];
 }
@@ -140,6 +137,7 @@
 
 - (void)getDataSource {
     
+    [self.dataMuArr removeAllObjects];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [dict setValue:@"0" forKey:@"type"]; // 0未支付   1已支付
@@ -162,6 +160,21 @@
     
 }
 
+
+- (void)getExpressMoney:(NSString *)orderNo {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:orderNo forKey:@"orderNo"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetWuliufei andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"wuliufei: %@", resultDic);
+        
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
+    
+}
 
 
 - (void)didReceiveMemoryWarning {
