@@ -607,6 +607,10 @@
     
     switch (mode) {
         case Mode_Single:
+            [[UtilsData sharedInstance] showAlertControllerWithTitle:@"aaa" detail:[NSString stringWithFormat:@"%@-%@-%@-%@", self.mainM.houdu, self.mainM.changdu, self.mainM.kuandu, self.mainM.shuliang] doneTitle:@"yes" cancelTitle:@"" haveCancel:NO doneAction:^{
+                
+            } controller:self];
+            
             if (self.mainM.houdu.length && self.mainM.changdu.length && self.mainM.kuandu.length && self.mainM.shuliang.length) {
                 
                 return YES;
@@ -646,6 +650,7 @@
         [self showAlert:@"请完整配置各参数！"];
         return;
     }
+    
     
     self.isGetOrderMoney = NO;
     __weak typeof(self) weakself = self;
