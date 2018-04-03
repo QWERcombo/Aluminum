@@ -18,6 +18,6 @@
 
 + (instancetype)getOrderDetailCell;
 
-- (void)loadData:(NSObject *)model andCliker:(ClikBlock)click;
+- (void)loadData:(NSObject *)model delegate:(UIViewController *)delegate andCliker:(ClikBlock)click;
 
 @end

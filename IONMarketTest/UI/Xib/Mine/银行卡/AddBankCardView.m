@@ -15,6 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([AddBankCardView class]) owner:self options:nil] firstObject];
+        self.frame = frame;
     }
     return self;
 }

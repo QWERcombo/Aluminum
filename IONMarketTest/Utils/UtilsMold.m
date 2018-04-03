@@ -61,7 +61,7 @@ DEF_SINGLETON(UtilsMold);
             cell = [OrderDetailCell getOrderDetailCell];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell loadData:model andCliker:^(NSString *clueStr) {
+        [cell loadData:model delegate:deledate andCliker:^(NSString *clueStr) {
 //            clue(@{@"key":clueStr});
         }];
         return cell;
@@ -182,7 +182,7 @@ DEF_SINGLETON(UtilsMold);
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell loadData:model andCliker:^(NSString *clueStr) {
-            
+            clue(@{@"key":clueStr});
         }];
         return cell;
     }

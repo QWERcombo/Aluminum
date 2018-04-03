@@ -18,6 +18,8 @@
 		560212A920596550009EF75D /* SettingDescribViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560212A820596550009EF75D /* SettingDescribViewController.m */; };
 		560264B6206A6A5400F9C405 /* TicketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 560264B5206A6A5400F9C405 /* TicketModel.m */; };
 		560264BA206A7C1D00F9C405 /* ShopCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 560264B9206A7C1D00F9C405 /* ShopCar.m */; };
+		5615B8B72073B721005F2403 /* AddressShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5615B8B62073B721005F2403 /* AddressShowView.m */; };
+		5615B8B92073B730005F2403 /* AddressShowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5615B8B82073B730005F2403 /* AddressShowView.xib */; };
 		561CC0D5206FD24900DB0998 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 561CC0D4206FD24900DB0998 /* MainModel.m */; };
 		5632BFAC205AA3F80009CD34 /* SetOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFAB205AA3F80009CD34 /* SetOrderViewController.m */; };
 		5632BFAF205AB47D0009CD34 /* QuotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFAE205AB47D0009CD34 /* QuotationViewController.m */; };
@@ -215,6 +217,9 @@
 		560264B5206A6A5400F9C405 /* TicketModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketModel.m; sourceTree = "<group>"; };
 		560264B8206A7C1D00F9C405 /* ShopCar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCar.h; sourceTree = "<group>"; };
 		560264B9206A7C1D00F9C405 /* ShopCar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCar.m; sourceTree = "<group>"; };
+		5615B8B52073B721005F2403 /* AddressShowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressShowView.h; sourceTree = "<group>"; };
+		5615B8B62073B721005F2403 /* AddressShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressShowView.m; sourceTree = "<group>"; };
+		5615B8B82073B730005F2403 /* AddressShowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressShowView.xib; sourceTree = "<group>"; };
 		561CC0D3206FD24900DB0998 /* MainModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		561CC0D4206FD24900DB0998 /* MainModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
 		5632BFAA205AA3F80009CD34 /* SetOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetOrderViewController.h; sourceTree = "<group>"; };
@@ -1259,6 +1264,9 @@
 				A29996FB207381140003B96C /* ShopCarListCell.h */,
 				A29996FC207381140003B96C /* ShopCarListCell.m */,
 				A29996FD207381140003B96C /* ShopCarListCell.xib */,
+				5615B8B52073B721005F2403 /* AddressShowView.h */,
+				5615B8B62073B721005F2403 /* AddressShowView.m */,
+				5615B8B82073B730005F2403 /* AddressShowView.xib */,
 			);
 			path = ShopCar;
 			sourceTree = "<group>";
@@ -1395,6 +1403,7 @@
 				565086AA205CFF1800FD8497 /* OrderDetailCell.xib in Resources */,
 				5695BE8120429F1B0036D54B /* LaunchScreen.storyboard in Resources */,
 				A2301B2120635292006B9F20 /* LoginViewController.xib in Resources */,
+				5615B8B92073B730005F2403 /* AddressShowView.xib in Resources */,
 				A22981D6206261C1007B6112 /* TicketCell.xib in Resources */,
 				A29996FF207381140003B96C /* ShopCarListCell.xib in Resources */,
 				A2AC1C7620565E4600A3B2F9 /* MainItemCell.xib in Resources */,
@@ -1537,6 +1546,7 @@
 				560264BA206A7C1D00F9C405 /* ShopCar.m in Sources */,
 				5695BF0F2042AB0E0036D54B /* NSData+NEUAES.m in Sources */,
 				5695BF552042AC1D0036D54B /* EasyShowAlertView.m in Sources */,
+				5615B8B72073B721005F2403 /* AddressShowView.m in Sources */,
 				560264B6206A6A5400F9C405 /* TicketModel.m in Sources */,
 				560212A3205961D9009EF75D /* SettingTableViewController.m in Sources */,
 				560212A920596550009EF75D /* SettingDescribViewController.m in Sources */,

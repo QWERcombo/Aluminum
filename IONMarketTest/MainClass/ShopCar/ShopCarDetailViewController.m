@@ -9,9 +9,11 @@
 #import "ShopCarDetailViewController.h"
 #import "AddressViewController.h"
 
+#import "AddressShowView.h"
+
 @interface ShopCarDetailViewController ()
 @property (nonatomic, assign) BOOL isAddress;
-
+@property (nonatomic, strong) AddressModel *addressModel;
 @end
 
 @implementation ShopCarDetailViewController {
@@ -22,6 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"确认订单";
+    self.dataMuArr = [self.shopCarArr mutableCopy];
     [self setupSubviews];
 }
 
@@ -96,11 +99,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section==1?5:0;
+    return section==1?self.dataMuArr.count:0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold creatCell:@"OrderDetailCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+    ShopCar *model = [self.dataMuArr objectAtIndex:indexPath.row];
+    return [UtilsMold creatCell:@"OrderDetailCell" table:tableView deledate:self model:model data:nil andCliker:^(NSDictionary *clueDic) {
     }];
 }
 
@@ -120,17 +124,17 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section== 0) {
-        return 100;
+        return 110;
     } else if (section==1) {
         return 40;
     } else {
-        return 110;
+        return 60;
     }
 }
 
 #pragma mark ----- Subviews
 - (UIView *)createAddressView {
-    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 100)];
+    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 110)];
     mainView.backgroundColor = [UIColor mianColor:1];
     UIView *content = [self addressContentView];
     [mainView addSubview:content];
@@ -138,7 +142,7 @@
         make.centerX.equalTo(mainView);
         make.top.equalTo(mainView.mas_top).offset(10);
         make.width.equalTo(@(SCREEN_WIGHT));
-        make.height.equalTo(@(90));
+        make.height.equalTo(@(100));
     }];
     return mainView;
 }
@@ -153,28 +157,28 @@
 }
 
 - (UIView *)createOrderInfoView {
-    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 110)];
+    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 60)];
     mainView.backgroundColor = [UIColor mianColor:1];
     
-    UIView *blank1 = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIGHT, 40)];
-    blank1.backgroundColor = [UIColor whiteColor];
-    [mainView addSubview:blank1];
-    UILabel *label1 = [UILabel lableWithText:@"预计到达时间" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
-    [blank1 addSubview:label1];
-    [label1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(blank1.mas_centerY);
-        make.left.equalTo(blank1.mas_left).offset(20);
-    }];
-    UILabel *label2 = [UILabel lableWithText:@"2018-05-20" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
-    [blank1 addSubview:label2];
-    [label2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(blank1.mas_centerY);
-        make.right.equalTo(blank1.mas_right).offset(-20);
-    }];
+//    UIView *blank1 = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIGHT, 40)];
+//    blank1.backgroundColor = [UIColor whiteColor];
+//    [mainView addSubview:blank1];
+//    UILabel *label1 = [UILabel lableWithText:@"预计到达时间" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
+//    [blank1 addSubview:label1];
+//    [label1 mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(blank1.mas_centerY);
+//        make.left.equalTo(blank1.mas_left).offset(20);
+//    }];
+//    UILabel *label2 = [UILabel lableWithText:@"2018-05-20" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
+//    [blank1 addSubview:label2];
+//    [label2 mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(blank1.mas_centerY);
+//        make.right.equalTo(blank1.mas_right).offset(-20);
+//    }];
     
     
     
-    UIView *blank2 = [[UIView alloc] initWithFrame:CGRectMake(0, 60, SCREEN_WIGHT, 40)];
+    UIView *blank2 = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIGHT, 40)];
     blank2.backgroundColor = [UIColor whiteColor];
     [mainView addSubview:blank2];
     UILabel *label3 = [UILabel lableWithText:@"选择支付方式" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
@@ -199,12 +203,21 @@
 }
 
 - (UIView *)addressContentView {
-    UIView *blank = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 90)];
+    UIView *blank = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 100)];
     blank.backgroundColor = [UIColor whiteColor];
     
     if (self.isAddress) {
         
-        
+        __weak typeof(self) weakself = self;
+        AddressShowView *showView = [[AddressShowView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 100)];
+
+        [showView loadData:self.addressModel andCliker:^(NSString *clueStr) {
+            if ([clueStr isEqualToString:@"0"]) {
+                AddressViewController *address = [[AddressViewController alloc] init];
+                [weakself.navigationController pushViewController:address animated:YES];
+            }
+        }];
+        [blank addSubview:showView];
         
     } else {
         UIButton *addButton = [UIButton buttonWithTitle:@"添加收货地址" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
@@ -220,8 +233,30 @@
 
 #pragma mark ----- Action
 - (void)nextButtonCliker:(UIButton *)sender {
-    NSLog(@"%@", sender.currentTitle);
     
+    if (!self.addressModel.id.length) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择收货地址！" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return;
+    }
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSMutableString *orderIds = [NSMutableString string];
+    for (ShopCar *car in self.dataMuArr) {
+        [orderIds appendString:car.id];
+        [orderIds appendString:@","];
+    }
+    [dict setValue:[orderIds substringToIndex:orderIds.length-1] forKey:@"gouwucheIds"];
+    [dict setValue:self.addressModel.id forKey:@"addressId"];
+    [dict setValue:[UserData currentUser].phone forKey:@"phone"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveFromGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"---%@", resultDic);
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"下单成功" time:0 aboutType:WHShowViewMode_Text state:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+
     
 }
 
@@ -231,17 +266,17 @@
 }
 
 - (void)addAddress:(UIButton *)sender {
+    AddressViewController *address = [[AddressViewController alloc] init];
     
-    AddressViewController *address = [AddressViewController new];
+    __weak typeof(self) weakself = self;
+    address.SelectAddressBlock = ^(AddressModel *address) {
+        weakself.addressModel = address;
+        weakself.isAddress = YES;
+        [weakself.tabView reloadData];
+    };
+    
     [self.navigationController pushViewController:address animated:YES];
-    
-    self.isAddress = YES;
 }
-
-
-#pragma mark ----- DATA
-
-
 
 
 

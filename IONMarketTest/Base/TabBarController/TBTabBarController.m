@@ -92,14 +92,10 @@
 #pragma mark - UITabBarDelegate
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     //点这里 点这里
-    //    NSLog(@"---%@",item.title);
-//    if ([item.title isEqualToString:@"首页"]) {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:ReloadGiftList_Main object:nil];
-//    }
-//    if ([item.title isEqualToString:@"圈子"]) {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:ReloadGiftList_Circle object:nil];
-//    }
-    
+//        NSLog(@"---%@",item.title);
+    if ([item.title isEqualToString:@"购物车"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshNewData" object:nil];
+    }
 }
 
 

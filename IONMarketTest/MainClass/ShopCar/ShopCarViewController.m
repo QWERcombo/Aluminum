@@ -11,30 +11,24 @@
 
 @interface ShopCarViewController ()
 
-@property (nonatomic, assign) BOOL isDisplay;//是否展开
-
-@property (nonatomic, assign) NSInteger refreshSection;//刷新的分区
-
-@property (nonatomic, strong) NSMutableDictionary *sortDic;
+@property (nonatomic, strong) NSMutableArray *selectArr;
 
 @end
 
 @implementation ShopCarViewController {
     UILabel *priceLabel;
     UILabel *infoLabel;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:YES];
-    [self getData];
+    UIButton *allButton;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.sortDic = [NSMutableDictionary dictionary];
-    
+    self.selectArr = [NSMutableArray array];
+    [self getData];
     [self setupSubViews];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RefreshNewData" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:@"RefreshNewData" object:nil];
 }
 
 - (void)setupSubViews {
@@ -50,7 +44,6 @@
         make.left.top.right.equalTo(self.view);
         make.bottom.equalTo(self.view.mas_bottom).offset(-50-50);
     }];
-//    self.tabView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self createBottomView];
     
@@ -77,8 +70,9 @@
         make.width.equalTo(@(140));
     }];
     
-    UIButton *allButton = [UIButton buttonWithTitle:@"全选" andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor Black_WordColor] andHighlightedTitle:[UIColor Black_WordColor] andNormaImage:nil andHighlightedImage:nil];
+    allButton = [UIButton buttonWithTitle:@"全选" andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor Black_WordColor] andHighlightedTitle:[UIColor Black_WordColor] andNormaImage:nil andHighlightedImage:nil];
     [allButton setImage:IMG(@"select_0") forState:UIControlStateNormal];
+    [allButton setImage:IMG(@"select_1") forState:UIControlStateSelected];
     [allButton addTarget:self action:@selector(allButtonCliker:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:allButton];
     [allButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -116,12 +110,24 @@
 #pragma mark --- UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataMuArr.count;
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return [UtilsMold creatCell:@"ShopCarListCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.section] data:nil andCliker:^(NSDictionary *clueDic) {
+    __weak typeof(self) weakself = self;
+    return [UtilsMold creatCell:@"ShopCarListCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+        if ([clueDic[@"key"] isEqualToString:@"1"]) {
+            [weakself.selectArr addObject:[weakself.dataMuArr objectAtIndex:indexPath.row]];
+        } else if ([clueDic[@"key"] isEqualToString:@"-1"]) {
+            [weakself.selectArr removeObject:[weakself.dataMuArr objectAtIndex:indexPath.row]];
+        } else {
+            
+        }
+        
+        if (self.selectArr.count) {
+            allButton.selected = YES;
+        } else {
+            allButton.selected = NO;
+        }
         
     }];
 }
@@ -133,26 +139,18 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return nil;
 }
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-//    return nil;
-//}
-//
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0;
 }
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//    return 0;
-//}
 
 
 #pragma mark ----- Action
 
 - (void)moreAction:(UIButton *)sender {
-    NSLog(@"more:----%ld", sender.tag);
-    ShopCarDetailViewController *detail = [[ShopCarDetailViewController alloc] init];
-    [self.navigationController pushViewController:detail animated:YES];
+//    NSLog(@"more:----%ld", (long)sender.tag);
+//    ShopCarDetailViewController *detail = [[ShopCarDetailViewController alloc] init];
+//    [self.navigationController pushViewController:detail animated:YES];
 }
 
 
@@ -160,91 +158,33 @@
 - (void)excuteAction:(UIButton *)sender {
     
     ShopCarDetailViewController *detail = [[ShopCarDetailViewController alloc] init];
-    [self.navigationController pushViewController:detail animated:YES];
-    
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@"25,26,27" forKey:@"gouwucheIds"];
-    [dict setValue:@"40" forKey:@"addressId"];
-    [dict setValue:[UserData currentUser].phone forKey:@"phone"];
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveFromGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"---%@", resultDic);
-        
-        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0 aboutType:WHShowViewMode_Text state:YES];
-        
-    } failure:^(NSString *error, NSInteger code) {
-        
-    }];
-    
-}
-
-- (void)selectButtonCliker:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    if (sender.selected) {
-        [sender setBackgroundImage:IMG(@"select_1") forState:UIControlStateSelected];
-    } else {
-        [sender setBackgroundImage:IMG(@"select_0") forState:UIControlStateSelected];
+    detail.shopCarArr = self.selectArr;
+    if (!detail.shopCarArr.count) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择要结算的订单！" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return;
     }
-    
+    [self.navigationController pushViewController:detail animated:YES];
+        
 }
 
 - (void)allButtonCliker:(UIButton *)sender {
     sender.selected = !sender.selected;
     
     if (sender.selected) {
-        [sender setImage:IMG(@"select_1") forState:UIControlStateSelected];
+        for (ShopCar *car in self.dataMuArr) {
+            car.isSelectedCard = YES;
+        }
+        [self.selectArr addObjectsFromArray:self.dataMuArr];
+        
     } else {
-        [sender setImage:IMG(@"select_0") forState:UIControlStateSelected];
+        for (ShopCar *car in self.dataMuArr) {
+            car.isSelectedCard = NO;
+        }
+        [self.selectArr removeAllObjects];
+        
     }
-    
+    [self.tabView reloadData];
 }
-
-
-
-#pragma mark ----- Subviews
-- (UIView *)createDisplayHeader:(NSInteger)section {
-    UIView *blank = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 40)];
-    blank.backgroundColor = [UIColor whiteColor];
-    
-    UIView *ccc = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIGHT, 30)];
-    ccc.backgroundColor = [UIColor whiteColor];
-    [blank addSubview:ccc];
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 29.5, SCREEN_WIGHT, 0.5)];
-    line.backgroundColor = [UIColor lightTextColor];
-    [ccc addSubview:line];
-    
-    ShopCar *model = [self.dataMuArr objectAtIndex:section];
-    UILabel *orderLabel = [UILabel lableWithText:model.type Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
-    [blank addSubview:orderLabel];
-    [orderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(ccc);
-        make.left.equalTo(ccc.mas_left).offset(40);
-    }];
-    
-    UIButton *selectButton = [UIButton buttonWithTitle:nil andFont:nil andtitleNormaColor:nil andHighlightedTitle:nil andNormaImage:IMG(@"select_0") andHighlightedImage:nil];
-    [blank addSubview:selectButton];
-    selectButton.tag = 300+section;
-    [selectButton addTarget:self action:@selector(selectButtonCliker:) forControlEvents:UIControlEventTouchUpInside];
-    [selectButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.equalTo(@(20));
-        make.centerY.equalTo(orderLabel.mas_centerY);
-        make.left.equalTo(blank.mas_left).offset(10);
-    }];
-    
-    UIButton *moreButton = [UIButton buttonWithTitle:nil andFont:FONT_ArialMT(17) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
-    moreButton.tag = 200+section;
-    [moreButton setImage:IMG(@"image_more") forState:UIControlStateNormal];
-    [moreButton addTarget:self action:@selector(moreAction:) forControlEvents:UIControlEventTouchUpInside];
-    [blank addSubview:moreButton];
-    [moreButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.equalTo(@(30));
-        make.right.equalTo(ccc.mas_right).offset(-10);
-        make.centerY.equalTo(ccc.mas_centerY);
-    }];
-    
-    
-    return blank;
-}
-
 
 
 - (void)getData {

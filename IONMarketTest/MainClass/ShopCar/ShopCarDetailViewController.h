@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface ShopCarDetailViewController : BaseViewController
+@property (nonatomic, strong) NSArray *shopCarArr;
 
 @end

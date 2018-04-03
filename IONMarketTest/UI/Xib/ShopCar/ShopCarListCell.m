@@ -31,7 +31,15 @@
 
 - (IBAction)selectBtn:(UIButton *)sender {
     sender.selected = !sender.selected;
-    
+    if (sender.selected) {
+        if (self.clikerBlock) {
+            self.clikerBlock(@"1");
+        }
+    } else {
+        if (self.clikerBlock) {
+            self.clikerBlock(@"-1");
+        }
+    }
 }
 
 
@@ -52,7 +60,7 @@
     self.centerLabel.text = @"";
     self.rightLabel.text = [NSString stringWithFormat:@"%@ 元", dataM.money];
     self.typeLabel.text = dataM.type;
-    
+    self.selectButton.selected = dataM.isSelectedCard;
 }
 
 

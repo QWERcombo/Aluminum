@@ -10,4 +10,6 @@
 
 @interface AddressViewController : BaseViewController
 
+@property (nonatomic, copy) void(^SelectAddressBlock)(AddressModel *address);
+
 @end

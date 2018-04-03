@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *rightLabel;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 
-
 @property (nonatomic, copy) ClikBlock clikerBlock;
 
 + (instancetype)getShopCarListCell;

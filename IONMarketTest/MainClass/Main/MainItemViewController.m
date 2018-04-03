@@ -32,7 +32,7 @@
 
 @property (nonatomic, copy) void(^passValue)(NSString *value);//选择数据
 
-@property (nonatomic, copy) void(^passTotalPrice)(NSString *value);//总价
+@property (nonatomic, copy) void(^passTotalPrice)(NSString *priceValue, NSString *weightValue); //总价-重量
 
 @property (nonatomic, copy) void(^passWeight)(NSString *value);//重量
 
@@ -41,6 +41,8 @@
 @property (nonatomic, strong) NSString *orderMoney; // 订单金额
 
 @property (nonatomic, strong) NSString *erjimulu; // 加入购物车和直接购买接口传
+
+@property (nonatomic, strong) NSString *orderWeight; // 订单重量
 
 @end
 
@@ -221,8 +223,9 @@
             
         }];
         
-        self.passTotalPrice = ^(NSString *value) {//总价
-            single.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", value];
+        self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
+            single.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            single.leftCountLabel.text = [NSString stringWithFormat:@"%@ kg", weightValue];
         };
         
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, 600)];
@@ -278,8 +281,9 @@
             
         }];
         
-        self.passTotalPrice = ^(NSString *value) {//总价
-            pole.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", value];
+        self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
+            pole.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            pole.leftCountLabel.text = [NSString stringWithFormat:@"%@ kg", weightValue];
         };
         
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, pole.height)];
@@ -345,8 +349,9 @@
             
         }];
         
-        self.passTotalPrice = ^(NSString *value) {//总价
-            tube.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", value];
+        self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
+            tube.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            tube.leftCountLabel.text = [NSString stringWithFormat:@"%@ kg", weightValue];
         };
         
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, tube.height)];
@@ -408,8 +413,9 @@
 
         }];
         
-        self.passTotalPrice = ^(NSString *value) {//总价
-            matter.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", value];
+        self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
+            matter.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            matter.leftCountLabel.text = [NSString stringWithFormat:@"%@ kg", weightValue];
         };
         
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, matter.height)];
@@ -667,8 +673,9 @@
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderMoney andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"+++%@", resultDic);
         NSString *orderMoney = [NSString stringWithFormat:@"%@", resultDic[@"orderMoney"]];
+        NSString *orderWeight = [NSString stringWithFormat:@"%@", resultDic[@"rule"]];
         if (weakself.passTotalPrice) {
-            weakself.passTotalPrice(orderMoney);
+            weakself.passTotalPrice(orderMoney, orderWeight);
             weakself.orderMoney = orderMoney;
             weakself.isGetOrderMoney = YES;
         }
