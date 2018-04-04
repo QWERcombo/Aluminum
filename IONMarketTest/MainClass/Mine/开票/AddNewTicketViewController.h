@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface AddNewTicketViewController : BaseViewController
+@property (nonatomic, strong) NSArray *orderArr;
 
 @end

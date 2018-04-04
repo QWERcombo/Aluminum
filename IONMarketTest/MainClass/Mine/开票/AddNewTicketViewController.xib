@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddNewTicketViewController">
             <connections>
+                <outlet property="addressView" destination="6P5-IU-xsM" id="JYy-xI-pXn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,10 +33,10 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6P5-IU-xsM">
-                    <rect key="frame" x="0.0" y="30" width="375" height="90"/>
+                    <rect key="frame" x="0.0" y="30" width="375" height="100"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGW-dI-NIn">
-                            <rect key="frame" x="141" y="30" width="92" height="30"/>
+                            <rect key="frame" x="141" y="35" width="92" height="30"/>
                             <state key="normal" title="添加发票地址">
                                 <color key="titleColor" red="0.35491353269999998" green="0.623277843" blue="0.94517052170000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </state>
@@ -48,7 +49,7 @@
                     <constraints>
                         <constraint firstItem="MGW-dI-NIn" firstAttribute="centerY" secondItem="6P5-IU-xsM" secondAttribute="centerY" id="79a-3p-Mp5"/>
                         <constraint firstItem="MGW-dI-NIn" firstAttribute="centerX" secondItem="6P5-IU-xsM" secondAttribute="centerX" id="iER-xN-6Wz"/>
-                        <constraint firstAttribute="height" constant="90" id="ujd-o9-xJD"/>
+                        <constraint firstAttribute="height" constant="100" id="ujd-o9-xJD"/>
                     </constraints>
                 </view>
             </subviews>

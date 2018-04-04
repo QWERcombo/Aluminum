@@ -10,7 +10,7 @@
 #import "AddNewTicketViewController.h"
 #import "ApplyTicketViewController.h"
 
-@interface TicketViewController ()<RadioSelectDelegate>
+@interface TicketViewController ()
 
 #define Button_Width  100
 #define Button_Margin  ((SCREEN_WIGHT-100*3)/4)
@@ -23,6 +23,8 @@
 
 @property (nonatomic, strong) TicketModel *selectedModel;
 
+@property (nonatomic, strong) NSMutableArray *selectOrderArr; // 选中开票的订单
+
 @end
 
 @implementation TicketViewController {
@@ -32,8 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.selectOrderArr = [NSMutableArray array];
     self.cellType = @"0";
-    
     [self getDataSource:@"0"];
     [self setupSubviews];
 }
@@ -50,7 +52,6 @@
     self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无订单,现在就去订购" andDetailStr:@"" withReloadAction:^{
         
     }];
-    
         
     
     UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 50)];
@@ -114,29 +115,60 @@
 
 #pragma mark ----- UITableViewDelegate & DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.dataMuArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellName = @"";
+    
+    __weak typeof(self) weakself = self;
+    
     if ([self.cellType isEqualToString:@"0"]) {
-        cellName = @"TicketCell";
+        
+        OrderModel *order = [self.dataMuArr objectAtIndex:indexPath.row];
+        
+        TicketCell *cell = (TicketCell *)[UtilsMold creatCell:@"TicketCell" table:tableView deledate:self model:order data:nil andCliker:^(NSDictionary *clueDic) {
+            NSLog(@"+++%@", clueDic);
+            if ([clueDic[@"key"] isEqualToString:@"1"]) {
+                for (OrderModel *model in self.dataMuArr) {
+                    if ([model.no isEqualToString:order.no]) { // 判断是否是同一订单编号
+                        model.isSelectedCard = YES;
+                        [weakself.selectOrderArr addObject:model];
+                    }
+                }
+            } else if ([clueDic[@"key"] isEqualToString:@"-1"]) {
+                for (OrderModel *model in self.dataMuArr) {
+                    if ([model.no isEqualToString:order.no]) { // 判断是否是同一订单编号
+                        model.isSelectedCard = NO;
+                        [weakself.selectOrderArr removeAllObjects];
+                    }
+                }
+            }
+            
+            [weakself.tabView reloadData];
+        }];
+        
+        return cell;
     } else if ([self.cellType isEqualToString:@"1"]) {
-        cellName = @"EndTicketCell";
+        
+        EndTicketCell *cell = (EndTicketCell *)[UtilsMold creatCell:@"EndTicketCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+            NSLog(@"+++%@", clueDic);
+            
+            
+        }];
+        
+        return cell;
     } else {
         
         TicketInfoCell *cell = (TicketInfoCell *)[UtilsMold creatCell:@"TicketInfoCell" table:tableView deledate:self model:self.dataMuArr.count?[self.dataMuArr objectAtIndex:indexPath.row]:nil data:nil andCliker:^(NSDictionary *clueDic) {
             NSLog(@"+++%@", clueDic);
+            
         }];
         
         cell.tableView = self.tabView;
-        cell.delegate = self;
+//        cell.delegate = self;
         return cell;
     }
-    return [UtilsMold creatCell:cellName table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
-        NSLog(@"+++%@", clueDic);
-        
-    }];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -183,29 +215,35 @@
         [self.navigationController pushViewController:apply animated:YES];
     } else {
         AddNewTicketViewController *addnew = [[AddNewTicketViewController alloc] initWithNibName:@"AddNewTicketViewController" bundle:nil];
+        addnew.orderArr = self.selectOrderArr;
+        
+        if (!addnew.orderArr.count) {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择要开票的订单！" time:0 aboutType:WHShowViewMode_Text state:NO];
+            return;
+        }
         [self.navigationController pushViewController:addnew animated:YES];
     }
 }
 
-#pragma mark - RadioSelectDelegate
-- (void)radioSelectedWithIndexPath:(NSIndexPath *)indexPath {
-    NSIndexPath *tempIndexPath = self.lastIndexPath;
-    // 改变上一次的
-    if (tempIndexPath && tempIndexPath != indexPath) {
-        BaseModel *model = self.dataMuArr[tempIndexPath.row];
-        model.isSelectedCard = NO;
-        [self.tabView reloadRowsAtIndexPaths:@[tempIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-    }
-    // 记住这一次的
-    TicketModel *model = self.dataMuArr[indexPath.row];
-    model.isSelectedCard = YES;
-    [self.tabView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    self.lastIndexPath = indexPath;
-    //接下来可以保存你选中的做需要做的事情。
-    
-    self.selectedModel = model;
-    
-}
+//#pragma mark - RadioSelectDelegate
+//- (void)radioSelectedWithIndexPath:(NSIndexPath *)indexPath {
+//    NSIndexPath *tempIndexPath = self.lastIndexPath;
+//    // 改变上一次的
+//    if (tempIndexPath && tempIndexPath != indexPath) {
+//        BaseModel *model = self.dataMuArr[tempIndexPath.row];
+//        model.isSelectedCard = NO;
+//        [self.tabView reloadRowsAtIndexPaths:@[tempIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+//    }
+//    // 记住这一次的
+//    TicketModel *model = self.dataMuArr[indexPath.row];
+//    model.isSelectedCard = YES;
+//    [self.tabView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//    self.lastIndexPath = indexPath;
+//    //接下来可以保存你选中的做需要做的事情。
+//
+//    self.selectedModel = model;
+//
+//}
 
 
 #pragma mark ----- DataSource
@@ -215,20 +253,21 @@
     [self.dataMuArr removeAllObjects];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 //    [dict setValue:[UserData currentUser].id forKey:@"userId"];
-    [dict setValue:@"3" forKey:@"kaipiaoStatus"];
+    [dict setValue:@"0" forKey:@"kaipiaoStatus"];
+    [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"+++%@", resultDic);
         
-//        NSArray *dataSourceArr = resultDic[@"list"];
-//
-//        for (NSDictionary *dic in dataSourceArr) {
-//
-//            TicketModel *model = [[TicketModel alloc] initWithDictionary:dic error:nil];
-//
-//            [self.dataMuArr addObject:model];
-//        }
-//
-//        [self.tabView reloadData];
+        NSArray *dataSourceArr = resultDic[@"result"];
+
+        for (NSDictionary *dic in dataSourceArr) {
+
+            OrderModel *model = [[OrderModel alloc] initWithDictionary:dic error:nil];
+
+            [self.dataMuArr addObject:model];
+        }
+
+        [self.tabView reloadData];
         
     } failure:^(NSString *error, NSInteger code) {
         

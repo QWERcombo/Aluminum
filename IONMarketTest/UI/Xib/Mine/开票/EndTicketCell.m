@@ -19,20 +19,17 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
 - (IBAction)statusAc:(id)sender {
     self.click(@"2-2");
-    
-    
 }
 
 
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 160;
+    return 120;
 }
 
 + (instancetype)getEndTicketCell {
@@ -41,9 +38,11 @@
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
     self.click = click;
-    self.makePrice.text = @"333.33";
-    self.ticketPrice.text = @"111.11";
-    self.expressPrice.text = @"222.22";
+    
+    OrderModel *dataM = (OrderModel *)model;
+    self.ticketPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.money];
+    self.expressPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.wuliufei];
+//    self.ticketID.text = [NSString stringWithFormat:@""];
     
 }
 

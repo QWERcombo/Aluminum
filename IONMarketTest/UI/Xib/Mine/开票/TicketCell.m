@@ -14,15 +14,11 @@
     [super awakeFromNib];
     // Initialization code
 }
+
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
-}
-
-
-- (IBAction)expressBtnAction:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    
 }
 
 - (IBAction)moreAction:(UIButton *)sender {
@@ -34,29 +30,19 @@
 - (IBAction)orderBtnAction:(UIButton *)sender {
     sender.selected = !sender.selected;
     if (sender.selected) {
-        self.makeBtn.selected = YES;
-        self.expressBtn.selected = YES;
-        self.ticketBtn.selected = YES;
+        if (self.click) {
+            self.click(@"1");
+        }
     } else {
-        self.makeBtn.selected = NO;
-        self.expressBtn.selected = NO;
-        self.ticketBtn.selected = NO;
+        if (self.click) {
+            self.click(@"-1");
+        }
     }
-}
-
-- (IBAction)ticketBtnAction:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    
-}
-
-- (IBAction)makeBtnAction:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    
 }
 
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 160;
+    return 122;
 }
 
 + (instancetype)getTicketCell {
@@ -65,8 +51,12 @@
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
     self.click = click;
+    OrderModel *dataM = (OrderModel *)model;
     
-    
+    self.expressPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.wuliufei];
+    self.ticketPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.money];
+    self.orderID.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
+    self.orderBtn.selected = dataM.isSelectedCard;
     
 }
 
