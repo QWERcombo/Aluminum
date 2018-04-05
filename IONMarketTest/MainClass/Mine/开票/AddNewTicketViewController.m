@@ -7,14 +7,11 @@
 //
 
 #import "AddNewTicketViewController.h"
-#import "AddressViewController.h"
-#import "AddressShowView.h"
+#import "FaPiaoViewController.h"
 
 @interface AddNewTicketViewController ()
-
-@property (nonatomic, strong) AddressModel *addressM;
 @property (weak, nonatomic) IBOutlet UIView *addressView;
-
+@property (nonatomic, strong) BillTicketModel *billModel;
 @end
 
 @implementation AddNewTicketViewController
@@ -29,9 +26,8 @@
 
 - (void)setupSubviews {
     [self.view addSubview:self.tabView];
-//    self.tabView.scrollEnabled = NO;
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top).offset(110);
+        make.top.equalTo(self.view.mas_top).offset(130);
         make.bottom.equalTo(self.view.mas_bottom).offset(-50);
         make.left.right.equalTo(self.view);
     }];
@@ -59,27 +55,27 @@
 
 - (IBAction)addAc:(UIButton *)sender {
     
-    AddressViewController *address = [AddressViewController new];
+    FaPiaoViewController *address = [FaPiaoViewController new];
     __weak typeof(self) weakself = self;
-    [address setSelectAddressBlock:^(AddressModel *address) {
-        weakself.addressM = address;
-        
-        AddressShowView *showView = [[AddressShowView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 100)];
-        [showView loadData:weakself.addressM andCliker:^(NSString *clueStr) {
-            if ([clueStr isEqualToString:@"0"]) {
-                AddressViewController *address = [[AddressViewController alloc] init];
-                [weakself.navigationController pushViewController:address animated:YES];
-            }
+    [address setSelectModelBlock:^(BillTicketModel *billM) {
+        TicketInfoCell *cell = [TicketInfoCell getTicketInfoCell];
+        cell.frame = CGRectMake(0, 0, SCREEN_WIGHT, 120);
+        [cell loadData:billM andCliker:^(NSString *clueStr) {
         }];
-        
-        [weakself.addressView addSubview:showView];
-        
+        weakself.billModel = billM;
+        [weakself.addressView addSubview:cell];
         [weakself.tabView reloadData];
     }];
+    
     [self.navigationController pushViewController:address animated:YES];
 }
 
 - (IBAction)doneAc:(UIButton *)sender {
+    
+    if (!self.billModel) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择发票信息!" time:1 aboutType:WHShowViewMode_Text state:NO];
+        return;
+    }
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     NSMutableString *orderIds = [NSMutableString string];
@@ -89,10 +85,10 @@
     }
     
     [dict setValue:[orderIds substringToIndex:orderIds.length-1] forKey:@"orderIds"]; //orderIds订单id，不是订单编号。开票订单id，多个用逗号开
-    [dict setValue:@"" forKey:@"money"]; //开票总额
+    [dict setValue:@"1000" forKey:@"money"]; //开票总额
     [dict setValue:[UserData currentUser].id forKey:@"userId"];
-    [dict setValue:@"" forKey:@"fapiaoId"]; //发票id
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Login andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    [dict setValue:self.billModel.id forKey:@"fapiaoId"]; //发票id
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveKaipiao andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"++--+%@", resultDic);
         
         

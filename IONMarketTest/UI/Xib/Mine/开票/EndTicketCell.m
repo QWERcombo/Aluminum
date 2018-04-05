@@ -42,7 +42,7 @@
     OrderModel *dataM = (OrderModel *)model;
     self.ticketPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.money];
     self.expressPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.wuliufei];
-//    self.ticketID.text = [NSString stringWithFormat:@""];
+    self.ticketID.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
     
 }
 

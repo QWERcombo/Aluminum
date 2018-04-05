@@ -38,6 +38,14 @@
     self.cellType = @"0";
     [self getDataSource:@"0"];
     [self setupSubviews];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RefreshFaPiaoNewData" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:@"RefreshFaPiaoNewData" object:nil];
+}
+
+- (void)getData {
+    [self.dataMuArr removeAllObjects];
+    [self getDataSource:self.cellType];
 }
 
 - (void)setupSubviews {
@@ -121,23 +129,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     __weak typeof(self) weakself = self;
-    
     if ([self.cellType isEqualToString:@"0"]) {
         
-        OrderModel *order = [self.dataMuArr objectAtIndex:indexPath.row];
-        
-        TicketCell *cell = (TicketCell *)[UtilsMold creatCell:@"TicketCell" table:tableView deledate:self model:order data:nil andCliker:^(NSDictionary *clueDic) {
-            NSLog(@"+++%@", clueDic);
+        OrderModel *order = nil;
+        if (weakself.dataMuArr.count) {
+            order = [weakself.dataMuArr objectAtIndex:indexPath.row];
+        }
+        TicketCell *cell = (TicketCell *)[UtilsMold creatCell:@"TicketCell" table:tableView deledate:weakself model:order data:nil andCliker:^(NSDictionary *clueDic) {
+//            NSLog(@"+++%@", clueDic);
             if ([clueDic[@"key"] isEqualToString:@"1"]) {
-                for (OrderModel *model in self.dataMuArr) {
+                for (OrderModel *model in weakself.dataMuArr) {
                     if ([model.no isEqualToString:order.no]) { // 判断是否是同一订单编号
                         model.isSelectedCard = YES;
                         [weakself.selectOrderArr addObject:model];
                     }
                 }
             } else if ([clueDic[@"key"] isEqualToString:@"-1"]) {
-                for (OrderModel *model in self.dataMuArr) {
-                    if ([model.no isEqualToString:order.no]) { // 判断是否是同一订单编号
+                for (OrderModel *model in weakself.dataMuArr) {
+                    if ([model.no isEqualToString:order.no]) {
                         model.isSelectedCard = NO;
                         [weakself.selectOrderArr removeAllObjects];
                     }
@@ -150,7 +159,7 @@
         return cell;
     } else if ([self.cellType isEqualToString:@"1"]) {
         
-        EndTicketCell *cell = (EndTicketCell *)[UtilsMold creatCell:@"EndTicketCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+        EndTicketCell *cell = (EndTicketCell *)[UtilsMold creatCell:@"EndTicketCell" table:tableView deledate:weakself model:nil data:nil andCliker:^(NSDictionary *clueDic) {
             NSLog(@"+++%@", clueDic);
             
             
@@ -159,13 +168,26 @@
         return cell;
     } else {
         
-        TicketInfoCell *cell = (TicketInfoCell *)[UtilsMold creatCell:@"TicketInfoCell" table:tableView deledate:self model:self.dataMuArr.count?[self.dataMuArr objectAtIndex:indexPath.row]:nil data:nil andCliker:^(NSDictionary *clueDic) {
+        BillTicketModel *model = nil;
+        if (weakself.dataMuArr.count) {
+            model = [weakself.dataMuArr objectAtIndex:indexPath.row];
+        }
+        TicketInfoCell *cell = (TicketInfoCell *)[UtilsMold creatCell:@"TicketInfoCell" table:tableView deledate:weakself model:model data:nil andCliker:^(NSDictionary *clueDic) {
             NSLog(@"+++%@", clueDic);
-            
+            if ([clueDic[@"key"] isEqualToString:@"1"]) { //编辑
+                
+                ApplyTicketViewController *apply = [[ApplyTicketViewController alloc] initWithNibName:@"ApplyTicketViewController" bundle:nil];
+                apply.mode = @"111";
+                apply.billModel = [weakself.dataMuArr objectAtIndex:indexPath.row];
+                [weakself.navigationController pushViewController:apply animated:YES];
+                
+            } else if ([clueDic[@"key"] isEqualToString:@"0"]) { //删除
+                [weakself removeBillTicket:indexPath.row];
+                
+            } else {
+            }
         }];
         
-        cell.tableView = self.tabView;
-//        cell.delegate = self;
         return cell;
     }
     
@@ -183,14 +205,18 @@
     return [UtilsMold getCellHight:cellName data:nil model:nil indexPath:indexPath];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.cellType isEqualToString:@"2"]) {
+        
+    }
+}
 
 
 
 #pragma mark ----- Action
 
 - (void)buttonCliker:(UIButton *)sender {
-    NSLog(@"%@", sender.currentTitle);
-    
+//    NSLog(@"%@", sender.currentTitle);
     UIView *lastLine = [self.view viewWithTag:self.lastSelected+100];
     lastLine.hidden = YES;
     
@@ -206,12 +232,14 @@
         [applyButton setTitle:@"申请发票" forState:UIControlStateNormal];
     }
     
+    [self.dataMuArr removeAllObjects];
     [self getDataSource:SINT(sender.tag-100)];
 }
 
 - (void)applyCliker:(UIButton *)sender {
     if (self.lastSelected==102) {
         ApplyTicketViewController *apply = [[ApplyTicketViewController alloc] initWithNibName:@"ApplyTicketViewController" bundle:nil];
+        apply.mode = @"222";
         [self.navigationController pushViewController:apply animated:YES];
     } else {
         AddNewTicketViewController *addnew = [[AddNewTicketViewController alloc] initWithNibName:@"AddNewTicketViewController" bundle:nil];
@@ -225,56 +253,73 @@
     }
 }
 
-//#pragma mark - RadioSelectDelegate
-//- (void)radioSelectedWithIndexPath:(NSIndexPath *)indexPath {
-//    NSIndexPath *tempIndexPath = self.lastIndexPath;
-//    // 改变上一次的
-//    if (tempIndexPath && tempIndexPath != indexPath) {
-//        BaseModel *model = self.dataMuArr[tempIndexPath.row];
-//        model.isSelectedCard = NO;
-//        [self.tabView reloadRowsAtIndexPaths:@[tempIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-//    }
-//    // 记住这一次的
-//    TicketModel *model = self.dataMuArr[indexPath.row];
-//    model.isSelectedCard = YES;
-//    [self.tabView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-//    self.lastIndexPath = indexPath;
-//    //接下来可以保存你选中的做需要做的事情。
-//
-//    self.selectedModel = model;
-//
-//}
 
 
 #pragma mark ----- DataSource
-
 - (void)getDataSource:(NSString *)status {
     
-    [self.dataMuArr removeAllObjects];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    [dict setValue:[UserData currentUser].id forKey:@"userId"];
-    [dict setValue:@"0" forKey:@"kaipiaoStatus"];
-    [dict setValue:[UserData currentUser].phone forKey:@"phone"];
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    NSString *url = @"";
+    if ([status isEqualToString:@"0"]) {
+        url = Interface_OrderList;
+        [dict setValue:[UserData currentUser].phone forKey:@"phone"];
+        [dict setValue:@"0" forKey:@"kaipiaoStatus"];
+    } else if ([status isEqualToString:@"1"]) {
+        url = Interface_GetkaipiaoByUser;
+        [dict setValue:[UserData currentUser].id forKey:@"userId"];
+        [dict setValue:@"开票成功" forKey:@"kaipiaoStatus"];
+    } else {
+        url = Interface_GetFapiaoByUser;
+        [dict setValue:[UserData currentUser].id forKey:@"userId"];
+    }
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:url andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"+++%@", resultDic);
         
-        NSArray *dataSourceArr = resultDic[@"result"];
-
-        for (NSDictionary *dic in dataSourceArr) {
-
-            OrderModel *model = [[OrderModel alloc] initWithDictionary:dic error:nil];
-
-            [self.dataMuArr addObject:model];
+        if ([status isEqualToString:@"0"]) {
+            NSArray *dataSourceArr = resultDic[@"result"];
+            for (NSDictionary *dic in dataSourceArr) {
+                OrderModel *model = [[OrderModel alloc] initWithDictionary:dic error:nil];
+                [self.dataMuArr addObject:model];
+            }
+        } else if ([status isEqualToString:@"1"]) {
+            
+            
+        } else {
+            NSArray *dataSourceArr = resultDic[@"result"];
+            for (NSDictionary *dic in dataSourceArr) {
+                BillTicketModel *model = [[BillTicketModel alloc] initWithDictionary:dic error:nil];
+                [self.dataMuArr addObject:model];
+            }
         }
-
+        
+        
         [self.tabView reloadData];
         
     } failure:^(NSString *error, NSInteger code) {
-        
+        [self.tabView reloadData];
     }];
+ 
+}
+
+//删除发票信息
+- (void)removeBillTicket:(NSInteger)fapiaoId {
     
-    
-    
+    [[UtilsData sharedInstance] showAlertControllerWithTitle:@"提示" detail:@"是否确定删除" doneTitle:@"是" cancelTitle:@"否" haveCancel:YES doneAction:^{
+        
+        BillTicketModel *model = [self.dataMuArr objectAtIndex:fapiaoId];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:model.id forKey:@"fapiaoId"];
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_DeleteFapiao andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            [self.dataMuArr removeObjectAtIndex:fapiaoId];
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0 aboutType:WHShowViewMode_Text state:YES];
+            [self.tabView reloadData];
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+        
+        
+    } controller:self];
     
 }
 

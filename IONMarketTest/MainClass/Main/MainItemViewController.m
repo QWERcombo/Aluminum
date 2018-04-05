@@ -196,7 +196,7 @@
                 
                 if ([clueStr isEqualToString:@"0"]) {
                     
-                    [weakself selectInfomationForUser:@"0"];
+                    [weakself selectInfomationForUser:@"0" withMode:Mode_Single ];
                     
                     weakself.passValue = ^(NSString *value) {
                         single.thinLabel.text = value;
@@ -257,7 +257,7 @@
                 
                 if ([clueStr isEqualToString:@"0"]) {
                     
-                    [weakself selectInfomationForUser:@"0"];
+                    [weakself selectInfomationForUser:@"0" withMode:Mode_Pole];
                     
                     weakself.passValue = ^(NSString *value) {
                         pole.lengthLabel.text = value;
@@ -315,7 +315,7 @@
                 
                 if ([clueStr isEqualToString:@"0"]) { //厚度
                     
-                    [weakself selectInfomationForUser:@"0"];
+                    [weakself selectInfomationForUser:@"0" withMode:Mode_Tube];
                     
                     weakself.passValue = ^(NSString *value) {
                         tube.thinLabel.text = value;
@@ -324,7 +324,7 @@
                     };
                 } else if ([clueStr isEqualToString:@"1"]) { //宽度
                     
-                    [weakself selectInfomationForUser:@"1"];
+                    [weakself selectInfomationForUser:@"1" withMode:Mode_Tube];
                     
                     weakself.passValue = ^(NSString *value) {
                         tube.widthLabel.text = value;
@@ -381,14 +381,14 @@
             } else {
                 
                 if ([clueStr isEqualToString:@"0"]) { //外径
-                    [weakself selectInfomationForUser:@"0"];
+                    [weakself selectInfomationForUser:@"0" withMode:Mode_Matter];
                     weakself.passValue = ^(NSString *value) {
                         matter.waiLabel.text = value;
                         matter.waiLabel.textColor = [UIColor blackColor];
                         weakself.mainM.waijing = value;
                     };
                 } else if ([clueStr isEqualToString:@"1"]) { //内径
-                    [weakself selectInfomationForUser:@"1"];
+                    [weakself selectInfomationForUser:@"1" withMode:Mode_Matter];
                     weakself.passValue = ^(NSString *value) {
                         matter.neiLabel.text = value;
                         matter.neiLabel.textColor = [UIColor blackColor];
@@ -701,7 +701,7 @@
 
 
 //选择单位
-- (void)selectInfomationForUser:(NSString *)type {
+- (void)selectInfomationForUser:(NSString *)type withMode:(GetWholeBoardMode)mode {
     __weak typeof(self) weakself = self;
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:self.typeStr forKey:@"zhonglei"];
@@ -709,7 +709,29 @@
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetByZhongleiAndXinghao andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"--%@", resultDic);
         
-        NSArray *dataArr = resultDic[@"houdus"];
+        NSString *unitsTop = @"";
+        NSString *unitsDown = @"";
+        switch (mode) {
+            case Mode_Single:
+                unitsTop = @"houdus";
+                break;
+            case Mode_Pole:
+                unitsTop = @"zhijings";
+                break;
+            case Mode_Tube:
+                unitsTop = @"houdus";
+                unitsDown = @"kuangdus";
+                break;
+            case Mode_Matter:
+                unitsTop = @"waijings";
+                unitsDown = @"neijings";
+                break;
+                
+            default:
+                break;
+        }
+        
+        NSArray *dataArr = [type isEqualToString:@"0"] ? resultDic[unitsTop] : resultDic[unitsDown];
         NSArray *sortArr = [dataArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
             if ([obj2 integerValue] < [obj1 integerValue])
             {
@@ -721,21 +743,9 @@
             }
         }];
         
-        NSArray *dataArr1 = resultDic[@"kuangdus"];
-        NSArray *sortArr1 = [dataArr1 sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-            if ([obj2 integerValue] < [obj1 integerValue])
-            {
-                return NSOrderedDescending;
-            }
-            else
-            {
-                return NSOrderedAscending;
-            }
-        }];
         
-        
-        if (sortArr1.count || sortArr.count) {
-            UnitsPickerView *pv = [[UnitsPickerView alloc] initWithFrame:self.view.bounds withDataSource:[type integerValue]==0?sortArr:sortArr1];
+        if (sortArr.count) {
+            UnitsPickerView *pv = [[UnitsPickerView alloc] initWithFrame:self.view.bounds withDataSource:sortArr];
             [pv loadData:nil andClickBlock:^(NSString *clueStr) {
 //                NSLog(@"++%@", clueStr);
                 weakself.passValue(clueStr);

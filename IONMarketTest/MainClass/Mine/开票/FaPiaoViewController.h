@@ -10,4 +10,6 @@
 
 @interface FaPiaoViewController : BaseViewController
 
+@property (nonatomic, copy) void(^SelectModelBlock)(BillTicketModel *billM);
+
 @end

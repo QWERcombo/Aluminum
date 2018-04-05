@@ -92,6 +92,9 @@
 #import "AddressModel.h"
 #import "MainModel.h"
 #import "OrderModel.h"
+#import "BillTicketModel.h"
+
+
 
 
 

@@ -164,6 +164,8 @@
 		A283489220610A8300C228AD /* TradeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A283489120610A8300C228AD /* TradeListViewController.m */; };
 		A283489620610F6900C228AD /* WallentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A283489420610F6900C228AD /* WallentListCell.m */; };
 		A283489720610F6900C228AD /* WallentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A283489520610F6900C228AD /* WallentListCell.xib */; };
+		A285A6592076170400D349AB /* BillTicketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A285A6582076170400D349AB /* BillTicketModel.m */; };
+		A285A65C207627A000D349AB /* FaPiaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A285A65B207627A000D349AB /* FaPiaoViewController.m */; };
 		A29996FE207381140003B96C /* ShopCarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A29996FC207381140003B96C /* ShopCarListCell.m */; };
 		A29996FF207381140003B96C /* ShopCarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A29996FD207381140003B96C /* ShopCarListCell.xib */; };
 		A2AC1C622056476F00A3B2F9 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C612056476F00A3B2F9 /* MessageViewController.m */; };
@@ -484,6 +486,10 @@
 		A283489320610F6900C228AD /* WallentListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WallentListCell.h; sourceTree = "<group>"; };
 		A283489420610F6900C228AD /* WallentListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WallentListCell.m; sourceTree = "<group>"; };
 		A283489520610F6900C228AD /* WallentListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallentListCell.xib; sourceTree = "<group>"; };
+		A285A6572076170400D349AB /* BillTicketModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillTicketModel.h; sourceTree = "<group>"; };
+		A285A6582076170400D349AB /* BillTicketModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillTicketModel.m; sourceTree = "<group>"; };
+		A285A65A207627A000D349AB /* FaPiaoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaPiaoViewController.h; sourceTree = "<group>"; };
+		A285A65B207627A000D349AB /* FaPiaoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaPiaoViewController.m; sourceTree = "<group>"; };
 		A29996FB207381140003B96C /* ShopCarListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCarListCell.h; sourceTree = "<group>"; };
 		A29996FC207381140003B96C /* ShopCarListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCarListCell.m; sourceTree = "<group>"; };
 		A29996FD207381140003B96C /* ShopCarListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCarListCell.xib; sourceTree = "<group>"; };
@@ -579,6 +585,8 @@
 				A22981BE206260CE007B6112 /* ApplyTicketViewController.h */,
 				A22981BF206260CE007B6112 /* ApplyTicketViewController.m */,
 				A22981C0206260CE007B6112 /* ApplyTicketViewController.xib */,
+				A285A65A207627A000D349AB /* FaPiaoViewController.h */,
+				A285A65B207627A000D349AB /* FaPiaoViewController.m */,
 			);
 			path = "开票";
 			sourceTree = "<group>";
@@ -646,6 +654,8 @@
 				560264B5206A6A5400F9C405 /* TicketModel.m */,
 				56EC993A206D121D00F2D2D0 /* AddressModel.h */,
 				56EC993B206D121D00F2D2D0 /* AddressModel.m */,
+				A285A6572076170400D349AB /* BillTicketModel.h */,
+				A285A6582076170400D349AB /* BillTicketModel.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1500,6 +1510,7 @@
 				56940C2720515DF900DFA6D6 /* NSMutableDictionary+YXP.m in Sources */,
 				5695BEC32042A5300036D54B /* BaseViewController.m in Sources */,
 				56940C2320515DF900DFA6D6 /* NSBundle+Language.m in Sources */,
+				A285A6592076170400D349AB /* BillTicketModel.m in Sources */,
 				56940C2C20515DF900DFA6D6 /* UIFont+YXP.m in Sources */,
 				56940C2820515DF900DFA6D6 /* UIImageView+YXP.m in Sources */,
 				56EC993C206D121D00F2D2D0 /* AddressModel.m in Sources */,
@@ -1561,6 +1572,7 @@
 				5695BF5A2042AC1D0036D54B /* EasyShowTextView.m in Sources */,
 				5695BF322042AC120036D54B /* BannerPageControl.m in Sources */,
 				56940C3E20515E6900DFA6D6 /* PublicFuntionTool.m in Sources */,
+				A285A65C207627A000D349AB /* FaPiaoViewController.m in Sources */,
 				568CB0902066629900B48318 /* PickerView.m in Sources */,
 				56940C0120515DB300DFA6D6 /* TBTabBar.m in Sources */,
 				A22981D0206261AE007B6112 /* EndTicketCell.m in Sources */,
@@ -1787,7 +1799,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F66NLE8FYB;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/IONMarketTest/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = IONMarketTest/Info.plist;
@@ -1805,7 +1817,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F66NLE8FYB;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/IONMarketTest/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = IONMarketTest/Info.plist;

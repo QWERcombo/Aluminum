@@ -20,15 +20,21 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
-
+//删除
 - (IBAction)delete:(id)sender {
+    if (self.click) {
+        self.click(@"0");
+    }
 }
 
+//编辑
 - (IBAction)editor:(id)sender {
+    if (self.click) {
+        self.click(@"1");
+    }
 }
 
 - (IBAction)setDefault:(id)sender {
@@ -36,11 +42,6 @@
     button.selected = !button.selected;
     if (button.selected) {
         [button setImage:IMG(@"select_1") forState:UIControlStateNormal];
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:self];
-        if (self.delegate && [self.delegate respondsToSelector:@selector(radioSelectedWithIndexPath:)]) {
-            [self.delegate radioSelectedWithIndexPath:indexPath];
-        }
-        
     } else {
         [button setImage:IMG(@"select_0") forState:UIControlStateNormal];
     }
@@ -56,8 +57,11 @@
 }
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
-    BaseModel *dataM = (BaseModel *)model;
-    self.setDefault.selected = dataM.isSelectedCard;
+    self.click = click;
+    BillTicketModel *dataM = (BillTicketModel *)model;
+    self.comparyName.text = dataM.kaipiaotaitou;
+    self.bankName.text = dataM.zhanghukaihuhang;
+    self.comparyID.text = dataM.shuihao;
     
 }
 

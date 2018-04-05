@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface ApplyTicketViewController : BaseViewController
-
+@property (nonatomic, strong) NSString *mode;
+@property (nonatomic, strong) BillTicketModel *billModel;
 @end

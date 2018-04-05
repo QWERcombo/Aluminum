@@ -50,6 +50,19 @@
 
 //获取个人发票信息
 #define Interface_GetFapiaoByUser  @"user/getFapiaoByUser"
+//申请开票
+#define Interface_SaveKaipiao   @"user/saveKaipiao"
+//查看开票记录
+#define Interface_GetkaipiaoByUser   @"user/getkaipiaoByUser"
+
+//保存发票信息
+#define Interface_SaveFapiao        @"user/saveFapiao"
+//修改发票信息
+#define Interface_UpdateFapiao      @"user/updateFapiao"
+//删除发票信息
+#define Interface_DeleteFapiao      @"user/deleteFapiao"
+//查看个人发票信息
+#define Interface_GetFapiaoByUser   @"user/getFapiaoByUser"
 
 
 

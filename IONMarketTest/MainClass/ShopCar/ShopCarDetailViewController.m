@@ -251,6 +251,9 @@
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveFromGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"---%@", resultDic);
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"下单成功" time:0 aboutType:WHShowViewMode_Text state:YES];
+        //刷新购物车列表
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshNewData" object:nil];
+        
         [self.navigationController popToRootViewControllerAnimated:YES];
         
     } failure:^(NSString *error, NSInteger code) {

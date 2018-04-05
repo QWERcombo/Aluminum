@@ -60,7 +60,7 @@
     
     self.orderIDLabel.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
     if ([dataM.status integerValue] == 0) {
-        [self.statusButton setTitle:@"代付款" forState:UIControlStateNormal];
+        [self.statusButton setTitle:@"待付款" forState:UIControlStateNormal];
     } else {
         [self.statusButton setTitle:@"已付款" forState:UIControlStateNormal];
     }
