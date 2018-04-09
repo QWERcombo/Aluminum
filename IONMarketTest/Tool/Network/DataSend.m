@@ -87,7 +87,7 @@ static NSOperationQueue *queue;
             //上传文件参数
             for (UIImage *img in imgArr ) {
 //                NSData *imageData = UIImageJPEGRepresentation([[UtilsData sharedInstance] scaleAndRotateImage:img resolution:800 maxSizeWithKB:600], 0.9);
-                NSData *imageData = UIImageJPEGRepresentation(img, 0.6);
+                NSData *imageData = UIImageJPEGRepresentation(img, 0.5);
                 [formData appendPartWithFileData:imageData name:@"file" fileName:@"image.jpg" mimeType:@"image/jpeg"];
             }
         } progress:^(NSProgress * _Nonnull uploadProgress) {

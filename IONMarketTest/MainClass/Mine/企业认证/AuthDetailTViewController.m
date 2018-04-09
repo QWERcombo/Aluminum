@@ -9,6 +9,7 @@
 #import "AuthDetailTViewController.h"
 
 @interface AuthDetailTViewController ()
+@property (weak, nonatomic) IBOutlet UITextView *inputTextView;
 
 @end
 
@@ -18,6 +19,12 @@
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveAction:)];
     [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
+    
+    self.inputTextView.layer.borderColor = [UIColor blackColor].CGColor;
+    self.inputTextView.layer.borderWidth = 1;
+    self.inputTextView.layer.masksToBounds = YES;
+    self.inputTextView.layer.cornerRadius = 5;
+    self.inputTextView.backgroundColor = [UIColor lightGrayColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,8 +34,10 @@
 
 
 - (void)saveAction:(UIBarButtonItem *)sender {
-    NSLog(@"save");
-    
+    if (self.PassValueBlock) {
+        self.PassValueBlock(self.inputTextView.text);
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

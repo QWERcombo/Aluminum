@@ -48,6 +48,7 @@
 		5671DBCA206000EA005F1760 /* MainItemView__Tube.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5671DBC9206000EA005F1760 /* MainItemView__Tube.xib */; };
 		5671DBCD20600109005F1760 /* MainItemView__Matter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5671DBCC20600109005F1760 /* MainItemView__Matter.m */; };
 		5671DBCF2060011D005F1760 /* MainItemView__Matter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5671DBCE2060011D005F1760 /* MainItemView__Matter.xib */; };
+		567D6A3C207B9BA100994BEF /* AuthenticationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 567D6A3B207B9BA100994BEF /* AuthenticationModel.m */; };
 		568CB08A2065F90900B48318 /* MainItemTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 568CB0892065F90900B48318 /* MainItemTypeModel.m */; };
 		568CB08D2066462300B48318 /* CALayer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 568CB08C2066462300B48318 /* CALayer+Addition.m */; };
 		568CB0902066629900B48318 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 568CB08F2066629900B48318 /* PickerView.m */; };
@@ -272,6 +273,8 @@
 		5671DBCB20600109005F1760 /* MainItemView__Matter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItemView__Matter.h; sourceTree = "<group>"; };
 		5671DBCC20600109005F1760 /* MainItemView__Matter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainItemView__Matter.m; sourceTree = "<group>"; };
 		5671DBCE2060011D005F1760 /* MainItemView__Matter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItemView__Matter.xib; sourceTree = "<group>"; };
+		567D6A3A207B9BA100994BEF /* AuthenticationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationModel.h; sourceTree = "<group>"; };
+		567D6A3B207B9BA100994BEF /* AuthenticationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationModel.m; sourceTree = "<group>"; };
 		568CB0882065F90900B48318 /* MainItemTypeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItemTypeModel.h; sourceTree = "<group>"; };
 		568CB0892065F90900B48318 /* MainItemTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainItemTypeModel.m; sourceTree = "<group>"; };
 		568CB08B2066462300B48318 /* CALayer+Addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+Addition.h"; sourceTree = "<group>"; };
@@ -669,6 +672,8 @@
 				A285A6582076170400D349AB /* BillTicketModel.m */,
 				A21B4670207B470A00802621 /* FaPiaoModel.h */,
 				A21B4671207B470A00802621 /* FaPiaoModel.m */,
+				567D6A3A207B9BA100994BEF /* AuthenticationModel.h */,
+				567D6A3B207B9BA100994BEF /* AuthenticationModel.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1554,6 +1559,7 @@
 				5650869C205CD0AB00FD8497 /* OrderDetailViewController.m in Sources */,
 				5602129920594D1C009EF75D /* TicketViewController.m in Sources */,
 				56940C2B20515DF900DFA6D6 /* UIColor+YXP.m in Sources */,
+				567D6A3C207B9BA100994BEF /* AuthenticationModel.m in Sources */,
 				5671DBC32060005A005F1760 /* MainItemView__Pole.m in Sources */,
 				A283489220610A8300C228AD /* TradeListViewController.m in Sources */,
 				56940C0220515DB300DFA6D6 /* TBTabBarController.m in Sources */,
@@ -1829,7 +1835,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = F66NLE8FYB;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/IONMarketTest/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = IONMarketTest/Info.plist;
@@ -1847,7 +1853,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = F66NLE8FYB;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/IONMarketTest/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = IONMarketTest/Info.plist;

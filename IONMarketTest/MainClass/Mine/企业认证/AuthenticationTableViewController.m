@@ -14,7 +14,20 @@
 @property (nonatomic, strong) NSString *leftImageUrl;
 @property (nonatomic, strong) NSString *rightImageUrl;
 @property (nonatomic, assign) BOOL isUploaded;
+@property (nonatomic, strong) AuthenticationModel *authModel;
+@property (weak, nonatomic) IBOutlet UIButton *leftButton;
+@property (weak, nonatomic) IBOutlet UIButton *rightButton;
+@property (weak, nonatomic) IBOutlet UITextField *companyTF;
+@property (weak, nonatomic) IBOutlet UIButton *moshiButton;
+@property (weak, nonatomic) IBOutlet UIButton *fuzerenButton;
+@property (weak, nonatomic) IBOutlet UITextField *contactTF;
+@property (weak, nonatomic) IBOutlet UITextField *phoneTF;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descLabel;
+
 @end
+
+#define imageBaseUrl    @"http://118.31.35.233:8080/"
 
 @implementation AuthenticationTableViewController {
     UIImagePickerController *_imagePickerController;
@@ -29,7 +42,57 @@
     [self getData];
 }
 
+- (BOOL)checkInfo {
+    [self.dataSource removeAllObjects];
+    
+    if (self.authModel.id.length) {
+        self.companyTF.text.length?[self.dataSource addObject:self.companyTF.text]:[self.dataSource addObject:self.authModel.gongsimingchen];
+        [self.dataSource addObject:self.moshiButton.currentTitle];
+        [self.dataSource addObject:self.fuzerenButton.currentTitle];
+        self.contactTF.text.length?[self.dataSource addObject:self.contactTF.text]:[self.dataSource addObject:self.authModel.lianxiren];
+        self.phoneTF.text.length?[self.dataSource addObject:self.phoneTF.text]:[self.dataSource addObject:self.authModel.lianxirendianhua];
+        [self.dataSource addObject:self.addressLabel.text];
+        [self.dataSource addObject:self.descLabel.text];
+        if (!self.leftImageUrl.length) {
+            self.leftImageUrl = self.authModel.fuzerenshenfenzheng;
+        }
+        if (!self.rightImageUrl.length) {
+            self.rightImageUrl = self.authModel.yingyezhizhao;
+        }
+        [self.dataSource addObject:self.leftImageUrl];
+        [self.dataSource addObject:self.rightImageUrl];
+        
+    } else {
+        [self.dataSource addObject:self.companyTF.text];
+        [self.dataSource addObject:self.moshiButton.currentTitle];
+        [self.dataSource addObject:self.fuzerenButton.currentTitle];
+        [self.dataSource addObject:self.contactTF.text];
+        [self.dataSource addObject:self.phoneTF.text];
+        [self.dataSource addObject:self.addressLabel.text];
+        [self.dataSource addObject:self.descLabel.text];
+        [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.leftImageUrl]];
+        [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.rightImageUrl]];
+        
+    }
+    
+    for (NSString *string in self.dataSource) {
+        if (!string.length || !self.leftImageUrl.length || !self.rightImageUrl.length) {
+            return NO;
+            break;
+        }
+    }
+    
+    return YES;
+}
+
+
 - (IBAction)doneClicker:(UIButton *)sender {
+    
+    if (![self checkInfo]) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"信息不完整！" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return;
+    }
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:self.dataSource[0] forKey:@"gongsimingchen"];
     [dict setValue:self.dataSource[1] forKey:@"jingyingmoshi"];
@@ -41,9 +104,19 @@
     [dict setValue:self.dataSource[7] forKey:@"fuzerenshenfenzheng"];
     [dict setValue:self.dataSource[8] forKey:@"yingyezhizhao"];
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveRenzheng andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    
+    
+    NSString *url = @"";
+    if (self.authModel.id.length) {
+        url = Interface_UpdateRenzheng;
+        [dict setValue:self.authModel.id forKey:@"renzhengId"];
+    } else {
+        url = Interface_SaveRenzheng;
+        [dict setValue:[UserData currentUser].id forKey:@"userId"];
+    }
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:url andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"---++%@", resultDic);
-        
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0 aboutType:WHShowViewMode_Text state:YES];
         
         [self.tableView reloadData];
     } failure:^(NSString *error, NSInteger code) {
@@ -54,12 +127,11 @@
 - (IBAction)selectClicker:(UIButton *)sender {
     NSLog(@"%ld", sender.tag);
     
+    
 }
 
 
 - (IBAction)uploadClicker:(UIButton *)sender {
-    NSLog(@"%ld", sender.tag);
-    
     if (sender.tag == 220) {
         self.isUploaded = YES;
     } else {
@@ -75,8 +147,27 @@
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetRenzhengByUser andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"++---%@", resultDic);
         
+        NSArray *dataArr = resultDic[@"result"];
+        self.authModel = [[AuthenticationModel alloc] initWithDictionary:[dataArr firstObject] error:nil];
+        self.companyTF.placeholder = self.authModel.gongsimingchen;
+        [self.moshiButton setTitle:self.authModel.jingyingmoshi forState:UIControlStateNormal];
+        [self.fuzerenButton setTitle:self.authModel.gongsifuzeren forState:UIControlStateNormal];
+        self.contactTF.placeholder = self.authModel.lianxiren;
+        self.phoneTF.placeholder = self.authModel.lianxirendianhua;
+        self.addressLabel.text = self.authModel.xiangxidizhi;
+        self.descLabel.text = self.authModel.gongsijieshao;
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImage *leftImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.authModel.fuzerenshenfenzheng]]];
+            UIImage *rightImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.authModel.yingyezhizhao]]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.leftButton setBackgroundImage:leftImage forState:UIControlStateNormal];
+                [self.rightButton setBackgroundImage:rightImage forState:UIControlStateNormal];
+            });
+        });
         
         
+        [self.tableView reloadData];
     } failure:^(NSString *error, NSInteger code) {
         
     }];
@@ -90,9 +181,20 @@
 #pragma mark - Table view data source
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row>4 && indexPath.row <8) {
-        NSArray *array = @[@"详细地址",@"公司介绍",@"联系我们"];
+        NSArray *array = @[@"填写详细地址",@"填写公司介绍",@"联系我们"];
         AuthDetailTViewController *detail = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthDetail"];
         detail.title = [array objectAtIndex:indexPath.row-5];
+        
+        __weak typeof(self) weakself = self;
+        detail.PassValueBlock = ^(NSString *inputStr) {
+            if (indexPath.row == 6) {
+                weakself.descLabel.text = inputStr;
+            }
+            if (indexPath.row == 5) {
+                weakself.addressLabel.text = inputStr;
+            }
+        };
+        
         [self.navigationController pushViewController:detail animated:YES];
     }
 }
@@ -133,13 +235,10 @@
     _imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
     //录制视频时长，默认10s
     //    _imagePickerController.videoMaximumDuration = 15;
-    
     //相机类型（拍照、录像...）字符串需要做相应的类型转换
     _imagePickerController.mediaTypes = @[(NSString *)kUTTypeMovie,(NSString *)kUTTypeImage];
-    
     //视频上传质量
     _imagePickerController.videoQuality = UIImagePickerControllerQualityTypeMedium;
-    
     //设置摄像头模式（拍照，录制视频）
     _imagePickerController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
     [self presentViewController:_imagePickerController animated:YES completion:nil];
@@ -157,8 +256,15 @@
 //该代理方法仅适用于只选取图片时
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo {
     //    NSLog(@"选择完毕----image:%@-----info:%@",image,editingInfo);
-//    self.holderImage = image;
-
+    
+    if (self.isUploaded) {
+        [self.leftButton setBackgroundImage:image forState:UIControlStateNormal];
+        [self.leftButton setTitle:@"" forState:UIControlStateNormal];
+    } else {
+        [self.rightButton setBackgroundImage:image forState:UIControlStateNormal];
+        [self.rightButton setTitle:@"" forState:UIControlStateNormal];
+    }
+    
     [self.tableView reloadData];
     
     [picker dismissViewControllerAnimated:YES completion:^{
@@ -169,17 +275,16 @@
 
 - (void)uploadUserImage:(UIImage *)userimage  {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    [dict setValue:@"" forKey:@""];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:@[userimage] WithType:Interface_UserUpload andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"upload:   %@",resultDic);
         
         if (self.isUploaded) {
-            self.leftImageUrl = resultDic[@"path"];
+            self.leftImageUrl = [NSString stringWithFormat:@"%@%@", imageBaseUrl,resultDic[@"path"]];
         } else {
-            self.rightImageUrl = resultDic[@"path"];
+            self.rightImageUrl = [NSString stringWithFormat:@"%@%@", imageBaseUrl,resultDic[@"path"]];
         }
         
-        [[UtilsData sharedInstance] showAlertTitle:@"上传成功！" detailsText:msg time:0.0 aboutType:WHShowViewMode_Text state:YES];
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"上传成功！" time:0.0 aboutType:WHShowViewMode_Text state:YES];
     } failure:^(NSString *error, NSInteger code) {
         
         

@@ -94,7 +94,7 @@
 #import "OrderModel.h"
 #import "BillTicketModel.h"
 #import "FaPiaoModel.h"
-
+#import "AuthenticationModel.h"
 
 
 
