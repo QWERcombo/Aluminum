@@ -159,7 +159,11 @@
         return cell;
     } else if ([self.cellType isEqualToString:@"1"]) {
         
-        EndTicketCell *cell = (EndTicketCell *)[UtilsMold creatCell:@"EndTicketCell" table:tableView deledate:weakself model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+        FaPiaoModel *model = nil;
+        if (self.dataMuArr.count) {
+            model = [self.dataMuArr objectAtIndex:indexPath.row];
+        }
+        EndTicketCell *cell = (EndTicketCell *)[UtilsMold creatCell:@"EndTicketCell" table:tableView deledate:weakself model:model data:nil andCliker:^(NSDictionary *clueDic) {
             NSLog(@"+++%@", clueDic);
             
             
@@ -283,8 +287,12 @@
                 [self.dataMuArr addObject:model];
             }
         } else if ([status isEqualToString:@"1"]) {
-            
-            
+            NSArray *dataSourceArr = resultDic[@"result"];
+            for (NSDictionary *dic in dataSourceArr) {
+                FaPiaoModel *model = [[FaPiaoModel alloc] initWithDictionary:dic error:nil];
+                [self.dataMuArr addObject:model];
+                
+            }
         } else {
             NSArray *dataSourceArr = resultDic[@"result"];
             for (NSDictionary *dic in dataSourceArr) {

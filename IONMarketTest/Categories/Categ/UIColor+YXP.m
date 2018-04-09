@@ -108,7 +108,7 @@
 }
 
 + (UIColor *)Grey_PurColor {
-    return [UIColor colorWithR:0x82 G:0x51 B:0xff A:1];
+    return [UIColor colorWithHexString:@"#D97078"];
 }
 
 + (UIColor *)Grey_BlankColor {

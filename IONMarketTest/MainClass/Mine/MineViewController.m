@@ -16,6 +16,7 @@
 #import "BankCardViewController.h"
 #import "ShareViewController.h"
 #import "SettingTableViewController.h"
+#import "AuthenticationTableViewController.h"
 
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSArray *titleArr;
@@ -27,8 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.titleArr = @[@[@"钱包",@"白条",@"开票"],@[@"收货地址",@"银行卡"],@[@"分享推广",@"设置"]];
-    self.imageArr = @[@[@"Mine_item_0",@"Mine_item_1",@"Mine_item_2"],@[@"Mine_item_3",@"Mine_item_4"],@[@"Mine_item_5",@"Mine_item_6"]];
+    self.titleArr = @[@[@"钱包",@"白条",@"开票",@"企业认证"],@[@"收货地址",@"银行卡"],@[@"分享推广",@"设置"]];
+    self.imageArr = @[@[@"Mine_item_0",@"Mine_item_1",@"Mine_item_2",@"Mine_item_2"],@[@"Mine_item_3",@"Mine_item_4"],@[@"Mine_item_5",@"Mine_item_6"]];
     self.tabView.backgroundColor = [UIColor mianColor:1];
     [self.view addSubview:self.tabView];
     [self.tabView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"BasicCell"];
@@ -48,7 +49,7 @@
     if (section==0) {
         return 0;
     } else if (section==1) {
-        return 3;
+        return 4;
     } else if (section==2) {
         return 2;
     } else {
@@ -87,12 +88,18 @@
         [self.navigationController pushViewController:share animated:YES];
     } else {
         
-        NSArray *classArray = @[@[[WalletViewController class],[WhiteBarViewController class],[TicketViewController class]],@[[AddressViewController class],[BankCardViewController class]],@[[ShareViewController class],[SettingTableViewController class]]];
+        NSArray *classArray = @[@[[WalletViewController class],[WhiteBarViewController class],[TicketViewController class],[AuthenticationTableViewController class]],@[[AddressViewController class],[BankCardViewController class]],@[[ShareViewController class],[SettingTableViewController class]]];
         NSArray *sectionArray = [classArray objectAtIndex:indexPath.section-1];
-        
-        UIViewController *nextController = (UIViewController *)[[NSClassFromString(NSStringFromClass([sectionArray objectAtIndex:indexPath.row])) alloc] init];
-        nextController.title = [self.titleArr objectAtIndex:indexPath.section-1][indexPath.row];
-        [self.navigationController pushViewController:nextController animated:YES];
+        NSString *className = NSStringFromClass(sectionArray[indexPath.row]);
+
+        if ([className isEqualToString:NSStringFromClass([AuthenticationTableViewController class])]) {
+            AuthenticationTableViewController *auth = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthenVC"];
+            [self.navigationController pushViewController:auth animated:YES];
+        } else {
+            UIViewController *nextController = (UIViewController *)[[NSClassFromString(NSStringFromClass([sectionArray objectAtIndex:indexPath.row])) alloc] init];
+            nextController.title = [self.titleArr objectAtIndex:indexPath.section-1][indexPath.row];
+            [self.navigationController pushViewController:nextController animated:YES];
+        }
     }
     
 }

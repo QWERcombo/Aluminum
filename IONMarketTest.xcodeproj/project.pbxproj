@@ -122,6 +122,10 @@
 		5695BF632042AF8C0036D54B /* DataSend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF602042AF8B0036D54B /* DataSend.m */; };
 		5695BF642042AF8C0036D54B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF622042AF8B0036D54B /* Reachability.m */; };
 		56EC993C206D121D00F2D2D0 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC993B206D121D00F2D2D0 /* AddressModel.m */; };
+		A21B4669207B194000802621 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A21B4668207B194000802621 /* Mine.storyboard */; };
+		A21B466C207B36DD00802621 /* AuthenticationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A21B466B207B36DD00802621 /* AuthenticationTableViewController.m */; };
+		A21B466F207B3E5D00802621 /* AuthDetailTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A21B466E207B3E5D00802621 /* AuthDetailTViewController.m */; };
+		A21B4672207B470A00802621 /* FaPiaoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A21B4671207B470A00802621 /* FaPiaoModel.m */; };
 		A22981862061FE97007B6112 /* RemainExplainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A22981852061FE97007B6112 /* RemainExplainViewController.m */; };
 		A229818A2061FF2B007B6112 /* RemainExplainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A22981882061FF2B007B6112 /* RemainExplainCell.m */; };
 		A229818B2061FF2B007B6112 /* RemainExplainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22981892061FF2B007B6112 /* RemainExplainCell.xib */; };
@@ -418,6 +422,13 @@
 		5695BF622042AF8B0036D54B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		56EC993A206D121D00F2D2D0 /* AddressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressModel.h; sourceTree = "<group>"; };
 		56EC993B206D121D00F2D2D0 /* AddressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
+		A21B4668207B194000802621 /* Mine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
+		A21B466A207B36DD00802621 /* AuthenticationTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationTableViewController.h; sourceTree = "<group>"; };
+		A21B466B207B36DD00802621 /* AuthenticationTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationTableViewController.m; sourceTree = "<group>"; };
+		A21B466D207B3E5D00802621 /* AuthDetailTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthDetailTViewController.h; sourceTree = "<group>"; };
+		A21B466E207B3E5D00802621 /* AuthDetailTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthDetailTViewController.m; sourceTree = "<group>"; };
+		A21B4670207B470A00802621 /* FaPiaoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaPiaoModel.h; sourceTree = "<group>"; };
+		A21B4671207B470A00802621 /* FaPiaoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaPiaoModel.m; sourceTree = "<group>"; };
 		A22981842061FE97007B6112 /* RemainExplainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemainExplainViewController.h; sourceTree = "<group>"; };
 		A22981852061FE97007B6112 /* RemainExplainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemainExplainViewController.m; sourceTree = "<group>"; };
 		A22981872061FF2B007B6112 /* RemainExplainCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemainExplainCell.h; sourceTree = "<group>"; };
@@ -656,6 +667,8 @@
 				56EC993B206D121D00F2D2D0 /* AddressModel.m */,
 				A285A6572076170400D349AB /* BillTicketModel.h */,
 				A285A6582076170400D349AB /* BillTicketModel.m */,
+				A21B4670207B470A00802621 /* FaPiaoModel.h */,
+				A21B4671207B470A00802621 /* FaPiaoModel.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -862,6 +875,7 @@
 		56940C4320515F7400DFA6D6 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				A2240125207AFEF800A08E6F /* 企业认证 */,
 				5602128A20594CBD009EF75D /* 个人信息 */,
 				5602128920594CAF009EF75D /* 设置 */,
 				5602128820594CA4009EF75D /* 分享推广 */,
@@ -947,6 +961,7 @@
 				5695BEA92042A28B0036D54B /* ViewController.m */,
 				5695BEAD2042A30A0036D54B /* IONMarketTest.xcdatamodeld */,
 				5695BEAC2042A30A0036D54B /* main.m */,
+				A21B4668207B194000802621 /* Mine.storyboard */,
 				5695BE7720429F1B0036D54B /* Main.storyboard */,
 				5695BE7F20429F1B0036D54B /* LaunchScreen.storyboard */,
 				5695BECF2042A84E0036D54B /* PrefixHeader.pch */,
@@ -1118,6 +1133,17 @@
 				5695BF622042AF8B0036D54B /* Reachability.m */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		A2240125207AFEF800A08E6F /* 企业认证 */ = {
+			isa = PBXGroup;
+			children = (
+				A21B466A207B36DD00802621 /* AuthenticationTableViewController.h */,
+				A21B466B207B36DD00802621 /* AuthenticationTableViewController.m */,
+				A21B466D207B3E5D00802621 /* AuthDetailTViewController.h */,
+				A21B466E207B3E5D00802621 /* AuthDetailTViewController.m */,
+			);
+			path = "企业认证";
 			sourceTree = "<group>";
 		};
 		A229818C20620317007B6112 /* 转入转出 */ = {
@@ -1411,6 +1437,7 @@
 				A2298198206205A2007B6112 /* InOutputView.xib in Resources */,
 				A2301B3C20638AB3006B9F20 /* SmartServiceCell.xib in Resources */,
 				565086AA205CFF1800FD8497 /* OrderDetailCell.xib in Resources */,
+				A21B4669207B194000802621 /* Mine.storyboard in Resources */,
 				5695BE8120429F1B0036D54B /* LaunchScreen.storyboard in Resources */,
 				A2301B2120635292006B9F20 /* LoginViewController.xib in Resources */,
 				5615B8B92073B730005F2403 /* AddressShowView.xib in Resources */,
@@ -1579,6 +1606,7 @@
 				5602129F20594D37009EF75D /* WalletViewController.m in Sources */,
 				A26CECC5205FAA5A00B7AF91 /* InventoryViewController.m in Sources */,
 				5695BF5C2042AC1D0036D54B /* EasyShowUtils.m in Sources */,
+				A21B4672207B470A00802621 /* FaPiaoModel.m in Sources */,
 				5695BF632042AF8C0036D54B /* DataSend.m in Sources */,
 				56940C2120515DF900DFA6D6 /* UILabel+YXP.m in Sources */,
 				A2AC1C6B20564B8A00A3B2F9 /* UserInfoSettingViewController.m in Sources */,
@@ -1591,6 +1619,7 @@
 				5632BFAF205AB47D0009CD34 /* QuotationViewController.m in Sources */,
 				5695BEAF2042A30A0036D54B /* main.m in Sources */,
 				A22981AA20624069007B6112 /* AddBankCardView.m in Sources */,
+				A21B466C207B36DD00802621 /* AuthenticationTableViewController.m in Sources */,
 				56940C2420515DF900DFA6D6 /* UICollectionView+TB.m in Sources */,
 				5695BF3F2042AC180036D54B /* UIScrollView+Empty.m in Sources */,
 				A2301B3620638923006B9F20 /* TeleServiceViewController.m in Sources */,
@@ -1600,6 +1629,7 @@
 				5632BFAC205AA3F80009CD34 /* SetOrderViewController.m in Sources */,
 				5695BF582042AC1D0036D54B /* EasyShowOptions.m in Sources */,
 				5602129320594D02009EF75D /* BankCardViewController.m in Sources */,
+				A21B466F207B3E5D00802621 /* AuthDetailTViewController.m in Sources */,
 				5695BF112042AB0E0036D54B /* RSAEncryptor.m in Sources */,
 				A283489620610F6900C228AD /* WallentListCell.m in Sources */,
 				5671DBC8206000D9005F1760 /* MainItemView__Tube.m in Sources */,

@@ -64,6 +64,20 @@
 //查看个人发票信息
 #define Interface_GetFapiaoByUser   @"user/getFapiaoByUser"
 
+//上传图片
+#define Interface_UserUpload   @"user/upload"
+//根据用户查询认证信息
+#define Interface_GetRenzhengByUser   @"user/getRenzhengByUser"
+//提交认证
+#define Interface_SaveRenzheng   @"user/saveRenzheng"
+//修改认证信息
+#define Interface_UpdateRenzheng   @"user/updateRenzheng"
+
+
+
+
+
+
 
 
 

@@ -13,8 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.statusButton.titleEdgeInsets = UIEdgeInsetsMake(0, -self.statusButton.imageView.width, 0, self.statusButton.imageView.width);
-    self.statusButton.imageEdgeInsets = UIEdgeInsetsMake(0, self.statusButton.titleLabel.width, 0, -self.statusButton.titleLabel.width);
+//    self.statusButton.titleEdgeInsets = UIEdgeInsetsMake(0, -self.statusButton.imageView.width, 0, self.statusButton.imageView.width);
+//    self.statusButton.imageEdgeInsets = UIEdgeInsetsMake(0, self.statusButton.titleLabel.width, 0, -self.statusButton.titleLabel.width);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -39,10 +39,11 @@
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
     self.click = click;
     
-    OrderModel *dataM = (OrderModel *)model;
+    FaPiaoModel *dataM = (FaPiaoModel *)model;
     self.ticketPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.money];
-    self.expressPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.wuliufei];
-    self.ticketID.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
+    self.expressPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.orderIds];
+    self.ticketID.text = [NSString stringWithFormat:@"订单编号: %@", dataM.id];
+    [self.statusButton setTitle:dataM.kaipiaoStatus forState:UIControlStateNormal];
     
 }
 

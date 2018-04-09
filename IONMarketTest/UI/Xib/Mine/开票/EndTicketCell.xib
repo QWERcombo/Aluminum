@@ -26,9 +26,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4X-Ha-BXf">
-                                        <rect key="frame" x="295" y="3" width="70" height="24"/>
+                                        <rect key="frame" x="309" y="0.0" width="46" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="已完成" image="image_more">
+                                        <state key="normal" title="已完成">
                                             <color key="titleColor" red="0.35491353269999998" green="0.623277843" blue="0.94517052170000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
@@ -44,7 +44,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.69815450909999999" green="0.80154329540000002" blue="0.91768366099999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="a4X-Ha-BXf" secondAttribute="trailing" constant="10" id="6Cm-fa-B98"/>
+                                    <constraint firstAttribute="trailing" secondItem="a4X-Ha-BXf" secondAttribute="trailing" constant="20" id="6Cm-fa-B98"/>
                                     <constraint firstItem="bv9-c3-ets" firstAttribute="leading" secondItem="fSk-BP-jDa" secondAttribute="leading" constant="15" id="B21-EN-qQK"/>
                                     <constraint firstAttribute="height" constant="30" id="NEN-GH-qgl"/>
                                     <constraint firstItem="a4X-Ha-BXf" firstAttribute="centerY" secondItem="fSk-BP-jDa" secondAttribute="centerY" id="Qpl-qb-89E"/>
@@ -127,7 +127,4 @@
             <point key="canvasLocation" x="33.5" y="54"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="image_more" width="24" height="24"/>
-    </resources>
 </document>

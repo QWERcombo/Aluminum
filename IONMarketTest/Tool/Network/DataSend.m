@@ -81,12 +81,14 @@ static NSOperationQueue *queue;
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         manager.requestSerializer.timeoutInterval = 20.f;
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json", nil];
-        //
+        
+        
         [manager POST:URLString parameters:valueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             //上传文件参数
             for (UIImage *img in imgArr ) {
-                NSData *imageData = UIImageJPEGRepresentation([[UtilsData sharedInstance] scaleAndRotateImage:img resolution:800 maxSizeWithKB:600], 0.9);
-                [formData appendPartWithFileData:imageData name:@"ufile" fileName:@"image.jpg" mimeType:@"image/jpeg"];
+//                NSData *imageData = UIImageJPEGRepresentation([[UtilsData sharedInstance] scaleAndRotateImage:img resolution:800 maxSizeWithKB:600], 0.9);
+                NSData *imageData = UIImageJPEGRepresentation(img, 0.6);
+                [formData appendPartWithFileData:imageData name:@"file" fileName:@"image.jpg" mimeType:@"image/jpeg"];
             }
         } progress:^(NSProgress * _Nonnull uploadProgress) {
             //打印下上传进度
