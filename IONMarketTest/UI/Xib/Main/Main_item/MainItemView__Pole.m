@@ -46,9 +46,9 @@
 
 
 - (void)dealloc {
-    [self.lengthTF removeObserver:self forKeyPath:@"text"];
-    [self.amountTF removeObserver:self forKeyPath:@"text"];
-    self.lengthTF = nil;
+//    [self.lengthTF removeObserver:self forKeyPath:@"text"];
+//    [self.amountTF removeObserver:self forKeyPath:@"text"];
+//    self.lengthTF = nil;
 }
 
 
