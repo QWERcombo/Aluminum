@@ -10,9 +10,6 @@
 
 @interface ShareViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *QRImgv;
-@property (weak, nonatomic) IBOutlet UIButton *wechat;
-@property (weak, nonatomic) IBOutlet UIButton *QQ;
-@property (weak, nonatomic) IBOutlet UIButton *wechatFriend;
 
 @end
 
@@ -22,10 +19,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor mianColor:1];
-    
 }
 
 
+- (IBAction)TapAction:(UITapGestureRecognizer *)sender {
+    NSLog(@"%ld", sender.view.tag);
+    
+    
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

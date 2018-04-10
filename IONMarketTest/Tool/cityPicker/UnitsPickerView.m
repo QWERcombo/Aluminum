@@ -45,8 +45,7 @@
 
 - (void)loadData:(NSObject *)model andClickBlock:(ClikBlock)click {
     self.click = click;
-    
-    
+    self.superVC = (UIViewController *)model;
 }
 
 #pragma mark --- datasource & delegate
@@ -61,7 +60,12 @@
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
     
-    NSString *string = [NSString stringWithFormat:@"%@ mm", [self.dataSource objectAtIndex:row]];
+    NSString *string = @"";
+    if (self.superVC) {
+        string = [NSString stringWithFormat:@"%@", [self.dataSource objectAtIndex:row]];
+    } else {
+        string = [NSString stringWithFormat:@"%@ mm", [self.dataSource objectAtIndex:row]];
+    }
     UILabel *label = [UILabel lableWithText:string Font:FONT_ArialMT(15) TextColor:[UIColor Black_WordColor]];
     label.textAlignment = NSTextAlignmentCenter;
     

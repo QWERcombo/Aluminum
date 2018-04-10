@@ -25,6 +25,7 @@
     self.inputTextView.layer.masksToBounds = YES;
     self.inputTextView.layer.cornerRadius = 5;
     self.inputTextView.backgroundColor = [UIColor lightGrayColor];
+    self.inputTextView.text = self.contentStr;
 }
 
 - (void)didReceiveMemoryWarning {

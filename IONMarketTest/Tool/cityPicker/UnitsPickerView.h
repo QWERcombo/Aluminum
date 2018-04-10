@@ -12,10 +12,13 @@
 @property (nonatomic, strong) NSString *selectStr;
 @property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, copy) ClikBlock click;
+@property (nonatomic, strong) UIViewController *superVC;
+
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
 - (instancetype)initWithFrame:(CGRect)frame withDataSource:(NSArray *)dataArr;
 
 - (void)loadData:(NSObject *)model andClickBlock:(ClikBlock)click;
+
 
 @end

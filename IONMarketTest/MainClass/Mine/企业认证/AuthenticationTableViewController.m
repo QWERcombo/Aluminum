@@ -8,6 +8,7 @@
 
 #import "AuthenticationTableViewController.h"
 #import "AuthDetailTViewController.h"
+#import "UnitsPickerView.h"
 
 @interface AuthenticationTableViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -19,11 +20,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *rightButton;
 @property (weak, nonatomic) IBOutlet UITextField *companyTF;
 @property (weak, nonatomic) IBOutlet UIButton *moshiButton;
-@property (weak, nonatomic) IBOutlet UIButton *fuzerenButton;
 @property (weak, nonatomic) IBOutlet UITextField *contactTF;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
+@property (weak, nonatomic) IBOutlet UITextField *fuzerenTF;
 
 @end
 
@@ -48,7 +49,7 @@
     if (self.authModel.id.length) {
         self.companyTF.text.length?[self.dataSource addObject:self.companyTF.text]:[self.dataSource addObject:self.authModel.gongsimingchen];
         [self.dataSource addObject:self.moshiButton.currentTitle];
-        [self.dataSource addObject:self.fuzerenButton.currentTitle];
+        self.fuzerenTF.text.length?[self.dataSource addObject:self.fuzerenTF.text]:[self.dataSource addObject:self.authModel.gongsifuzeren];
         self.contactTF.text.length?[self.dataSource addObject:self.contactTF.text]:[self.dataSource addObject:self.authModel.lianxiren];
         self.phoneTF.text.length?[self.dataSource addObject:self.phoneTF.text]:[self.dataSource addObject:self.authModel.lianxirendianhua];
         [self.dataSource addObject:self.addressLabel.text];
@@ -65,7 +66,7 @@
     } else {
         [self.dataSource addObject:self.companyTF.text];
         [self.dataSource addObject:self.moshiButton.currentTitle];
-        [self.dataSource addObject:self.fuzerenButton.currentTitle];
+        [self.dataSource addObject:self.fuzerenTF.text];
         [self.dataSource addObject:self.contactTF.text];
         [self.dataSource addObject:self.phoneTF.text];
         [self.dataSource addObject:self.addressLabel.text];
@@ -125,8 +126,12 @@
 }
 
 - (IBAction)selectClicker:(UIButton *)sender {
-    NSLog(@"%ld", sender.tag);
-    
+    UnitsPickerView *pv = [[UnitsPickerView alloc] initWithFrame:self.view.bounds withDataSource:@[@"用户",@"经销商"]];
+    __weak typeof(self) weakself = self;
+    [pv loadData:weakself andClickBlock:^(NSString *clueStr) {
+        [weakself.moshiButton setTitle:clueStr forState:UIControlStateNormal];
+    }];
+    [self.view addSubview:pv];
     
 }
 
@@ -151,7 +156,7 @@
         self.authModel = [[AuthenticationModel alloc] initWithDictionary:[dataArr firstObject] error:nil];
         self.companyTF.placeholder = self.authModel.gongsimingchen;
         [self.moshiButton setTitle:self.authModel.jingyingmoshi forState:UIControlStateNormal];
-        [self.fuzerenButton setTitle:self.authModel.gongsifuzeren forState:UIControlStateNormal];
+        self.fuzerenTF.placeholder = self.authModel.gongsifuzeren;
         self.contactTF.placeholder = self.authModel.lianxiren;
         self.phoneTF.placeholder = self.authModel.lianxirendianhua;
         self.addressLabel.text = self.authModel.xiangxidizhi;
@@ -194,7 +199,12 @@
                 weakself.addressLabel.text = inputStr;
             }
         };
-        
+        if (indexPath.row == 5) {
+            detail.contentStr = self.addressLabel.text;
+        }
+        if (indexPath.row == 6) {
+            detail.contentStr = self.descLabel.text;
+        }
         [self.navigationController pushViewController:detail animated:YES];
     }
 }
@@ -297,3 +307,4 @@
 
 
 @end
+
