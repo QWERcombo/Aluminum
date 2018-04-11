@@ -196,7 +196,7 @@
                 
                 if ([clueStr isEqualToString:@"0"]) {
                     
-                    [weakself selectInfomationForUser:@"0" withMode:Mode_Single ];
+                    [weakself selectInfomationForUser:@"0" withMode:Mode_Single];
                     
                     weakself.passValue = ^(NSString *value) {
                         single.thinLabel.text = value;
@@ -209,7 +209,6 @@
                     [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Single];
                     
                 } else {
-                    
                 }
             }
             
@@ -613,12 +612,9 @@
         return NO;
     }
     
+    
     switch (mode) {
         case Mode_Single:
-            [[UtilsData sharedInstance] showAlertControllerWithTitle:@"aaa" detail:[NSString stringWithFormat:@"%@-%@-%@-%@", self.mainM.houdu, self.mainM.changdu, self.mainM.kuandu, self.mainM.shuliang] doneTitle:@"yes" cancelTitle:@"" haveCancel:NO doneAction:^{
-                
-            } controller:self];
-            
             if (self.mainM.houdu.length && self.mainM.changdu.length && self.mainM.kuandu.length && self.mainM.shuliang.length) {
                 
                 return YES;

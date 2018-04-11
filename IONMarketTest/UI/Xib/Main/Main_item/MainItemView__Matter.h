@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 //管材
-@interface MainItemView__Matter : UIView
+@interface MainItemView__Matter : UIView <UITextFieldDelegate>
 
 typedef void (^JudgeBlock)(MainModel *info, BOOL lengthIsChanged); // bool yes改变 no未变
 

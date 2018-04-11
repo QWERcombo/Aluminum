@@ -111,6 +111,12 @@
                         <constraint firstAttribute="height" constant="50" id="7Hk-iO-PGo"/>
                     </constraints>
                     <state key="normal" title="登陆"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="loginAction:" destination="-1" eventType="touchUpInside" id="Net-Vu-JxD"/>
                     </connections>

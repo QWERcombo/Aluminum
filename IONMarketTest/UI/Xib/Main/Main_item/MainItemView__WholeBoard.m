@@ -10,18 +10,11 @@
 
 @implementation MainItemView__WholeBoard
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MainItemView__WholeBoard class]) owner:self options:nil] firstObject];
+        self = [[[NSBundle mainBundle] loadNibNamed:@"MainItemView__WholeBoard" owner:self options:nil] firstObject];
         
         self.frame = frame;
     }

@@ -19,51 +19,39 @@
         
         self.frame = frame;
         
-        [self.lengthTF addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:@"length"];
-        [self.widthTF addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:@"width"];
-        [self.amountTF addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:@"amount"];
-        
         self.mainM = [[MainModel alloc] init];
     }
     
     return self;
 }
 
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    id newName = [change objectForKey:NSKeyValueChangeNewKey];
-
-    NSString *contextInfo = [NSString stringWithFormat:@"%@", context];
-    if ([contextInfo isEqualToString:@"length"]) {
-        self.mainM.changdu = newName;
-        self.lengthIsChanged = YES;
-        
-    } else if ([contextInfo isEqualToString:@"width"]) {
-        self.mainM.kuandu = newName;
-        
-    } else if ([contextInfo isEqualToString:@"amount"]) {
-        self.mainM.shuliang = newName;
-        
-    } else {
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    switch (textField.tag) {
+        case 200:
+            self.mainM.changdu = textField.text;
+            self.lengthIsChanged = YES;
+            break;
+        case 201:
+            self.mainM.kuandu = textField.text;
+            break;
+        case 202:
+            self.mainM.shuliang = textField.text;
+            break;
+        default:
+            break;
     }
-    
     if (self.mainBlock) {
         self.mainBlock(self.mainM, self.lengthIsChanged);
     }
-}
-
-
-- (void)dealloc {
-//    [self.lengthTF removeObserver:self forKeyPath:@"text"];
-//    [self.widthTF removeObserver:self forKeyPath:@"text"];
-//    [self.amountTF removeObserver:self forKeyPath:@"text"];
-//    self.lengthTF = nil;
-//    self.widthTF = nil;
-//    self.amountTF = nil;
     
 }
 
 - (IBAction)rightTap:(UITapGestureRecognizer *)sender {
+    if ([self.mainM.changdu integerValue] <150 && [self.mainM.kuandu integerValue]<150) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"长宽都大于150才能选择优切" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return;
+    }
+    
     self.rightImgv.hidden = NO;
     self.leftImgv.hidden = YES;
     

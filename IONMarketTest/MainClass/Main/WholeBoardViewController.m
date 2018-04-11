@@ -30,22 +30,17 @@
 }
 
 - (void)createScrollLayoutView {
-    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, SCREEN_HEIGHT-50)];
     [self.view addSubview:scrollView];
-    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.equalTo(self.view);
-        make.bottom.equalTo(self.view.mas_bottom).offset(-50);
-    }];
     
     MainItemView__WholeBoard *single = [[MainItemView__WholeBoard alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, SCREEN_HEIGHT)];
     [single loadData:nil andCliker:^(NSString *clueStr) {
         
     }];
-    [scrollView addSubview:single];
     
     [scrollView setContentSize:CGSizeMake(SCREEN_WIGHT, SCREEN_HEIGHT)];
-    
-    
+    [scrollView addSubview:single];
+//    [self.view addSubview:single];
 }
 
 

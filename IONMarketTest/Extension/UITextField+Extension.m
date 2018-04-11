@@ -141,6 +141,7 @@ static char exKeyboardFrameBeginToEndKey;
     if (!self.ex_canMove || self.exKeyboardY == 0) {
         return;
     }
+    
     [self exHideKeyBoard:0.25];
 }
 

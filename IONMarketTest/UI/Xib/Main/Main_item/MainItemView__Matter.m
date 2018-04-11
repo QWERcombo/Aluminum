@@ -15,45 +15,30 @@
     self = [super initWithFrame:frame];
     if (self) {
         self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MainItemView__Matter class]) owner:self options:nil] firstObject];
+        
         self.frame = frame;
         
-        [self.lengthTF addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:@"length"];
-        [self.amountTF addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:@"amount"];
         self.mainM = [[MainModel alloc] init];
     }
     
     return self;
 }
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    id newName = [change objectForKey:NSKeyValueChangeNewKey];
-    
-    NSString *contextInfo = [NSString stringWithFormat:@"%@", context];
-    if ([contextInfo isEqualToString:@"length"]) {
-        self.mainM.changdu = newName;
-        self.lengthIsChanged = YES;
-        
-    } else if ([contextInfo isEqualToString:@"amount"]) {
-        self.mainM.shuliang = newName;
-        
-    } else {
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    switch (textField.tag) {
+        case 200:
+            self.mainM.changdu = textField.text;
+            self.lengthIsChanged = YES;
+            break;
+        case 201:
+            self.mainM.shuliang = textField.text;
+            break;
+        default:
+            break;
     }
-    
     if (self.mainBlock) {
         self.mainBlock(self.mainM, self.lengthIsChanged);
     }
 }
-
-
-- (void)dealloc {
-    [self.lengthTF removeObserver:self forKeyPath:@"text"];
-    [self.amountTF removeObserver:self forKeyPath:@"text"];
-    self.lengthTF = nil;
-}
-
-
-
-
 
 - (IBAction)rightTap:(UITapGestureRecognizer *)sender {
     self.rightImgv.hidden = NO;

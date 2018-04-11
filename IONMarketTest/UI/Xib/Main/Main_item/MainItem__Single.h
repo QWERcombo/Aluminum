@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainItem__Single : UIView
+@interface MainItem__Single : UIView <UITextFieldDelegate>
 
 typedef void (^JudgeBlock)(MainModel *info, BOOL lengthIsChanged); // bool yes改变 no未变
 
