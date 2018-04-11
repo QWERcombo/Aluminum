@@ -25,11 +25,11 @@
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     switch (textField.tag) {
-        case 200:
+        case 300:
             self.mainM.changdu = textField.text;
             self.lengthIsChanged = YES;
             break;
-        case 201:
+        case 301:
             self.mainM.shuliang = textField.text;
             break;
         default:

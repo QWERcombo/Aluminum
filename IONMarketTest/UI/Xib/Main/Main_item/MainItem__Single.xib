@@ -24,7 +24,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入长度" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ziM-L5-dE7">
+                        <textField opaque="NO" tag="300" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入长度" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ziM-L5-dE7">
                             <rect key="frame" x="70" y="12" width="194" height="17"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -61,7 +61,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入宽度" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dm7-5s-zkX">
+                        <textField opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入宽度" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dm7-5s-zkX">
                             <rect key="frame" x="70" y="12" width="194" height="17"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -140,7 +140,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" tag="202" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入数量" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F35-o0-Peb">
+                        <textField opaque="NO" tag="302" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入数量" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F35-o0-Peb">
                             <rect key="frame" x="70" y="12" width="205" height="17"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
