@@ -637,6 +637,7 @@
             }
             break;
         case Mode_Matter:
+            
             if (self.mainM.waijing.length && self.mainM.changdu.length && self.mainM.neijing.length && self.mainM.shuliang.length) {
                 
                 return YES;
@@ -748,7 +749,9 @@
             UnitsPickerView *pv = [[UnitsPickerView alloc] initWithFrame:self.view.bounds withDataSource:sortArr];
             [pv loadData:nil andClickBlock:^(NSString *clueStr) {
 //                NSLog(@"++%@", clueStr);
-                weakself.passValue(clueStr);
+                if (weakself.passValue) {
+                    weakself.passValue(clueStr);
+                }
             }];
             [weakself.view addSubview:pv];
         } else {

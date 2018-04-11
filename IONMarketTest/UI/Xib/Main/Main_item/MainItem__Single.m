@@ -15,7 +15,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor yellowColor];
         self = [[[NSBundle mainBundle] loadNibNamed:@"MainItem__Single" owner:self options:nil] firstObject];
         
         self.frame = frame;
@@ -23,11 +22,13 @@
         [self.lengthTF addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:@"length"];
         [self.widthTF addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:@"width"];
         [self.amountTF addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:@"amount"];
+        
         self.mainM = [[MainModel alloc] init];
     }
     
     return self;
 }
+
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     id newName = [change objectForKey:NSKeyValueChangeNewKey];
@@ -53,10 +54,13 @@
 
 
 - (void)dealloc {
-    [self.lengthTF removeObserver:self forKeyPath:@"text"];
-    [self.widthTF removeObserver:self forKeyPath:@"text"];
-    [self.amountTF removeObserver:self forKeyPath:@"text"];
-    self.lengthTF = nil;
+//    [self.lengthTF removeObserver:self forKeyPath:@"text"];
+//    [self.widthTF removeObserver:self forKeyPath:@"text"];
+//    [self.amountTF removeObserver:self forKeyPath:@"text"];
+//    self.lengthTF = nil;
+//    self.widthTF = nil;
+//    self.amountTF = nil;
+    
 }
 
 - (IBAction)rightTap:(UITapGestureRecognizer *)sender {
