@@ -36,9 +36,9 @@
         self.window.rootViewController = tabBar;
 
     } failure:^(UserData *user) {
-    
         LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-        self.window.rootViewController = login;
+        TBNavigationController *navi = [[TBNavigationController alloc] initWithRootViewController:login];
+        self.window.rootViewController = navi;
         
     }];
 

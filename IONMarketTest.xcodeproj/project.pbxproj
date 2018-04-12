@@ -53,6 +53,7 @@
 		568CB08D2066462300B48318 /* CALayer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 568CB08C2066462300B48318 /* CALayer+Addition.m */; };
 		568CB0902066629900B48318 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 568CB08F2066629900B48318 /* PickerView.m */; };
 		568CB092206662A800B48318 /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568CB091206662A800B48318 /* PickerView.xib */; };
+		568DC2D7207F857D0034416F /* RegisterTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 568DC2D6207F857D0034416F /* RegisterTViewController.m */; };
 		568EFDF5206F1851007E437F /* GFAddressPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 568EFDF2206F1850007E437F /* GFAddressPicker.m */; };
 		568EFDF6206F1851007E437F /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 568EFDF3206F1850007E437F /* Address.plist */; };
 		568EFDF9206F1F06007E437F /* UnitsPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 568EFDF8206F1F06007E437F /* UnitsPickerView.m */; };
@@ -282,6 +283,8 @@
 		568CB08E2066629900B48318 /* PickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
 		568CB08F2066629900B48318 /* PickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
 		568CB091206662A800B48318 /* PickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
+		568DC2D5207F857D0034416F /* RegisterTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTViewController.h; sourceTree = "<group>"; };
+		568DC2D6207F857D0034416F /* RegisterTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTViewController.m; sourceTree = "<group>"; };
 		568EFDF2206F1850007E437F /* GFAddressPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFAddressPicker.m; sourceTree = "<group>"; };
 		568EFDF3206F1850007E437F /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		568EFDF4206F1850007E437F /* GFAddressPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFAddressPicker.h; sourceTree = "<group>"; };
@@ -1224,6 +1227,8 @@
 				A2301B1D20635292006B9F20 /* LoginViewController.h */,
 				A2301B1E20635292006B9F20 /* LoginViewController.m */,
 				A2301B1F20635292006B9F20 /* LoginViewController.xib */,
+				568DC2D5207F857D0034416F /* RegisterTViewController.h */,
+				568DC2D6207F857D0034416F /* RegisterTViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1628,6 +1633,7 @@
 				A21B466C207B36DD00802621 /* AuthenticationTableViewController.m in Sources */,
 				56940C2420515DF900DFA6D6 /* UICollectionView+TB.m in Sources */,
 				5695BF3F2042AC180036D54B /* UIScrollView+Empty.m in Sources */,
+				568DC2D7207F857D0034416F /* RegisterTViewController.m in Sources */,
 				A2301B3620638923006B9F20 /* TeleServiceViewController.m in Sources */,
 				5695BEC22042A5300036D54B /* BaseCell.m in Sources */,
 				568CB08D2066462300B48318 /* CALayer+Addition.m in Sources */,

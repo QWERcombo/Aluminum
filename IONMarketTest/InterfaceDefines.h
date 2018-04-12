@@ -73,10 +73,10 @@
 //修改认证信息
 #define Interface_UpdateRenzheng   @"user/updateRenzheng"
 
-
-
-
-
+//获取短信验证码
+#define Interface_SendMsg       @"sendMsg"
+//注册
+#define Interface_Register      @"register"
 
 
 

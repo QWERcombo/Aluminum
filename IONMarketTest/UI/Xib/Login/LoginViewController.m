@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "RegisterTViewController.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
@@ -16,12 +17,19 @@
 
 @implementation LoginViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    self.navigationController.navigationBar.hidden = YES;
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:YES];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
 }
-
 
 //登陆
 - (IBAction)loginAction:(UIButton *)sender {
@@ -52,7 +60,8 @@
 //注册
 - (IBAction)registerAction:(UIButton *)sender {
     NSLog(@"%@", sender.currentTitle);
-    
+    RegisterTViewController *regist = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"RegisterTVC"];
+    [self.navigationController pushViewController:regist animated:YES];
 }
 
 
