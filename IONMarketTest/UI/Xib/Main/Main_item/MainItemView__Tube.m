@@ -19,26 +19,47 @@
         self.frame = frame;
         
         self.mainM = [[MainModel alloc] init];
+        self.changduS = [NSMutableString string];
+        self.shuliangS = [NSMutableString string];
     }
     
     return self;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
     switch (textField.tag) {
         case 300:
-            self.mainM.changdu = textField.text;
+            [self.changduS replaceCharactersInRange:range withString:string];
+            self.mainM.changdu = self.changduS;
             self.lengthIsChanged = YES;
             break;
         case 301:
-            self.mainM.shuliang = textField.text;
+            [self.shuliangS replaceCharactersInRange:range withString:string];
+            self.mainM.shuliang = self.shuliangS;
             break;
         default:
             break;
     }
+    
     if (self.mainBlock) {
         self.mainBlock(self.mainM, self.lengthIsChanged);
     }
+    [self resetShowLabel];
+    
+    return YES;
+}
+//有值变化重置
+- (void)resetShowLabel {
+    self.rightImgv.hidden = YES;
+    self.leftImgv.hidden = YES;
+    self.right_top_Label.text = @"0元";
+    self.left_top_Label.text = @"0元";
+    self.left_top_Label.textColor  =[UIColor mianColor:3];
+    self.right_top_Label.textColor  =[UIColor mianColor:3];
+    self.right_down_Label.textColor  =[UIColor mianColor:3];
+    self.left_down_Label.textColor = [UIColor mianColor:3];
+    self.leftCountLabel.text = @"0";
 }
 
 - (IBAction)AddNewAction:(UIButton *)sender {
@@ -53,11 +74,11 @@
     
     self.right_top_Label.textColor = [UIColor mianColor:2];
     self.right_down_Label.textColor  =[UIColor mianColor:2];
+    self.left_top_Label.text = @"0元";
     self.left_top_Label.textColor = [UIColor mianColor:3];
     self.left_down_Label.textColor = [UIColor mianColor:3];
     
     self.lengthTF.userInteractionEnabled = NO;
-    self.rightCountLabel.text = @"0 元";
     
     self.lengthBtn.hidden = NO;
     self.lengthTF.hidden = YES;
@@ -72,6 +93,7 @@
     self.rightImgv.hidden = YES;
     self.leftImgv.hidden = NO;
     
+    self.right_top_Label.text = @"0元";
     self.right_top_Label.textColor = [UIColor mianColor:3];
     self.right_down_Label.textColor  =[UIColor mianColor:3];
     self.left_top_Label.textColor = [UIColor mianColor:2];
@@ -87,13 +109,13 @@
     }
 }
 
-- (IBAction)thinClicker:(UIButton *)sender {
+- (IBAction)thinTapAction:(UITapGestureRecognizer *)sender {
     if (self.click) {
         self.click(@"0");
     }
 }
 
-- (IBAction)widthClicker:(UIButton *)sender {
+- (IBAction)widthTapAction:(UITapGestureRecognizer *)sender {
     if (self.click) {
         self.click(@"1");
     }

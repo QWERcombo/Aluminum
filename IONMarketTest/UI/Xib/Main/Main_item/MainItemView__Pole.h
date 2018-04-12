@@ -29,6 +29,8 @@ typedef void (^JudgeBlock)(MainModel *info, BOOL lengthIsChanged); // bool yesæ”
 @property (nonatomic, strong) MainModel *mainM;
 @property (nonatomic, copy) JudgeBlock mainBlock;
 @property (nonatomic, assign) BOOL lengthIsChanged;
+@property (nonatomic, strong) NSMutableString *changduS;
+@property (nonatomic, strong) NSMutableString *shuliangS;
 
 - (void)loadData:(NSObject *)data andCliker:(ClikBlock)click andMainBlock:(JudgeBlock)mainB;
 @end

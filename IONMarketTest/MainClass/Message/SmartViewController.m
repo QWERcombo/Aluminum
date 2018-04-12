@@ -40,7 +40,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold creatCell:@"SmartServiceCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+    NSArray *imageArr = @[@"Message_service",@"Message_express",@"Message_active"];
+    return [UtilsMold creatCell:@"SmartServiceCell" table:tableView deledate:self model:[imageArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
         
     }];
 }

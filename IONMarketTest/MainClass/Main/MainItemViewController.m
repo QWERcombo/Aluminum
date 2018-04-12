@@ -192,6 +192,8 @@
                 
                 [weakself.view endEditing:YES];
 
+                [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Single];
+                
             } else {
                 
                 if ([clueStr isEqualToString:@"0"]) {
@@ -206,7 +208,7 @@
                     
                 } else if ([clueStr isEqualToString:@"1"]) { //添加 ----> 调取获取金额接口
                     
-                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Single];
+//                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Single];
                     
                 } else {
                 }
@@ -223,7 +225,12 @@
         }];
         
         self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
-            single.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            if ([weakself.getOrderType isEqualToString:@"优切"]) {
+                single.right_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            } else {
+                single.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            }
+//            single.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             single.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -252,6 +259,7 @@
                     [weakself.view endEditing:YES];
                 }
                 
+                [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Pole];
             } else {
                 
                 if ([clueStr isEqualToString:@"0"]) {
@@ -266,7 +274,7 @@
                     
                 } else if ([clueStr isEqualToString:@"1"]) {
                     
-                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Pole];
+//                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Pole];
                 
                 }
                 
@@ -281,7 +289,12 @@
         }];
         
         self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
-            pole.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            if ([weakself.getOrderType isEqualToString:@"整只"]) {
+                pole.right_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            } else {
+                pole.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            }
+//            pole.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             pole.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -309,7 +322,7 @@
                     [weakself.view endEditing:YES];
                     
                 }
-                
+                [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Tube];
             } else {
                 
                 if ([clueStr isEqualToString:@"0"]) { //厚度
@@ -332,7 +345,7 @@
                     };
                 } else if ([clueStr isEqualToString:@"2"]) {
                     
-                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Tube];
+//                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Tube];
                     
                 } else {
                     
@@ -349,7 +362,12 @@
         }];
         
         self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
-            tube.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            if ([weakself.getOrderType isEqualToString:@"整只"]) {
+                tube.right_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            } else {
+                tube.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            }
+//            tube.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             tube.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -376,7 +394,7 @@
                     [weakself.view endEditing:YES];
                     
                 }
-                
+                [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Matter];
             } else {
                 
                 if ([clueStr isEqualToString:@"0"]) { //外径
@@ -395,7 +413,7 @@
                     };
                 } else if ([clueStr isEqualToString:@"2"]) {
                     
-                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Matter];
+//                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Matter];
                     
                 } else {
                     
@@ -413,7 +431,12 @@
         }];
         
         self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
-            matter.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            if ([weakself.getOrderType isEqualToString:@"整只"]) {
+                matter.right_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            } else {
+                matter.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            }
+//            matter.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             matter.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -528,9 +551,6 @@
     }
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:self.mainM.changdu forKey:@"chang"];
-    [dict setValue:self.mainM.kuandu forKey:@"kuang"];
-    [dict setValue:self.mainM.houdu forKey:@"hou"];
     [dict setValue:self.getOrderType forKey:@"type"];
     [dict setValue:self.mainM.shuliang forKey:@"amount"];
     [dict setValue:self.typeStr forKey:@"zhonglei"];
@@ -538,6 +558,29 @@
     [dict setValue:self.orderMoney forKey:@"money"];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [dict setValue:@"40" forKey:@"addressId"];
+    switch (self.lastSelected) {
+        case 100:
+            [dict setValue:self.mainM.changdu forKey:@"chang"];
+            [dict setValue:self.mainM.kuandu forKey:@"kuang"];
+            [dict setValue:self.mainM.houdu forKey:@"hou"];
+            break;
+        case 101:
+            [dict setValue:self.mainM.changdu forKey:@"chang"];
+            [dict setValue:self.mainM.zhijing forKey:@"kuang"];
+            break;
+        case 102:
+            [dict setValue:self.mainM.changdu forKey:@"chang"];
+            [dict setValue:self.mainM.kuandu forKey:@"kuang"];
+            [dict setValue:self.mainM.houdu forKey:@"hou"];
+            break;
+        case 103:
+            [dict setValue:self.mainM.waijing forKey:@"chang"];
+            [dict setValue:self.mainM.neijing forKey:@"kuang"];
+            [dict setValue:self.mainM.changdu forKey:@"hou"];
+            break;
+        default:
+            break;
+    }
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderSave andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"buy: +++%@", resultDic);
         
@@ -558,15 +601,36 @@
         return;
     }
     
+
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:self.mainM.changdu forKey:@"chang"];
-    [dict setValue:self.mainM.kuandu forKey:@"kuang"];
-    [dict setValue:self.mainM.houdu forKey:@"hou"];
     [dict setValue:self.getOrderType forKey:@"type"];
     [dict setValue:self.mainM.shuliang forKey:@"amount"];
     [dict setValue:self.typeStr forKey:@"zhonglei"];
     [dict setValue:self.erjimulu forKey:@"erjimulu"];
     [dict setValue:self.orderMoney forKey:@"money"];
+    switch (self.lastSelected) {
+        case 100:
+            [dict setValue:self.mainM.changdu forKey:@"chang"];
+            [dict setValue:self.mainM.kuandu forKey:@"kuang"];
+            [dict setValue:self.mainM.houdu forKey:@"hou"];
+            break;
+        case 101:
+            [dict setValue:self.mainM.changdu forKey:@"chang"];
+            [dict setValue:self.mainM.zhijing forKey:@"kuang"];
+            break;
+        case 102:
+            [dict setValue:self.mainM.changdu forKey:@"chang"];
+            [dict setValue:self.mainM.kuandu forKey:@"kuang"];
+            [dict setValue:self.mainM.houdu forKey:@"hou"];
+            break;
+        case 103:
+            [dict setValue:self.mainM.waijing forKey:@"chang"];
+            [dict setValue:self.mainM.neijing forKey:@"kuang"];
+            [dict setValue:self.mainM.changdu forKey:@"hou"];
+            break;
+        default:
+            break;
+    }
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveToGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"car: +++%@", resultDic);

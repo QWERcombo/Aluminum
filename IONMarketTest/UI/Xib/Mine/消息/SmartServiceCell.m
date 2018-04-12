@@ -32,8 +32,8 @@
 }
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
-    
-    
+    NSString *imageName = (NSString *)model;
+    self.leftImgv.image = IMG(imageName);
     
 }
 

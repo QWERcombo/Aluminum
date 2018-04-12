@@ -53,15 +53,17 @@
     UIButton *lastButton = nil;
     
     for (NSInteger i=0; i<3; i++) {
-        
-        UIButton *button = [UIButton buttonWithTitle:[array objectAtIndex:i] andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
+        UIButton *button = [UIButton buttonWithTitle:[array objectAtIndex:i] andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor grayColor] andHighlightedTitle:[UIColor grayColor] andNormaImage:nil andHighlightedImage:nil];
         [button addTarget:self action:@selector(buttonCliker:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = 100+i;
         NSString *selectImg = [NSString stringWithFormat:@"Message_%ld_1", i];
         NSString *unselectImg = [NSString stringWithFormat:@"Message_%ld_0", i];
         [button setImage:IMG(unselectImg) forState:UIControlStateNormal];
         [button setImage:IMG(selectImg) forState:UIControlStateSelected];
-        
+        [button setTitleColor:[UIColor mianColor:2] forState:UIControlStateSelected];
+        if (i==0) {
+            button.selected = YES;
+        }
         [bottomView addSubview:button];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.equalTo(@(Button_Width));

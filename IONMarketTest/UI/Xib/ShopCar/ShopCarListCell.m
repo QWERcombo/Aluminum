@@ -54,9 +54,13 @@
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
     self.clikerBlock = click;
     ShopCar *dataM = (ShopCar *)model;
-    
     [self.selectButton setTitle:dataM.zhonglei forState:UIControlStateNormal];
-    self.leftLabel.text = [NSString stringWithFormat:@"%@x%@x%@\n(mm)*%@", dataM.length, dataM.width, dataM.height, dataM.productNum];
+    if ([dataM.zhonglei isEqualToString:@"圆棒"]) {
+        self.leftLabel.text = [NSString stringWithFormat:@"%@x%@(mm)*%@", dataM.length, dataM.width, dataM.productNum];
+    } else {
+        self.leftLabel.text = [NSString stringWithFormat:@"%@x%@x%@(mm)*%@", dataM.length, dataM.width, dataM.height, dataM.productNum];
+    }
+    
     self.centerLabel.text = @"";
     self.rightLabel.text = [NSString stringWithFormat:@"%@ 元", [NSString pointTailTwo:dataM.money]];
     self.typeLabel.text = dataM.type;
