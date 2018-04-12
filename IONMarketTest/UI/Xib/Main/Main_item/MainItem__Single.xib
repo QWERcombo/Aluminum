@@ -25,9 +25,12 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" tag="300" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入长度" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ziM-L5-dE7">
-                            <rect key="frame" x="70" y="12" width="194" height="17"/>
+                            <rect key="frame" x="70" y="3" width="194" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="zAM-eB-Rrj"/>
+                            </constraints>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             <connections>
                                 <outlet property="delegate" destination="iN0-l3-epB" id="fNH-3Q-M6s"/>
@@ -62,9 +65,12 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入宽度" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dm7-5s-zkX">
-                            <rect key="frame" x="70" y="12" width="194" height="17"/>
+                            <rect key="frame" x="70" y="3" width="194" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="l3T-lg-JEv"/>
+                            </constraints>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             <connections>
                                 <outlet property="delegate" destination="iN0-l3-epB" id="cCc-gr-P70"/>
@@ -141,9 +147,12 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" tag="302" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入数量" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F35-o0-Peb">
-                            <rect key="frame" x="70" y="12" width="205" height="17"/>
+                            <rect key="frame" x="70" y="3" width="205" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="wHt-A4-XLh"/>
+                            </constraints>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             <connections>
                                 <outlet property="delegate" destination="iN0-l3-epB" id="J85-Dj-4lx"/>
@@ -239,8 +248,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnK-Ig-4XJ">
                     <rect key="frame" x="0.0" y="224" width="375" height="40"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dp-xC-a0B">
-                            <rect key="frame" x="15" y="11" width="30" height="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dp-xC-a0B">
+                            <rect key="frame" x="15" y="11" width="9.5" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -265,7 +274,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="Tn9-Xs-2dO"/>
                     </constraints>
-                    <state key="normal" title="添加"/>
+                    <state key="normal" title="计算价格"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

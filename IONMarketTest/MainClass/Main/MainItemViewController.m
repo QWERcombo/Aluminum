@@ -224,7 +224,7 @@
         
         self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
             single.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
-            single.leftCountLabel.text = [NSString stringWithFormat:@"%@ kg", weightValue];
+            single.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, 600)];
@@ -282,7 +282,7 @@
         
         self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
             pole.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
-            pole.leftCountLabel.text = [NSString stringWithFormat:@"%@ kg", weightValue];
+            pole.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, pole.height)];
@@ -350,7 +350,7 @@
         
         self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
             tube.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
-            tube.leftCountLabel.text = [NSString stringWithFormat:@"%@ kg", weightValue];
+            tube.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, tube.height)];
@@ -414,7 +414,7 @@
         
         self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
             matter.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
-            matter.leftCountLabel.text = [NSString stringWithFormat:@"%@ kg", weightValue];
+            matter.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
         [_sctollView setContentSize:CGSizeMake(SCREEN_WIGHT, matter.height)];
@@ -650,26 +650,46 @@
 
 //获取订单金额
 - (void)getOrderMoneyWithType:(NSString *)type withMode:(GetWholeBoardMode)mode {
-    
     if (![self checkInfo:mode]) {
         [self showAlert:@"请完整配置各参数！"];
         return;
     }
     
-    
     self.isGetOrderMoney = NO;
     __weak typeof(self) weakself = self;
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:self.mainM.changdu forKey:@"chang"];
-    [dict setValue:self.mainM.kuandu forKey:@"kuang"];
-    [dict setValue:self.mainM.houdu forKey:@"hou"];
     [dict setValue:self.getOrderType forKey:@"type"]; //快速
     [dict setValue:self.mainM.shuliang forKey:@"amount"];
     [dict setValue:self.typeStr forKey:@"zhonglei"];  //零切
     [dict setValue:self.xinghaoStr forKey:@"erjimulu"]; //30
+    switch (mode) {
+        case Mode_Single:
+            [dict setValue:self.mainM.changdu forKey:@"chang"];
+            [dict setValue:self.mainM.kuandu forKey:@"kuang"];
+            [dict setValue:self.mainM.houdu forKey:@"hou"];
+            break;
+        case Mode_Pole:
+            [dict setValue:self.mainM.changdu forKey:@"chang"];
+            [dict setValue:self.mainM.zhijing forKey:@"kuang"];
+            break;
+        case Mode_Tube:
+            [dict setValue:self.mainM.changdu forKey:@"chang"];
+            [dict setValue:self.mainM.kuandu forKey:@"kuang"];
+            [dict setValue:self.mainM.houdu forKey:@"hou"];
+            break;
+        case Mode_Matter:
+            [dict setValue:self.mainM.waijing forKey:@"chang"];
+            [dict setValue:self.mainM.neijing forKey:@"kuang"];
+            [dict setValue:self.mainM.changdu forKey:@"hou"];
+            break;
+        default:
+            break;
+    }
+    
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderMoney andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"+++%@", resultDic);
-        NSString *orderMoney = [NSString stringWithFormat:@"%@", resultDic[@"orderMoney"]];
+        NSString *orderMoneyStr = resultDic[@"orderMoney"];
+        NSString *orderMoney = [NSString stringWithFormat:@"%.2lf",  [orderMoneyStr floatValue]];
         NSString *orderWeight = [NSString stringWithFormat:@"%@", resultDic[@"rule"]];
         if (weakself.passTotalPrice) {
             weakself.passTotalPrice(orderMoney, orderWeight);

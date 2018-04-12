@@ -83,9 +83,12 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" tag="300" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入长度" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wak-ot-JHc">
-                            <rect key="frame" x="70" y="12" width="183" height="17"/>
+                            <rect key="frame" x="70" y="3" width="183" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="YYP-n5-p2k"/>
+                            </constraints>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             <connections>
                                 <outlet property="delegate" destination="iN0-l3-epB" id="89k-yd-JJ7"/>
@@ -135,9 +138,12 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入数量" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uAV-kZ-ZYK">
-                            <rect key="frame" x="70" y="12" width="171" height="17"/>
+                            <rect key="frame" x="70" y="3" width="171" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="JoI-1F-VQF"/>
+                            </constraints>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
@@ -244,8 +250,8 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTE-3s-35c">
-                            <rect key="frame" x="20" y="10" width="33.5" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTE-3s-35c">
+                            <rect key="frame" x="20" y="10" width="15" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -266,7 +272,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="I4T-uF-QQ4"/>
                     </constraints>
-                    <state key="normal" title="添加"/>
+                    <state key="normal" title="计算价格"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

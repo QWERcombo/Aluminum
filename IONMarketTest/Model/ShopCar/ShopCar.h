@@ -32,4 +32,7 @@
 
 @property (nonatomic, strong) NSString *erjimulu;
 
+@property (nonatomic, strong) NSString *zhonglei;
+
+
 @end

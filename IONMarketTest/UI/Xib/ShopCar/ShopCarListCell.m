@@ -55,10 +55,10 @@
     self.clikerBlock = click;
     ShopCar *dataM = (ShopCar *)model;
     
-    [self.selectButton setTitle:dataM.erjimulu forState:UIControlStateNormal];
+    [self.selectButton setTitle:dataM.zhonglei forState:UIControlStateNormal];
     self.leftLabel.text = [NSString stringWithFormat:@"%@x%@x%@\n(mm)*%@", dataM.length, dataM.width, dataM.height, dataM.productNum];
     self.centerLabel.text = @"";
-    self.rightLabel.text = [NSString stringWithFormat:@"%@ 元", dataM.money];
+    self.rightLabel.text = [NSString stringWithFormat:@"%@ 元", [NSString pointTailTwo:dataM.money]];
     self.typeLabel.text = dataM.type;
     self.selectButton.selected = dataM.isSelectedCard;
 }

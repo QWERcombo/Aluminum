@@ -150,9 +150,10 @@
 - (UIView *)createSectionView {
     UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 40)];
     mainView.backgroundColor = [UIColor mianColor:1];
-    UILabel *nameLab = [UILabel lableWithText:@"    整板" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
+    ShopCar *model = [self.dataMuArr firstObject];
+    UILabel *nameLab = [UILabel lableWithText:model.zhonglei Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
     [mainView addSubview:nameLab];
-    nameLab.frame = CGRectMake(0, 10, SCREEN_WIGHT, 30);
+    nameLab.frame = CGRectMake(20, 10, SCREEN_WIGHT, 30);
     return mainView;
 }
 

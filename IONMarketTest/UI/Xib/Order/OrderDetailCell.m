@@ -31,14 +31,10 @@
 
 - (void)loadData:(NSObject *)model delegate:(UIViewController *)delegate andCliker:(ClikBlock)click {
     ShopCar *dataM = (ShopCar *)model;
-//    if ([delegate isKindOfClass:[]]) {
-//
-//    } else {
-//
-//    }
+
     self.nameLabel.text = dataM.type;
     self.countLabel.text = [NSString stringWithFormat:@"%@x%@x%@(mm)\n *%@", dataM.length, dataM.width, dataM.height, dataM.productNum];
-    self.priceLabel.text = [NSString stringWithFormat:@"%@元", dataM.money];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@元", [NSString pointTailTwo:dataM.money]];
     
 }
 

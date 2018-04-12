@@ -10,9 +10,8 @@
 #import "ShopCarDetailViewController.h"
 
 @interface ShopCarViewController ()
-
-@property (nonatomic, strong) NSMutableArray *selectArr;
-
+@property (nonatomic, strong) NSMutableArray *selectArr; //选中的数据
+@property (nonatomic, assign) CGFloat totoal; //选中的总价
 @end
 
 @implementation ShopCarViewController {
@@ -89,7 +88,7 @@
     allButton.titleEdgeInsets = UIEdgeInsetsMake(imageSize.height+5, -((allButton.bounds.size.width-titleSize.width)/2), 0, 0);
     
     
-    priceLabel = [UILabel lableWithText:@"￥4545.00元" Font:FONT_ArialMT(15) TextColor:[UIColor Black_WordColor]];
+    priceLabel = [UILabel lableWithText:@"￥0.00元" Font:FONT_ArialMT(15) TextColor:[UIColor Black_WordColor]];
     [bottomView addSubview:priceLabel];
     [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(15));
@@ -97,7 +96,7 @@
         make.right.equalTo(excuteButton.mas_left).offset(-20);
         make.top.equalTo(bottomView.mas_top).offset(10);
     }];
-    infoLabel = [UILabel lableWithText:@"1254545.00kg" Font:FONT_ArialMT(13) TextColor:[UIColor Black_WordColor]];
+    infoLabel = [UILabel lableWithText:@"0.00kg" Font:FONT_ArialMT(13) TextColor:[UIColor Black_WordColor]];
     [bottomView addSubview:infoLabel];
     [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(13));
@@ -123,10 +122,16 @@
             
         }
         
+        weakself.totoal = 0.f;
         if (self.selectArr.count) {
             allButton.selected = YES;
+            for (ShopCar *car in weakself.selectArr) {
+                weakself.totoal += [car.money floatValue];
+            }
+            priceLabel.text = [NSString stringWithFormat:@"%.2lf元", weakself.totoal];
         } else {
             allButton.selected = NO;
+            priceLabel.text = @"0.00元";
         }
         
     }];
@@ -171,24 +176,26 @@
     sender.selected = !sender.selected;
     
     if (sender.selected) {
+        CGFloat totoal = 0;
         for (ShopCar *car in self.dataMuArr) {
             car.isSelectedCard = YES;
+            totoal += [car.money floatValue];
         }
         [self.selectArr addObjectsFromArray:self.dataMuArr];
-        
+        priceLabel.text = [NSString stringWithFormat:@"%.2lf元", totoal];  //更新价格
     } else {
         for (ShopCar *car in self.dataMuArr) {
             car.isSelectedCard = NO;
         }
         [self.selectArr removeAllObjects];
-        
+        priceLabel.text = @"0.00元";
     }
     [self.tabView reloadData];
 }
 
 
 - (void)getData {
-    
+    allButton.selected = NO;
     [self.dataMuArr removeAllObjects];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
