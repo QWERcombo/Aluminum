@@ -33,14 +33,14 @@
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, SCREEN_HEIGHT-50)];
     [self.view addSubview:scrollView];
     
-    MainItemView__WholeBoard *single = [[MainItemView__WholeBoard alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, SCREEN_HEIGHT)];
+    MainItemView__WholeBoard *single = [[MainItemView__WholeBoard alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 670)];
     [single loadData:nil andCliker:^(NSString *clueStr) {
         
     }];
     
-    [scrollView setContentSize:CGSizeMake(SCREEN_WIGHT, SCREEN_HEIGHT)];
+    [scrollView setContentSize:CGSizeMake(SCREEN_WIGHT, 670)];
     [scrollView addSubview:single];
-//    [self.view addSubview:single];
+
 }
 
 

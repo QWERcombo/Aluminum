@@ -123,6 +123,7 @@
 		5695BF5D2042AC1D0036D54B /* UIView+EasyShowExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF542042AC1D0036D54B /* UIView+EasyShowExt.m */; };
 		5695BF632042AF8C0036D54B /* DataSend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF602042AF8B0036D54B /* DataSend.m */; };
 		5695BF642042AF8C0036D54B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF622042AF8B0036D54B /* Reachability.m */; };
+		56BDC4CA209A019D00DDE4DE /* WholeBoardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BDC4C9209A019D00DDE4DE /* WholeBoardModel.m */; };
 		56EC993C206D121D00F2D2D0 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC993B206D121D00F2D2D0 /* AddressModel.m */; };
 		A21B4669207B194000802621 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A21B4668207B194000802621 /* Mine.storyboard */; };
 		A21B466C207B36DD00802621 /* AuthenticationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A21B466B207B36DD00802621 /* AuthenticationTableViewController.m */; };
@@ -426,6 +427,8 @@
 		5695BF602042AF8B0036D54B /* DataSend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSend.m; sourceTree = "<group>"; };
 		5695BF612042AF8B0036D54B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		5695BF622042AF8B0036D54B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		56BDC4C8209A019D00DDE4DE /* WholeBoardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WholeBoardModel.h; sourceTree = "<group>"; };
+		56BDC4C9209A019D00DDE4DE /* WholeBoardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WholeBoardModel.m; sourceTree = "<group>"; };
 		56EC993A206D121D00F2D2D0 /* AddressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressModel.h; sourceTree = "<group>"; };
 		56EC993B206D121D00F2D2D0 /* AddressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
 		A21B4668207B194000802621 /* Mine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
@@ -746,6 +749,8 @@
 				568CB0892065F90900B48318 /* MainItemTypeModel.m */,
 				561CC0D3206FD24900DB0998 /* MainModel.h */,
 				561CC0D4206FD24900DB0998 /* MainModel.m */,
+				56BDC4C8209A019D00DDE4DE /* WholeBoardModel.h */,
+				56BDC4C9209A019D00DDE4DE /* WholeBoardModel.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1633,6 +1638,7 @@
 				A21B466C207B36DD00802621 /* AuthenticationTableViewController.m in Sources */,
 				56940C2420515DF900DFA6D6 /* UICollectionView+TB.m in Sources */,
 				5695BF3F2042AC180036D54B /* UIScrollView+Empty.m in Sources */,
+				56BDC4CA209A019D00DDE4DE /* WholeBoardModel.m in Sources */,
 				568DC2D7207F857D0034416F /* RegisterTViewController.m in Sources */,
 				A2301B3620638923006B9F20 /* TeleServiceViewController.m in Sources */,
 				5695BEC22042A5300036D54B /* BaseCell.m in Sources */,

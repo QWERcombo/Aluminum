@@ -17,33 +17,22 @@
 @interface MainItemViewController ()
 
 @property (nonatomic, assign) NSInteger lastSelected;
-
 @property (nonatomic, assign) NSInteger lastTypeSelected;
-
 @property (nonatomic, strong) UIScrollView *sctollView;
-
 @property (nonatomic, strong) NSString *typeStr;//种类
-
 @property (nonatomic, strong) NSString *xinghaoStr;//型号
-
 @property (nonatomic, strong) MainModel *mainM;
-
 @property (nonatomic, strong) NSString *getOrderType;// 快速(整只) 优切(拼切)
-
 @property (nonatomic, copy) void(^passValue)(NSString *value);//选择数据
-
 @property (nonatomic, copy) void(^passTotalPrice)(NSString *priceValue, NSString *weightValue); //总价-重量
-
 @property (nonatomic, copy) void(^passWeight)(NSString *value);//重量
-
 @property (nonatomic, assign) BOOL isGetOrderMoney; // 已经添加完才能加入购物车或直接购买
-
 @property (nonatomic, strong) NSString *orderMoney; // 订单金额
-
 @property (nonatomic, strong) NSString *erjimulu; // 加入购物车和直接购买接口传
-
 @property (nonatomic, strong) NSString *orderWeight; // 订单重量
-
+@property (nonatomic, assign) float totalMoney;  //购物车总价
+@property (nonatomic, assign) float singleMoney;  //购物车总价
+@property (nonatomic, assign) NSInteger totalBadge;  //购物车总个数
 @end
 
 #define ITEM_WIDTH  60
@@ -208,7 +197,13 @@
                     
                 } else if ([clueStr isEqualToString:@"1"]) { //添加 ----> 调取获取金额接口
                     
-//                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Single];
+                    if (weakself.singleMoney==0) {
+                        [self showAlert:@"获取价格"];
+                    } else {
+                        weakself.totalMoney += weakself.singleMoney;
+                        weakself.totalBadge += 1;
+                        [weakself refreshBottomViewInfo];
+                    }
                     
                 } else {
                 }
@@ -230,7 +225,8 @@
             } else {
                 single.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             }
-//            single.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            
+            weakself.singleMoney = [priceValue integerValue];
             single.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -274,8 +270,14 @@
                     
                 } else if ([clueStr isEqualToString:@"1"]) {
                     
-//                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Pole];
-                
+                    if (weakself.singleMoney==0) {
+                        [self showAlert:@"获取价格"];
+                    } else {
+                        weakself.totalMoney += weakself.singleMoney;
+                        weakself.totalBadge += 1;
+                        [weakself refreshBottomViewInfo];
+                    }
+                    
                 }
                 
             }
@@ -294,7 +296,8 @@
             } else {
                 pole.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             }
-//            pole.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+            
+            weakself.singleMoney += [priceValue integerValue];
             pole.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -345,7 +348,13 @@
                     };
                 } else if ([clueStr isEqualToString:@"2"]) {
                     
-//                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Tube];
+                    if (weakself.singleMoney==0) {
+                        [self showAlert:@"获取价格"];
+                    } else {
+                        weakself.totalMoney += weakself.singleMoney;
+                        weakself.totalBadge += 1;
+                        [weakself refreshBottomViewInfo];
+                    }
                     
                 } else {
                     
@@ -367,7 +376,8 @@
             } else {
                 tube.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             }
-//            tube.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+
+            weakself.singleMoney += [priceValue integerValue];
             tube.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -413,7 +423,13 @@
                     };
                 } else if ([clueStr isEqualToString:@"2"]) {
                     
-//                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Matter];
+                    if (weakself.singleMoney==0) {
+                        [self showAlert:@"获取价格"];
+                    } else {
+                        weakself.totalMoney += weakself.singleMoney;
+                        weakself.totalBadge += 1;
+                        [weakself refreshBottomViewInfo];
+                    }
                     
                 } else {
                     
@@ -436,7 +452,8 @@
             } else {
                 matter.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             }
-//            matter.rightCountLabel.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+
+            weakself.singleMoney += [priceValue integerValue];
             matter.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -483,18 +500,18 @@
         make.left.equalTo(bottomView.mas_left).offset(5);
         make.bottom.equalTo(bottomView.mas_bottom).offset(-20);
     }];
-    radiusButton.badgeValue = @"21";
+    radiusButton.badgeValue = @"";
     radiusButton.badgeFont = FONT_ArialMT(13);
     radiusButton.badgeBGColor = [UIColor mianColor:2];
     radiusButton.badgeOriginX = 35;
     
-    priceLabel = [UILabel lableWithText:@"￥7676.00" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
+    priceLabel = [UILabel lableWithText:@"￥0.00" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
     [bottomView addSubview:priceLabel];
     [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(radiusButton.mas_right).offset(10);
         make.top.equalTo(bottomView.mas_top).offset(10);
     }];
-    infoLabel = [UILabel lableWithText:@"76766kg" Font:FONT_ArialMT(13) TextColor:[UIColor mianColor:2]];
+    infoLabel = [UILabel lableWithText:@"" Font:FONT_ArialMT(13) TextColor:[UIColor mianColor:2]];
     [bottomView addSubview:infoLabel];
     [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(priceLabel.mas_left);
@@ -899,14 +916,19 @@
     } failure:^(NSString *error, NSInteger code) {
         
     }];
-    
-    
-    
 }
 
 
 - (void)showAlert:(NSString *)text {
     [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:[NSString stringWithFormat:@"请选择%@", text] time:0 aboutType:WHShowViewMode_Text state:NO];
+}
+
+
+//刷新底部信息
+- (void)refreshBottomViewInfo {
+    priceLabel.text = SINT(self.totalMoney);
+    radiusButton.badgeValue = SINT(self.totalBadge);
+    self.singleMoney = 0;
 }
 
 

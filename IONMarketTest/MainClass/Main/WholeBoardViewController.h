@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface WholeBoardViewController : BaseViewController
-
+@property (nonatomic, strong) WholeBoardModel *wholeBoardModel;
 @end

@@ -8,6 +8,7 @@
 
 #import "BaseCell.h"
 
+@class WholeBoardModel;
 @interface InventoryCell : BaseCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
@@ -19,6 +20,6 @@
 
 + (instancetype)getInventoryCell;
 
-- (void)loadData:(NSObject *)data andCliker:(ClikBlock)click;
+- (void)loadData:(WholeBoardModel *)data andCliker:(ClikBlock)click;
 
 @end

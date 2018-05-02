@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MainItemView__Pole class]) owner:self options:nil] firstObject];
+        self = [[[NSBundle mainBundle] loadNibNamed:@"MainItemView__Pole" owner:self options:nil] firstObject];
         
         self.frame = frame;
         

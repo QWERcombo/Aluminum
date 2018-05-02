@@ -78,7 +78,8 @@
 //注册
 #define Interface_Register      @"register"
 
-
+//整板
+#define Interface_ZhengbanList      @"zhengbanList"
 
 
 

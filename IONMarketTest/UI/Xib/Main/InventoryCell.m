@@ -28,10 +28,10 @@
     return 110;
 }
 
-- (void)loadData:(NSObject *)data andCliker:(ClikBlock)click {
-    
-    
-    
+- (void)loadData:(WholeBoardModel *)data andCliker:(ClikBlock)click {
+    self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", data.zhonglei, data.zhuangtai];
+    self.typeLabel.text = [NSString stringWithFormat:@"%@", data.guige];
+    self.infoTypeLabel.text = data.gongyibiaozhun;
 }
 
 @end
