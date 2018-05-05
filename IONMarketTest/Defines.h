@@ -130,8 +130,13 @@ return __singleton__; \
 //keyWindow
 #define  MY_WINDOW  [UIApplication sharedApplication].keyWindow
 
-//友盟分享 app key
+//友盟分享 appkey
 #define  UmengAppkey  @"595c59b775ca350c8a000814"
+//微信支付
+#define  WeixiPayAppkey  @"wxab2010af57549b79"
+#define  WeixiPayAppsecret  @""
+//支付宝支付
+#define  AlipayAppkey  @""
 
 //分享链接
 #define Share_URL  [NSString stringWithFormat:@"http://app.wanhongpay.com/app/app_regin.jsp?p=%@&cname=%@", [UserData currentUser].mobileNumber, APP_ID]
@@ -139,9 +144,6 @@ return __singleton__; \
 //客服电话
 #define Service_TELL  @"027-87313758"
 
-
-//极光推送key
-//#define  JPAppkey  @"46a25dd3919f4448165eadac"
 
 /**
  *屏幕尺寸相关
