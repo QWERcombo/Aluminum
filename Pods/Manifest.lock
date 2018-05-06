@@ -25,6 +25,16 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
+  - UMCCommon (1.4.3)
+  - UMCSecurityPlugins (1.0.6)
+  - UMCShare/Core (6.8.2):
+    - UMCCommon
+  - UMCShare/Social/ReducedQQ (6.8.2):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/Social/ReducedWeChat (6.8.2):
+    - UMCCommon
+    - UMCShare/Core
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -35,17 +45,10 @@ DEPENDENCIES:
   - MHTextField
   - MJRefresh (~> 3.1.0)
   - SDWebImage
-
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - AFNetworking
-    - FMDB
-    - JSONModel
-    - Masonry
-    - MBProgressHUD
-    - MHTextField
-    - MJRefresh
-    - SDWebImage
+  - UMCCommon
+  - UMCSecurityPlugins
+  - UMCShare/Social/ReducedQQ
+  - UMCShare/Social/ReducedWeChat
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -56,7 +59,10 @@ SPEC CHECKSUMS:
   MHTextField: c13dad029b2a3da5e6a1c7adc7fa499ca8a976e5
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  UMCCommon: ac0bc01a46a5640bbd58646448f455b4c5404bf0
+  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
+  UMCShare: ab74e3c818cd305846609b15b0daf36872213c28
 
-PODFILE CHECKSUM: 6026ffaeb35b2d6bd6f0890ee524a297ab6fd605
+PODFILE CHECKSUM: b9711e9da7108afb3330751074f8e7c7e40e8f03
 
-COCOAPODS: 1.5.0.beta.1
+COCOAPODS: 1.4.0

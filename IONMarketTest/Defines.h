@@ -131,7 +131,7 @@ return __singleton__; \
 #define  MY_WINDOW  [UIApplication sharedApplication].keyWindow
 
 //友盟分享 appkey
-#define  UmengAppkey  @"595c59b775ca350c8a000814"
+#define  UmengAppkey  @"5aee7160f29d984ee60007ab"
 //微信支付
 #define  WeixiPayAppkey  @"wxab2010af57549b79"
 #define  WeixiPayAppsecret  @""
