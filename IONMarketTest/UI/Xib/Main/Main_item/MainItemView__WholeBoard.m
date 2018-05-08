@@ -38,10 +38,25 @@
 - (void)getWholeBoardOrderMoney:(NSString *)amount {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@"整板" forKey:@"zhonglei"];
+    [dict setValue:self.wholeModel.zhonglei forKey:@"zhonglei"];
     [dict setValue:amount forKey:@"amount"];
+    [dict setValue:@"整只" forKey:@"type"];
     NSDictionary *idDic = self.wholeModel.lvxing;
-    [dict setValue:idDic[@"id"] forKey:@"erjimulu"];
+    NSString *typeID = [NSString stringWithFormat:@"%@",idDic[@"id"]];
+    [dict setValue:typeID forKey:@"erjimulu"];
+    if ([typeID isEqualToString:@"30"]) {//圆棒
+        [dict setValue:self.wholeModel.arg2 forKey:@"chang"];
+        [dict setValue:self.wholeModel.arg1 forKey:@"kuang"];
+    }
+//    if ([typeID isEqualToString:@"30"]) {//型材
+//
+//    }
+//    if ([typeID isEqualToString:@"30"]) {//管材
+//
+//    }
+//    if ([typeID isEqualToString:@"30"]) {//整板
+//
+//    }
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderMoney andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"+++%@", resultDic);
