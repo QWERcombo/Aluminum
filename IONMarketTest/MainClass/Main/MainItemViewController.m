@@ -500,6 +500,8 @@
         make.left.equalTo(bottomView.mas_left).offset(5);
         make.bottom.equalTo(bottomView.mas_bottom).offset(-20);
     }];
+    [radiusButton addTarget:self action:@selector(addToShopCar:) forControlEvents:UIControlEventTouchUpInside];
+    [radiusButton setImage:IMG(@"Shop_car") forState:UIControlStateNormal];
     radiusButton.badgeValue = @"";
     radiusButton.badgeFont = FONT_ArialMT(13);
     radiusButton.badgeBGColor = [UIColor mianColor:2];
@@ -523,6 +525,12 @@
 
 
 #pragma mark --- Action
+- (void)addToShopCar:(UIButton *)sender {
+    
+    
+    
+}
+
 
 - (void)buttonCliker:(UIButton *)sender {
 //    NSLog(@"%@", sender.currentTitle);

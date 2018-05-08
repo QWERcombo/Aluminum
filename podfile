@@ -12,6 +12,8 @@ pod 'UMCCommon'
 pod 'UMCSecurityPlugins'
 pod 'UMCShare/Social/ReducedWeChat'
 pod 'UMCShare/Social/ReducedQQ'
+pod 'WechatOpenSDK'
+
 
 end
 #$ pod update 或  $ pod install

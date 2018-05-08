@@ -9,9 +9,11 @@
 #import "InventoryViewController.h"
 #import "WholeBoardViewController.h"
 
-@interface InventoryViewController ()
+@interface InventoryViewController ()<UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) NSInteger pageNumber;
+@property (nonatomic, strong) NSMutableArray *invenDataSource;
+@property (nonatomic, strong) NSString *keyword;
 @end
 
 @implementation InventoryViewController
@@ -19,20 +21,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.invenDataSource = [NSMutableArray array];
     self.pageNumber = 1;
-    [self getDataSource];
+    [self getDataSource:self.pageNumber];
     
-    [[UtilsData sharedInstance] MJRefreshNormalHeaderTarget:self table:self.tabView actionSelector:@selector(loadHeaderNewData)];
-    [[UtilsData sharedInstance] MJRefreshAutoNormalFooterTarget:self table:self.tabView actionSelector:@selector(loadFooterNewData)];
+    [[UtilsData sharedInstance] MJRefreshNormalHeaderTarget:self table:self.tableView actionSelector:@selector(loadHeaderNewData)];
+    [[UtilsData sharedInstance] MJRefreshAutoNormalFooterTarget:self table:self.tableView actionSelector:@selector(loadFooterNewData)];
+    
+    self.tableView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无数据" andDetailStr:@"" withReloadAction:^{
+        
+    }];
 }
 
 #pragma mark ----delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataMuArr.count;
+    return self.invenDataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold creatCell:@"InventoryCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+    return [UtilsMold creatCell:@"InventoryCell" table:tableView deledate:self model:[self.invenDataSource objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
         
     }];
 }
@@ -43,43 +50,66 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     WholeBoardViewController *whole = [WholeBoardViewController new];
-    whole.wholeBoardModel = [self.dataMuArr objectAtIndex:indexPath.row];
+    whole.wholeBoardModel = [self.invenDataSource objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:whole animated:YES];
 }
 
 
 - (void)loadHeaderNewData {
-    self.pageNumber = 1;
-    [self getDataSource];
+    [self getDataSource:1];
 }
 
 - (void)loadFooterNewData {
-    self.pageNumber += 1;
-    [self getDataSource];
+    [self getDataSource:self.pageNumber+1];
 }
 
-- (void)getDataSource {
+- (void)getDataSource:(NSInteger)page_number {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:SINT(self.pageNumber) forKey:@"pageNum"];
-    [dict setValue:@"10" forKey:@"pageSize"];
-    [dict setValue:@"7075" forKey:@"xinghao"];
+    [dict setValue:@"15" forKey:@"pageSize"];
+    if (self.keyword.length) {
+        [dict setValue:self.keyword forKey:@"xinghao"];
+    }
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_ZhengbanList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"---+%@", resultDic);
+//        NSLog(@"---+%@", resultDic);
+        NSArray *resultArr = resultDic[@"result"];
         
-        for (NSDictionary *dataDic in resultDic) {
-            WholeBoardModel *model = [[WholeBoardModel alloc] initWithDictionary:dataDic error:nil];
-            [self.dataMuArr addObject:model];
-        }
+        if (page_number == 1) {
+            [self.invenDataSource removeAllObjects];
+            for (NSDictionary *dataDic in resultArr) {
+                WholeBoardModel *model = [[WholeBoardModel alloc] initWithDictionary:dataDic error:nil];
+                [self.invenDataSource addObject:model];
+            }
+            [self.tableView.mj_footer endRefreshing];
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            if (resultArr.count) {
+                for (NSDictionary *dataDic in resultArr) {
+                    WholeBoardModel *model = [[WholeBoardModel alloc] initWithDictionary:dataDic error:nil];
+                    [self.invenDataSource addObject:model];
+                }
+                [self.tableView.mj_footer endRefreshing];
+            } else {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+        }        
         
-        [self.tabView reloadData];
+        [self.tableView reloadData];
     } failure:^(NSString *error, NSInteger code) {
-        
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_header endRefreshing];
     }];
     
     
 }
 
+//搜索
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    self.keyword = searchBar.text;
+    [self getDataSource:1];
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

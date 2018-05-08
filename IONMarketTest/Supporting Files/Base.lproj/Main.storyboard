@@ -455,9 +455,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9iS-pz-eC9">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <subviews>
-                                            <searchBar contentMode="redraw" placeholder="  请输入品名、牌号、状态" translatesAutoresizingMaskIntoConstraints="NO" id="8y0-eo-e1C">
+                                            <searchBar contentMode="redraw" placeholder="  请输入型号" translatesAutoresizingMaskIntoConstraints="NO" id="8y0-eo-e1C">
                                                 <rect key="frame" x="15" y="0.0" width="345" height="50"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="VEM-CS-UD2" id="eV2-yn-oRu"/>
+                                                </connections>
                                             </searchBar>
                                         </subviews>
                                         <color key="backgroundColor" red="0.78044933080000001" green="0.7801136971" blue="0.80000001190000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -580,8 +583,8 @@
                                     <constraint firstAttribute="width" constant="180" id="yen-bK-nh5"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的分享二维码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umZ-Rx-gSy">
-                                <rect key="frame" x="126.5" y="320" width="122" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享有奖励哦" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umZ-Rx-gSy">
+                                <rect key="frame" x="135.5" y="320" width="104" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.26374569535255432" green="0.48890727758407593" blue="0.76870256662368774" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>

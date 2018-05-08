@@ -31,7 +31,7 @@
 @property (nonatomic, copy) NSString *zhonglei;
 @property (nonatomic, copy) NSString *zhongliang;
 @property (nonatomic, copy) NSString *zhuangtai;
-//@property (nonatomic, copy) NSString *midu;
-//@property (nonatomic, copy) NSString *midu;
+@property (nonatomic, copy) NSString *createDate;
+@property (nonatomic, copy) NSDictionary *lvxing;
 
 @end

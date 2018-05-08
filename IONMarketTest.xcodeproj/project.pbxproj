@@ -18,6 +18,9 @@
 		560212A920596550009EF75D /* SettingDescribViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560212A820596550009EF75D /* SettingDescribViewController.m */; };
 		560264B6206A6A5400F9C405 /* TicketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 560264B5206A6A5400F9C405 /* TicketModel.m */; };
 		560264BA206A7C1D00F9C405 /* ShopCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 560264B9206A7C1D00F9C405 /* ShopCar.m */; };
+		5605C04020A090CB00E712A3 /* ShoppingCarSingle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5605C03F20A090CB00E712A3 /* ShoppingCarSingle.m */; };
+		5605C04220A09BF000E712A3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5605C04120A09BF000E712A3 /* libsqlite3.tbd */; };
+		5605C04420A09BFC00E712A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5605C04320A09BFC00E712A3 /* CoreGraphics.framework */; };
 		5615B8B72073B721005F2403 /* AddressShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5615B8B62073B721005F2403 /* AddressShowView.m */; };
 		5615B8B92073B730005F2403 /* AddressShowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5615B8B82073B730005F2403 /* AddressShowView.xib */; };
 		561CC0D5206FD24900DB0998 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 561CC0D4206FD24900DB0998 /* MainModel.m */; };
@@ -226,6 +229,10 @@
 		560264B5206A6A5400F9C405 /* TicketModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketModel.m; sourceTree = "<group>"; };
 		560264B8206A7C1D00F9C405 /* ShopCar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCar.h; sourceTree = "<group>"; };
 		560264B9206A7C1D00F9C405 /* ShopCar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCar.m; sourceTree = "<group>"; };
+		5605C03E20A090CB00E712A3 /* ShoppingCarSingle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoppingCarSingle.h; sourceTree = "<group>"; };
+		5605C03F20A090CB00E712A3 /* ShoppingCarSingle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingCarSingle.m; sourceTree = "<group>"; };
+		5605C04120A09BF000E712A3 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		5605C04320A09BFC00E712A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5615B8B52073B721005F2403 /* AddressShowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressShowView.h; sourceTree = "<group>"; };
 		5615B8B62073B721005F2403 /* AddressShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressShowView.m; sourceTree = "<group>"; };
 		5615B8B82073B730005F2403 /* AddressShowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressShowView.xib; sourceTree = "<group>"; };
@@ -533,6 +540,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5605C04420A09BFC00E712A3 /* CoreGraphics.framework in Frameworks */,
+				5605C04220A09BF000E712A3 /* libsqlite3.tbd in Frameworks */,
 				E972879BE4D0D7BB4DF9AE68 /* libPods-IONMarketTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,6 +566,8 @@
 		19F71E65DC71090E84D41246 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5605C04320A09BFC00E712A3 /* CoreGraphics.framework */,
+				5605C04120A09BF000E712A3 /* libsqlite3.tbd */,
 				D517D7BAB83CC94FFAC3A20E /* libPods-IONMarketTest.a */,
 			);
 			name = Frameworks;
@@ -1284,6 +1295,8 @@
 				5671DBB8205FF1C7005F1760 /* InventoryCell.h */,
 				5671DBB9205FF1C7005F1760 /* InventoryCell.m */,
 				5671DBBA205FF1C7005F1760 /* InventoryCell.xib */,
+				5605C03E20A090CB00E712A3 /* ShoppingCarSingle.h */,
+				5605C03F20A090CB00E712A3 /* ShoppingCarSingle.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1352,7 +1365,6 @@
 				5695BE6B20429F1B0036D54B /* Frameworks */,
 				5695BE6C20429F1B0036D54B /* Resources */,
 				40E05663B3723EE7CF21BF87 /* [CP] Copy Pods Resources */,
-				5F0C3235F5864690F43A0373 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1514,31 +1526,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-resources.sh",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/UMCShare/UMShare/UMSocialSDKPlugin/UMSocialSDKPromptResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKPromptResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5F0C3235F5864690F43A0373 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CB912A6F22B0E499BE7214FE /* [CP] Check Pods Manifest.lock */ = {
@@ -1644,6 +1639,7 @@
 				5695BF632042AF8C0036D54B /* DataSend.m in Sources */,
 				56940C2120515DF900DFA6D6 /* UILabel+YXP.m in Sources */,
 				A2AC1C6B20564B8A00A3B2F9 /* UserInfoSettingViewController.m in Sources */,
+				5605C04020A090CB00E712A3 /* ShoppingCarSingle.m in Sources */,
 				A2301B2020635292006B9F20 /* LoginViewController.m in Sources */,
 				5695BF2B2042AC0A0036D54B /* SlideSwitchView.m in Sources */,
 				A2AC1C7520565E4600A3B2F9 /* MainItemCell.m in Sources */,

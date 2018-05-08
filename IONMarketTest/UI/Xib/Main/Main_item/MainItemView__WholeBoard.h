@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainItemView__WholeBoard : UIView
+@interface MainItemView__WholeBoard : UIView<UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextField *countTF;
+@property (weak, nonatomic) IBOutlet UILabel *zhongliangLab;
+@property (weak, nonatomic) IBOutlet UILabel *shuliangLab;
+@property (nonatomic, strong) WholeBoardModel *wholeModel;
+@property (nonatomic, copy) ClikBlock click;
 
-- (void)loadData:(NSObject *)data andCliker:(ClikBlock)click;
+- (void)loadData:(WholeBoardModel *)data andCliker:(ClikBlock)click;
 
 @end

@@ -79,7 +79,6 @@
 
 
 //Vender
-//#import <UMSocialCore/UMSocialCore.h>
 #import "EasyShowView.h"
 #import "EasyShowOptions.h"
 
@@ -96,7 +95,7 @@
 #import "FaPiaoModel.h"
 #import "AuthenticationModel.h"
 #import "WholeBoardModel.h"
-
+#import "ShoppingCarSingle.h"
 
 
 //customView

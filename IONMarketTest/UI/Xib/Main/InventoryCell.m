@@ -29,9 +29,13 @@
 }
 
 - (void)loadData:(WholeBoardModel *)data andCliker:(ClikBlock)click {
-    self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", data.zhonglei, data.zhuangtai];
-    self.typeLabel.text = [NSString stringWithFormat:@"%@", data.guige];
-    self.infoTypeLabel.text = data.gongyibiaozhun;
+    self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", data.zhonglei, data.xinghao];
+    self.typeLabel.text = [NSString stringWithFormat:@"规格: %@", data.guige];
+    self.infoTypeLabel.text = data.canzhaozhishu;
+    self.infoLabel.text = data.gongyibiaozhun;
+    NSDateFormatter *datefor = [NSDateFormatter new];
+    [datefor setDateFormat:@"yyyy-MM-dd"];
+    self.dateLabel.text = [datefor stringFromDate:[NSDate dateWithTimeIntervalSince1970:[data.createDate integerValue]/1000]];
 }
 
 @end

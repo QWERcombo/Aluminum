@@ -80,6 +80,11 @@
 
 //整板
 #define Interface_ZhengbanList      @"zhengbanList"
+//微信支付接口
+#define Interface_WeixinPay      @"user/buyOrder"
+//确认收货
+#define Interface_ConfirmComplete      @"user/confirmComplete"
+
 
 
 

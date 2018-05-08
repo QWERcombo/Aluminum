@@ -8,6 +8,7 @@
 
 #import "WholeBoardViewController.h"
 #import "MainItemView__WholeBoard.h"
+#import "ShopCarViewController.h"
 
 #define CAR_Color  [UIColor colorWithR:97 G:177 B:225 A:1]
 @interface WholeBoardViewController ()
@@ -33,12 +34,12 @@
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, SCREEN_HEIGHT-50)];
     [self.view addSubview:scrollView];
     
-    MainItemView__WholeBoard *single = [[MainItemView__WholeBoard alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 670)];
-    [single loadData:nil andCliker:^(NSString *clueStr) {
+    MainItemView__WholeBoard *single = [[MainItemView__WholeBoard alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 750)];
+    [single loadData:self.wholeBoardModel andCliker:^(NSString *clueStr) {
         
     }];
     
-    [scrollView setContentSize:CGSizeMake(SCREEN_WIGHT, 670)];
+    [scrollView setContentSize:CGSizeMake(SCREEN_WIGHT, 750)];
     [scrollView addSubview:single];
 
 }
@@ -75,12 +76,14 @@
     radiusButton.backgroundColor = CAR_Color;
     radiusButton.layer.cornerRadius = 25;
     radiusButton.layer.masksToBounds = YES;
+    [radiusButton addTarget:self action:@selector(goToShopCar:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:radiusButton];
     [radiusButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.equalTo(@(50));
         make.left.equalTo(bottomView.mas_left).offset(5);
         make.bottom.equalTo(bottomView.mas_bottom).offset(-20);
     }];
+    [radiusButton setImage:IMG(@"Shop_car") forState:UIControlStateNormal];
     radiusButton.badgeValue = @"21";
     radiusButton.badgeFont = FONT_ArialMT(13);
     radiusButton.badgeBGColor = [UIColor mianColor:2];
@@ -92,7 +95,7 @@
         make.left.equalTo(radiusButton.mas_right).offset(10);
         make.top.equalTo(bottomView.mas_top).offset(10);
     }];
-    infoLabel = [UILabel lableWithText:@"76766kg" Font:FONT_ArialMT(13) TextColor:[UIColor mianColor:2]];
+    infoLabel = [UILabel lableWithText:@"" Font:FONT_ArialMT(13) TextColor:[UIColor mianColor:2]];
     [bottomView addSubview:infoLabel];
     [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(priceLabel.mas_left);
@@ -110,6 +113,12 @@
 
 - (void)carAction:(UIButton *)sender {
     NSLog(@"%@", sender.currentTitle);
+    
+}
+
+- (void)goToShopCar:(UIButton *)sender {
+    
+    
     
 }
 
