@@ -72,7 +72,7 @@
     }
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_ZhengbanList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-//        NSLog(@"---+%@", resultDic);
+        NSLog(@"---+%@", resultDic);
         NSArray *resultArr = resultDic[@"result"];
         
         if (page_number == 1) {

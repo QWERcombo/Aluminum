@@ -10,8 +10,9 @@
 #import "LoginViewController.h"
 #import "TBTabBarController.h"
 #import <UMShare/UMShare.h>
+#import <WXApi.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -27,6 +28,8 @@
     [self setupRootViewController];//设置根视图
     
     [self configUSharePlatforms];//配置友盟
+    
+    [WXApi registerApp:WeixiPayAppkey];
     
     return YES;
 }
@@ -78,12 +81,66 @@
 {
     //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
     BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
-    if (!result) {
+//    if (!result) {
         // 其他如支付等SDK的回调
+        if ([url.host isEqualToString:@"safepay"]) {
+            //跳转支付宝钱包进行支付，处理支付结果
+//            [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+//                NSLog(@"result = %@",resultDic);
+//            }];
+        }else if ([url.host isEqualToString:@"pay"]) {
+            // 处理微信的支付结果
+            [WXApi handleOpenURL:url delegate:self];
+        }
         
-    }
+        
+//    }
     return result;
 }
+
+// NOTE: 9.0以后使用新API接口
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
+{
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+//        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+//            NSLog(@"result = %@",resultDic);
+//        }];
+    }else if ([url.host isEqualToString:@"pay"]) {
+        // 处理微信的支付结果
+        [WXApi handleOpenURL:url delegate:self];
+    }
+    return YES;
+}
+
+
+
+#pragma mark WXPay
+-(void) onResp:(BaseResp*)resp
+{
+    //启动微信支付的response
+    NSString *payResoult = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+    if([resp isKindOfClass:[PayResp class]]){
+        //支付返回结果，实际支付结果需要去微信服务器端查询
+        switch (resp.errCode) {
+            case 0:
+                payResoult = @"支付结果：成功！";
+                break;
+            case -1:
+                payResoult = @"支付结果：失败！";
+                break;
+            case -2:
+                payResoult = @"用户已经退出支付！";
+                break;
+            default:
+                payResoult = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
+                break;
+        }
+    }
+}
+
+
+
 
 - (void)configUSharePlatforms
 {

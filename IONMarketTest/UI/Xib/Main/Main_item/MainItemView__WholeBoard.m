@@ -54,9 +54,11 @@
 //    if ([typeID isEqualToString:@"30"]) {//管材
 //
 //    }
-//    if ([typeID isEqualToString:@"30"]) {//整板
-//
-//    }
+    if ([typeID isEqualToString:@"31"]) {//整板
+        [dict setValue:self.wholeModel.arg1 forKey:@"hou"];
+        [dict setValue:self.wholeModel.arg2 forKey:@"kuang"];
+        [dict setValue:self.wholeModel.arg3 forKey:@"chang"];
+    }
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderMoney andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"+++%@", resultDic);

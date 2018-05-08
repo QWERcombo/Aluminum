@@ -30,7 +30,7 @@
                         <constraint firstAttribute="width" secondItem="DWX-Ie-hwQ" secondAttribute="height" multiplier="375:667" id="I4L-Ma-28y"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Hf-FK-yWt">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="App_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="9Hf-FK-yWt">
                     <rect key="frame" x="148" y="100" width="80" height="80"/>
                     <color key="backgroundColor" red="0.26374569539999998" green="0.48890727760000002" blue="0.76870256660000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
@@ -163,6 +163,7 @@
         </view>
     </objects>
     <resources>
+        <image name="App_Logo" width="512" height="512"/>
         <image name="Login_bg" width="375" height="667"/>
         <image name="Login_code" width="15" height="18"/>
         <image name="Login_phone" width="18" height="17"/>
