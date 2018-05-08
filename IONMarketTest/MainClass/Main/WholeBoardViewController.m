@@ -112,7 +112,7 @@
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:@"65" forKey:@"orderId"];
-    [dict setValue:@"0.01" forKey:@"totalfee"];
+    [dict setValue:@"1" forKey:@"totalfee"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WeixinPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
