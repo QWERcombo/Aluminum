@@ -9,7 +9,6 @@
 #import "WholeBoardViewController.h"
 #import "MainItemView__WholeBoard.h"
 #import "ShopCarViewController.h"
-#import <WXApi.h>
 
 #define CAR_Color  [UIColor colorWithR:97 G:177 B:225 A:1]
 @interface WholeBoardViewController ()
@@ -85,12 +84,12 @@
         make.bottom.equalTo(bottomView.mas_bottom).offset(-20);
     }];
     [radiusButton setImage:IMG(@"Shop_car") forState:UIControlStateNormal];
-    radiusButton.badgeValue = @"21";
+    radiusButton.badgeValue = SINT([ShoppingCarSingle sharedShoppingCarSingle].totalbadge);
     radiusButton.badgeFont = FONT_ArialMT(13);
     radiusButton.badgeBGColor = [UIColor mianColor:2];
     radiusButton.badgeOriginX = 35;
     
-    priceLabel = [UILabel lableWithText:@"￥7676.00" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
+    priceLabel = [UILabel lableWithText:[NSString stringWithFormat:@"￥%@",[ShoppingCarSingle sharedShoppingCarSingle].totalPrice?[ShoppingCarSingle sharedShoppingCarSingle].totalPrice:@0] Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
     [bottomView addSubview:priceLabel];
     [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(radiusButton.mas_right).offset(10);
@@ -116,38 +115,11 @@
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WeixinPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
-        NSString *appid = [NSString stringWithFormat:@"%@", resultDic[@"appid"]];
-        NSString *partnerid = [NSString stringWithFormat:@"%@", resultDic[@"partnerId"]];
-        NSString *prepayid = [NSString stringWithFormat:@"%@", resultDic[@"prepayId"]];
-        NSString *package = [NSString stringWithFormat:@"%@", resultDic[@"package"]];
-        NSString *noncestr = [NSString stringWithFormat:@"%@", resultDic[@"nonce_str"]];
-        NSString *timestamp = [NSString stringWithFormat:@"%@", resultDic[@"timestamp"]];
-        NSString *sign = [NSString stringWithFormat:@"%@", resultDic[@"sign"]];
-        
-        //需要创建这个支付对象
-        PayReq *req   = [[PayReq alloc] init];
-        //由用户微信号和AppID组成的唯一标识，用于校验微信用户
-        req.openID = appid;
-        // 商家id，在注册的时候给的
-        req.partnerId = partnerid;
-        // 预支付订单这个是后台跟微信服务器交互后，微信服务器传给你们服务器的，你们服务器再传给你
-        req.prepayId  = prepayid;
-        // 根据财付通文档填写的数据和签名
-        req.package  = package;
-        // 随机编码，为了防止重复的，在后台生成
-        req.nonceStr  = noncestr;
-        // 这个是时间戳，也是在后台生成的，为了验证支付的
-        NSString * stamp = timestamp;
-        req.timeStamp = stamp.intValue;
-        // 这个签名也是后台做的
-        req.sign = sign;
-        //发送请求到微信，等待微信返回onResp
-        [WXApi sendReq:req];        
+        [[ShoppingCarSingle sharedShoppingCarSingle] weixinPay:resultDic];
         
     } failure:^(NSString *error, NSInteger code) {
         
     }];
-    
     
     
     
@@ -156,18 +128,22 @@
 - (void)carAction:(UIButton *)sender {
     NSLog(@"%@", sender.currentTitle);
     
+    
+    
 }
 
 - (void)goToShopCar:(UIButton *)sender {
-    
-    
+    ShopCarViewController *shopcar = [[ShopCarViewController alloc] init];
+    [self.navigationController pushViewController:shopcar animated:YES];
+}
+
+- (void)refreshBottomViewInfo {
+//    priceLabel.text = @"";
+//    radiusButton.badgeValue = @"";
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 /*
 #pragma mark - Navigation
@@ -178,5 +154,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end

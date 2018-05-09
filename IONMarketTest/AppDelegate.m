@@ -125,6 +125,8 @@
         switch (resp.errCode) {
             case 0:
                 payResoult = @"支付结果：成功！";
+                [ShoppingCarSingle sharedShoppingCarSingle].totalbadge = 0;
+                [ShoppingCarSingle sharedShoppingCarSingle].totalPrice = @0;
                 break;
             case -1:
                 payResoult = @"支付结果：失败！";

@@ -12,6 +12,7 @@
 @interface ShopCarViewController ()
 @property (nonatomic, strong) NSMutableArray *selectArr; //选中的数据
 @property (nonatomic, assign) CGFloat totoal; //选中的总价
+@property (nonatomic, assign) NSInteger pageNumber;
 @end
 
 @implementation ShopCarViewController {
@@ -24,10 +25,34 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.selectArr = [NSMutableArray array];
-    [self getData];
+    self.title = @"购物车";
     [self setupSubViews];
+    self.pageNumber = 1;
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RefreshNewData" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:@"RefreshNewData" object:nil];
+    
+    //下拉刷新
+    self.tabView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self getDataSource:1];
+    }];
+    //进入刷新状态
+    [self.tabView.mj_header beginRefreshing];
+    //自动更改透明度
+    self.tabView.mj_header.automaticallyChangeAlpha = YES;
+    //上拉刷新
+    self.tabView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [self getDataSource:self.pageNumber+1];
+    }];
+    
+    self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无数据" andDetailStr:@"" withReloadAction:^{
+        
+    }];
+}
+
+- (void)getData {
+    //进入刷新状态
+    [self.tabView.mj_header beginRefreshing];
 }
 
 - (void)setupSubViews {
@@ -41,7 +66,11 @@
     [self.view addSubview:self.tabView];
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.equalTo(self.view);
-        make.bottom.equalTo(self.view.mas_bottom).offset(-50-50);
+        if (self.navigationController.viewControllers.count==1) {
+            make.bottom.equalTo(self.view.mas_bottom).offset(-50-50);
+        } else {
+            make.bottom.equalTo(self.view.mas_bottom).offset(-50);
+        }
     }];
     
     [self createBottomView];
@@ -57,7 +86,12 @@
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
         make.height.equalTo(@(50));
-        make.bottom.equalTo(self.view.mas_bottom).offset(-50);
+        if (self.navigationController.viewControllers.count==1) {
+            make.bottom.equalTo(self.view.mas_bottom).offset(-50);
+        } else {
+            make.bottom.equalTo(self.view.mas_bottom).offset(0);
+        }
+        
     }];
     
     UIButton *excuteButton = [UIButton buttonWithTitle:@"去结算" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
@@ -194,25 +228,45 @@
 }
 
 
-- (void)getData {
+- (void)getDataSource:(NSInteger)page_number {
     allButton.selected = NO;
-    [self.dataMuArr removeAllObjects];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
+    [dict setValue:@"10" forKey:@"pageSize"];
+    [dict setValue:SINT(page_number) forKey:@"pageNum"];
+    
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetGouwucheByUser andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"++---%@", resultDic);
+        
         NSArray *dataSource = resultDic[@"result"];
         
-        for (NSDictionary *dic in dataSource) {
-            
-            ShopCar *model = [[ShopCar alloc] initWithDictionary:dic error:nil];
-            
-            [self.dataMuArr addObject:model];
+        if (page_number == 1) {
+            [self.dataMuArr removeAllObjects];
+            for (NSDictionary *dic in dataSource) {
+                ShopCar *model = [[ShopCar alloc] initWithDictionary:dic error:nil];
+                [self.dataMuArr addObject:model];
+            }
+            self.pageNumber = 1;
+            [self.tabView.mj_header endRefreshing];
+            [self.tabView.mj_footer endRefreshing];
+        } else {
+            if (dataSource.count) {
+                for (NSDictionary *dic in dataSource) {
+                    ShopCar *model = [[ShopCar alloc] initWithDictionary:dic error:nil];
+                    [self.dataMuArr addObject:model];
+                }
+                self.pageNumber += 1;
+                [self.tabView.mj_footer endRefreshing];
+            } else {
+                [self.tabView.mj_footer endRefreshingWithNoMoreData];
+            }
         }
+        
         
         [self.tabView reloadData];
     } failure:^(NSString *error, NSInteger code) {
-        
+        [self.tabView.mj_header endRefreshing];
+        [self.tabView.mj_footer endRefreshing];
     }];
     
 }

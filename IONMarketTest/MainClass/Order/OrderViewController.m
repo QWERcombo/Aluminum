@@ -13,16 +13,16 @@
 #define Button_Margin  ((SCREEN_WIGHT-80*3)/4)
 
 @interface OrderViewController ()
-
 @property (nonatomic, assign) NSInteger lastSelected;
-
+@property (nonatomic, assign) NSInteger pageNumber;
 @end
 
 @implementation OrderViewController
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    [self getDataSource];
+    //进入刷新状态
+    [self.tabView.mj_header beginRefreshing];
 }
 
 - (void)viewDidLoad {
@@ -30,6 +30,22 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor mianColor:1];
     [self setupSubviews];
+    
+    self.pageNumber = 1;
+    //下拉刷新
+    self.tabView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self getDataSource:1];
+    }];
+    //自动更改透明度
+    self.tabView.mj_header.automaticallyChangeAlpha = YES;
+    //上拉刷新
+    self.tabView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [self getDataSource:self.pageNumber+1];
+    }];
+    
+    self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无数据" andDetailStr:@"" withReloadAction:^{
+        
+    }];
 }
 
 - (void)setupSubviews {
@@ -135,27 +151,56 @@
 
 #pragma mark ----- DataSource
 
-- (void)getDataSource {
+- (void)loadHeaderNewData {
+    [self getDataSource:1];
+}
+
+- (void)loadFooterNewData {
+    [self getDataSource:self.pageNumber+1];
+}
+
+
+
+- (void)getDataSource:(NSInteger)page_number {
     
-    [self.dataMuArr removeAllObjects];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
+    [dict setValue:SINT(page_number) forKey:@"pageNum"];
+    [dict setValue:@"10" forKey:@"pageSize"];
     [dict setValue:@"0" forKey:@"type"]; // 0未支付   1已支付
+    
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrdersList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"++++%@", resultDic);
         NSArray *dataSourceArr = resultDic[@"result"];
         
-        for (NSDictionary *dict in dataSourceArr) {
-            
-            OrderModel *model = [[OrderModel alloc] initWithDictionary:dict error:nil];
-            
-            [self.dataMuArr addObject:model];
+        if (page_number == 1) {
+            [self.dataMuArr removeAllObjects];
+            for (NSDictionary *dict in dataSourceArr) {
+                OrderModel *model = [[OrderModel alloc] initWithDictionary:dict error:nil];
+                [self.dataMuArr addObject:model];
+            }
+            self.pageNumber = 1;
+            [self.tabView.mj_footer endRefreshing];
+            [self.tabView.mj_header endRefreshing];
+        } else {
+            if (dataSourceArr.count) {
+                for (NSDictionary *dict in dataSourceArr) {
+                    OrderModel *model = [[OrderModel alloc] initWithDictionary:dict error:nil];
+                    [self.dataMuArr addObject:model];
+                }
+                self.pageNumber += 1;
+                [self.tabView.mj_footer endRefreshing];
+            } else {
+                [self.tabView.mj_footer endRefreshingWithNoMoreData];
+            }
             
         }
         
+        
         [self.tabView reloadData];
     } failure:^(NSString *error, NSInteger code) {
-        
+        [self.tabView.mj_footer endRefreshing];
+        [self.tabView.mj_header endRefreshing];
     }];
     
 }

@@ -11,8 +11,11 @@
 @interface ShoppingCarSingle : NSObject
 
 @property (nonatomic, strong) NSMutableArray *shopCarDataSource; //数据
-@property (nonatomic, assign) float totalPrice; //总价
+@property (nonatomic, copy) NSNumber *totalPrice; //总价
+@property (nonatomic, assign) NSInteger totalbadge; //角标
 
 + (ShoppingCarSingle *)sharedShoppingCarSingle;
+
+- (void)weixinPay:(NSDictionary *)resultDic;
 
 @end

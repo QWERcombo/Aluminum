@@ -12,7 +12,7 @@
 #import "MainItemView__Pole.h"//圆棒
 #import "MainItemView__Tube.h"//型材
 #import "MainItemView__Matter.h"//管材
-
+#import "ShopCarViewController.h"
 
 @interface MainItemViewController ()
 
@@ -30,7 +30,7 @@
 @property (nonatomic, strong) NSString *orderMoney; // 订单金额
 @property (nonatomic, strong) NSString *erjimulu; // 加入购物车和直接购买接口传
 @property (nonatomic, strong) NSString *orderWeight; // 订单重量
-@property (nonatomic, assign) float totalMoney;  //购物车总价
+//@property (nonatomic, assign) float totalMoney;  //购物车总价
 @property (nonatomic, assign) float singleMoney;  //购物车总价
 @property (nonatomic, assign) NSInteger totalBadge;  //购物车总个数
 @end
@@ -55,7 +55,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"下单";
-    
     self.mainM = [[MainModel alloc] init];
     
     UIButton *rightButton = [UIButton buttonWithTitle:@"特殊定制" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
@@ -69,6 +68,7 @@
     self.lastSelected = 100+self.selectedNum;
     
     [self setSubviews];
+    
 }
 
 #pragma mark --- SubViews
@@ -197,12 +197,10 @@
                     
                 } else if ([clueStr isEqualToString:@"1"]) { //添加 ----> 调取获取金额接口
                     
-                    if (weakself.singleMoney==0) {
+                    if (!weakself.isGetOrderMoney) {
                         [self showAlert:@"获取价格"];
                     } else {
-                        weakself.totalMoney += weakself.singleMoney;
-                        weakself.totalBadge += 1;
-                        [weakself refreshBottomViewInfo];
+                        [weakself addToShopCar];
                     }
                     
                 } else {
@@ -226,7 +224,7 @@
                 single.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             }
             
-            weakself.singleMoney = [priceValue integerValue];
+            weakself.singleMoney = [priceValue floatValue];
             single.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -270,12 +268,10 @@
                     
                 } else if ([clueStr isEqualToString:@"1"]) {
                     
-                    if (weakself.singleMoney==0) {
+                    if (!weakself.isGetOrderMoney) {
                         [self showAlert:@"获取价格"];
                     } else {
-                        weakself.totalMoney += weakself.singleMoney;
-                        weakself.totalBadge += 1;
-                        [weakself refreshBottomViewInfo];
+                        [weakself addToShopCar];
                     }
                     
                 }
@@ -297,7 +293,7 @@
                 pole.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             }
             
-            weakself.singleMoney += [priceValue integerValue];
+            weakself.singleMoney += [priceValue floatValue];
             pole.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -348,12 +344,10 @@
                     };
                 } else if ([clueStr isEqualToString:@"2"]) {
                     
-                    if (weakself.singleMoney==0) {
+                    if (!weakself.isGetOrderMoney) {
                         [self showAlert:@"获取价格"];
                     } else {
-                        weakself.totalMoney += weakself.singleMoney;
-                        weakself.totalBadge += 1;
-                        [weakself refreshBottomViewInfo];
+                        [weakself addToShopCar];
                     }
                     
                 } else {
@@ -377,7 +371,7 @@
                 tube.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             }
 
-            weakself.singleMoney += [priceValue integerValue];
+            weakself.singleMoney += [priceValue floatValue];
             tube.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -423,12 +417,10 @@
                     };
                 } else if ([clueStr isEqualToString:@"2"]) {
                     
-                    if (weakself.singleMoney==0) {
+                    if (!weakself.isGetOrderMoney) {
                         [self showAlert:@"获取价格"];
                     } else {
-                        weakself.totalMoney += weakself.singleMoney;
-                        weakself.totalBadge += 1;
-                        [weakself refreshBottomViewInfo];
+                        [weakself addToShopCar];
                     }
                     
                 } else {
@@ -453,7 +445,7 @@
                 matter.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             }
 
-            weakself.singleMoney += [priceValue integerValue];
+            weakself.singleMoney += [priceValue floatValue];
             matter.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -502,12 +494,12 @@
     }];
     [radiusButton addTarget:self action:@selector(addToShopCar:) forControlEvents:UIControlEventTouchUpInside];
     [radiusButton setImage:IMG(@"Shop_car") forState:UIControlStateNormal];
-    radiusButton.badgeValue = @"";
+    radiusButton.badgeValue = SINT([ShoppingCarSingle sharedShoppingCarSingle].totalbadge);
     radiusButton.badgeFont = FONT_ArialMT(13);
     radiusButton.badgeBGColor = [UIColor mianColor:2];
     radiusButton.badgeOriginX = 35;
     
-    priceLabel = [UILabel lableWithText:@"￥0.00" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
+    priceLabel = [UILabel lableWithText:[NSString stringWithFormat:@"￥%@", [ShoppingCarSingle sharedShoppingCarSingle].totalPrice?[ShoppingCarSingle sharedShoppingCarSingle].totalPrice:@0.00] Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
     [bottomView addSubview:priceLabel];
     [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(radiusButton.mas_right).offset(10);
@@ -526,9 +518,8 @@
 
 #pragma mark --- Action
 - (void)addToShopCar:(UIButton *)sender {
-    
-    
-    
+    ShopCarViewController *shopcar = [[ShopCarViewController alloc] init];
+    [self.navigationController pushViewController:shopcar animated:YES];
 }
 
 
@@ -620,13 +611,15 @@
 
 //购物车
 - (void)carAction:(UIButton *)sender {
-    
+    [self addToShopCar];
+}
+
+- (void)addToShopCar {
     if (!self.isGetOrderMoney) {
-        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先点击添加按钮完成添加操作！" time:0.0 aboutType:WHShowViewMode_Text state:NO];
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先获取价格！" time:0.0 aboutType:WHShowViewMode_Text state:NO];
         return;
     }
     
-
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:self.getOrderType forKey:@"type"];
     [dict setValue:self.mainM.shuliang forKey:@"amount"];
@@ -659,13 +652,15 @@
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveToGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"car: +++%@", resultDic);
+        [ShoppingCarSingle sharedShoppingCarSingle].totalbadge += 1;
+        [ShoppingCarSingle sharedShoppingCarSingle].totalPrice = [NSNumber numberWithFloat:(self.singleMoney+[ShoppingCarSingle sharedShoppingCarSingle].totalPrice.floatValue)];
+        [self refreshBottomViewInfo];
+        
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:1 aboutType:WHShowViewMode_Text state:YES];
         
     } failure:^(NSString *error, NSInteger code) {
         
-        
     }];
-    
 }
 
 
@@ -934,9 +929,16 @@
 
 //刷新底部信息
 - (void)refreshBottomViewInfo {
-    priceLabel.text = SINT(self.totalMoney);
-    radiusButton.badgeValue = SINT(self.totalBadge);
+    priceLabel.text = [NSString stringWithFormat:@"%@",[ShoppingCarSingle sharedShoppingCarSingle].totalPrice];
+    radiusButton.badgeValue = SINT([ShoppingCarSingle sharedShoppingCarSingle].totalbadge);
     self.singleMoney = 0;
+    
+    self.isGetOrderMoney = NO;
+    self.getOrderType = @"";
+    [self createScrollLayoutView];
+    [self.view bringSubviewToFront:bottomView];
+    
+    
 }
 
 
