@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface RegisterTViewController : UITableViewController
-
+@property (nonatomic, copy) NSString *registerType;
 @end

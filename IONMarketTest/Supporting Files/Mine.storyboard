@@ -165,7 +165,7 @@
                                                             <rect key="frame" x="45" y="5" width="280" height="40"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                         </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -215,7 +215,7 @@
                                                             <rect key="frame" x="45" y="5" width="280" height="40"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                         </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -290,6 +290,7 @@
                         <outlet property="codeBtn" destination="fFN-vk-wgx" id="ZaI-Kp-raY"/>
                         <outlet property="codeTF" destination="JyV-CD-aVs" id="pGO-3G-yph"/>
                         <outlet property="confirmTF" destination="qph-iz-r33" id="Nxz-iT-Dyn"/>
+                        <outlet property="doneBtn" destination="bxD-qz-bjL" id="LbJ-AN-xg5"/>
                         <outlet property="passwordTF" destination="oSk-ds-fii" id="Hxo-bt-Vbk"/>
                         <outlet property="phoneTF" destination="eUJ-oE-fdc" id="xMf-7p-JGk"/>
                     </connections>

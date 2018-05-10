@@ -77,6 +77,9 @@
 #define Interface_SendMsg       @"sendMsg"
 //注册
 #define Interface_Register      @"register"
+//忘记密码
+#define Interface_Forget      @"user/forget"
+
 
 //整板
 #define Interface_ZhengbanList      @"zhengbanList"
@@ -84,8 +87,8 @@
 #define Interface_WeixinPay         @"user/buyOrder"
 //确认收货
 #define Interface_ConfirmComplete   @"user/confirmComplete"
-
-
+//取消订单
+#define Interface_OrdersRemove   @"user/ordersRemove"
 
 
 

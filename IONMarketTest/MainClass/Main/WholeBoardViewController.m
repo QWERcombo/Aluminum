@@ -36,12 +36,11 @@
     
     MainItemView__WholeBoard *single = [[MainItemView__WholeBoard alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 750)];
     [single loadData:self.wholeBoardModel andCliker:^(NSString *clueStr) {
-        
+        [self refreshBottomViewInfo];
     }];
     
     [scrollView setContentSize:CGSizeMake(SCREEN_WIGHT, 750)];
     [scrollView addSubview:single];
-
 }
 
 
@@ -108,7 +107,6 @@
 
 - (void)buyAction:(UIButton *)sender {
 //    NSLog(@"%@", sender.currentTitle);
-    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:@"65" forKey:@"orderId"];
     [dict setValue:@"1" forKey:@"totalfee"];
@@ -120,8 +118,6 @@
     } failure:^(NSString *error, NSInteger code) {
         
     }];
-    
-    
     
 }
 
@@ -138,9 +134,8 @@
 }
 
 - (void)refreshBottomViewInfo {
-//    priceLabel.text = @"";
-//    radiusButton.badgeValue = @"";
-    
+    priceLabel.text = [NSString stringWithFormat:@"￥%@",[ShoppingCarSingle sharedShoppingCarSingle].totalPrice];
+    radiusButton.badgeValue = SINT([ShoppingCarSingle sharedShoppingCarSingle].totalbadge);
 }
 
 

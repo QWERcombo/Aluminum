@@ -36,7 +36,7 @@
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:@"13164628130" forKey:@"phone"];
-    [dict setValue:@"123456" forKey:@"password"];
+    [dict setValue:@"test1234" forKey:@"password"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Login andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"++++%@", resultDic);
@@ -54,13 +54,16 @@
 //忘记密码
 - (IBAction)forgetAction:(UIButton *)sender {
     NSLog(@"%@", sender.currentTitle);
-    
+    RegisterTViewController *regist = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"RegisterTVC"];
+    regist.registerType = @"forget";
+    [self.navigationController pushViewController:regist animated:YES];
 }
 
 //注册
 - (IBAction)registerAction:(UIButton *)sender {
     NSLog(@"%@", sender.currentTitle);
     RegisterTViewController *regist = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"RegisterTVC"];
+    regist.registerType = @"register";
     [self.navigationController pushViewController:regist animated:YES];
 }
 

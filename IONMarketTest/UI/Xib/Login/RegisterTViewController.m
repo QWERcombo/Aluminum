@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
 @property (weak, nonatomic) IBOutlet UITextField *confirmTF;
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *doneBtn;
 
 @end
 
@@ -21,6 +22,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([self.registerType isEqualToString:@"register"]) {
+        self.title = @"注册";
+        [self.doneBtn setTitle:@"注册" forState:UIControlStateNormal];
+    } else {
+        self.title = @"忘记密码";
+        [self.doneBtn setTitle:@"修改" forState:UIControlStateNormal];
+    }
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     UIImageView *backImgv = [[UIImageView alloc] initWithFrame:self.tableView.bounds];
     backImgv.image = IMG(@"Login_bg");
@@ -55,9 +63,9 @@
     [dict setValue:self.codeTF.text forKey:@"number"];
     [dict setValue:self.passwordTF.text forKey:@"password1"];
     [dict setValue:self.confirmTF.text forKey:@"password2"];
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Register andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"%@", resultDic);
-        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"注册成功！请重新登录" time:0 aboutType:WHShowViewMode_Text state:YES];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:[self.registerType isEqualToString:@"register"]?Interface_Register:Interface_Forget andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+//        NSLog(@"%@", resultDic);
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:[self.registerType isEqualToString:@"register"]?@"注册成功":@"修改成功" time:0 aboutType:WHShowViewMode_Text state:YES];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSString *error, NSInteger code) {
         
