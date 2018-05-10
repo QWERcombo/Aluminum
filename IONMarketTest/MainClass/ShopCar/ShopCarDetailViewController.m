@@ -161,24 +161,6 @@
     UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 60)];
     mainView.backgroundColor = [UIColor mianColor:1];
     
-//    UIView *blank1 = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIGHT, 40)];
-//    blank1.backgroundColor = [UIColor whiteColor];
-//    [mainView addSubview:blank1];
-//    UILabel *label1 = [UILabel lableWithText:@"预计到达时间" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
-//    [blank1 addSubview:label1];
-//    [label1 mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerY.equalTo(blank1.mas_centerY);
-//        make.left.equalTo(blank1.mas_left).offset(20);
-//    }];
-//    UILabel *label2 = [UILabel lableWithText:@"2018-05-20" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:2]];
-//    [blank1 addSubview:label2];
-//    [label2 mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerY.equalTo(blank1.mas_centerY);
-//        make.right.equalTo(blank1.mas_right).offset(-20);
-//    }];
-    
-    
-    
     UIView *blank2 = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIGHT, 40)];
     blank2.backgroundColor = [UIColor whiteColor];
     [mainView addSubview:blank2];
@@ -254,6 +236,9 @@
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"下单成功" time:0 aboutType:WHShowViewMode_Text state:YES];
         //刷新购物车列表
         [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshNewData" object:nil];
+        //重置购物车信息
+        [ShoppingCarSingle sharedShoppingCarSingle].totalbadge = 0;
+        [ShoppingCarSingle sharedShoppingCarSingle].totalPrice = @0;
         
         [self.navigationController popToRootViewControllerAnimated:YES];
         

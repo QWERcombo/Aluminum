@@ -115,9 +115,20 @@
     __weak typeof(self) weakself = self;
     
     return [UtilsMold creatCell:@"OrderListCell" table:tableView deledate:self model:model data:nil andCliker:^(NSDictionary *clueDic) {
-        NSLog(@"%@---%ld", clueDic, indexPath.row);
-        [weakself getExpressMoney:model.id];
-        
+//        NSLog(@"%@---%ld", clueDic, indexPath.row);
+//        [weakself getExpressMoney:model.id];
+        if ([clueDic[@"key"] isEqualToString:@"材质证明"]) {
+            
+        }
+        if ([clueDic[@"key"] isEqualToString:@"售后申请"]) {
+            
+        }
+        if ([clueDic[@"key"] isEqualToString:@"再次购买"]) {
+            
+        }
+        if ([clueDic[@"key"] isEqualToString:@"取消订单"]) {
+            [weakself cancelOrder:model.no withIndexPath:indexPath];
+        }
     }];
 }
 
@@ -206,6 +217,7 @@
 }
 
 
+//获取物流费
 - (void)getExpressMoney:(NSString *)orderNo {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -220,6 +232,24 @@
     
     
 }
+
+//取消订单
+- (void)cancelOrder:(NSString *)orderNo withIndexPath:(NSIndexPath *)indexpath {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:orderNo forKey:@"no"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrdersRemove andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0 aboutType:WHShowViewMode_Text state:YES];
+        [self.dataMuArr removeObjectAtIndex:indexpath.row];
+        [self.tabView reloadData];
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
+}
+
+
+
 
 
 - (void)didReceiveMemoryWarning {

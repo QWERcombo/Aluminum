@@ -44,17 +44,21 @@
     NSDictionary *idDic = self.wholeModel.lvxing;
     NSString *typeID = [NSString stringWithFormat:@"%@",idDic[@"id"]];
     [dict setValue:typeID forKey:@"erjimulu"];
-    if ([typeID isEqualToString:@"30"]) {//圆棒
+    if ([self.wholeModel.zhonglei isEqualToString:@"圆棒"]) {//圆棒
         [dict setValue:self.wholeModel.arg2 forKey:@"chang"];
         [dict setValue:self.wholeModel.arg1 forKey:@"kuang"];
     }
-//    if ([typeID isEqualToString:@"30"]) {//型材
-//
-//    }
-//    if ([typeID isEqualToString:@"30"]) {//管材
-//
-//    }
-    if ([typeID isEqualToString:@"31"]) {//整板
+    if ([self.wholeModel.zhonglei isEqualToString:@"型材"]) {//型材
+        [dict setValue:self.wholeModel.arg1 forKey:@"hou"];
+        [dict setValue:self.wholeModel.arg2 forKey:@"kuang"];
+        [dict setValue:self.wholeModel.arg3 forKey:@"chang"];
+    }
+    if ([self.wholeModel.zhonglei isEqualToString:@"管材"]) {//管材
+        [dict setValue:self.wholeModel.arg1 forKey:@"waijing"];
+        [dict setValue:self.wholeModel.arg2 forKey:@"neijing"];
+        [dict setValue:self.wholeModel.arg3 forKey:@"chang"];
+    }
+    if ([self.wholeModel.zhonglei isEqualToString:@"整板"]) {//整板
         [dict setValue:self.wholeModel.arg1 forKey:@"hou"];
         [dict setValue:self.wholeModel.arg2 forKey:@"kuang"];
         [dict setValue:self.wholeModel.arg3 forKey:@"chang"];
@@ -68,6 +72,11 @@
         NSString *orderWeight = [NSString stringWithFormat:@"%@", resultDic[@"rule"]];
         self.zhongliangLab.text = orderWeight;
         self.shuliangLab.text = [NSString stringWithFormat:@"%@元",orderMoney];
+        self.isGetOrderMoney = YES;
+        
+        if (self.click) {
+            self.click([NSString stringWithFormat:@"%@,%@", orderMoney,amount]);
+        }
         
     } failure:^(NSString *error, NSInteger code) {
         
@@ -76,12 +85,12 @@
 }
 
 - (IBAction)add:(UIButton *)sender {
-    
-    [ShoppingCarSingle sharedShoppingCarSingle].totalbadge += 1;
-    [ShoppingCarSingle sharedShoppingCarSingle].totalPrice = [NSNumber numberWithFloat:([self.shuliangLab.text floatValue]+[ShoppingCarSingle sharedShoppingCarSingle].totalPrice.floatValue)];
-    
-    if (self.click) {
-        self.click(@"add");
+    if (!self.isGetOrderMoney) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先获取价格!" time:0 aboutType:WHShowViewMode_Text state:NO];
+    } else {
+        if (self.click) {
+            self.click(@"add");
+        }
     }
 }
 

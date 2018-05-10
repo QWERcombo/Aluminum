@@ -937,8 +937,6 @@
     self.getOrderType = @"";
     [self createScrollLayoutView];
     [self.view bringSubviewToFront:bottomView];
-    
-    
 }
 
 

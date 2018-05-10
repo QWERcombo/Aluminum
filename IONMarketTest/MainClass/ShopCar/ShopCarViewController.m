@@ -130,7 +130,7 @@
         make.right.equalTo(excuteButton.mas_left).offset(-20);
         make.top.equalTo(bottomView.mas_top).offset(10);
     }];
-    infoLabel = [UILabel lableWithText:@"0.00kg" Font:FONT_ArialMT(13) TextColor:[UIColor Black_WordColor]];
+    infoLabel = [UILabel lableWithText:@"" Font:FONT_ArialMT(13) TextColor:[UIColor Black_WordColor]];
     [bottomView addSubview:infoLabel];
     [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(13));
@@ -249,6 +249,9 @@
             self.pageNumber = 1;
             [self.tabView.mj_header endRefreshing];
             [self.tabView.mj_footer endRefreshing];
+            if (!dataSource.count) {
+                priceLabel.text = @"0.00元";
+            }
         } else {
             if (dataSource.count) {
                 for (NSDictionary *dic in dataSource) {

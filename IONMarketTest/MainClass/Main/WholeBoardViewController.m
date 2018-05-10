@@ -12,6 +12,8 @@
 
 #define CAR_Color  [UIColor colorWithR:97 G:177 B:225 A:1]
 @interface WholeBoardViewController ()
+@property (nonatomic, copy) NSString *orderMoney;
+@property (nonatomic, copy) NSString *amount;
 
 @end
 
@@ -36,7 +38,9 @@
     
     MainItemView__WholeBoard *single = [[MainItemView__WholeBoard alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 750)];
     [single loadData:self.wholeBoardModel andCliker:^(NSString *clueStr) {
-        [self refreshBottomViewInfo];
+        NSArray *infoArr = [clueStr componentsSeparatedByString:@","];
+        self.orderMoney = [infoArr firstObject];
+        self.amount = [infoArr lastObject];
     }];
     
     [scrollView setContentSize:CGSizeMake(SCREEN_WIGHT, 750)];
@@ -106,25 +110,106 @@
 
 
 - (void)buyAction:(UIButton *)sender {
-//    NSLog(@"%@", sender.currentTitle);
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@"65" forKey:@"orderId"];
-    [dict setValue:@"1" forKey:@"totalfee"];
+//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//    [dict setValue:@"65" forKey:@"orderId"];
+//    [dict setValue:@"1" forKey:@"totalfee"];
+//
+//    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WeixinPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+//
+//        [[ShoppingCarSingle sharedShoppingCarSingle] weixinPay:resultDic];
+//
+//    } failure:^(NSString *error, NSInteger code) {
+//
+//    }];
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WeixinPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:@"整只" forKey:@"type"];
+    [dict setValue:self.amount forKey:@"amount"];
+    [dict setValue:self.wholeBoardModel.zhonglei forKey:@"zhonglei"];
+    NSDictionary *idDic = self.wholeBoardModel.lvxing;
+    NSString *typeID = [NSString stringWithFormat:@"%@",idDic[@"id"]];
+    [dict setValue:typeID forKey:@"erjimulu"];
+    [dict setValue:self.orderMoney forKey:@"money"];
+    if ([self.wholeBoardModel.zhonglei isEqualToString:@"圆棒"]) {//圆棒
+        [dict setValue:self.wholeBoardModel.arg2 forKey:@"chang"];
+        [dict setValue:self.wholeBoardModel.arg1 forKey:@"kuang"];
+    }
+    if ([self.wholeBoardModel.zhonglei isEqualToString:@"型材"]) {//型材
+        [dict setValue:self.wholeBoardModel.arg1 forKey:@"hou"];
+        [dict setValue:self.wholeBoardModel.arg2 forKey:@"kuang"];
+        [dict setValue:self.wholeBoardModel.arg3 forKey:@"chang"];
+    }
+    if ([self.wholeBoardModel.zhonglei isEqualToString:@"管材"]) {//管材
+        [dict setValue:self.wholeBoardModel.arg1 forKey:@"waijing"];
+        [dict setValue:self.wholeBoardModel.arg2 forKey:@"neijing"];
+        [dict setValue:self.wholeBoardModel.arg3 forKey:@"chang"];
+    }
+    if ([self.wholeBoardModel.zhonglei isEqualToString:@"整板"]) {//整板
+        [dict setValue:self.wholeBoardModel.arg1 forKey:@"hou"];
+        [dict setValue:self.wholeBoardModel.arg2 forKey:@"kuang"];
+        [dict setValue:self.wholeBoardModel.arg3 forKey:@"chang"];
+    }
+    [dict setValue:[UserData currentUser].phone forKey:@"phone"];
+    [dict setValue:@"40" forKey:@"addressId"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderSave andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"buy: +++%@", resultDic);
         
-        [[ShoppingCarSingle sharedShoppingCarSingle] weixinPay:resultDic];
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:1 aboutType:WHShowViewMode_Text state:YES];
         
     } failure:^(NSString *error, NSInteger code) {
+        
         
     }];
     
 }
 
 - (void)carAction:(UIButton *)sender {
-    NSLog(@"%@", sender.currentTitle);
+    [self addToShopCar];
+}
+
+
+- (void)addToShopCar {
     
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:@"整只" forKey:@"type"];
+    [dict setValue:self.amount forKey:@"amount"];
+    [dict setValue:self.wholeBoardModel.zhonglei forKey:@"zhonglei"];
+    NSDictionary *idDic = self.wholeBoardModel.lvxing;
+    NSString *typeID = [NSString stringWithFormat:@"%@",idDic[@"id"]];
+    [dict setValue:typeID forKey:@"erjimulu"];
+    [dict setValue:self.orderMoney forKey:@"money"];
+    if ([self.wholeBoardModel.zhonglei isEqualToString:@"圆棒"]) {//圆棒
+        [dict setValue:self.wholeBoardModel.arg2 forKey:@"chang"];
+        [dict setValue:self.wholeBoardModel.arg1 forKey:@"kuang"];
+    }
+    if ([self.wholeBoardModel.zhonglei isEqualToString:@"型材"]) {//型材
+        [dict setValue:self.wholeBoardModel.arg1 forKey:@"hou"];
+        [dict setValue:self.wholeBoardModel.arg2 forKey:@"kuang"];
+        [dict setValue:self.wholeBoardModel.arg3 forKey:@"chang"];
+    }
+    if ([self.wholeBoardModel.zhonglei isEqualToString:@"管材"]) {//管材
+        [dict setValue:self.wholeBoardModel.arg1 forKey:@"waijing"];
+        [dict setValue:self.wholeBoardModel.arg2 forKey:@"neijing"];
+        [dict setValue:self.wholeBoardModel.arg3 forKey:@"chang"];
+    }
+    if ([self.wholeBoardModel.zhonglei isEqualToString:@"整板"]) {//整板
+        [dict setValue:self.wholeBoardModel.arg1 forKey:@"hou"];
+        [dict setValue:self.wholeBoardModel.arg2 forKey:@"kuang"];
+        [dict setValue:self.wholeBoardModel.arg3 forKey:@"chang"];
+    }
+    [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveToGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+//        NSLog(@"car: +++%@", resultDic);
+        [ShoppingCarSingle sharedShoppingCarSingle].totalbadge += 1;
+        [ShoppingCarSingle sharedShoppingCarSingle].totalPrice = [NSNumber numberWithFloat:([self.orderMoney floatValue]+[ShoppingCarSingle sharedShoppingCarSingle].totalPrice.floatValue)];
+        [self refreshBottomViewInfo];
+        
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:1 aboutType:WHShowViewMode_Text state:YES];
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
     
 }
 
@@ -134,7 +219,7 @@
 }
 
 - (void)refreshBottomViewInfo {
-    priceLabel.text = [NSString stringWithFormat:@"￥%@",[ShoppingCarSingle sharedShoppingCarSingle].totalPrice];
+    priceLabel.text = [NSString stringWithFormat:@"%@",[ShoppingCarSingle sharedShoppingCarSingle].totalPrice];
     radiusButton.badgeValue = SINT([ShoppingCarSingle sharedShoppingCarSingle].totalbadge);
 }
 

@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *shuliangLab;
 @property (nonatomic, strong) WholeBoardModel *wholeModel;
 @property (nonatomic, copy) ClikBlock click;
+@property (nonatomic, assign) BOOL isGetOrderMoney;
 
 - (void)loadData:(WholeBoardModel *)data andCliker:(ClikBlock)click;
 

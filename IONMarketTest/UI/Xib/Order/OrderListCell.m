@@ -28,29 +28,38 @@
     return 145;
 }
 
-
 + (instancetype)OrderListCell {
     return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] firstObject];
 }
 
 - (IBAction)statusAction:(id)sender {
+    if (_clikerBlock) {
+        
+    }
     _clikerBlock(((UIButton *)sender).currentTitle);
-
-    
 }
 
 - (IBAction)buyAction:(id)sender {
-     _clikerBlock(((UIButton *)sender).currentTitle);
+    if (_clikerBlock) {
+        _clikerBlock(((UIButton *)sender).currentTitle);
+    }
 }
 
 - (IBAction)serviceAction:(id)sender {
-     _clikerBlock(((UIButton *)sender).currentTitle);
+    if (_clikerBlock) {
+        _clikerBlock(((UIButton *)sender).currentTitle);
+    }
 }
 
 - (IBAction)downloadAction:(id)sender {
-     _clikerBlock(((UIButton *)sender).currentTitle);
+    if (_clikerBlock) {
+        _clikerBlock(((UIButton *)sender).currentTitle);
+    }
 }
 - (IBAction)cancelAction:(UIButton *)sender {
+    if (_clikerBlock) {
+        _clikerBlock(((UIButton *)sender).currentTitle);
+    }
 }
 
 
