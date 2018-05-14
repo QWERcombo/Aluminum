@@ -13,9 +13,21 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    
     self.statusButton.titleEdgeInsets = UIEdgeInsetsMake(0, -self.statusButton.imageView.width, 0, self.statusButton.imageView.width);
     self.statusButton.imageEdgeInsets = UIEdgeInsetsMake(0, self.statusButton.titleLabel.width, 0, -self.statusButton.titleLabel.width);
+    
+    self.caizhiBtn.layer.borderWidth = 1;
+    self.caizhiBtn.layer.borderColor = [UIColor mianColor:2].CGColor;
+    self.caizhiBtn.layer.cornerRadius = 5;
+    self.caizhiBtn.layer.masksToBounds = YES;
+    self.quxiaoBtn.layer.borderWidth = 1;
+    self.quxiaoBtn.layer.borderColor = [UIColor mianColor:2].CGColor;
+    self.quxiaoBtn.layer.cornerRadius = 5;
+    self.quxiaoBtn.layer.masksToBounds = YES;
+    self.zhifuBtn.layer.borderWidth = 1;
+    self.zhifuBtn.layer.borderColor = [UIColor mianColor:2].CGColor;
+    self.zhifuBtn.layer.cornerRadius = 5;
+    self.zhifuBtn.layer.masksToBounds = YES;
     
 }
 

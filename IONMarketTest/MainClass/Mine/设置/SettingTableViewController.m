@@ -7,7 +7,7 @@
 //
 
 #import "SettingTableViewController.h"
-#import "SettingDescribViewController.h"
+#import "TextTableViewController.h"
 #import "ChangeCodeViewController.h"
 
 @interface SettingTableViewController ()
@@ -18,12 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.titleArr = @[@"关于我们",@"密码修改",@"清理缓存",@"用户协议"];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     self.tableView.tableFooterView = [UIView new];
@@ -61,7 +55,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    SettingDescribViewController *descri = [SettingDescribViewController new];
+    TextTableViewController *descri = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"TextTableViewController"];
     ChangeCodeViewController *code = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ChangeCode"];
     if (indexPath.row==0) {
         descri.title = [self.titleArr objectAtIndex:indexPath.row];

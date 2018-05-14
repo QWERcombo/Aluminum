@@ -186,6 +186,21 @@ DEF_SINGLETON(UtilsMold);
         }];
         return cell;
     }
+    else if ([type isEqualToString:@"ShopCarNewListCell"]) {
+        static NSString *IDs = @"ShopCarNewListCell";
+        ShopCarNewListCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
+        if (cell == nil) {
+            cell = [ShopCarNewListCell getShopCarNewListCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell loadData:model andCliker:^(NSString *clueStr) {
+            clue(@{@"key":clueStr});
+        }];
+        return cell;
+    }
+    
+    
+    
     
     
     
@@ -248,6 +263,9 @@ DEF_SINGLETON(UtilsMold);
     } else if ([type isEqualToString:@"ShopCarListCell"]) {
         
         return [ShopCarListCell getCellHight:data Model:model indexPath:indexpath];
+    } else if ([type isEqualToString:@"ShopCarNewListCell"]) {
+        
+        return [ShopCarNewListCell getCellHight:data Model:model indexPath:indexpath];
     }
     
     

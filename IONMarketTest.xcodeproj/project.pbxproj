@@ -15,7 +15,6 @@
 		5602129F20594D37009EF75D /* WalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602129E20594D37009EF75D /* WalletViewController.m */; };
 		560212A3205961D9009EF75D /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560212A2205961D9009EF75D /* SettingTableViewController.m */; };
 		560212A620596537009EF75D /* ChangeCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560212A520596537009EF75D /* ChangeCodeViewController.m */; };
-		560212A920596550009EF75D /* SettingDescribViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560212A820596550009EF75D /* SettingDescribViewController.m */; };
 		560264B6206A6A5400F9C405 /* TicketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 560264B5206A6A5400F9C405 /* TicketModel.m */; };
 		560264BA206A7C1D00F9C405 /* ShopCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 560264B9206A7C1D00F9C405 /* ShopCar.m */; };
 		5605C04020A090CB00E712A3 /* ShoppingCarSingle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5605C03F20A090CB00E712A3 /* ShoppingCarSingle.m */; };
@@ -52,6 +51,10 @@
 		5671DBCD20600109005F1760 /* MainItemView__Matter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5671DBCC20600109005F1760 /* MainItemView__Matter.m */; };
 		5671DBCF2060011D005F1760 /* MainItemView__Matter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5671DBCE2060011D005F1760 /* MainItemView__Matter.xib */; };
 		567D6A3C207B9BA100994BEF /* AuthenticationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 567D6A3B207B9BA100994BEF /* AuthenticationModel.m */; };
+		5686219520A9C59A0030C761 /* TextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5686219420A9C59A0030C761 /* TextTableViewController.m */; };
+		5686219920A9CB6E0030C761 /* ShopCarNewListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5686219720A9CB6E0030C761 /* ShopCarNewListCell.m */; };
+		5686219A20A9CB6E0030C761 /* ShopCarNewListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5686219820A9CB6E0030C761 /* ShopCarNewListCell.xib */; };
+		5686219D20A9E0DC0030C761 /* BorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5686219B20A9E0DB0030C761 /* BorderView.m */; };
 		568CB08A2065F90900B48318 /* MainItemTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 568CB0892065F90900B48318 /* MainItemTypeModel.m */; };
 		568CB08D2066462300B48318 /* CALayer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 568CB08C2066462300B48318 /* CALayer+Addition.m */; };
 		568CB0902066629900B48318 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 568CB08F2066629900B48318 /* PickerView.m */; };
@@ -223,8 +226,6 @@
 		560212A2205961D9009EF75D /* SettingTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
 		560212A420596537009EF75D /* ChangeCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeCodeViewController.h; sourceTree = "<group>"; };
 		560212A520596537009EF75D /* ChangeCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeCodeViewController.m; sourceTree = "<group>"; };
-		560212A720596550009EF75D /* SettingDescribViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingDescribViewController.h; sourceTree = "<group>"; };
-		560212A820596550009EF75D /* SettingDescribViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingDescribViewController.m; sourceTree = "<group>"; };
 		560264B4206A6A5400F9C405 /* TicketModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketModel.h; sourceTree = "<group>"; };
 		560264B5206A6A5400F9C405 /* TicketModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketModel.m; sourceTree = "<group>"; };
 		560264B8206A7C1D00F9C405 /* ShopCar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCar.h; sourceTree = "<group>"; };
@@ -284,6 +285,13 @@
 		5671DBCE2060011D005F1760 /* MainItemView__Matter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItemView__Matter.xib; sourceTree = "<group>"; };
 		567D6A3A207B9BA100994BEF /* AuthenticationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationModel.h; sourceTree = "<group>"; };
 		567D6A3B207B9BA100994BEF /* AuthenticationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationModel.m; sourceTree = "<group>"; };
+		5686219320A9C59A0030C761 /* TextTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextTableViewController.h; sourceTree = "<group>"; };
+		5686219420A9C59A0030C761 /* TextTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextTableViewController.m; sourceTree = "<group>"; };
+		5686219620A9CB6E0030C761 /* ShopCarNewListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCarNewListCell.h; sourceTree = "<group>"; };
+		5686219720A9CB6E0030C761 /* ShopCarNewListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCarNewListCell.m; sourceTree = "<group>"; };
+		5686219820A9CB6E0030C761 /* ShopCarNewListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCarNewListCell.xib; sourceTree = "<group>"; };
+		5686219B20A9E0DB0030C761 /* BorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderView.m; sourceTree = "<group>"; };
+		5686219C20A9E0DC0030C761 /* BorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderView.h; sourceTree = "<group>"; };
 		568CB0882065F90900B48318 /* MainItemTypeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItemTypeModel.h; sourceTree = "<group>"; };
 		568CB0892065F90900B48318 /* MainItemTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainItemTypeModel.m; sourceTree = "<group>"; };
 		568CB08B2066462300B48318 /* CALayer+Addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+Addition.h"; sourceTree = "<group>"; };
@@ -661,8 +669,8 @@
 				560212A2205961D9009EF75D /* SettingTableViewController.m */,
 				560212A420596537009EF75D /* ChangeCodeViewController.h */,
 				560212A520596537009EF75D /* ChangeCodeViewController.m */,
-				560212A720596550009EF75D /* SettingDescribViewController.h */,
-				560212A820596550009EF75D /* SettingDescribViewController.m */,
+				5686219320A9C59A0030C761 /* TextTableViewController.h */,
+				5686219420A9C59A0030C761 /* TextTableViewController.m */,
 			);
 			path = "设置";
 			sourceTree = "<group>";
@@ -944,6 +952,8 @@
 				5695BE7120429F1B0036D54B /* AppDelegate.h */,
 				5695BE7220429F1B0036D54B /* AppDelegate.m */,
 				5695BEAB2042A2B40036D54B /* Info.plist */,
+				5686219C20A9E0DC0030C761 /* BorderView.h */,
+				5686219B20A9E0DB0030C761 /* BorderView.m */,
 				5695BEBA2042A5050036D54B /* Defines.h */,
 				560212A020594D9E009EF75D /* InterfaceDefines.h */,
 				5695BE7D20429F1B0036D54B /* Assets.xcassets */,
@@ -1331,6 +1341,9 @@
 				5615B8B52073B721005F2403 /* AddressShowView.h */,
 				5615B8B62073B721005F2403 /* AddressShowView.m */,
 				5615B8B82073B730005F2403 /* AddressShowView.xib */,
+				5686219620A9CB6E0030C761 /* ShopCarNewListCell.h */,
+				5686219720A9CB6E0030C761 /* ShopCarNewListCell.m */,
+				5686219820A9CB6E0030C761 /* ShopCarNewListCell.xib */,
 			);
 			path = ShopCar;
 			sourceTree = "<group>";
@@ -1486,6 +1499,7 @@
 				5695BE7E20429F1B0036D54B /* Assets.xcassets in Resources */,
 				5695BE7920429F1B0036D54B /* Main.storyboard in Resources */,
 				A2301B3320637EE0006B9F20 /* FeedbackViewController.xib in Resources */,
+				5686219A20A9CB6E0030C761 /* ShopCarNewListCell.xib in Resources */,
 				568EFDFB206F1FEF007E437F /* UnitsPickerView.xib in Resources */,
 				5671DBBC205FF1C7005F1760 /* InventoryCell.xib in Resources */,
 				5695BF102042AB0E0036D54B /* rsa_public_key.der in Resources */,
@@ -1565,6 +1579,7 @@
 				56940C2720515DF900DFA6D6 /* NSMutableDictionary+YXP.m in Sources */,
 				5695BEC32042A5300036D54B /* BaseViewController.m in Sources */,
 				56940C2320515DF900DFA6D6 /* NSBundle+Language.m in Sources */,
+				5686219520A9C59A0030C761 /* TextTableViewController.m in Sources */,
 				A285A6592076170400D349AB /* BillTicketModel.m in Sources */,
 				56940C2C20515DF900DFA6D6 /* UIFont+YXP.m in Sources */,
 				56940C2820515DF900DFA6D6 /* UIImageView+YXP.m in Sources */,
@@ -1616,7 +1631,6 @@
 				5615B8B72073B721005F2403 /* AddressShowView.m in Sources */,
 				560264B6206A6A5400F9C405 /* TicketModel.m in Sources */,
 				560212A3205961D9009EF75D /* SettingTableViewController.m in Sources */,
-				560212A920596550009EF75D /* SettingDescribViewController.m in Sources */,
 				5695BF0D2042AB0E0036D54B /* NEUBase64.m in Sources */,
 				A22981C6206260E3007B6112 /* AddNewTicketViewController.m in Sources */,
 				568EFDF5206F1851007E437F /* GFAddressPicker.m in Sources */,
@@ -1667,6 +1681,7 @@
 				5671DBC8206000D9005F1760 /* MainItemView__Tube.m in Sources */,
 				5602129020594CF6009EF75D /* ShareViewController.m in Sources */,
 				5695BEC12042A5300036D54B /* BaseModel.m in Sources */,
+				5686219D20A9E0DC0030C761 /* BorderView.m in Sources */,
 				565086B0205D3AED00FD8497 /* MainItem__Single.m in Sources */,
 				56940C2920515DF900DFA6D6 /* UIImage+YXP.m in Sources */,
 				565086A1205CD98400FD8497 /* OrderListCell.m in Sources */,
@@ -1696,6 +1711,7 @@
 				5695BF642042AF8C0036D54B /* Reachability.m in Sources */,
 				A283488E2060AAB200C228AD /* ShopCarDetailViewController.m in Sources */,
 				5695BF562042AC1D0036D54B /* EasyShowLabel.m in Sources */,
+				5686219920A9CB6E0030C761 /* ShopCarNewListCell.m in Sources */,
 				A22981A320623A93007B6112 /* BankCardCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

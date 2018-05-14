@@ -19,6 +19,7 @@
     UILabel *priceLabel;
     UILabel *infoLabel;
     UIButton *allButton;
+    UIButton *excuteButton;
 }
 
 - (void)viewDidLoad {
@@ -94,8 +95,7 @@
         
     }];
     
-    UIButton *excuteButton = [UIButton buttonWithTitle:@"去结算" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
-    excuteButton.backgroundColor = [UIColor mianColor:2];
+    excuteButton = [UIButton buttonWithTitle:[NSString stringWithFormat:@"去结算(0)"] andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:IMG(@"Main_buy") andHighlightedImage:IMG(@"Main_buy")];
     [excuteButton addTarget:self action:@selector(excuteAction:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:excuteButton];
     [excuteButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -109,35 +109,23 @@
     [allButton addTarget:self action:@selector(allButtonCliker:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:allButton];
     [allButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@(50));
+        make.width.equalTo(@(70));
         make.height.equalTo(@(50));
         make.left.equalTo(bottomView.mas_left).offset(15);
         make.centerY.equalTo(bottomView.mas_centerY);
     }];
-    CGSize titleSize = allButton.titleLabel.bounds.size;
-    CGSize imageSize = allButton.imageView.bounds.size;
-    //button图片的偏移量
-    allButton.imageEdgeInsets = UIEdgeInsetsMake(-((allButton.bounds.size.height-imageSize.height)/2),(allButton.bounds.size.width - imageSize.width)/2, titleSize.height, 0);
-    //button文字的偏移量
-    allButton.titleEdgeInsets = UIEdgeInsetsMake(imageSize.height+5, -((allButton.bounds.size.width-titleSize.width)/2), 0, 0);
+    allButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     
     
-    priceLabel = [UILabel lableWithText:@"￥0.00元" Font:FONT_ArialMT(15) TextColor:[UIColor Black_WordColor]];
+    priceLabel = [UILabel lableWithText:@"合计：￥0.00元" Font:FONT_ArialMT(13) TextColor:[UIColor Black_WordColor]];
     [bottomView addSubview:priceLabel];
     [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(15));
         make.left.equalTo(allButton.mas_right).offset(10);
-        make.right.equalTo(excuteButton.mas_left).offset(-20);
-        make.top.equalTo(bottomView.mas_top).offset(10);
+        make.centerY.equalTo(allButton.mas_centerY);
     }];
-    infoLabel = [UILabel lableWithText:@"" Font:FONT_ArialMT(13) TextColor:[UIColor Black_WordColor]];
-    [bottomView addSubview:infoLabel];
-    [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@(13));
-        make.left.equalTo(allButton.mas_right).offset(10);
-        make.right.equalTo(excuteButton.mas_left).offset(-20);
-        make.top.equalTo(priceLabel.mas_bottom).offset(5);
-    }];
+
+    
 }
 
 #pragma mark --- UITableViewDelegate
@@ -147,7 +135,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     __weak typeof(self) weakself = self;
-    return [UtilsMold creatCell:@"ShopCarListCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+    return [UtilsMold creatCell:@"ShopCarNewListCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
         if ([clueDic[@"key"] isEqualToString:@"1"]) {
             [weakself.selectArr addObject:[weakself.dataMuArr objectAtIndex:indexPath.row]];
         } else if ([clueDic[@"key"] isEqualToString:@"-1"]) {
@@ -162,17 +150,19 @@
             for (ShopCar *car in weakself.selectArr) {
                 weakself.totoal += [car.money floatValue];
             }
-            priceLabel.text = [NSString stringWithFormat:@"%.2lf元", weakself.totoal];
+            priceLabel.text = [NSString stringWithFormat:@"合计：￥%.2lf元", weakself.totoal];
+            [excuteButton setTitle:[NSString stringWithFormat:@"去结算(%ld)", self.selectArr.count] forState:UIControlStateNormal];
         } else {
             allButton.selected = NO;
-            priceLabel.text = @"0.00元";
+            priceLabel.text = @"合计：￥0.00元";
+            [excuteButton setTitle:@"去结算(0)" forState:UIControlStateNormal];
         }
         
     }];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold getCellHight:@"ShopCarListCell" data:nil model:nil indexPath:indexPath];
+    return [UtilsMold getCellHight:@"ShopCarNewListCell" data:nil model:nil indexPath:indexPath];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -183,16 +173,36 @@
     return 0;
 }
 
-
-#pragma mark ----- Action
-
-- (void)moreAction:(UIButton *)sender {
-//    NSLog(@"more:----%ld", (long)sender.tag);
-//    ShopCarDetailViewController *detail = [[ShopCarDetailViewController alloc] init];
-//    [self.navigationController pushViewController:detail animated:YES];
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        ShopCar *car = [self.dataMuArr objectAtIndex:indexPath.row];
+        [self.dataMuArr removeObject:car];
+        [self.tabView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        if ([self.selectArr containsObject:car]) {
+            [self.selectArr removeObject:car];
+            self.totoal = 0.f;
+            if (self.selectArr.count) {
+                allButton.selected = YES;
+                for (ShopCar *car in self.selectArr) {
+                    self.totoal += [car.money floatValue];
+                }
+                priceLabel.text = [NSString stringWithFormat:@"合计：￥%.2lf元", self.totoal];
+                [excuteButton setTitle:[NSString stringWithFormat:@"去结算(%ld)", self.selectArr.count] forState:UIControlStateNormal];
+            } else {
+                allButton.selected = NO;
+                priceLabel.text = @"合计：￥0.00元";
+                [excuteButton setTitle:@"去结算(0)" forState:UIControlStateNormal];
+            }
+        }
+        
+    }
+}
 
+#pragma mark ----- Action
 //去结算
 - (void)excuteAction:(UIButton *)sender {
     
@@ -216,13 +226,15 @@
             totoal += [car.money floatValue];
         }
         [self.selectArr addObjectsFromArray:self.dataMuArr];
-        priceLabel.text = [NSString stringWithFormat:@"%.2lf元", totoal];  //更新价格
+        priceLabel.text = [NSString stringWithFormat:@"合计：￥%.2lf元", totoal];  //更新价格
+        [excuteButton setTitle:[NSString stringWithFormat:@"去结算(%ld)", self.selectArr.count] forState:UIControlStateNormal];
     } else {
         for (ShopCar *car in self.dataMuArr) {
             car.isSelectedCard = NO;
         }
         [self.selectArr removeAllObjects];
-        priceLabel.text = @"0.00元";
+        priceLabel.text = @"合计：￥0.00元";
+        [excuteButton setTitle:@"去结算(0)" forState:UIControlStateNormal];
     }
     [self.tabView reloadData];
 }
@@ -230,6 +242,10 @@
 
 - (void)getDataSource:(NSInteger)page_number {
     allButton.selected = NO;
+    [excuteButton setTitle:@"去结算(0)" forState:UIControlStateNormal];
+    priceLabel.text = @"合计：￥0.00元";
+    [self.selectArr removeAllObjects];
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [dict setValue:@"10" forKey:@"pageSize"];
@@ -250,7 +266,7 @@
             [self.tabView.mj_header endRefreshing];
             [self.tabView.mj_footer endRefreshing];
             if (!dataSource.count) {
-                priceLabel.text = @"0.00元";
+                priceLabel.text = @"合计：￥0.00元";
             }
         } else {
             if (dataSource.count) {

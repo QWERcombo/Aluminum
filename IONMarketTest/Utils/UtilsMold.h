@@ -23,7 +23,7 @@
 #import "EndTicketCell.h"
 #import "SmartServiceCell.h"
 #import "ShopCarListCell.h"
-
+#import "ShopCarNewListCell.h"
 
 
 

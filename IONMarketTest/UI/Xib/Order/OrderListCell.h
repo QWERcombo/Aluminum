@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *expressPrice;
 @property (weak, nonatomic) IBOutlet UILabel *zhengbanLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPrice;
+@property (weak, nonatomic) IBOutlet UIButton *caizhiBtn;
+@property (weak, nonatomic) IBOutlet UIButton *quxiaoBtn;
+@property (weak, nonatomic) IBOutlet UIButton *zhifuBtn;
 
 
 + (instancetype)OrderListCell;

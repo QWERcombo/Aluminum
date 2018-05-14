@@ -9,6 +9,55 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Text Table View Controller-->
+        <scene sceneID="iQl-NZ-SI5">
+            <objects>
+                <tableViewController storyboardIdentifier="TextTableViewController" id="DaF-ja-22g" customClass="TextTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2p5-e7-V7e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="CX3-ZT-2rc">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="303" id="7Rx-ZU-uZw">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="303"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Rx-ZU-uZw" id="ZLE-eP-WWU">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="303"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjn-QY-PAF">
+                                                    <rect key="frame" x="10" y="20" width="355" height="262.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tjn-QY-PAF" firstAttribute="top" secondItem="ZLE-eP-WWU" secondAttribute="top" constant="20" id="1Jw-c9-lST"/>
+                                                <constraint firstAttribute="bottom" secondItem="tjn-QY-PAF" secondAttribute="bottom" constant="20" id="Srx-zg-oqf"/>
+                                                <constraint firstAttribute="trailing" secondItem="tjn-QY-PAF" secondAttribute="trailing" constant="10" id="VmA-7q-q7k"/>
+                                                <constraint firstItem="tjn-QY-PAF" firstAttribute="leading" secondItem="ZLE-eP-WWU" secondAttribute="leading" constant="10" id="tJx-Za-3n7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="DaF-ja-22g" id="OBk-a0-2L8"/>
+                            <outlet property="delegate" destination="DaF-ja-22g" id="8CC-2t-kIb"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="aaa" destination="tjn-QY-PAF" id="ai4-y6-uBR"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wVU-QG-wuU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-655.20000000000005" y="-197.45127436281859"/>
+        </scene>
         <!--注册-->
         <scene sceneID="bJJ-0u-qAp">
             <objects>

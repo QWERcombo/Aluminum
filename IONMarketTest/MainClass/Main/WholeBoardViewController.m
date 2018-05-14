@@ -110,18 +110,18 @@
 
 
 - (void)buyAction:(UIButton *)sender {
-//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    [dict setValue:@"65" forKey:@"orderId"];
-//    [dict setValue:@"1" forKey:@"totalfee"];
-//
-//    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WeixinPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-//
-//        [[ShoppingCarSingle sharedShoppingCarSingle] weixinPay:resultDic];
-//
-//    } failure:^(NSString *error, NSInteger code) {
-//
-//    }];
-    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:@"65" forKey:@"orderId"];
+    [dict setValue:@"1" forKey:@"totalfee"];
+
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WeixinPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+
+        [[ShoppingCarSingle sharedShoppingCarSingle] weixinPay:resultDic];
+
+    } failure:^(NSString *error, NSInteger code) {
+
+    }];
+    /*
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:@"整只" forKey:@"type"];
     [dict setValue:self.amount forKey:@"amount"];
@@ -160,7 +160,7 @@
         
         
     }];
-    
+    */
 }
 
 - (void)carAction:(UIButton *)sender {

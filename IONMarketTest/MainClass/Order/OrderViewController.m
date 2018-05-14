@@ -117,13 +117,10 @@
     return [UtilsMold creatCell:@"OrderListCell" table:tableView deledate:self model:model data:nil andCliker:^(NSDictionary *clueDic) {
 //        NSLog(@"%@---%ld", clueDic, indexPath.row);
 //        [weakself getExpressMoney:model.id];
-        if ([clueDic[@"key"] isEqualToString:@"材质证明"]) {
+        if ([clueDic[@"key"] isEqualToString:@"材质证明下载"]) {
             
         }
-        if ([clueDic[@"key"] isEqualToString:@"售后申请"]) {
-            
-        }
-        if ([clueDic[@"key"] isEqualToString:@"再次购买"]) {
+        if ([clueDic[@"key"] isEqualToString:@"去支付"]) {
             
         }
         if ([clueDic[@"key"] isEqualToString:@"取消订单"]) {
