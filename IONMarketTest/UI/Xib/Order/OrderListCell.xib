@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZu-DK-PPi">
-                        <rect key="frame" x="0.0" y="10" width="375" height="30"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单编号:123322211" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8z-3r-bpg">
                                 <rect key="frame" x="15" y="7" width="122.5" height="16"/>
@@ -46,7 +46,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSu-4i-XEj">
-                        <rect key="frame" x="0.0" y="41" width="375" height="104"/>
+                        <rect key="frame" x="0.0" y="31" width="375" height="103.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="产品：26262.62元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KmX-pM-Cjr">
                                 <rect key="frame" x="0.0" y="0.0" width="125" height="25"/>
@@ -82,7 +82,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAL-8Z-cny">
-                                <rect key="frame" x="0.0" y="63" width="375" height="41"/>
+                                <rect key="frame" x="0.0" y="63" width="375" height="40.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atl-Z2-ynp">
                                         <rect key="frame" x="305" y="8" width="55" height="25"/>
@@ -173,9 +173,9 @@
                 </subviews>
                 <color key="backgroundColor" red="0.92549395560000003" green="0.92549419399999999" blue="0.9254926443" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="rSu-4i-XEj" secondAttribute="bottom" id="B8W-Zs-5LV"/>
-                    <constraint firstItem="rSu-4i-XEj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="41" id="C0d-SC-Cnk"/>
-                    <constraint firstItem="ZZu-DK-PPi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="HLH-Oo-GSu"/>
+                    <constraint firstAttribute="bottom" secondItem="rSu-4i-XEj" secondAttribute="bottom" constant="10" id="B8W-Zs-5LV"/>
+                    <constraint firstItem="rSu-4i-XEj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="31" id="C0d-SC-Cnk"/>
+                    <constraint firstItem="ZZu-DK-PPi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HLH-Oo-GSu"/>
                     <constraint firstItem="ZZu-DK-PPi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Q6z-zp-wdf"/>
                     <constraint firstItem="rSu-4i-XEj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ei1-i4-r9D"/>
                     <constraint firstAttribute="trailing" secondItem="ZZu-DK-PPi" secondAttribute="trailing" id="ntT-dB-O13"/>

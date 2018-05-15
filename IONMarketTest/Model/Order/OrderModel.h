@@ -38,4 +38,9 @@
 
 @property (nonatomic, strong) NSString *no;
 
+@property (nonatomic, strong) NSString *createDate;
+
+@property (nonatomic, strong) NSDictionary *currentAddress;
+
+@property (nonatomic, strong) NSString *address;
 @end

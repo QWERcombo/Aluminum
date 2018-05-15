@@ -8,6 +8,8 @@
 
 #import "OrderViewController.h"
 #import "OrderDetailViewController.h"
+#import "OrderNewDetailVC.h"
+#import "OrderPayVC.h"
 
 #define Button_Width  80
 #define Button_Margin  ((SCREEN_WIGHT-80*3)/4)
@@ -117,13 +119,15 @@
     return [UtilsMold creatCell:@"OrderListCell" table:tableView deledate:self model:model data:nil andCliker:^(NSDictionary *clueDic) {
 //        NSLog(@"%@---%ld", clueDic, indexPath.row);
 //        [weakself getExpressMoney:model.id];
-        if ([clueDic[@"key"] isEqualToString:@"材质证明下载"]) {
+        if ([clueDic[@"key"] isEqualToString:@"  材质证明下载  "]) {
             
         }
-        if ([clueDic[@"key"] isEqualToString:@"去支付"]) {
-            
+        if ([clueDic[@"key"] isEqualToString:@"  去支付  "]) {
+            OrderPayVC *pay = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayVC"];
+            pay.orderModel = [self.dataMuArr objectAtIndex:indexPath.row];
+            [self.navigationController pushViewController:pay animated:YES];
         }
-        if ([clueDic[@"key"] isEqualToString:@"取消订单"]) {
+        if ([clueDic[@"key"] isEqualToString:@"  取消订单  "]) {
             [weakself cancelOrder:model.no withIndexPath:indexPath];
         }
     }];
@@ -134,8 +138,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    OrderDetailViewController *detail_o = [OrderDetailViewController new];
-    [self.navigationController pushViewController: detail_o animated:YES];
+//    OrderDetailViewController *detail_o = [OrderDetailViewController new];
+//    [self.navigationController pushViewController: detail_o animated:YES];
+    OrderNewDetailVC *detail = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderNewDetailVC"];
+    OrderModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
+    detail.orderModel = model;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 
