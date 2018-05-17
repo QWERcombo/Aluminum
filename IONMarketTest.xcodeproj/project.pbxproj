@@ -130,6 +130,9 @@
 		5695BF5D2042AC1D0036D54B /* UIView+EasyShowExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF542042AC1D0036D54B /* UIView+EasyShowExt.m */; };
 		5695BF632042AF8C0036D54B /* DataSend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF602042AF8B0036D54B /* DataSend.m */; };
 		5695BF642042AF8C0036D54B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF622042AF8B0036D54B /* Reachability.m */; };
+		56A5746420ADC54F00A458EB /* ApplyWhiteBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5746320ADC54F00A458EB /* ApplyWhiteBarVC.m */; };
+		56A5746720ADC7BA00A458EB /* UIViewController+CommonFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5746620ADC7BA00A458EB /* UIViewController+CommonFunction.m */; };
+		56A5746A20ADC88E00A458EB /* PhotoAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5746920ADC88E00A458EB /* PhotoAlertController.m */; };
 		56B5215420AB194000F636BD /* OrderNewDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5215320AB194000F636BD /* OrderNewDetailVC.m */; };
 		56B5215720AB246200F636BD /* OrderPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5215620AB246200F636BD /* OrderPayVC.m */; };
 		56B5215A20AB37A100F636BD /* ChoosePayWayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5215920AB37A100F636BD /* ChoosePayWayView.m */; };
@@ -449,6 +452,12 @@
 		5695BF602042AF8B0036D54B /* DataSend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSend.m; sourceTree = "<group>"; };
 		5695BF612042AF8B0036D54B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		5695BF622042AF8B0036D54B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		56A5746220ADC54F00A458EB /* ApplyWhiteBarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplyWhiteBarVC.h; sourceTree = "<group>"; };
+		56A5746320ADC54F00A458EB /* ApplyWhiteBarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplyWhiteBarVC.m; sourceTree = "<group>"; };
+		56A5746520ADC7BA00A458EB /* UIViewController+CommonFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CommonFunction.h"; sourceTree = "<group>"; };
+		56A5746620ADC7BA00A458EB /* UIViewController+CommonFunction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CommonFunction.m"; sourceTree = "<group>"; };
+		56A5746820ADC88E00A458EB /* PhotoAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAlertController.h; sourceTree = "<group>"; };
+		56A5746920ADC88E00A458EB /* PhotoAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoAlertController.m; sourceTree = "<group>"; };
 		56B5215220AB194000F636BD /* OrderNewDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderNewDetailVC.h; sourceTree = "<group>"; };
 		56B5215320AB194000F636BD /* OrderNewDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderNewDetailVC.m; sourceTree = "<group>"; };
 		56B5215520AB246200F636BD /* OrderPayVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderPayVC.h; sourceTree = "<group>"; };
@@ -623,6 +632,8 @@
 			children = (
 				5602129A20594D2B009EF75D /* WhiteBarViewController.h */,
 				5602129B20594D2B009EF75D /* WhiteBarViewController.m */,
+				56A5746220ADC54F00A458EB /* ApplyWhiteBarVC.h */,
+				56A5746320ADC54F00A458EB /* ApplyWhiteBarVC.m */,
 			);
 			path = "白条";
 			sourceTree = "<group>";
@@ -830,6 +841,10 @@
 				56940C1A20515DF700DFA6D6 /* UIButton+YXP.m */,
 				56940C0720515DF100DFA6D6 /* UICollectionView+TB.h */,
 				56940C0B20515DF200DFA6D6 /* UICollectionView+TB.m */,
+				56A5746520ADC7BA00A458EB /* UIViewController+CommonFunction.h */,
+				56A5746620ADC7BA00A458EB /* UIViewController+CommonFunction.m */,
+				56A5746820ADC88E00A458EB /* PhotoAlertController.h */,
+				56A5746920ADC88E00A458EB /* PhotoAlertController.m */,
 				56940C1320515DF400DFA6D6 /* UIColor+YXP.h */,
 				56940C1C20515DF800DFA6D6 /* UIColor+YXP.m */,
 				56940C0C20515DF200DFA6D6 /* UIFont+YXP.h */,
@@ -1683,10 +1698,12 @@
 				A2301B2020635292006B9F20 /* LoginViewController.m in Sources */,
 				5695BF2B2042AC0A0036D54B /* SlideSwitchView.m in Sources */,
 				A2AC1C7520565E4600A3B2F9 /* MainItemCell.m in Sources */,
+				56A5746420ADC54F00A458EB /* ApplyWhiteBarVC.m in Sources */,
 				568CB08A2065F90900B48318 /* MainItemTypeModel.m in Sources */,
 				A2AC1C652056481B00A3B2F9 /* MainItemViewController.m in Sources */,
 				560212A620596537009EF75D /* ChangeCodeViewController.m in Sources */,
 				5632BFAF205AB47D0009CD34 /* QuotationViewController.m in Sources */,
+				56A5746720ADC7BA00A458EB /* UIViewController+CommonFunction.m in Sources */,
 				5695BEAF2042A30A0036D54B /* main.m in Sources */,
 				A22981AA20624069007B6112 /* AddBankCardView.m in Sources */,
 				A21B466C207B36DD00802621 /* AuthenticationTableViewController.m in Sources */,
@@ -1699,6 +1716,7 @@
 				568CB08D2066462300B48318 /* CALayer+Addition.m in Sources */,
 				A22981A720623BAD007B6112 /* AddCardViewController.m in Sources */,
 				5632BFAC205AA3F80009CD34 /* SetOrderViewController.m in Sources */,
+				56A5746A20ADC88E00A458EB /* PhotoAlertController.m in Sources */,
 				5695BF582042AC1D0036D54B /* EasyShowOptions.m in Sources */,
 				5602129320594D02009EF75D /* BankCardViewController.m in Sources */,
 				A21B466F207B3E5D00802621 /* AuthDetailTViewController.m in Sources */,

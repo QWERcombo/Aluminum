@@ -7,6 +7,7 @@
 //
 
 #import "WhiteBarViewController.h"
+#import "ApplyWhiteBarVC.h"
 
 @interface WhiteBarViewController ()
 
@@ -46,8 +47,8 @@
 
 - (void)applyCliker:(UIButton *)sender {
 //    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"申请已提交！" time:0.0 aboutType:WHShowViewMode_Text state:YES];
-    
-    
+    ApplyWhiteBarVC *apply = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"ApplyWhiteBarVC"];
+    [self.navigationController pushViewController:apply animated:YES];
 }
 
 

@@ -10,10 +10,11 @@
 
 @interface OrderDetailCell : BaseCell
 
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *countLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-
+@property (weak, nonatomic) IBOutlet UILabel *typeLab;
+@property (weak, nonatomic) IBOutlet UILabel *zhongleiLab;
+@property (weak, nonatomic) IBOutlet UILabel *chicunLab;
+@property (weak, nonatomic) IBOutlet UILabel *priceLab;
+@property (weak, nonatomic) IBOutlet UILabel *shuliangLab;
 
 
 + (instancetype)getOrderDetailCell;

@@ -32,9 +32,11 @@
 - (void)loadData:(NSObject *)model delegate:(UIViewController *)delegate andCliker:(ClikBlock)click {
     ShopCar *dataM = (ShopCar *)model;
 
-    self.nameLabel.text = dataM.type;
-    self.countLabel.text = [NSString stringWithFormat:@"%@x%@x%@(mm)\n *%@", dataM.length, dataM.width, dataM.height, dataM.productNum];
-    self.priceLabel.text = [NSString stringWithFormat:@"%@元", [NSString pointTailTwo:dataM.money]];
+    self.typeLab.text = dataM.type;
+    self.zhongleiLab.text = dataM.zhonglei;;
+    self.priceLab.text = [NSString stringWithFormat:@"%@元", [NSString pointTailTwo:dataM.money]];
+    self.chicunLab.text = [NSString stringWithFormat:@"%@x%@x%@", dataM.length, dataM.width, dataM.height];
+    self.shuliangLab.text = dataM.productNum;
     
 }
 
