@@ -27,7 +27,7 @@
         make.left.top.right.equalTo(self.view);
         make.bottom.equalTo(self.view.mas_bottom).offset(-50);
     }];
-    
+
     UIButton *applyButton = [UIButton buttonWithTitle:@"申请开通白条" andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
     [self.view addSubview:applyButton];
     applyButton.backgroundColor = [UIColor mianColor:2];
@@ -45,7 +45,9 @@
 
 
 - (void)applyCliker:(UIButton *)sender {
-    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"申请已提交！" time:0.0 aboutType:WHShowViewMode_Text state:YES];
+//    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"申请已提交！" time:0.0 aboutType:WHShowViewMode_Text state:YES];
+    
+    
 }
 
 

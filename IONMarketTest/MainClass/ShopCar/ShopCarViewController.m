@@ -8,6 +8,7 @@
 
 #import "ShopCarViewController.h"
 #import "ShopCarDetailViewController.h"
+#import "ConfirmOrderVC.h"
 
 @interface ShopCarViewController ()
 @property (nonatomic, strong) NSMutableArray *selectArr; //选中的数据
@@ -206,9 +207,10 @@
 //去结算
 - (void)excuteAction:(UIButton *)sender {
     
-    ShopCarDetailViewController *detail = [[ShopCarDetailViewController alloc] init];
-    detail.shopCarArr = self.selectArr;
-    if (!detail.shopCarArr.count) {
+//    ShopCarDetailViewController *detail = [[ShopCarDetailViewController alloc] init];
+    ConfirmOrderVC *detail = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil]instantiateViewControllerWithIdentifier:@"ConfirmOrderVC"];
+    detail.carArr = self.selectArr;
+    if (!detail.carArr.count) {
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择要结算的订单！" time:0 aboutType:WHShowViewMode_Text state:NO];
         return;
     }

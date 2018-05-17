@@ -29,7 +29,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+//    [self.phoneTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
+
+//- (void) textFieldDidChange:(UITextField *)textField
+//{
+//    NSInteger kMaxLength = 8;
+//    NSString *toBeString = textField.text;
+//    NSString *lang = [[UIApplication sharedApplication]textInputMode].primaryLanguage; //ios7之前使用[UITextInputMode currentInputMode].primaryLanguage
+//    if ([lang isEqualToString:@"zh-Hans"]) { //中文输入
+//        UITextRange *selectedRange = [textField markedTextRange];
+//        //获取高亮部分
+//        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+//        if (!position) {// 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+//            if (toBeString.length > kMaxLength) {
+//                textField.text = [toBeString substringToIndex:kMaxLength];
+//            }
+//        }
+//        else{//有高亮选择的字符串，则暂不对文字进行统计和限制
+//        }
+//    }else{//中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+//        if (toBeString.length > kMaxLength) {
+//            textField.text = [toBeString substringToIndex:kMaxLength];
+//        }
+//    }
+//}
 
 //登陆
 - (IBAction)loginAction:(UIButton *)sender {
