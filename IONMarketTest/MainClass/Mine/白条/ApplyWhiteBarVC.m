@@ -21,6 +21,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.zhizhaoImage.layer.borderColor = [UIColor mianColor:2].CGColor;
+    self.zhizhaoImage.layer.borderWidth = 1;
+    self.zhizhaoImage.layer.cornerRadius = 5;
+    self.zhizhaoImage.layer.masksToBounds = YES;
+    self.farenImage.layer.borderColor = [UIColor mianColor:2].CGColor;
+    self.farenImage.layer.borderWidth = 1;
+    self.farenImage.layer.cornerRadius = 5;
+    self.farenImage.layer.masksToBounds = YES;
+    self.yinhangImage.layer.borderColor = [UIColor mianColor:2].CGColor;
+    self.yinhangImage.layer.borderWidth = 1;
+    self.yinhangImage.layer.cornerRadius = 5;
+    self.yinhangImage.layer.masksToBounds = YES;
+    self.hetongImage.layer.borderColor = [UIColor mianColor:2].CGColor;
+    self.hetongImage.layer.borderWidth = 1;
+    self.hetongImage.layer.cornerRadius = 5;
+    self.hetongImage.layer.masksToBounds = YES;
 }
 
 - (IBAction)buttonClicker:(UIButton *)sender {

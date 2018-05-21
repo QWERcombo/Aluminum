@@ -12,11 +12,12 @@
 #import "OrderPayVC.h"
 
 #define Button_Width  80
-#define Button_Margin  ((SCREEN_WIGHT-80*3)/4)
+#define Button_Margin  ((SCREEN_WIGHT-80*4)/5)
 
 @interface OrderViewController ()
 @property (nonatomic, assign) NSInteger lastSelected;
 @property (nonatomic, assign) NSInteger pageNumber;
+@property (nonatomic, copy) NSString *type;
 @end
 
 @implementation OrderViewController
@@ -34,15 +35,16 @@
     [self setupSubviews];
     
     self.pageNumber = 1;
+    self.type = @"";
     //下拉刷新
     self.tabView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self getDataSource:1];
+        [self getDataSource:1 withType:self.type];
     }];
     //自动更改透明度
     self.tabView.mj_header.automaticallyChangeAlpha = YES;
     //上拉刷新
     self.tabView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [self getDataSource:self.pageNumber+1];
+        [self getDataSource:self.pageNumber+1 withType:self.type];
     }];
     
     self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无数据" andDetailStr:@"" withReloadAction:^{
@@ -61,7 +63,7 @@
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
     
-    NSArray *array = @[@"全部",@"待付款",@"已付款"];
+    NSArray *array = @[@"全部",@"待付款",@"待收货",@"已完成"];
     UIButton *lastButton = nil;
     for (NSInteger b=0; b<array.count; b++) {
         
@@ -70,7 +72,7 @@
             [button setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
         }
         [button addTarget:self action:@selector(buttonCliker:) forControlEvents:UIControlEventTouchUpInside];
-        button.tag = 100+b;
+        button.tag = 150+b;
         
         [topView addSubview:button];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -99,7 +101,7 @@
         }];
     }
     
-    self.lastSelected = 100;
+    self.lastSelected = 150;
 }
 
 
@@ -150,43 +152,48 @@
 #pragma mark ----- Action
 
 - (void)buttonCliker:(UIButton *)sender {
-    NSLog(@"%@", sender.currentTitle);
+//    NSLog(@"%@", sender.currentTitle);
     [sender setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
     
     UIButton *button = [self.view viewWithTag:self.lastSelected];
     [button setTitleColor:[UIColor Black_WordColor] forState:UIControlStateNormal];
     
-    UIView *lastLine = [self.view viewWithTag:self.lastSelected+100];
+    UIView *lastLine = [self.view viewWithTag:self.lastSelected+50];
     lastLine.hidden = YES;
     
-    UIView *nowLine = [self.view viewWithTag:sender.tag+100];
+    UIView *nowLine = [self.view viewWithTag:sender.tag+50];
     nowLine.hidden = NO;
     
     self.lastSelected = sender.tag;
+    
+    if (sender.tag-151<0) {
+        self.type = @"";
+    } else {
+        self.type = SINT((sender.tag-151));
+    }
+    [self loadHeaderNewData];
 }
 
 #pragma mark ----- DataSource
 
 - (void)loadHeaderNewData {
-    [self getDataSource:1];
+    [self getDataSource:1 withType:self.type];
 }
 
 - (void)loadFooterNewData {
-    [self getDataSource:self.pageNumber+1];
+    [self getDataSource:self.pageNumber+1 withType:self.type];
 }
 
-
-
-- (void)getDataSource:(NSInteger)page_number {
+- (void)getDataSource:(NSInteger)page_number withType:(NSString *)type {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [dict setValue:SINT(page_number) forKey:@"pageNum"];
     [dict setValue:@"10" forKey:@"pageSize"];
-    [dict setValue:@"0" forKey:@"type"]; // 0未支付   1已支付
+    [dict setValue:type forKey:@"type"]; // 0:待付款；1：待收货；2:已完成；不传查找全部
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrdersList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"++++%@", resultDic);
+//        NSLog(@"++++%@", resultDic);
         NSArray *dataSourceArr = resultDic[@"result"];
         
         if (page_number == 1) {
@@ -234,7 +241,6 @@
     } failure:^(NSString *error, NSInteger code) {
         
     }];
-    
     
 }
 

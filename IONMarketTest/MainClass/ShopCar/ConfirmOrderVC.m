@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *confirmOrderDataSource;
 @property (nonatomic, strong) AddressModel *addressModel;
 @property (weak, nonatomic) IBOutlet UIButton *addressBtn;
+@property (weak, nonatomic) IBOutlet UILabel *wuliufeiLab;
 
 @end
 

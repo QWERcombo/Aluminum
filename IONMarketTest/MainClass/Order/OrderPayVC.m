@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *orderNo;
 @property (weak, nonatomic) IBOutlet UILabel *priceLab;
 @property (weak, nonatomic) IBOutlet UILabel *payWayLab;
+@property (weak, nonatomic) IBOutlet UILabel *wuliufeiLab;
 
 @end
 
@@ -22,6 +23,7 @@
     [super viewDidLoad];
     self.orderNo.text = self.orderModel.no;
     self.priceLab.text = [NSString stringWithFormat:@"%@元",self.orderModel.money];
+    [self getExpressMoney:self.orderModel.no];
 }
 
 #pragma mark - Method
@@ -56,10 +58,21 @@
     
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)getExpressMoney:(NSString *)orderNo {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:orderNo forKey:@"orderNo"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetWuliufei andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+//        NSLog(@"wuliufei: %@", resultDic);
+        if ([resultDic[@"wuliufei"] integerValue]>0) {
+            self.wuliufeiLab.text = [NSString stringWithFormat:@"%@元", resultDic[@"wuliufei"]];
+        } else {
+            self.wuliufeiLab.text = @"";
+        }
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
 }
 
 
@@ -73,5 +86,8 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 @end

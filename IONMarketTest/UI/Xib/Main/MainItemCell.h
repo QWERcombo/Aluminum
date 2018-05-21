@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *leftCountLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *rightCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLab;
 
 + (instancetype)MainItemCell;
 

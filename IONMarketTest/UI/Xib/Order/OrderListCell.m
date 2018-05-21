@@ -80,10 +80,18 @@
     OrderModel *dataM = (OrderModel *)model;
     
     self.orderIDLabel.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
-    if ([dataM.status integerValue] == 0) {
-        [self.statusButton setTitle:@"待付款" forState:UIControlStateNormal];
-    } else {
-        [self.statusButton setTitle:@"已付款" forState:UIControlStateNormal];
+    switch ([dataM.status integerValue]) {
+        case 0:
+            [self.statusButton setTitle:@"待付款" forState:UIControlStateNormal];
+            break;
+        case 1:
+            [self.statusButton setTitle:@"待收货" forState:UIControlStateNormal];
+            break;
+        case 2:
+            [self.statusButton setTitle:@"已完成" forState:UIControlStateNormal];
+            break;
+        default:
+            break;
     }
     self.productPrice.text = [NSString stringWithFormat:@"产品: %@元", dataM.money];
     self.expressPrice.text = [NSString stringWithFormat:@"物流费: %@元", dataM.wuliufei];

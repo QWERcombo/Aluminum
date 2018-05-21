@@ -31,7 +31,7 @@
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
     PriceModel *dataM = (PriceModel *)model;
-    if ([[dataM.priceRange substringToIndex:1] isEqualToString:@"-"]) {
+    if ([[dataM.priceChange substringToIndex:1] isEqualToString:@"-"]) {
         self.rightCountLabel.backgroundColor = [UIColor colorWithHexString:@"#D97078"];
     } else {
         self.rightCountLabel.backgroundColor = [UIColor colorWithHexString:@"#A0DAA8"];
@@ -50,6 +50,9 @@
     self.leftCountLabel.text = dataM.averagePrice;
     self.nameLabrl.text = dataM.name;
     self.descriLabel.text = dataM.source;
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    self.dateLab.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[dataM.riqi integerValue]/1000]];
 }
 
 @end
