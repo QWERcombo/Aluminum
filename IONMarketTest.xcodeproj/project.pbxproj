@@ -195,6 +195,7 @@
 		A2AC1C6B20564B8A00A3B2F9 /* UserInfoSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C6A20564B8A00A3B2F9 /* UserInfoSettingViewController.m */; };
 		A2AC1C7520565E4600A3B2F9 /* MainItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C7320565E4600A3B2F9 /* MainItemCell.m */; };
 		A2AC1C7620565E4600A3B2F9 /* MainItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2AC1C7420565E4600A3B2F9 /* MainItemCell.xib */; };
+		A2B8DADC20B27AE300633050 /* PriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B8DADB20B27AE300633050 /* PriceModel.m */; };
 		E972879BE4D0D7BB4DF9AE68 /* libPods-IONMarketTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D517D7BAB83CC94FFAC3A20E /* libPods-IONMarketTest.a */; };
 /* End PBXBuildFile section */
 
@@ -562,6 +563,8 @@
 		A2AC1C7220565E4600A3B2F9 /* MainItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItemCell.h; sourceTree = "<group>"; };
 		A2AC1C7320565E4600A3B2F9 /* MainItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainItemCell.m; sourceTree = "<group>"; };
 		A2AC1C7420565E4600A3B2F9 /* MainItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItemCell.xib; sourceTree = "<group>"; };
+		A2B8DADA20B27AE300633050 /* PriceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PriceModel.h; sourceTree = "<group>"; };
+		A2B8DADB20B27AE300633050 /* PriceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PriceModel.m; sourceTree = "<group>"; };
 		D517D7BAB83CC94FFAC3A20E /* libPods-IONMarketTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IONMarketTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF6FDCD774362D745E663CEC /* Pods-IONMarketTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IONMarketTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -798,6 +801,8 @@
 				561CC0D4206FD24900DB0998 /* MainModel.m */,
 				56BDC4C8209A019D00DDE4DE /* WholeBoardModel.h */,
 				56BDC4C9209A019D00DDE4DE /* WholeBoardModel.m */,
+				A2B8DADA20B27AE300633050 /* PriceModel.h */,
+				A2B8DADB20B27AE300633050 /* PriceModel.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1629,6 +1634,7 @@
 				56940C2520515DF900DFA6D6 /* UITabBar+TB.m in Sources */,
 				A229819020620336007B6112 /* InputViewController.m in Sources */,
 				56B5215720AB246200F636BD /* OrderPayVC.m in Sources */,
+				A2B8DADC20B27AE300633050 /* PriceModel.m in Sources */,
 				5671DBBB205FF1C7005F1760 /* InventoryCell.m in Sources */,
 				A22981B7206248EB007B6112 /* AddressCell.m in Sources */,
 				56940C3320515E1800DFA6D6 /* NSTimer+WeakTimer.m in Sources */,

@@ -16,8 +16,8 @@
 #import "SpecialMakeViewController.h"
 #import "InventoryViewController.h"
 
-@interface MainViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+@interface MainViewController ()
+@property (nonatomic, assign) NSInteger pageNumber;
 @end
 
 @implementation MainViewController
@@ -27,16 +27,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    for (NSInteger i = 0 ; i<10; i++) {
-        NSString *string = @"";
-        if (i%2==0) {
-            string = @"+ 100";
-        } else {
-            string = @" - 100";
-        }
-        [self.dataMuArr addObject:string];
-    }
-    [self getDataSource];
+    [self.view addSubview:self.tabView];
+    [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.top.equalTo(self.view);
+    }];
+    self.pageNumber = 1;
+    [self getDataSource:self.pageNumber];
 }
 
 
@@ -49,8 +45,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     return [UtilsMold creatCell:@"MainItemCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
-        
     }];
 }
 
@@ -160,22 +156,33 @@
 #pragma mark ---- Action
 
 - (void)moreAction:(UIButton *)sender {
-    NSLog(@"查看更多");
     QuotationViewController *quo = [QuotationViewController new];
     [self.navigationController pushViewController:quo animated:YES];
-    
 }
 
 #pragma mark ----- DataSource
-
-- (void)getDataSource {
+- (void)getDataSource:(NSInteger)pageNumber {
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+//    [dataDic setValue:@"2018-01-01" forKey:@"beginDate"];
+//    [dataDic setValue:@"2018-05-21" forKey:@"endDate"];
     
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_PriceList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        NSArray *dataArr = resultDic[@"result"];
+        
+        for (NSDictionary *dict in dataArr) {
+            
+            PriceModel *model = [[PriceModel alloc] initWithDictionary:dict error:nil];
+            
+            [self.dataMuArr addObject:model];
+        }
+        
+        [self.tabView reloadData];
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
     
 }
-
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

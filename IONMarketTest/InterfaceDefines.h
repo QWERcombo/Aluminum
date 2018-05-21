@@ -12,6 +12,9 @@
 //《 测试地址 》
 #define  BASE_URL    @"http://118.31.35.233:8080/leqie"
 
+//获取图片地址
+#define  BASE_URL_IMAGE    @"http://118.31.35.233:8080/"
+
 //登陆
 #define Interface_Login  @"login"
 //获取品型
@@ -66,6 +69,9 @@
 
 //上传图片
 #define Interface_UserUpload   @"user/upload"
+//上传多张图片
+#define Interface_MultiUpload   @"user/multiUpload"
+
 //根据用户查询认证信息
 #define Interface_GetRenzhengByUser   @"user/getRenzhengByUser"
 //提交认证
@@ -89,6 +95,34 @@
 #define Interface_ConfirmComplete   @"user/confirmComplete"
 //取消订单
 #define Interface_OrdersRemove   @"user/ordersRemove"
+
+//查看用户的推广列表
+#define Interface_MyInvite   @"user/myinvite"
+//申请白条
+#define Interface_SaveBaitiao   @"user/saveBaitiao"
+//查看白条相关申请信息
+#define Interface_GetBaitiaoById   @"user/getBaitiaoById"
+//修改白条
+#define Interface_UpdateBaitiao   @"user/updateBaitiao"
+//申请通过，查看白条总额度和可用额度
+#define Interface_GetBaitiaoEDuById   @"user/getBaitiaoEDuById"
+//查看本月白条账单信息和白条花费总额
+#define Interface_BaitiaoBillList   @"user/baitiaoBillList"
+//白条还款微信支付
+#define Interface_WxHuanKuan   @"user/wxHuanKuan"
+//白条还款记录
+#define Interface_BaitiaoHuanKuanList   @"user/baitiaoHuanKuanList"
+
+//获取所有铝锭价列表
+#define Interface_PriceList   @"priceList"
+//分页获取铝锭价列表
+#define Interface_PricePageList   @"pricePageList"
+
+
+
+
+
+
 
 
 

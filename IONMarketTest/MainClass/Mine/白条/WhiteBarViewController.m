@@ -19,6 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupSubviews];
+    [self getDataSource];
 }
 
 - (void)setupSubviews {
@@ -46,12 +47,22 @@
 
 
 - (void)applyCliker:(UIButton *)sender {
-//    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"申请已提交！" time:0.0 aboutType:WHShowViewMode_Text state:YES];
     ApplyWhiteBarVC *apply = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"ApplyWhiteBarVC"];
     [self.navigationController pushViewController:apply animated:YES];
 }
 
 
+- (void)getDataSource {
+    
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+    [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_GetBaitiaoById andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+       
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+}
 
 
 

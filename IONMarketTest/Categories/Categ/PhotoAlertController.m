@@ -26,11 +26,17 @@
     
     UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 
-        [photoAC selectImageFromCamera];
+        [rootViewController userCamera:^{
+            [photoAC selectImageFromCamera];
+        }];
+        
     }];
     UIAlertAction *album = [UIAlertAction actionWithTitle:@"Choose From Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-
-        [photoAC selectImageFromAlbum];
+        
+        [rootViewController userCamera:^{
+            [photoAC selectImageFromAlbum];
+        }];
+        
     }];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }];

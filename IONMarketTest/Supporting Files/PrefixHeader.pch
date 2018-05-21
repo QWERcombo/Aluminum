@@ -83,7 +83,6 @@
 #import "EasyShowOptions.h"
 
 
-
 //Model
 #import "MainItemTypeModel.h"
 #import "TicketModel.h"
@@ -96,6 +95,7 @@
 #import "AuthenticationModel.h"
 #import "WholeBoardModel.h"
 #import "ShoppingCarSingle.h"
+#import "PriceModel.h"
 
 
 //customView

@@ -10,7 +10,7 @@
 #import "QuotationDetailViewController.h"
 
 @interface QuotationViewController ()
-
+@property (nonatomic, assign) NSInteger pageNumber;
 @end
 
 @implementation QuotationViewController {
@@ -22,17 +22,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"行情";
-    for ( NSInteger i = 0; i<10; i++) {
-        NSString *str = @"";
-        if (i % 2 == 0) {
-            str = @"+ 100";
-        } else {
-            str = @" - 100";
-        }
-        [self.dataMuArr addObject:str];
-    }
+    self.pageNumber = 1;
+    [self getDataSource:self.pageNumber];
+    [[UtilsData sharedInstance] MJRefreshNormalHeaderTarget:self table:self.tabView actionSelector:@selector(loadHeaderNewData)];
+    [[UtilsData sharedInstance] MJRefreshAutoNormalFooterTarget:self table:self.tabView actionSelector:@selector(loadFooterNewData)];
     [self setupSubviews];
-    
 }
 
 - (void)setupSubviews {
@@ -141,8 +135,6 @@
     
 }
 
-
-
 #pragma mark ---- action
 - (void)buttonCliker:(UIButton *)sender {
     if ([sender.currentTitle isEqualToString:@"关注行情"]) {
@@ -152,9 +144,56 @@
         line_f.hidden = YES;
         line_a.hidden = NO;
     }
+}
+
+#pragma mark ----- DataSource
+- (void)loadHeaderNewData {
+    [self getDataSource:1];
+}
+
+- (void)loadFooterNewData {
+    [self getDataSource:self.pageNumber+1];
+}
+
+- (void)getDataSource:(NSInteger)pageNumber {
     
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+    [dataDic setValue:SINT(pageNumber) forKey:@"pageNum"];
+    [dataDic setValue:@"15" forKey:@"pageSize"];
+//    [dataDic setValue:@"2018-04-01" forKey:@"beginDate"];
+//    [dataDic setValue:@"2018-05-21" forKey:@"endDate"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_PricePageList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        NSArray *dataArr = resultDic[@"result"];
+        
+        if (pageNumber == 1) {
+            [self.dataMuArr removeAllObjects];
+            for (NSDictionary *dataDic in dataArr) {
+                PriceModel *model = [[PriceModel alloc] initWithDictionary:dataDic error:nil];
+                [self.dataMuArr addObject:model];
+            }
+            [self.tabView.mj_footer endRefreshing];
+            [self.tabView.mj_header endRefreshing];
+        } else {
+            if (dataArr.count) {
+                for (NSDictionary *dataDic in dataArr) {
+                    PriceModel *model = [[PriceModel alloc] initWithDictionary:dataDic error:nil];
+                    [self.dataMuArr addObject:model];
+                }
+                [self.tabView.mj_footer endRefreshing];
+            } else {
+                [self.tabView.mj_footer endRefreshingWithNoMoreData];
+            }
+        }
+        
+        [self.tabView reloadData];
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
     
 }
+
 
 
 

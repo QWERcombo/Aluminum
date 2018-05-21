@@ -745,7 +745,7 @@
     [dict setValue:self.getOrderType forKey:@"type"]; //快速
     [dict setValue:self.mainM.shuliang forKey:@"amount"];
     [dict setValue:self.typeStr forKey:@"zhonglei"];  //零切
-    [dict setValue:self.xinghaoStr forKey:@"erjimulu"]; //30
+    [dict setValue:self.xinghaoStr forKey:@"erjimulu"]; //id
     switch (mode) {
         case Mode_Single:
             [dict setValue:self.mainM.changdu forKey:@"chang"];
@@ -786,19 +786,19 @@
     }];
 }
 
-- (void)getInfomationWithID:(NSString *)infoID {
-    
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:infoID forKey:@"id"];
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_FindDetail andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
-//        NSLog(@"+++%@", resultDic);
-        
-        
-    } failure:^(NSString *error, NSInteger code) {
-        
-    }];
-    
-}
+//- (void)getInfomationWithID:(NSString *)infoID {
+//
+//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//    [dict setValue:infoID forKey:@"id"];
+//    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_FindDetail andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+////        NSLog(@"+++%@", resultDic);
+//
+//
+//    } failure:^(NSString *error, NSInteger code) {
+//
+//    }];
+//
+//}
 
 
 //选择单位

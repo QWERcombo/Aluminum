@@ -20,12 +20,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IONMarketTest/UI/Xib/Main/Main_item/MainItemView__WholeBoard.m"
-            timestampString = "547652553.923144"
+            timestampString = "548591931.268021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
             endingLineNumber = "82"
-            landmarkName = "-add:"
+            landmarkName = "-getWholeBoardOrderMoney:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
