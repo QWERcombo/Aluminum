@@ -18,13 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveAction:)];
-    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
+    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:15]} forState:UIControlStateNormal];
     
     self.inputTextView.layer.borderColor = [UIColor blackColor].CGColor;
     self.inputTextView.layer.borderWidth = 1;
     self.inputTextView.layer.masksToBounds = YES;
     self.inputTextView.layer.cornerRadius = 5;
-    self.inputTextView.backgroundColor = [UIColor lightGrayColor];
     self.inputTextView.text = self.contentStr;
 }
 

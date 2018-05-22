@@ -40,6 +40,22 @@
     [self initImagePickerController];
     self.dataSource = [NSMutableArray array];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.leftButton.layer.masksToBounds = YES;
+    self.leftButton.layer.borderColor = [UIColor mianColor:2].CGColor;
+    self.leftButton.layer.borderWidth = 1;
+    self.leftButton.layer.cornerRadius = 5;
+    self.rightButton.layer.masksToBounds = YES;
+    self.rightButton.layer.borderColor = [UIColor mianColor:2].CGColor;
+    self.rightButton.layer.borderWidth = 1;
+    self.rightButton.layer.cornerRadius = 5;
+    
+    self.leftButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;//使图片和文字水平居中显示
+    [self.leftButton setTitleEdgeInsets:UIEdgeInsetsMake(self.leftButton.imageView.frame.size.height ,-self.leftButton.imageView.frame.size.width, -10.0,0.0)];//文字距离上边框的距离增加imageView的高度，距离左边框减少imageView的宽度，距离下边框和右边框距离不变
+    [self.leftButton setImageEdgeInsets:UIEdgeInsetsMake(-10.0, 0.0,0.0, -self.leftButton.titleLabel.bounds.size.width)];//图片距离右边框距离减少图片的宽度，其它不边
+    self.rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [self.rightButton setTitleEdgeInsets:UIEdgeInsetsMake(self.rightButton.imageView.frame.size.height ,-self.rightButton.imageView.frame.size.width, -10.0,0.0)];
+    [self.rightButton setImageEdgeInsets:UIEdgeInsetsMake(-10.0, 0.0,0.0, -self.rightButton.titleLabel.bounds.size.width)];
+    
     [self getData];
 }
 

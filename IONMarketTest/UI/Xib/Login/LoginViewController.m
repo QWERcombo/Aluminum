@@ -59,8 +59,8 @@
 - (IBAction)loginAction:(UIButton *)sender {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@"13164628130" forKey:@"phone"];//13164628130
-    [dict setValue:@"test1234" forKey:@"password"];//test1234
+    [dict setValue:@"13407126200" forKey:@"phone"];//13164628130
+    [dict setValue:@"12345678" forKey:@"password"];//test1234
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Login andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"++++%@", resultDic);
@@ -90,7 +90,6 @@
     regist.registerType = @"register";
     [self.navigationController pushViewController:regist animated:YES];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

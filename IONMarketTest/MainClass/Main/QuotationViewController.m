@@ -104,7 +104,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    PriceModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
     QuotationDetailViewController *detail = [QuotationDetailViewController new];
+    detail.title = model.name;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

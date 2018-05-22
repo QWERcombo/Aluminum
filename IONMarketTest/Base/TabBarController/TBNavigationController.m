@@ -71,12 +71,13 @@
 - (UIBarButtonItem *)itemWithImageName:(NSString *)imageName highImageName:(NSString *)highImageName target:target action:(SEL)action {
     UIButton *button = [[UIButton alloc] init];
     // 设置按钮的背景图片
-    [button setBackgroundImage:IMG(imageName) forState:UIControlStateNormal];
+    [button setImage:IMG(imageName) forState:UIControlStateNormal];
     if (highImageName != nil) {
-        [button setBackgroundImage:IMG(highImageName) forState:UIControlStateHighlighted];
+        [button setImage:IMG(highImageName) forState:UIControlStateHighlighted];
     }
     // 设置按钮的尺寸为背景图片的尺寸
-    button.size = button.currentBackgroundImage.size;
+    button.size = CGSizeMake(80, 44);
+    button.imageEdgeInsets = UIEdgeInsetsMake(0, -((button.size.width-button.imageView.size.width)/2), 0, (button.size.width-button.imageView.size.width)/2);
     button.adjustsImageWhenHighlighted = NO;
     //监听按钮的点击
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];

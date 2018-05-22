@@ -30,28 +30,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.titleArr = @[@"",@"",@"钱包",@"白条",@"开票",@"",@"收货地址",@"分享推广",@"设置"];
+    self.titleArr = @[@"",@"",@"钱包",@"白条",@"开票",@"企业认证",@"",@"收货地址",@"分享推广",@"设置"];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.userName.text = [UserData currentUser].phone;
     self.userRole.text = @"未认证";
-    self.userHeader.layer.cornerRadius = 40;
+    self.userHeader.layer.cornerRadius = 35;
     self.userHeader.layer.masksToBounds = YES;
     [self.userHeader sd_setImageWithURL:[NSURL URLWithString:[UserData currentUser].headImgUrl] placeholderImage:IMG(@"empty_image")];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section==3 && indexPath.row==0) {
-        
-        ShareViewController *share = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ShareVC"];
-        [self.navigationController pushViewController:share animated:YES];
+    if (indexPath.row == 5 || indexPath.row == 8) {
+        if (indexPath.row == 8) {
+            ShareViewController *share = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ShareVC"];
+            [self.navigationController pushViewController:share animated:YES];
+        }
+        if (indexPath.row == 5) {
+            AuthenticationTableViewController *auth = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthenVC"];
+            [self.navigationController pushViewController:auth animated:YES];
+        }
     } else {
-        //[AuthenticationTableViewController class]
-        NSArray *classArray = @[@"",@"",[WalletViewController class],[WhiteBarViewController class],[TicketViewController class],@"",[AddressViewController class],[ShareViewController class],[SettingTableViewController class]];
         
-        if (indexPath.row == 9) {
-//            AuthenticationTableViewController *auth = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthenVC"];
-//            [self.navigationController pushViewController:auth animated:YES];
+        NSArray *classArray = @[@"",@"",[WalletViewController class],[WhiteBarViewController class],[TicketViewController class],[AuthenticationTableViewController class],@"",[AddressViewController class],[ShareViewController class],[SettingTableViewController class]];
+        
+        if (indexPath.row == 10) {
             NSString *callPhone = [NSString stringWithFormat:@"telprompt://%@", @"13372118858"];
             if (@available(iOS 10.0, *)) {
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone] options:@{} completionHandler:nil];

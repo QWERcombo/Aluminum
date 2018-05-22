@@ -96,6 +96,7 @@
 #import "WholeBoardModel.h"
 #import "ShoppingCarSingle.h"
 #import "PriceModel.h"
+#import "WalletListModel.h"
 
 
 //customView

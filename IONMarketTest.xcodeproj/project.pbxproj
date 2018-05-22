@@ -187,6 +187,9 @@
 		A283489720610F6900C228AD /* WallentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A283489520610F6900C228AD /* WallentListCell.xib */; };
 		A285A6592076170400D349AB /* BillTicketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A285A6582076170400D349AB /* BillTicketModel.m */; };
 		A285A65C207627A000D349AB /* FaPiaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A285A65B207627A000D349AB /* FaPiaoViewController.m */; };
+		A289424020B3CAF900D8E9E5 /* BezierCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A289423E20B3CAF800D8E9E5 /* BezierCurveView.xib */; };
+		A289424120B3CAF900D8E9E5 /* BezierCurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = A289423F20B3CAF900D8E9E5 /* BezierCurveView.m */; };
+		A289424420B4239500D8E9E5 /* WalletListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A289424320B4239500D8E9E5 /* WalletListModel.m */; };
 		A29996FE207381140003B96C /* ShopCarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A29996FC207381140003B96C /* ShopCarListCell.m */; };
 		A29996FF207381140003B96C /* ShopCarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A29996FD207381140003B96C /* ShopCarListCell.xib */; };
 		A2AC1C622056476F00A3B2F9 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C612056476F00A3B2F9 /* MessageViewController.m */; };
@@ -549,6 +552,11 @@
 		A285A6582076170400D349AB /* BillTicketModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillTicketModel.m; sourceTree = "<group>"; };
 		A285A65A207627A000D349AB /* FaPiaoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaPiaoViewController.h; sourceTree = "<group>"; };
 		A285A65B207627A000D349AB /* FaPiaoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaPiaoViewController.m; sourceTree = "<group>"; };
+		A289423D20B3CAF800D8E9E5 /* BezierCurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierCurveView.h; sourceTree = "<group>"; };
+		A289423E20B3CAF800D8E9E5 /* BezierCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BezierCurveView.xib; sourceTree = "<group>"; };
+		A289423F20B3CAF900D8E9E5 /* BezierCurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierCurveView.m; sourceTree = "<group>"; };
+		A289424220B4239500D8E9E5 /* WalletListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletListModel.h; sourceTree = "<group>"; };
+		A289424320B4239500D8E9E5 /* WalletListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletListModel.m; sourceTree = "<group>"; };
 		A29996FB207381140003B96C /* ShopCarListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCarListCell.h; sourceTree = "<group>"; };
 		A29996FC207381140003B96C /* ShopCarListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCarListCell.m; sourceTree = "<group>"; };
 		A29996FD207381140003B96C /* ShopCarListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCarListCell.xib; sourceTree = "<group>"; };
@@ -727,6 +735,8 @@
 				A21B4671207B470A00802621 /* FaPiaoModel.m */,
 				567D6A3A207B9BA100994BEF /* AuthenticationModel.h */,
 				567D6A3B207B9BA100994BEF /* AuthenticationModel.m */,
+				A289424220B4239500D8E9E5 /* WalletListModel.h */,
+				A289424320B4239500D8E9E5 /* WalletListModel.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1096,6 +1106,7 @@
 		5695BEB72042A4BA0036D54B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				A289423C20B3CAE300D8E9E5 /* BezierCurvcLine */,
 				568EFDF1206F1836007E437F /* cityPicker */,
 				5695BF5E2042AF8B0036D54B /* Network */,
 				5695BF412042AC1D0036D54B /* WHShowView */,
@@ -1375,6 +1386,16 @@
 			path = Mine;
 			sourceTree = "<group>";
 		};
+		A289423C20B3CAE300D8E9E5 /* BezierCurvcLine */ = {
+			isa = PBXGroup;
+			children = (
+				A289423D20B3CAF800D8E9E5 /* BezierCurveView.h */,
+				A289423F20B3CAF900D8E9E5 /* BezierCurveView.m */,
+				A289423E20B3CAF800D8E9E5 /* BezierCurveView.xib */,
+			);
+			path = BezierCurvcLine;
+			sourceTree = "<group>";
+		};
 		A29996FA207380E70003B96C /* ShopCar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1546,6 +1567,7 @@
 				5686219A20A9CB6E0030C761 /* ShopCarNewListCell.xib in Resources */,
 				568EFDFB206F1FEF007E437F /* UnitsPickerView.xib in Resources */,
 				5671DBBC205FF1C7005F1760 /* InventoryCell.xib in Resources */,
+				A289424020B3CAF900D8E9E5 /* BezierCurveView.xib in Resources */,
 				5695BF102042AB0E0036D54B /* rsa_public_key.der in Resources */,
 				5657413820539313007CB488 /* SelectedItem.xib in Resources */,
 				568CB092206662A800B48318 /* PickerView.xib in Resources */,
@@ -1637,7 +1659,9 @@
 				A2B8DADC20B27AE300633050 /* PriceModel.m in Sources */,
 				5671DBBB205FF1C7005F1760 /* InventoryCell.m in Sources */,
 				A22981B7206248EB007B6112 /* AddressCell.m in Sources */,
+				A289424420B4239500D8E9E5 /* WalletListModel.m in Sources */,
 				56940C3320515E1800DFA6D6 /* NSTimer+WeakTimer.m in Sources */,
+				A289424120B3CAF900D8E9E5 /* BezierCurveView.m in Sources */,
 				5695BF312042AC120036D54B /* ABBannerView.m in Sources */,
 				56940C3520515E1800DFA6D6 /* UIButton+Badge.m in Sources */,
 				5650869C205CD0AB00FD8497 /* OrderDetailViewController.m in Sources */,

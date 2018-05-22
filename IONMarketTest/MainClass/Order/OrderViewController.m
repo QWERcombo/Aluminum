@@ -105,9 +105,6 @@
 }
 
 
-
-
-
 #pragma mark --- UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -132,6 +129,9 @@
         if ([clueDic[@"key"] isEqualToString:@"  取消订单  "]) {
             [weakself cancelOrder:model.no withIndexPath:indexPath];
         }
+        if ([clueDic[@"key"] isEqualToString:@"  确认收货  "]) {
+            [self confirmProduct:model.no withIndexPath:indexPath];
+        }
     }];
 }
 
@@ -150,7 +150,6 @@
 
 
 #pragma mark ----- Action
-
 - (void)buttonCliker:(UIButton *)sender {
 //    NSLog(@"%@", sender.currentTitle);
     [sender setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
@@ -173,6 +172,7 @@
     }
     [self loadHeaderNewData];
 }
+
 
 #pragma mark ----- DataSource
 
@@ -259,7 +259,22 @@
     
 }
 
-
+//确认收货
+- (void)confirmProduct:(NSString *)orderNo withIndexPath:(NSIndexPath *)indexpath {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:orderNo forKey:@"no"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_ConfirmComplete andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0 aboutType:WHShowViewMode_Text state:YES];
+        [self.dataMuArr removeObjectAtIndex:indexpath.row];
+        [self.tabView reloadData];
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
+    
+}
 
 
 

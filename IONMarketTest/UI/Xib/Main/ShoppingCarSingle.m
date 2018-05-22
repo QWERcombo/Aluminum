@@ -25,6 +25,23 @@
 }
 
 
+- (void)beginPayUserWeixiWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:orderId forKey:@"orderId"];
+//    [dict setValue:totalfee forKey:@"totalfee"]; //不能带小数点
+    [dict setValue:@"1" forKey:@"totalfee"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WeixinPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        [self weixinPay:resultDic];
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+   
+}
+
 
 - (void)weixinPay:(NSDictionary *)resultDic {
     

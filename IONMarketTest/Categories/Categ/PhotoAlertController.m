@@ -24,14 +24,14 @@
     
     photoAC.pickerImageBlock = pickerImageBlock;
     
-    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 
         [rootViewController userCamera:^{
             [photoAC selectImageFromCamera];
         }];
         
     }];
-    UIAlertAction *album = [UIAlertAction actionWithTitle:@"Choose From Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *album = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         [rootViewController userCamera:^{
             [photoAC selectImageFromAlbum];

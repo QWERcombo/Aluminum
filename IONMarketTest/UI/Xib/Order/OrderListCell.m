@@ -82,13 +82,20 @@
     self.orderIDLabel.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
     switch ([dataM.status integerValue]) {
         case 0:
-            [self.statusButton setTitle:@"待付款" forState:UIControlStateNormal];
+            [self.statusButton setTitle:@"待付款" forState:UIControlStateNormal];            
             break;
         case 1:
             [self.statusButton setTitle:@"待收货" forState:UIControlStateNormal];
+            [self.zhifuBtn setTitle:@"  确认收货  " forState:UIControlStateNormal];
+            [self.quxiaoBtn setTitle:@"  材质证明下载  " forState:UIControlStateNormal];
+            self.caizhiBtn.hidden = YES;
             break;
         case 2:
             [self.statusButton setTitle:@"已完成" forState:UIControlStateNormal];
+            [self.zhifuBtn setTitle:@"  材质证明下载  " forState:UIControlStateNormal];
+            self.caizhiBtn.hidden = YES;
+            self.quxiaoBtn.hidden = YES;
+            
             break;
         default:
             break;

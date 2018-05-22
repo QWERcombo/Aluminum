@@ -118,7 +118,18 @@
 //分页获取铝锭价列表
 #define Interface_PricePageList   @"pricePageList"
 
-
+//微信充值钱包
+#define Interface_wxChongzhi   @"user/wxChongzhi"
+//查看钱包充值列表
+#define Interface_qianbaoChongZhiList   @"user/qianbaoChongZhiList"
+//查看用户钱包余额
+#define Interface_getQianBao   @"user/getQianBao"
+//钱包消费记录
+#define Interface_qianBaoBillList   @"user/qianBaoBillList"
+//个人申请提现
+#define Interface_withdrawSave   @"user/withdrawSave"
+//个人钱包提现列表
+#define Interface_withdrawList   @"user/withdrawList"
 
 
 

@@ -12,7 +12,7 @@
 #import "InputViewController.h"
 
 @interface WalletViewController ()
-
+@property (nonatomic, copy) NSString *remain;
 @end
 
 @implementation WalletViewController
@@ -21,6 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupSubviews];
+    [self getDataSource];
+    [self getWalletRemaind];
 }
 
 - (void)setupSubviews {
@@ -71,12 +73,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section==1?10:0;
+    return section==1?self.dataMuArr.count:0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold creatCell:@"WallentListCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
-        
+    
+    return [UtilsMold creatCell:@"WallentListCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
     }];
 }
 
@@ -134,7 +136,7 @@
     }];
     termButton.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);
     
-    UILabel *remainLab = [UILabel lableWithText:@"564.25 元" Font:FONT_ArialMT(25) TextColor:[UIColor mianColor:2]];
+    UILabel *remainLab = [UILabel lableWithText:[NSString stringWithFormat:@"%@元", self.remain] Font:FONT_ArialMT(25) TextColor:[UIColor mianColor:2]];
     [topView addSubview:remainLab];
     [remainLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(topView.mas_centerY).offset(15);
@@ -159,14 +161,14 @@
         make.left.right.bottom.equalTo(downView);
     }];
     
-    UILabel *label3 = [UILabel lableWithText:@"交易明细" Font:FONT_ArialMT(17) TextColor:[UIColor mianColor:3]];
+    UILabel *label3 = [UILabel lableWithText:@"交易明细" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:3]];
     [downView addSubview:label3];
     [label3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(downView.mas_centerY);
         make.left.equalTo(downView.mas_left).offset(10);
     }];
     
-    UIButton *paywayButton = [UIButton buttonWithTitle:@"查看全部" andFont:FONT_ArialMT(17) andtitleNormaColor:[UIColor mianColor:3] andHighlightedTitle:[UIColor mianColor:3] andNormaImage:nil andHighlightedImage:nil];
+    UIButton *paywayButton = [UIButton buttonWithTitle:@"查看全部" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:3] andHighlightedTitle:[UIColor mianColor:3] andNormaImage:nil andHighlightedImage:nil];
     [paywayButton setImage:IMG(@"image_more") forState:UIControlStateNormal];
     [paywayButton addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
     [downView addSubview:paywayButton];
@@ -209,10 +211,45 @@
 
 #pragma mark ----- DataSource
 
+//消费记录
 - (void)getDataSource {
     
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+    [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+    [dataDic setValue:@"1" forKey:@"pageNum"];
+    [dataDic setValue:@"20" forKey:@"pageSize"];
     
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_qianbaoChongZhiList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        NSArray *dataArray = resultDic[@"result"];
+        
+        for (NSDictionary *dict in dataArray) {
+            
+            WalletListModel *model = [[WalletListModel alloc] initWithDictionary:dict error:nil];
+            
+            [self.dataMuArr addObject:model];
+        }
+        
+        [self.tabView reloadData];
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
     
+}
+
+//钱包余额
+- (void)getWalletRemaind {
+    
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+    [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_getQianBao andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        NSString *money = [NSString stringWithFormat:@"%@", resultDic[@"money"]];
+        self.remain = money.length?money:@"";
+        [self.tabView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
 }
 
 

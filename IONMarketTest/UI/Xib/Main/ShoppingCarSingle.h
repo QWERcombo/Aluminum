@@ -16,6 +16,9 @@
 
 + (ShoppingCarSingle *)sharedShoppingCarSingle;
 
-- (void)weixinPay:(NSDictionary *)resultDic;
+//微信支付
+- (void)beginPayUserWeixiWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee;
+
+
 
 @end

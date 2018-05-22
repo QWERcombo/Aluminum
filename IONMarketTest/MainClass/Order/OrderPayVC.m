@@ -35,17 +35,8 @@
         return;
     }
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:self.orderModel.id forKey:@"orderId"];
-    [dict setValue:self.orderModel.money forKey:@"totalfee"];
+    [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:self.orderModel.id andTotalfee:self.orderModel.money];
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WeixinPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        
-        [[ShoppingCarSingle sharedShoppingCarSingle] weixinPay:resultDic];
-        
-    } failure:^(NSString *error, NSInteger code) {
-        
-    }];
 }
 
 - (IBAction)choosePayWay:(UIButton *)sender {
@@ -53,7 +44,6 @@
     [ChoosePayWayView showSelfWithBlock:^(NSString *value) {
 //        NSLog(@"---%@", value);
         self.payWayLab.text = value;
-        
     }];
     
 }

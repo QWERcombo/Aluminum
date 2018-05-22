@@ -32,8 +32,19 @@
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
     
-    
-    
+    WalletListModel *dataM = (WalletListModel *)model;
+    self.orderID.text = [NSString stringWithFormat:@"购买订单编号: %@", dataM.no];
+    self.dateLab.text = [self getDateString:dataM.createDate];
+    self.countLab.text = dataM.money;
 }
+
+- (NSString *)getDateString:(NSString *)string {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd hh:mm:ss";
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[string integerValue]/1000.0];
+    return [formatter stringFromDate:date];
+}
+
 
 @end

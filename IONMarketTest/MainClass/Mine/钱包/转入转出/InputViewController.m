@@ -50,26 +50,13 @@
     
     [self.view addSubview:mainView];
     
-    
 }
-
-
-
 
 
 - (void)explainButtonCliker:(UIButton *)sender {
     NSLog(@"%@", sender.currentTitle);
-    
-    
 }
 
-
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 /*
 #pragma mark - Navigation
@@ -80,5 +67,8 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 @end
