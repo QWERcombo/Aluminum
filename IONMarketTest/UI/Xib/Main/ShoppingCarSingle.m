@@ -25,20 +25,40 @@
 }
 
 
-- (void)beginPayUserWeixiWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee {
+- (void)beginPayUserWeixiWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(weixinPayMode)mode   {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:orderId forKey:@"orderId"];
-//    [dict setValue:totalfee forKey:@"totalfee"]; //不能带小数点
-    [dict setValue:@"1" forKey:@"totalfee"];
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WeixinPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    if (mode == weixinPayMode_order) {
         
-        [self weixinPay:resultDic];
+        [dict setValue:orderId forKey:@"orderId"];
+//        [dict setValue:totalfee forKey:@"totalfee"]; //不能带小数点
+        [dict setValue:@"1" forKey:@"totalfee"];
         
-    } failure:^(NSString *error, NSInteger code) {
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WeixinPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            [self weixinPay:resultDic];
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
         
-    }];
+    }
+    if (mode == weixinPayMode_wallet) {
+        
+        [dict setValue:[UserData currentUser].id forKey:@"userId"];
+        //    [dict setValue:totalfee forKey:@"totalfee"]; //不能带小数点
+        [dict setValue:@"1" forKey:@"totalfee"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_wxChongzhi andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            [self weixinPay:resultDic];
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+        
+    }
    
 }
 

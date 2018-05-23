@@ -135,7 +135,8 @@
 #define Interface_updateUser   @"user/updateUser"
 //修改密码
 #define Interface_changePassword   @"user/changePassword"
-
+//图片下单
+#define Interface_savePicOrder   @"user/savePicOrder"
 
 
 

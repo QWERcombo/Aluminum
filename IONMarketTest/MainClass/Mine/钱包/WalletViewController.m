@@ -17,12 +17,17 @@
 
 @implementation WalletViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self.dataMuArr removeAllObjects];
+    [self getDataSource];
+    [self getWalletRemaind];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupSubviews];
-    [self getDataSource];
-    [self getWalletRemaind];
 }
 
 - (void)setupSubviews {
@@ -187,12 +192,12 @@
 
 #pragma mark ----- Action
 - (void)inputCliker:(UIButton *)sender {
-    InputViewController *input = [InputViewController new];
+    InputViewController *input = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"InputViewController"];
     input.mode_way = Mode_Input;
     [self.navigationController pushViewController:input animated:YES];
 }
 - (void)outputCliker:(UIButton *)sender {
-    InputViewController *input = [InputViewController new];
+    InputViewController *input = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"InputViewController"];
     input.mode_way = Mode_Output;
     [self.navigationController pushViewController:input animated:YES];
 }

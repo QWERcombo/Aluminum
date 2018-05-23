@@ -148,6 +148,12 @@ return __singleton__; \
 #define Service_TELL  @"027-87313758"
 
 
+//钱包微信充值
+#define WEIXIN_PAY_TO_WALLET        @"weixinPayToWallet"
+//订单微信支付
+
+
+
 /**
  *屏幕尺寸相关
  */

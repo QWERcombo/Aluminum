@@ -35,7 +35,7 @@
         return;
     }
     
-    [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:self.orderModel.id andTotalfee:self.orderModel.money];
+    [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:self.orderModel.id andTotalfee:self.orderModel.money userPayMode:weixinPayMode_order];
     
 }
 

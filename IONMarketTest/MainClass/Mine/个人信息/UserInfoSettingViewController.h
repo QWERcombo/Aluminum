@@ -8,6 +8,16 @@
 
 #import "BaseViewController.h"
 
+typedef enum : NSUInteger {
+    UpdateMode_name,
+    UpdateMode_company,
+    UpdateMode_role,
+} UpdateMode;
+
 @interface UserInfoSettingViewController : BaseViewController
+
+@property (nonatomic, assign) UpdateMode updateMode;
+
+@property (nonatomic, copy) void(^passValueBlock)(NSString *value);
 
 @end
