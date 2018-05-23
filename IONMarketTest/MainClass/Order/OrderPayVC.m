@@ -35,7 +35,15 @@
         return;
     }
     
-    [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:self.orderModel.id andTotalfee:self.orderModel.money userPayMode:weixinPayMode_order];
+    if ([self.payWayLab.text isEqualToString:@"微信支付"]) {
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:self.orderModel.no andTotalfee:self.orderModel.money userPayMode:weixinPayMode_order];
+    }
+    if ([self.payWayLab.text isEqualToString:@"钱包支付"]) {
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWalletWithOrderId:self.orderModel.id andTotalfee:self.orderModel.money];
+    }
+    if ([self.payWayLab.text isEqualToString:@"白条支付"]) {
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:self.orderModel.no andTotalfee:self.orderModel.money];
+    }
     
 }
 

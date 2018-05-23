@@ -25,6 +25,10 @@ typedef enum : NSUInteger {
 //微信支付
 - (void)beginPayUserWeixiWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(weixinPayMode)mode;
 
+//钱包支付
+- (void)beginPayUserWalletWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee;
 
+//白条支付
+- (void)beginPayUserWhiteBarWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee;
 
 @end

@@ -138,6 +138,13 @@
 //图片下单
 #define Interface_savePicOrder   @"user/savePicOrder"
 
+//白条支付
+#define Interface_baitiaoPay   @"user/baitiaoPay"
+//钱包支付
+#define Interface_qianbaoPay   @"user/qianbaoPay"
+
+
+
 
 
 #endif /* InterfaceDefines_h */
