@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.titleArr = @[@"",@"",@"钱包",@"白条",@"开票",@"企业认证",@"",@"收货地址",@"分享推广",@"设置"];
+    self.titleArr = @[@"用户信息",@"",@"钱包",@"白条",@"开票",@"企业认证",@"",@"收货地址",@"分享推广",@"设置"];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.userName.text = [UserData currentUser].phone;
     self.userRole.text = @"未认证";
@@ -40,33 +40,30 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    NSArray *classArray = @[[UserInfoViewController class],@"",[WalletViewController class],[WhiteBarViewController class],[TicketViewController class],[AuthenticationTableViewController class],@"",[AddressViewController class],[ShareViewController class],[SettingTableViewController class]];
     
-    if (indexPath.row == 5 || indexPath.row == 8) {
-        if (indexPath.row == 8) {
-            ShareViewController *share = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ShareVC"];
-            [self.navigationController pushViewController:share animated:YES];
-        }
-        if (indexPath.row == 5) {
-            AuthenticationTableViewController *auth = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthenVC"];
-            [self.navigationController pushViewController:auth animated:YES];
-        }
-    } else {
-        
-        NSArray *classArray = @[@"",@"",[WalletViewController class],[WhiteBarViewController class],[TicketViewController class],[AuthenticationTableViewController class],@"",[AddressViewController class],[ShareViewController class],[SettingTableViewController class]];
-        
-        if (indexPath.row == 10) {
-            NSString *callPhone = [NSString stringWithFormat:@"telprompt://%@", @"13372118858"];
-            if (@available(iOS 10.0, *)) {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone] options:@{} completionHandler:nil];
-            } else {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone]];
-            }
-            
+    if (indexPath.row == 10) {
+        NSString *callPhone = [NSString stringWithFormat:@"telprompt://%@", @"13372118858"];
+        if (@available(iOS 10.0, *)) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone] options:@{} completionHandler:nil];
         } else {
-            UIViewController *nextController = (UIViewController *)[[NSClassFromString(NSStringFromClass([classArray objectAtIndex:indexPath.row])) alloc] init];
-            nextController.title = [self.titleArr objectAtIndex:indexPath.row];
-            [self.navigationController pushViewController:nextController animated:YES];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone]];
         }
+    } else if (indexPath.row == 0) {
+        UserInfoViewController *userInfo = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"UserInfoViewController"];
+        userInfo.title = [self.titleArr objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:userInfo animated:YES];
+    } else if (indexPath.row == 5) {
+        AuthenticationTableViewController *auth = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthenVC"];
+        [self.navigationController pushViewController:auth animated:YES];
+    } else if (indexPath.row == 8) {
+        ShareViewController *share = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ShareVC"];
+        [self.navigationController pushViewController:share animated:YES];
+    } else {
+        UIViewController *nextController = (UIViewController *)[[NSClassFromString(NSStringFromClass([classArray objectAtIndex:indexPath.row])) alloc] init];
+        nextController.title = [self.titleArr objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:nextController animated:YES];
     }
     
 }

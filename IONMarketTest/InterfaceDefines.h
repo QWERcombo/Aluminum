@@ -131,9 +131,10 @@
 //个人钱包提现列表
 #define Interface_withdrawList   @"user/withdrawList"
 
-
-
-
+//修改用户信息
+#define Interface_updateUser   @"user/updateUser"
+//修改密码
+#define Interface_changePassword   @"user/changePassword"
 
 
 

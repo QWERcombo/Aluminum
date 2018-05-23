@@ -10,6 +10,11 @@
 #import "UserInfoSettingViewController.h"
 
 @interface UserInfoViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *userHeader;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UILabel *userPhone;
+@property (weak, nonatomic) IBOutlet UILabel *userCompany;
+@property (weak, nonatomic) IBOutlet UILabel *userRole;
 
 @end
 
@@ -18,52 +23,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = self.titleStr;
-    self.dataMuArr = [NSMutableArray arrayWithArray:@[@"头像",@"姓名",@"电话",@"公司",@"职位",@"绑定QQ",@"绑定微信"]];
-    [self setSubviews];
-}
-
-- (void)setSubviews {
-    self.tabView.backgroundColor = [UIColor mianColor:1];
-    [self.view addSubview:self.tabView];
-    [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.bottom.equalTo(self.view);
-    }];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.userName.text = [UserData currentUser].nickname;
+    self.userRole.text = [UserData currentUser].zhiwei;
+    self.userCompany.text = [UserData currentUser].company;
+    self.userPhone.text = [UserData currentUser].phone;
+    [self.userHeader sd_setImageWithURL:[NSURL URLWithString:[UserData currentUser].headImgUrl] placeholderImage:IMG(@"empty_image")];
+    self.userHeader.layer.masksToBounds = YES;
+    self.userHeader.layer.cornerRadius = 20;
 }
 
 #pragma mark --- Delegate&DataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataMuArr.count;
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    UserInfoSettingViewController *setting = [UserInfoSettingViewController new];
+//    [self.navigationController pushViewController:setting animated:YES];
+//}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *IDs = @"cell";
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:IDs];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.textColor = [UIColor mianColor:2];
-    cell.textLabel.text = [self.dataMuArr objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [self.dataMuArr objectAtIndex:indexPath.row];
-    UIView *line = [[UIView alloc] init];
-    [cell.contentView addSubview:line];
-    line.backgroundColor = [UIColor mianColor:1];
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@(1));
-        make.left.bottom.equalTo(cell.contentView);
-        make.right.equalTo(cell.contentView.mas_right).offset(50);
-    }];
-    return cell;
-}
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UserInfoSettingViewController *setting = [UserInfoSettingViewController new];
-    [self.navigationController pushViewController:setting animated:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 /*
 #pragma mark - Navigation
@@ -74,5 +50,8 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 @end

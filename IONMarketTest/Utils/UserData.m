@@ -26,6 +26,19 @@
         _headImgUrl=[aDecoder decodeObjectForKey:@"headImgUrl"];
         _phone=[aDecoder decodeObjectForKey:@"phone"];
         
+        _name=[aDecoder decodeObjectForKey:@"name"];
+        _no=[aDecoder decodeObjectForKey:@"no"];
+        _nickname=[aDecoder decodeObjectForKey:@"nickname"];
+        _jingyingmoshi=[aDecoder decodeObjectForKey:@"jingyingmoshi"];
+        _tuijianren=[aDecoder decodeObjectForKey:@"tuijianren"];
+        _tuijianrendianhua=[aDecoder decodeObjectForKey:@"tuijianrendianhua"];
+        _openid=[aDecoder decodeObjectForKey:@"openid"];
+        _remark=[aDecoder decodeObjectForKey:@"remark"];
+        _renzheng=[aDecoder decodeObjectForKey:@"renzheng"];
+        _renzhengTime=[aDecoder decodeObjectForKey:@"renzhengTime"];
+        _xiaofeishang=[aDecoder decodeObjectForKey:@"xiaofeishang"];
+        _zhiwei=[aDecoder decodeObjectForKey:@"zhiwei"];
+        
     }
     return self;
 }
@@ -41,6 +54,19 @@
     if(_deleted) [aCoder encodeObject:_deleted forKey:@"deleted"];
     if(_headImgUrl) [aCoder encodeObject:_headImgUrl forKey:@"headImgUrl"];
     if(_phone) [aCoder encodeObject:_phone forKey:@"phone"];
+    
+    if(_name) [aCoder encodeObject:_name forKey:@"name"];
+    if(_no) [aCoder encodeObject:_no forKey:@"no"];
+    if(_nickname) [aCoder encodeObject:_nickname forKey:@"nickname"];
+    if(_zhiwei) [aCoder encodeObject:_zhiwei forKey:@"zhiwei"];
+    if(_xiaofeishang) [aCoder encodeObject:_xiaofeishang forKey:@"xiaofeishang"];
+    if(_renzheng) [aCoder encodeObject:_renzheng forKey:@"renzheng"];
+    if(_renzhengTime) [aCoder encodeObject:_renzhengTime forKey:@"renzhengTime"];
+    if(_remark) [aCoder encodeObject:_remark forKey:@"remark"];
+    if(_openid) [aCoder encodeObject:_openid forKey:@"openid"];
+    if(_tuijianren) [aCoder encodeObject:_tuijianren forKey:@"tuijianren"];
+    if(_tuijianrendianhua) [aCoder encodeObject:_tuijianrendianhua forKey:@"tuijianrendianhua"];
+    if(_jingyingmoshi) [aCoder encodeObject:_jingyingmoshi forKey:@"jingyingmoshi"];
  }
 
 -(void)giveData:(NSDictionary *)dic{

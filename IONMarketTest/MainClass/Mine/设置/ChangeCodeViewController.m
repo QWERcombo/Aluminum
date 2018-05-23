@@ -8,14 +8,11 @@
 
 #import "ChangeCodeViewController.h"
 
-@interface ChangeCodeViewController ()<UITextFieldDelegate>
+@interface ChangeCodeViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *oldTF;
 @property (weak, nonatomic) IBOutlet UITextField *theNewTF;
 @property (weak, nonatomic) IBOutlet UITextField *confirmTF;
-
-@property (nonatomic, strong) NSMutableString *oldCode;
-@property (nonatomic, strong) NSMutableString *theNewCode;
-@property (nonatomic, strong) NSMutableString *confirmCode;
 
 @end
 
@@ -24,56 +21,42 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor mianColor:1];
-    self.oldCode = [NSMutableString string];
-    self.confirmCode = [NSMutableString string];
-    self.theNewCode = [NSMutableString string];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 
 
 #pragma mark --- tfdelegate
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if (textField==self.oldTF) {
-        [self.oldCode replaceCharactersInRange:range withString:string];
+- (IBAction)changeCode:(UIButton *)sender {
+    
+    if (!self.oldTF.text.length || !self.theNewTF.text.length || !self.confirmTF.text.length) {
+        
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请正确填写信息!" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return;
     }
     
-    if (textField==self.theNewTF) {
-        [self.theNewCode replaceCharactersInRange:range withString:string];
-    }
-    
-    if (textField==self.confirmTF) {
-        [self.confirmCode replaceCharactersInRange:range withString:string];
-    }
-    
-    return YES;
-}
-
-
-
-- (IBAction)changeCode:(id)sender {
-    
-    [self checkInputInfomation];
     
     __weak typeof(self) weakself = self;
     
     [[UtilsData sharedInstance] showAlertControllerWithTitle:@"提示" detail:@"是否确定修改密码" doneTitle:@"确定" cancelTitle:@"取消" haveCancel:YES doneAction:^{
         
-        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"修改成功!" time:2 aboutType:WHShowViewMode_Text state:YES];
+        NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+        [dataDic setValue:self.oldTF.text forKey:@"oldPassword"];
+        [dataDic setValue:self.theNewTF.text forKey:@"newPassword1"];
+        [dataDic setValue:self.confirmTF.text forKey:@"newPassword2"];
+        [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
         
-        [weakself.navigationController popViewControllerAnimated:YES];
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_changePassword andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"修改成功!" time:2 aboutType:WHShowViewMode_Text state:YES];
+            [weakself.navigationController popViewControllerAnimated:YES];
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
         
     } controller:self];
     
 }
 
-- (void)checkInputInfomation {
-    NSLog(@"%@", self.oldCode);
-    NSLog(@"%@", self.theNewCode);
-    NSLog(@"%@", self.confirmCode);
-    
-}
 
 
 - (void)didReceiveMemoryWarning {

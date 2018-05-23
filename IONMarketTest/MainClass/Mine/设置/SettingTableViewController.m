@@ -56,11 +56,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TextTableViewController *descri = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"TextTableViewController"];
-    ChangeCodeViewController *code = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ChangeCode"];
+    ChangeCodeViewController *code = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ChangeCodeViewController"];
     if (indexPath.row==0) {
         descri.title = [self.titleArr objectAtIndex:indexPath.row];
         [self.navigationController pushViewController:descri animated:YES];
     } else if (indexPath.row==1) {
+        code.title = [self.titleArr objectAtIndex:indexPath.row];
         [self.navigationController pushViewController:code animated:YES];
     } else if (indexPath.row==2) {
         [[UtilsData sharedInstance] showAlertControllerWithTitle:@"提示" detail:@"是否确定清理缓存" doneTitle:@"确定" cancelTitle:@"取消" haveCancel:YES doneAction:^{

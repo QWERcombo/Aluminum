@@ -15,16 +15,24 @@
 @property (nonatomic,strong)NSString        *company;//
 @property (nonatomic,strong)NSString        *balance;//
 @property (nonatomic,strong)NSString        *commission;//
-//@property (nonatomic,strong)NSString        *activeTime;//
-//@property (nonatomic,strong)NSString        *createDate;//
+@property (nonatomic,strong)NSString        *addressId;//
+@property (nonatomic,strong)NSString        *baitiao;//
 @property (nonatomic,strong)NSString        *deleted;//
 @property (nonatomic,strong)NSString        *headImgUrl;//
 @property (nonatomic,strong)NSString        *phone;
 
-
-
-
-
+@property (nonatomic,strong)NSString        *jingyingmoshi;
+@property (nonatomic,strong)NSString        *name;
+@property (nonatomic,strong)NSString        *no;
+@property (nonatomic,strong)NSString        *openid;
+@property (nonatomic,strong)NSString        *remark;
+@property (nonatomic,strong)NSString        *renzheng;
+@property (nonatomic,strong)NSString        *renzhengTime;
+@property (nonatomic,strong)NSString        *tuijianren;
+@property (nonatomic,strong)NSString        *tuijianrendianhua;
+@property (nonatomic,strong)NSString        *xiaofeishang;
+@property (nonatomic,strong)NSString        *zhiwei;
+@property (nonatomic,strong)NSString        *nickname;
 
 
 //赋值

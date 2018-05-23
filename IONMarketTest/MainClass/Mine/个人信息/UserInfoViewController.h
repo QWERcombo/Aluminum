@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface UserInfoViewController : BaseViewController
+@interface UserInfoViewController : UITableViewController
 
 @end
