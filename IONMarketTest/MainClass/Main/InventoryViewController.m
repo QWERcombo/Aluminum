@@ -95,6 +95,7 @@
             }
         }        
         
+        [self.view endEditing:YES];
         [self.tableView reloadData];
     } failure:^(NSString *error, NSInteger code) {
         [self.tableView.mj_footer endRefreshing];
