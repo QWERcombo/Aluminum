@@ -152,9 +152,8 @@
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [dict setValue:@"40" forKey:@"addressId"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderSave andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"buy: +++%@", resultDic);
         
-        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:1 aboutType:WHShowViewMode_Text state:YES];
+        [self getOrderDetail:resultDic[@"orderId"]];
         
     } failure:^(NSString *error, NSInteger code) {
         
@@ -224,6 +223,20 @@
 }
 
 
+- (void)getOrderDetail:(NSString *)orderId {
+    
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+    [dataDic setValue:orderId forKey:@"no"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_detailList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
+}
 
 /*
 #pragma mark - Navigation

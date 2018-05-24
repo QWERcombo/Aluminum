@@ -66,7 +66,7 @@
 - (void)getDataSource:(NSInteger)page_number {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:SINT(self.pageNumber) forKey:@"pageNum"];
-    [dict setValue:@"15" forKey:@"pageSize"];
+    [dict setValue:@"10" forKey:@"pageSize"];
     if (self.keyword.length) {
         [dict setValue:self.keyword forKey:@"xinghao"];
     }

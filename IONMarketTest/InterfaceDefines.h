@@ -142,8 +142,8 @@
 #define Interface_baitiaoPay   @"user/baitiaoPay"
 //钱包支付
 #define Interface_qianbaoPay   @"user/qianbaoPay"
-
-
+//订单详情
+#define Interface_detailList   @"user/detailList"
 
 
 
