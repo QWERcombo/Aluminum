@@ -88,8 +88,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.SelectAddressBlock) {
         self.SelectAddressBlock([self.dataMuArr objectAtIndex:indexPath.row]);
+        [self.navigationController popViewControllerAnimated:YES];
     }
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)applyCliker:(UIButton *)sender {

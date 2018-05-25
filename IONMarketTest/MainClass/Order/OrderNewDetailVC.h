@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface OrderNewDetailVC : UITableViewController
-@property (nonatomic, strong) OrderModel *orderModel;
+@property (nonatomic, strong) NSString *orderid;
 @end

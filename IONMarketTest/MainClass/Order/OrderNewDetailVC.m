@@ -14,10 +14,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLab;
 @property (weak, nonatomic) IBOutlet UILabel *orderNo;
 @property (weak, nonatomic) IBOutlet UILabel *orderDate;
-@property (weak, nonatomic) IBOutlet UILabel *infoLab;
-@property (weak, nonatomic) IBOutlet UILabel *priceLab;
-@property (weak, nonatomic) IBOutlet UILabel *amountLab;
 
+
+@property (nonatomic, strong) OrderModel *orderModel;
 
 @end
 
@@ -26,19 +25,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.addressLab.text = self.orderModel.address;
-    self.nameLab.text = [NSString stringWithFormat:@"%@", self.orderModel.currentAddress[@"name"]];
-    self.phoneLab.text = self.orderModel.userPhone;
-    self.orderNo.text = self.orderModel.no;
-    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
-    dateformatter.dateFormat = @"yyyy-MM-dd hh:mm:ss";
-    self.orderDate.text = [dateformatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.orderModel.createDate integerValue]]];
-    self.infoLab.text = [NSString stringWithFormat:@"%@/%@", self.orderModel.zhonglei, self.orderModel.type];
-    self.priceLab.text = [NSString stringWithFormat:@"%@元", self.orderModel.money];
-    self.amountLab.text = self.orderModel.productNum;
-    
+//    self.addressLab.text = self.orderModel.address;
+//    self.nameLab.text = [NSString stringWithFormat:@"%@", self.orderModel.currentAddress[@"name"]];
+//    self.phoneLab.text = self.orderModel.userPhone;
+//    self.orderNo.text = self.orderModel.no;
+//    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
+//    dateformatter.dateFormat = @"yyyy-MM-dd hh:mm:ss";
+//    self.orderDate.text = [dateformatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.orderModel.createDate integerValue]]];
+//    self.infoLab.text = [NSString stringWithFormat:@"%@/%@", self.orderModel.zhonglei, self.orderModel.type];
+//    self.priceLab.text = [NSString stringWithFormat:@"%@元", self.orderModel.money];
+//    self.amountLab.text = self.orderModel.productNum;
+    [self getOrderDetail:self.orderid];
 }
 
+
+- (void)getOrderDetail:(NSString *)orderId {
+    
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+    [dataDic setValue:orderId forKey:@"no"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_detailList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        NSLog(@"___===%@", resultDic);
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
+}
 
 #pragma mark - Table view data source
 /*

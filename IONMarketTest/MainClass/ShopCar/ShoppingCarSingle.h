@@ -13,11 +13,15 @@ typedef enum : NSUInteger {
     weixinPayMode_wallet,
 } weixinPayMode;
 
+
+typedef void(^getAmountTotalfeeBlock)(NSString *amout, NSString *totalfee);
+
+
 @interface ShoppingCarSingle : NSObject
 
-@property (nonatomic, strong) NSMutableArray *shopCarDataSource; //数据
-@property (nonatomic, copy) NSNumber *totalPrice; //总价
-@property (nonatomic, assign) NSInteger totalbadge; //角标
+//@property (nonatomic, strong) NSMutableArray *shopCarDataSource; //数据
+//@property (nonatomic, copy) NSNumber *totalPrice; //总价
+@property (nonatomic, copy) getAmountTotalfeeBlock amoutBlock; //角标
 @property (nonatomic, assign) weixinPayMode payMode;
 
 + (ShoppingCarSingle *)sharedShoppingCarSingle;
@@ -30,5 +34,10 @@ typedef enum : NSUInteger {
 
 //白条支付
 - (void)beginPayUserWhiteBarWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee;
+
+//获取购物车数量和总价
+- (void)getServerShopCarAmountAndTotalfee:(getAmountTotalfeeBlock)block;
+
+
 
 @end

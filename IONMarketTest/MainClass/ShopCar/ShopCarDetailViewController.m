@@ -237,9 +237,9 @@
         //刷新购物车列表
         [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshNewData" object:nil];
         //重置购物车信息
-        [ShoppingCarSingle sharedShoppingCarSingle].totalbadge = 0;
-        [ShoppingCarSingle sharedShoppingCarSingle].totalPrice = @0;
-        
+//        [ShoppingCarSingle sharedShoppingCarSingle].totalbadge = 0;
+//        [ShoppingCarSingle sharedShoppingCarSingle].totalPrice = @0;
+//        
         [self.navigationController popToRootViewControllerAnimated:YES];
         
     } failure:^(NSString *error, NSInteger code) {

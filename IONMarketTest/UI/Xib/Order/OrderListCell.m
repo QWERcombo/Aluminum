@@ -77,7 +77,7 @@
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
     _clikerBlock = click;
-    OrderModel *dataM = (OrderModel *)model;
+    OrderListModel *dataM = (OrderListModel *)model;
     
     self.orderIDLabel.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
     switch ([dataM.status integerValue]) {
@@ -100,11 +100,12 @@
         default:
             break;
     }
-    self.productPrice.text = [NSString stringWithFormat:@"产品: %@元", dataM.money];
+    OrderListDetailModel *dataD = [dataM.detail firstObject];
+    self.productPrice.text = [NSString stringWithFormat:@"产品: %@元", dataD.money];
     self.expressPrice.text = [NSString stringWithFormat:@"物流费: %@元", dataM.wuliufei];
     
-    self.zhengbanLabel.text = [NSString stringWithFormat:@"%@(%@)*%@", dataM.zhonglei, dataM.type, dataM.productNum];
-    self.totalPrice.text = [NSString stringWithFormat:@"%@元", dataM.money];
+    self.zhengbanLabel.text = [NSString stringWithFormat:@"%@ * %@", dataD.zhonglei, dataD.productNum];
+    self.totalPrice.text = [NSString stringWithFormat:@"%@元", dataD.money];
     
 }
 

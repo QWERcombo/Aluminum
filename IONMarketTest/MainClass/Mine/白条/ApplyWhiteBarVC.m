@@ -14,6 +14,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *farenImage;
 @property (weak, nonatomic) IBOutlet UIImageView *yinhangImage;
 @property (weak, nonatomic) IBOutlet UIImageView *hetongImage;
+@property (weak, nonatomic) IBOutlet UILabel *shenhe1;
+@property (weak, nonatomic) IBOutlet UILabel *shenhe2;
+@property (weak, nonatomic) IBOutlet UILabel *shenhe3;
+@property (weak, nonatomic) IBOutlet UILabel *shenhe4;
 
 @end
 

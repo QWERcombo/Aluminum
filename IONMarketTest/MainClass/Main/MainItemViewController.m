@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIScrollView *sctollView;
 @property (nonatomic, strong) NSString *typeStr;//种类
 @property (nonatomic, strong) NSString *xinghaoStr;//型号
+//@property (nonatomic, strong) NSString *xinghaoStr;//型号
 @property (nonatomic, strong) MainModel *mainM;
 @property (nonatomic, strong) NSString *getOrderType;// 快速(整只) 优切(拼切)
 @property (nonatomic, copy) void(^passValue)(NSString *value);//选择数据
@@ -30,9 +31,7 @@
 @property (nonatomic, strong) NSString *orderMoney; // 订单金额
 @property (nonatomic, strong) NSString *erjimulu; // 加入购物车和直接购买接口传
 @property (nonatomic, strong) NSString *orderWeight; // 订单重量
-//@property (nonatomic, assign) float totalMoney;  //购物车总价
-@property (nonatomic, assign) float singleMoney;  //购物车总价
-@property (nonatomic, assign) NSInteger totalBadge;  //购物车总个数
+
 @end
 
 #define ITEM_WIDTH  60
@@ -224,7 +223,6 @@
                 single.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             }
             
-            weakself.singleMoney = [priceValue floatValue];
             single.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -293,7 +291,6 @@
                 pole.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             }
             
-            weakself.singleMoney += [priceValue floatValue];
             pole.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -371,7 +368,6 @@
                 tube.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             }
 
-            weakself.singleMoney += [priceValue floatValue];
             tube.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -445,7 +441,6 @@
                 matter.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             }
 
-            weakself.singleMoney += [priceValue floatValue];
             matter.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
         };
         
@@ -494,12 +489,15 @@
     }];
     [radiusButton addTarget:self action:@selector(addToShopCar:) forControlEvents:UIControlEventTouchUpInside];
     [radiusButton setImage:IMG(@"Shop_car") forState:UIControlStateNormal];
-    radiusButton.badgeValue = SINT([ShoppingCarSingle sharedShoppingCarSingle].totalbadge);
     radiusButton.badgeFont = FONT_ArialMT(13);
     radiusButton.badgeBGColor = [UIColor mianColor:2];
     radiusButton.badgeOriginX = 35;
     
-    priceLabel = [UILabel lableWithText:[NSString stringWithFormat:@"￥%@", [ShoppingCarSingle sharedShoppingCarSingle].totalPrice?[ShoppingCarSingle sharedShoppingCarSingle].totalPrice:@0.00] Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
+    priceLabel = [UILabel lableWithText:@"" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
+    [[ShoppingCarSingle sharedShoppingCarSingle] getServerShopCarAmountAndTotalfee:^(NSString *amout, NSString *totalfee) {
+        priceLabel.text = totalfee;
+        radiusButton.badgeValue = amout;
+    }];
     [bottomView addSubview:priceLabel];
     [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(radiusButton.mas_right).offset(10);
@@ -570,7 +568,7 @@
     [dict setValue:self.getOrderType forKey:@"type"];
     [dict setValue:self.mainM.shuliang forKey:@"amount"];
     [dict setValue:self.typeStr forKey:@"zhonglei"];
-    [dict setValue:self.xinghaoStr forKey:@"erjimulu"];
+    [dict setValue:self.erjimulu forKey:@"erjimulu"];
     [dict setValue:self.orderMoney forKey:@"money"];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [dict setValue:@"40" forKey:@"addressId"];
@@ -600,7 +598,6 @@
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderSave andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"buy: +++%@", resultDic);
         
-//        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:1 aboutType:WHShowViewMode_Text state:YES];
         
     } failure:^(NSString *error, NSInteger code) {
         
@@ -652,10 +649,8 @@
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveToGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"car: +++%@", resultDic);
-        [ShoppingCarSingle sharedShoppingCarSingle].totalbadge += 1;
-        [ShoppingCarSingle sharedShoppingCarSingle].totalPrice = [NSNumber numberWithFloat:(self.singleMoney+[ShoppingCarSingle sharedShoppingCarSingle].totalPrice.floatValue)];
+
         [self refreshBottomViewInfo];
-        
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:1 aboutType:WHShowViewMode_Text state:YES];
         
     } failure:^(NSString *error, NSInteger code) {
@@ -929,9 +924,11 @@
 
 //刷新底部信息
 - (void)refreshBottomViewInfo {
-    priceLabel.text = [NSString stringWithFormat:@"%@",[ShoppingCarSingle sharedShoppingCarSingle].totalPrice];
-    radiusButton.badgeValue = SINT([ShoppingCarSingle sharedShoppingCarSingle].totalbadge);
-    self.singleMoney = 0;
+    
+    [[ShoppingCarSingle sharedShoppingCarSingle] getServerShopCarAmountAndTotalfee:^(NSString *amout, NSString *totalfee) {
+        priceLabel.text = totalfee;
+        radiusButton.badgeValue = amout;
+    }];
     
     self.isGetOrderMoney = NO;
     self.getOrderType = @"";

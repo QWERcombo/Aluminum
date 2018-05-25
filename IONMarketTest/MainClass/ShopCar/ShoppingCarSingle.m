@@ -18,7 +18,7 @@
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         shoppingCarSingle = [[self alloc] init];
-        shoppingCarSingle.shopCarDataSource = [NSMutableArray array];
+//        shoppingCarSingle.shopCarDataSource = [NSMutableArray array];
     });
     
     return shoppingCarSingle;
@@ -133,6 +133,29 @@
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_baitiaoPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
+}
+
+
+- (void)getServerShopCarAmountAndTotalfee:(getAmountTotalfeeBlock)block {
+    
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+    [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_countGouwucheByUser andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        NSArray *array = resultDic[@"result"];
+        NSDictionary *dict = [array firstObject];
+        NSString *count = [NSString stringWithFormat:@"%@", dict[@"count"]];
+        NSString *totalMoney = [NSString stringWithFormat:@"%@元", dict[@"totalMoney"]];
+        
+        if (block) {
+            block(count.length?count:@"",totalMoney.length?totalMoney:@"");
+        }
         
     } failure:^(NSString *error, NSInteger code) {
         

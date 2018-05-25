@@ -125,8 +125,7 @@
         switch (resp.errCode) {
             case 0:
                 payResoult = @"支付结果：成功！";
-                [ShoppingCarSingle sharedShoppingCarSingle].totalbadge = 0;
-                [ShoppingCarSingle sharedShoppingCarSingle].totalPrice = @0;
+                
                 
                 //微信钱包充值
                 [[NSNotificationCenter defaultCenter] postNotificationName:WEIXIN_PAY_TO_WALLET object:nil];

@@ -112,7 +112,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    OrderModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
+    OrderListModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
     __weak typeof(self) weakself = self;
     
     return [UtilsMold creatCell:@"OrderListCell" table:tableView deledate:self model:model data:nil andCliker:^(NSDictionary *clueDic) {
@@ -143,8 +143,8 @@
 //    OrderDetailViewController *detail_o = [OrderDetailViewController new];
 //    [self.navigationController pushViewController: detail_o animated:YES];
     OrderNewDetailVC *detail = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderNewDetailVC"];
-    OrderModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
-    detail.orderModel = model;
+    OrderListModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
+    detail.orderid = model.no;
     [self.navigationController pushViewController:detail animated:YES];
 }
 
@@ -199,7 +199,12 @@
         if (page_number == 1) {
             [self.dataMuArr removeAllObjects];
             for (NSDictionary *dict in dataSourceArr) {
-                OrderModel *model = [[OrderModel alloc] initWithDictionary:dict error:nil];
+                OrderListModel *model = [[OrderListModel alloc] initWithDictionary:dict error:nil];
+                
+                NSArray *arr = dict[@"detail"];
+                OrderListDetailModel *ddd = [[OrderListDetailModel alloc] initWithDictionary:arr.firstObject error:nil];
+                model.detail = @[ddd];
+                
                 [self.dataMuArr addObject:model];
             }
             self.pageNumber = 1;
@@ -208,7 +213,12 @@
         } else {
             if (dataSourceArr.count) {
                 for (NSDictionary *dict in dataSourceArr) {
-                    OrderModel *model = [[OrderModel alloc] initWithDictionary:dict error:nil];
+                    OrderListModel *model = [[OrderListModel alloc] initWithDictionary:dict error:nil];
+                    
+                    NSArray *arr = dict[@"detail"];
+                    OrderListDetailModel *ddd = [[OrderListDetailModel alloc] initWithDictionary:arr.firstObject error:nil];
+                    model.detail = @[ddd];
+                    
                     [self.dataMuArr addObject:model];
                 }
                 self.pageNumber += 1;

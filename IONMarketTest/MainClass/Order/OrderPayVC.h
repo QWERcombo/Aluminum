@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface OrderPayVC : UIViewController
-@property (nonatomic, strong) OrderModel *orderModel;
+@property (nonatomic, strong) OrderListModel *orderModel;
 @end

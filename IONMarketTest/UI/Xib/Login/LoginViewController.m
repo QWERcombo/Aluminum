@@ -78,7 +78,7 @@
 
 //忘记密码
 - (IBAction)forgetAction:(UIButton *)sender {
-    NSLog(@"%@", sender.currentTitle);
+//    NSLog(@"%@", sender.currentTitle);
     RegisterTViewController *regist = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"RegisterTVC"];
     regist.registerType = @"forget";
     [self.navigationController pushViewController:regist animated:YES];
@@ -86,7 +86,7 @@
 
 //注册
 - (IBAction)registerAction:(UIButton *)sender {
-    NSLog(@"%@", sender.currentTitle);
+//    NSLog(@"%@", sender.currentTitle);
     RegisterTViewController *regist = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"RegisterTVC"];
     regist.registerType = @"register";
     [self.navigationController pushViewController:regist animated:YES];

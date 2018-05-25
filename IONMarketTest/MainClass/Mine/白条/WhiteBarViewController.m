@@ -13,7 +13,9 @@
 
 @end
 
-@implementation WhiteBarViewController
+@implementation WhiteBarViewController {
+    UIButton *applyButton;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

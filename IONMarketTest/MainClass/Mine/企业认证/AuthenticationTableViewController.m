@@ -305,9 +305,9 @@
         NSLog(@"upload:   %@",resultDic);
         
         if (self.isUploaded) {
-            self.leftImageUrl = [NSString stringWithFormat:@"%@%@", imageBaseUrl,resultDic[@"path"]];
+            self.leftImageUrl = [NSString stringWithFormat:@"%@",resultDic[@"path"]];
         } else {
-            self.rightImageUrl = [NSString stringWithFormat:@"%@%@", imageBaseUrl,resultDic[@"path"]];
+            self.rightImageUrl = [NSString stringWithFormat:@"%@",resultDic[@"path"]];
         }
         
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"上传成功！" time:0.0 aboutType:WHShowViewMode_Text state:YES];

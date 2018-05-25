@@ -87,12 +87,11 @@
         make.bottom.equalTo(bottomView.mas_bottom).offset(-20);
     }];
     [radiusButton setImage:IMG(@"Shop_car") forState:UIControlStateNormal];
-    radiusButton.badgeValue = SINT([ShoppingCarSingle sharedShoppingCarSingle].totalbadge);
     radiusButton.badgeFont = FONT_ArialMT(13);
     radiusButton.badgeBGColor = [UIColor mianColor:2];
     radiusButton.badgeOriginX = 35;
     
-    priceLabel = [UILabel lableWithText:[NSString stringWithFormat:@"￥%@",[ShoppingCarSingle sharedShoppingCarSingle].totalPrice?[ShoppingCarSingle sharedShoppingCarSingle].totalPrice:@0] Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
+    priceLabel = [UILabel lableWithText:@"" Font:FONT_ArialMT(15) TextColor:[UIColor mianColor:2]];
     [bottomView addSubview:priceLabel];
     [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(radiusButton.mas_right).offset(10);
@@ -105,22 +104,14 @@
         make.top.equalTo(priceLabel.mas_bottom);
     }];
     
-    
+    [[ShoppingCarSingle sharedShoppingCarSingle] getServerShopCarAmountAndTotalfee:^(NSString *amout, NSString *totalfee) {
+        priceLabel.text = totalfee;
+        radiusButton.badgeValue = amout;
+    }];
 }
 
 
 - (void)buyAction:(UIButton *)sender {
-//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    [dict setValue:@"65" forKey:@"orderId"];
-//    [dict setValue:@"1" forKey:@"totalfee"];
-//
-//    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WeixinPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-//
-//        [[ShoppingCarSingle sharedShoppingCarSingle] weixinPay:resultDic];
-//
-//    } failure:^(NSString *error, NSInteger code) {
-//
-//    }];
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:@"整只" forKey:@"type"];
@@ -153,7 +144,6 @@
     [dict setValue:@"40" forKey:@"addressId"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderSave andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
-        [self getOrderDetail:resultDic[@"orderId"]];
         
     } failure:^(NSString *error, NSInteger code) {
         
@@ -200,8 +190,8 @@
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveToGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"car: +++%@", resultDic);
-        [ShoppingCarSingle sharedShoppingCarSingle].totalbadge += 1;
-        [ShoppingCarSingle sharedShoppingCarSingle].totalPrice = [NSNumber numberWithFloat:([self.orderMoney floatValue]+[ShoppingCarSingle sharedShoppingCarSingle].totalPrice.floatValue)];
+
+        
         [self refreshBottomViewInfo];
         
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:1 aboutType:WHShowViewMode_Text state:YES];
@@ -218,25 +208,12 @@
 }
 
 - (void)refreshBottomViewInfo {
-    priceLabel.text = [NSString stringWithFormat:@"%@",[ShoppingCarSingle sharedShoppingCarSingle].totalPrice];
-    radiusButton.badgeValue = SINT([ShoppingCarSingle sharedShoppingCarSingle].totalbadge);
-}
-
-
-- (void)getOrderDetail:(NSString *)orderId {
-    
-    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
-    [dataDic setValue:orderId forKey:@"no"];
-    
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_detailList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
-        
-        
-        
-    } failure:^(NSString *error, NSInteger code) {
-        
+    [[ShoppingCarSingle sharedShoppingCarSingle] getServerShopCarAmountAndTotalfee:^(NSString *amout, NSString *totalfee) {
+        priceLabel.text = totalfee;
+        radiusButton.badgeValue = amout;
     }];
-    
 }
+
 
 /*
 #pragma mark - Navigation

@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.orderNo.text = self.orderModel.no;
-    self.priceLab.text = [NSString stringWithFormat:@"%@元",self.orderModel.money];
+    self.priceLab.text = [NSString stringWithFormat:@"%@元",self.orderModel.totalMoney];
     [self getExpressMoney:self.orderModel.no];
 }
 
@@ -36,13 +36,13 @@
     }
     
     if ([self.payWayLab.text isEqualToString:@"微信支付"]) {
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:self.orderModel.no andTotalfee:self.orderModel.money userPayMode:weixinPayMode_order];
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney userPayMode:weixinPayMode_order];
     }
     if ([self.payWayLab.text isEqualToString:@"钱包支付"]) {
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWalletWithOrderId:self.orderModel.id andTotalfee:self.orderModel.money];
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWalletWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney];
     }
     if ([self.payWayLab.text isEqualToString:@"白条支付"]) {
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:self.orderModel.no andTotalfee:self.orderModel.money];
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney];
     }
     
 }

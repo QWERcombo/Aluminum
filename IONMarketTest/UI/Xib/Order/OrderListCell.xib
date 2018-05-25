@@ -134,7 +134,7 @@
                                     <constraint firstItem="atl-Z2-ynp" firstAttribute="centerY" secondItem="WAL-8Z-cny" secondAttribute="centerY" id="yRw-TO-jGy"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加工费：262.62元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jj8-jk-7xZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加工费：0.0元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jj8-jk-7xZ">
                                 <rect key="frame" x="125" y="0.0" width="125" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="FWf-Bj-ZHt"/>

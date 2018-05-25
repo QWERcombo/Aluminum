@@ -192,6 +192,7 @@
 		A289424420B4239500D8E9E5 /* WalletListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A289424320B4239500D8E9E5 /* WalletListModel.m */; };
 		A29996FE207381140003B96C /* ShopCarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A29996FC207381140003B96C /* ShopCarListCell.m */; };
 		A29996FF207381140003B96C /* ShopCarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A29996FD207381140003B96C /* ShopCarListCell.xib */; };
+		A2A8A63F20B7C1400009792F /* OrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A8A63E20B7C1400009792F /* OrderListModel.m */; };
 		A2AC1C622056476F00A3B2F9 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C612056476F00A3B2F9 /* MessageViewController.m */; };
 		A2AC1C652056481B00A3B2F9 /* MainItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C642056481B00A3B2F9 /* MainItemViewController.m */; };
 		A2AC1C6820564AB900A3B2F9 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C6720564AB900A3B2F9 /* UserInfoViewController.m */; };
@@ -560,6 +561,8 @@
 		A29996FB207381140003B96C /* ShopCarListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCarListCell.h; sourceTree = "<group>"; };
 		A29996FC207381140003B96C /* ShopCarListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCarListCell.m; sourceTree = "<group>"; };
 		A29996FD207381140003B96C /* ShopCarListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCarListCell.xib; sourceTree = "<group>"; };
+		A2A8A63D20B7C1400009792F /* OrderListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderListModel.h; sourceTree = "<group>"; };
+		A2A8A63E20B7C1400009792F /* OrderListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderListModel.m; sourceTree = "<group>"; };
 		A2AC1C602056476F00A3B2F9 /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		A2AC1C612056476F00A3B2F9 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		A2AC1C632056481B00A3B2F9 /* MainItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItemViewController.h; sourceTree = "<group>"; };
@@ -953,6 +956,8 @@
 				A283488D2060AAB200C228AD /* ShopCarDetailViewController.m */,
 				5654FC1020AC6B9900B7DA4E /* ConfirmOrderVC.h */,
 				5654FC1120AC6B9900B7DA4E /* ConfirmOrderVC.m */,
+				5605C03E20A090CB00E712A3 /* ShoppingCarSingle.h */,
+				5605C03F20A090CB00E712A3 /* ShoppingCarSingle.m */,
 			);
 			path = ShopCar;
 			sourceTree = "<group>";
@@ -1359,8 +1364,6 @@
 				5671DBB8205FF1C7005F1760 /* InventoryCell.h */,
 				5671DBB9205FF1C7005F1760 /* InventoryCell.m */,
 				5671DBBA205FF1C7005F1760 /* InventoryCell.xib */,
-				5605C03E20A090CB00E712A3 /* ShoppingCarSingle.h */,
-				5605C03F20A090CB00E712A3 /* ShoppingCarSingle.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1370,6 +1373,8 @@
 			children = (
 				A24B0B6920722C01009ECD41 /* OrderModel.h */,
 				A24B0B6A20722C01009ECD41 /* OrderModel.m */,
+				A2A8A63D20B7C1400009792F /* OrderListModel.h */,
+				A2A8A63E20B7C1400009792F /* OrderListModel.m */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -1696,6 +1701,7 @@
 				5695BF1F2042ABAB0036D54B /* UserData.m in Sources */,
 				56940C3420515E1800DFA6D6 /* UIBarButtonItem+Badge.m in Sources */,
 				A22981CB20626193007B6112 /* TicketInfoCell.m in Sources */,
+				A2A8A63F20B7C1400009792F /* OrderListModel.m in Sources */,
 				560264BA206A7C1D00F9C405 /* ShopCar.m in Sources */,
 				5695BF0F2042AB0E0036D54B /* NSData+NEUAES.m in Sources */,
 				5695BF552042AC1D0036D54B /* EasyShowAlertView.m in Sources */,
@@ -1954,7 +1960,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VZ78Z6H4RD;
+				DEVELOPMENT_TEAM = N9944VQXC8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/IONMarketTest/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = IONMarketTest/Info.plist;
@@ -1975,7 +1981,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VZ78Z6H4RD;
+				DEVELOPMENT_TEAM = N9944VQXC8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/IONMarketTest/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = IONMarketTest/Info.plist;

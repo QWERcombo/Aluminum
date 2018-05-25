@@ -144,6 +144,9 @@
 #define Interface_qianbaoPay   @"user/qianbaoPay"
 //订单详情
 #define Interface_detailList   @"user/detailList"
+//查询购物车数量和总额
+#define Interface_countGouwucheByUser   @"user/countGouwucheByUser"
+
 
 
 
