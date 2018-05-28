@@ -50,6 +50,8 @@
     self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无数据" andDetailStr:@"" withReloadAction:^{
         
     }];
+//    self.tabView.estimatedRowHeight = 44.0f;
+//    self.tabView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)setupSubviews {
@@ -136,7 +138,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold getCellHight:@"OrderListCell" data:nil model:nil indexPath:indexPath];
+    OrderListModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
+    return [UtilsMold getCellHight:@"OrderListCell" data:nil model:SINT(model.detail.count) indexPath:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -202,8 +205,13 @@
                 OrderListModel *model = [[OrderListModel alloc] initWithDictionary:dict error:nil];
                 
                 NSArray *arr = dict[@"detail"];
-                OrderListDetailModel *ddd = [[OrderListDetailModel alloc] initWithDictionary:arr.firstObject error:nil];
-                model.detail = @[ddd];
+                NSMutableArray *detailArr = [NSMutableArray array];
+                for (NSDictionary *detailDic in arr) {
+                    
+                    OrderListDetailModel *ddd = [[OrderListDetailModel alloc] initWithDictionary:detailDic error:nil];
+                    [detailArr addObject:ddd];
+                }
+                model.detail = detailArr;
                 
                 [self.dataMuArr addObject:model];
             }
@@ -216,8 +224,13 @@
                     OrderListModel *model = [[OrderListModel alloc] initWithDictionary:dict error:nil];
                     
                     NSArray *arr = dict[@"detail"];
-                    OrderListDetailModel *ddd = [[OrderListDetailModel alloc] initWithDictionary:arr.firstObject error:nil];
-                    model.detail = @[ddd];
+                    NSMutableArray *detailArr = [NSMutableArray array];
+                    for (NSDictionary *detailDic in arr) {
+                        
+                        OrderListDetailModel *ddd = [[OrderListDetailModel alloc] initWithDictionary:detailDic error:nil];
+                        [detailArr addObject:ddd];
+                    }
+                    model.detail = detailArr;
                     
                     [self.dataMuArr addObject:model];
                 }

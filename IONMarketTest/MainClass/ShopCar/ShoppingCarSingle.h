@@ -38,6 +38,7 @@ typedef void(^getAmountTotalfeeBlock)(NSString *amout, NSString *totalfee);
 //获取购物车数量和总价
 - (void)getServerShopCarAmountAndTotalfee:(getAmountTotalfeeBlock)block;
 
-
+//支付宝支付
+- (void)beginPayUserAliPayWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee;
 
 @end

@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *caizhiBtn;
 @property (weak, nonatomic) IBOutlet UIButton *quxiaoBtn;
 @property (weak, nonatomic) IBOutlet UIButton *zhifuBtn;
+@property (weak, nonatomic) IBOutlet UIView *itemView;
 
 
 + (instancetype)OrderListCell;

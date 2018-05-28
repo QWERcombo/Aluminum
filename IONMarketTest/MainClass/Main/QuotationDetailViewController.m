@@ -26,7 +26,7 @@
     [self getDataSource:1];
     _bezierView = [BezierCurveView initWithFrame:CGRectMake(10, 20, SCREEN_WIGHT-20, 170)];
 //    _bezierView.center = self.view.center;
-    [self.view addSubview:_bezierView];
+//    [self.view addSubview:_bezierView];
 }
 
 - (void)setupSubviews {
@@ -49,7 +49,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold creatCell:@"QuotationDetailCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) { 
+    return [UtilsMold creatCell:@"QuotationDetailCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
     }];
 }
 

@@ -61,7 +61,7 @@
     [dataDic setValue:imageUrl forKey:@"file"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_savePicOrder andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"提交成功!" time:0 aboutType:WHShowViewMode_Text state:YES];
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"提交成功!请等待客服处理" time:0 aboutType:WHShowViewMode_Text state:YES];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSString *error, NSInteger code) {
         

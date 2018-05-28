@@ -120,6 +120,8 @@
         for (int i = 0 ; i < array.count + 2; i++) {
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)];
             imageView.backgroundColor = [UIColor lightGrayColor];
+            imageView.contentMode = UIViewContentModeScaleAspectFill;
+            imageView.layer.masksToBounds = YES;
             [self.scrollView addSubview:imageView];
             if (i == 0) {
 //                [imageView sd_setImageWithURL:[NSURL URLWithString:array[array.count - 1]] placeholderImage:[UIImage imageWithColor:[UIColor Grey_BlankColor]]];

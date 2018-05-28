@@ -61,7 +61,7 @@
         make.width.equalTo(@(SCREEN_WIGHT/2));
     }];
     
-    UIButton *input = [UIButton buttonWithTitle:@"转入" andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+    UIButton *input = [UIButton buttonWithTitle:@"申请提现" andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
     input.backgroundColor = [UIColor mianColor:2];
     [input addTarget:self action:@selector(inputCliker:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:input];

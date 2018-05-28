@@ -8,6 +8,8 @@
 
 #import "OrderListCell.h"
 #import "CALayer+Addition.h"
+#import "OrderListItemView.h"
+
 @implementation OrderListCell
 
 - (void)awakeFromNib {
@@ -37,19 +39,15 @@
 }
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 145;
+    
+    NSString *count = (NSString *)model;
+    return 106+[count integerValue]*40;
 }
 
 + (instancetype)OrderListCell {
     return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] firstObject];
 }
 
-- (IBAction)statusAction:(id)sender {
-    if (_clikerBlock) {
-        
-    }
-    _clikerBlock(((UIButton *)sender).currentTitle);
-}
 
 - (IBAction)buyAction:(id)sender {
     if (_clikerBlock) {
@@ -63,11 +61,6 @@
     }
 }
 
-- (IBAction)downloadAction:(id)sender {
-    if (_clikerBlock) {
-        _clikerBlock(((UIButton *)sender).currentTitle);
-    }
-}
 - (IBAction)cancelAction:(UIButton *)sender {
     if (_clikerBlock) {
         _clikerBlock(((UIButton *)sender).currentTitle);
@@ -80,6 +73,7 @@
     OrderListModel *dataM = (OrderListModel *)model;
     
     self.orderIDLabel.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
+    self.expressPrice.text = [NSString stringWithFormat:@"物流费: %@元", dataM.wuliufei];
     switch ([dataM.status integerValue]) {
         case 0:
             [self.statusButton setTitle:@"待付款" forState:UIControlStateNormal];            
@@ -100,12 +94,13 @@
         default:
             break;
     }
-    OrderListDetailModel *dataD = [dataM.detail firstObject];
-    self.productPrice.text = [NSString stringWithFormat:@"产品: %@元", dataD.money];
-    self.expressPrice.text = [NSString stringWithFormat:@"物流费: %@元", dataM.wuliufei];
     
-    self.zhengbanLabel.text = [NSString stringWithFormat:@"%@ * %@", dataD.zhonglei, dataD.productNum];
-    self.totalPrice.text = [NSString stringWithFormat:@"%@元", dataD.money];
+    for (NSInteger i=0; i<dataM.detail.count; i++) {
+        OrderListItemView *label = [[OrderListItemView alloc] initWithFrame:CGRectMake(0, 40*i, SCREEN_WIGHT, 40)];
+        [label loadData:[dataM.detail objectAtIndex:i]];
+        label.backgroundColor = [UIColor purpleColor];
+        [self.itemView addSubview:label];
+    }
     
 }
 

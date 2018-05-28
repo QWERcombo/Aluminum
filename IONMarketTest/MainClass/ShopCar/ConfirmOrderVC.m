@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *phoneLab;
 @property (weak, nonatomic) IBOutlet UILabel *addressLab;
 @property (weak, nonatomic) IBOutlet UILabel *priceLab;
-@property (weak, nonatomic) IBOutlet UILabel *amountLab;
 @property (weak, nonatomic) IBOutlet UITableView *confirmOrderDataSource;
 @property (nonatomic, strong) AddressModel *addressModel;
 @property (weak, nonatomic) IBOutlet UIButton *addressBtn;
@@ -33,7 +32,6 @@
         total += [car.money floatValue];
     }
     self.priceLab.text = [NSString stringWithFormat:@"%.2lf", total];
-    self.amountLab.text = @"0";
 }
 
 - (IBAction)confirmClicker:(UIButton *)sender {

@@ -26,7 +26,7 @@
         
         self.showView = [[[NSBundle mainBundle] loadNibNamed:@"ChoosePayWayView" owner:self options:nil] firstObject];
         
-        self.showView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIGHT, 170);
+        self.showView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIGHT, 210);
         
         [self addSubview:self.showView];
         
@@ -50,7 +50,7 @@
 
 - (void)hide {
     [UIView animateWithDuration:.3 animations:^{
-        self.showView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIGHT, 170);
+        self.showView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIGHT, 210);
     } completion:^(BOOL finished) {
         if (finished) {
             [self removeFromSuperview];
@@ -66,7 +66,7 @@
     
     [UIView animateWithDuration:.3 animations:^{
         
-        choose.showView.frame = CGRectMake(0, SCREEN_HEIGHT-170, SCREEN_WIGHT, 170);
+        choose.showView.frame = CGRectMake(0, SCREEN_HEIGHT-210, SCREEN_WIGHT, 210);
         
     } completion:^(BOOL finished) {
         

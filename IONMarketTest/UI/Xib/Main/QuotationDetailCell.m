@@ -32,8 +32,16 @@
 }
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
-    
-    
+    PriceModel *dataM = (PriceModel *)model;
+    if ([[dataM.priceChange substringToIndex:1] isEqualToString:@"-"]) {
+        self.priceLabel.textColor = [UIColor colorWithHexString:@"#D97078"];
+    } else {
+        self.priceLabel.textColor = [UIColor colorWithHexString:@"#A0DAA8"];
+    }
+    self.countLabel.text = dataM.averagePrice;
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    self.dateLabel.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[dataM.riqi integerValue]/1000]];
 }
 
 @end

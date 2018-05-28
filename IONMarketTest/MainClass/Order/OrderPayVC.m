@@ -23,7 +23,12 @@
     [super viewDidLoad];
     self.orderNo.text = self.orderModel.no;
     self.priceLab.text = [NSString stringWithFormat:@"%@元",self.orderModel.totalMoney];
-    [self getExpressMoney:self.orderModel.no];
+    if ([self.orderModel.wuliufei integerValue]>0) {
+        self.wuliufeiLab.text = [NSString stringWithFormat:@"%@元", self.orderModel.wuliufei];
+    } else {
+        self.wuliufeiLab.text = @"0元";
+    }
+//    [self getOrderDetail:self.orderModel.no];
 }
 
 #pragma mark - Method
@@ -44,6 +49,9 @@
     if ([self.payWayLab.text isEqualToString:@"白条支付"]) {
         [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney];
     }
+    if ([self.payWayLab.text isEqualToString:@"支付宝支付"]) {
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney];
+    }
     
 }
 
@@ -56,23 +64,30 @@
     
 }
 
-- (void)getExpressMoney:(NSString *)orderNo {
-    
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:orderNo forKey:@"orderNo"];
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetWuliufei andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
-//        NSLog(@"wuliufei: %@", resultDic);
-        if ([resultDic[@"wuliufei"] integerValue]>0) {
-            self.wuliufeiLab.text = [NSString stringWithFormat:@"%@元", resultDic[@"wuliufei"]];
-        } else {
-            self.wuliufeiLab.text = @"";
-        }
-    } failure:^(NSString *error, NSInteger code) {
-        
-    }];
-    
-}
+//- (void)getOrderDetail:(NSString *)orderId {
+//
+//    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+//    [dataDic setValue:orderId forKey:@"no"];
+//
+//    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_detailList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+//        //        NSLog(@"___===%@", resultDic);
+//        NSArray *dataArr = resultDic[@"result"];
 
+//        for (NSDictionary *dic in dataArr) {
+//
+//            ShopCar *car = [[ShopCar alloc] initWithDictionary:dic error:nil];
+//            self.orderModel = [[OrderModel alloc] initWithDictionary:dic error:nil];
+//
+//            [self.detailDataSource addObject:car];
+//        }
+//
+//        [self updateInfomation];
+//        [self.tableView reloadData];
+//    } failure:^(NSString *error, NSInteger code) {
+//
+//    }];
+//
+//}
 
 
 /*

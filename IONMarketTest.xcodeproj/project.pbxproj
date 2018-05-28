@@ -23,6 +23,8 @@
 		5615B8B72073B721005F2403 /* AddressShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5615B8B62073B721005F2403 /* AddressShowView.m */; };
 		5615B8B92073B730005F2403 /* AddressShowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5615B8B82073B730005F2403 /* AddressShowView.xib */; };
 		561CC0D5206FD24900DB0998 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 561CC0D4206FD24900DB0998 /* MainModel.m */; };
+		562FF27220BA6FC1006048DC /* OrderListItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 562FF27120BA6FC1006048DC /* OrderListItemView.m */; };
+		562FF27420BA6FCB006048DC /* OrderListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 562FF27320BA6FCB006048DC /* OrderListItemView.xib */; };
 		5632BFAC205AA3F80009CD34 /* SetOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFAB205AA3F80009CD34 /* SetOrderViewController.m */; };
 		5632BFAF205AB47D0009CD34 /* QuotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFAE205AB47D0009CD34 /* QuotationViewController.m */; };
 		5632BFB2205AB5920009CD34 /* QuotationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFB1205AB5920009CD34 /* QuotationDetailViewController.m */; };
@@ -137,6 +139,7 @@
 		56B5215720AB246200F636BD /* OrderPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5215620AB246200F636BD /* OrderPayVC.m */; };
 		56B5215A20AB37A100F636BD /* ChoosePayWayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5215920AB37A100F636BD /* ChoosePayWayView.m */; };
 		56B5215C20AB37B700F636BD /* ChoosePayWayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56B5215B20AB37B700F636BD /* ChoosePayWayView.xib */; };
+		56B58D1920BC529A00F92B91 /* WithdrawApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B58D1820BC529A00F92B91 /* WithdrawApplyViewController.m */; };
 		56BDC4CA209A019D00DDE4DE /* WholeBoardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BDC4C9209A019D00DDE4DE /* WholeBoardModel.m */; };
 		56EC993C206D121D00F2D2D0 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC993B206D121D00F2D2D0 /* AddressModel.m */; };
 		A21B4669207B194000802621 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A21B4668207B194000802621 /* Mine.storyboard */; };
@@ -252,6 +255,9 @@
 		5615B8B82073B730005F2403 /* AddressShowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressShowView.xib; sourceTree = "<group>"; };
 		561CC0D3206FD24900DB0998 /* MainModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		561CC0D4206FD24900DB0998 /* MainModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
+		562FF27020BA6FC1006048DC /* OrderListItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderListItemView.h; sourceTree = "<group>"; };
+		562FF27120BA6FC1006048DC /* OrderListItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderListItemView.m; sourceTree = "<group>"; };
+		562FF27320BA6FCB006048DC /* OrderListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderListItemView.xib; sourceTree = "<group>"; };
 		5632BFAA205AA3F80009CD34 /* SetOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetOrderViewController.h; sourceTree = "<group>"; };
 		5632BFAB205AA3F80009CD34 /* SetOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetOrderViewController.m; sourceTree = "<group>"; };
 		5632BFAD205AB47D0009CD34 /* QuotationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuotationViewController.h; sourceTree = "<group>"; };
@@ -470,6 +476,8 @@
 		56B5215820AB37A100F636BD /* ChoosePayWayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChoosePayWayView.h; sourceTree = "<group>"; };
 		56B5215920AB37A100F636BD /* ChoosePayWayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChoosePayWayView.m; sourceTree = "<group>"; };
 		56B5215B20AB37B700F636BD /* ChoosePayWayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChoosePayWayView.xib; sourceTree = "<group>"; };
+		56B58D1720BC529A00F92B91 /* WithdrawApplyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawApplyViewController.h; sourceTree = "<group>"; };
+		56B58D1820BC529A00F92B91 /* WithdrawApplyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawApplyViewController.m; sourceTree = "<group>"; };
 		56BDC4C8209A019D00DDE4DE /* WholeBoardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WholeBoardModel.h; sourceTree = "<group>"; };
 		56BDC4C9209A019D00DDE4DE /* WholeBoardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WholeBoardModel.m; sourceTree = "<group>"; };
 		56EC993A206D121D00F2D2D0 /* AddressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressModel.h; sourceTree = "<group>"; };
@@ -759,6 +767,9 @@
 				5650869E205CD98400FD8497 /* OrderListCell.h */,
 				5650869F205CD98400FD8497 /* OrderListCell.m */,
 				565086A0205CD98400FD8497 /* OrderListCell.xib */,
+				562FF27020BA6FC1006048DC /* OrderListItemView.h */,
+				562FF27120BA6FC1006048DC /* OrderListItemView.m */,
+				562FF27320BA6FCB006048DC /* OrderListItemView.xib */,
 				565086A6205CFF1800FD8497 /* OrderDetailCell.h */,
 				565086A7205CFF1800FD8497 /* OrderDetailCell.m */,
 				565086A8205CFF1800FD8497 /* OrderDetailCell.xib */,
@@ -1244,6 +1255,8 @@
 			children = (
 				A229818E20620336007B6112 /* InputViewController.h */,
 				A229818F20620336007B6112 /* InputViewController.m */,
+				56B58D1720BC529A00F92B91 /* WithdrawApplyViewController.h */,
+				56B58D1820BC529A00F92B91 /* WithdrawApplyViewController.m */,
 			);
 			path = "转入转出";
 			sourceTree = "<group>";
@@ -1554,6 +1567,7 @@
 				A22981D6206261C1007B6112 /* TicketCell.xib in Resources */,
 				A29996FF207381140003B96C /* ShopCarListCell.xib in Resources */,
 				A2AC1C7620565E4600A3B2F9 /* MainItemCell.xib in Resources */,
+				562FF27420BA6FCB006048DC /* OrderListItemView.xib in Resources */,
 				565086A2205CD98400FD8497 /* OrderListCell.xib in Resources */,
 				A22981BD20624B48007B6112 /* AddAddressViewController.xib in Resources */,
 				5671DBCF2060011D005F1760 /* MainItemView__Matter.xib in Resources */,
@@ -1650,6 +1664,7 @@
 				56940C2720515DF900DFA6D6 /* NSMutableDictionary+YXP.m in Sources */,
 				5695BEC32042A5300036D54B /* BaseViewController.m in Sources */,
 				56940C2320515DF900DFA6D6 /* NSBundle+Language.m in Sources */,
+				56B58D1920BC529A00F92B91 /* WithdrawApplyViewController.m in Sources */,
 				5686219520A9C59A0030C761 /* TextTableViewController.m in Sources */,
 				A285A6592076170400D349AB /* BillTicketModel.m in Sources */,
 				56940C2C20515DF900DFA6D6 /* UIFont+YXP.m in Sources */,
@@ -1732,6 +1747,7 @@
 				A2AC1C6B20564B8A00A3B2F9 /* UserInfoSettingViewController.m in Sources */,
 				5605C04020A090CB00E712A3 /* ShoppingCarSingle.m in Sources */,
 				A2301B2020635292006B9F20 /* LoginViewController.m in Sources */,
+				562FF27220BA6FC1006048DC /* OrderListItemView.m in Sources */,
 				5695BF2B2042AC0A0036D54B /* SlideSwitchView.m in Sources */,
 				A2AC1C7520565E4600A3B2F9 /* MainItemCell.m in Sources */,
 				56A5746420ADC54F00A458EB /* ApplyWhiteBarVC.m in Sources */,

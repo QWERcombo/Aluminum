@@ -151,10 +151,19 @@
         NSArray *array = resultDic[@"result"];
         NSDictionary *dict = [array firstObject];
         NSString *count = [NSString stringWithFormat:@"%@", dict[@"count"]];
-        NSString *totalMoney = [NSString stringWithFormat:@"%@元", dict[@"totalMoney"]];
+        NSString *totalMoney = [NSString stringWithFormat:@"%@", dict[@"totalMoney"]];
+        
+        NSString *showCount = @"";
+        NSString *showMoney = @"0元";
+        if ([count integerValue] > 0) {
+            showCount = count;
+        }
+        if ([totalMoney floatValue] >0) {
+            showMoney = [NSString stringWithFormat:@"%@元", totalMoney];
+        }
         
         if (block) {
-            block(count.length?count:@"",totalMoney.length?totalMoney:@"");
+            block(showCount,showMoney);
         }
         
     } failure:^(NSString *error, NSInteger code) {
@@ -162,5 +171,14 @@
     }];
     
 }
+
+- (void)beginPayUserAliPayWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee {
+    
+    
+    
+    
+    
+}
+
 
 @end
