@@ -6,12 +6,16 @@
 //  Copyright © 2016年 xiayuanquan. All rights reserved.
 //
 
-
+#import "NSString+MD5.h"
 #import "BezierCurveView.h"
 
 static CGRect myFrame;
 
 @interface BezierCurveView ()
+
+@property (nonatomic, assign) NSInteger maxValue;
+@property (nonatomic, assign) NSInteger minValue;
+@property (nonatomic, assign) NSInteger marginValue;
 
 @end
 
@@ -66,7 +70,7 @@ static CGRect myFrame;
         [path addLineToPoint:CGPointMake(point.x, point.y-3)];
     }
     //Y轴（实际长度为200,此处比例缩小一倍使用）
-    for (int i=0; i<11; i++) {
+    for (int i=0; i<12; i++) {
         CGFloat Y = CGRectGetHeight(myFrame)-MARGIN-Y_EVERY_MARGIN*i;
         CGPoint point = CGPointMake(MARGIN,Y);
         [path moveToPoint:point];
@@ -76,22 +80,22 @@ static CGRect myFrame;
     //4.添加索引格文字
     //X轴
     for (int i=0; i<x_names.count; i++) {
-        CGFloat X = MARGIN + 15 + MARGIN*i;
-        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(X, CGRectGetHeight(myFrame)-MARGIN, MARGIN, 20)];
-        textLabel.text = x_names[i];
+        CGFloat X = MARGIN + 5 + MARGIN*i;
+        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(X, CGRectGetHeight(myFrame)-MARGIN, 40, 20)];
+        textLabel.text = [NSString stringWithFormat:@"%@",x_names[i]];
         textLabel.font = [UIFont systemFontOfSize:10];
         textLabel.textAlignment = NSTextAlignmentCenter;
-        textLabel.textColor = [UIColor blueColor];
+        textLabel.textColor = [UIColor mianColor:2];
         [self addSubview:textLabel];
     }
     //Y轴
-    for (int i=0; i<11; i++) {
+    for (int i=0; i<12; i++) {
         CGFloat Y = CGRectGetHeight(myFrame)-MARGIN-Y_EVERY_MARGIN*i;
-        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, Y-5, MARGIN, 10)];
-        textLabel.text = [NSString stringWithFormat:@"%d",10*i];
+        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(-20, Y-5, 50, 10)];
+        textLabel.text = [NSString stringWithFormat:@"%ld",self.marginValue*i+self.minValue];
         textLabel.font = [UIFont systemFontOfSize:10];
         textLabel.textAlignment = NSTextAlignmentCenter;
-        textLabel.textColor = [UIColor redColor];
+        textLabel.textColor = [UIColor mianColor:2];
         [self addSubview:textLabel];
     }
 
@@ -104,12 +108,32 @@ static CGRect myFrame;
     [self.subviews[0].layer addSublayer:shapeLayer];
 }
 
-
+- (void)getValueWithMaxAndMin:(NSMutableArray *)valueArray {
+    
+    NSArray *sortArr = [valueArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        if ([obj2 integerValue] < [obj1 integerValue])
+        {
+            return NSOrderedDescending;
+        }
+        else
+        {
+            return NSOrderedAscending;
+        }
+    }];
+//    NSLog(@"--%@", sortArr);
+    self.maxValue = [[sortArr lastObject] integerValue];
+    self.minValue = [[sortArr firstObject] integerValue];
+    self.marginValue = (self.maxValue-self.minValue)/10;
+    self.minValue = self.minValue - self.marginValue;
+}
 
 /**
  *  画折线图
  */
 -(void)drawLineChartViewWithX_Value_Names:(NSMutableArray *)x_names TargetValues:(NSMutableArray *)targetValues LineType:(LineType) lineType{
+    
+    //0.获取最值
+    [self getValueWithMaxAndMin:targetValues];
     
     //1.画坐标轴
     [self drawXYLine:x_names];
@@ -117,14 +141,14 @@ static CGRect myFrame;
     //2.获取目标值点坐标
     NSMutableArray *allPoints = [NSMutableArray array];
     for (int i=0; i<targetValues.count; i++) {
-        CGFloat doubleValue = 2*[targetValues[i] floatValue]; //目标值放大两倍
+        CGFloat doubleValue = ([targetValues[i] floatValue]-self.minValue)/self.marginValue; //目标值放大两倍
         CGFloat X = MARGIN + MARGIN*(i+1);
-        CGFloat Y = CGRectGetHeight(myFrame)-MARGIN-doubleValue;
+        CGFloat Y = CGRectGetHeight(myFrame)-MARGIN-doubleValue*20;
         CGPoint point = CGPointMake(X,Y);
-        UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(point.x-1, point.y-1, 2.5, 2.5) cornerRadius:2.5];
+        UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(point.x-1, point.y-1, 5, 5) cornerRadius:5];
         CAShapeLayer *layer = [CAShapeLayer layer];
-        layer.strokeColor = [UIColor purpleColor].CGColor;
-        layer.fillColor = [UIColor purpleColor].CGColor;
+        layer.strokeColor = [UIColor redColor].CGColor;
+        layer.fillColor = [UIColor redColor].CGColor;
         layer.path = path.CGPath;
         [self.subviews[0].layer addSublayer:layer];
         [allPoints addObject:[NSValue valueWithCGPoint:point]];
@@ -155,7 +179,7 @@ static CGRect myFrame;
     }
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = path.CGPath;
-    shapeLayer.strokeColor = [UIColor greenColor].CGColor;
+    shapeLayer.strokeColor = [UIColor mianColor:2].CGColor;
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
     shapeLayer.borderWidth = 2.0;
     [self.subviews[0].layer addSublayer:shapeLayer];
@@ -167,20 +191,20 @@ static CGRect myFrame;
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont systemFontOfSize:10];
         [self.subviews[0] addSubview:label];
-        
+        label.text = [NSString stringWithFormat:@"%@",[targetValues objectAtIndex:i]];
         if (i==0) {
             CGPoint NowPoint = [allPoints[0] CGPointValue];
-            label.text = [NSString stringWithFormat:@"%.0lf",(CGRectGetHeight(myFrame)-NowPoint.y-MARGIN)/2];
-            label.frame = CGRectMake(NowPoint.x-MARGIN/2, NowPoint.y-20, MARGIN, 20);
+//            label.text = [NSString stringWithFormat:@"%.0lf",(CGRectGetHeight(myFrame)-NowPoint.y-MARGIN)/2];
+            label.frame = CGRectMake(NowPoint.x-MARGIN/2, NowPoint.y-20, 50, 20);
             PrePonit = NowPoint;
         }else{
             CGPoint NowPoint = [allPoints[i] CGPointValue];
             if (NowPoint.y<PrePonit.y) {  //文字置于点上方
-                label.frame = CGRectMake(NowPoint.x-MARGIN/2, NowPoint.y-20, MARGIN, 20);
+                label.frame = CGRectMake(NowPoint.x-MARGIN/2, NowPoint.y-20, 50, 20);
             }else{ //文字置于点下方
-                label.frame = CGRectMake(NowPoint.x-MARGIN/2, NowPoint.y, MARGIN, 20);
+                label.frame = CGRectMake(NowPoint.x-MARGIN/2, NowPoint.y, 50, 20);
             }
-            label.text = [NSString stringWithFormat:@"%.0lf",(CGRectGetHeight(myFrame)-NowPoint.y-MARGIN)/2];
+//            label.text = [NSString stringWithFormat:@"%.0lf",(CGRectGetHeight(myFrame)-NowPoint.y-MARGIN)/2];
             PrePonit = NowPoint;
         }
     }
