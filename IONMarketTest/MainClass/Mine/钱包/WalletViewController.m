@@ -10,6 +10,8 @@
 #import "TradeListViewController.h"
 #import "RemainExplainViewController.h"
 #import "InputViewController.h"
+#import "WithdrawApplyViewController.h"
+
 
 @interface WalletViewController ()
 @property (nonatomic, copy) NSString *remain;
@@ -53,7 +55,7 @@
         make.height.equalTo(@(50));
     }];
     
-    UIButton *output = [UIButton buttonWithTitle:@"转出" andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
+    UIButton *output = [UIButton buttonWithTitle:@"申请提现" andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
     [output addTarget:self action:@selector(outputCliker:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:output];
     [output mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -61,7 +63,7 @@
         make.width.equalTo(@(SCREEN_WIGHT/2));
     }];
     
-    UIButton *input = [UIButton buttonWithTitle:@"申请提现" andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+    UIButton *input = [UIButton buttonWithTitle:@"转入" andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
     input.backgroundColor = [UIColor mianColor:2];
     [input addTarget:self action:@selector(inputCliker:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:input];
@@ -197,9 +199,11 @@
     [self.navigationController pushViewController:input animated:YES];
 }
 - (void)outputCliker:(UIButton *)sender {
-    InputViewController *input = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"InputViewController"];
-    input.mode_way = Mode_Output;
-    [self.navigationController pushViewController:input animated:YES];
+//    InputViewController *input = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"InputViewController"];
+//    input.mode_way = Mode_Output;
+//    [self.navigationController pushViewController:input animated:YES];
+    WithdrawApplyViewController *withd = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"WithdrawApplyViewController"];
+    [self.navigationController pushViewController:withd animated:YES];
 }
 
 - (void)payCliker:(UIButton *)sender {
@@ -208,7 +212,6 @@
 }
 
 - (void)termButtonCliker:(UIButton *)sender {
-    NSLog(@"%@", sender.currentTitle);
     RemainExplainViewController *explain = [[RemainExplainViewController alloc] init];
     [self.navigationController pushViewController:explain animated:YES];
     
@@ -251,7 +254,7 @@
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_getQianBao andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
         NSString *money = [NSString stringWithFormat:@"%@", resultDic[@"money"]];
         self.remain = money.length?money:@"";
-        [self.tabView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+//        [self.tabView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     } failure:^(NSString *error, NSInteger code) {
         
     }];

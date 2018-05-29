@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    FromVCType_Buy,
+    FromVCType_ShopCar,
+} FromVCType;
+
 @interface ConfirmOrderVC : UIViewController
 @property (nonatomic, strong) NSArray *carArr;
-
+@property (nonatomic, assign) FromVCType fromtype;
 @end

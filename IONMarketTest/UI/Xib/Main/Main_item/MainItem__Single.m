@@ -38,7 +38,7 @@
             break;
         case 301:
             [self.kuanduS replaceCharactersInRange:range withString:string];
-            self.mainM.kuandu = self.changduS;
+            self.mainM.kuandu = self.kuanduS;
             break;
         case 302:
             [self.shuliangS replaceCharactersInRange:range withString:string];

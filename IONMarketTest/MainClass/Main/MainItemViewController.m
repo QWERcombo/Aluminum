@@ -13,6 +13,7 @@
 #import "MainItemView__Tube.h"//型材
 #import "MainItemView__Matter.h"//管材
 #import "ShopCarViewController.h"
+#import "ConfirmOrderVC.h"
 
 @interface MainItemViewController ()
 
@@ -597,8 +598,10 @@
     }
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderSave andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"buy: +++%@", resultDic);
-        
-        
+        ConfirmOrderVC *confirm = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrderVC"];
+        ShopCar *shop = [[ShopCar alloc] initWithDictionary:resultDic[@"newOrders"] error:nil];
+        confirm.carArr = @[shop];
+        [self.navigationController pushViewController:confirm animated:YES];
     } failure:^(NSString *error, NSInteger code) {
         
         

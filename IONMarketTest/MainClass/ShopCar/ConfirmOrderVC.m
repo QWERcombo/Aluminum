@@ -61,6 +61,12 @@
         
     }];
     
+    
+    if (self.fromtype == FromVCType_Buy) {
+        
+    } else {
+        
+    }
 }
 
 - (IBAction)addAddress:(UIButton *)sender {
