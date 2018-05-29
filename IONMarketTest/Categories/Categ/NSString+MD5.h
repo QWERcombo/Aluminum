@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonCrypto.h>
 @interface NSString (MD5)
+
 //md5加密
 - (id)MD5;
 //改变字体形态
@@ -104,5 +105,8 @@
 
 //计算最大行数文字高度,可以处理计算带行间距的
 - (CGFloat)boundingRectWithSize:(CGSize)size font:(UIFont*)font  lineSpacing:(CGFloat)lineSpacing maxLines:(NSInteger)maxLines;
+
+//文字竖排
+- (NSString *)VerticalString;
 
 @end

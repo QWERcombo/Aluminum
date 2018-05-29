@@ -666,5 +666,14 @@
 }
 
 
+- (NSString *)VerticalString{
+    NSMutableString * str = [[NSMutableString alloc] initWithString:self];
+    NSInteger count = str.length;
+    for (int i = 1; i < count; i ++) {
+        [str insertString:@"\n" atIndex:i*2 - 1];
+    }
+    return str;
+}
+
 
 @end
