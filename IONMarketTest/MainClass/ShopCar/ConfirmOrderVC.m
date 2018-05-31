@@ -40,31 +40,60 @@
         return;
     }
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    NSMutableString *orderIds = [NSMutableString string];
-    for (ShopCar *car in self.carArr) {
-        [orderIds appendString:car.id];
-        [orderIds appendString:@","];
-    }
-    [dict setValue:[orderIds substringToIndex:orderIds.length-1] forKey:@"gouwucheIds"];
-    [dict setValue:self.addressModel.id forKey:@"addressId"];
-    [dict setValue:[UserData currentUser].phone forKey:@"phone"];
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveFromGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"---%@", resultDic);
-        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"下单成功" time:0 aboutType:WHShowViewMode_Text state:YES];
-        //刷新购物车列表
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshNewData" object:nil];
-
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        
-    } failure:^(NSString *error, NSInteger code) {
-        
-    }];
-    
     
     if (self.fromtype == FromVCType_Buy) {
+        //直接购买下单
+        ShopCar *shopcar = [self.carArr firstObject];
+        
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:shopcar.money forKey:@"type"];
+        [dict setValue:shopcar.productNum forKey:@"amount"];
+        [dict setValue:shopcar.zhonglei forKey:@"zhonglei"];
+        [dict setValue:shopcar.erjimulu forKey:@"erjimulu"];
+        [dict setValue:shopcar.money forKey:@"money"];
+        [dict setValue:[UserData currentUser].phone forKey:@"phone"];
+        [dict setValue:self.addressModel.id forKey:@"addressId"];
+
+        if ([shopcar.zhonglei isEqualToString:@"圆棒"]) {
+            [dict setValue:shopcar.length forKey:@"chang"];
+            [dict setValue:shopcar.width forKey:@"kuang"];
+        } else {
+            [dict setValue:shopcar.length forKey:@"chang"];
+            [dict setValue:shopcar.width forKey:@"kuang"];
+            [dict setValue:shopcar.height forKey:@"hou"];
+        }
+
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderSave andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+//            NSLog(@"buy: +++%@", resultDic);
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"下单成功!" time:0 aboutType:WHShowViewMode_Text state:YES];
+            [self.navigationController popViewControllerAnimated:YES];
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
         
     } else {
+        //购物车下单
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        NSMutableString *orderIds = [NSMutableString string];
+        for (ShopCar *car in self.carArr) {
+            [orderIds appendString:car.id];
+            [orderIds appendString:@","];
+        }
+        [dict setValue:[orderIds substringToIndex:orderIds.length-1] forKey:@"gouwucheIds"];
+        [dict setValue:self.addressModel.id forKey:@"addressId"];
+        [dict setValue:[UserData currentUser].phone forKey:@"phone"];
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveFromGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+//            NSLog(@"---%@", resultDic);
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"下单成功" time:0 aboutType:WHShowViewMode_Text state:YES];
+            //刷新购物车列表
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshNewData" object:nil];
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
         
     }
 }

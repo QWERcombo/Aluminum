@@ -2,4 +2,54 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IONMarketTest/MainClass/ShopCar/ShoppingCarSingle.m"
+            timestampString = "549464246.618526"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "-beginPayUserAliPayWithOrderId:andTotalfee:userPayMode:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__75-[ShoppingCarSingle beginPayUserAliPayWithOrderId:andTotalfee:userPayMode:]_block_invoke"
+                  moduleName = "IONMarketTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhaoyue/Documents/Aluminum/IONMarketTest/MainClass/ShopCar/ShoppingCarSingle.m"
+                  timestampString = "549464246.730274"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "83">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__75-[ShoppingCarSingle beginPayUserAliPayWithOrderId:andTotalfee:userPayMode:]_block_invoke_2"
+                  moduleName = "IONMarketTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhaoyue/Documents/Aluminum/IONMarketTest/MainClass/ShopCar/ShoppingCarSingle.m"
+                  timestampString = "549464246.733994"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "188"
+                  endingLineNumber = "188"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

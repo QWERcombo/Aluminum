@@ -25,7 +25,7 @@
 }
 
 
-- (void)beginPayUserWeixiWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(weixinPayMode)mode   {
+- (void)beginPayUserWeixiWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(weixinPayMode)mode {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
@@ -172,12 +172,28 @@
     
 }
 
-- (void)beginPayUserAliPayWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee {
+- (void)beginPayUserAliPayWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(aliPayMode)mode {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    if (mode == aliPayMode_order) {
+        [dict setValue:orderId forKey:@"no"];
+        [dict setValue:totalfee forKey:@"totalfee"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_aliAppOrderPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+        
+        
+    }
     
     
-    
-    
-    
+    if (mode == aliPayMode_wallet) {
+        
+    }
 }
 
 

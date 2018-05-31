@@ -13,6 +13,10 @@ typedef enum : NSUInteger {
     weixinPayMode_wallet,
 } weixinPayMode;
 
+typedef enum : NSUInteger {
+    aliPayMode_order,
+    aliPayMode_wallet,
+} aliPayMode;
 
 typedef void(^getAmountTotalfeeBlock)(NSString *amout, NSString *totalfee);
 

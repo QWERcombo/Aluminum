@@ -214,6 +214,7 @@
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择要结算的订单！" time:0 aboutType:WHShowViewMode_Text state:NO];
         return;
     }
+    detail.fromtype = FromVCType_ShopCar;
     [self.navigationController pushViewController:detail animated:YES];
         
 }

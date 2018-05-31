@@ -159,6 +159,8 @@
     
     [typeScrollView setContentSize:CGSizeMake(scroll_width, 49.5)];
     self.lastTypeSelected = 200;
+    MainItemTypeModel *model = [self.dataMuArr firstObject];
+    self.erjimulu = model.name;
     [self.view addSubview:typeScrollView];
     
 }
@@ -565,47 +567,44 @@
         return;
     }
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:self.getOrderType forKey:@"type"];
-    [dict setValue:self.mainM.shuliang forKey:@"amount"];
-    [dict setValue:self.typeStr forKey:@"zhonglei"];
-    [dict setValue:self.erjimulu forKey:@"erjimulu"];
-    [dict setValue:self.orderMoney forKey:@"money"];
-    [dict setValue:[UserData currentUser].phone forKey:@"phone"];
-    [dict setValue:@"40" forKey:@"addressId"];
+    ConfirmOrderVC *confirm = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrderVC"];
+    
+    ShopCar *shopcar = [[ShopCar alloc] init];
+    
+    shopcar.productNum = self.mainM.shuliang;
+    shopcar.type = self.getOrderType;
+    shopcar.zhonglei = self.typeStr;
+    shopcar.erjimulu = self.erjimulu;
+    shopcar.money = self.orderMoney;
     switch (self.lastSelected) {
         case 100:
-            [dict setValue:self.mainM.changdu forKey:@"chang"];
-            [dict setValue:self.mainM.kuandu forKey:@"kuang"];
-            [dict setValue:self.mainM.houdu forKey:@"hou"];
+            shopcar.length = self.mainM.changdu;
+            shopcar.width = self.mainM.kuandu;
+            shopcar.height = self.mainM.houdu;
             break;
         case 101:
-            [dict setValue:self.mainM.changdu forKey:@"chang"];
-            [dict setValue:self.mainM.zhijing forKey:@"kuang"];
+            shopcar.length = self.mainM.changdu;
+            shopcar.width = self.mainM.zhijing;
             break;
         case 102:
-            [dict setValue:self.mainM.changdu forKey:@"chang"];
-            [dict setValue:self.mainM.kuandu forKey:@"kuang"];
-            [dict setValue:self.mainM.houdu forKey:@"hou"];
+            shopcar.length = self.mainM.changdu;
+            shopcar.width = self.mainM.kuandu;
+            shopcar.height = self.mainM.houdu;
             break;
         case 103:
-            [dict setValue:self.mainM.waijing forKey:@"chang"];
-            [dict setValue:self.mainM.neijing forKey:@"kuang"];
-            [dict setValue:self.mainM.changdu forKey:@"hou"];
+            shopcar.length = self.mainM.waijing;
+            shopcar.width = self.mainM.neijing;
+            shopcar.height = self.mainM.houdu;
             break;
         default:
             break;
     }
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderSave andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"buy: +++%@", resultDic);
-        ConfirmOrderVC *confirm = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrderVC"];
-        ShopCar *shop = [[ShopCar alloc] initWithDictionary:resultDic[@"newOrders"] error:nil];
-        confirm.carArr = @[shop];
-        [self.navigationController pushViewController:confirm animated:YES];
-    } failure:^(NSString *error, NSInteger code) {
-        
-        
-    }];
+    
+    
+    confirm.carArr = @[shopcar];
+    confirm.fromtype = FromVCType_Buy;
+    
+    [self.navigationController pushViewController:confirm animated:YES];
     
 }
 

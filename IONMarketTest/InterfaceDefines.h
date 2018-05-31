@@ -147,6 +147,16 @@
 //查询购物车数量和总额
 #define Interface_countGouwucheByUser   @"user/countGouwucheByUser"
 
+//支付宝支付
+#define Interface_aliAppOrderPay   @"user/aliAppOrderPay"
+//支付宝钱包充值
+#define Interface_aliAppChongzhi   @"user/aliAppChongzhi"
+//支付宝白条还款
+#define Interface_aliAppHuanKuan   @"user/aliAppHuanKuan"
+
+
+
+
 
 
 
