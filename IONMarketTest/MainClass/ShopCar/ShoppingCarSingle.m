@@ -8,6 +8,7 @@
 
 #import "ShoppingCarSingle.h"
 #import <WXApi.h>
+#import <AlipaySDK/AlipaySDK.h>
 #import "UtilsData.h"
 
 @implementation ShoppingCarSingle
@@ -183,6 +184,9 @@
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_aliAppOrderPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             
             
+            
+            [self aliPayWithOrderJson:@""];
+            
         } failure:^(NSString *error, NSInteger code) {
             
         }];
@@ -194,6 +198,21 @@
     if (mode == aliPayMode_wallet) {
         
     }
+}
+
+- (void)aliPayWithOrderJson:(NSString *)orderJson {
+    
+    NSString *appScheme = @"LeQie";
+    
+    [[AlipaySDK defaultService] payOrder:orderJson fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+        NSLog(@"---%@", resultDic);
+        
+        
+        
+        
+    }];
+    
+    
 }
 
 

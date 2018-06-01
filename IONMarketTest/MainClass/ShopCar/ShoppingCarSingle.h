@@ -43,6 +43,6 @@ typedef void(^getAmountTotalfeeBlock)(NSString *amout, NSString *totalfee);
 - (void)getServerShopCarAmountAndTotalfee:(getAmountTotalfeeBlock)block;
 
 //支付宝支付
-- (void)beginPayUserAliPayWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee;
+- (void)beginPayUserAliPayWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(aliPayMode)mode;
 
 @end

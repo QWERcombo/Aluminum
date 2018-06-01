@@ -50,7 +50,7 @@
         [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney];
     }
     if ([self.payWayLab.text isEqualToString:@"支付宝支付"]) {
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney];
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney userPayMode:aliPayMode_order];
     }
     
 }
