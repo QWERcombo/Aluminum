@@ -8,6 +8,7 @@
 
 #import "OrderPayVC.h"
 #import "ChoosePayWayView.h"
+#import "OrderPayResultVC.h"
 
 @interface OrderPayVC ()
 @property (weak, nonatomic) IBOutlet UILabel *orderNo;
@@ -41,19 +42,33 @@
     }
     
     if ([self.payWayLab.text isEqualToString:@"微信支付"]) {
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney userPayMode:weixinPayMode_order];
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney userPayMode:weixinPayMode_order paySuccessBlock:^{
+            [self goToPayResuit];
+        }];
     }
     if ([self.payWayLab.text isEqualToString:@"钱包支付"]) {
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWalletWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney];
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWalletWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney paySuccessBlock:^{
+            [self goToPayResuit];
+        }];
     }
     if ([self.payWayLab.text isEqualToString:@"白条支付"]) {
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney];
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney paySuccessBlock:^{
+            [self goToPayResuit];
+        }];
     }
     if ([self.payWayLab.text isEqualToString:@"支付宝支付"]) {
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney userPayMode:aliPayMode_order];
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney userPayMode:aliPayMode_order paySuccessBlock:^{
+            [self goToPayResuit];
+        }];
     }
     
 }
+
+- (void)goToPayResuit {
+    OrderPayResultVC *result = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayResultVC"];
+    [self.navigationController pushViewController:result animated:YES];
+}
+
 
 - (IBAction)choosePayWay:(UIButton *)sender {
     

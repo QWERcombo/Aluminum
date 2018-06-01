@@ -151,7 +151,7 @@ return __singleton__; \
 //钱包微信充值
 #define WEIXIN_PAY_TO_WALLET        @"weixinPayToWallet"
 //订单微信支付
-
+#define WEIXIN_PAY_TO_ORDER         @"weixinPayToOrder"
 
 
 /**

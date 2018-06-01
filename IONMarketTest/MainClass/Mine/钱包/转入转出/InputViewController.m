@@ -9,6 +9,7 @@
 #import "InputViewController.h"
 #import "InOutputView.h"
 #import "BankCardViewController.h"
+#import "OrderPayResultVC.h"
 
 @interface InputViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *inputTF;
@@ -28,13 +29,14 @@
     self.inputTF.delegate = self;
 //    [self setupSubviews];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:WEIXIN_PAY_TO_WALLET object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payToSuccessCallBack) name:WEIXIN_PAY_TO_WALLET object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:WEIXIN_PAY_TO_WALLET object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payToSuccessCallBack) name:WEIXIN_PAY_TO_WALLET object:nil];
 }
 
-- (void)payToSuccessCallBack {
-    [self.navigationController popViewControllerAnimated:YES];
-}
+//- (void)payToSuccessCallBack {
+//
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 
 
 
@@ -43,7 +45,18 @@
     if (self.mode_way == Mode_Input) {
         
         NSString *totalfee = [NSString stringWithFormat:@"%@", [NSNumber numberWithFloat:[self.inputTF.text floatValue]*100]];
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:@"" andTotalfee:totalfee userPayMode:weixinPayMode_wallet];
+//        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:@"" andTotalfee:totalfee userPayMode:weixinPayMode_wallet paySuccessBlock:^{
+        
+//        OrderPayResultVC *result = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayResultVC"];
+//        [self.navigationController pushViewController:result animated:YES];
+//        }];
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:@"" andTotalfee:totalfee userPayMode:aliPayMode_wallet paySuccessBlock:^{
+            
+            OrderPayResultVC *result = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayResultVC"];
+            [self.navigationController pushViewController:result animated:YES];
+            
+        }];
+        
         
     } else {
         

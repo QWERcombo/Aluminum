@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -801,6 +801,77 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3l-F4-CzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1064.8" y="554.57271364317842"/>
+        </scene>
+        <!--支付完成-->
+        <scene sceneID="0SL-Py-vbr">
+            <objects>
+                <tableViewController storyboardIdentifier="OrderPayResultVC" title="支付完成" id="tmg-Gl-drt" customClass="OrderPayResultVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="W9v-Qv-a3i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="0WW-49-xdF">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="450" id="Hz1-Wt-Vdr">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="450"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hz1-Wt-Vdr" id="rzE-zf-kWk">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="450"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pay_result" translatesAutoresizingMaskIntoConstraints="NO" id="Ia1-cl-pqW">
+                                                    <rect key="frame" x="137.5" y="150" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="XuM-mA-frn"/>
+                                                        <constraint firstAttribute="width" constant="100" id="yFB-0p-ccM"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PCD-Zk-LFd">
+                                                    <rect key="frame" x="30" y="350" width="315" height="45"/>
+                                                    <color key="backgroundColor" red="0.098039215690000001" green="0.62745098040000002" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="45" id="2hO-e1-jcm"/>
+                                                    </constraints>
+                                                    <state key="normal" title="确定"/>
+                                                    <connections>
+                                                        <action selector="doneClicker:" destination="tmg-Gl-drt" eventType="touchUpInside" id="UK9-pe-xTu"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GwI-Qx-3hF">
+                                                    <rect key="frame" x="146.5" y="280" width="82" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" red="0.098039215690000001" green="0.62745098040000002" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ia1-cl-pqW" firstAttribute="top" secondItem="rzE-zf-kWk" secondAttribute="top" constant="150" id="1JL-yz-Fs7"/>
+                                                <constraint firstItem="PCD-Zk-LFd" firstAttribute="top" secondItem="Ia1-cl-pqW" secondAttribute="bottom" constant="100" id="CrE-Tb-KqJ"/>
+                                                <constraint firstItem="GwI-Qx-3hF" firstAttribute="centerX" secondItem="rzE-zf-kWk" secondAttribute="centerX" id="T8A-1P-3JV"/>
+                                                <constraint firstItem="Ia1-cl-pqW" firstAttribute="centerX" secondItem="rzE-zf-kWk" secondAttribute="centerX" id="VHS-0k-Jmz"/>
+                                                <constraint firstAttribute="trailing" secondItem="PCD-Zk-LFd" secondAttribute="trailing" constant="30" id="hMx-kT-FPx"/>
+                                                <constraint firstItem="PCD-Zk-LFd" firstAttribute="centerX" secondItem="rzE-zf-kWk" secondAttribute="centerX" id="inT-8P-cbP"/>
+                                                <constraint firstItem="GwI-Qx-3hF" firstAttribute="top" secondItem="Ia1-cl-pqW" secondAttribute="bottom" constant="30" id="jTc-bd-sZ1"/>
+                                                <constraint firstItem="PCD-Zk-LFd" firstAttribute="leading" secondItem="rzE-zf-kWk" secondAttribute="leading" constant="30" id="sjE-sS-V46"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="tmg-Gl-drt" id="AyU-vB-kl6"/>
+                            <outlet property="delegate" destination="tmg-Gl-drt" id="VOO-rp-tlC"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="status_imgv" destination="Ia1-cl-pqW" id="4MO-FU-9ji"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l6u-av-cCI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1064.8" y="1291.304347826087"/>
         </scene>
         <!--填写订单-->
         <scene sceneID="3Vr-la-rkr">
@@ -2174,5 +2245,6 @@
         <image name="Login_phone" width="18" height="17"/>
         <image name="White_add" width="32" height="32"/>
         <image name="image_more" width="15" height="15"/>
+        <image name="pay_result" width="50" height="50"/>
     </resources>
 </document>

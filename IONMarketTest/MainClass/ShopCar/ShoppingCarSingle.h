@@ -18,31 +18,40 @@ typedef enum : NSUInteger {
     aliPayMode_wallet,
 } aliPayMode;
 
+
+//typedef enum : NSUInteger {
+//    payMode_weixin,
+//    payMode_ali,
+//    payMode_baitiao,
+//    payMode_wallet,
+//} payMode;
 typedef void(^getAmountTotalfeeBlock)(NSString *amout, NSString *totalfee);
 
+typedef void(^paySuccessBlock)(void);
 
 @interface ShoppingCarSingle : NSObject
 
-//@property (nonatomic, strong) NSMutableArray *shopCarDataSource; //数据
-//@property (nonatomic, copy) NSNumber *totalPrice; //总价
+
 @property (nonatomic, copy) getAmountTotalfeeBlock amoutBlock; //角标
 @property (nonatomic, assign) weixinPayMode payMode;
+@property (nonatomic, copy) paySuccessBlock payBlock;
+
 
 + (ShoppingCarSingle *)sharedShoppingCarSingle;
 
 //微信支付
-- (void)beginPayUserWeixiWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(weixinPayMode)mode;
+- (void)beginPayUserWeixiWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(weixinPayMode)mode paySuccessBlock:(paySuccessBlock)paySuccessBlock;
 
 //钱包支付
-- (void)beginPayUserWalletWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee;
+- (void)beginPayUserWalletWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee paySuccessBlock:(paySuccessBlock)paySuccessBlock;
 
 //白条支付
-- (void)beginPayUserWhiteBarWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee;
+- (void)beginPayUserWhiteBarWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee paySuccessBlock:(paySuccessBlock)paySuccessBlock;
 
 //获取购物车数量和总价
 - (void)getServerShopCarAmountAndTotalfee:(getAmountTotalfeeBlock)block;
 
 //支付宝支付
-- (void)beginPayUserAliPayWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(aliPayMode)mode;
+- (void)beginPayUserAliPayWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(aliPayMode)mode paySuccessBlock:(paySuccessBlock)paySuccessBlock;
 
 @end

@@ -26,7 +26,9 @@
 }
 
 
-- (void)beginPayUserWeixiWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(weixinPayMode)mode {
+- (void)beginPayUserWeixiWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(weixinPayMode)mode paySuccessBlock:(paySuccessBlock)paySuccessBlock{
+    
+    self.payBlock = paySuccessBlock;
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
@@ -67,6 +69,9 @@
 - (void)weixinPay:(NSDictionary *)resultDic {
     
     if ([WXApi isWXAppInstalled]) {
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:WEIXIN_PAY_TO_ORDER object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payToSuccessCallBack) name:WEIXIN_PAY_TO_ORDER object:nil];
         
         NSString *appid = [NSString stringWithFormat:@"%@", resultDic[@"appid"]];
         NSString *partnerid = [NSString stringWithFormat:@"%@", resultDic[@"partnerId"]];
@@ -109,7 +114,9 @@
     
 }
 
-- (void)beginPayUserWalletWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee  {
+- (void)beginPayUserWalletWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee paySuccessBlock:(paySuccessBlock)paySuccessBlock {
+    
+    self.payBlock = paySuccessBlock;
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].id forKey:@"userId"];
@@ -118,6 +125,7 @@
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_qianbaoPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
+        [self payToSuccessCallBack];
         
     } failure:^(NSString *error, NSInteger code) {
         
@@ -125,7 +133,9 @@
     
 }
 
-- (void)beginPayUserWhiteBarWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee {
+- (void)beginPayUserWhiteBarWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee paySuccessBlock:(paySuccessBlock)paySuccessBlock {
+    
+    self.payBlock = paySuccessBlock;
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].id forKey:@"userId"];
@@ -134,6 +144,7 @@
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_baitiaoPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
+        [self payToSuccessCallBack];
         
     } failure:^(NSString *error, NSInteger code) {
         
@@ -173,19 +184,21 @@
     
 }
 
-- (void)beginPayUserAliPayWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(aliPayMode)mode {
+- (void)beginPayUserAliPayWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(aliPayMode)mode paySuccessBlock:(paySuccessBlock)paySuccessBlock {
+    
+    self.payBlock = paySuccessBlock;
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
     if (mode == aliPayMode_order) {
         [dict setValue:orderId forKey:@"no"];
-        [dict setValue:totalfee forKey:@"totalfee"];
+        [dict setValue:@"0.01" forKey:@"totalfee"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_aliAppOrderPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             
+            NSString *orderStr = [NSString stringWithFormat:@"%@", resultDic[@"orderStr"]];
             
-            
-            [self aliPayWithOrderJson:@""];
+            [self aliPayWithOrderJson:orderStr];
             
         } failure:^(NSString *error, NSInteger code) {
             
@@ -197,6 +210,19 @@
     
     if (mode == aliPayMode_wallet) {
         
+        [dict setValue:[UserData currentUser].id forKey:@"userId"];
+        //    [dict setValue:totalfee forKey:@"totalfee"]; //不能带小数点
+        [dict setValue:@"0.01" forKey:@"totalfee"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_aliAppChongzhi andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            NSString *orderStr = [NSString stringWithFormat:@"%@", resultDic[@"orderStr"]];
+            
+            [self aliPayWithOrderJson:orderStr];
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
     }
 }
 
@@ -204,16 +230,20 @@
     
     NSString *appScheme = @"LeQie";
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:WEIXIN_PAY_TO_ORDER object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payToSuccessCallBack) name:WEIXIN_PAY_TO_ORDER object:nil];
+    
     [[AlipaySDK defaultService] payOrder:orderJson fromScheme:appScheme callback:^(NSDictionary *resultDic) {
         NSLog(@"---%@", resultDic);
         
-        
-        
-        
     }];
-    
     
 }
 
+- (void)payToSuccessCallBack {
+    if (self.payBlock) {
+        self.payBlock();
+    }
+}
 
 @end

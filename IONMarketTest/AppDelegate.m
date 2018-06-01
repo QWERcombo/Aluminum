@@ -88,6 +88,13 @@
             // 支付跳转支付宝钱包进行支付，处理支付结果
             [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
                 NSLog(@"result = %@",resultDic);
+                
+                if ([resultDic[@"resultStatus"] isEqualToString:@"9000"]) {
+                    
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:WEIXIN_PAY_TO_WALLET object:nil];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:WEIXIN_PAY_TO_ORDER object:nil];
+                    
+                }
             }];
             
             // 授权跳转支付宝钱包进行支付，处理支付结果
@@ -125,6 +132,14 @@
         // 支付跳转支付宝钱包进行支付，处理支付结果
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
+            
+            if ([resultDic[@"resultStatus"] isEqualToString:@"9000"]) {
+                
+//                [[NSNotificationCenter defaultCenter] postNotificationName:WEIXIN_PAY_TO_WALLET object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:WEIXIN_PAY_TO_ORDER object:nil];
+                
+            }
+            
         }];
         
         // 授权跳转支付宝钱包进行支付，处理支付结果
@@ -155,7 +170,7 @@
 
 
 #pragma mark WXPay
--(void) onResp:(BaseResp*)resp
+- (void)onResp:(BaseResp*)resp
 {
     //启动微信支付的response
     NSString *payResoult = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
@@ -165,10 +180,9 @@
             case 0:
                 payResoult = @"支付结果：成功！";
                 
-                
                 //微信钱包充值
-                [[NSNotificationCenter defaultCenter] postNotificationName:WEIXIN_PAY_TO_WALLET object:nil];
-                
+//                [[NSNotificationCenter defaultCenter] postNotificationName:WEIXIN_PAY_TO_WALLET object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:WEIXIN_PAY_TO_ORDER object:nil];
                 
                 break;
             case -1:
@@ -182,7 +196,7 @@
                 break;
         }
     }
-    NSLog(@"-------+++++%@", payResoult);
+//    NSLog(@"-------+++++%@", payResoult);
 }
 
 
