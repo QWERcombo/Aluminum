@@ -8,6 +8,11 @@
 
 #import "BaseViewController.h"
 
-@interface TradeListViewController : BaseViewController
+typedef enum : NSUInteger {
+    ListType_Record,    //消费记录
+    ListType_Withdraw,  //提现记录
+} ListType;
 
+@interface TradeListViewController : BaseViewController
+@property (nonatomic, assign) ListType listType;
 @end

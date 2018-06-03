@@ -44,6 +44,12 @@
         
     }];
     
+    UIButton *recordBtn = [UIButton buttonWithTitle:@"消费记录" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+    recordBtn.frame = CGRectMake(0, 0, 70, 40);
+    [recordBtn addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:recordBtn];
+    
+    
     [self createBottomView];
 }
 
@@ -175,18 +181,16 @@
         make.left.equalTo(downView.mas_left).offset(10);
     }];
     
-    UIButton *paywayButton = [UIButton buttonWithTitle:@"查看全部" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:3] andHighlightedTitle:[UIColor mianColor:3] andNormaImage:nil andHighlightedImage:nil];
-    [paywayButton setImage:IMG(@"image_more") forState:UIControlStateNormal];
-    [paywayButton addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
-    [downView addSubview:paywayButton];
-    [paywayButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(downView.mas_centerY);
-        make.right.equalTo(downView.mas_right).offset(-10);
-    }];
-    paywayButton.titleEdgeInsets = UIEdgeInsetsMake(0, -paywayButton.imageView.bounds.size.width, 0, paywayButton.imageView.bounds.size.width);
-    paywayButton.imageEdgeInsets = UIEdgeInsetsMake(0, paywayButton.titleLabel.bounds.size.width, 0, -paywayButton.titleLabel.bounds.size.width);
-    
-    
+//    UIButton *paywayButton = [UIButton buttonWithTitle:@"查看全部" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor mianColor:3] andHighlightedTitle:[UIColor mianColor:3] andNormaImage:nil andHighlightedImage:nil];
+//    [paywayButton setImage:IMG(@"image_more") forState:UIControlStateNormal];
+//    [paywayButton addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
+//    [downView addSubview:paywayButton];
+//    [paywayButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(downView.mas_centerY);
+//        make.right.equalTo(downView.mas_right).offset(-10);
+//    }];
+//    paywayButton.titleEdgeInsets = UIEdgeInsetsMake(0, -paywayButton.imageView.bounds.size.width, 0, paywayButton.imageView.bounds.size.width);
+//    paywayButton.imageEdgeInsets = UIEdgeInsetsMake(0, paywayButton.titleLabel.bounds.size.width, 0, -paywayButton.titleLabel.bounds.size.width);
     
     return mainView;
 }
@@ -208,6 +212,7 @@
 
 - (void)payCliker:(UIButton *)sender {
     TradeListViewController *list = [[TradeListViewController alloc] init];
+    list.listType = ListType_Record;
     [self.navigationController pushViewController:list animated:YES];
 }
 
@@ -225,7 +230,7 @@
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
     [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
     [dataDic setValue:@"1" forKey:@"pageNum"];
-    [dataDic setValue:@"20" forKey:@"pageSize"];
+    [dataDic setValue:@"999" forKey:@"pageSize"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_qianbaoChongZhiList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
         

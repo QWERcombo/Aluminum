@@ -17,7 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"交易明细";
+    if (self.listType == ListType_Record) {
+        self.title = @"消费记录";
+    } else {
+        self.title = @"提现记录";
+    }
+    [self getDataSource];
     [self setupSubviews];
 }
 
@@ -32,33 +37,64 @@
     self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无交易明细" andDetailStr:@"" withReloadAction:^{
         
     }];
-    
-    UIButton *chooseButton = [UIButton buttonWithTitle:@"筛选" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
-    [chooseButton addTarget:self action:@selector(chooseCliker:) forControlEvents:UIControlEventTouchUpInside];
-    chooseButton.frame = CGRectMake(0, 0, 45, 15);
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:chooseButton];
+//    UIButton *chooseButton = [UIButton buttonWithTitle:@"筛选" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+//    [chooseButton addTarget:self action:@selector(chooseCliker:) forControlEvents:UIControlEventTouchUpInside];
+//    chooseButton.frame = CGRectMake(0, 0, 45, 15);
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:chooseButton];
 }
 
 
 #pragma mark ----- UITableViewDelegate & DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.dataMuArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold creatCell:@"WallentListCell" table:tableView deledate:self model:nil data:nil andCliker:^(NSDictionary *clueDic) {
+    return [UtilsMold creatCell:@"TradeRecordCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
         
     }];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold getCellHight:@"WallentListCell" data:nil model:nil indexPath:indexPath];
+    return [UtilsMold getCellHight:@"TradeRecordCell" data:nil model:nil indexPath:indexPath];
 }
 
 
-#pragma mark ----- Action
-- (void)chooseCliker:(UIButton *)sneder {
-    NSLog(@"%@", sneder.currentTitle);
+#pragma mark ----- Actio
+
+- (void)getDataSource {
+    
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+    NSString *url = @"";
+    
+    [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+    
+    if (self.listType == ListType_Record) {
+        [dataDic setValue:@"1" forKey:@"pageNum"];
+        [dataDic setValue:@"999" forKey:@"pageSize"];
+        url = Interface_qianBaoBillList;
+    } else {
+        [dataDic setValue:@"1" forKey:@"p"];
+        url = Interface_withdrawSave;
+    }
+    
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:url andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        NSArray *dataArray = resultDic[@"result"];
+
+        for (NSDictionary *dict in dataArray) {
+
+            WalletListModel *model = [[WalletListModel alloc] initWithDictionary:dict error:nil];
+
+            [self.dataMuArr addObject:model];
+        }
+        
+        [self.tabView reloadData];
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
     
 }
 

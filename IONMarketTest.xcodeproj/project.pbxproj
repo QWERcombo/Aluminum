@@ -63,6 +63,8 @@
 		5678495120C02A9700739A3D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5678495020C02A9700739A3D /* Foundation.framework */; };
 		5678495320C02AA300739A3D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5678495220C02AA300739A3D /* CFNetwork.framework */; };
 		5678495520C02AAC00739A3D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5678495420C02AAC00739A3D /* CoreMotion.framework */; };
+		567B14C420C43F1B00B81FD6 /* TradeRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 567B14C220C43F1B00B81FD6 /* TradeRecordCell.m */; };
+		567B14C520C43F1B00B81FD6 /* TradeRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 567B14C320C43F1B00B81FD6 /* TradeRecordCell.xib */; };
 		567D6A3C207B9BA100994BEF /* AuthenticationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 567D6A3B207B9BA100994BEF /* AuthenticationModel.m */; };
 		5686219520A9C59A0030C761 /* TextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5686219420A9C59A0030C761 /* TextTableViewController.m */; };
 		5686219920A9CB6E0030C761 /* ShopCarNewListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5686219720A9CB6E0030C761 /* ShopCarNewListCell.m */; };
@@ -333,6 +335,9 @@
 		5678495020C02A9700739A3D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5678495220C02AA300739A3D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5678495420C02AAC00739A3D /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		567B14C120C43F1B00B81FD6 /* TradeRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TradeRecordCell.h; sourceTree = "<group>"; };
+		567B14C220C43F1B00B81FD6 /* TradeRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TradeRecordCell.m; sourceTree = "<group>"; };
+		567B14C320C43F1B00B81FD6 /* TradeRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeRecordCell.xib; sourceTree = "<group>"; };
 		567D6A3A207B9BA100994BEF /* AuthenticationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationModel.h; sourceTree = "<group>"; };
 		567D6A3B207B9BA100994BEF /* AuthenticationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationModel.m; sourceTree = "<group>"; };
 		5686219320A9C59A0030C761 /* TextTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextTableViewController.h; sourceTree = "<group>"; };
@@ -1437,6 +1442,9 @@
 				A229819420620596007B6112 /* InOutputView.h */,
 				A229819520620596007B6112 /* InOutputView.m */,
 				A2298197206205A2007B6112 /* InOutputView.xib */,
+				567B14C120C43F1B00B81FD6 /* TradeRecordCell.h */,
+				567B14C220C43F1B00B81FD6 /* TradeRecordCell.m */,
+				567B14C320C43F1B00B81FD6 /* TradeRecordCell.xib */,
 			);
 			path = "钱包";
 			sourceTree = "<group>";
@@ -1826,6 +1834,7 @@
 				A283489720610F6900C228AD /* WallentListCell.xib in Resources */,
 				5671DBC520600073005F1760 /* MainItemView__Pole.xib in Resources */,
 				A229818B2061FF2B007B6112 /* RemainExplainCell.xib in Resources */,
+				567B14C520C43F1B00B81FD6 /* TradeRecordCell.xib in Resources */,
 				5695BE7E20429F1B0036D54B /* Assets.xcassets in Resources */,
 				5695BE7920429F1B0036D54B /* Main.storyboard in Resources */,
 				A2301B3320637EE0006B9F20 /* FeedbackViewController.xib in Resources */,
@@ -2052,6 +2061,7 @@
 				5602129C20594D2B009EF75D /* WhiteBarViewController.m in Sources */,
 				5657412B20538D8A007CB488 /* SelectedItem.m in Sources */,
 				5695BF202042ABAB0036D54B /* YXPUtil.m in Sources */,
+				567B14C420C43F1B00B81FD6 /* TradeRecordCell.m in Sources */,
 				56508699205CBEC500FD8497 /* SpecialMakeViewController.m in Sources */,
 				A22981D5206261C1007B6112 /* TicketCell.m in Sources */,
 				A229819620620596007B6112 /* InOutputView.m in Sources */,
@@ -2165,7 +2175,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2214,7 +2224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

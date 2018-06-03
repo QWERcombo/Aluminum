@@ -14,6 +14,9 @@
 @interface InputViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *inputTF;
 @property (nonatomic, strong) NSMutableString *inputString;
+@property (weak, nonatomic) IBOutlet UIButton *aliBtn;
+@property (weak, nonatomic) IBOutlet UIButton *weixinBtn;
+@property (nonatomic, copy) NSString *payWay;
 @end
 
 @implementation InputViewController
@@ -27,6 +30,7 @@
         self.title = @"转出";
     }
     self.inputTF.delegate = self;
+    self.payWay = @"-1";
 //    [self setupSubviews];
     
 //    [[NSNotificationCenter defaultCenter] removeObserver:self name:WEIXIN_PAY_TO_WALLET object:nil];
@@ -38,25 +42,49 @@
 //    [self.navigationController popViewControllerAnimated:YES];
 //}
 
+#pragma mark - Method
 
+- (IBAction)weixinPay:(UIButton *)sender {
+    [self.weixinBtn setSelected:YES];
+    [self.aliBtn setSelected:NO];
+    self.payWay = @"0";
+}
+
+- (IBAction)aliPay:(UIButton *)sender {
+    [self.aliBtn setSelected:YES];
+    [self.weixinBtn setSelected:NO];
+    self.payWay = @"1";
+}
 
 - (IBAction)doneClicker:(UIButton *)sender {
     
     if (self.mode_way == Mode_Input) {
         
+        if ([self.payWay isEqualToString:@"-1"]) {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择支付方式!" time:0 aboutType:WHShowViewMode_Text state:NO];
+            return;
+        }
+        
         NSString *totalfee = [NSString stringWithFormat:@"%@", [NSNumber numberWithFloat:[self.inputTF.text floatValue]*100]];
-//        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:@"" andTotalfee:totalfee userPayMode:weixinPayMode_wallet paySuccessBlock:^{
         
-//        OrderPayResultVC *result = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayResultVC"];
-//        [self.navigationController pushViewController:result animated:YES];
-//        }];
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:@"" andTotalfee:totalfee userPayMode:aliPayMode_wallet paySuccessBlock:^{
-            
-            OrderPayResultVC *result = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayResultVC"];
-            [self.navigationController pushViewController:result animated:YES];
-            
-        }];
-        
+        if ([self.payWay isEqualToString:@"0"]) {
+            //微信支付
+            [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:@"" andTotalfee:totalfee userPayMode:weixinPayMode_wallet paySuccessBlock:^{
+                
+                OrderPayResultVC *result = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayResultVC"];
+                [self.navigationController pushViewController:result animated:YES];
+                
+            }];
+        }
+        if ([self.payWay isEqualToString:@"1"]) {
+            //支付宝支付
+            [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:@"" andTotalfee:totalfee userPayMode:aliPayMode_wallet paySuccessBlock:^{
+                
+                OrderPayResultVC *result = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayResultVC"];
+                [self.navigationController pushViewController:result animated:YES];
+                
+            }];
+        }
         
     } else {
         

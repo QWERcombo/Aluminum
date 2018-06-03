@@ -7,6 +7,7 @@
 //
 
 #import "WithdrawApplyViewController.h"
+#import "TradeListViewController.h"
 
 @interface WithdrawApplyViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *kaihuhangTF;
@@ -22,6 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UIButton *recordBtn = [UIButton buttonWithTitle:@"提现记录" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+    recordBtn.frame = CGRectMake(0, 0, 70, 40);
+    [recordBtn addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:recordBtn];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,6 +34,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)payCliker:(UIButton *)sender {
+    
+    TradeListViewController *list = [[TradeListViewController alloc] init];
+    list.listType = ListType_Withdraw;
+    [self.navigationController pushViewController:list animated:YES];
+}
 
 - (IBAction)applyClicker:(UIButton *)sender {
     
