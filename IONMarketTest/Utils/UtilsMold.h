@@ -25,7 +25,7 @@
 #import "ShopCarListCell.h"
 #import "ShopCarNewListCell.h"
 #import "TradeRecordCell.h"
-
+#import "WhiteBarCell.h"
 
 
 

@@ -17,6 +17,8 @@
 #import "ShareViewController.h"
 #import "SettingTableViewController.h"
 #import "AuthenticationTableViewController.h"
+#import "WhiteBarVC.h"
+
 
 @interface MineViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *userHeader;
@@ -65,7 +67,11 @@
     } else if (indexPath.row == 8) {
         ShareViewController *share = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ShareVC"];
         [self.navigationController pushViewController:share animated:YES];
-    } else {
+    } else if (indexPath.row == 3) {//白条
+        WhiteBarVC *share = [[UIStoryboard storyboardWithName:@"Common" bundle:nil] instantiateViewControllerWithIdentifier:@"WhiteBarVC"];
+        [self.navigationController pushViewController:share animated:YES];
+    }
+    else {
         UIViewController *nextController = (UIViewController *)[[NSClassFromString(NSStringFromClass([classArray objectAtIndex:indexPath.row])) alloc] init];
         nextController.title = [self.titleArr objectAtIndex:indexPath.row];
         [self.navigationController pushViewController:nextController animated:YES];

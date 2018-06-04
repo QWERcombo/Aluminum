@@ -21,4 +21,16 @@
     // Configure the view for the selected state
 }
 
++ (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
+    return 65;
+}
+
++ (instancetype)getWhiteBarCell {
+    return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] firstObject];
+}
+
+- (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
+    
+}
+
 @end

@@ -19,9 +19,15 @@
     // Do any additional setup after loading the view.
     if (self.listType == ListType_Record) {
         self.title = @"消费记录";
-    } else {
+    }
+    if (self.listType == ListType_Withdraw) {
         self.title = @"提现记录";
     }
+    if (self.listType == ListType_huankuan) {
+        self.title = @"还款记录";
+    }
+    
+    
     [self getDataSource];
     [self setupSubviews];
 }
@@ -73,9 +79,15 @@
         [dataDic setValue:@"1" forKey:@"pageNum"];
         [dataDic setValue:@"999" forKey:@"pageSize"];
         url = Interface_qianBaoBillList;
-    } else {
+    }
+    if (self.listType == ListType_Withdraw) {
         [dataDic setValue:@"1" forKey:@"p"];
         url = Interface_withdrawSave;
+    }
+    if (self.listType == ListType_huankuan) {
+        [dataDic setValue:@"1" forKey:@"pageNum"];
+        [dataDic setValue:@"999" forKey:@"pageSize"];
+        url = Interface_BaitiaoHuanKuanList;
     }
     
     

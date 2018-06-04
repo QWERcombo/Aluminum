@@ -12,4 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLab;
 @property (weak, nonatomic) IBOutlet UILabel *moneyLab;
 
++ (instancetype)getWhiteBarCell;
+- (void)loadData:(NSObject *)model andCliker:(ClikBlock)click;
 @end
