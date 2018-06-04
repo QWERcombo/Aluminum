@@ -203,6 +203,10 @@
 		A2555F9220C0DDE4000C7E03 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2555F9020C0DDE3000C7E03 /* libssl.a */; };
 		A2555F9720C0DFF9000C7E03 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A2555F9520C0DFF8000C7E03 /* AlipaySDK.bundle */; };
 		A2555F9820C0DFF9000C7E03 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2555F9620C0DFF9000C7E03 /* AlipaySDK.framework */; };
+		A26149CA20C5379E0055BA25 /* WhiteBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A26149C820C5379E0055BA25 /* WhiteBarCell.m */; };
+		A26149CB20C5379E0055BA25 /* WhiteBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26149C920C5379E0055BA25 /* WhiteBarCell.xib */; };
+		A26149CD20C53FCE0055BA25 /* Common.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A26149CC20C53FCE0055BA25 /* Common.storyboard */; };
+		A26149D020C540280055BA25 /* WhiteBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A26149CF20C540280055BA25 /* WhiteBarVC.m */; };
 		A26CECC5205FAA5A00B7AF91 /* InventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A26CECC4205FAA5A00B7AF91 /* InventoryViewController.m */; };
 		A283488E2060AAB200C228AD /* ShopCarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A283488D2060AAB200C228AD /* ShopCarDetailViewController.m */; };
 		A283489220610A8300C228AD /* TradeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A283489120610A8300C228AD /* TradeListViewController.m */; };
@@ -669,6 +673,12 @@
 		A2555F9020C0DDE3000C7E03 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		A2555F9520C0DFF8000C7E03 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		A2555F9620C0DFF9000C7E03 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		A26149C720C5379E0055BA25 /* WhiteBarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WhiteBarCell.h; sourceTree = "<group>"; };
+		A26149C820C5379E0055BA25 /* WhiteBarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WhiteBarCell.m; sourceTree = "<group>"; };
+		A26149C920C5379E0055BA25 /* WhiteBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WhiteBarCell.xib; sourceTree = "<group>"; };
+		A26149CC20C53FCE0055BA25 /* Common.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Common.storyboard; sourceTree = "<group>"; };
+		A26149CE20C540280055BA25 /* WhiteBarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WhiteBarVC.h; sourceTree = "<group>"; };
+		A26149CF20C540280055BA25 /* WhiteBarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WhiteBarVC.m; sourceTree = "<group>"; };
 		A26CECC3205FAA5A00B7AF91 /* InventoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InventoryViewController.h; sourceTree = "<group>"; };
 		A26CECC4205FAA5A00B7AF91 /* InventoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InventoryViewController.m; sourceTree = "<group>"; };
 		A283488C2060AAB200C228AD /* ShopCarDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCarDetailViewController.h; sourceTree = "<group>"; };
@@ -800,6 +810,8 @@
 			children = (
 				5602129A20594D2B009EF75D /* WhiteBarViewController.h */,
 				5602129B20594D2B009EF75D /* WhiteBarViewController.m */,
+				A26149CE20C540280055BA25 /* WhiteBarVC.h */,
+				A26149CF20C540280055BA25 /* WhiteBarVC.m */,
 				56A5746220ADC54F00A458EB /* ApplyWhiteBarVC.h */,
 				56A5746320ADC54F00A458EB /* ApplyWhiteBarVC.m */,
 			);
@@ -1235,6 +1247,7 @@
 				A21B4668207B194000802621 /* Mine.storyboard */,
 				5695BE7720429F1B0036D54B /* Main.storyboard */,
 				5695BE7F20429F1B0036D54B /* LaunchScreen.storyboard */,
+				A26149CC20C53FCE0055BA25 /* Common.storyboard */,
 				5695BECF2042A84E0036D54B /* PrefixHeader.pch */,
 			);
 			path = "Supporting Files";
@@ -1646,9 +1659,20 @@
 			path = openssl;
 			sourceTree = "<group>";
 		};
+		A26149C620C5376E0055BA25 /* 白条 */ = {
+			isa = PBXGroup;
+			children = (
+				A26149C720C5379E0055BA25 /* WhiteBarCell.h */,
+				A26149C820C5379E0055BA25 /* WhiteBarCell.m */,
+				A26149C920C5379E0055BA25 /* WhiteBarCell.xib */,
+			);
+			path = "白条";
+			sourceTree = "<group>";
+		};
 		A283488F2060F31B00C228AD /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				A26149C620C5376E0055BA25 /* 白条 */,
 				A2301B37206389B3006B9F20 /* 消息 */,
 				A22981B3206248C8007B6112 /* 开票 */,
 				A22981B2206248BC007B6112 /* 收货地址 */,
@@ -1813,6 +1837,8 @@
 				568EFDF6206F1851007E437F /* Address.plist in Resources */,
 				A2298198206205A2007B6112 /* InOutputView.xib in Resources */,
 				A2301B3C20638AB3006B9F20 /* SmartServiceCell.xib in Resources */,
+				A26149CD20C53FCE0055BA25 /* Common.storyboard in Resources */,
+				A26149CB20C5379E0055BA25 /* WhiteBarCell.xib in Resources */,
 				565086AA205CFF1800FD8497 /* OrderDetailCell.xib in Resources */,
 				A21B4669207B194000802621 /* Mine.storyboard in Resources */,
 				5695BE8120429F1B0036D54B /* LaunchScreen.storyboard in Resources */,
@@ -1926,6 +1952,7 @@
 				56940C2C20515DF900DFA6D6 /* UIFont+YXP.m in Sources */,
 				56940C2820515DF900DFA6D6 /* UIImageView+YXP.m in Sources */,
 				56EC993C206D121D00F2D2D0 /* AddressModel.m in Sources */,
+				A26149D020C540280055BA25 /* WhiteBarVC.m in Sources */,
 				A24B0B6B20722C01009ECD41 /* OrderModel.m in Sources */,
 				56940C2020515DF900DFA6D6 /* NSString+MD5.m in Sources */,
 				5695BF1E2042ABAB0036D54B /* UtilsMold.m in Sources */,
@@ -1997,6 +2024,7 @@
 				568CB0902066629900B48318 /* PickerView.m in Sources */,
 				56940C0120515DB300DFA6D6 /* TBTabBar.m in Sources */,
 				A22981D0206261AE007B6112 /* EndTicketCell.m in Sources */,
+				A26149CA20C5379E0055BA25 /* WhiteBarCell.m in Sources */,
 				5602129F20594D37009EF75D /* WalletViewController.m in Sources */,
 				A26CECC5205FAA5A00B7AF91 /* InventoryViewController.m in Sources */,
 				5695BF5C2042AC1D0036D54B /* EasyShowUtils.m in Sources */,
