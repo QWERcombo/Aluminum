@@ -45,8 +45,8 @@
         } failure:^(NSString *error, NSInteger code) {
             
         }];
-        
     }
+    
     if (mode == weixinPayMode_wallet) {
         
         [dict setValue:[UserData currentUser].id forKey:@"userId"];
@@ -60,7 +60,21 @@
         } failure:^(NSString *error, NSInteger code) {
             
         }];
+    }
+    
+    if (mode == weixinPayMode_baitiao) {
         
+        [dict setValue:[UserData currentUser].id forKey:@"userId"];
+//        [dict setValue:totalfee forKey:@"totalfee"]; //不能带小数点
+        [dict setValue:@"1" forKey:@"totalfee"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WxHuanKuan andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            [self weixinPay:resultDic];
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
     }
    
 }
@@ -191,6 +205,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
     if (mode == aliPayMode_order) {
+        
         [dict setValue:orderId forKey:@"no"];
         [dict setValue:@"0.01" forKey:@"totalfee"];
         
@@ -203,8 +218,6 @@
         } failure:^(NSString *error, NSInteger code) {
             
         }];
-        
-        
     }
     
     
@@ -215,6 +228,22 @@
         [dict setValue:@"0.01" forKey:@"totalfee"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_aliAppChongzhi andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            NSString *orderStr = [NSString stringWithFormat:@"%@", resultDic[@"orderStr"]];
+            
+            [self aliPayWithOrderJson:orderStr];
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+    }
+    
+    if (mode == aliPayMode_baitiao) {
+        
+        [dict setValue:[UserData currentUser].id forKey:@"userId"];
+        [dict setValue:@"0.01" forKey:@"totalfee"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_aliAppHuanKuan andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSString *orderStr = [NSString stringWithFormat:@"%@", resultDic[@"orderStr"]];
             

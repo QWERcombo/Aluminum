@@ -8,6 +8,7 @@
 
 #import "WhiteBarVC.h"
 #import "TradeListViewController.h"
+#import "InputViewController.h"
 
 @interface WhiteBarVC ()
 @property (weak, nonatomic) IBOutlet UITableView *whiteBarTableView;
@@ -46,7 +47,9 @@
 
 - (IBAction)huankuanClicker:(UIButton *)sender {
     
-    
+    InputViewController *input = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"InputViewController"];
+    input.mode_way = Mode_Output;
+    [self.navigationController pushViewController:input animated:YES];
 }
 
 
@@ -84,6 +87,8 @@
             [self.dataMuArr addObject:model];
         }
         
+        self.huankuanLab.text = [NSString stringWithFormat:@"%@", resultDic[@"money"]];
+        
         [self.tabView reloadData];
     } failure:^(NSString *error, NSInteger code) {
         
@@ -98,6 +103,8 @@
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_GetBaitiaoEDuById andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
         
+        self.totalFeeLab.text = [NSString stringWithFormat:@"白条额度:%.2lf", [resultDic[@"zongedu"] floatValue]];
+        self.availFeeLab.text = [NSString stringWithFormat:@"可用额度:%.2lf", [resultDic[@"keyongedu"] floatValue]];
         
     } failure:^(NSString *error, NSInteger code) {
         

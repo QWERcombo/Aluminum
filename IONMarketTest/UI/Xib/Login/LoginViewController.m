@@ -61,7 +61,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 //    [dict setValue:@"13407126200" forKey:@"phone"];
 //    [dict setValue:@"12345678" forKey:@"password"];
-    [dict setValue:@"13164628130" forKey:@"phone"];
+    [dict setValue:self.phoneTF.text forKey:@"phone"];
     [dict setValue:self.codeTF.text forKey:@"password"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Login andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {

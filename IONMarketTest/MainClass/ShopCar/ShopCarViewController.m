@@ -181,8 +181,10 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         ShopCar *car = [self.dataMuArr objectAtIndex:indexPath.row];
+        [self deleteShopCar:car.id];
         [self.dataMuArr removeObject:car];
         [self.tabView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
         if ([self.selectArr containsObject:car]) {
             [self.selectArr removeObject:car];
             self.totoal = 0.f;
@@ -289,6 +291,21 @@
     } failure:^(NSString *error, NSInteger code) {
         [self.tabView.mj_header endRefreshing];
         [self.tabView.mj_footer endRefreshing];
+    }];
+    
+}
+
+- (void)deleteShopCar:(NSString *)carId {
+    
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+    [dataDic setValue:carId forKey:@"gouwucheId"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_DeleteGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"删除成功!" time:0 aboutType:WHShowViewMode_Text state:YES];
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
     }];
     
 }

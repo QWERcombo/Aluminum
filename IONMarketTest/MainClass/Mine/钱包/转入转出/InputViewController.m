@@ -25,9 +25,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     if (self.mode_way == Mode_Input) {
-        self.title = @"转入";
+        self.title = @"钱包转入";
     } else {
-        self.title = @"转出";
+        self.title = @"白条还款";
     }
     self.inputTF.delegate = self;
     self.payWay = @"-1";
@@ -58,37 +58,30 @@
 
 - (IBAction)doneClicker:(UIButton *)sender {
     
-    if (self.mode_way == Mode_Input) {
-        
-        if ([self.payWay isEqualToString:@"-1"]) {
-            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择支付方式!" time:0 aboutType:WHShowViewMode_Text state:NO];
-            return;
-        }
-        
-        NSString *totalfee = [NSString stringWithFormat:@"%@", [NSNumber numberWithFloat:[self.inputTF.text floatValue]*100]];
-        
-        if ([self.payWay isEqualToString:@"0"]) {
-            //微信支付
-            [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:@"" andTotalfee:totalfee userPayMode:weixinPayMode_wallet paySuccessBlock:^{
-                
-                OrderPayResultVC *result = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayResultVC"];
-                [self.navigationController pushViewController:result animated:YES];
-                
-            }];
-        }
-        if ([self.payWay isEqualToString:@"1"]) {
-            //支付宝支付
-            [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:@"" andTotalfee:totalfee userPayMode:aliPayMode_wallet paySuccessBlock:^{
-                
-                OrderPayResultVC *result = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayResultVC"];
-                [self.navigationController pushViewController:result animated:YES];
-                
-            }];
-        }
-        
-    } else {
-        
-        
+    if ([self.payWay isEqualToString:@"-1"]) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择支付方式!" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return;
+    }
+    
+    NSString *totalfee = [NSString stringWithFormat:@"%@", [NSNumber numberWithFloat:[self.inputTF.text floatValue]*100]];
+    
+    if ([self.payWay isEqualToString:@"0"]) {
+        //微信支付
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:@"" andTotalfee:totalfee userPayMode:self.mode_way == Mode_Input ? weixinPayMode_wallet : weixinPayMode_baitiao paySuccessBlock:^{
+            
+            OrderPayResultVC *result = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayResultVC"];
+            [self.navigationController pushViewController:result animated:YES];
+            
+        }];
+    }
+    if ([self.payWay isEqualToString:@"1"]) {
+        //支付宝支付
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:@"" andTotalfee:totalfee userPayMode:self.mode_way == Mode_Input ? aliPayMode_wallet : aliPayMode_baitiao paySuccessBlock:^{
+            
+            OrderPayResultVC *result = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayResultVC"];
+            [self.navigationController pushViewController:result animated:YES];
+            
+        }];
     }
     
 }

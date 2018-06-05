@@ -49,6 +49,9 @@
 #define Interface_SaveFromGouwuche   @"user/saveFromGouwuche"
 //获取物流费
 #define Interface_GetWuliufei        @"user/getWuliufei"
+//删除购物车
+#define Interface_DeleteGouwuche        @"user/deleteGouwuche"
+
 
 
 //获取个人发票信息

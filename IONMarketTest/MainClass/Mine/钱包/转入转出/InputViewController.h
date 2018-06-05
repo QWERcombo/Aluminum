@@ -9,8 +9,8 @@
 #import "BaseViewController.h"
 
 typedef enum : NSUInteger {
-    Mode_Input,
-    Mode_Output,
+    Mode_Input,     //钱包充值
+    Mode_Output,    //白条还款
 } Mode_Way;
 
 @interface InputViewController : BaseViewController
