@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *ticketPrice;
 @property (weak, nonatomic) IBOutlet UILabel *expressPrice;
 @property (weak, nonatomic) IBOutlet UILabel *orderID;
-@property (weak, nonatomic) IBOutlet UIButton *orderBtn;
 
 @property (nonatomic, copy) ClikBlock click;
 

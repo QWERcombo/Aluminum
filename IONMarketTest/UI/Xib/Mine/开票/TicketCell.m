@@ -42,7 +42,7 @@
 
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 122;
+    return 112;
 }
 
 + (instancetype)getTicketCell {
@@ -51,13 +51,12 @@
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
     self.click = click;
-    OrderModel *dataM = (OrderModel *)model;
+    OrderListModel *dataM = (OrderListModel *)model;
     
     self.expressPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.wuliufei];
-    self.ticketPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.money];
+    self.ticketPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.totalMoney];
     self.orderID.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
-    self.orderBtn.selected = dataM.isSelectedCard;
-    
+
 }
 
 @end

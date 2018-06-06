@@ -8,7 +8,16 @@
 
 #import "BaseViewController.h"
 
+typedef enum : NSUInteger {
+    TicketMode_Add,
+    TicketMode_Change,
+} TicketMode;
+
+
 @interface ApplyTicketViewController : BaseViewController
 @property (nonatomic, strong) NSString *mode;
 @property (nonatomic, strong) BillTicketModel *billModel;
+
+@property (nonatomic, assign) TicketMode ticketMode;
+
 @end

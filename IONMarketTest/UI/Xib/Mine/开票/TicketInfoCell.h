@@ -12,10 +12,11 @@
 
 @interface TicketInfoCell : BaseCell
 
-@property (weak, nonatomic) IBOutlet UILabel *bankName;
-@property (weak, nonatomic) IBOutlet UILabel *comparyName;
-@property (weak, nonatomic) IBOutlet UILabel *comparyID;
-@property (weak, nonatomic) IBOutlet UIButton *setDefault;
+@property (weak, nonatomic) IBOutlet UILabel *duigongzhanghu;
+@property (weak, nonatomic) IBOutlet UILabel *phoneLab;
+@property (weak, nonatomic) IBOutlet UILabel *fapiaotaitou;
+@property (weak, nonatomic) IBOutlet UILabel *shuihao;
+
 
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) id <RadioSelectDelegate> delegate;

@@ -13,9 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.setDefault.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
-    [self.setDefault setImage:IMG(@"select_0") forState:UIControlStateNormal];
-    [self.setDefault setImage:IMG(@"select_1") forState:UIControlStateSelected];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -48,7 +46,7 @@
 }
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 120;
+    return 170;
 }
 
 
@@ -59,9 +57,10 @@
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
     self.click = click;
     BillTicketModel *dataM = (BillTicketModel *)model;
-    self.comparyName.text = dataM.kaipiaotaitou;
-    self.bankName.text = dataM.zhanghukaihuhang;
-    self.comparyID.text = dataM.shuihao;
+    self.duigongzhanghu.text = dataM.duigongzhanghu;
+    self.phoneLab.text = dataM.shoujihao;
+    self.fapiaotaitou.text = dataM.kaipiaotaitou;
+    self.shuihao.text = dataM.shuihao;
     
 }
 

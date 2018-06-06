@@ -10,7 +10,6 @@
 		5602129020594CF6009EF75D /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602128F20594CF6009EF75D /* ShareViewController.m */; };
 		5602129320594D02009EF75D /* BankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602129220594D02009EF75D /* BankCardViewController.m */; };
 		5602129620594D0C009EF75D /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602129520594D0C009EF75D /* AddressViewController.m */; };
-		5602129920594D1C009EF75D /* TicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602129820594D1C009EF75D /* TicketViewController.m */; };
 		5602129C20594D2B009EF75D /* WhiteBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602129B20594D2B009EF75D /* WhiteBarViewController.m */; };
 		5602129F20594D37009EF75D /* WalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602129E20594D37009EF75D /* WalletViewController.m */; };
 		560212A3205961D9009EF75D /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560212A2205961D9009EF75D /* SettingTableViewController.m */; };
@@ -79,6 +78,7 @@
 		568EFDF6206F1851007E437F /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 568EFDF3206F1850007E437F /* Address.plist */; };
 		568EFDF9206F1F06007E437F /* UnitsPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 568EFDF8206F1F06007E437F /* UnitsPickerView.m */; };
 		568EFDFB206F1FEF007E437F /* UnitsPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568EFDFA206F1FEF007E437F /* UnitsPickerView.xib */; };
+		5691A3D520C833C5008065F4 /* TicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5691A3D420C833C5008065F4 /* TicketViewController.m */; };
 		56940C0120515DB300DFA6D6 /* TBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940BFC20515DB200DFA6D6 /* TBTabBar.m */; };
 		56940C0220515DB300DFA6D6 /* TBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940BFF20515DB300DFA6D6 /* TBTabBarController.m */; };
 		56940C0320515DB300DFA6D6 /* TBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940C0020515DB300DFA6D6 /* TBNavigationController.m */; };
@@ -147,6 +147,8 @@
 		56A5746420ADC54F00A458EB /* ApplyWhiteBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5746320ADC54F00A458EB /* ApplyWhiteBarVC.m */; };
 		56A5746720ADC7BA00A458EB /* UIViewController+CommonFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5746620ADC7BA00A458EB /* UIViewController+CommonFunction.m */; };
 		56A5746A20ADC88E00A458EB /* PhotoAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5746920ADC88E00A458EB /* PhotoAlertController.m */; };
+		56AD6F0720C8391F00344E81 /* ConfirmTicketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AD6F0620C8391E00344E81 /* ConfirmTicketVC.m */; };
+		56AD6F0A20C83ADB00344E81 /* TicketInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AD6F0920C83ADB00344E81 /* TicketInfoVC.m */; };
 		56B5215420AB194000F636BD /* OrderNewDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5215320AB194000F636BD /* OrderNewDetailVC.m */; };
 		56B5215720AB246200F636BD /* OrderPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5215620AB246200F636BD /* OrderPayVC.m */; };
 		56B5215A20AB37A100F636BD /* ChoosePayWayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5215920AB37A100F636BD /* ChoosePayWayView.m */; };
@@ -177,8 +179,6 @@
 		A22981BD20624B48007B6112 /* AddAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22981BB20624B48007B6112 /* AddAddressViewController.xib */; };
 		A22981C1206260CE007B6112 /* ApplyTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A22981BF206260CE007B6112 /* ApplyTicketViewController.m */; };
 		A22981C2206260CE007B6112 /* ApplyTicketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22981C0206260CE007B6112 /* ApplyTicketViewController.xib */; };
-		A22981C6206260E3007B6112 /* AddNewTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A22981C4206260E3007B6112 /* AddNewTicketViewController.m */; };
-		A22981C7206260E3007B6112 /* AddNewTicketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22981C5206260E3007B6112 /* AddNewTicketViewController.xib */; };
 		A22981CB20626193007B6112 /* TicketInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A22981C920626193007B6112 /* TicketInfoCell.m */; };
 		A22981CC20626193007B6112 /* TicketInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22981CA20626193007B6112 /* TicketInfoCell.xib */; };
 		A22981D0206261AE007B6112 /* EndTicketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A22981CE206261AE007B6112 /* EndTicketCell.m */; };
@@ -213,7 +213,6 @@
 		A283489620610F6900C228AD /* WallentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A283489420610F6900C228AD /* WallentListCell.m */; };
 		A283489720610F6900C228AD /* WallentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A283489520610F6900C228AD /* WallentListCell.xib */; };
 		A285A6592076170400D349AB /* BillTicketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A285A6582076170400D349AB /* BillTicketModel.m */; };
-		A285A65C207627A000D349AB /* FaPiaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A285A65B207627A000D349AB /* FaPiaoViewController.m */; };
 		A289424020B3CAF900D8E9E5 /* BezierCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A289423E20B3CAF800D8E9E5 /* BezierCurveView.xib */; };
 		A289424420B4239500D8E9E5 /* WalletListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A289424320B4239500D8E9E5 /* WalletListModel.m */; };
 		A29996FE207381140003B96C /* ShopCarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A29996FC207381140003B96C /* ShopCarListCell.m */; };
@@ -256,8 +255,6 @@
 		5602129220594D02009EF75D /* BankCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardViewController.m; sourceTree = "<group>"; };
 		5602129420594D0C009EF75D /* AddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
 		5602129520594D0C009EF75D /* AddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
-		5602129720594D1C009EF75D /* TicketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketViewController.h; sourceTree = "<group>"; };
-		5602129820594D1C009EF75D /* TicketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketViewController.m; sourceTree = "<group>"; };
 		5602129A20594D2B009EF75D /* WhiteBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WhiteBarViewController.h; sourceTree = "<group>"; };
 		5602129B20594D2B009EF75D /* WhiteBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WhiteBarViewController.m; sourceTree = "<group>"; };
 		5602129D20594D37009EF75D /* WalletViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletViewController.h; sourceTree = "<group>"; };
@@ -366,6 +363,8 @@
 		568EFDF7206F1F06007E437F /* UnitsPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitsPickerView.h; sourceTree = "<group>"; };
 		568EFDF8206F1F06007E437F /* UnitsPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitsPickerView.m; sourceTree = "<group>"; };
 		568EFDFA206F1FEF007E437F /* UnitsPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnitsPickerView.xib; sourceTree = "<group>"; };
+		5691A3D320C833C5008065F4 /* TicketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketViewController.h; sourceTree = "<group>"; };
+		5691A3D420C833C5008065F4 /* TicketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketViewController.m; sourceTree = "<group>"; };
 		56940BFB20515DB200DFA6D6 /* TBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBNavigationController.h; sourceTree = "<group>"; };
 		56940BFC20515DB200DFA6D6 /* TBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTabBar.m; sourceTree = "<group>"; };
 		56940BFD20515DB300DFA6D6 /* TBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTabBar.h; sourceTree = "<group>"; };
@@ -507,6 +506,10 @@
 		56A5746620ADC7BA00A458EB /* UIViewController+CommonFunction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CommonFunction.m"; sourceTree = "<group>"; };
 		56A5746820ADC88E00A458EB /* PhotoAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAlertController.h; sourceTree = "<group>"; };
 		56A5746920ADC88E00A458EB /* PhotoAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoAlertController.m; sourceTree = "<group>"; };
+		56AD6F0520C8391E00344E81 /* ConfirmTicketVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmTicketVC.h; sourceTree = "<group>"; };
+		56AD6F0620C8391E00344E81 /* ConfirmTicketVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmTicketVC.m; sourceTree = "<group>"; };
+		56AD6F0820C83ADB00344E81 /* TicketInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketInfoVC.h; sourceTree = "<group>"; };
+		56AD6F0920C83ADB00344E81 /* TicketInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketInfoVC.m; sourceTree = "<group>"; };
 		56B5215220AB194000F636BD /* OrderNewDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderNewDetailVC.h; sourceTree = "<group>"; };
 		56B5215320AB194000F636BD /* OrderNewDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderNewDetailVC.m; sourceTree = "<group>"; };
 		56B5215520AB246200F636BD /* OrderPayVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderPayVC.h; sourceTree = "<group>"; };
@@ -557,9 +560,6 @@
 		A22981BE206260CE007B6112 /* ApplyTicketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplyTicketViewController.h; sourceTree = "<group>"; };
 		A22981BF206260CE007B6112 /* ApplyTicketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplyTicketViewController.m; sourceTree = "<group>"; };
 		A22981C0206260CE007B6112 /* ApplyTicketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplyTicketViewController.xib; sourceTree = "<group>"; };
-		A22981C3206260E3007B6112 /* AddNewTicketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddNewTicketViewController.h; sourceTree = "<group>"; };
-		A22981C4206260E3007B6112 /* AddNewTicketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddNewTicketViewController.m; sourceTree = "<group>"; };
-		A22981C5206260E3007B6112 /* AddNewTicketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewTicketViewController.xib; sourceTree = "<group>"; };
 		A22981C820626193007B6112 /* TicketInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketInfoCell.h; sourceTree = "<group>"; };
 		A22981C920626193007B6112 /* TicketInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketInfoCell.m; sourceTree = "<group>"; };
 		A22981CA20626193007B6112 /* TicketInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TicketInfoCell.xib; sourceTree = "<group>"; };
@@ -690,8 +690,6 @@
 		A283489520610F6900C228AD /* WallentListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallentListCell.xib; sourceTree = "<group>"; };
 		A285A6572076170400D349AB /* BillTicketModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillTicketModel.h; sourceTree = "<group>"; };
 		A285A6582076170400D349AB /* BillTicketModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillTicketModel.m; sourceTree = "<group>"; };
-		A285A65A207627A000D349AB /* FaPiaoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaPiaoViewController.h; sourceTree = "<group>"; };
-		A285A65B207627A000D349AB /* FaPiaoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaPiaoViewController.m; sourceTree = "<group>"; };
 		A289423E20B3CAF800D8E9E5 /* BezierCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BezierCurveView.xib; sourceTree = "<group>"; };
 		A289424220B4239500D8E9E5 /* WalletListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletListModel.h; sourceTree = "<group>"; };
 		A289424320B4239500D8E9E5 /* WalletListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletListModel.m; sourceTree = "<group>"; };
@@ -821,16 +819,15 @@
 		5602128520594C8D009EF75D /* 开票 */ = {
 			isa = PBXGroup;
 			children = (
-				5602129720594D1C009EF75D /* TicketViewController.h */,
-				5602129820594D1C009EF75D /* TicketViewController.m */,
-				A22981C3206260E3007B6112 /* AddNewTicketViewController.h */,
-				A22981C4206260E3007B6112 /* AddNewTicketViewController.m */,
-				A22981C5206260E3007B6112 /* AddNewTicketViewController.xib */,
 				A22981BE206260CE007B6112 /* ApplyTicketViewController.h */,
 				A22981BF206260CE007B6112 /* ApplyTicketViewController.m */,
 				A22981C0206260CE007B6112 /* ApplyTicketViewController.xib */,
-				A285A65A207627A000D349AB /* FaPiaoViewController.h */,
-				A285A65B207627A000D349AB /* FaPiaoViewController.m */,
+				5691A3D320C833C5008065F4 /* TicketViewController.h */,
+				5691A3D420C833C5008065F4 /* TicketViewController.m */,
+				56AD6F0520C8391E00344E81 /* ConfirmTicketVC.h */,
+				56AD6F0620C8391E00344E81 /* ConfirmTicketVC.m */,
+				56AD6F0820C83ADB00344E81 /* TicketInfoVC.h */,
+				56AD6F0920C83ADB00344E81 /* TicketInfoVC.m */,
 			);
 			path = "开票";
 			sourceTree = "<group>";
@@ -1856,7 +1853,6 @@
 				A22981CC20626193007B6112 /* TicketInfoCell.xib in Resources */,
 				56B5215C20AB37B700F636BD /* ChoosePayWayView.xib in Resources */,
 				5632BFBA205AB6180009CD34 /* QuotationDetailCell.xib in Resources */,
-				A22981C7206260E3007B6112 /* AddNewTicketViewController.xib in Resources */,
 				A283489720610F6900C228AD /* WallentListCell.xib in Resources */,
 				5671DBC520600073005F1760 /* MainItemView__Pole.xib in Resources */,
 				A229818B2061FF2B007B6112 /* RemainExplainCell.xib in Resources */,
@@ -1968,7 +1964,6 @@
 				5695BF312042AC120036D54B /* ABBannerView.m in Sources */,
 				56940C3520515E1800DFA6D6 /* UIButton+Badge.m in Sources */,
 				5650869C205CD0AB00FD8497 /* OrderDetailViewController.m in Sources */,
-				5602129920594D1C009EF75D /* TicketViewController.m in Sources */,
 				56940C2B20515DF900DFA6D6 /* UIColor+YXP.m in Sources */,
 				56B5215420AB194000F636BD /* OrderNewDetailVC.m in Sources */,
 				567D6A3C207B9BA100994BEF /* AuthenticationModel.m in Sources */,
@@ -1980,6 +1975,7 @@
 				5671DBBF205FF525005F1760 /* WholeBoardViewController.m in Sources */,
 				A22981AF20624447007B6112 /* AddBankCardUploadView.m in Sources */,
 				A22981862061FE97007B6112 /* RemainExplainViewController.m in Sources */,
+				5691A3D520C833C5008065F4 /* TicketViewController.m in Sources */,
 				A2AC1C6820564AB900A3B2F9 /* UserInfoViewController.m in Sources */,
 				561CC0D5206FD24900DB0998 /* MainModel.m in Sources */,
 				56940C2220515DF900DFA6D6 /* UIView+UIViewAddition.m in Sources */,
@@ -2010,7 +2006,6 @@
 				560264B6206A6A5400F9C405 /* TicketModel.m in Sources */,
 				560212A3205961D9009EF75D /* SettingTableViewController.m in Sources */,
 				5695BF0D2042AB0E0036D54B /* NEUBase64.m in Sources */,
-				A22981C6206260E3007B6112 /* AddNewTicketViewController.m in Sources */,
 				568EFDF5206F1851007E437F /* GFAddressPicker.m in Sources */,
 				5632BFB2205AB5920009CD34 /* QuotationDetailViewController.m in Sources */,
 				5695BF3E2042AC180036D54B /* LYEmptyView.m in Sources */,
@@ -2020,7 +2015,6 @@
 				5695BF5A2042AC1D0036D54B /* EasyShowTextView.m in Sources */,
 				5695BF322042AC120036D54B /* BannerPageControl.m in Sources */,
 				56940C3E20515E6900DFA6D6 /* PublicFuntionTool.m in Sources */,
-				A285A65C207627A000D349AB /* FaPiaoViewController.m in Sources */,
 				568CB0902066629900B48318 /* PickerView.m in Sources */,
 				56940C0120515DB300DFA6D6 /* TBTabBar.m in Sources */,
 				A22981D0206261AE007B6112 /* EndTicketCell.m in Sources */,
@@ -2081,6 +2075,7 @@
 				5632BFB9205AB6180009CD34 /* QuotationDetailCell.m in Sources */,
 				A29996FE207381140003B96C /* ShopCarListCell.m in Sources */,
 				A22981BC20624B48007B6112 /* AddAddressViewController.m in Sources */,
+				56AD6F0720C8391F00344E81 /* ConfirmTicketVC.m in Sources */,
 				56B5215A20AB37A100F636BD /* ChoosePayWayView.m in Sources */,
 				5654FC1220AC6B9900B7DA4E /* ConfirmOrderVC.m in Sources */,
 				A2301B2E20637ED1006B9F20 /* SmartViewController.m in Sources */,
@@ -2089,6 +2084,7 @@
 				5602129C20594D2B009EF75D /* WhiteBarViewController.m in Sources */,
 				5657412B20538D8A007CB488 /* SelectedItem.m in Sources */,
 				5695BF202042ABAB0036D54B /* YXPUtil.m in Sources */,
+				56AD6F0A20C83ADB00344E81 /* TicketInfoVC.m in Sources */,
 				567B14C420C43F1B00B81FD6 /* TradeRecordCell.m in Sources */,
 				56508699205CBEC500FD8497 /* SpecialMakeViewController.m in Sources */,
 				A22981D5206261C1007B6112 /* TicketCell.m in Sources */,

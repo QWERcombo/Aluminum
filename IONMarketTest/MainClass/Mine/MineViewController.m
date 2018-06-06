@@ -70,6 +70,9 @@
     } else if (indexPath.row == 3) {//白条
         WhiteBarVC *share = [[UIStoryboard storyboardWithName:@"Common" bundle:nil] instantiateViewControllerWithIdentifier:@"WhiteBarVC"];
         [self.navigationController pushViewController:share animated:YES];
+    } else if (indexPath.row == 4) {//开票
+        TicketViewController *share = [[UIStoryboard storyboardWithName:@"Common" bundle:nil] instantiateViewControllerWithIdentifier:@"TicketViewController"];
+        [self.navigationController pushViewController:share animated:YES];
     }
     else {
         UIViewController *nextController = (UIViewController *)[[NSClassFromString(NSStringFromClass([classArray objectAtIndex:indexPath.row])) alloc] init];

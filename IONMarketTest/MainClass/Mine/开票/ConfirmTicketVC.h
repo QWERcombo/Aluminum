@@ -1,5 +1,5 @@
 //
-//  TicketViewController.h
+//  ConfirmTicketVC.h
 //  IONMarketTest
 //
 //  Created by 赵越 on 2018/6/6.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TicketViewController : UIViewController
-
+@interface ConfirmTicketVC : UITableViewController
+@property (nonatomic, strong) OrderListModel *model;
 @end
