@@ -1795,7 +1795,7 @@
 				TargetAttributes = {
 					5695BE6D20429F1B0036D54B = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					5695BE8820429F1B0036D54B = {
 						CreatedOnToolsVersion = 9.2;
@@ -2265,7 +2265,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = N9944VQXC8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2302,8 +2302,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.supekylin.leqie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "061c52b2-91fe-44d9-b885-93cb657cdd67";
+				PROVISIONING_PROFILE_SPECIFIER = leqie_Devc;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2314,7 +2314,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = N9944VQXC8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2351,7 +2351,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.supekylin.leqie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "061c52b2-91fe-44d9-b885-93cb657cdd67";
+				PROVISIONING_PROFILE_SPECIFIER = leqie_Devc;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

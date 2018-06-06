@@ -8,6 +8,7 @@
 
 #import "ConfirmOrderVC.h"
 #import "AddressViewController.h"
+#import "OrderPayVC.h"
 
 @interface ConfirmOrderVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
@@ -66,8 +67,17 @@
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderSave andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //            NSLog(@"buy: +++%@", resultDic);
-            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"下单成功!" time:0 aboutType:WHShowViewMode_Text state:YES];
-            [self.navigationController popViewControllerAnimated:YES];
+//            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"下单成功!" time:0 aboutType:WHShowViewMode_Text state:YES];
+            
+            OrderListModel *orderList = [[OrderListModel alloc] init];
+            orderList.wuliufei = [NSString stringWithFormat:@"%@", resultDic[@"newOrders"][@"wuliufei"]];
+            orderList.totalMoney = [NSString stringWithFormat:@"%@", resultDic[@"newOrders"][@"money"]];
+            orderList.no = [NSString stringWithFormat:@"%@", resultDic[@"no"]];
+            
+            OrderPayVC *pay = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayVC"];
+            pay.orderModel = orderList;
+            [self.navigationController pushViewController:pay animated:YES];
+            
         } failure:^(NSString *error, NSInteger code) {
             
         }];
