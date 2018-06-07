@@ -17,14 +17,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"新增开票信息";
-    if ([self.mode isEqualToString:@"111"]) {
+    
+    if (self.ticketMode == TicketMode_Change) {
+        self.title = @"修改开票信息";
         [self.dataMuArr addObjectsFromArray:@[self.billModel.kaipiaotaitou, self.billModel.shuihao,self.billModel.duigongzhanghu,self.billModel.zhanghukaihuhang,self.billModel.gongsizhucedizhi,self.billModel.gongsizhucezuojihao,self.billModel.shoujianren,self.billModel.shoujiandizhi,self.billModel.shoujihao,self.billModel.yingyewangzhi]];
         
         for (NSInteger i=100; i<110; i++) {
             UITextField *textField = [self.view viewWithTag:i];
             textField.placeholder = [self.dataMuArr objectAtIndex:i-100];
         }
+    } else {
+        self.title = @"新增开票信息";
+        
+        
+        
     }
 }
 
@@ -33,7 +39,7 @@
     for (NSInteger i=100; i<110; i++) {
         
         UITextField *textField = [self.view viewWithTag:i];
-        if ([self.mode isEqualToString:@"111"]) {
+        if (self.ticketMode == TicketMode_Change) {
             if (textField.text.length) {
                 [self.dataMuArr replaceObjectAtIndex:i-100 withObject:textField.text];
             } else {
@@ -71,13 +77,17 @@
     [dict setValue:self.dataMuArr[7] forKey:@"shoujiandizhi"];
     [dict setValue:self.dataMuArr[8] forKey:@"shoujihao"];
     [dict setValue:self.dataMuArr[9] forKey:@"yingyewangzhi"];
-    if ([self.mode isEqualToString:@"111"]) {
+    
+    NSString *url = @"";
+    if (self.ticketMode == TicketMode_Change) {
         [dict setValue:self.billModel.id forKey:@"fapiaoId"];
+        url = Interface_UpdateFapiao;
     } else {
         [dict setValue:[UserData currentUser].id forKey:@"userId"];
+        url = Interface_SaveFapiao;
     }
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:[self.mode isEqualToString:@"111"]?Interface_UpdateFapiao:Interface_SaveFapiao andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:url andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"++--++%@", resultDic);
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0 aboutType:WHShowViewMode_Text state:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshFaPiaoNewData" object:nil];

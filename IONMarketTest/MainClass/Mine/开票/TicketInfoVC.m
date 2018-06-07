@@ -9,12 +9,16 @@
 #import "TicketInfoVC.h"
 #import "ApplyTicketViewController.h"
 
-
 @interface TicketInfoVC ()
 @property (nonatomic, strong) NSMutableArray *infoDataSource;
 @end
 
 @implementation TicketInfoVC
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear: YES];
+    [self getDataSource];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,18 +29,21 @@
     recordBtn.frame = CGRectMake(0, 0, 50, 40);
     [recordBtn addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:recordBtn];
-    
-    [self getDataSource];
 }
 
 
 - (void)payCliker:(UIButton *)sender {
     
+    ApplyTicketViewController *apply = [[ApplyTicketViewController alloc] initWithNibName:@"ApplyTicketViewController" bundle:nil];
+    apply.ticketMode = TicketMode_Add;
+    [self.navigationController pushViewController:apply animated:YES];
     
 }
 
 
 - (void)getDataSource {
+    
+    [self.infoDataSource removeAllObjects];
     
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
     [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
@@ -76,6 +83,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    BillTicketModel *model = [self.infoDataSource objectAtIndex:indexPath.row];
+    if (self.PassBillModel) {
+        self.PassBillModel(model);
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        
+        ApplyTicketViewController *apply = [[ApplyTicketViewController alloc] initWithNibName:@"ApplyTicketViewController" bundle:nil];
+        apply.ticketMode = TicketMode_Change;
+        apply.billModel = [self.infoDataSource objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:apply animated:YES];
+        
+    }
     
 }
 

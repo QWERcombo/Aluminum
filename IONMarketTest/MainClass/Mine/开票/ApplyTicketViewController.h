@@ -15,7 +15,7 @@ typedef enum : NSUInteger {
 
 
 @interface ApplyTicketViewController : BaseViewController
-@property (nonatomic, strong) NSString *mode;
+
 @property (nonatomic, strong) BillTicketModel *billModel;
 
 @property (nonatomic, assign) TicketMode ticketMode;

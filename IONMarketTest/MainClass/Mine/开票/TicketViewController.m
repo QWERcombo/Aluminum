@@ -20,13 +20,18 @@
 
 @implementation TicketViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self getDataSource:@"0"];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"开票";
     self.ticketDataSource = [NSMutableArray array];
     [self.weikaipiaoBtn setSelected:YES];
-    [self getDataSource:@"0"];
     self.ticketTableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     UIButton *recordBtn = [UIButton buttonWithTitle:@"我的发票" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
     recordBtn.frame = CGRectMake(0, 0, 70, 40);

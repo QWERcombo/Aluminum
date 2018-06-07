@@ -10,4 +10,6 @@
 
 @interface TicketInfoVC : UITableViewController
 
+@property (nonatomic, copy) void(^PassBillModel)(BillTicketModel *billModel);
+
 @end

@@ -308,6 +308,7 @@
                                                 <constraint firstItem="rCV-tJ-79m" firstAttribute="leading" secondItem="fFC-yE-Ufy" secondAttribute="leading" constant="20" id="w9n-rn-Emu"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="500" minY="0.0" maxX="15" maxY="0.0"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
