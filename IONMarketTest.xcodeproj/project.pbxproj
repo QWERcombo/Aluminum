@@ -29,6 +29,8 @@
 		5632BFB2205AB5920009CD34 /* QuotationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFB1205AB5920009CD34 /* QuotationDetailViewController.m */; };
 		5632BFB9205AB6180009CD34 /* QuotationDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFB7205AB6180009CD34 /* QuotationDetailCell.m */; };
 		5632BFBA205AB6180009CD34 /* QuotationDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5632BFB8205AB6180009CD34 /* QuotationDetailCell.xib */; };
+		563C8D2E20C97F9D003C4822 /* WholeChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563C8D2D20C97F9D003C4822 /* WholeChooseView.m */; };
+		563C8D3020C97FB2003C4822 /* WholeChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563C8D2F20C97FB2003C4822 /* WholeChooseView.xib */; };
 		56508699205CBEC500FD8497 /* SpecialMakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56508698205CBEC500FD8497 /* SpecialMakeViewController.m */; };
 		5650869C205CD0AB00FD8497 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5650869B205CD0AB00FD8497 /* OrderDetailViewController.m */; };
 		565086A1205CD98400FD8497 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5650869F205CD98400FD8497 /* OrderListCell.m */; };
@@ -289,6 +291,9 @@
 		5632BFB6205AB6180009CD34 /* QuotationDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuotationDetailCell.h; sourceTree = "<group>"; };
 		5632BFB7205AB6180009CD34 /* QuotationDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuotationDetailCell.m; sourceTree = "<group>"; };
 		5632BFB8205AB6180009CD34 /* QuotationDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuotationDetailCell.xib; sourceTree = "<group>"; };
+		563C8D2C20C97F9D003C4822 /* WholeChooseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WholeChooseView.h; sourceTree = "<group>"; };
+		563C8D2D20C97F9D003C4822 /* WholeChooseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WholeChooseView.m; sourceTree = "<group>"; };
+		563C8D2F20C97FB2003C4822 /* WholeChooseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WholeChooseView.xib; sourceTree = "<group>"; };
 		56508697205CBEC500FD8497 /* SpecialMakeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpecialMakeViewController.h; sourceTree = "<group>"; };
 		56508698205CBEC500FD8497 /* SpecialMakeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpecialMakeViewController.m; sourceTree = "<group>"; };
 		5650869A205CD0AB00FD8497 /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
@@ -1559,6 +1564,9 @@
 				5671DBB8205FF1C7005F1760 /* InventoryCell.h */,
 				5671DBB9205FF1C7005F1760 /* InventoryCell.m */,
 				5671DBBA205FF1C7005F1760 /* InventoryCell.xib */,
+				563C8D2C20C97F9D003C4822 /* WholeChooseView.h */,
+				563C8D2D20C97F9D003C4822 /* WholeChooseView.m */,
+				563C8D2F20C97FB2003C4822 /* WholeChooseView.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1833,6 +1841,7 @@
 			files = (
 				568EFDF6206F1851007E437F /* Address.plist in Resources */,
 				A2298198206205A2007B6112 /* InOutputView.xib in Resources */,
+				563C8D3020C97FB2003C4822 /* WholeChooseView.xib in Resources */,
 				A2301B3C20638AB3006B9F20 /* SmartServiceCell.xib in Resources */,
 				A26149CD20C53FCE0055BA25 /* Common.storyboard in Resources */,
 				A26149CB20C5379E0055BA25 /* WhiteBarCell.xib in Resources */,
@@ -1977,6 +1986,7 @@
 				A22981862061FE97007B6112 /* RemainExplainViewController.m in Sources */,
 				5691A3D520C833C5008065F4 /* TicketViewController.m in Sources */,
 				A2AC1C6820564AB900A3B2F9 /* UserInfoViewController.m in Sources */,
+				563C8D2E20C97F9D003C4822 /* WholeChooseView.m in Sources */,
 				561CC0D5206FD24900DB0998 /* MainModel.m in Sources */,
 				56940C2220515DF900DFA6D6 /* UIView+UIViewAddition.m in Sources */,
 				56940C4C2051607500DFA6D6 /* OrderViewController.m in Sources */,

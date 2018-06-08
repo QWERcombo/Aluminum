@@ -8,6 +8,7 @@
 
 #import "InventoryViewController.h"
 #import "WholeBoardViewController.h"
+#import "WholeChooseView.h"
 
 @interface InventoryViewController ()<UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -111,6 +112,15 @@
     [self getDataSource:1];
     
 }
+
+#pragma mark - Method
+//筛选
+- (IBAction)shaixuan:(UIButton *)sender {
+    
+    
+}
+
+
 
 
 - (void)didReceiveMemoryWarning {

@@ -20,6 +20,12 @@
     
     if (self.ticketMode == TicketMode_Change) {
         self.title = @"修改开票信息";
+        
+        UIButton *recordBtn = [UIButton buttonWithTitle:@"删除发票" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+        recordBtn.frame = CGRectMake(0, 0, 70, 40);
+        [recordBtn addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:recordBtn];
+        
         [self.dataMuArr addObjectsFromArray:@[self.billModel.kaipiaotaitou, self.billModel.shuihao,self.billModel.duigongzhanghu,self.billModel.zhanghukaihuhang,self.billModel.gongsizhucedizhi,self.billModel.gongsizhucezuojihao,self.billModel.shoujianren,self.billModel.shoujiandizhi,self.billModel.shoujihao,self.billModel.yingyewangzhi]];
         
         for (NSInteger i=100; i<110; i++) {
@@ -27,9 +33,8 @@
             textField.placeholder = [self.dataMuArr objectAtIndex:i-100];
         }
     } else {
+        
         self.title = @"新增开票信息";
-        
-        
         
     }
 }
@@ -58,6 +63,17 @@
     return YES;
 }
 
+- (void)payCliker:(UIButton *)sender {
+    
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+    [dataDic setValue:self.billModel.id forKey:@"fapiaoId"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_DeleteFapiao andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+}
 
 - (IBAction)doneAc:(UIButton *)sender {
     
