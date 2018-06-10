@@ -10,11 +10,12 @@
 #import "WholeBoardViewController.h"
 #import "WholeChooseView.h"
 
-@interface InventoryViewController ()<UISearchBarDelegate>
+@interface InventoryViewController ()<UISearchBarDelegate, WholeChooseViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) NSInteger pageNumber;
 @property (nonatomic, strong) NSMutableArray *invenDataSource;
 @property (nonatomic, strong) NSString *keyword;
+@property (nonatomic, strong) NSDictionary *dataDic;
 @end
 
 @implementation InventoryViewController
@@ -23,6 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.invenDataSource = [NSMutableArray array];
+    self.dataDic = [NSDictionary dictionary];
     self.pageNumber = 1;
     [self getDataSource:self.pageNumber];
     
@@ -71,6 +73,10 @@
     if (self.keyword.length) {
         [dict setValue:self.keyword forKey:@"xinghao"];
     }
+    if ([self.dataDic allKeys].count) {
+        [dict setValuesForKeysWithDictionary:self.dataDic];
+    }
+    
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_ZhengbanList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"---+%@", resultDic);
@@ -117,10 +123,17 @@
 //筛选
 - (IBAction)shaixuan:(UIButton *)sender {
     
+    [WholeChooseView show:self];
     
 }
 
-
+- (void)refreshDataWithInfo:(NSMutableDictionary *)dataDic {
+    
+    self.dataDic = dataDic;
+    self.pageNumber = 1;
+    [self getDataSource:self.pageNumber];
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

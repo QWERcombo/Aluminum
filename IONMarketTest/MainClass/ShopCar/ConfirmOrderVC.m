@@ -19,6 +19,7 @@
 @property (nonatomic, strong) AddressModel *addressModel;
 @property (weak, nonatomic) IBOutlet UIButton *addressBtn;
 @property (weak, nonatomic) IBOutlet UILabel *wuliufeiLab;
+@property (weak, nonatomic) IBOutlet UILabel *shuliangLab;
 
 @end
 
@@ -29,10 +30,13 @@
     // Do any additional setup after loading the view.
     self.addressModel = nil;
     CGFloat total = 0;
+    NSInteger shuliang = 0;
     for (ShopCar *car in self.carArr) {
         total += [car.money floatValue];
+        shuliang += [car.productNum integerValue];
     }
     self.priceLab.text = [NSString stringWithFormat:@"%.2lf", total];
+    self.shuliangLab.text = [NSString stringWithFormat:@"%ld", shuliang];
 }
 
 - (IBAction)confirmClicker:(UIButton *)sender {

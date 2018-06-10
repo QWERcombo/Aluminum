@@ -24,7 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setupSubViews];
+    self.title = @"询价";
+//    [self setupSubViews];
 }
 
 - (void)setupSubViews {

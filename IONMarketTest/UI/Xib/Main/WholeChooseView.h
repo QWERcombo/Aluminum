@@ -8,6 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WholeChooseView : UIView
+@protocol WholeChooseViewDelegate <NSObject>
+@required
+
+- (void)refreshDataWithInfo:(NSMutableDictionary *)dataDic;
+
+@end
+
+@interface WholeChooseView : UIView <CAAnimationDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *houduTF;
+@property (weak, nonatomic) IBOutlet UITextField *zhijingTF;
+@property (nonatomic, assign) id <WholeChooseViewDelegate> delegate;
+@property (nonatomic, strong) NSMutableDictionary *dataDic;
+@property (nonatomic, copy) NSString *zhonglei;
+@property (nonatomic, assign) NSInteger lastSelected;
+@property (weak, nonatomic) IBOutlet CustomButton *zhengbanBtn;
+
+
++ (void)show:(UIViewController *)delegateVC;
 
 @end

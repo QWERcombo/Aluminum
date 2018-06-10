@@ -22,6 +22,7 @@
 		5615B8B72073B721005F2403 /* AddressShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5615B8B62073B721005F2403 /* AddressShowView.m */; };
 		5615B8B92073B730005F2403 /* AddressShowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5615B8B82073B730005F2403 /* AddressShowView.xib */; };
 		561CC0D5206FD24900DB0998 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 561CC0D4206FD24900DB0998 /* MainModel.m */; };
+		562D7CAD20CACAF40093367D /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 562D7CAC20CACAF40093367D /* CustomButton.m */; };
 		562FF27220BA6FC1006048DC /* OrderListItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 562FF27120BA6FC1006048DC /* OrderListItemView.m */; };
 		562FF27420BA6FCB006048DC /* OrderListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 562FF27320BA6FCB006048DC /* OrderListItemView.xib */; };
 		5632BFAC205AA3F80009CD34 /* SetOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFAB205AA3F80009CD34 /* SetOrderViewController.m */; };
@@ -279,6 +280,8 @@
 		5615B8B82073B730005F2403 /* AddressShowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressShowView.xib; sourceTree = "<group>"; };
 		561CC0D3206FD24900DB0998 /* MainModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		561CC0D4206FD24900DB0998 /* MainModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
+		562D7CAB20CACAF40093367D /* CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
+		562D7CAC20CACAF40093367D /* CustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 		562FF27020BA6FC1006048DC /* OrderListItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderListItemView.h; sourceTree = "<group>"; };
 		562FF27120BA6FC1006048DC /* OrderListItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderListItemView.m; sourceTree = "<group>"; };
 		562FF27320BA6FCB006048DC /* OrderListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderListItemView.xib; sourceTree = "<group>"; };
@@ -1532,6 +1535,8 @@
 			isa = PBXGroup;
 			children = (
 				A23C393A20525A02000A5E99 /* Xib */,
+				562D7CAB20CACAF40093367D /* CustomButton.h */,
+				562D7CAC20CACAF40093367D /* CustomButton.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1957,6 +1962,7 @@
 				56940C2C20515DF900DFA6D6 /* UIFont+YXP.m in Sources */,
 				56940C2820515DF900DFA6D6 /* UIImageView+YXP.m in Sources */,
 				56EC993C206D121D00F2D2D0 /* AddressModel.m in Sources */,
+				562D7CAD20CACAF40093367D /* CustomButton.m in Sources */,
 				A26149D020C540280055BA25 /* WhiteBarVC.m in Sources */,
 				A24B0B6B20722C01009ECD41 /* OrderModel.m in Sources */,
 				56940C2020515DF900DFA6D6 /* NSString+MD5.m in Sources */,
@@ -2308,7 +2314,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.supekylin.leqie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "061c52b2-91fe-44d9-b885-93cb657cdd67";
+				PROVISIONING_PROFILE = "d9d60b9d-c82d-44b2-aa9f-45137e0a9207";
 				PROVISIONING_PROFILE_SPECIFIER = leqie_Devc;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2357,7 +2363,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.supekylin.leqie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "061c52b2-91fe-44d9-b885-93cb657cdd67";
+				PROVISIONING_PROFILE = "d9d60b9d-c82d-44b2-aa9f-45137e0a9207";
 				PROVISIONING_PROFILE_SPECIFIER = leqie_Devc;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
