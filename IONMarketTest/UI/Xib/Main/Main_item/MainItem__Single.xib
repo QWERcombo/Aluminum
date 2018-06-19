@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,7 +25,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" tag="300" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入长度" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ziM-L5-dE7">
-                            <rect key="frame" x="70" y="3" width="194" height="35"/>
+                            <rect key="frame" x="70" y="3" width="189" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="zAM-eB-Rrj"/>
                             </constraints>
@@ -37,7 +37,7 @@
                             </connections>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认单位mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9V-JZ-mMA">
-                            <rect key="frame" x="284" y="12" width="76" height="16"/>
+                            <rect key="frame" x="279" y="12" width="76" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -52,7 +52,7 @@
                         <constraint firstItem="Z9V-JZ-mMA" firstAttribute="centerY" secondItem="4SR-Jx-Iej" secondAttribute="centerY" id="gtM-DD-TMW"/>
                         <constraint firstItem="jrX-47-l7C" firstAttribute="leading" secondItem="4SR-Jx-Iej" secondAttribute="leading" constant="15" id="hgB-6a-avR"/>
                         <constraint firstItem="ziM-L5-dE7" firstAttribute="leading" secondItem="jrX-47-l7C" secondAttribute="trailing" constant="20" id="iwM-Lm-H3q"/>
-                        <constraint firstAttribute="trailing" secondItem="Z9V-JZ-mMA" secondAttribute="trailing" constant="15" id="mtc-ev-SKo"/>
+                        <constraint firstAttribute="trailing" secondItem="Z9V-JZ-mMA" secondAttribute="trailing" constant="20" id="mtc-ev-SKo"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Dl-dP-aPd">
@@ -65,7 +65,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入宽度" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dm7-5s-zkX">
-                            <rect key="frame" x="70" y="3" width="194" height="35"/>
+                            <rect key="frame" x="70" y="3" width="189" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="l3T-lg-JEv"/>
                             </constraints>
@@ -77,7 +77,7 @@
                             </connections>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认单位mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpe-m6-Oj6">
-                            <rect key="frame" x="284" y="12" width="76" height="16"/>
+                            <rect key="frame" x="279" y="12" width="76" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -89,7 +89,7 @@
                         <constraint firstItem="Dm7-5s-zkX" firstAttribute="leading" secondItem="AoM-Oi-mQ7" secondAttribute="trailing" constant="20" id="90n-e3-m72"/>
                         <constraint firstItem="AoM-Oi-mQ7" firstAttribute="leading" secondItem="6Dl-dP-aPd" secondAttribute="leading" constant="15" id="A6p-Ek-ydj"/>
                         <constraint firstAttribute="height" constant="40" id="Pdt-i1-sSO"/>
-                        <constraint firstAttribute="trailing" secondItem="Fpe-m6-Oj6" secondAttribute="trailing" constant="15" id="lzM-8Z-h7d"/>
+                        <constraint firstAttribute="trailing" secondItem="Fpe-m6-Oj6" secondAttribute="trailing" constant="20" id="lzM-8Z-h7d"/>
                         <constraint firstItem="AoM-Oi-mQ7" firstAttribute="centerY" secondItem="6Dl-dP-aPd" secondAttribute="centerY" id="nZw-NV-hUo"/>
                         <constraint firstItem="Fpe-m6-Oj6" firstAttribute="centerY" secondItem="6Dl-dP-aPd" secondAttribute="centerY" id="o97-gR-ceM"/>
                         <constraint firstItem="Dm7-5s-zkX" firstAttribute="centerY" secondItem="6Dl-dP-aPd" secondAttribute="centerY" id="rNw-uY-4Oz"/>
@@ -99,12 +99,12 @@
                     <rect key="frame" x="0.0" y="82" width="375" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="006-Md-tLl">
-                            <rect key="frame" x="260" y="12" width="100" height="16"/>
+                            <rect key="frame" x="275" y="12" width="100" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="cxv-g4-YxH"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <inset key="titleEdgeInsets" minX="-35" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="titleEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="82" minY="2" maxX="-4" maxY="2"/>
                             <state key="normal" title="默认单位mm" image="image_more">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -128,7 +128,7 @@
                     <constraints>
                         <constraint firstItem="006-Md-tLl" firstAttribute="centerY" secondItem="331-MI-xCg" secondAttribute="centerY" id="0Gs-Li-tIv"/>
                         <constraint firstItem="Lz6-xh-3R1" firstAttribute="centerY" secondItem="331-MI-xCg" secondAttribute="centerY" id="GQe-YS-zrR"/>
-                        <constraint firstAttribute="trailing" secondItem="006-Md-tLl" secondAttribute="trailing" constant="15" id="eTq-xk-o2f"/>
+                        <constraint firstAttribute="trailing" secondItem="006-Md-tLl" secondAttribute="trailing" id="eTq-xk-o2f"/>
                         <constraint firstAttribute="height" constant="40" id="ial-Qb-qy1"/>
                         <constraint firstItem="NXD-FU-UBL" firstAttribute="leading" secondItem="Lz6-xh-3R1" secondAttribute="trailing" constant="20" id="jXd-SY-GGV"/>
                         <constraint firstItem="Lz6-xh-3R1" firstAttribute="leading" secondItem="331-MI-xCg" secondAttribute="leading" constant="15" id="pYC-jv-hyV"/>

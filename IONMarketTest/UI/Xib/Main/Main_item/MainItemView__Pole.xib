@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -32,13 +32,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ph-dF-cs6">
-                            <rect key="frame" x="260" y="5" width="100" height="30"/>
+                            <rect key="frame" x="275" y="5" width="100" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="ALV-Hf-RD9"/>
                                 <constraint firstAttribute="width" constant="100" id="bGt-x6-4hw"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <inset key="titleEdgeInsets" minX="-60" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <inset key="titleEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="默认单位mm" image="image_more">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,7 +55,7 @@
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="WO9-7A-nF4" firstAttribute="leading" secondItem="OBY-E2-sjq" secondAttribute="leading" constant="15" id="335-0l-jAs"/>
-                        <constraint firstAttribute="trailing" secondItem="2ph-dF-cs6" secondAttribute="trailing" constant="15" id="FYm-Ur-fF3"/>
+                        <constraint firstAttribute="trailing" secondItem="2ph-dF-cs6" secondAttribute="trailing" id="FYm-Ur-fF3"/>
                         <constraint firstItem="0fP-7w-sWh" firstAttribute="centerY" secondItem="WO9-7A-nF4" secondAttribute="centerY" id="MlT-14-btt"/>
                         <constraint firstAttribute="trailing" secondItem="L3b-ih-sit" secondAttribute="trailing" constant="15" id="RyO-8M-k4C"/>
                         <constraint firstItem="L3b-ih-sit" firstAttribute="centerY" secondItem="OBY-E2-sjq" secondAttribute="centerY" id="T4x-eb-HZi"/>
@@ -72,8 +72,8 @@
                     <rect key="frame" x="0.0" y="41" width="375" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认单位mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pt-gh-a43">
-                            <rect key="frame" x="273" y="11" width="87" height="18"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <rect key="frame" x="279" y="12" width="76" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -84,7 +84,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" tag="300" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入长度" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wak-ot-JHc">
-                            <rect key="frame" x="70" y="3" width="183" height="35"/>
+                            <rect key="frame" x="70" y="3" width="189" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="YYP-n5-p2k"/>
                             </constraints>
@@ -96,7 +96,7 @@
                             </connections>
                         </textField>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTv-DA-nCD">
-                            <rect key="frame" x="70" y="0.0" width="183" height="40"/>
+                            <rect key="frame" x="70" y="0.0" width="189" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="sxN-Ky-hpA"/>
                             </constraints>
@@ -119,7 +119,7 @@
                         <constraint firstAttribute="height" constant="40" id="b3L-ff-nTi"/>
                         <constraint firstItem="6pt-gh-a43" firstAttribute="leading" secondItem="pTv-DA-nCD" secondAttribute="trailing" constant="20" id="fbx-gd-EQg"/>
                         <constraint firstItem="gW3-va-V6n" firstAttribute="leading" secondItem="JYQ-q1-vWe" secondAttribute="leading" constant="15" id="pkt-IU-7qT"/>
-                        <constraint firstAttribute="trailing" secondItem="6pt-gh-a43" secondAttribute="trailing" constant="15" id="wBK-sv-e94"/>
+                        <constraint firstAttribute="trailing" secondItem="6pt-gh-a43" secondAttribute="trailing" constant="20" id="wBK-sv-e94"/>
                         <constraint firstItem="6pt-gh-a43" firstAttribute="centerY" secondItem="JYQ-q1-vWe" secondAttribute="centerY" id="xDq-oE-zTJ"/>
                     </constraints>
                 </view>
