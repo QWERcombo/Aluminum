@@ -47,6 +47,14 @@
 
 - (IBAction)huankuanClicker:(UIButton *)sender {
     
+    if ([self.huankuanLab.text integerValue]==0) {
+        
+        [[UtilsData sharedInstance] showAlertControllerWithTitle:@"提示" detail:@"未有白条未还款" doneTitle:@"是" cancelTitle:@"" haveCancel:NO doneAction:^{
+            
+        } controller:self];
+        
+        return;
+    }
     InputViewController *input = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"InputViewController"];
     input.mode_way = Mode_Output;
     [self.navigationController pushViewController:input animated:YES];

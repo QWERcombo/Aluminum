@@ -121,7 +121,8 @@
         weakself.nameLab.text = address.name;
         weakself.phoneLab.text = address.phone;
         weakself.addressLab.text = [NSString stringWithFormat:@"%@ %@ %@ %@", address.sheng,address.shi,address.qu,address.detailAddress];
-        weakself.addressBtn.hidden = YES;
+//        weakself.addressBtn.hidden = YES;
+        [weakself.addressBtn setTitle:@"" forState:UIControlStateNormal];
     };
     
     [self.navigationController pushViewController:address animated:YES];

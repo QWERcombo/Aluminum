@@ -211,13 +211,15 @@ DEF_SINGLETON(UtilsData);
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTICE_USER_LOGOUT object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LoginDismiss) name:NOTICE_USER_LOGOUT object:nil];//登出
     
-//    if ([UserData currentUser].id.length) {
-//        __loginSuccessBlock([UserData currentUser]);
-//    }else{
+    if ([UserData currentUser].id.length) {
+        
+        __loginSuccessBlock([UserData currentUser]);
+        
+    }else{
         
         [self postLogoutNotice];
 
-//    }
+    }
     
 }
 
