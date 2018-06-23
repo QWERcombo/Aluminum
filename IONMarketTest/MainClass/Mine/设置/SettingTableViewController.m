@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titleArr = @[@"关于我们",@"密码修改",@"清理缓存",@"用户协议",@"推出登录"];
+    self.titleArr = @[@"关于我们",@"密码修改",@"清理缓存",@"用户协议",@"退出登录"];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     self.tableView.tableFooterView = [UIView new];
 }
