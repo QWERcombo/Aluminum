@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ConfirmTicketVC : UITableViewController
-@property (nonatomic, strong) OrderListModel *model;
+@interface ConfirmTicketVC : BaseViewController
+@property (nonatomic, copy) NSArray *modelArr;
+
 @end

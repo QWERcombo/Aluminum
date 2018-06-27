@@ -14,7 +14,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *weikaipiaoBtn;
 @property (weak, nonatomic) IBOutlet UIButton *yikaipianBtn;
 @property (weak, nonatomic) IBOutlet UITableView *ticketTableview;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHeight;
 @property (nonatomic, strong) NSMutableArray *ticketDataSource;
+@property (nonatomic, strong) NSMutableArray *selectDataSource;
 @property (nonatomic, strong) NSString *type;
 @end
 
@@ -31,6 +34,7 @@
     // Do any additional setup after loading the view.
     self.title = @"开票";
     self.ticketDataSource = [NSMutableArray array];
+    self.selectDataSource = [NSMutableArray array];
     [self.weikaipiaoBtn setSelected:YES];
     self.ticketTableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     UIButton *recordBtn = [UIButton buttonWithTitle:@"我的发票" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
@@ -46,12 +50,16 @@
 - (IBAction)weikaipiaoClicker:(UIButton *)sender {
     [self.weikaipiaoBtn setSelected:YES];
     [self.yikaipianBtn setSelected:NO];
+    self.bottomHeight.constant = 50;
+    self.bottomView.hidden = NO;
     [self getDataSource:@"0"];//未开
 }
 
 - (IBAction)yikaipiaoClicker:(UIButton *)sender {
     [self.weikaipiaoBtn setSelected:NO];
     [self.yikaipianBtn setSelected:YES];
+    self.bottomHeight.constant = 0;
+    self.bottomView.hidden = YES;
     [self getDataSource:@"1"];//已开
 }
 
@@ -61,6 +69,33 @@
     [self.navigationController pushViewController:info animated:YES];
     
 }
+
+- (IBAction)kaipiao:(UIButton *)sender {
+    ConfirmTicketVC *confirm = [[UIStoryboard storyboardWithName:@"Common" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmTicketVC"];
+    confirm.modelArr = self.selectDataSource;
+    [self.navigationController pushViewController:confirm animated:YES];
+}
+
+- (IBAction)quanxuan:(UIButton *)sender {
+    
+    sender.selected = !sender.selected;
+    
+    for (OrderListModel *model in self.ticketDataSource) {
+        
+        if (sender.selected) {
+            model.isSelectedCard = YES;
+            [self.selectDataSource addObject:model];
+        } else {
+            model.isSelectedCard = NO;
+            [self.selectDataSource removeObject:model];
+        }
+        
+    }
+    
+    [self.ticketTableview reloadData];
+}
+
+
 
 - (void)getDataSource:(NSString *)type {
     [self.ticketDataSource removeAllObjects];
@@ -91,7 +126,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold creatCell:@"TicketCell" table:tableView deledate:self model:[self.ticketDataSource objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+    BOOL iskaipiao = NO;
+    if (self.bottomHeight.constant == 50) {
+        iskaipiao = YES;
+    } else {
+        iskaipiao = NO;
+    }
+    return [UtilsMold creatCell:@"TicketCell" table:tableView deledate:self model:[self.ticketDataSource objectAtIndex:indexPath.row] data:SINT(iskaipiao) andCliker:^(NSDictionary *clueDic) {
         
     }];
 }
@@ -102,11 +143,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if ([self.type isEqualToString:@"0"]) {
-        ConfirmTicketVC *confirm = [[UIStoryboard storyboardWithName:@"Common" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmTicketVC"];
-        confirm.model = [self.ticketDataSource objectAtIndex:indexPath.row];
-        [self.navigationController pushViewController:confirm animated:YES];
+    OrderListModel *model = [self.ticketDataSource objectAtIndex:indexPath.row];
+    model.isSelectedCard = !model.isSelectedCard;
+    if (model.isSelectedCard) {
+        [self.selectDataSource addObject:model];
+    } else {
+        [self.selectDataSource removeObject:model];
     }
+    [self.ticketTableview reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 /*

@@ -165,7 +165,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KQS-7d-ycc">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_default" translatesAutoresizingMaskIntoConstraints="NO" id="KQS-7d-ycc">
                                                     <rect key="frame" x="20" y="24.5" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="a1P-Cb-4is"/>
@@ -1126,6 +1126,7 @@
         <image name="Share_1" width="45" height="45"/>
         <image name="Share_2" width="32" height="32"/>
         <image name="White_add" width="32" height="32"/>
+        <image name="head_default" width="35" height="35"/>
         <image name="image_car_0" width="25" height="25"/>
         <image name="image_car_1" width="25" height="25"/>
         <image name="image_main_0" width="25" height="25"/>

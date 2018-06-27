@@ -49,14 +49,22 @@
     return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] firstObject];
 }
 
-- (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
+- (void)loadData:(NSObject *)model isWeiKaiPiao:(BOOL)isWeiKaiPiao andCliker:(ClikBlock)click {
     self.click = click;
     OrderListModel *dataM = (OrderListModel *)model;
     
     self.expressPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.wuliufei];
     self.ticketPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.totalMoney];
     self.orderID.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
-
+    [self.selectBtn setSelected:dataM.isSelectedCard];
+    
+    if (isWeiKaiPiao) {
+        self.selectWidth.constant = 50;
+        self.selectView.hidden = NO;
+    } else {
+        self.selectWidth.constant = 0;
+        self.selectView.hidden = YES;
+    }
 }
 
 @end

@@ -133,7 +133,7 @@ DEF_SINGLETON(UtilsMold);
             cell = [TicketCell getTicketCell];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell loadData:model andCliker:^(NSString *clueStr) {
+        [cell loadData:model isWeiKaiPiao:[data boolValue] andCliker:^(NSString *clueStr) {
             clue(@{@"key":clueStr});
         }];
         return cell;
