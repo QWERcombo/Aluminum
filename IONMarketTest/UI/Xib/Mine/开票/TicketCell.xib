@@ -100,7 +100,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="72y-Y3-V5N">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="112"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1e-LU-pR4">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1e-LU-pR4">
                                 <rect key="frame" x="13" y="44" width="24" height="24"/>
                                 <state key="normal" image="select_0"/>
                                 <state key="selected" image="select_1"/>

@@ -16,16 +16,19 @@
 @property (weak, nonatomic) IBOutlet UITableView *ticketTableview;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHeight;
+@property (weak, nonatomic) IBOutlet UIButton *selectAllBtn;
+
 @property (nonatomic, strong) NSMutableArray *ticketDataSource;
 @property (nonatomic, strong) NSMutableArray *selectDataSource;
 @property (nonatomic, strong) NSString *type;
+
 @end
 
 @implementation TicketViewController
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    [self getDataSource:@"0"];
+    
 }
 
 
@@ -33,6 +36,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"开票";
+    [self getDataSource:@"0"];
     self.ticketDataSource = [NSMutableArray array];
     self.selectDataSource = [NSMutableArray array];
     [self.weikaipiaoBtn setSelected:YES];
@@ -71,6 +75,14 @@
 }
 
 - (IBAction)kaipiao:(UIButton *)sender {
+    
+    if (!self.selectDataSource.count) {
+        
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择开票的订单！" time:0.0 aboutType:WHShowViewMode_Text state:NO];
+        
+        return;
+    }
+    
     ConfirmTicketVC *confirm = [[UIStoryboard storyboardWithName:@"Common" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmTicketVC"];
     confirm.modelArr = self.selectDataSource;
     [self.navigationController pushViewController:confirm animated:YES];
@@ -113,6 +125,8 @@
             [self.ticketDataSource addObject:model];
         }
         
+        [self.selectAllBtn setSelected:NO];
+        [self.selectDataSource removeAllObjects];
         [self.ticketTableview reloadData];
     } failure:^(NSString *error, NSInteger code) {
         
@@ -150,6 +164,13 @@
     } else {
         [self.selectDataSource removeObject:model];
     }
+    
+    if (self.selectDataSource.count==self.ticketDataSource.count) {
+        [self.selectAllBtn setSelected:YES];
+    } else {
+        [self.selectAllBtn setSelected:NO];
+    }
+    
     [self.ticketTableview reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 

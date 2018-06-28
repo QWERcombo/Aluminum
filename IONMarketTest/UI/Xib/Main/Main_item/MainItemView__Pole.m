@@ -109,11 +109,13 @@
     }
 }
 
-- (IBAction)selectTapAction:(UITapGestureRecognizer *)sender {
+
+- (IBAction)selectClicker:(UIButton *)sender {
     if (self.click) {
         self.click(@"0");
     }
 }
+
 
 - (IBAction)getLength:(UIButton *)sender {
     if (self.click) {

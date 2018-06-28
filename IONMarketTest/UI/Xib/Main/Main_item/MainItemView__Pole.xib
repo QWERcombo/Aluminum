@@ -31,42 +31,42 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ph-dF-cs6">
-                            <rect key="frame" x="275" y="5" width="100" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="ALV-Hf-RD9"/>
-                                <constraint firstAttribute="width" constant="100" id="bGt-x6-4hw"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <inset key="titleEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <inset key="imageEdgeInsets" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="默认单位mm" image="image_more">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择直径" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fP-7w-sWh">
                             <rect key="frame" x="70" y="11" width="65.5" height="19.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" red="0.78044933080000001" green="0.7801136971" blue="0.80000001190000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认单位mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWh-XC-7O9">
+                            <rect key="frame" x="279" y="12.5" width="76" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0CR-L7-pEg">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                            <connections>
+                                <action selector="selectClicker:" destination="iN0-l3-epB" eventType="touchUpInside" id="VsQ-RI-DJ2"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <constraints>
+                        <constraint firstItem="0CR-L7-pEg" firstAttribute="top" secondItem="OBY-E2-sjq" secondAttribute="top" id="1TM-8p-7y2"/>
                         <constraint firstItem="WO9-7A-nF4" firstAttribute="leading" secondItem="OBY-E2-sjq" secondAttribute="leading" constant="15" id="335-0l-jAs"/>
-                        <constraint firstAttribute="trailing" secondItem="2ph-dF-cs6" secondAttribute="trailing" id="FYm-Ur-fF3"/>
+                        <constraint firstItem="0CR-L7-pEg" firstAttribute="leading" secondItem="OBY-E2-sjq" secondAttribute="leading" id="7nf-Fu-OD0"/>
+                        <constraint firstAttribute="bottom" secondItem="0CR-L7-pEg" secondAttribute="bottom" id="MHQ-9n-lEZ"/>
                         <constraint firstItem="0fP-7w-sWh" firstAttribute="centerY" secondItem="WO9-7A-nF4" secondAttribute="centerY" id="MlT-14-btt"/>
                         <constraint firstAttribute="trailing" secondItem="L3b-ih-sit" secondAttribute="trailing" constant="15" id="RyO-8M-k4C"/>
                         <constraint firstItem="L3b-ih-sit" firstAttribute="centerY" secondItem="OBY-E2-sjq" secondAttribute="centerY" id="T4x-eb-HZi"/>
                         <constraint firstAttribute="height" constant="40" id="W6R-OQ-dMk"/>
+                        <constraint firstAttribute="trailing" secondItem="NWh-XC-7O9" secondAttribute="trailing" constant="20" id="ZUF-lO-vDb"/>
                         <constraint firstItem="0fP-7w-sWh" firstAttribute="leading" secondItem="WO9-7A-nF4" secondAttribute="trailing" constant="20" id="j9B-cz-3hE"/>
-                        <constraint firstItem="2ph-dF-cs6" firstAttribute="centerY" secondItem="OBY-E2-sjq" secondAttribute="centerY" id="toq-Lh-RVo"/>
+                        <constraint firstItem="NWh-XC-7O9" firstAttribute="centerY" secondItem="OBY-E2-sjq" secondAttribute="centerY" id="tZb-cu-iJx"/>
+                        <constraint firstAttribute="trailing" secondItem="0CR-L7-pEg" secondAttribute="trailing" id="xFl-FW-mU7"/>
                         <constraint firstItem="WO9-7A-nF4" firstAttribute="centerY" secondItem="OBY-E2-sjq" secondAttribute="centerY" id="zZ0-H7-mcf"/>
                     </constraints>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="cwe-Sf-Bmx" appends="YES" id="v6k-2t-Ilu"/>
-                    </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JYQ-q1-vWe">
                     <rect key="frame" x="0.0" y="41" width="375" height="40"/>
@@ -325,7 +325,7 @@
                 <outlet property="right_down_Label" destination="kLP-Wb-0SX" id="XNK-b3-dau"/>
                 <outlet property="right_top_Label" destination="Sjd-dR-c9S" id="vpb-hJ-B0F"/>
             </connections>
-            <point key="canvasLocation" x="-242" y="24"/>
+            <point key="canvasLocation" x="-242.5" y="23.5"/>
         </view>
         <tapGestureRecognizer id="0kK-59-1qc">
             <connections>
@@ -337,14 +337,8 @@
                 <action selector="rightTap:" destination="iN0-l3-epB" id="ock-5t-Zw7"/>
             </connections>
         </tapGestureRecognizer>
-        <tapGestureRecognizer id="cwe-Sf-Bmx">
-            <connections>
-                <action selector="selectTapAction:" destination="iN0-l3-epB" id="0c8-eA-jfa"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="image_more" width="15" height="15"/>
         <image name="select_1" width="24" height="24"/>
     </resources>
 </document>

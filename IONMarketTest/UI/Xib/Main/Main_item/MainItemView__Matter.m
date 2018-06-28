@@ -110,15 +110,13 @@
     }
 }
 
-
-- (IBAction)waiTapAction:(UITapGestureRecognizer *)sender {
+- (IBAction)waiClicker:(UIButton *)sender {
     if (self.click) {
         self.click(@"0");
     }
 }
 
-
-- (IBAction)neiTapAction:(UITapGestureRecognizer *)sender {
+- (IBAction)neiClicker:(UIButton *)sender {
     if (self.click) {
         self.click(@"1");
     }
@@ -130,6 +128,8 @@
     }
     
 }
+
+
 
 - (void)loadData:(NSObject *)data andCliker:(ClikBlock)click andMainBlock:(JudgeBlock)mainB {
     self.click = click;

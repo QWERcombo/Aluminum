@@ -97,7 +97,7 @@
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_SaveBaitiao andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"申请成功!" time:0 aboutType:WHShowViewMode_Text state:YES];
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
         
     } failure:^(NSString *error, NSInteger code) {
         

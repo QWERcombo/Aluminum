@@ -13,8 +13,12 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *totalLab;
 @property (weak, nonatomic) IBOutlet UILabel *taitouLab;
+@property (weak, nonatomic) IBOutlet UILabel *wuliufeiLab;
 
 @property (nonatomic, copy) NSString *fapiaoId;
+@property (nonatomic, copy) NSString *totalFee;
+@property (nonatomic, copy) NSString *wuliufeiFee;
+@property (nonatomic, copy) NSString *orderNos;
 @end
 
 @implementation ConfirmTicketVC
@@ -22,16 +26,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"开发票";
+    
     CGFloat totalFee = 0.0;
+    CGFloat wuliufeiFee = 0.0;
+    NSMutableString *orderString = [NSMutableString string];
     for (OrderListModel *model in self.modelArr) {
         
         totalFee+= [model.totalMoney floatValue];
-        
+        wuliufeiFee+= [model.wuliufei floatValue];
+        [orderString appendString:model.no];
+        [orderString appendString:@","];
     }
-    self.taitouLab.text = [NSString stringWithFormat:@"开票总额: %.2lf元", totalFee];
+    
+    self.orderNos = [orderString substringToIndex:orderString.length-1];
+    self.totalFee = [NSString stringWithFormat:@"%.2lf", totalFee];
+    self.wuliufeiFee = [NSString stringWithFormat:@"%.2lf", wuliufeiFee];
+    self.totalLab.text = [NSString stringWithFormat:@"开票总额: %.2lf元", totalFee];
+    self.wuliufeiLab.text = [NSString stringWithFormat:@"物流费: %.2lf元", wuliufeiFee];
 }
-
-
 
 
 - (IBAction)xuanfapiao:(UIButton *)sender {
@@ -47,16 +59,27 @@
 
 - (IBAction)confirm:(UIButton *)sender {
     
+    if (!self.fapiaoId.length) {
+        
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择发票抬头！" time:0.0 aboutType:WHShowViewMode_Text state:NO];
+        
+        return;
+    }
+    
+    
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
     
     [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
     [dataDic setValue:self.fapiaoId forKey:@"fapiaoId"];
-    [dataDic setValue:@"" forKey:@"money"];
-    [dataDic setValue:@"" forKey:@"orderNos"];
+    [dataDic setValue:self.totalFee forKey:@"money"];
+    [dataDic setValue:self.wuliufeiFee forKey:@"wuliufei"];
+    [dataDic setValue:self.orderNos forKey:@"orderNos"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_SaveKaipiao andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"开票成功!" time:0 aboutType:WHShowViewMode_Text state:YES];
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
     } failure:^(NSString *error, NSInteger code) {
         
     }];

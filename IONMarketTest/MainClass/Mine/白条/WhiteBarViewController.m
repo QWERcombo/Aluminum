@@ -8,6 +8,7 @@
 
 #import "WhiteBarViewController.h"
 #import "ApplyWhiteBarVC.h"
+#import "WhiteBarVC.h"
 
 @interface WhiteBarViewController ()
 
@@ -20,11 +21,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setupSubviews];
     [self getDataSource];
 }
 
-- (void)setupSubviews {
+- (void)setupSubviews:(NSString *)title {
     [self.view addSubview:self.tabView];
     self.tabView.backgroundColor = [UIColor mianColor:1];
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -32,10 +32,13 @@
         make.bottom.equalTo(self.view.mas_bottom).offset(-50);
     }];
 
-    UIButton *applyButton = [UIButton buttonWithTitle:@"申请开通白条" andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+    
+    applyButton = [UIButton buttonWithTitle:title andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
     [self.view addSubview:applyButton];
     applyButton.backgroundColor = [UIColor mianColor:2];
-    [applyButton addTarget:self action:@selector(applyCliker:) forControlEvents:UIControlEventTouchUpInside];
+    if ([title isEqualToString:@"申请开通"]) {
+        [applyButton addTarget:self action:@selector(applyCliker:) forControlEvents:UIControlEventTouchUpInside];
+    }
     [applyButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(50));
         make.left.right.bottom.equalTo(self.view);
@@ -61,6 +64,32 @@
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_GetBaitiaoById andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
        
+        NSArray *dataArr = resultDic[@"result"];
+        if (dataArr.count) {
+            
+            NSDictionary *dataDic = [dataArr firstObject];
+            if ([dataDic[@"status"] isEqualToString:@"审核通过"]) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    WhiteBarVC *white = [[UIStoryboard storyboardWithName:@"Common" bundle:nil] instantiateViewControllerWithIdentifier:@"WhiteBarVC"];
+                    [self addChildViewController:white];
+                    [white didMoveToParentViewController:self];
+                    [white.view setFrame:self.view.bounds];
+                    [self.view addSubview:white.view];
+                });
+                
+            } else if ([dataDic[@"status"] isEqualToString:@"待审核"]) {
+                
+                [self setupSubviews:@"审核中"];
+                
+            } else {
+            }
+            
+        } else {
+            //未申请
+            [self setupSubviews:@"申请开通"];
+        }
+        
     } failure:^(NSString *error, NSInteger code) {
         
     }];

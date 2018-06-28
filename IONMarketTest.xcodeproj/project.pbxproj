@@ -1556,6 +1556,7 @@
 		A23C393C20525A22000A5E99 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				5671DBC0205FFFF9005F1760 /* Main_item */,
 				5657412920538D8A007CB488 /* SelectedItem.h */,
 				5657412A20538D8A007CB488 /* SelectedItem.m */,
 				5657413720539313007CB488 /* SelectedItem.xib */,
@@ -1565,7 +1566,6 @@
 				5632BFB6205AB6180009CD34 /* QuotationDetailCell.h */,
 				5632BFB7205AB6180009CD34 /* QuotationDetailCell.m */,
 				5632BFB8205AB6180009CD34 /* QuotationDetailCell.xib */,
-				5671DBC0205FFFF9005F1760 /* Main_item */,
 				5671DBB8205FF1C7005F1760 /* InventoryCell.h */,
 				5671DBB9205FF1C7005F1760 /* InventoryCell.m */,
 				5671DBBA205FF1C7005F1760 /* InventoryCell.xib */,

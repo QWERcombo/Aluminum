@@ -59,8 +59,6 @@
 - (IBAction)loginAction:(UIButton *)sender {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    [dict setValue:@"13407126200" forKey:@"phone"];
-//    [dict setValue:@"12345678" forKey:@"password"];
     [dict setValue:self.phoneTF.text forKey:@"phone"];
     [dict setValue:self.codeTF.text forKey:@"password"];
     
@@ -92,10 +90,7 @@
     [self.navigationController pushViewController:regist animated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 /*
 #pragma mark - Navigation
@@ -106,5 +101,8 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 @end

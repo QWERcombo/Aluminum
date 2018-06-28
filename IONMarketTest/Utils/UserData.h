@@ -33,7 +33,7 @@
 @property (nonatomic,strong)NSString        *xiaofeishang;
 @property (nonatomic,strong)NSString        *zhiwei;
 @property (nonatomic,strong)NSString        *nickname;
-
+@property (nonatomic,strong)NSString        *baitiaoprocess;// 0未申请 1审核中 2通过
 
 //赋值
 -(void)giveData:(NSDictionary *)dic;

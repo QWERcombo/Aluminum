@@ -111,12 +111,11 @@
 }
 
 
-- (IBAction)selectTapAction:(UITapGestureRecognizer *)sender {
+- (IBAction)selectClicker:(UIButton *)sender {
     if (self.click) {
         self.click(@"0");
     }
 }
-
 
 - (IBAction)addNew:(UIButton *)sender {
 //    NSLog(@"%@--%@---%@", self.lengthTF.text, self.widthTF.text, self.lengthTF.text);

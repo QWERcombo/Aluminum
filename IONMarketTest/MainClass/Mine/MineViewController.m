@@ -68,9 +68,9 @@
         ShareViewController *share = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ShareVC"];
         [self.navigationController pushViewController:share animated:YES];
     } else if (indexPath.row == 3) {//白条
-        WhiteBarVC *share = [[UIStoryboard storyboardWithName:@"Common" bundle:nil] instantiateViewControllerWithIdentifier:@"WhiteBarVC"];
+
+        [self goToBaitiao];
         
-        [self.navigationController pushViewController:share animated:YES];
     } else if (indexPath.row == 4) {//开票
         TicketViewController *share = [[UIStoryboard storyboardWithName:@"Common" bundle:nil] instantiateViewControllerWithIdentifier:@"TicketViewController"];
         [self.navigationController pushViewController:share animated:YES];
@@ -83,11 +83,22 @@
     
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)goToBaitiao {
+    
+//    if ([[UserData currentUser].baitiaoprocess integerValue] != 2) {
+    
+        WhiteBarViewController *whiteBar = [WhiteBarViewController new];
+        whiteBar.title = @"白条";
+        [self.navigationController pushViewController:whiteBar animated:YES];
+        
+//    } else {
+//
+//        WhiteBarVC *share = [[UIStoryboard storyboardWithName:@"Common" bundle:nil] instantiateViewControllerWithIdentifier:@"WhiteBarVC"];
+//        [self.navigationController pushViewController:share animated:YES];
+//    }
+    
 }
+
 
 /*
 #pragma mark - Navigation
@@ -98,5 +109,8 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 @end

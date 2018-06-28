@@ -109,17 +109,18 @@
     }
 }
 
-- (IBAction)thinTapAction:(UITapGestureRecognizer *)sender {
+- (IBAction)thinClicker:(UIButton *)sender {
     if (self.click) {
         self.click(@"0");
     }
 }
 
-- (IBAction)widthTapAction:(UITapGestureRecognizer *)sender {
+- (IBAction)widthClicker:(UIButton *)sender {
     if (self.click) {
         self.click(@"1");
     }
 }
+
 
 - (IBAction)selectLength:(UIButton *)sender {
     if (self.click) {

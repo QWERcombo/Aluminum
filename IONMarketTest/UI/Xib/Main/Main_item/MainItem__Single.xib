@@ -98,18 +98,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="331-MI-xCg">
                     <rect key="frame" x="0.0" y="82" width="375" height="40"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="006-Md-tLl">
-                            <rect key="frame" x="275" y="12" width="100" height="16"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="100" id="cxv-g4-YxH"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <inset key="titleEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <inset key="imageEdgeInsets" minX="82" minY="2" maxX="-4" maxY="2"/>
-                            <state key="normal" title="默认单位mm" image="image_more">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="厚度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lz6-xh-3R1">
                             <rect key="frame" x="15" y="10" width="35" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -122,21 +110,34 @@
                             <color key="textColor" red="0.78044933080000001" green="0.7801136971" blue="0.80000001190000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认单位mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J01-RM-LWw">
+                            <rect key="frame" x="279" y="12.5" width="76" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJA-xe-jrb">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                            <connections>
+                                <action selector="selectClicker:" destination="iN0-l3-epB" eventType="touchUpInside" id="YbG-M1-Rvu"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <constraints>
-                        <constraint firstItem="006-Md-tLl" firstAttribute="centerY" secondItem="331-MI-xCg" secondAttribute="centerY" id="0Gs-Li-tIv"/>
+                        <constraint firstItem="JJA-xe-jrb" firstAttribute="leading" secondItem="331-MI-xCg" secondAttribute="leading" id="6UO-cY-Hj3"/>
+                        <constraint firstAttribute="bottom" secondItem="JJA-xe-jrb" secondAttribute="bottom" id="7zC-yx-mfW"/>
+                        <constraint firstAttribute="trailing" secondItem="JJA-xe-jrb" secondAttribute="trailing" id="9DP-fI-yaK"/>
                         <constraint firstItem="Lz6-xh-3R1" firstAttribute="centerY" secondItem="331-MI-xCg" secondAttribute="centerY" id="GQe-YS-zrR"/>
-                        <constraint firstAttribute="trailing" secondItem="006-Md-tLl" secondAttribute="trailing" id="eTq-xk-o2f"/>
+                        <constraint firstAttribute="trailing" secondItem="J01-RM-LWw" secondAttribute="trailing" constant="20" id="hcb-2q-ftn"/>
                         <constraint firstAttribute="height" constant="40" id="ial-Qb-qy1"/>
                         <constraint firstItem="NXD-FU-UBL" firstAttribute="leading" secondItem="Lz6-xh-3R1" secondAttribute="trailing" constant="20" id="jXd-SY-GGV"/>
                         <constraint firstItem="Lz6-xh-3R1" firstAttribute="leading" secondItem="331-MI-xCg" secondAttribute="leading" constant="15" id="pYC-jv-hyV"/>
+                        <constraint firstItem="J01-RM-LWw" firstAttribute="centerY" secondItem="331-MI-xCg" secondAttribute="centerY" id="uHz-wy-LmB"/>
+                        <constraint firstItem="JJA-xe-jrb" firstAttribute="top" secondItem="331-MI-xCg" secondAttribute="top" id="vCE-uP-jhb"/>
                         <constraint firstItem="NXD-FU-UBL" firstAttribute="centerY" secondItem="331-MI-xCg" secondAttribute="centerY" id="wJX-aE-ClL"/>
                     </constraints>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="wk7-16-PMz" appends="YES" id="LCJ-HF-AOf"/>
-                    </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RiA-Jf-tQB">
                     <rect key="frame" x="0.0" y="123" width="375" height="40"/>
@@ -328,7 +329,6 @@
                 <outlet property="rightImgv" destination="vpk-Wl-o9N" id="XCN-eF-NUx"/>
                 <outlet property="right_down_Label" destination="brk-M9-v8T" id="oJa-cY-zTm"/>
                 <outlet property="right_top_Label" destination="cEe-kc-q35" id="xbe-F6-nwF"/>
-                <outlet property="selectBtn" destination="006-Md-tLl" id="yqj-Pu-9No"/>
                 <outlet property="thinLabel" destination="NXD-FU-UBL" id="LWP-zD-CxN"/>
                 <outlet property="widthTF" destination="Dm7-5s-zkX" id="JPz-MJ-cpY"/>
             </connections>
@@ -344,14 +344,8 @@
                 <action selector="rightTap:" destination="iN0-l3-epB" id="SQp-Fq-jEv"/>
             </connections>
         </tapGestureRecognizer>
-        <tapGestureRecognizer id="wk7-16-PMz">
-            <connections>
-                <action selector="selectTapAction:" destination="iN0-l3-epB" id="03e-gO-YZY"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="image_more" width="15" height="15"/>
         <image name="select_1" width="24" height="24"/>
     </resources>
 </document>

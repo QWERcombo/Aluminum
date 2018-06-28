@@ -32,6 +32,7 @@
     
     [WXApi registerApp:WeixiPayAppkey];
     
+    
     return YES;
 }
 
@@ -295,5 +296,8 @@
         abort();
     }
 }
+
+
+
 
 @end
