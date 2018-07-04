@@ -263,7 +263,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpI-yK-TQO">
-                    <rect key="frame" x="20" y="309" width="335" height="45"/>
+                    <rect key="frame" x="20" y="304" width="335" height="45"/>
                     <color key="backgroundColor" red="0.35491353269999998" green="0.623277843" blue="0.94517052170000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="F0n-MI-7bE"/>
@@ -326,7 +326,7 @@
                 <constraint firstItem="iIv-eV-2fu" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="4Lb-cG-c4Q"/>
                 <constraint firstItem="zQr-Aa-uuM" firstAttribute="top" secondItem="1Xg-zh-fl2" secondAttribute="bottom" constant="1" id="6e2-Sr-7F0"/>
                 <constraint firstItem="2SH-dc-bTW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="BaA-zt-tJm"/>
-                <constraint firstItem="bpI-yK-TQO" firstAttribute="top" secondItem="iIv-eV-2fu" secondAttribute="bottom" constant="35" id="Bd3-jZ-kWa"/>
+                <constraint firstItem="bpI-yK-TQO" firstAttribute="top" secondItem="iIv-eV-2fu" secondAttribute="bottom" constant="30" id="Bd3-jZ-kWa"/>
                 <constraint firstItem="1Xg-zh-fl2" firstAttribute="top" secondItem="2SH-dc-bTW" secondAttribute="bottom" constant="1" id="Enr-Xc-KZQ"/>
                 <constraint firstItem="CFu-5L-7fX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="Eob-8t-ijO"/>
                 <constraint firstItem="zQr-Aa-uuM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="HLi-g4-Tay"/>

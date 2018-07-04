@@ -29,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.remain = @"0";
     [self setupSubviews];
 }
 
@@ -258,7 +259,7 @@
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_getQianBao andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
         NSString *money = [NSString stringWithFormat:@"%@", resultDic[@"money"]];
-        self.remain = money.length?money:@"";
+        self.remain = money.length?money:@"0";
 //        [self.tabView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     } failure:^(NSString *error, NSInteger code) {
         

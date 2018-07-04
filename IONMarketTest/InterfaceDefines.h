@@ -121,6 +121,16 @@
 //分页获取铝锭价列表
 #define Interface_PricePageList   @"pricePageList"
 
+//管材接口时，根据内径获取外径
+#define Interface_GetWaijingByNeijing @"getWaijingByNeijing"
+//管材接口时，根据外径获取内径
+#define Interface_GetNeijingByWaijing @"getNeijingByWaijing"
+//型材根据厚度选择宽度
+#define Interface_GetKuanduByHoudu @"getKuanduByHoudu"
+//型材根据宽度选择厚度
+#define Interface_GetHouduByKuandu @"getHouduByKuandu"
+
+
 //微信充值钱包
 #define Interface_wxChongzhi   @"user/wxChongzhi"
 //查看钱包充值列表

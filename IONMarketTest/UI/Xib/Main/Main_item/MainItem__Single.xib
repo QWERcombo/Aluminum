@@ -272,7 +272,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gpx-50-hs2">
-                    <rect key="frame" x="15" y="304" width="345" height="45"/>
+                    <rect key="frame" x="20" y="304" width="335" height="45"/>
                     <color key="backgroundColor" red="0.35491353269999998" green="0.623277843" blue="0.94517052170000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="Tn9-Xs-2dO"/>
@@ -301,7 +301,7 @@
                 <constraint firstItem="331-MI-xCg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="E3z-HH-vS7"/>
                 <constraint firstItem="4h6-kc-FaF" firstAttribute="width" secondItem="jZN-e9-xhY" secondAttribute="width" id="FGL-v7-xsS"/>
                 <constraint firstItem="6Dl-dP-aPd" firstAttribute="top" secondItem="4SR-Jx-Iej" secondAttribute="bottom" constant="1" id="N54-Zp-aaT"/>
-                <constraint firstAttribute="trailing" secondItem="Gpx-50-hs2" secondAttribute="trailing" constant="15" id="NP6-fB-sHH"/>
+                <constraint firstAttribute="trailing" secondItem="Gpx-50-hs2" secondAttribute="trailing" constant="20" id="NP6-fB-sHH"/>
                 <constraint firstItem="4SR-Jx-Iej" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Oxp-41-iOp"/>
                 <constraint firstItem="rnK-Ig-4XJ" firstAttribute="top" secondItem="jZN-e9-xhY" secondAttribute="bottom" constant="10" id="SND-jD-Xk9"/>
                 <constraint firstItem="4SR-Jx-Iej" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="Zpv-3t-uhb"/>
@@ -315,7 +315,7 @@
                 <constraint firstItem="4h6-kc-FaF" firstAttribute="height" secondItem="jZN-e9-xhY" secondAttribute="height" id="mce-h4-nQL"/>
                 <constraint firstItem="6Dl-dP-aPd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nam-Wm-G8w"/>
                 <constraint firstItem="RiA-Jf-tQB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pMG-6c-Wyg"/>
-                <constraint firstItem="Gpx-50-hs2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="pWI-sf-HeK"/>
+                <constraint firstItem="Gpx-50-hs2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="pWI-sf-HeK"/>
                 <constraint firstAttribute="trailing" secondItem="4h6-kc-FaF" secondAttribute="trailing" id="uqf-2q-6RE"/>
             </constraints>
             <connections>

@@ -402,6 +402,7 @@
                 
                 if ([clueStr isEqualToString:@"0"]) { //外径
                     [weakself selectInfomationForUser:@"0" withMode:Mode_Matter];
+                    
                     weakself.passValue = ^(NSString *value) {
                         matter.waiLabel.text = value;
                         matter.waiLabel.textColor = [UIColor blackColor];
@@ -409,6 +410,7 @@
                     };
                 } else if ([clueStr isEqualToString:@"1"]) { //内径
                     [weakself selectInfomationForUser:@"1" withMode:Mode_Matter];
+                    
                     weakself.passValue = ^(NSString *value) {
                         matter.neiLabel.text = value;
                         matter.neiLabel.textColor = [UIColor blackColor];
