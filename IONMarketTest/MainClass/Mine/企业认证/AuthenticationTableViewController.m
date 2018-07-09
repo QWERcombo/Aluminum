@@ -18,13 +18,15 @@
 @property (nonatomic, strong) AuthenticationModel *authModel;
 @property (weak, nonatomic) IBOutlet UIButton *leftButton;
 @property (weak, nonatomic) IBOutlet UIButton *rightButton;
-@property (weak, nonatomic) IBOutlet UITextField *companyTF;
-@property (weak, nonatomic) IBOutlet UIButton *moshiButton;
-@property (weak, nonatomic) IBOutlet UITextField *contactTF;
-@property (weak, nonatomic) IBOutlet UITextField *phoneTF;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *descLabel;
-@property (weak, nonatomic) IBOutlet UITextField *fuzerenTF;
+@property (weak, nonatomic) IBOutlet UILabel *companyLab;
+@property (weak, nonatomic) IBOutlet UILabel *moshiLab;
+@property (weak, nonatomic) IBOutlet UILabel *fuzerenLab;
+@property (weak, nonatomic) IBOutlet UILabel *phoneLab;
+@property (weak, nonatomic) IBOutlet UILabel *contactLab;
+@property (weak, nonatomic) IBOutlet UILabel *addressLab;
+@property (weak, nonatomic) IBOutlet UILabel *descLab;
+@property (weak, nonatomic) IBOutlet UILabel *lianxiwomenLab;
+
 
 @end
 
@@ -49,12 +51,12 @@
     self.rightButton.layer.borderWidth = 1;
     self.rightButton.layer.cornerRadius = 5;
     
-    self.leftButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;//使图片和文字水平居中显示
-    [self.leftButton setTitleEdgeInsets:UIEdgeInsetsMake(self.leftButton.imageView.frame.size.height ,-self.leftButton.imageView.frame.size.width, -10.0,0.0)];//文字距离上边框的距离增加imageView的高度，距离左边框减少imageView的宽度，距离下边框和右边框距离不变
-    [self.leftButton setImageEdgeInsets:UIEdgeInsetsMake(-10.0, 0.0,0.0, -self.leftButton.titleLabel.bounds.size.width)];//图片距离右边框距离减少图片的宽度，其它不边
-    self.rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-    [self.rightButton setTitleEdgeInsets:UIEdgeInsetsMake(self.rightButton.imageView.frame.size.height ,-self.rightButton.imageView.frame.size.width, -10.0,0.0)];
-    [self.rightButton setImageEdgeInsets:UIEdgeInsetsMake(-10.0, 0.0,0.0, -self.rightButton.titleLabel.bounds.size.width)];
+//    self.leftButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;//使图片和文字水平居中显示
+//    [self.leftButton setTitleEdgeInsets:UIEdgeInsetsMake(self.leftButton.imageView.frame.size.height ,-self.leftButton.imageView.frame.size.width, -10.0,0.0)];//文字距离上边框的距离增加imageView的高度，距离左边框减少imageView的宽度，距离下边框和右边框距离不变
+//    [self.leftButton setImageEdgeInsets:UIEdgeInsetsMake(-10.0, 0.0,0.0, -self.leftButton.titleLabel.bounds.size.width)];//图片距离右边框距离减少图片的宽度，其它不边
+//    self.rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+//    [self.rightButton setTitleEdgeInsets:UIEdgeInsetsMake(self.rightButton.imageView.frame.size.height ,-self.rightButton.imageView.frame.size.width, -10.0,0.0)];
+//    [self.rightButton setImageEdgeInsets:UIEdgeInsetsMake(-10.0, 0.0,0.0, -self.rightButton.titleLabel.bounds.size.width)];
     
     [self getData];
 }
@@ -63,13 +65,13 @@
     [self.dataSource removeAllObjects];
     
     if (self.authModel.id.length) {
-        self.companyTF.text.length?[self.dataSource addObject:self.companyTF.text]:[self.dataSource addObject:self.authModel.gongsimingchen];
-        [self.dataSource addObject:self.moshiButton.currentTitle];
-        self.fuzerenTF.text.length?[self.dataSource addObject:self.fuzerenTF.text]:[self.dataSource addObject:self.authModel.gongsifuzeren];
-        self.contactTF.text.length?[self.dataSource addObject:self.contactTF.text]:[self.dataSource addObject:self.authModel.lianxiren];
-        self.phoneTF.text.length?[self.dataSource addObject:self.phoneTF.text]:[self.dataSource addObject:self.authModel.lianxirendianhua];
-        [self.dataSource addObject:self.addressLabel.text];
-        [self.dataSource addObject:self.descLabel.text];
+        self.companyLab.text.length?[self.dataSource addObject:self.companyLab.text]:[self.dataSource addObject:self.authModel.gongsimingchen];
+        [self.dataSource addObject:self.moshiLab.text];
+        self.fuzerenLab.text.length?[self.dataSource addObject:self.fuzerenLab.text]:[self.dataSource addObject:self.authModel.gongsifuzeren];
+        self.contactLab.text.length?[self.dataSource addObject:self.contactLab.text]:[self.dataSource addObject:self.authModel.lianxiren];
+        self.phoneLab.text.length?[self.dataSource addObject:self.phoneLab.text]:[self.dataSource addObject:self.authModel.lianxirendianhua];
+        [self.dataSource addObject:self.addressLab.text];
+        [self.dataSource addObject:self.descLab.text];
         if (!self.leftImageUrl.length) {
             self.leftImageUrl = self.authModel.fuzerenshenfenzheng;
         }
@@ -80,13 +82,13 @@
         [self.dataSource addObject:self.rightImageUrl];
         
     } else {
-        [self.dataSource addObject:self.companyTF.text];
-        [self.dataSource addObject:self.moshiButton.currentTitle];
-        [self.dataSource addObject:self.fuzerenTF.text];
-        [self.dataSource addObject:self.contactTF.text];
-        [self.dataSource addObject:self.phoneTF.text];
-        [self.dataSource addObject:self.addressLabel.text];
-        [self.dataSource addObject:self.descLabel.text];
+        [self.dataSource addObject:self.companyLab.text];
+        [self.dataSource addObject:self.moshiLab.text];
+        [self.dataSource addObject:self.fuzerenLab.text];
+        [self.dataSource addObject:self.contactLab.text];
+        [self.dataSource addObject:self.phoneLab.text];
+        [self.dataSource addObject:self.addressLab.text];
+        [self.dataSource addObject:self.descLab.text];
         [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.leftImageUrl]];
         [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.rightImageUrl]];
         
@@ -141,11 +143,11 @@
     }];
 }
 
-- (IBAction)selectClicker:(UIButton *)sender {
+- (void)selectClicker {
     UnitsPickerView *pv = [[UnitsPickerView alloc] initWithFrame:self.view.bounds withDataSource:@[@"用户",@"经销商"]];
     __weak typeof(self) weakself = self;
     [pv loadData:weakself andClickBlock:^(NSString *clueStr) {
-        [weakself.moshiButton setTitle:clueStr forState:UIControlStateNormal];
+        weakself.moshiLab.text = clueStr;
     }];
     [self.view addSubview:pv];
     
@@ -170,22 +172,18 @@
         
         NSArray *dataArr = resultDic[@"result"];
         self.authModel = [[AuthenticationModel alloc] initWithDictionary:[dataArr firstObject] error:nil];
-        self.companyTF.placeholder = self.authModel.gongsimingchen;
-        [self.moshiButton setTitle:self.authModel.jingyingmoshi forState:UIControlStateNormal];
-        self.fuzerenTF.placeholder = self.authModel.gongsifuzeren;
-        self.contactTF.placeholder = self.authModel.lianxiren;
-        self.phoneTF.placeholder = self.authModel.lianxirendianhua;
-        self.addressLabel.text = self.authModel.xiangxidizhi;
-        self.descLabel.text = self.authModel.gongsijieshao;
+        self.companyLab.text = self.authModel.gongsimingchen;
+        self.moshiLab.text = self.authModel.jingyingmoshi;
+        self.fuzerenLab.text = self.authModel.gongsifuzeren;
+        self.contactLab.text = self.authModel.lianxiren;
+        self.phoneLab.text = self.authModel.lianxirendianhua;
+        self.addressLab.text = self.authModel.xiangxidizhi;
+        self.descLab.text = self.authModel.gongsijieshao;
+        self.lianxiwomenLab.text = self.authModel.lianxirendianhua;
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            UIImage *leftImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.authModel.fuzerenshenfenzheng]]];
-            UIImage *rightImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.authModel.yingyezhizhao]]];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.leftButton setBackgroundImage:leftImage forState:UIControlStateNormal];
-                [self.rightButton setBackgroundImage:rightImage forState:UIControlStateNormal];
-            });
-        });
+
+        [self.leftButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.authModel.fuzerenshenfenzheng]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
+        [self.rightButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.authModel.yingyezhizhao]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
         
         
         [self.tableView reloadData];
@@ -201,26 +199,75 @@
 
 #pragma mark - Table view data source
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row>4 && indexPath.row <8) {
-        NSArray *array = @[@"填写详细地址",@"填写公司介绍",@"联系我们"];
+    if (indexPath.row==1) {
+        [self selectClicker];
+    } else {
+        
+        NSArray *array = @[@"公司名称",@"",@"公司负责人",@"公开联系人",@"公开联系人号码",@"详细地址",@"公司介绍",@"联系我们"];
         AuthDetailTViewController *detail = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthDetail"];
-        detail.title = [array objectAtIndex:indexPath.row-5];
+        detail.title = [array objectAtIndex:indexPath.row];
         
         __weak typeof(self) weakself = self;
         detail.PassValueBlock = ^(NSString *inputStr) {
-            if (indexPath.row == 6) {
-                weakself.descLabel.text = inputStr;
-            }
-            if (indexPath.row == 5) {
-                weakself.addressLabel.text = inputStr;
+            switch (indexPath.row) {
+                case 0:
+                    weakself.companyLab.text = inputStr;
+                    break;
+                case 1:
+                    
+                    break;
+                case 2:
+                    weakself.fuzerenLab.text = inputStr;
+                    break;
+                case 3:
+                    weakself.contactLab.text = inputStr;
+                    break;
+                case 4:
+                    weakself.phoneLab.text = inputStr;
+                    break;
+                case 5:
+                    weakself.addressLab.text = inputStr;
+                    break;
+                case 6:
+                    weakself.descLab.text = inputStr;
+                    break;
+                case 7:
+                    weakself.lianxiwomenLab.text = inputStr;
+                    break;
+                default:
+                    break;
             }
         };
-        if (indexPath.row == 5) {
-            detail.contentStr = self.addressLabel.text;
+        
+        switch (indexPath.row) {
+            case 0:
+                detail.contentStr = self.companyLab.text;
+                break;
+            case 1:
+                
+                break;
+            case 2:
+                detail.contentStr = self.fuzerenLab.text;
+                break;
+            case 3:
+                detail.contentStr = self.contactLab.text;
+                break;
+            case 4:
+                detail.contentStr = self.phoneLab.text;
+                break;
+            case 5:
+                detail.contentStr = self.addressLab.text;
+                break;
+            case 6:
+                detail.contentStr = self.descLab.text;
+                break;
+            case 7:
+                detail.contentStr = self.lianxiwomenLab.text;
+                break;
+            default:
+                break;
         }
-        if (indexPath.row == 6) {
-            detail.contentStr = self.descLabel.text;
-        }
+        
         [self.navigationController pushViewController:detail animated:YES];
     }
 }

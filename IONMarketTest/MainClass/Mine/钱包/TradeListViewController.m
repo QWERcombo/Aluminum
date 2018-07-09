@@ -26,7 +26,7 @@
     if (self.listType == ListType_huankuan) {
         self.title = @"还款记录";
     }
-    
+    self.tabView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
     [self getDataSource];
     [self setupSubviews];
@@ -43,10 +43,7 @@
     self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无交易明细" andDetailStr:@"" withReloadAction:^{
         
     }];
-//    UIButton *chooseButton = [UIButton buttonWithTitle:@"筛选" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
-//    [chooseButton addTarget:self action:@selector(chooseCliker:) forControlEvents:UIControlEventTouchUpInside];
-//    chooseButton.frame = CGRectMake(0, 0, 45, 15);
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:chooseButton];
+
 }
 
 

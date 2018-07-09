@@ -9,6 +9,7 @@
 #import "WhiteBarViewController.h"
 #import "ApplyWhiteBarVC.h"
 #import "WhiteBarVC.h"
+#import "TradeListViewController.h"
 
 @interface WhiteBarViewController ()
 
@@ -76,6 +77,11 @@
                     [white didMoveToParentViewController:self];
                     [white.view setFrame:self.view.bounds];
                     [self.view addSubview:white.view];
+                    
+                    UIButton *recordBtn = [UIButton buttonWithTitle:@"还款记录" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+                    recordBtn.frame = CGRectMake(0, 0, 70, 40);
+                    [recordBtn addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
+                    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:recordBtn];
                 });
                 
             } else if ([dataDic[@"status"] isEqualToString:@"待审核"]) {
@@ -95,7 +101,12 @@
     }];
 }
 
-
+- (void)payCliker:(UIButton *)sender {
+    
+    TradeListViewController *list = [[TradeListViewController alloc] init];
+    list.listType = ListType_huankuan;
+    [self.navigationController pushViewController:list animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

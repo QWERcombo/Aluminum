@@ -15,7 +15,8 @@
 //Frameworks
 #import "AFNetworking.h"
 #import "Masonry.h"
-#import "UIImageView+WebCache.h"
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 #import "MBProgressHUD.h"
 #import "JSONModel.h"
 #import "MJRefresh.h"

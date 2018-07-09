@@ -103,6 +103,7 @@
     self.tabView.showsVerticalScrollIndicator = NO;
     self.tabView.showsHorizontalScrollIndicator = NO;
     self.tabView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tabView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tabView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
     if (!self.isDirectionRight) {

@@ -167,6 +167,8 @@
 //支付宝白条还款
 #define Interface_aliAppHuanKuan   @"user/aliAppHuanKuan"
 
+//根据订单编号获取材质证明
+#define Interface_getInspectionReports   @"user/getInspectionReports"
 
 
 

@@ -168,10 +168,12 @@
 #pragma mark ----- DataSource
 - (void)getDataSource:(NSInteger)pageNumber {
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
-//    [dataDic setValue:@"2018-01-01" forKey:@"beginDate"];
-//    [dataDic setValue:@"2018-05-21" forKey:@"endDate"];
+    [dataDic setValue:@"1" forKey:@"pageNum"];
+    [dataDic setValue:@"10" forKey:@"pageSize"];
+    [dataDic setValue:@"2018-01-01" forKey:@"beginDate"];
+    [dataDic setValue:[self getTodayDateString] forKey:@"endDate"];
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_PriceList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_PricePageList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
         NSArray *dataArr = resultDic[@"result"];
         
@@ -187,6 +189,16 @@
         
     }];
     
+}
+
+- (NSString *)getTodayDateString {
+    
+    NSDate *todayDate = [NSDate date];
+    
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    
+    return [formatter stringFromDate:todayDate];
 }
 
 - (void)didReceiveMemoryWarning {

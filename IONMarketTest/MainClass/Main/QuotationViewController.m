@@ -23,9 +23,9 @@
     // Do any additional setup after loading the view.
     self.title = @"行情";
     self.pageNumber = 1;
-    [self getDataSource:self.pageNumber];
-    [[UtilsData sharedInstance] MJRefreshNormalHeaderTarget:self table:self.tabView actionSelector:@selector(loadHeaderNewData)];
-    [[UtilsData sharedInstance] MJRefreshAutoNormalFooterTarget:self table:self.tabView actionSelector:@selector(loadFooterNewData)];
+//    [self getDataSource:self.pageNumber];
+//    [[UtilsData sharedInstance] MJRefreshNormalHeaderTarget:self table:self.tabView actionSelector:@selector(loadHeaderNewData)];
+//    [[UtilsData sharedInstance] MJRefreshAutoNormalFooterTarget:self table:self.tabView actionSelector:@selector(loadFooterNewData)];
     [self setupSubviews];
 }
 
@@ -142,9 +142,12 @@
     if ([sender.currentTitle isEqualToString:@"关注行情"]) {
         line_f.hidden = NO;
         line_a.hidden = YES;
+        [self.dataMuArr removeAllObjects];
+        [self.tabView reloadData];
     } else {
         line_f.hidden = YES;
         line_a.hidden = NO;
+        [self getDataSource:1];
     }
 }
 
@@ -160,12 +163,10 @@
 - (void)getDataSource:(NSInteger)pageNumber {
     
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
-    [dataDic setValue:SINT(pageNumber) forKey:@"pageNum"];
-    [dataDic setValue:@"15" forKey:@"pageSize"];
-//    [dataDic setValue:@"2018-04-01" forKey:@"beginDate"];
-//    [dataDic setValue:@"2018-05-21" forKey:@"endDate"];
+    [dataDic setValue:@"2018-01-01" forKey:@"beginDate"];
+    [dataDic setValue:@"2018-07-09" forKey:@"endDate"];
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_PricePageList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_PriceList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
         NSArray *dataArr = resultDic[@"result"];
         

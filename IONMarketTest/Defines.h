@@ -37,6 +37,7 @@
 #define NOTICE_PUSH                 @"user_push"
 #define NOTICE_USER_Certificate     @"user_certificate"//用户实名认证
 #define APP_ID                      @"0"//0默认我们自己，以后依次+1
+#define LOGIN_PHONE                 @"LOGIN_PHONE"//本地账号
 
 //*************************************************************⬅️
 //**************    地址   ***********************1️⃣

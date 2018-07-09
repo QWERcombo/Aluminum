@@ -120,20 +120,26 @@
     return [UtilsMold creatCell:@"OrderListCell" table:tableView deledate:self model:model data:nil andCliker:^(NSDictionary *clueDic) {
 //        NSLog(@"%@---%ld", clueDic, indexPath.row);
 //        [weakself getExpressMoney:model.id];
-        if ([clueDic[@"key"] isEqualToString:@"  材质证明下载  "]) {
+        if ([clueDic[@"key"] isEqualToString:@"  材质证明  "]) {
+            
+            [self getCaizhizhengming:indexPath];
             
         }
+        
         if ([clueDic[@"key"] isEqualToString:@"  去支付  "]) {
             OrderPayVC *pay = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayVC"];
             pay.orderModel = [self.dataMuArr objectAtIndex:indexPath.row];
             [self.navigationController pushViewController:pay animated:YES];
         }
+        
         if ([clueDic[@"key"] isEqualToString:@"  取消订单  "]) {
             [weakself cancelOrder:model.no withIndexPath:indexPath];
         }
+        
         if ([clueDic[@"key"] isEqualToString:@"  确认收货  "]) {
             [self confirmProduct:model.no withIndexPath:indexPath];
         }
+        
     }];
 }
 
@@ -286,6 +292,7 @@
 - (void)confirmProduct:(NSString *)orderNo withIndexPath:(NSIndexPath *)indexpath {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
     [dict setValue:orderNo forKey:@"no"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_ConfirmComplete andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
@@ -296,8 +303,25 @@
         
     }];
     
+}
+
+//材质证明
+- (void)getCaizhizhengming:(NSIndexPath *)indexpath {
+    
+    OrderListModel *model = [self.dataMuArr objectAtIndex:indexpath.row];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:model.no forKey:@"no"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_getInspectionReports andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
     
 }
+
+
 
 
 

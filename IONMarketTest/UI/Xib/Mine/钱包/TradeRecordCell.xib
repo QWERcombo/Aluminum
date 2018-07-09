@@ -39,7 +39,9 @@
                     <constraint firstItem="kSj-Jc-an7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tgu-8p-0Z4"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="dateLab" destination="kSj-Jc-an7" id="981-dK-nxO"/>
                 <outlet property="moneyLab" destination="ING-Hd-0Cn" id="03X-lc-8t9"/>

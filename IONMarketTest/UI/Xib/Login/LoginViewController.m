@@ -30,6 +30,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 //    [self.phoneTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE]) {
+        
+        self.phoneTF.text = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE];
+    }
 }
 
 //- (void) textFieldDidChange:(UITextField *)textField
@@ -65,6 +69,15 @@
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Login andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"++++%@", resultDic);
         [[UserData currentUser] giveData:resultDic[@"user"]];
+        
+        //用户手机号存本地
+        NSString *login_phone = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE];
+        if (![login_phone isEqualToString:self.phoneTF.text]) {
+            
+            [[NSUserDefaults standardUserDefaults] setObject:self.phoneTF.text forKey:LOGIN_PHONE];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        
         
         [[UtilsData sharedInstance] postLoginNotice];
         

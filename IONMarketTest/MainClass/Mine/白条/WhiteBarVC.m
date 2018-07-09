@@ -7,7 +7,6 @@
 //
 
 #import "WhiteBarVC.h"
-#import "TradeListViewController.h"
 #import "InputViewController.h"
 
 @interface WhiteBarVC ()
@@ -25,10 +24,10 @@
     // Do any additional setup after loading the view.
     self.whiteBarTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.title = @"白条";
-    UIButton *recordBtn = [UIButton buttonWithTitle:@"还款记录" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
-    recordBtn.frame = CGRectMake(0, 0, 70, 40);
-    [recordBtn addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:recordBtn];
+//    UIButton *recordBtn = [UIButton buttonWithTitle:@"还款记录" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+//    recordBtn.frame = CGRectMake(0, 0, 70, 40);
+//    [recordBtn addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:recordBtn];
     
     self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无交易明细" andDetailStr:@"" withReloadAction:^{
         
@@ -38,12 +37,12 @@
     [self getInfo];
 }
 
-- (void)payCliker:(UIButton *)sender {
-    
-    TradeListViewController *list = [[TradeListViewController alloc] init];
-    list.listType = ListType_huankuan;
-    [self.navigationController pushViewController:list animated:YES];
-}
+//- (void)payCliker:(UIButton *)sender {
+//    
+//    TradeListViewController *list = [[TradeListViewController alloc] init];
+//    list.listType = ListType_huankuan;
+//    [self.navigationController pushViewController:list animated:YES];
+//}
 
 - (IBAction)huankuanClicker:(UIButton *)sender {
     
@@ -97,7 +96,7 @@
         
         self.huankuanLab.text = [NSString stringWithFormat:@"%@", resultDic[@"money"]];
         
-        [self.tabView reloadData];
+        [self.whiteBarTableView reloadData];
     } failure:^(NSString *error, NSInteger code) {
         
     }];
