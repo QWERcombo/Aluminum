@@ -122,7 +122,7 @@
 #define Interface_PricePageList   @"pricePageList"
 
 //管材接口时，根据内径获取外径
-#define Interface_GetWaijingByNeijing @"getWaijingByNeijing"
+//#define Interface_GetWaijingByNeijing @"getWaijingByNeijing"
 //管材接口时，根据外径获取内径
 #define Interface_GetNeijingByWaijing @"getNeijingByWaijing"
 //型材根据厚度选择宽度

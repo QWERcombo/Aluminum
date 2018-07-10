@@ -22,7 +22,6 @@
 @property (nonatomic, strong) UIScrollView *sctollView;
 @property (nonatomic, strong) NSString *typeStr;//种类
 @property (nonatomic, strong) NSString *xinghaoStr;//型号
-//@property (nonatomic, strong) NSString *xinghaoStr;//型号
 @property (nonatomic, strong) MainModel *mainM;
 @property (nonatomic, strong) NSString *getOrderType;// 快速(整只) 优切(拼切)
 @property (nonatomic, copy) void(^passValue)(NSString *value);//选择数据
@@ -57,11 +56,11 @@
     self.title = @"下单";
     self.mainM = [[MainModel alloc] init];
     
-    UIButton *rightButton = [UIButton buttonWithTitle:@"特殊定制" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
-    rightButton.tag = 1010;
-   
-    [rightButton addTarget:self action:@selector(buttonCliker:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+//    UIButton *rightButton = [UIButton buttonWithTitle:@"特殊定制" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+//    rightButton.tag = 1010;
+//
+//    [rightButton addTarget:self action:@selector(buttonCliker:) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
     
     self.view.backgroundColor = [UIColor mianColor:1];
     
@@ -407,15 +406,33 @@
                         matter.waiLabel.text = value;
                         matter.waiLabel.textColor = [UIColor blackColor];
                         weakself.mainM.waijing = value;
+                        [weakself getNeiByWai:value returnBlock:^(NSArray *resultArray) {
+                            matter.neiLabel.text = [resultArray firstObject];
+                            matter.neiLabel.textColor = [UIColor blackColor];
+                            weakself.mainM.neijing = [resultArray firstObject];
+                        }];
                     };
                 } else if ([clueStr isEqualToString:@"1"]) { //内径
-                    [weakself selectInfomationForUser:@"1" withMode:Mode_Matter];
-                    
-                    weakself.passValue = ^(NSString *value) {
-                        matter.neiLabel.text = value;
-                        matter.neiLabel.textColor = [UIColor blackColor];
-                        weakself.mainM.neijing = value;
-                    };
+                    if (!weakself.mainM.waijing.length) {
+                        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择外径" time:0 aboutType:WHShowViewMode_Text state:NO];
+                    } else {
+                        [weakself getNeiByWai:weakself.mainM.waijing returnBlock:^(NSArray *resultArray) {
+                            
+                            if (resultArray.count) {
+                                UnitsPickerView *pv = [[UnitsPickerView alloc] initWithFrame:self.view.bounds withDataSource:resultArray];
+                                [pv loadData:nil andClickBlock:^(NSString *clueStr) {
+                                    
+                                    matter.neiLabel.text = clueStr;
+                                    matter.neiLabel.textColor = [UIColor blackColor];
+                                    weakself.mainM.neijing = clueStr;
+                                }];
+                                [weakself.view addSubview:pv];
+                            } else {
+                                [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"暂无数据" time:0 aboutType:WHShowViewMode_Text state:NO];
+                            }
+                            
+                        }];
+                    }
                 } else if ([clueStr isEqualToString:@"2"]) {
                     
                     if (!weakself.isGetOrderMoney) {
@@ -940,12 +957,26 @@
     [self.view bringSubviewToFront:bottomView];
 }
 
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//外径带内径
+- (void)getNeiByWai:(NSString *)waijing returnBlock:(void(^)(NSArray *resultArray))resultBlock {
+    
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+    [dataDic setValue:waijing forKey:@"waijing"];
+    [dataDic setValue:self.xinghaoStr forKey:@"xinghaoId"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_GetNeijingByWaijing andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+//        NSLog(@"+++%@", resultDic);
+        NSArray *resultArr = resultDic[@"result"];
+        if (resultBlock) {
+            resultBlock(resultArr);
+        }
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
 }
+
+
 
 /*
 #pragma mark - Navigation
@@ -956,5 +987,8 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 @end

@@ -113,6 +113,7 @@
 
 - (IBAction)selectClicker:(UIButton *)sender {
     if (self.click) {
+        [self endEditing:YES];
         self.click(@"0");
     }
 }

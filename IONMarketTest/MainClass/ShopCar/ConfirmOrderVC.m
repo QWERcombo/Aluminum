@@ -10,7 +10,7 @@
 #import "AddressViewController.h"
 #import "OrderPayVC.h"
 
-@interface ConfirmOrderVC ()<UITableViewDelegate, UITableViewDataSource>
+@interface ConfirmOrderVC () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLab;
 @property (weak, nonatomic) IBOutlet UILabel *addressLab;
@@ -37,6 +37,7 @@
     }
     self.priceLab.text = [NSString stringWithFormat:@"%.2lf", total];
     self.shuliangLab.text = [NSString stringWithFormat:@"%ld", shuliang];
+    [self getDefaultAddressModel];
 }
 
 - (IBAction)confirmClicker:(UIButton *)sender {
@@ -140,9 +141,37 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)getDefaultAddressModel {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:[UserData currentUser].id forKey:@"userId"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetAddressByPhone andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+//        NSLog(@"%@", resultDic);
+        NSArray *dataSource = resultDic[@"result"];
+        
+        for (NSDictionary *dic in dataSource) {
+            
+            AddressModel *model = [[AddressModel alloc] initWithDictionary:dic error:nil];
+            
+            if ([model.moren isEqualToString:@"1"]) {
+                
+                self.addressModel = model;
+                self.nameLab.text = model.name;
+                self.phoneLab.text = model.phone;
+                self.addressLab.text = [NSString stringWithFormat:@"%@ %@ %@ %@", model.sheng,model.shi,model.qu,model.detailAddress];
+                [self.addressBtn setTitle:@"" forState:UIControlStateNormal];
+                
+                break;
+            }
+        }
+        
+        
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
+    
 }
 
 /*
@@ -154,5 +183,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end

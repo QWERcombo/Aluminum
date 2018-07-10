@@ -85,7 +85,8 @@
                 });
                 
             } else if ([dataDic[@"status"] isEqualToString:@"待审核"]) {
-                
+                self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"审核中 请等待审核结果" andDetailStr:@"" withReloadAction:^{
+                }];
                 [self setupSubviews:@"审核中"];
                 
             } else {

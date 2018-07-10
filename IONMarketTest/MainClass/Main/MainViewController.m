@@ -102,17 +102,20 @@
             item.item_imgv.image = IMG(imageName);
             
             [item loadData:nil andCliker:^(NSString *clueStr) {
-                NSLog(@"%@", clueStr);
+//                NSLog(@"%@", clueStr);
                 NSString *name = [nameArr objectAtIndex:clueStr.integerValue];
                 if ([name isEqualToString:@"自动下单"]) {
                     SetOrderViewController *set = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SetOrder"];
                     [self.navigationController pushViewController:set animated:YES];
+                    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"此项功能研发中..." time:0 aboutType:WHShowViewMode_Text state:NO];
                 } else if ([name isEqualToString:@"特殊定制"]) {
-                    SpecialMakeViewController *special = [SpecialMakeViewController new];
-                    [self.navigationController pushViewController:special animated:YES];
+//                    SpecialMakeViewController *special = [SpecialMakeViewController new];
+//                    [self.navigationController pushViewController:special animated:YES];
+                    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"此项功能研发中..." time:0 aboutType:WHShowViewMode_Text state:NO];
                 } else if ([name isEqualToString:@"询价"]) {
-                    MessageViewController *message = [MessageViewController new];
-                    [self.navigationController pushViewController:message animated:YES];
+//                    MessageViewController *message = [MessageViewController new];
+//                    [self.navigationController pushViewController:message animated:YES];
+                    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"此项功能研发中..." time:0 aboutType:WHShowViewMode_Text state:NO];
                 } else if ([name isEqualToString:@"整板"]) {
                     InventoryViewController *inven = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"InventoryViewController"];
                     [self.navigationController pushViewController:inven animated:YES];

@@ -27,7 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *descLab;
 @property (weak, nonatomic) IBOutlet UILabel *lianxiwomenLab;
 
-
+@property (nonatomic, assign) BOOL isScale; //图片点击放大
 @end
 
 #define imageBaseUrl    @"http://118.31.35.233:8080/"
@@ -51,12 +51,10 @@
     self.rightButton.layer.borderWidth = 1;
     self.rightButton.layer.cornerRadius = 5;
     
-//    self.leftButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;//使图片和文字水平居中显示
-//    [self.leftButton setTitleEdgeInsets:UIEdgeInsetsMake(self.leftButton.imageView.frame.size.height ,-self.leftButton.imageView.frame.size.width, -10.0,0.0)];//文字距离上边框的距离增加imageView的高度，距离左边框减少imageView的宽度，距离下边框和右边框距离不变
-//    [self.leftButton setImageEdgeInsets:UIEdgeInsetsMake(-10.0, 0.0,0.0, -self.leftButton.titleLabel.bounds.size.width)];//图片距离右边框距离减少图片的宽度，其它不边
-//    self.rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-//    [self.rightButton setTitleEdgeInsets:UIEdgeInsetsMake(self.rightButton.imageView.frame.size.height ,-self.rightButton.imageView.frame.size.width, -10.0,0.0)];
-//    [self.rightButton setImageEdgeInsets:UIEdgeInsetsMake(-10.0, 0.0,0.0, -self.rightButton.titleLabel.bounds.size.width)];
+    self.leftButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.rightButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
+//    self.leftButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
+//    self.rightButton.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
     
     [self getData];
 }
@@ -136,7 +134,7 @@
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:url andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"---++%@", resultDic);
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0 aboutType:WHShowViewMode_Text state:YES];
-        
+        [self.navigationController popViewControllerAnimated:YES];
         [self.tableView reloadData];
     } failure:^(NSString *error, NSInteger code) {
         
@@ -161,7 +159,13 @@
         self.isUploaded = NO;
     }
     
-    [self selectHeaderImage];
+    if (self.isScale) {
+        //图片浏览
+        [self scalePhoto];
+    } else {
+        //上传图片
+        [self selectHeaderImage];
+    }
 }
 
 - (void)getData {
@@ -185,6 +189,11 @@
         [self.leftButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.authModel.fuzerenshenfenzheng]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
         [self.rightButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.authModel.yingyezhizhao]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
         
+        if (dataArr.count) {
+            self.isScale = YES;
+        } else {
+            self.isScale = NO;
+        }
         
         [self.tableView reloadData];
     } failure:^(NSString *error, NSInteger code) {
@@ -220,10 +229,10 @@
                     weakself.fuzerenLab.text = inputStr;
                     break;
                 case 3:
-                    weakself.contactLab.text = inputStr;
+                    weakself.phoneLab.text = inputStr;
                     break;
                 case 4:
-                    weakself.phoneLab.text = inputStr;
+                    weakself.contactLab.text = inputStr;
                     break;
                 case 5:
                     weakself.addressLab.text = inputStr;
@@ -250,10 +259,10 @@
                 detail.contentStr = self.fuzerenLab.text;
                 break;
             case 3:
-                detail.contentStr = self.contactLab.text;
+                detail.contentStr = self.phoneLab.text;
                 break;
             case 4:
-                detail.contentStr = self.phoneLab.text;
+                detail.contentStr = self.contactLab.text;
                 break;
             case 5:
                 detail.contentStr = self.addressLab.text;
@@ -331,11 +340,11 @@
     //    NSLog(@"选择完毕----image:%@-----info:%@",image,editingInfo);
     
     if (self.isUploaded) {
-        [self.leftButton setBackgroundImage:image forState:UIControlStateNormal];
-        [self.leftButton setTitle:@"" forState:UIControlStateNormal];
+        [self.leftButton setImage:image forState:UIControlStateNormal];
+//        [self.leftButton setTitle:@"" forState:UIControlStateNormal];
     } else {
-        [self.rightButton setBackgroundImage:image forState:UIControlStateNormal];
-        [self.rightButton setTitle:@"" forState:UIControlStateNormal];
+        [self.rightButton setImage:image forState:UIControlStateNormal];
+//        [self.rightButton setTitle:@"" forState:UIControlStateNormal];
     }
     
     [self.tableView reloadData];
@@ -349,7 +358,7 @@
 - (void)uploadUserImage:(UIImage *)userimage  {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:@[userimage] WithType:Interface_UserUpload andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"upload:   %@",resultDic);
+//        NSLog(@"upload:   %@",resultDic);
         
         if (self.isUploaded) {
             self.leftImageUrl = [NSString stringWithFormat:@"%@",resultDic[@"path"]];
@@ -357,15 +366,17 @@
             self.rightImageUrl = [NSString stringWithFormat:@"%@",resultDic[@"path"]];
         }
         
-        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"上传成功！" time:0.0 aboutType:WHShowViewMode_Text state:YES];
+//        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"上传成功！" time:0.0 aboutType:WHShowViewMode_Text state:YES];
     } failure:^(NSString *error, NSInteger code) {
-        
-        
     }];
 }
 
 
-
+- (void)scalePhoto {
+    
+    
+    
+}
 
 
 

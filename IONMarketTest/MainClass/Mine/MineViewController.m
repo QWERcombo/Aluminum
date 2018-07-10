@@ -51,7 +51,7 @@
     NSArray *classArray = @[[UserInfoViewController class],@"",[WalletViewController class],[WhiteBarViewController class],[TicketViewController class],[AuthenticationTableViewController class],@"",[AddressViewController class],[ShareViewController class],[SettingTableViewController class]];
     
     if (indexPath.row == 10) {
-        NSString *callPhone = [NSString stringWithFormat:@"telprompt://%@", @"13372118858"];
+        NSString *callPhone = [NSString stringWithFormat:@"telprompt://%@", @"0510-88996061"];
         if (@available(iOS 10.0, *)) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone] options:@{} completionHandler:nil];
         } else {
