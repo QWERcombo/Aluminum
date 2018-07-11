@@ -24,7 +24,7 @@
 #import <FMDB.h>
 #import "LYEmptyViewHeader.h"
 #import "Reachability.h"
-
+#import "XLPhotoBrowser.h"
 
 
 //Categories

@@ -2050,7 +2050,7 @@
                                                         <constraint firstAttribute="height" constant="100" id="GQ2-0m-McY"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <state key="normal">
+                                                    <state key="normal" image="White_add">
                                                         <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
@@ -2063,7 +2063,7 @@
                                                         <constraint firstAttribute="height" constant="100" id="EIU-vs-lnW"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <state key="normal">
+                                                    <state key="normal" image="White_add">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
@@ -2147,6 +2147,7 @@
                     <connections>
                         <outlet property="addressLab" destination="Vto-53-ETU" id="JU7-Pf-hxn"/>
                         <outlet property="companyLab" destination="DZ4-ui-wYJ" id="NQN-WA-Bk2"/>
+                        <outlet property="confirmBtn" destination="3Jj-VT-O2l" id="M3f-EW-X3Q"/>
                         <outlet property="contactLab" destination="a31-MN-EY5" id="4YL-eS-SFC"/>
                         <outlet property="descLab" destination="Y76-G2-Lmb" id="S9Z-cz-82w"/>
                         <outlet property="fuzerenLab" destination="F2p-ni-iSZ" id="5YT-MZ-qPU"/>

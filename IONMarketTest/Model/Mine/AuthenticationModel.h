@@ -20,5 +20,6 @@
 @property (nonatomic, strong) NSString *lianxirendianhua;
 @property (nonatomic, strong) NSString *xiangxidizhi;
 @property (nonatomic, strong) NSString *yingyezhizhao;
+@property (nonatomic, strong) NSString *shenhezhuangtai;
 
 @end

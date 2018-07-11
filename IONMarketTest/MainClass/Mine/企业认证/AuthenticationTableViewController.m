@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLab;
 @property (weak, nonatomic) IBOutlet UILabel *descLab;
 @property (weak, nonatomic) IBOutlet UILabel *lianxiwomenLab;
+@property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 
 @property (nonatomic, assign) BOOL isScale; //图片点击放大
 @end
@@ -62,7 +63,7 @@
 - (BOOL)checkInfo {
     [self.dataSource removeAllObjects];
     
-    if (self.authModel.id.length) {
+    if (self.authModel.id.length && ![self.authModel.shenhezhuangtai isEqualToString:@"审核拒绝"]) {
         self.companyLab.text.length?[self.dataSource addObject:self.companyLab.text]:[self.dataSource addObject:self.authModel.gongsimingchen];
         [self.dataSource addObject:self.moshiLab.text];
         self.fuzerenLab.text.length?[self.dataSource addObject:self.fuzerenLab.text]:[self.dataSource addObject:self.authModel.gongsifuzeren];
@@ -87,8 +88,17 @@
         [self.dataSource addObject:self.phoneLab.text];
         [self.dataSource addObject:self.addressLab.text];
         [self.dataSource addObject:self.descLab.text];
-        [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.leftImageUrl]];
-        [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.rightImageUrl]];
+        
+        
+        if ([self.authModel.shenhezhuangtai isEqualToString:@"审核拒绝"]) {
+            
+            [self.dataSource addObject:self.leftImageUrl = @""];
+            [self.dataSource addObject:self.rightImageUrl = @""];
+            
+        } else {
+            [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.leftImageUrl]];
+            [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.rightImageUrl]];
+        }
         
     }
     
@@ -185,16 +195,24 @@
         self.descLab.text = self.authModel.gongsijieshao;
         self.lianxiwomenLab.text = self.authModel.lianxirendianhua;
         
-
-        [self.leftButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.authModel.fuzerenshenfenzheng]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
-        [self.rightButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.authModel.yingyezhizhao]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
         
-        if (dataArr.count) {
+        if (self.authModel && ![self.authModel.shenhezhuangtai isEqualToString:@"审核拒绝"]) {
+            
             self.isScale = YES;
+            self.confirmBtn.hidden = YES;
+            
+            dispatch_async(dispatch_queue_create("concurrent", DISPATCH_QUEUE_CONCURRENT), ^{
+                
+                [self.leftButton sd_setImageWithURL:[NSURL URLWithString:self.authModel.fuzerenshenfenzheng] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
+                [self.rightButton sd_setImageWithURL:[NSURL URLWithString:self.authModel.yingyezhizhao] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
+            });
         } else {
+            
             self.isScale = NO;
+            self.confirmBtn.hidden = NO;
         }
         
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:self.authModel.shenhezhuangtai time:0 aboutType:WHShowViewMode_Text state:NO];
         [self.tableView reloadData];
     } failure:^(NSString *error, NSInteger code) {
         
@@ -374,8 +392,7 @@
 
 - (void)scalePhoto {
     
-    
-    
+    [XLPhotoBrowser showPhotoBrowserWithImages:@[self.authModel.fuzerenshenfenzheng, self.authModel.yingyezhizhao] currentImageIndex:0];
 }
 
 

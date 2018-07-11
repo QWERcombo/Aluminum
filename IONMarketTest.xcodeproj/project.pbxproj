@@ -218,6 +218,21 @@
 		A285A6592076170400D349AB /* BillTicketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A285A6582076170400D349AB /* BillTicketModel.m */; };
 		A289424020B3CAF900D8E9E5 /* BezierCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A289423E20B3CAF800D8E9E5 /* BezierCurveView.xib */; };
 		A289424420B4239500D8E9E5 /* WalletListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A289424320B4239500D8E9E5 /* WalletListModel.m */; };
+		A296427020F5AB5E00B6E8B6 /* UIImage+XLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A296424F20F5AB5E00B6E8B6 /* UIImage+XLExtension.m */; };
+		A296427120F5AB5E00B6E8B6 /* UIView+XLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A296425120F5AB5E00B6E8B6 /* UIView+XLExtension.m */; };
+		A296427220F5AB5E00B6E8B6 /* FSActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A296425520F5AB5E00B6E8B6 /* FSActionSheet.m */; };
+		A296427320F5AB5E00B6E8B6 /* FSActionSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A296425720F5AB5E00B6E8B6 /* FSActionSheetCell.m */; };
+		A296427420F5AB5E00B6E8B6 /* FSActionSheetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A296425920F5AB5E00B6E8B6 /* FSActionSheetConfig.m */; };
+		A296427520F5AB5E00B6E8B6 /* FSActionSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A296425B20F5AB5E00B6E8B6 /* FSActionSheetItem.m */; };
+		A296427620F5AB5E00B6E8B6 /* FSActionSheet_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A296425D20F5AB5E00B6E8B6 /* FSActionSheet_cancel@2x.png */; };
+		A296427720F5AB5E00B6E8B6 /* FSActionSheet_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A296425E20F5AB5E00B6E8B6 /* FSActionSheet_cancel@3x.png */; };
+		A296427820F5AB5E00B6E8B6 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = A296426120F5AB5E00B6E8B6 /* TAAbstractDotView.m */; };
+		A296427920F5AB5E00B6E8B6 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = A296426320F5AB5E00B6E8B6 /* TAAnimatedDotView.m */; };
+		A296427A20F5AB5E00B6E8B6 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = A296426520F5AB5E00B6E8B6 /* TADotView.m */; };
+		A296427B20F5AB5E00B6E8B6 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A296426720F5AB5E00B6E8B6 /* TAPageControl.m */; };
+		A296427C20F5AB5E00B6E8B6 /* XLPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A296426920F5AB5E00B6E8B6 /* XLPhotoBrowser.m */; };
+		A296427D20F5AB5E00B6E8B6 /* XLProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A296426D20F5AB5E00B6E8B6 /* XLProgressView.m */; };
+		A296427E20F5AB5E00B6E8B6 /* XLZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A296426F20F5AB5E00B6E8B6 /* XLZoomingScrollView.m */; };
 		A29996FE207381140003B96C /* ShopCarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A29996FC207381140003B96C /* ShopCarListCell.m */; };
 		A29996FF207381140003B96C /* ShopCarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A29996FD207381140003B96C /* ShopCarListCell.xib */; };
 		A2A8A63F20B7C1400009792F /* OrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A8A63E20B7C1400009792F /* OrderListModel.m */; };
@@ -701,6 +716,36 @@
 		A289423E20B3CAF800D8E9E5 /* BezierCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BezierCurveView.xib; sourceTree = "<group>"; };
 		A289424220B4239500D8E9E5 /* WalletListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletListModel.h; sourceTree = "<group>"; };
 		A289424320B4239500D8E9E5 /* WalletListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletListModel.m; sourceTree = "<group>"; };
+		A296424E20F5AB5E00B6E8B6 /* UIImage+XLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+XLExtension.h"; sourceTree = "<group>"; };
+		A296424F20F5AB5E00B6E8B6 /* UIImage+XLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+XLExtension.m"; sourceTree = "<group>"; };
+		A296425020F5AB5E00B6E8B6 /* UIView+XLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XLExtension.h"; sourceTree = "<group>"; };
+		A296425120F5AB5E00B6E8B6 /* UIView+XLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XLExtension.m"; sourceTree = "<group>"; };
+		A296425420F5AB5E00B6E8B6 /* FSActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheet.h; sourceTree = "<group>"; };
+		A296425520F5AB5E00B6E8B6 /* FSActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheet.m; sourceTree = "<group>"; };
+		A296425620F5AB5E00B6E8B6 /* FSActionSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetCell.h; sourceTree = "<group>"; };
+		A296425720F5AB5E00B6E8B6 /* FSActionSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetCell.m; sourceTree = "<group>"; };
+		A296425820F5AB5E00B6E8B6 /* FSActionSheetConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetConfig.h; sourceTree = "<group>"; };
+		A296425920F5AB5E00B6E8B6 /* FSActionSheetConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetConfig.m; sourceTree = "<group>"; };
+		A296425A20F5AB5E00B6E8B6 /* FSActionSheetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetItem.h; sourceTree = "<group>"; };
+		A296425B20F5AB5E00B6E8B6 /* FSActionSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetItem.m; sourceTree = "<group>"; };
+		A296425D20F5AB5E00B6E8B6 /* FSActionSheet_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FSActionSheet_cancel@2x.png"; sourceTree = "<group>"; };
+		A296425E20F5AB5E00B6E8B6 /* FSActionSheet_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FSActionSheet_cancel@3x.png"; sourceTree = "<group>"; };
+		A296426020F5AB5E00B6E8B6 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		A296426120F5AB5E00B6E8B6 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		A296426220F5AB5E00B6E8B6 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		A296426320F5AB5E00B6E8B6 /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		A296426420F5AB5E00B6E8B6 /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		A296426520F5AB5E00B6E8B6 /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		A296426620F5AB5E00B6E8B6 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		A296426720F5AB5E00B6E8B6 /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
+		A296426820F5AB5E00B6E8B6 /* XLPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPhotoBrowser.h; sourceTree = "<group>"; };
+		A296426920F5AB5E00B6E8B6 /* XLPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLPhotoBrowser.m; sourceTree = "<group>"; };
+		A296426A20F5AB5E00B6E8B6 /* XLPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPhotoBrowserConfig.h; sourceTree = "<group>"; };
+		A296426B20F5AB5E00B6E8B6 /* XLPhotoBrowserTypeDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPhotoBrowserTypeDefine.h; sourceTree = "<group>"; };
+		A296426C20F5AB5E00B6E8B6 /* XLProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLProgressView.h; sourceTree = "<group>"; };
+		A296426D20F5AB5E00B6E8B6 /* XLProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLProgressView.m; sourceTree = "<group>"; };
+		A296426E20F5AB5E00B6E8B6 /* XLZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLZoomingScrollView.h; sourceTree = "<group>"; };
+		A296426F20F5AB5E00B6E8B6 /* XLZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLZoomingScrollView.m; sourceTree = "<group>"; };
 		A29996FB207381140003B96C /* ShopCarListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCarListCell.h; sourceTree = "<group>"; };
 		A29996FC207381140003B96C /* ShopCarListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCarListCell.m; sourceTree = "<group>"; };
 		A29996FD207381140003B96C /* ShopCarListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCarListCell.xib; sourceTree = "<group>"; };
@@ -1308,6 +1353,7 @@
 		5695BEB72042A4BA0036D54B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				A296424D20F5AB5E00B6E8B6 /* XLPhotoBrowser+CoderXL */,
 				5678495E20C0315800739A3D /* iOS */,
 				A289423C20B3CAE300D8E9E5 /* BezierCurvcLine */,
 				568EFDF1206F1836007E437F /* cityPicker */,
@@ -1702,6 +1748,75 @@
 			path = BezierCurvcLine;
 			sourceTree = "<group>";
 		};
+		A296424D20F5AB5E00B6E8B6 /* XLPhotoBrowser+CoderXL */ = {
+			isa = PBXGroup;
+			children = (
+				A296424E20F5AB5E00B6E8B6 /* UIImage+XLExtension.h */,
+				A296424F20F5AB5E00B6E8B6 /* UIImage+XLExtension.m */,
+				A296425020F5AB5E00B6E8B6 /* UIView+XLExtension.h */,
+				A296425120F5AB5E00B6E8B6 /* UIView+XLExtension.m */,
+				A296425220F5AB5E00B6E8B6 /* Vender */,
+				A296426820F5AB5E00B6E8B6 /* XLPhotoBrowser.h */,
+				A296426920F5AB5E00B6E8B6 /* XLPhotoBrowser.m */,
+				A296426A20F5AB5E00B6E8B6 /* XLPhotoBrowserConfig.h */,
+				A296426B20F5AB5E00B6E8B6 /* XLPhotoBrowserTypeDefine.h */,
+				A296426C20F5AB5E00B6E8B6 /* XLProgressView.h */,
+				A296426D20F5AB5E00B6E8B6 /* XLProgressView.m */,
+				A296426E20F5AB5E00B6E8B6 /* XLZoomingScrollView.h */,
+				A296426F20F5AB5E00B6E8B6 /* XLZoomingScrollView.m */,
+			);
+			path = "XLPhotoBrowser+CoderXL";
+			sourceTree = "<group>";
+		};
+		A296425220F5AB5E00B6E8B6 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				A296425320F5AB5E00B6E8B6 /* FSActionSheet */,
+				A296425F20F5AB5E00B6E8B6 /* PageControl */,
+			);
+			path = Vender;
+			sourceTree = "<group>";
+		};
+		A296425320F5AB5E00B6E8B6 /* FSActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				A296425420F5AB5E00B6E8B6 /* FSActionSheet.h */,
+				A296425520F5AB5E00B6E8B6 /* FSActionSheet.m */,
+				A296425620F5AB5E00B6E8B6 /* FSActionSheetCell.h */,
+				A296425720F5AB5E00B6E8B6 /* FSActionSheetCell.m */,
+				A296425820F5AB5E00B6E8B6 /* FSActionSheetConfig.h */,
+				A296425920F5AB5E00B6E8B6 /* FSActionSheetConfig.m */,
+				A296425A20F5AB5E00B6E8B6 /* FSActionSheetItem.h */,
+				A296425B20F5AB5E00B6E8B6 /* FSActionSheetItem.m */,
+				A296425C20F5AB5E00B6E8B6 /* FSActionSheetResources */,
+			);
+			path = FSActionSheet;
+			sourceTree = "<group>";
+		};
+		A296425C20F5AB5E00B6E8B6 /* FSActionSheetResources */ = {
+			isa = PBXGroup;
+			children = (
+				A296425D20F5AB5E00B6E8B6 /* FSActionSheet_cancel@2x.png */,
+				A296425E20F5AB5E00B6E8B6 /* FSActionSheet_cancel@3x.png */,
+			);
+			path = FSActionSheetResources;
+			sourceTree = "<group>";
+		};
+		A296425F20F5AB5E00B6E8B6 /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				A296426020F5AB5E00B6E8B6 /* TAAbstractDotView.h */,
+				A296426120F5AB5E00B6E8B6 /* TAAbstractDotView.m */,
+				A296426220F5AB5E00B6E8B6 /* TAAnimatedDotView.h */,
+				A296426320F5AB5E00B6E8B6 /* TAAnimatedDotView.m */,
+				A296426420F5AB5E00B6E8B6 /* TADotView.h */,
+				A296426520F5AB5E00B6E8B6 /* TADotView.m */,
+				A296426620F5AB5E00B6E8B6 /* TAPageControl.h */,
+				A296426720F5AB5E00B6E8B6 /* TAPageControl.m */,
+			);
+			path = PageControl;
+			sourceTree = "<group>";
+		};
 		A29996FA207380E70003B96C /* ShopCar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1748,6 +1863,7 @@
 				5695BE6B20429F1B0036D54B /* Frameworks */,
 				5695BE6C20429F1B0036D54B /* Resources */,
 				40E05663B3723EE7CF21BF87 /* [CP] Copy Pods Resources */,
+				DBEB286AB396E29F1067BF3E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1853,6 +1969,7 @@
 				565086AA205CFF1800FD8497 /* OrderDetailCell.xib in Resources */,
 				A21B4669207B194000802621 /* Mine.storyboard in Resources */,
 				5695BE8120429F1B0036D54B /* LaunchScreen.storyboard in Resources */,
+				A296427620F5AB5E00B6E8B6 /* FSActionSheet_cancel@2x.png in Resources */,
 				A2301B2120635292006B9F20 /* LoginViewController.xib in Resources */,
 				5615B8B92073B730005F2403 /* AddressShowView.xib in Resources */,
 				A22981D6206261C1007B6112 /* TicketCell.xib in Resources */,
@@ -1881,6 +1998,7 @@
 				A289424020B3CAF900D8E9E5 /* BezierCurveView.xib in Resources */,
 				5695BF102042AB0E0036D54B /* rsa_public_key.der in Resources */,
 				5657413820539313007CB488 /* SelectedItem.xib in Resources */,
+				A296427720F5AB5E00B6E8B6 /* FSActionSheet_cancel@3x.png in Resources */,
 				568CB092206662A800B48318 /* PickerView.xib in Resources */,
 				A22981A420623A93007B6112 /* BankCardCell.xib in Resources */,
 				A22981D1206261AE007B6112 /* EndTicketCell.xib in Resources */,
@@ -1945,6 +2063,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DBEB286AB396E29F1067BF3E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1965,9 +2098,11 @@
 				562D7CAD20CACAF40093367D /* CustomButton.m in Sources */,
 				A26149D020C540280055BA25 /* WhiteBarVC.m in Sources */,
 				A24B0B6B20722C01009ECD41 /* OrderModel.m in Sources */,
+				A296427E20F5AB5E00B6E8B6 /* XLZoomingScrollView.m in Sources */,
 				56940C2020515DF900DFA6D6 /* NSString+MD5.m in Sources */,
 				5695BF1E2042ABAB0036D54B /* UtilsMold.m in Sources */,
 				56940C2520515DF900DFA6D6 /* UITabBar+TB.m in Sources */,
+				A296427420F5AB5E00B6E8B6 /* FSActionSheetConfig.m in Sources */,
 				A229819020620336007B6112 /* InputViewController.m in Sources */,
 				A2555F3B20C0DC65000C7E03 /* APRSASigner.m in Sources */,
 				56B5215720AB246200F636BD /* OrderPayVC.m in Sources */,
@@ -2000,6 +2135,7 @@
 				A229818A2061FF2B007B6112 /* RemainExplainCell.m in Sources */,
 				A2301B3F20638FA5006B9F20 /* TeleDetailViewController.m in Sources */,
 				5695BF3D2042AC180036D54B /* LYEmptyBaseView.m in Sources */,
+				A296427A20F5AB5E00B6E8B6 /* TADotView.m in Sources */,
 				5695BF5D2042AC1D0036D54B /* UIView+EasyShowExt.m in Sources */,
 				565086A9205CFF1800FD8497 /* OrderDetailCell.m in Sources */,
 				5695BF0E2042AB0E0036D54B /* NEUSecurityUtil.m in Sources */,
@@ -2019,10 +2155,12 @@
 				5695BF0F2042AB0E0036D54B /* NSData+NEUAES.m in Sources */,
 				5695BF552042AC1D0036D54B /* EasyShowAlertView.m in Sources */,
 				5615B8B72073B721005F2403 /* AddressShowView.m in Sources */,
+				A296427020F5AB5E00B6E8B6 /* UIImage+XLExtension.m in Sources */,
 				560264B6206A6A5400F9C405 /* TicketModel.m in Sources */,
 				560212A3205961D9009EF75D /* SettingTableViewController.m in Sources */,
 				5695BF0D2042AB0E0036D54B /* NEUBase64.m in Sources */,
 				568EFDF5206F1851007E437F /* GFAddressPicker.m in Sources */,
+				A296427820F5AB5E00B6E8B6 /* TAAbstractDotView.m in Sources */,
 				5632BFB2205AB5920009CD34 /* QuotationDetailViewController.m in Sources */,
 				5695BF3E2042AC180036D54B /* LYEmptyView.m in Sources */,
 				5695BF142042AB340036D54B /* CIImage+Extension.m in Sources */,
@@ -2036,11 +2174,14 @@
 				A22981D0206261AE007B6112 /* EndTicketCell.m in Sources */,
 				A26149CA20C5379E0055BA25 /* WhiteBarCell.m in Sources */,
 				5602129F20594D37009EF75D /* WalletViewController.m in Sources */,
+				A296427920F5AB5E00B6E8B6 /* TAAnimatedDotView.m in Sources */,
+				A296427B20F5AB5E00B6E8B6 /* TAPageControl.m in Sources */,
 				A26CECC5205FAA5A00B7AF91 /* InventoryViewController.m in Sources */,
 				5695BF5C2042AC1D0036D54B /* EasyShowUtils.m in Sources */,
 				A2555F4120C0DC6C000C7E03 /* APOrderInfo.m in Sources */,
 				A21B4672207B470A00802621 /* FaPiaoModel.m in Sources */,
 				5695BF632042AF8C0036D54B /* DataSend.m in Sources */,
+				A296427220F5AB5E00B6E8B6 /* FSActionSheet.m in Sources */,
 				56940C2120515DF900DFA6D6 /* UILabel+YXP.m in Sources */,
 				A2AC1C6B20564B8A00A3B2F9 /* UserInfoSettingViewController.m in Sources */,
 				5605C04020A090CB00E712A3 /* ShoppingCarSingle.m in Sources */,
@@ -2048,6 +2189,7 @@
 				562FF27220BA6FC1006048DC /* OrderListItemView.m in Sources */,
 				5695BF2B2042AC0A0036D54B /* SlideSwitchView.m in Sources */,
 				A2AC1C7520565E4600A3B2F9 /* MainItemCell.m in Sources */,
+				A296427D20F5AB5E00B6E8B6 /* XLProgressView.m in Sources */,
 				56A5746420ADC54F00A458EB /* ApplyWhiteBarVC.m in Sources */,
 				568CB08A2065F90900B48318 /* MainItemTypeModel.m in Sources */,
 				A2AC1C652056481B00A3B2F9 /* MainItemViewController.m in Sources */,
@@ -2060,6 +2202,7 @@
 				56940C2420515DF900DFA6D6 /* UICollectionView+TB.m in Sources */,
 				5695BF3F2042AC180036D54B /* UIScrollView+Empty.m in Sources */,
 				56BDC4CA209A019D00DDE4DE /* WholeBoardModel.m in Sources */,
+				A296427320F5AB5E00B6E8B6 /* FSActionSheetCell.m in Sources */,
 				568DC2D7207F857D0034416F /* RegisterTViewController.m in Sources */,
 				A2301B3620638923006B9F20 /* TeleServiceViewController.m in Sources */,
 				5695BEC22042A5300036D54B /* BaseCell.m in Sources */,
@@ -2081,6 +2224,7 @@
 				565086A1205CD98400FD8497 /* OrderListCell.m in Sources */,
 				A2301B3220637EE0006B9F20 /* FeedbackViewController.m in Sources */,
 				56940C3D20515E6900DFA6D6 /* DataForFMDB.m in Sources */,
+				A296427C20F5AB5E00B6E8B6 /* XLPhotoBrowser.m in Sources */,
 				A2555F4220C0DC6C000C7E03 /* APAuthInfo.m in Sources */,
 				A2AC1C622056476F00A3B2F9 /* MessageViewController.m in Sources */,
 				56940C0320515DB300DFA6D6 /* TBNavigationController.m in Sources */,
@@ -2096,11 +2240,13 @@
 				5654FC1220AC6B9900B7DA4E /* ConfirmOrderVC.m in Sources */,
 				A2301B2E20637ED1006B9F20 /* SmartViewController.m in Sources */,
 				5695BE7320429F1B0036D54B /* AppDelegate.m in Sources */,
+				A296427120F5AB5E00B6E8B6 /* UIView+XLExtension.m in Sources */,
 				568EFDF9206F1F06007E437F /* UnitsPickerView.m in Sources */,
 				5602129C20594D2B009EF75D /* WhiteBarViewController.m in Sources */,
 				5657412B20538D8A007CB488 /* SelectedItem.m in Sources */,
 				5695BF202042ABAB0036D54B /* YXPUtil.m in Sources */,
 				56AD6F0A20C83ADB00344E81 /* TicketInfoVC.m in Sources */,
+				A296427520F5AB5E00B6E8B6 /* FSActionSheetItem.m in Sources */,
 				567B14C420C43F1B00B81FD6 /* TradeRecordCell.m in Sources */,
 				56508699205CBEC500FD8497 /* SpecialMakeViewController.m in Sources */,
 				A22981D5206261C1007B6112 /* TicketCell.m in Sources */,
