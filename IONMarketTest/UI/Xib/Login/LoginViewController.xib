@@ -137,13 +137,44 @@
                         <action selector="registerAction:" destination="-1" eventType="touchUpInside" id="Ccx-wo-GxQ"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0F-kT-wcB">
+                    <rect key="frame" x="67.5" y="629" width="240" height="28"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录即代表阅读并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6XG-pt-RGs">
+                            <rect key="frame" x="0.0" y="0.0" width="133" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNs-50-xdg">
+                            <rect key="frame" x="133" y="0.0" width="107" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="《乐切用户协议》"/>
+                            <connections>
+                                <action selector="yonghuxieyi:" destination="-1" eventType="touchUpInside" id="pzE-0E-ilm"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="6XG-pt-RGs" secondAttribute="bottom" id="GHB-P8-RSg"/>
+                        <constraint firstItem="6XG-pt-RGs" firstAttribute="leading" secondItem="q0F-kT-wcB" secondAttribute="leading" id="Iqq-5P-bQC"/>
+                        <constraint firstItem="MNs-50-xdg" firstAttribute="leading" secondItem="6XG-pt-RGs" secondAttribute="trailing" id="cUM-20-hBC"/>
+                        <constraint firstItem="6XG-pt-RGs" firstAttribute="top" secondItem="q0F-kT-wcB" secondAttribute="top" id="hts-Rb-RwC"/>
+                        <constraint firstItem="MNs-50-xdg" firstAttribute="top" secondItem="q0F-kT-wcB" secondAttribute="top" id="mHr-H8-INq"/>
+                        <constraint firstAttribute="trailing" secondItem="MNs-50-xdg" secondAttribute="trailing" id="r95-oa-efo"/>
+                        <constraint firstAttribute="bottom" secondItem="MNs-50-xdg" secondAttribute="bottom" id="rAR-M3-IbD"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="q0F-kT-wcB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8wS-X6-y2K"/>
                 <constraint firstItem="sVo-lT-3dp" firstAttribute="top" secondItem="lXU-Wh-seU" secondAttribute="bottom" constant="15" id="AaX-CF-K5a"/>
                 <constraint firstItem="9Hf-FK-yWt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="IlZ-Ic-t8G"/>
                 <constraint firstItem="OjE-pI-oj2" firstAttribute="top" secondItem="sVo-lT-3dp" secondAttribute="bottom" constant="45" id="IxL-pt-lEV"/>
                 <constraint firstItem="qaa-3M-Zsx" firstAttribute="top" secondItem="OjE-pI-oj2" secondAttribute="bottom" constant="20" id="L1q-cE-YnQ"/>
+                <constraint firstAttribute="bottom" secondItem="q0F-kT-wcB" secondAttribute="bottom" constant="10" id="QgU-6T-06G"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="sVo-lT-3dp" secondAttribute="trailing" constant="25" id="Rwa-Vy-XBs"/>
                 <constraint firstItem="9Hf-FK-yWt" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="80" id="UqJ-4q-9tq"/>
                 <constraint firstItem="DWX-Ie-hwQ" firstAttribute="centerX" secondItem="OjE-pI-oj2" secondAttribute="centerX" id="Vq7-Od-90R"/>

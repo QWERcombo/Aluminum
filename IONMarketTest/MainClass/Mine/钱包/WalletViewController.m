@@ -140,15 +140,15 @@
         make.left.equalTo(topView.mas_left).offset(10);
     }];
     
-    UIButton *termButton = [UIButton buttonWithTitle:@"余额说明" andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor mianColor:3] andHighlightedTitle:[UIColor mianColor:3] andNormaImage:nil andHighlightedImage:nil];
-    [termButton setImage:IMG(@"Mine_term") forState:UIControlStateNormal];
-    [termButton addTarget:self action:@selector(termButtonCliker:) forControlEvents:UIControlEventTouchUpInside];
-    [topView addSubview:termButton];
-    [termButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(hint.mas_centerY);
-        make.right.equalTo(topView.mas_right).offset(-10);
-    }];
-    termButton.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);
+//    UIButton *termButton = [UIButton buttonWithTitle:@"余额说明" andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor mianColor:3] andHighlightedTitle:[UIColor mianColor:3] andNormaImage:nil andHighlightedImage:nil];
+//    [termButton setImage:IMG(@"Mine_term") forState:UIControlStateNormal];
+//    [termButton addTarget:self action:@selector(termButtonCliker:) forControlEvents:UIControlEventTouchUpInside];
+//    [topView addSubview:termButton];
+//    [termButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(hint.mas_centerY);
+//        make.right.equalTo(topView.mas_right).offset(-10);
+//    }];
+//    termButton.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);
     
     UILabel *remainLab = [UILabel lableWithText:[NSString stringWithFormat:@"%@元", self.remain] Font:FONT_ArialMT(25) TextColor:[UIColor mianColor:2]];
     [topView addSubview:remainLab];

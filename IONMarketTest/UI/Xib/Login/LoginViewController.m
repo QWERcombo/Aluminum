@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "RegisterTViewController.h"
+#import "TextTableViewController.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
@@ -103,6 +104,13 @@
     [self.navigationController pushViewController:regist animated:YES];
 }
 
+//用户协议
+- (IBAction)yonghuxieyi:(UIButton *)sender {
+    
+    TextTableViewController *descri = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"TextTableViewController"];
+    descri.title = @"用户协议";
+    [self.navigationController pushViewController:descri animated:YES];
+}
 
 
 /*

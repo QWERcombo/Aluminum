@@ -9,7 +9,7 @@
 #import "AddAddressViewController.h"
 #import "GFAddressPicker.h"
 
-@interface AddAddressViewController ()<GFAddressPickerDelegate>
+@interface AddAddressViewController ()<GFAddressPickerDelegate,UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *holderTF;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *addressTextView;
 @property (weak, nonatomic) IBOutlet UISwitch *setDefaultSwitch;
 @property (weak, nonatomic) IBOutlet UIView *deleteView;
+@property (weak, nonatomic) IBOutlet UILabel *hintLab;
 
 @property (nonatomic, strong) GFAddressPicker *pickerView;
 @property (nonatomic, strong) NSString *cityString;
@@ -28,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.addressTextView.delegate = self;    
     
     if (self.mode == Mode_Set) {
         self.title = @"新增地址";
@@ -113,6 +115,9 @@
     
     NSArray *cityArray = [self.cityString componentsSeparatedByString:@"-"];
     
+    
+    
+    
     if (self.addressModel) {
         [dict setValue:self.addressModel.id forKey:@"addressId"];
         [dict setValue:self.phoneTF.text.length?self.phoneTF.text:self.addressModel.phone forKey:@"phone"];
@@ -147,6 +152,13 @@
     } failure:^(NSString *error, NSInteger code) {
         
     }];
+}
+
+
+- (void)textViewValueChanged:(UITextView *)textView {
+    
+    
+    
 }
 
 

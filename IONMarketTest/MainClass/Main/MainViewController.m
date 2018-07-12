@@ -107,7 +107,7 @@
                 if ([name isEqualToString:@"自动下单"]) {
                     SetOrderViewController *set = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SetOrder"];
                     [self.navigationController pushViewController:set animated:YES];
-                    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"此项功能研发中..." time:0 aboutType:WHShowViewMode_Text state:NO];
+
                 } else if ([name isEqualToString:@"特殊定制"]) {
 //                    SpecialMakeViewController *special = [SpecialMakeViewController new];
 //                    [self.navigationController pushViewController:special animated:YES];
