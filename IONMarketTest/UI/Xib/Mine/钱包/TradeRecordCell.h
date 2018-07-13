@@ -16,6 +16,6 @@
 
 + (instancetype)getTradeRecordCell;
 
-- (void)loadData:(NSObject *)model andCliker:(ClikBlock)click;
+- (void)loadData:(NSObject *)model delegate:(NSString *)delegate andCliker:(ClikBlock)click;
 
 @end

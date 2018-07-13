@@ -25,7 +25,7 @@
 #import "LYEmptyViewHeader.h"
 #import "Reachability.h"
 #import "XLPhotoBrowser.h"
-
+#import "TradeListViewController.h"
 
 //Categories
 #import "UIColor+YXP.h"

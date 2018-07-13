@@ -205,7 +205,7 @@ DEF_SINGLETON(UtilsMold);
             cell = [TradeRecordCell getTradeRecordCell];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell loadData:model andCliker:^(NSString *clueStr) {
+        [cell loadData:model delegate:(NSString *)data andCliker:^(NSString *clueStr) {
             clue(@{@"key":clueStr});
         }];
         return cell;

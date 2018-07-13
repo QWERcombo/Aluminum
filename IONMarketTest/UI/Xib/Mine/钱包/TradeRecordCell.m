@@ -30,10 +30,17 @@
     return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] firstObject];
 }
 
-- (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
+- (void)loadData:(NSObject *)model delegate:(NSString *)delegate andCliker:(ClikBlock)click {
     
     WalletListModel *dataM = (WalletListModel *)model;
-    self.moneyLab.text = [NSString stringWithFormat:@"消费金额: %@", dataM.money];
+    
+//    NSString *string = (NSString *)dele
+    if ([delegate isEqualToString:@"2"]) {
+        self.moneyLab.text = [NSString stringWithFormat:@"消费金额: %@", dataM.money];
+    } else {
+        self.moneyLab.text = [NSString stringWithFormat:@"还款金额: %@", dataM.money];
+    }
+    
     self.dateLab.text = [self getDateString:dataM.createDate];
 }
 

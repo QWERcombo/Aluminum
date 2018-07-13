@@ -37,7 +37,7 @@
     self.layer.borderWidth = 1;
     self.layer.cornerRadius = 5;
     self.layer.masksToBounds = YES;
-    [self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [self setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
     
 }
 

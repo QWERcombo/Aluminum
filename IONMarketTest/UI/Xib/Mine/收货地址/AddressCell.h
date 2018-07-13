@@ -7,6 +7,7 @@
 //
 
 #import "BaseCell.h"
+#import "CustomButton.h"
 
 @interface AddressCell : BaseCell
 
@@ -14,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *cityLab;
 @property (weak, nonatomic) IBOutlet UILabel *detaiLab;
 @property (weak, nonatomic) IBOutlet UIButton *defalut;
+@property (weak, nonatomic) IBOutlet CustomButton *deleteBtn;
+@property (weak, nonatomic) IBOutlet CustomButton *editBtn;
 
 
 @property (nonatomic, copy) ClikBlock click;

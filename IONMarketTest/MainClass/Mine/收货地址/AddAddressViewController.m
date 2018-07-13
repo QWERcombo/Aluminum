@@ -75,6 +75,7 @@
                                city:(NSString *)city area:(NSString *)area {
     [self.pickerView removeFromSuperview];
     [self.addressBtn setTitle:[NSString stringWithFormat:@"%@ %@ %@",province, city, area] forState:UIControlStateNormal];
+    [self.addressBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     self.cityString = [NSString stringWithFormat:@"%@-%@-%@", province,city,area];
 }
 
@@ -131,6 +132,13 @@
     } else {
         
         [dict setValue:[UserData currentUser].id forKey:@"userId"];
+        
+        
+        if (![self showErrorMessage:@"" hint:@""]) {
+            
+            return;
+        }
+        
         [dict setValue:self.phoneTF.text forKey:@"phone"];
         [dict setValue:self.holderTF.text forKey:@"name"];
 //        [dict setValue:[NSString stringWithFormat:@"%@\n%@", self.cityString,self.addressTextView.text] forKey:@"address"];
@@ -155,11 +163,40 @@
 }
 
 
-- (void)textViewValueChanged:(UITextView *)textView {
+- (void)textViewDidChange:(UITextView *)textView {
     
-    
-    
+    if (textView.text.length) {
+        self.hintLab.hidden = YES;
+    } else {
+        self.hintLab.hidden = NO;
+    }
 }
+
+
+- (BOOL)showErrorMessage:(NSString *)text hint:(NSString *)hint {
+    
+    if (!self.holderTF.text.length) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请输入联系人" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return NO;
+    }
+    if (!self.phoneTF.text.length) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请输入电话" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return NO;
+    }
+    if (!self.addressTextView.text.length) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请输入详细地址" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return NO;
+    }
+    if ([self.addressBtn.currentTitle isEqualToString:@"请选择地址"]) {
+        
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请选择省市区" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return NO;
+    }
+    
+    
+    return YES;
+}
+
 
 
 - (void)didReceiveMemoryWarning {

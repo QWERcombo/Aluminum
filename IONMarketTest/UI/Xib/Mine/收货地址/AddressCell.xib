@@ -42,7 +42,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xmw-lC-mGv">
-                                <rect key="frame" x="15" y="100" width="86" height="24"/>
+                                <rect key="frame" x="15" y="99.5" width="86" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="设为默认" image="select_0">
                                     <color key="titleColor" red="0.26374569539999998" green="0.48890727760000002" blue="0.76870256660000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -52,20 +52,20 @@
                                     <action selector="setDefault:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="smE-wK-HYX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBD-oG-ihD">
-                                <rect key="frame" x="238" y="97" width="31" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="删除">
-                                    <color key="titleColor" red="0.26374569539999998" green="0.48890727760000002" blue="0.76870256660000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBD-oG-ihD" customClass="CustomButton">
+                                <rect key="frame" x="242" y="97" width="44" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="  删除  ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="delete:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MbM-sa-0Ro"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qP1-bQ-TRe">
-                                <rect key="frame" x="329" y="97" width="31" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="编辑">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qP1-bQ-TRe" customClass="CustomButton">
+                                <rect key="frame" x="316" y="97" width="44" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="  编辑  ">
                                     <color key="titleColor" red="0.26374569539999998" green="0.48890727760000002" blue="0.76870256660000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
@@ -89,7 +89,7 @@
                             <constraint firstAttribute="trailing" secondItem="qP1-bQ-TRe" secondAttribute="trailing" constant="15" id="CKf-Ao-LYQ"/>
                             <constraint firstItem="viF-fU-OLn" firstAttribute="top" secondItem="K2f-HF-xFG" secondAttribute="bottom" constant="1" id="HNm-nc-wIV"/>
                             <constraint firstItem="K2f-HF-xFG" firstAttribute="top" secondItem="1gW-Hi-am7" secondAttribute="bottom" constant="10" id="LeR-8W-2YE"/>
-                            <constraint firstItem="qP1-bQ-TRe" firstAttribute="leading" secondItem="VBD-oG-ihD" secondAttribute="trailing" constant="60" id="Z88-wh-dwW"/>
+                            <constraint firstItem="qP1-bQ-TRe" firstAttribute="leading" secondItem="VBD-oG-ihD" secondAttribute="trailing" constant="30" id="Z88-wh-dwW"/>
                             <constraint firstItem="1gW-Hi-am7" firstAttribute="leading" secondItem="IvL-T2-3e0" secondAttribute="leading" constant="15" id="a4j-7b-XGh"/>
                             <constraint firstAttribute="bottom" secondItem="96d-7w-vIV" secondAttribute="bottom" constant="40" id="e1s-ao-bEd"/>
                             <constraint firstItem="qP1-bQ-TRe" firstAttribute="top" secondItem="96d-7w-vIV" secondAttribute="bottom" constant="8" symbolic="YES" id="lhh-Yt-DW1"/>
@@ -112,7 +112,9 @@
             <connections>
                 <outlet property="cityLab" destination="K2f-HF-xFG" id="5bf-VN-VZh"/>
                 <outlet property="defalut" destination="Xmw-lC-mGv" id="WEL-1i-RIF"/>
+                <outlet property="deleteBtn" destination="VBD-oG-ihD" id="Y1N-TY-uK2"/>
                 <outlet property="detaiLab" destination="viF-fU-OLn" id="Uoj-3e-udA"/>
+                <outlet property="editBtn" destination="qP1-bQ-TRe" id="KnG-g9-sra"/>
                 <outlet property="phoneLab" destination="1gW-Hi-am7" id="xbX-pW-znu"/>
             </connections>
             <point key="canvasLocation" x="-50.5" y="46"/>

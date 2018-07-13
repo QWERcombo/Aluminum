@@ -14,7 +14,8 @@
     [super awakeFromNib];
     // Initialization code
     self.defalut.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
-    
+    [self.deleteBtn setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
+    [self.editBtn setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -24,19 +25,21 @@
 
 - (IBAction)editor:(id)sender {
     if (self.click) {
-        self.click(@"0");
+        self.click(@"-2");
     }
 }
 
 - (IBAction)delete:(id)sender {
     if (self.click) {
-        self.click(@"1");
+        self.click(@"-1");
     }
 }
 
-- (IBAction)setDefault:(id)sender {
+- (IBAction)setDefault:(UIButton *)sender {
+    sender.selected = YES;
+    
     if (self.click) {
-        self.click(@"2");
+        self.click(@"1");
     }
 }
 

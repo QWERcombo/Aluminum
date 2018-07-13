@@ -62,20 +62,23 @@
     return [UtilsMold creatCell:@"AddressCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
         
         NSString *key = clueDic[@"key"];
-        if ([key isEqualToString:@"0"]) {
+        if ([key isEqualToString:@"-2"]) {
             
             AddAddressViewController *add = [[AddAddressViewController alloc] initWithNibName:@"AddAddressViewController" bundle:nil];
             add.mode = Mode_Editor;
             add.addressModel = [weakself.dataMuArr objectAtIndex:indexPath.row];
             [weakself.navigationController pushViewController:add animated:YES];
             
-        } else if ([key isEqualToString:@"1"]) {
+        } else if ([key isEqualToString:@"-1"]) {
             
             AddressModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
-            
             [weakself deleteAddressWithID:model.id andIndex:indexPath.row];
+            
         } else {
             
+            AddressModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
+            model.moren = clueDic[@"key"];
+            [weakself settingDefaultAddress:model];
         }
         
     }];
@@ -104,7 +107,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].id forKey:@"userId"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetAddressByPhone andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"%@", resultDic);
+//        NSLog(@"%@", resultDic);
         NSArray *dataSource = resultDic[@"result"];
         
         for (NSDictionary *dic in dataSource) {
@@ -122,7 +125,7 @@
 }
 
 - (void)deleteAddressWithID:(NSString *)addressID andIndex:(NSInteger)index {
-    NSLog(@"-----%ld", index);
+//    NSLog(@"-----%ld", index);
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:addressID forKey:@"id"];
     
@@ -138,6 +141,38 @@
     }];
 }
 
+
+- (void)settingDefaultAddress:(AddressModel *)addressModel {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    [dict setValue:addressModel.id forKey:@"addressId"];
+    [dict setValue:addressModel.phone forKey:@"phone"];
+    [dict setValue:addressModel.name forKey:@"name"];
+    [dict setValue:addressModel.detailAddress forKey:@"detailAddress"];
+    [dict setValue:addressModel.sheng forKey:@"sheng"];
+    [dict setValue:addressModel.shi forKey:@"shi"];
+    [dict setValue:addressModel.qu forKey:@"qu"];
+    [dict setValue:addressModel.moren forKey:@"moren"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_UpdateAddress andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+//        NSLog(@"%@", resultDic);
+        
+        for (AddressModel *model in self.dataMuArr) {
+            
+            if ([model.id isEqualToString:addressModel.id]) {
+                model.moren = @"1";
+            } else {
+                model.moren = @"0";
+            }            
+        }
+        [self.tabView reloadData];
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
