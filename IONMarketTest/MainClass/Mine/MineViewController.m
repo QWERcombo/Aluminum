@@ -32,6 +32,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     [self.userHeader sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE, [UserData currentUser].headImgUrl]] placeholderImage:IMG(@"head_default")];
+    self.userHeader.contentMode = UIViewContentModeScaleAspectFill;
+    self.userHeader.layer.cornerRadius = self.userHeader.frame.size.width/2;
+    self.userHeader.layer.masksToBounds = YES;
+    
     self.userName.text = [UserData currentUser].name;
     self.userRole.text = [UserData currentUser].renzheng.length ? [UserData currentUser].renzheng : @"未认证";
 }
