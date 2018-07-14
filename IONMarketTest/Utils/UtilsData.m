@@ -327,7 +327,7 @@ DEF_SINGLETON(UtilsData);
 }
 
 
--(UIImage *)scaleAndRotateImage:(UIImage *)image resolution:(int)kMaxResolution maxSizeWithKB:(CGFloat) maxSize{
+- (UIImage *)scaleAndRotateImage:(UIImage *)image resolution:(int)kMaxResolution maxSizeWithKB:(CGFloat) maxSize{
     CGImageRef imgRef = image.CGImage;
     CGFloat width = CGImageGetWidth(imgRef);
     CGFloat height = CGImageGetHeight(imgRef);

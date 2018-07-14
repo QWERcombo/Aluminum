@@ -86,8 +86,7 @@ static NSOperationQueue *queue;
         [manager POST:URLString parameters:valueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             //上传文件参数
             for (UIImage *img in imgArr ) {
-                NSData *imageData = UIImageJPEGRepresentation([[UtilsData sharedInstance] scaleAndRotateImage:img resolution:800 maxSizeWithKB:600], 0.9);
-//                NSData *imageData = UIImageJPEGRepresentation(img, 0.5);
+                NSData *imageData = UIImageJPEGRepresentation([[UtilsData sharedInstance] scaleAndRotateImage:img resolution:800 maxSizeWithKB:1024], 0.9);
                 [formData appendPartWithFileData:imageData name:imgArr.count>1?@"filedata":@"file" fileName:@"image.jpg" mimeType:@"image/jpeg"];
             }
         } progress:^(NSProgress * _Nonnull uploadProgress) {

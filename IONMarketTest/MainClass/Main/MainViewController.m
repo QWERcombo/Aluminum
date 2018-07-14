@@ -106,7 +106,7 @@
         for (NSInteger j=0; j<4; j++) {
             SelectedItem *item = [[SelectedItem alloc] initWithFrame:CGRectMake((Item_Margin+60)*j+Item_Margin, ((65+(70/3))*i)+10, 60, 65)];
             item.item_name.text = [nameArr objectAtIndex:i*4+j];
-            NSString *imageName = [NSString stringWithFormat:@"Main_item_%ld", (long)(i*2+j)];
+            NSString *imageName = [NSString stringWithFormat:@"Main_item_%ld", (long)(i*4+j)];
             item.item_imgv.image = IMG(imageName);
             
             [item loadData:nil andCliker:^(NSString *clueStr) {
