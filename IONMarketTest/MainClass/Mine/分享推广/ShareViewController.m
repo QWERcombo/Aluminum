@@ -90,7 +90,7 @@
         //创建网页内容对象
         UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"欢迎使用乐切App" descr:@"欢迎使用" thumImage:IMG(@"App_Logo")];
         //设置网页地址
-        shareObject.webpageUrl = @"http://mobile.umeng.com/social";
+        shareObject.webpageUrl = @"http://118.31.35.233:8080/leqie/adminLogin";
         //分享消息对象设置分享内容对象
         messageObject.shareObject = shareObject;
         //调用分享接口

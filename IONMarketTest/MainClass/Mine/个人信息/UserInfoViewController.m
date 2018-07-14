@@ -27,13 +27,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    [self.userHeader sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE, [UserData currentUser].headImgUrl]] placeholderImage:IMG(@"empty_image")];
+    [self.userHeader sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE, [UserData currentUser].headImgUrl]] placeholderImage:IMG(@"head_default")];
     self.userHeader.layer.masksToBounds = YES;
     self.userHeader.layer.cornerRadius = 20;
     self.userName.text = [UserData currentUser].name;
     self.userRole.text = [UserData currentUser].zhiwei;
     self.userCompany.text = [UserData currentUser].company;
     self.userPhone.text = [UserData currentUser].phone;
+    
 }
 
 #pragma mark --- Delegate&DataSource

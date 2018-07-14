@@ -109,4 +109,6 @@
 //文字竖排
 - (NSString *)VerticalString;
 
+- (NSString *)notRounding:(float)price afterPoint:(int)position;
+
 @end

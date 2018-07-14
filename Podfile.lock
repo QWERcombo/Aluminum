@@ -35,6 +35,9 @@ PODS:
   - UMCShare/Social/ReducedWeChat (6.9.1):
     - UMCCommon
     - UMCShare/Core
+  - UMCShare/UI (6.9.1):
+    - UMCCommon
+    - UMCShare/Core
   - WechatOpenSDK (1.8.2)
 
 DEPENDENCIES:
@@ -50,6 +53,7 @@ DEPENDENCIES:
   - UMCSecurityPlugins
   - UMCShare/Social/ReducedQQ
   - UMCShare/Social/ReducedWeChat
+  - UMCShare/UI
   - WechatOpenSDK
 
 SPEC CHECKSUMS:
@@ -66,6 +70,6 @@ SPEC CHECKSUMS:
   UMCShare: f8be567946c3aa68deefd03b0ffaa0710a3b07ea
   WechatOpenSDK: 676feec516a11173eafd1fe64b10d27babf28701
 
-PODFILE CHECKSUM: 1e2cd3a66e2a62ad6d0912629c4c844f54a43589
+PODFILE CHECKSUM: fef851be07ad6c5dedc37715cc8f10288334e958
 
 COCOAPODS: 1.4.0

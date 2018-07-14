@@ -197,6 +197,7 @@
 		A2301B3B20638AB3006B9F20 /* SmartServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2301B3920638AB3006B9F20 /* SmartServiceCell.m */; };
 		A2301B3C20638AB3006B9F20 /* SmartServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2301B3A20638AB3006B9F20 /* SmartServiceCell.xib */; };
 		A2301B3F20638FA5006B9F20 /* TeleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2301B3E20638FA5006B9F20 /* TeleDetailViewController.m */; };
+		A2309AC420FA294D00D33914 /* WHWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2309AC320FA294D00D33914 /* WHWebViewController.m */; };
 		A24B0B6B20722C01009ECD41 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A24B0B6A20722C01009ECD41 /* OrderModel.m */; };
 		A2555F3B20C0DC65000C7E03 /* APRSASigner.m in Sources */ = {isa = PBXBuildFile; fileRef = A2555F3820C0DC64000C7E03 /* APRSASigner.m */; };
 		A2555F3C20C0DC65000C7E03 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A2555F3A20C0DC64000C7E03 /* openssl_wrapper.m */; };
@@ -607,6 +608,8 @@
 		A2301B3A20638AB3006B9F20 /* SmartServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmartServiceCell.xib; sourceTree = "<group>"; };
 		A2301B3D20638FA5006B9F20 /* TeleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeleDetailViewController.h; sourceTree = "<group>"; };
 		A2301B3E20638FA5006B9F20 /* TeleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeleDetailViewController.m; sourceTree = "<group>"; };
+		A2309AC220FA294C00D33914 /* WHWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWebViewController.h; sourceTree = "<group>"; };
+		A2309AC320FA294D00D33914 /* WHWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWebViewController.m; sourceTree = "<group>"; };
 		A24B0B6920722C01009ECD41 /* OrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
 		A24B0B6A20722C01009ECD41 /* OrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
 		A2555F3720C0DC64000C7E03 /* APRSASigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRSASigner.h; sourceTree = "<group>"; };
@@ -1174,6 +1177,8 @@
 		56940C4120515F5000DFA6D6 /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				A2309AC220FA294C00D33914 /* WHWebViewController.h */,
+				A2309AC320FA294D00D33914 /* WHWebViewController.m */,
 				56940C4A2051607500DFA6D6 /* OrderViewController.h */,
 				56940C4B2051607500DFA6D6 /* OrderViewController.m */,
 				5650869A205CD0AB00FD8497 /* OrderDetailViewController.h */,
@@ -2035,10 +2040,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-resources.sh",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/UMCShare/UMShare/UMSocialUI/UMSocialSDKResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2239,6 +2246,7 @@
 				56B5215A20AB37A100F636BD /* ChoosePayWayView.m in Sources */,
 				5654FC1220AC6B9900B7DA4E /* ConfirmOrderVC.m in Sources */,
 				A2301B2E20637ED1006B9F20 /* SmartViewController.m in Sources */,
+				A2309AC420FA294D00D33914 /* WHWebViewController.m in Sources */,
 				5695BE7320429F1B0036D54B /* AppDelegate.m in Sources */,
 				A296427120F5AB5E00B6E8B6 /* UIView+XLExtension.m in Sources */,
 				568EFDF9206F1F06007E437F /* UnitsPickerView.m in Sources */,

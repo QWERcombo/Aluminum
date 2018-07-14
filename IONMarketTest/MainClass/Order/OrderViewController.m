@@ -10,6 +10,7 @@
 #import "OrderDetailViewController.h"
 #import "OrderNewDetailVC.h"
 #import "OrderPayVC.h"
+#import "WHWebViewController.h"
 
 #define Button_Width  80
 #define Button_Margin  ((SCREEN_WIGHT-80*4)/5)
@@ -316,7 +317,12 @@
         
         
     } failure:^(NSString *error, NSInteger code) {
-        
+        WHWebViewController *whWebVC = [[WHWebViewController alloc] init];
+        whWebVC.urlString = @"www.baidu.com";
+//        [self.navigationController pushViewController:whWebVC animated:ye];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:whWebVC];
+        nav.navigationBar.barTintColor = [UIColor lightGrayColor];
+        [self presentViewController:nav animated:YES completion:nil];
     }];
     
 }

@@ -22,7 +22,7 @@
 
 @implementation MainViewController
 
-#define Item_Margin  ((SCREEN_WIGHT-40*4)/5)
+#define Item_Margin  ((SCREEN_WIGHT-60*4)/5)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,7 +66,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section==0) {
-        return 340;
+        return 330;
     } else if (section==1) {
         return 40;
     } else {
@@ -83,20 +83,28 @@
 
 #pragma mark ---- CreateSubViews
 - (UIView *)createTopView {
-    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 340)];
-    mainView.backgroundColor = [UIColor whiteColor];
+    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 330)];
+    mainView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 
     ABBannerView *bannerView = (ABBannerView *)[[UtilsMold sharedInstance] creatView:@"ABBannerView" data:nil model:@[IMG(@"Banner_0"),IMG(@"Banner_1"),IMG(@"Banner_2"),IMG(@"Banner_3")] deleGate:self andCliker:^(NSDictionary *clueDic) {
         
     }];
     
-//    bannerView.backgroundColor = [UIColor mianColor:2];
     [mainView addSubview:bannerView];
+    
+    
+    UIView *blank = [[UIView alloc] initWithFrame:CGRectMake(10, 150, SCREEN_WIGHT-20, 170)];
+    blank.backgroundColor = [UIColor whiteColor];
+    blank.layer.cornerRadius = 5;
+    
+    [mainView addSubview:blank];
+    
+    
     
     NSArray *nameArr = @[@"整板",@"零切",@"圆棒",@"型材",@"管材",@"特殊定制",@"自动下单",@"询价"];
     for (NSInteger i=0; i<2; i++) {
         for (NSInteger j=0; j<4; j++) {
-            SelectedItem *item = [[SelectedItem alloc] initWithFrame:CGRectMake((Item_Margin+40)*j+Item_Margin, ((65+(70/3))*i)+140+35, 40, 65)];
+            SelectedItem *item = [[SelectedItem alloc] initWithFrame:CGRectMake((Item_Margin+60)*j+Item_Margin, ((65+(70/3))*i)+10, 60, 65)];
             item.item_name.text = [nameArr objectAtIndex:i*4+j];
             NSString *imageName = [NSString stringWithFormat:@"Main_item_%ld", (long)(i*2+j)];
             item.item_imgv.image = IMG(imageName);
@@ -126,9 +134,10 @@
                     [self.navigationController pushViewController:main_item animated:YES];
                 }
             }];
-            [mainView addSubview:item];
+            [blank addSubview:item];
         }
     }
+    
     
     
     return mainView;

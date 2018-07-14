@@ -45,12 +45,19 @@
         self.addressTextView.text = self.addressModel.detailAddress;
         self.setDefaultSwitch.on = [self.addressModel.moren intValue];
         self.cityString = [NSString stringWithFormat:@"%@-%@-%@", self.addressModel.sheng, self.addressModel.shi, self.addressModel.qu];
+        
     }
     
     CGFloat width = SCREEN_WIGHT-110-20;
     CGFloat off_left = width-self.addressBtn.imageView.width;
     self.addressBtn.imageEdgeInsets = UIEdgeInsetsMake(0, off_left, 0, -off_left);
     self.addressBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -self.addressBtn.imageView.width, 0, self.addressBtn.imageView.width);
+    
+    if (self.addressTextView.text.length) {
+        self.hintLab.hidden = YES;
+    } else {
+        self.hintLab.hidden = NO;
+    }
 }
 
 

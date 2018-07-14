@@ -13,6 +13,7 @@ pod 'UMCSecurityPlugins'
 pod 'UMCShare/Social/ReducedWeChat'
 pod 'UMCShare/Social/ReducedQQ'
 pod 'WechatOpenSDK'
+pod 'UMCShare/UI'
 
 
 end
