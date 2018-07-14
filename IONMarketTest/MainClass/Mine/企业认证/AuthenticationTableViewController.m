@@ -73,6 +73,10 @@
         [self.dataSource addObject:self.descLab.text];
 
         if ([self.authModel.shenhezhuangtai isEqualToString:@"审核拒绝"]) {
+            if (!self.leftImageUrl.length || !self.rightImageUrl.length) {
+                
+                return NO;
+            }
             [self.dataSource addObject:self.leftImageUrl];
             [self.dataSource addObject:self.rightImageUrl];
         }

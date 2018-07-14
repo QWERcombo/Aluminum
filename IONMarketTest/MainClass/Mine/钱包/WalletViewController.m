@@ -261,6 +261,7 @@
         NSString *money = [NSString stringWithFormat:@"%@", resultDic[@"money"]];
         self.remain = money.length?money:@"0";
 //        [self.tabView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tabView reloadData];
     } failure:^(NSString *error, NSInteger code) {
         
     }];
