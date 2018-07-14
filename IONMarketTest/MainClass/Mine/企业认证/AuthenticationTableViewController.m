@@ -203,8 +203,8 @@
             
             dispatch_async(dispatch_queue_create("concurrent", DISPATCH_QUEUE_CONCURRENT), ^{
                 
-                [self.leftButton sd_setImageWithURL:[NSURL URLWithString:self.authModel.fuzerenshenfenzheng] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
-                [self.rightButton sd_setImageWithURL:[NSURL URLWithString:self.authModel.yingyezhizhao] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
+                [self.leftButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.authModel.fuzerenshenfenzheng]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
+                [self.rightButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.authModel.yingyezhizhao]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
             });
         } else {
             
@@ -392,7 +392,7 @@
 
 - (void)scalePhoto {
     
-    [XLPhotoBrowser showPhotoBrowserWithImages:@[self.authModel.fuzerenshenfenzheng, self.authModel.yingyezhizhao] currentImageIndex:0];
+    [XLPhotoBrowser showPhotoBrowserWithImages:@[[NSString stringWithFormat:@"%@%@", imageBaseUrl, self.authModel.fuzerenshenfenzheng], [NSString stringWithFormat:@"%@%@", imageBaseUrl, self.authModel.yingyezhizhao]] currentImageIndex:0];
 }
 
 

@@ -36,9 +36,9 @@
     
 //    NSString *string = (NSString *)dele
     if ([delegate isEqualToString:@"2"]) {
-        self.moneyLab.text = [NSString stringWithFormat:@"消费金额: %@", dataM.money];
-    } else {
         self.moneyLab.text = [NSString stringWithFormat:@"还款金额: %@", dataM.money];
+    } else {
+        self.moneyLab.text = [NSString stringWithFormat:@"消费金额: %@", dataM.money];
     }
     
     self.dateLab.text = [self getDateString:dataM.createDate];

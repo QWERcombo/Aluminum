@@ -110,8 +110,8 @@
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_GetBaitiaoEDuById andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
         
-        self.totalFeeLab.text = [NSString stringWithFormat:@"白条额度:%.2lf", [resultDic[@"zongedu"] floatValue]];
-        self.availFeeLab.text = [NSString stringWithFormat:@"可用额度:%.2lf", [resultDic[@"keyongedu"] floatValue]];
+        self.totalFeeLab.text = [NSString stringWithFormat:@"白条额度:%@", resultDic[@"zongedu"]];
+        self.availFeeLab.text = [NSString stringWithFormat:@"可用额度:%@", resultDic[@"keyongedu"]];
         
     } failure:^(NSString *error, NSInteger code) {
         
