@@ -14,6 +14,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLab;
 @property (weak, nonatomic) IBOutlet UILabel *orderNo;
 @property (weak, nonatomic) IBOutlet UILabel *orderDate;
+@property (weak, nonatomic) IBOutlet UILabel *chanpinfei;
+@property (weak, nonatomic) IBOutlet UILabel *wuliufei;
+@property (weak, nonatomic) IBOutlet UILabel *zhifufangshi;
+@property (weak, nonatomic) IBOutlet UILabel *zhifushijian;
+
+
 @property (nonatomic, strong) NSMutableArray *detailDataSource;
 
 @property (nonatomic, strong) OrderModel *orderModel;
@@ -70,13 +76,19 @@
 }
 
 - (void)updateInfomation {
-    self.addressLab.text = self.orderModel.address;
-    self.nameLab.text = [NSString stringWithFormat:@"%@", self.orderModel.currentAddress[@"name"]];
+    self.addressLab.text = [NSString stringWithFormat:@"收货地址 : %@",self.orderModel.address];
+    self.nameLab.text = [NSString stringWithFormat:@"收货人 : %@", self.orderModel.currentAddress[@"name"]];
     self.phoneLab.text = self.orderModel.userPhone;
     self.orderNo.text = self.orderModel.no;
+    self.zhifufangshi.text = self.orderModel.paymethod;
+    self.wuliufei.text = self.orderModel.wuliufei;
+    self.chanpinfei.text = self.orderModel.money;
+    
     NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
     dateformatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     self.orderDate.text = [dateformatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.orderModel.createDate integerValue]/1000]];
+    self.zhifushijian.text = [dateformatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.orderModel.payTime integerValue]/1000]];
+    
 }
 /*
 #pragma mark - Navigation

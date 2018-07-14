@@ -45,7 +45,7 @@
         make.left.right.bottom.equalTo(self.view);
     }];
     
-    self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"还未开通白条" andDetailStr:@"" withReloadAction:^{
+    self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:[title isEqualToString:@"审核中"]?title:@"还未开通白条" andDetailStr:@"" withReloadAction:^{
         
     }];
     
@@ -85,8 +85,7 @@
                 });
                 
             } else if ([dataDic[@"status"] isEqualToString:@"待审核"]) {
-                self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"审核中 请等待审核结果" andDetailStr:@"" withReloadAction:^{
-                }];
+                
                 [self setupSubviews:@"审核中"];
                 
             } else {

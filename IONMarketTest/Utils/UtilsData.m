@@ -444,4 +444,49 @@ DEF_SINGLETON(UtilsData);
     return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
+- (BOOL)isHasValue:(id)str {
+    
+    if ([self isNull:str]) {
+        return NO;
+    }
+    
+    if ([str isKindOfClass:[NSString class]]) {
+        
+        if (str && [str stringByReplacingOccurrencesOfString:@" " withString:@""].length > 0)
+        {
+            return YES;
+            
+        }else{
+            
+            return NO;
+        }
+        
+    }else{
+        NSNumber *number = str;
+        if ([number stringValue] && [[number stringValue] stringByReplacingOccurrencesOfString:@" " withString:@""].length > 0) {
+            
+            return YES;
+        }else{
+            
+            return NO;
+        }
+        
+    }
+    
+}
+
+- (BOOL)isNull:(id)targetId{
+    
+    if ([targetId isEqual:[NSNull null]]) {
+        
+        return YES;
+    }else{
+        
+        return NO;
+    }
+    
+}
+
+
+
 @end

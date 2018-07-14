@@ -116,8 +116,8 @@ static NSOperationQueue *queue;
                 success(result,msg);
                 
             } else {                       // 失败
-                NSString *msg = [NSString stringWithFormat:@"%@", [result objectForKey:@"message"]];
-                [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0.0 aboutType:WHShowViewMode_Text state:NO];
+                NSString *message = [result objectForKey:@"message"];
+                [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:[[UtilsData sharedInstance] isHasValue:message]?message:msg time:0.0 aboutType:WHShowViewMode_Text state:NO];
                 
                 failure(msg,-1);
             }

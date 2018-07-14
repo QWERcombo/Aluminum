@@ -84,5 +84,6 @@ AS_SINGLETON(UtilsData);
 //压缩图片上传
 - (UIImage *)scaleAndRotateImage:(UIImage *)image resolution:(int)kMaxResolution maxSizeWithKB:(CGFloat) maxSize;
 
+- (BOOL)isHasValue:(id)str;
 
 @end

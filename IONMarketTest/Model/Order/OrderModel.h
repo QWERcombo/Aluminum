@@ -42,5 +42,10 @@
 
 @property (nonatomic, strong) NSDictionary *currentAddress;
 
+@property (nonatomic, strong) NSString *paymethod;
+
+@property (nonatomic, strong) NSString *payTime;
+
 @property (nonatomic, strong) NSString *address;
+
 @end
