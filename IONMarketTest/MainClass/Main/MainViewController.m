@@ -22,7 +22,7 @@
 
 @implementation MainViewController
 
-#define Item_Margin  ((SCREEN_WIGHT-60*4)/5)
+#define Item_Margin  ((SCREEN_WIGHT-40*4-20)/5)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -104,7 +104,7 @@
     NSArray *nameArr = @[@"整板",@"零切",@"圆棒",@"型材",@"管材",@"特殊定制",@"自动下单",@"询价"];
     for (NSInteger i=0; i<2; i++) {
         for (NSInteger j=0; j<4; j++) {
-            SelectedItem *item = [[SelectedItem alloc] initWithFrame:CGRectMake((Item_Margin+60)*j+Item_Margin, ((65+(70/3))*i)+10, 60, 65)];
+            SelectedItem *item = [[SelectedItem alloc] initWithFrame:CGRectMake((Item_Margin+40)*j+Item_Margin, ((65+(70/3))*i)+10, 40, 65)];
             item.item_name.text = [nameArr objectAtIndex:i*4+j];
             NSString *imageName = [NSString stringWithFormat:@"Main_item_%ld", (long)(i*4+j)];
             item.item_imgv.image = IMG(imageName);

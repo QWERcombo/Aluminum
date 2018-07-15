@@ -63,8 +63,8 @@
 }
 
 - (IBAction)rightTap:(UITapGestureRecognizer *)sender {
-    self.rightImgv.hidden = NO;
-    self.leftImgv.hidden = YES;
+//    self.rightImgv.hidden = NO;
+//    self.leftImgv.hidden = YES;
     
     self.right_top_Label.textColor = [UIColor mianColor:2];
     self.right_down_Label.textColor  =[UIColor mianColor:2];
@@ -84,23 +84,23 @@
 }
 
 - (IBAction)leftTap:(UITapGestureRecognizer *)sender {
-    self.rightImgv.hidden = YES;
-    self.leftImgv.hidden = NO;
-    
-    self.right_top_Label.text = @"0元";
-    self.right_top_Label.textColor = [UIColor mianColor:3];
-    self.right_down_Label.textColor  =[UIColor mianColor:3];
-    self.left_top_Label.textColor = [UIColor mianColor:2];
-    self.left_down_Label.textColor = [UIColor mianColor:2];
-    
-    self.lengthTF.userInteractionEnabled = YES;
-    
-    self.lengthBtn.hidden = YES;
-    self.lengthTF.hidden = NO;
-    
-    if (self.click) {
-        self.click(@"零切");
-    }
+//    self.rightImgv.hidden = YES;
+//    self.leftImgv.hidden = NO;
+//
+//    self.right_top_Label.text = @"0元";
+//    self.right_top_Label.textColor = [UIColor mianColor:3];
+//    self.right_down_Label.textColor  =[UIColor mianColor:3];
+//    self.left_top_Label.textColor = [UIColor mianColor:2];
+//    self.left_down_Label.textColor = [UIColor mianColor:2];
+//
+//    self.lengthTF.userInteractionEnabled = YES;
+//
+//    self.lengthBtn.hidden = YES;
+//    self.lengthTF.hidden = NO;
+//
+//    if (self.click) {
+//        self.click(@"零切");
+//    }
 }
 
 

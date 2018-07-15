@@ -221,8 +221,12 @@
         self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
             if ([weakself.getOrderType isEqualToString:@"优切"]) {
                 single.right_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+                single.rightImgv.hidden = NO;
+                single.leftImgv.hidden = YES;
             } else {
                 single.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+                single.rightImgv.hidden = YES;
+                single.leftImgv.hidden = NO;
             }
             
             single.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
@@ -289,8 +293,12 @@
         self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
             if ([weakself.getOrderType isEqualToString:@"整只"]) {
                 pole.right_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+                pole.rightImgv.hidden = NO;
+                pole.leftImgv.hidden = YES;
             } else {
                 pole.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+                pole.rightImgv.hidden = YES;
+                pole.leftImgv.hidden = NO;
             }
             
             pole.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
@@ -366,8 +374,12 @@
         self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
             if ([weakself.getOrderType isEqualToString:@"整只"]) {
                 tube.right_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+                tube.rightImgv.hidden = NO;
+                tube.leftImgv.hidden = YES;
             } else {
                 tube.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+                tube.rightImgv.hidden = YES;
+                tube.leftImgv.hidden = NO;
             }
 
             tube.leftCountLabel.text = [NSString stringWithFormat:@"%@", weightValue];
@@ -393,10 +405,16 @@
                     
                     weakself.getOrderType = clueStr;
                     
+                    if (!weakself.mainM.changdu.length) {
+                        
+                        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择长度!" time:0 aboutType:WHShowViewMode_Text state:NO];
+                    }
+                    
                     [weakself.view endEditing:YES];
                     
+                    [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Matter];
                 }
-                [weakself getOrderMoneyWithType:weakself.getOrderType withMode:Mode_Matter];
+                
             } else {
                 
                 if ([clueStr isEqualToString:@"0"]) { //外径
@@ -459,6 +477,7 @@
         self.passTotalPrice = ^(NSString *priceValue, NSString *weightValue) {
             if ([weakself.getOrderType isEqualToString:@"整只"]) {
                 matter.right_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
+                matter.rightImgv.hidden = NO;
             } else {
                 matter.left_top_Label.text = [NSString stringWithFormat:@"%@ 元", priceValue];
             }
@@ -669,7 +688,7 @@
     }
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveToGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"car: +++%@", resultDic);
+//        NSLog(@"car: +++%@", resultDic);
 
         [self refreshBottomViewInfo];
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:1 aboutType:WHShowViewMode_Text state:YES];

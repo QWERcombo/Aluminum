@@ -31,11 +31,11 @@
 }
 
 - (void)item_action:(UITapGestureRecognizer *)sender {
-    CGFloat margin = (SCREEN_WIGHT-40*4)/5;
+    CGFloat margin = (SCREEN_WIGHT-40*4-20)/5;
     CGFloat width = self.item_imgv.size.width;
-    CGPoint point = [sender locationInView:self.superview];
+    CGPoint point = [sender locationInView:self.superview.superview];
     NSInteger index = point.x/(width+margin);
-    if (point.y>240) {
+    if (point.y>220) {
         _click(SINT(index+4));
     } else {
         _click(SINT(index));
