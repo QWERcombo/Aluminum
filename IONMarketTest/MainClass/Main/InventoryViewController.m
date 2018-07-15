@@ -97,6 +97,7 @@
                     [self.invenDataSource addObject:model];
                 }
                 [self.tableView.mj_footer endRefreshing];
+                self.pageNumber++;
             } else {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }

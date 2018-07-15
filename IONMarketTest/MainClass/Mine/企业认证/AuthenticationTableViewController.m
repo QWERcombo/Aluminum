@@ -92,13 +92,6 @@
         [self.dataSource addObject:self.descLab.text];
         
         
-//        if ([self.authModel.shenhezhuangtai isEqualToString:@"审核拒绝"]) {
-//
-//            [self.dataSource addObject:self.leftImageUrl = @""];
-//            [self.dataSource addObject:self.rightImageUrl = @""];
-//
-//        } else {
-//        }
         [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.leftImageUrl]];
         [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.rightImageUrl]];
         
@@ -205,7 +198,7 @@
                 
                 if (![self.authModel.shenhezhuangtai isEqualToString:@"审核拒绝"]) {
                     
-                    if ([self.authModel.shenhezhuangtai hasPrefix:@"http"]) {
+                    if ([self.authModel.yingyezhizhao hasPrefix:@"http"]) {
                         
                         [self.leftButton sd_setImageWithURL:[NSURL URLWithString:self.authModel.fuzerenshenfenzheng] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
                         [self.rightButton sd_setImageWithURL:[NSURL URLWithString:self.authModel.yingyezhizhao] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];

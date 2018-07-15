@@ -9,7 +9,7 @@
 #import "TradeListViewController.h"
 
 @interface TradeListViewController ()
-
+@property (nonatomic, assign) NSInteger pageNum;
 @end
 
 @implementation TradeListViewController
@@ -28,7 +28,10 @@
     }
     self.tabView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
-    [self getDataSource];
+    [[UtilsData sharedInstance] MJRefreshNormalHeaderTarget:self table:self.tabView actionSelector:@selector(reloadHeader)];
+    [[UtilsData sharedInstance] MJRefreshAutoNormalFooterTarget:self table:self.tabView actionSelector:@selector(reloadFooter)];
+    self.pageNum = 1;
+    [self getDataSource:1];
     [self setupSubviews];
 }
 
@@ -53,19 +56,28 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold creatCell:@"TradeRecordCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:SINT(self.listType) andCliker:^(NSDictionary *clueDic) {
+    return [UtilsMold creatCell:self.listType==ListType_Withdraw?@"WithdrawRecordCell":@"TradeRecordCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:SINT(self.listType) andCliker:^(NSDictionary *clueDic) {
         
     }];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold getCellHight:@"TradeRecordCell" data:nil model:nil indexPath:indexPath];
+    return [UtilsMold getCellHight:self.listType==ListType_Withdraw?@"WithdrawRecordCell":@"TradeRecordCell" data:nil model:nil indexPath:indexPath];
 }
 
 
 #pragma mark ----- Actio
 
-- (void)getDataSource {
+- (void)reloadHeader{
+    [self getDataSource:1];
+}
+
+- (void)reloadFooter {
+    [self getDataSource:self.pageNum+1];
+}
+
+
+- (void)getDataSource:(NSInteger)pageNum {
     
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
     NSString *url = @"";
@@ -73,35 +85,62 @@
     [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
     
     if (self.listType == ListType_Record) {
-        [dataDic setValue:@"1" forKey:@"pageNum"];
-        [dataDic setValue:@"999" forKey:@"pageSize"];
+        [dataDic setValue:SINT(pageNum) forKey:@"pageNum"];
+        [dataDic setValue:@"20" forKey:@"pageSize"];
         url = Interface_qianBaoBillList;
     }
     if (self.listType == ListType_Withdraw) {
-        [dataDic setValue:@"1" forKey:@"p"];
-        url = Interface_withdrawSave;
+        [dataDic setValue:SINT(pageNum) forKey:@"p"];
+        url = Interface_withdrawList;
     }
     if (self.listType == ListType_huankuan) {
-        [dataDic setValue:@"1" forKey:@"pageNum"];
-        [dataDic setValue:@"999" forKey:@"pageSize"];
+        [dataDic setValue:SINT(pageNum) forKey:@"pageNum"];
+        [dataDic setValue:@"20" forKey:@"pageSize"];
         url = Interface_BaitiaoHuanKuanList;
     }
     
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:url andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
-        NSArray *dataArray = resultDic[@"result"];
+        NSArray *dataArray = self.listType==ListType_Withdraw?resultDic[@"list"]:resultDic[@"result"];
 
-        for (NSDictionary *dict in dataArray) {
-
-            WalletListModel *model = [[WalletListModel alloc] initWithDictionary:dict error:nil];
-
-            [self.dataMuArr addObject:model];
+        if (pageNum == 1) {
+            
+            [self.dataMuArr removeAllObjects];
+            
+            for (NSDictionary *dict in dataArray) {
+                
+                WalletListModel *model = [[WalletListModel alloc] initWithDictionary:dict error:nil];
+                
+                [self.dataMuArr addObject:model];
+            }
+            
+            [self.tabView.mj_header endRefreshing];
+            [self.tabView.mj_footer endRefreshing];
+            self.pageNum = 1;
+        } else {
+            
+            if (dataArray.count) {
+                for (NSDictionary *dict in dataArray) {
+                    
+                    WalletListModel *model = [[WalletListModel alloc] initWithDictionary:dict error:nil];
+                    
+                    [self.dataMuArr addObject:model];
+                }
+                
+                [self.tabView.mj_header endRefreshing];
+                [self.tabView.mj_footer endRefreshing];
+                self.pageNum++;
+            } else {
+                [self.tabView.mj_footer endRefreshingWithNoMoreData];
+            }
+            
         }
         
         [self.tabView reloadData];
     } failure:^(NSString *error, NSInteger code) {
-        
+        [self.tabView.mj_header endRefreshing];
+        [self.tabView.mj_footer endRefreshing];
     }];
     
     
