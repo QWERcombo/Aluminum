@@ -82,7 +82,6 @@ static NSOperationQueue *queue;
         manager.requestSerializer.timeoutInterval = 20.f;
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json", nil];
         
-        
         [manager POST:URLString parameters:valueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             //上传文件参数
             for (UIImage *img in imgArr ) {
@@ -100,7 +99,7 @@ static NSOperationQueue *queue;
             
             NSError *err;
             NSString *jsonStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-//            NSLog(@"---%@", jsonStr);
+            NSLog(@"---%@", jsonStr);
             NSData *jsonData = [[self removeUnescapedCharacter:jsonStr] dataUsingEncoding:NSUTF8StringEncoding];
             
             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&err];
@@ -110,11 +109,11 @@ static NSOperationQueue *queue;
             NSString *msg = [NSString stringWithFormat:@"%@", [result objectForKey:@"msg"]];//返回信息
             
 //            success(result,msg);
-            if ([status isEqualToString:@"1"]) {   //成功
+            if ([status isEqualToString:@"1"]) {    //成功
                 
                 success(result,msg);
                 
-            } else {                       // 失败
+            } else {                                // 失败
                 NSString *message = [result objectForKey:@"message"];
                 [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:[[UtilsData sharedInstance] isHasValue:message]?message:msg time:0.0 aboutType:WHShowViewMode_Text state:NO];
                 

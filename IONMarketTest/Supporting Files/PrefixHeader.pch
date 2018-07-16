@@ -37,7 +37,6 @@
 #import "UIImage+YXP.h"
 #import "UIView+UIViewAddition.h"
 #import "NSMutableDictionary+YXP.h"
-//#import "PlistManager.h"
 #import "NSString+MD5.h"
 #import "UITableView+TB.h"
 #import "UICollectionView+TB.h"

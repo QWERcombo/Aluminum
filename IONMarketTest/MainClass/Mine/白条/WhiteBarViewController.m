@@ -12,7 +12,8 @@
 #import "TradeListViewController.h"
 
 @interface WhiteBarViewController ()
-
+@property (nonatomic, assign) BOOL isReject; //审核拒绝
+@property (nonatomic, strong) NSString *baitiaoID;
 @end
 
 @implementation WhiteBarViewController {
@@ -33,11 +34,27 @@
         make.bottom.equalTo(self.view.mas_bottom).offset(-50);
     }];
 
-    
-    applyButton = [UIButton buttonWithTitle:title andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+    NSString *buttonTitle = @"";
+    NSString *emptyTitle = @"";
+    if ([title isEqualToString:@"申请开通"]) {
+        buttonTitle = @"申请开通";
+        emptyTitle = @"白条还未开通";
+    } else if ([title isEqualToString:@"待审核"]) {
+        buttonTitle = @"审核中";
+        emptyTitle = @"审核中";
+    } else if ([title isEqualToString:@"审核通过"]) {
+
+    } else if ([title isEqualToString:@"审核拒绝"]) {
+        buttonTitle = @"重新申请";
+        emptyTitle = @"审核拒绝，请重新申请";
+        self.isReject = YES;
+    } else {
+        
+    }
+    applyButton = [UIButton buttonWithTitle:buttonTitle andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
     [self.view addSubview:applyButton];
     applyButton.backgroundColor = [UIColor mianColor:2];
-    if ([title isEqualToString:@"申请开通"]) {
+    if (![title isEqualToString:@"待审核"]) {
         [applyButton addTarget:self action:@selector(applyCliker:) forControlEvents:UIControlEventTouchUpInside];
     }
     [applyButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -45,7 +62,8 @@
         make.left.right.bottom.equalTo(self.view);
     }];
     
-    self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:[title isEqualToString:@"审核中"]?title:@"还未开通白条" andDetailStr:@"" withReloadAction:^{
+    
+    self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:emptyTitle andDetailStr:@"" withReloadAction:^{
         
     }];
     
@@ -54,6 +72,9 @@
 
 - (void)applyCliker:(UIButton *)sender {
     ApplyWhiteBarVC *apply = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"ApplyWhiteBarVC"];
+    if (self.isReject) {
+        apply.baitiaoID = self.baitiaoID;
+    }
     [self.navigationController pushViewController:apply animated:YES];
 }
 
@@ -69,6 +90,7 @@
         if (dataArr.count) {
             
             NSDictionary *dataDic = [dataArr firstObject];
+            self.baitiaoID = [dataDic[@"id"] stringValue];
             if ([dataDic[@"status"] isEqualToString:@"审核通过"]) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -84,11 +106,10 @@
                     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:recordBtn];
                 });
                 
-            } else if ([dataDic[@"status"] isEqualToString:@"待审核"]) {
-                
-                [self setupSubviews:@"审核中"];
-                
             } else {
+                
+                [self setupSubviews:dataDic[@"status"]];
+                
             }
             
         } else {

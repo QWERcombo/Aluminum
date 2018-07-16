@@ -9,7 +9,7 @@
 #import "AddAddressViewController.h"
 #import "GFAddressPicker.h"
 
-@interface AddAddressViewController ()<GFAddressPickerDelegate,UITextViewDelegate>
+@interface AddAddressViewController ()<GFAddressPickerDelegate,UITextViewDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *holderTF;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
@@ -204,7 +204,20 @@
     return YES;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;//这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
+    }
+    return YES;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

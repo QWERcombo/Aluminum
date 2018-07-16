@@ -8,7 +8,7 @@
 
 #import "AuthDetailTViewController.h"
 
-@interface AuthDetailTViewController ()
+@interface AuthDetailTViewController ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *inputTextView;
 
 @end
@@ -25,6 +25,7 @@
     self.inputTextView.layer.masksToBounds = YES;
     self.inputTextView.layer.cornerRadius = 5;
     self.inputTextView.text = self.contentStr;
+    self.inputTextView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,8 +43,13 @@
 
 
 #pragma mark - Table view data source
-
-
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;//这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
+    }
+    return YES;
+}
 
 
 

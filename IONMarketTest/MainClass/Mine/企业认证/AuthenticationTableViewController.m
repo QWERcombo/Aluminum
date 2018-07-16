@@ -110,6 +110,11 @@
 
 - (IBAction)doneClicker:(UIButton *)sender {
     
+    if (![self.phoneLab.text isValidateMobile]) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"公开联系人号码格式不正确！" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return;
+    }
+    
     if (![self checkInfo]) {
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"信息不完整！" time:0 aboutType:WHShowViewMode_Text state:NO];
         return;

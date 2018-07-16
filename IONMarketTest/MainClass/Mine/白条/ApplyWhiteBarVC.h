@@ -10,4 +10,6 @@
 
 @interface ApplyWhiteBarVC : UITableViewController
 
+@property (nonatomic, strong) NSString *baitiaoID;
+
 @end
