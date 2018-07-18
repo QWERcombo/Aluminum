@@ -124,7 +124,6 @@
         if ([clueDic[@"key"] isEqualToString:@"  材质证明  "]) {
             
             [self getCaizhizhengming:indexPath];
-            
         }
         
         if ([clueDic[@"key"] isEqualToString:@"  去支付  "]) {

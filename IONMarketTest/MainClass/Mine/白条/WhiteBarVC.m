@@ -94,7 +94,7 @@
             [self.dataMuArr addObject:model];
         }
         
-        self.huankuanLab.text = [NSString stringWithFormat:@"%@", [self getStringFromNumber:resultDic[@"money"]]];
+        self.huankuanLab.text = [NSString stringWithFormat:@"%@", [NSString getStringAfterTwo:[resultDic[@"money"] stringValue]]];
         
         [self.whiteBarTableView reloadData];
     } failure:^(NSString *error, NSInteger code) {
@@ -110,25 +110,13 @@
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_GetBaitiaoEDuById andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
         
-//        NSString *total = [resultDic[@"zongedu"] stringValue];
-//        NSString *avail = [resultDic[@"keyongedu"] stringValue];
-//        self.totalFeeLab.text = [NSString stringWithFormat:@"白条额度:%@", [total notRounding:[total floatValue] afterPoint:2]];
-//        self.availFeeLab.text = [NSString stringWithFormat:@"可用额度:%@", [avail notRounding:[avail floatValue] afterPoint:2]];
-        self.totalFeeLab.text = [NSString stringWithFormat:@"白条额度:%@", [self getStringFromNumber:resultDic[@"zongedu"]]];
-        self.availFeeLab.text = [NSString stringWithFormat:@"可用额度:%@", [self getStringFromNumber:resultDic[@"keyongedu"]]];
+        self.totalFeeLab.text = [NSString stringWithFormat:@"白条额度:%@", [NSString getStringAfterTwo:[resultDic[@"zongedu"] stringValue]]];
+        self.availFeeLab.text = [NSString stringWithFormat:@"可用额度:%@", [NSString getStringAfterTwo:[resultDic[@"keyongedu"] stringValue]]];
         
     } failure:^(NSString *error, NSInteger code) {
         
     }];
     
-}
-
-- (NSString *)getStringFromNumber:(NSNumber *)number {
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    formatter.roundingMode = NSNumberFormatterRoundFloor;
-    formatter.maximumFractionDigits = 2;
-    
-    return [formatter stringFromNumber:number];
 }
 
 

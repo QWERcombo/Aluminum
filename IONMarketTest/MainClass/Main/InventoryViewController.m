@@ -26,7 +26,7 @@
     self.invenDataSource = [NSMutableArray array];
     self.dataDic = [NSDictionary dictionary];
     self.pageNumber = 1;
-    [self getDataSource:self.pageNumber];
+    [self getDataSource:1];
     
     [[UtilsData sharedInstance] MJRefreshNormalHeaderTarget:self table:self.tableView actionSelector:@selector(loadHeaderNewData)];
     [[UtilsData sharedInstance] MJRefreshAutoNormalFooterTarget:self table:self.tableView actionSelector:@selector(loadFooterNewData)];
@@ -67,16 +67,17 @@
 }
 
 - (void)getDataSource:(NSInteger)page_number {
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:SINT(self.pageNumber) forKey:@"pageNum"];
+    [dict setValue:SINT(page_number) forKey:@"pageNum"];
     [dict setValue:@"10" forKey:@"pageSize"];
+    
     if (self.keyword.length) {
         [dict setValue:self.keyword forKey:@"xinghao"];
     }
     if ([self.dataDic allKeys].count) {
         [dict setValuesForKeysWithDictionary:self.dataDic];
     }
-    
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_ZhengbanList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"---+%@", resultDic);
@@ -90,6 +91,8 @@
             }
             [self.tableView.mj_footer endRefreshing];
             [self.tableView.mj_header endRefreshing];
+            
+            self.pageNumber = 1;
         } else {
             if (resultArr.count) {
                 for (NSDictionary *dataDic in resultArr) {
@@ -97,6 +100,7 @@
                     [self.invenDataSource addObject:model];
                 }
                 [self.tableView.mj_footer endRefreshing];
+                
                 self.pageNumber++;
             } else {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];

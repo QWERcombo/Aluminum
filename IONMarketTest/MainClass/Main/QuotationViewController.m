@@ -23,7 +23,7 @@
     // Do any additional setup after loading the view.
     self.title = @"行情";
     self.pageNumber = 1;
-//    [self getDataSource:self.pageNumber];
+    [self getDataSource:self.pageNumber];
 //    [[UtilsData sharedInstance] MJRefreshNormalHeaderTarget:self table:self.tabView actionSelector:@selector(loadHeaderNewData)];
 //    [[UtilsData sharedInstance] MJRefreshAutoNormalFooterTarget:self table:self.tabView actionSelector:@selector(loadFooterNewData)];
     [self setupSubviews];
@@ -33,11 +33,11 @@
     [self.view addSubview:self.tabView];
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
-        make.top.equalTo(self.view.mas_top).offset(60);
+        make.top.equalTo(self.view.mas_top).offset(0);
     }];
     self.view.backgroundColor = [UIColor mianColor:1];
     self.tabView.backgroundColor = [UIColor mianColor:1];
-    
+    /*
     UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 50)];
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
@@ -81,6 +81,7 @@
         make.centerX.equalTo(allBtn.mas_centerX);
         make.top.equalTo(favoriteBtn.mas_bottom).offset(5);
     }];
+    */
     
     self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"空空如也" andDetailStr:@"" withReloadAction:^{
         

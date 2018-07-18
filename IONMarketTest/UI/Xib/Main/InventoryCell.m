@@ -25,11 +25,17 @@
 }
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 110;
+    return 80;
 }
 
 - (void)loadData:(WholeBoardModel *)data andCliker:(ClikBlock)click {
-    self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", data.zhonglei, data.xinghao];
+    
+    if ([[UtilsData sharedInstance] isHasValue:data.xinghao]) {
+        self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", data.zhonglei, data.xinghao];
+    } else {
+        self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", data.zhonglei, @""];
+    }
+    
     self.typeLabel.text = [NSString stringWithFormat:@"规格: %@", data.guige];
     self.infoTypeLabel.text = data.canzhaozhishu;
     self.infoLabel.text = data.gongyibiaozhun;

@@ -67,8 +67,8 @@
         self.companyLab.text.length?[self.dataSource addObject:self.companyLab.text]:[self.dataSource addObject:self.authModel.gongsimingchen];
         [self.dataSource addObject:self.moshiLab.text];
         self.fuzerenLab.text.length?[self.dataSource addObject:self.fuzerenLab.text]:[self.dataSource addObject:self.authModel.gongsifuzeren];
-        self.contactLab.text.length?[self.dataSource addObject:self.contactLab.text]:[self.dataSource addObject:self.authModel.lianxiren];
-        self.phoneLab.text.length?[self.dataSource addObject:self.phoneLab.text]:[self.dataSource addObject:self.authModel.lianxirendianhua];
+        self.contactLab.text.length?[self.dataSource addObject:self.contactLab.text]:[self.dataSource addObject:self.authModel.lianxirendianhua];
+        self.phoneLab.text.length?[self.dataSource addObject:self.phoneLab.text]:[self.dataSource addObject:self.authModel.lianxiren];
         [self.dataSource addObject:self.addressLab.text];
         [self.dataSource addObject:self.descLab.text];
 
@@ -86,8 +86,8 @@
         [self.dataSource addObject:self.companyLab.text];
         [self.dataSource addObject:self.moshiLab.text];
         [self.dataSource addObject:self.fuzerenLab.text];
-        [self.dataSource addObject:self.contactLab.text];
         [self.dataSource addObject:self.phoneLab.text];
+        [self.dataSource addObject:self.contactLab.text];
         [self.dataSource addObject:self.addressLab.text];
         [self.dataSource addObject:self.descLab.text];
         
@@ -110,7 +110,7 @@
 
 - (IBAction)doneClicker:(UIButton *)sender {
     
-    if (![self.phoneLab.text isValidateMobile]) {
+    if (![self.contactLab.text isValidateMobile]) {
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"公开联系人号码格式不正确！" time:0 aboutType:WHShowViewMode_Text state:NO];
         return;
     }
@@ -191,8 +191,8 @@
             self.companyLab.text = self.authModel.gongsimingchen;
             self.moshiLab.text = self.authModel.jingyingmoshi;
             self.fuzerenLab.text = self.authModel.gongsifuzeren;
-            self.contactLab.text = self.authModel.lianxiren;
-            self.phoneLab.text = self.authModel.lianxirendianhua;
+            self.contactLab.text = self.authModel.lianxirendianhua;
+            self.phoneLab.text = self.authModel.lianxiren;
             self.addressLab.text = self.authModel.xiangxidizhi;
             self.descLab.text = self.authModel.gongsijieshao;
             self.lianxiwomenLab.text = self.authModel.lianxirendianhua;

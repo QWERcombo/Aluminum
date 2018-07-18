@@ -689,5 +689,18 @@
     return[NSString stringWithFormat:@"%@",roundedOunces];
 }
 
++ (NSString *)getStringAfterTwo:(NSString *)string {
+
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber *number = [numberFormatter numberFromString:string];
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setPositiveFormat:@"###0.00"];
+    formatter.roundingMode = NSNumberFormatterRoundDown;
+    formatter.maximumFractionDigits = 2;
+//    NSLog(@"%@", [formatter stringFromNumber:number]);
+    return [formatter stringFromNumber:number];
+}
 
 @end

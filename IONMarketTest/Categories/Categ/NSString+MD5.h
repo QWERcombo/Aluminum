@@ -110,5 +110,5 @@
 - (NSString *)VerticalString;
 
 - (NSString *)notRounding:(float)price afterPoint:(int)position;
-
++ (NSString *)getStringAfterTwo:(NSString *)string;
 @end

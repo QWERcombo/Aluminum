@@ -99,7 +99,7 @@ static NSOperationQueue *queue;
             
             NSError *err;
             NSString *jsonStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-            NSLog(@"---%@", jsonStr);
+//            NSLog(@"---%@", jsonStr);
             NSData *jsonData = [[self removeUnescapedCharacter:jsonStr] dataUsingEncoding:NSUTF8StringEncoding];
             
             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&err];

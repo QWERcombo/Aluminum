@@ -97,7 +97,7 @@
 - (void)loadData:(WholeBoardModel *)data andCliker:(ClikBlock)click {
     self.wholeModel = data;
     self.click = click;
-    NSArray *array = @[data.zhuangtai,data.guige,data.gongyibiaozhun,data.leibie,data.jiazhi,data.fumo, data.baozhuang,[NSString stringWithFormat:@"%@千克",data.zhongliang],[NSString stringWithFormat:@"%@元/千克",data.butiee.length?data.butiee:@"0"],[NSString stringWithFormat:@"%@元/千克",data.jiagongfei],[NSString stringWithFormat:@"%@件",data.kucun],data.canzhaozhishu];
+    NSArray *array = @[data.zhuangtai,data.guige,data.gongyibiaozhun,data.leibie,data.jiazhi,data.fumo, data.baozhuang,[NSString stringWithFormat:@"%@千克",data.zhongliang],[NSString stringWithFormat:@"%@元/千克",data.jiagongfei],[NSString stringWithFormat:@"%@件",data.kucun],data.canzhaozhishu];
     
     for (NSInteger i = 0; i<array.count; i++) {
         

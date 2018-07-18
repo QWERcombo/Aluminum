@@ -26,7 +26,7 @@
         [recordBtn addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:recordBtn];
         
-        [self.dataMuArr addObjectsFromArray:@[self.billModel.kaipiaotaitou, self.billModel.shuihao,self.billModel.duigongzhanghu,self.billModel.zhanghukaihuhang,self.billModel.gongsizhucedizhi,self.billModel.gongsizhucezuojihao,self.billModel.shoujianren,self.billModel.shoujiandizhi,self.billModel.shoujihao,self.billModel.yingyewangzhi]];
+        [self.dataMuArr addObjectsFromArray:@[self.billModel.kaipiaotaitou, self.billModel.shuihao,self.billModel.duigongzhanghu,self.billModel.zhanghukaihuhang,self.billModel.gongsizhucedizhi,self.billModel.gongsizhucezuojihao,self.billModel.shoujianren,self.billModel.shoujiandizhi,self.billModel.shoujihao,@""]];
         
         for (NSInteger i=100; i<110; i++) {
             UITextField *textField = [self.view viewWithTag:i];

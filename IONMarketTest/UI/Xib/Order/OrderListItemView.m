@@ -29,8 +29,7 @@
 - (void)loadData:(NSObject *)dataSource {
     
     OrderListDetailModel *model = (OrderListDetailModel *)dataSource;
-    
-    self.moneyLab.text = [NSString stringWithFormat:@"%@元", model.money];
+    self.moneyLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:model.money]];
     self.zhongleiLab.text = [NSString stringWithFormat:@"%@ * %@", model.zhonglei,model.productNum];
     
 }
