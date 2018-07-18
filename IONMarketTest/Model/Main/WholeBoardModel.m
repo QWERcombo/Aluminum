@@ -10,4 +10,12 @@
 
 @implementation WholeBoardModel
 
++ (JSONKeyMapper *)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
+                                                                  @"zhonglei": @"productCate.name",@"xinghao": @"lvxing.name"
+                                                                  }];
+}
+
+
 @end

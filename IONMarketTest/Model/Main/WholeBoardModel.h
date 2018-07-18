@@ -8,6 +8,20 @@
 
 #import "BaseModel.h"
 
+
+@protocol ProductCate;
+
+@interface ProductCate : BaseModel
+
+@property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy) NSString *createDate;
+@property (nonatomic, copy) NSString *deleted;
+@property (nonatomic, copy) NSString *fatherId;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *ord;
+
+@end
+
 @interface WholeBoardModel : BaseModel
 
 @property (nonatomic, copy) NSString *arg1;
@@ -33,5 +47,8 @@
 @property (nonatomic, copy) NSString *zhuangtai;
 @property (nonatomic, copy) NSString *createDate;
 @property (nonatomic, copy) NSDictionary *lvxing;
+@property (nonatomic, strong) ProductCate *productCate;
 
 @end
+
+

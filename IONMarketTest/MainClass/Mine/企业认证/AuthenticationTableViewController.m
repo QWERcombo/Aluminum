@@ -67,8 +67,8 @@
         self.companyLab.text.length?[self.dataSource addObject:self.companyLab.text]:[self.dataSource addObject:self.authModel.gongsimingchen];
         [self.dataSource addObject:self.moshiLab.text];
         self.fuzerenLab.text.length?[self.dataSource addObject:self.fuzerenLab.text]:[self.dataSource addObject:self.authModel.gongsifuzeren];
-        self.contactLab.text.length?[self.dataSource addObject:self.contactLab.text]:[self.dataSource addObject:self.authModel.lianxirendianhua];
         self.phoneLab.text.length?[self.dataSource addObject:self.phoneLab.text]:[self.dataSource addObject:self.authModel.lianxiren];
+        self.contactLab.text.length?[self.dataSource addObject:self.contactLab.text]:[self.dataSource addObject:self.authModel.lianxirendianhua];
         [self.dataSource addObject:self.addressLab.text];
         [self.dataSource addObject:self.descLab.text];
 
@@ -191,8 +191,8 @@
             self.companyLab.text = self.authModel.gongsimingchen;
             self.moshiLab.text = self.authModel.jingyingmoshi;
             self.fuzerenLab.text = self.authModel.gongsifuzeren;
-            self.contactLab.text = self.authModel.lianxirendianhua;
             self.phoneLab.text = self.authModel.lianxiren;
+            self.contactLab.text = self.authModel.lianxirendianhua;
             self.addressLab.text = self.authModel.xiangxidizhi;
             self.descLab.text = self.authModel.gongsijieshao;
             self.lianxiwomenLab.text = self.authModel.lianxirendianhua;
@@ -233,8 +233,8 @@
             self.companyLab.text = @"";
             self.moshiLab.text = @"";
             self.fuzerenLab.text = @"";
-            self.contactLab.text = @"";
             self.phoneLab.text = @"";
+            self.contactLab.text = @"";
             self.addressLab.text = @"";
             self.descLab.text = @"";
             self.lianxiwomenLab.text = @"";
@@ -334,9 +334,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 8) {
-        
-    } else {
+    if (indexPath.row != 7) {
         
         if ([self.authModel.shenhezhuangtai isEqualToString:@"审核中"] || [self.authModel.shenhezhuangtai isEqualToString:@"审核通过"]) {
             cell.userInteractionEnabled = NO;

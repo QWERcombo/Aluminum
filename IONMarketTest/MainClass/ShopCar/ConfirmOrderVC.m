@@ -104,7 +104,15 @@
             //刷新购物车列表
             [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshNewData" object:nil];
             
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            OrderListModel *orderList = [[OrderListModel alloc] init];
+            orderList.wuliufei = [NSString stringWithFormat:@"%@", resultDic[@"newOrders"][@"wuliufei"]];
+            orderList.totalMoney = [NSString stringWithFormat:@"%@", resultDic[@"newOrders"][@"money"]];
+            orderList.no = [NSString stringWithFormat:@"%@", resultDic[@"no"]];
+            
+            OrderPayVC *pay = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayVC"];
+            pay.orderModel = orderList;
+            [self.navigationController pushViewController:pay animated:YES];
             
         } failure:^(NSString *error, NSInteger code) {
             

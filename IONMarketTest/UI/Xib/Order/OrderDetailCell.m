@@ -35,7 +35,12 @@
     self.typeLab.text = dataM.type;
     self.zhongleiLab.text = dataM.zhonglei;
     self.priceLab.text = [NSString stringWithFormat:@"总价：%@元", [NSString pointTailTwo:dataM.money]];
-    self.chicunLab.text = [NSString stringWithFormat:@"规格：%@x%@x%@", dataM.length, dataM.width, dataM.height];
+    if ([dataM.height floatValue]>0) {
+        self.chicunLab.text = [NSString stringWithFormat:@"规格：%@x%@x%@", dataM.length, dataM.width, dataM.height];
+    } else {
+        self.chicunLab.text = [NSString stringWithFormat:@"规格：%@x%@", dataM.length, dataM.width];
+    }
+    
     self.shuliangLab.text = [NSString stringWithFormat:@"数量：%@",dataM.productNum];
     
 }
