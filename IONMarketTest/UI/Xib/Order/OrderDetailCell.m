@@ -22,7 +22,7 @@
 }
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 120;
+    return 80;
 }
 
 + (instancetype)getOrderDetailCell {
@@ -32,8 +32,8 @@
 - (void)loadData:(NSObject *)model delegate:(UIViewController *)delegate andCliker:(ClikBlock)click {
     ShopCar *dataM = (ShopCar *)model;
 
-    self.typeLab.text = dataM.type;
-    self.zhongleiLab.text = dataM.zhonglei;
+    self.typeLab.text = dataM.erjimulu;
+    self.zhongleiLab.text = [NSString stringWithFormat:@"%@/%@", dataM.zhonglei,dataM.type];
     self.priceLab.text = [NSString stringWithFormat:@"总价：%@元", [NSString pointTailTwo:dataM.money]];
     if ([dataM.height floatValue]>0) {
         self.chicunLab.text = [NSString stringWithFormat:@"规格：%@x%@x%@", dataM.length, dataM.width, dataM.height];

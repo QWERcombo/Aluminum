@@ -47,6 +47,7 @@
         for (NSDictionary *dic in dataArr) {
             
             ShopCar *car = [[ShopCar alloc] initWithDictionary:dic error:nil];
+            
             self.orderModel = [[OrderModel alloc] initWithDictionary:dic error:nil];
             
             [self.detailDataSource addObject:car];
@@ -81,8 +82,8 @@
     self.phoneLab.text = self.orderModel.userPhone;
     self.orderNo.text = self.orderModel.no;
     self.zhifufangshi.text = self.orderModel.paymethod;
-    self.wuliufei.text = self.orderModel.wuliufei;
-    self.chanpinfei.text = self.orderModel.money;
+    self.wuliufei.text = [NSString getStringAfterTwo:self.listModel.wuliufei];
+    self.chanpinfei.text = [NSString getStringAfterTwo:self.listModel.totalMoney];
     
     NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
     dateformatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";

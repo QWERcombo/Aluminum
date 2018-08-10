@@ -32,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQE-51-V5P">
-                                <rect key="frame" x="169" y="60" width="38" height="20"/>
+                                <rect key="frame" x="169" y="55" width="38" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="vEz-yJ-16j"/>
                                 </constraints>
@@ -49,11 +49,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zF4-LR-VwD">
                                 <rect key="frame" x="322" y="31" width="38" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.35491353269999998" green="0.623277843" blue="0.94517052170000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8WN-cN-O4h">
-                                <rect key="frame" x="169" y="0.0" width="38" height="20"/>
+                                <rect key="frame" x="169" y="5" width="38" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="i3G-02-kpG"/>
                                 </constraints>
@@ -65,11 +65,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8WN-cN-O4h" firstAttribute="centerX" secondItem="icn-WL-sOh" secondAttribute="centerX" id="7nr-Bn-PS6"/>
-                            <constraint firstItem="QQE-51-V5P" firstAttribute="top" secondItem="VTU-oG-zu9" secondAttribute="bottom" constant="10" id="Eyg-qx-fZV"/>
+                            <constraint firstItem="QQE-51-V5P" firstAttribute="top" secondItem="VTU-oG-zu9" secondAttribute="bottom" constant="5" id="Eyg-qx-fZV"/>
                             <constraint firstItem="VTU-oG-zu9" firstAttribute="leading" secondItem="8WN-cN-O4h" secondAttribute="leading" id="J5l-ha-tYE"/>
                             <constraint firstItem="QQE-51-V5P" firstAttribute="leading" secondItem="VTU-oG-zu9" secondAttribute="leading" id="KOt-pJ-imc"/>
-                            <constraint firstItem="8WN-cN-O4h" firstAttribute="top" secondItem="icn-WL-sOh" secondAttribute="top" id="Plm-u4-gAo"/>
-                            <constraint firstItem="VTU-oG-zu9" firstAttribute="top" secondItem="8WN-cN-O4h" secondAttribute="bottom" constant="10" id="XzY-q4-h7d"/>
+                            <constraint firstItem="VTU-oG-zu9" firstAttribute="top" secondItem="8WN-cN-O4h" secondAttribute="bottom" constant="5" id="XzY-q4-h7d"/>
                             <constraint firstItem="fg4-Wp-zg7" firstAttribute="leading" secondItem="icn-WL-sOh" secondAttribute="leading" constant="15" id="bbB-0s-jA7"/>
                             <constraint firstItem="VTU-oG-zu9" firstAttribute="centerY" secondItem="icn-WL-sOh" secondAttribute="centerY" id="crN-HO-x6l"/>
                             <constraint firstItem="fg4-Wp-zg7" firstAttribute="centerY" secondItem="icn-WL-sOh" secondAttribute="centerY" id="iFv-2x-jqR"/>

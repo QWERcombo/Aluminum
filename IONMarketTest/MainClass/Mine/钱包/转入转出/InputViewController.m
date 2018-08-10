@@ -63,7 +63,7 @@
         return;
     }
     
-    NSString *totalfee = [NSString stringWithFormat:@"%@", [NSNumber numberWithFloat:[self.inputTF.text floatValue]*100]];
+    NSString *totalfee = [NSString stringWithFormat:@"%@", [NSNumber numberWithFloat:[self.inputTF.text floatValue]]];
     
     if ([self.payWay isEqualToString:@"0"]) {
         //微信支付

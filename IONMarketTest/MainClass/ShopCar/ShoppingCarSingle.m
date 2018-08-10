@@ -19,7 +19,6 @@
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         shoppingCarSingle = [[self alloc] init];
-//        shoppingCarSingle.shopCarDataSource = [NSMutableArray array];
     });
     
     return shoppingCarSingle;
@@ -29,14 +28,13 @@
 - (void)beginPayUserWeixiWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(weixinPayMode)mode paySuccessBlock:(paySuccessBlock)paySuccessBlock{
     
     self.payBlock = paySuccessBlock;
-    
+    NSString *totalfeeFormate = [NSString stringWithFormat:@"%@", [NSNumber numberWithFloat:[totalfee floatValue]*100]];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
     if (mode == weixinPayMode_order) {
         
         [dict setValue:orderId forKey:@"no"];
-//        [dict setValue:totalfee forKey:@"totalfee"]; //不能带小数点
-        [dict setValue:@"1" forKey:@"totalfee"];
+        [dict setValue:totalfeeFormate forKey:@"totalfee"]; //不能带小数点
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WeixinPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             
@@ -50,8 +48,7 @@
     if (mode == weixinPayMode_wallet) {
         
         [dict setValue:[UserData currentUser].id forKey:@"userId"];
-        //    [dict setValue:totalfee forKey:@"totalfee"]; //不能带小数点
-        [dict setValue:@"1" forKey:@"totalfee"];
+        [dict setValue:totalfeeFormate forKey:@"totalfee"]; //不能带小数点
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_wxChongzhi andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             
@@ -65,8 +62,7 @@
     if (mode == weixinPayMode_baitiao) {
         
         [dict setValue:[UserData currentUser].id forKey:@"userId"];
-//        [dict setValue:totalfee forKey:@"totalfee"]; //不能带小数点
-        [dict setValue:@"1" forKey:@"totalfee"];
+        [dict setValue:totalfeeFormate forKey:@"totalfee"]; //不能带小数点
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WxHuanKuan andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             
@@ -207,7 +203,7 @@
     if (mode == aliPayMode_order) {
         
         [dict setValue:orderId forKey:@"no"];
-        [dict setValue:@"0.01" forKey:@"totalfee"];
+        [dict setValue:totalfee forKey:@"totalfee"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_aliAppOrderPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             
@@ -224,8 +220,8 @@
     if (mode == aliPayMode_wallet) {
         
         [dict setValue:[UserData currentUser].id forKey:@"userId"];
-        //    [dict setValue:totalfee forKey:@"totalfee"]; //不能带小数点
-        [dict setValue:@"0.01" forKey:@"totalfee"];
+        [dict setValue:totalfee forKey:@"totalfee"];
+//        [dict setValue:@"0.01" forKey:@"totalfee"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_aliAppChongzhi andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             
@@ -241,7 +237,8 @@
     if (mode == aliPayMode_baitiao) {
         
         [dict setValue:[UserData currentUser].id forKey:@"userId"];
-        [dict setValue:@"0.01" forKey:@"totalfee"];
+//        [dict setValue:@"0.01" forKey:@"totalfee"];
+        [dict setValue:totalfee forKey:@"totalfee"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_aliAppHuanKuan andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             

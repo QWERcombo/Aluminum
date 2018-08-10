@@ -154,6 +154,7 @@
     OrderNewDetailVC *detail = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderNewDetailVC"];
     OrderListModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
     detail.orderid = model.no;
+    detail.listModel = model;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

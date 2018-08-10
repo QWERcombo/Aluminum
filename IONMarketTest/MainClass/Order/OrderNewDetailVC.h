@@ -10,4 +10,5 @@
 
 @interface OrderNewDetailVC : UITableViewController
 @property (nonatomic, strong) NSString *orderid;
+@property (nonatomic, strong) OrderListModel *listModel;
 @end

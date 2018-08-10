@@ -110,5 +110,9 @@
 - (NSString *)VerticalString;
 
 - (NSString *)notRounding:(float)price afterPoint:(int)position;
+
+//保留两位
 + (NSString *)getStringAfterTwo:(NSString *)string;
+
+
 @end

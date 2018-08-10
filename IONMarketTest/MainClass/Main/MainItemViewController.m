@@ -189,11 +189,13 @@
                 if ([clueStr isEqualToString:@"0"]) {
                     
                     [weakself selectInfomationForUser:@"0" withMode:Mode_Single];
-                    
+
                     weakself.passValue = ^(NSString *value) {
                         single.thinLabel.text = value;
                         single.thinLabel.textColor = [UIColor blackColor];
                         weakself.mainM.houdu = value;
+                        [single resetShowLabel];
+                        weakself.isGetOrderMoney = NO;
                     };
                     
                 } else if ([clueStr isEqualToString:@"1"]) { //添加 ----> 调取获取金额接口
@@ -248,6 +250,8 @@
                     weakself.passValue = ^(NSString *value) {
                         [pole.lengthBtn setTitle:value forState:UIControlStateNormal];
                         weakself.mainM.changdu = value;
+                        [pole resetShowLabel];
+                        weakself.isGetOrderMoney = NO;
                     };
                     
                 } else {
@@ -268,6 +272,8 @@
                         pole.lengthLabel.text = value;
                         pole.lengthLabel.textColor = [UIColor blackColor];
                         weakself.mainM.zhijing = value;
+                        [pole resetShowLabel];
+                        weakself.isGetOrderMoney = NO;
                     };
                     
                 } else if ([clueStr isEqualToString:@"1"]) {
@@ -319,6 +325,8 @@
                     weakself.passValue = ^(NSString *value) {
                         [tube.lengthBtn setTitle:value forState:UIControlStateNormal];
                         weakself.mainM.changdu = value;
+                        [tube resetShowLabel];
+                        weakself.isGetOrderMoney = NO;
                     };
                     
                 } else {
@@ -339,6 +347,8 @@
                         tube.thinLabel.text = value;
                         tube.thinLabel.textColor = [UIColor blackColor];
                         weakself.mainM.houdu = value;
+                        [tube resetShowLabel];
+                        weakself.isGetOrderMoney = NO;
                     };
                 } else if ([clueStr isEqualToString:@"1"]) { //宽度
                     
@@ -348,6 +358,8 @@
                         tube.widthLabel.text = value;
                         tube.widthLabel.textColor = [UIColor blackColor];
                         weakself.mainM.kuandu = value;
+                        [tube resetShowLabel];
+                        weakself.isGetOrderMoney = NO;
                     };
                 } else if ([clueStr isEqualToString:@"2"]) {
                     
@@ -399,6 +411,8 @@
                     weakself.passValue = ^(NSString *value) {
                         [matter.lengthBtn setTitle:value forState:UIControlStateNormal];
                         weakself.mainM.changdu = value;
+                        [matter resetShowLabel];
+                        weakself.isGetOrderMoney = NO;
                     };
                     
                 } else {
@@ -424,6 +438,8 @@
                         matter.waiLabel.text = value;
                         matter.waiLabel.textColor = [UIColor blackColor];
                         weakself.mainM.waijing = value;
+                        [matter resetShowLabel];
+                        weakself.isGetOrderMoney = NO;
                         [weakself getNeiByWai:value returnBlock:^(NSArray *resultArray) {
                             matter.neiLabel.text = [resultArray firstObject];
                             matter.neiLabel.textColor = [UIColor blackColor];

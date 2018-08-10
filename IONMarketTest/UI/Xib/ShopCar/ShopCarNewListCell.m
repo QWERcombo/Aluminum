@@ -56,7 +56,7 @@
     } else {
         self.chicunLab.text = [NSString stringWithFormat:@"尺寸：%@x%@",dataM.length, dataM.width];
     }
-    self.jiageLab.text = [NSString stringWithFormat:@"价格：%@元", dataM.money];
+    self.jiageLab.text = [NSString stringWithFormat:@"价格：%@元", [NSString getStringAfterTwo:dataM.money]];
     self.shuliangLab.text = [NSString stringWithFormat:@"数量：%@", dataM.productNum];
 }
 

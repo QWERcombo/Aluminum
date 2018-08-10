@@ -35,5 +35,5 @@ typedef void (^JudgeBlock)(MainModel *info, BOOL lengthIsChanged); // bool yesæ”
 @property (nonatomic, strong) NSMutableString *shuliangS;
 
 - (void)loadData:(NSObject *)data andCliker:(ClikBlock)click andMainBlock:(JudgeBlock)mainB;
-
+- (void)resetShowLabel;
 @end
