@@ -40,8 +40,14 @@
     
     [[UtilsData sharedInstance] loginPlan:nil success:^(UserData *user) {
     
-        TBTabBarController *tabBar = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TBtabBar"];
-        self.window.rootViewController = tabBar;
+        if ([[UserData currentUser].isCheck integerValue]==0) {
+            TBTabBarController *tabBar = [TBTabBarController new];
+            [tabBar setupchildVc:nil];
+            self.window.rootViewController = tabBar;
+        } else {
+            TBTabBarController *tabBar = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TBtabBar"];
+            self.window.rootViewController = tabBar;
+        }        
 
     } failure:^(UserData *user) {
         LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];

@@ -42,22 +42,11 @@
 //*************************************************************⬅️
 //**************    地址   ***********************1️⃣
 
-//《测试环境》
-//#define  BASE_URL    @"http://192.168.0.8:8080/api/excute"//本地加密测试
-//#define  base_ii     @"http://192.168.0.8:8080/api/handshake"
-
-//#define  BASE_URL      @"https://app.wanhongpay.com/api/excute"
-//#define  base_ii       @"https://app.wanhongpay.com/api/handshake"
-
-//《正式环境》
-//#define  BASE_URL    @"http://192.168.0.14:10102/api/excute"
-//#define  base_ii     @"http://192.168.0.14:10102/api/handshake"//加密预正式
-
 
 //***********************    审核    ***********************3️⃣
 
 //#define AUDIT_UP @"0"//审核版
-#define AUDIT_UP @"1"//测试版
+//#define AUDIT_UP @"1"//测试版
 
 //*************************************************************➡️
 

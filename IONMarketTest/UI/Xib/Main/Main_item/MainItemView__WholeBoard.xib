@@ -415,6 +415,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="addButton" destination="yFo-aP-xn5" id="Bij-jN-7hH"/>
                 <outlet property="countTF" destination="l6W-yd-ZCs" id="dZP-va-h05"/>
                 <outlet property="shuliangLab" destination="oMX-Hv-Xcl" id="q1Y-Yv-gaR"/>
                 <outlet property="zhongliangLab" destination="4NJ-Ie-O75" id="rAB-GB-aAv"/>

@@ -306,6 +306,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="addButton" destination="bpI-yK-TQO" id="O5Y-Im-qBY"/>
                 <outlet property="amountTF" destination="eaZ-52-pB6" id="eZo-x0-eHs"/>
                 <outlet property="leftCountLabel" destination="pD2-q4-tks" id="HpM-zc-5lv"/>
                 <outlet property="lengthBtn" destination="RLs-JE-lRj" id="eD6-54-8EF"/>

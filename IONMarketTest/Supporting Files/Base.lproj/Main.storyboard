@@ -31,7 +31,7 @@
         <!--首页-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9WN-kX-ccJ"/>
                         <viewControllerLayoutGuide type="bottom" id="Jur-KK-hYT"/>
@@ -150,7 +150,7 @@
         <!--我的-->
         <scene sceneID="b6l-qk-Wwo">
             <objects>
-                <tableViewController title="我的" id="wpS-EP-YpC" customClass="MineViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MineViewController" title="我的" id="wpS-EP-YpC" customClass="MineViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Xai-Ts-kx5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1126,7 +1126,7 @@
         <image name="Share_1" width="45" height="45"/>
         <image name="Share_2" width="32" height="32"/>
         <image name="White_add" width="32" height="32"/>
-        <image name="head_default" width="35" height="35"/>
+        <image name="head_default" width="50" height="50"/>
         <image name="image_car_0" width="25" height="25"/>
         <image name="image_car_1" width="25" height="25"/>
         <image name="image_main_0" width="25" height="25"/>

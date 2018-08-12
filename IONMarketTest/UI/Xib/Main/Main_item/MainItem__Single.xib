@@ -319,6 +319,7 @@
                 <constraint firstAttribute="trailing" secondItem="4h6-kc-FaF" secondAttribute="trailing" id="uqf-2q-6RE"/>
             </constraints>
             <connections>
+                <outlet property="addButton" destination="Gpx-50-hs2" id="vIM-Cd-oBZ"/>
                 <outlet property="amountTF" destination="F35-o0-Peb" id="azn-oM-ahi"/>
                 <outlet property="leftCountLabel" destination="1dp-xC-a0B" id="Wzt-te-sdk"/>
                 <outlet property="leftImgv" destination="aZ6-du-KrO" id="KvH-nt-HEY"/>

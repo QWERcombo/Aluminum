@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *countTF;
 @property (weak, nonatomic) IBOutlet UILabel *zhongliangLab;
 @property (weak, nonatomic) IBOutlet UILabel *shuliangLab;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+
 @property (nonatomic, strong) WholeBoardModel *wholeModel;
 @property (nonatomic, copy) ClikBlock click;
 @property (nonatomic, assign) BOOL isGetOrderMoney;

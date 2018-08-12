@@ -311,17 +311,24 @@
     
     OrderListModel *model = [self.dataMuArr objectAtIndex:indexpath.row];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:model.no forKey:@"no"];
-    
+//    [dict setValue:model.no forKey:@"no"];
+    [dict setValue:@"1533695074645" forKey:@"no"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_getInspectionReports andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+//        NSLog(@"_++++++%@", resultDic);
+        NSArray *resultArr = resultDic[@"result"];
+        NSDictionary *dictionary = [resultArr firstObject];
+        NSArray *fileArray = [dictionary objectForKey:@"File"];
         
-        
+        NSString *urlString = [NSString stringWithFormat:@"%@%@", @"http://216l0677g9.imwork.net:11422",[fileArray firstObject]];
+        //http://216l0677g9.imwork.net:11422/Upload/Material/day_180808/649_1.jpg
+        WHWebViewController *whWebVC = [[WHWebViewController alloc] init];
+        whWebVC.urlString = urlString;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:whWebVC];
+        [self presentViewController:nav animated:YES completion:nil];
     } failure:^(NSString *error, NSInteger code) {
         WHWebViewController *whWebVC = [[WHWebViewController alloc] init];
-        whWebVC.urlString = @"www.baidu.com";
-//        [self.navigationController pushViewController:whWebVC animated:ye];
+        whWebVC.urlString = @"http://118.31.35.233:8080/leqie/adminLogin";
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:whWebVC];
-        nav.navigationBar.barTintColor = [UIColor lightGrayColor];
         [self presentViewController:nav animated:YES completion:nil];
     }];
     

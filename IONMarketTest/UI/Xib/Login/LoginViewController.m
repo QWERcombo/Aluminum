@@ -69,15 +69,6 @@
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Login andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"++++%@", resultDic);
-        [[UserData currentUser] giveData:resultDic[@"user"]];
-        
-        if ([AUDIT_UP integerValue]==0) {
-            [[UserData currentUser] giveData:@{@"isCheck":[NSString stringWithFormat:@"%@",resultDic[@"isCheck"]]}];
-        } else {
-            [[UserData currentUser] giveData:@{@"isCheck":@"1"}];
-        }
-        
-        
         
         //用户手机号存本地
         NSString *login_phone = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE];
@@ -86,6 +77,12 @@
             [[NSUserDefaults standardUserDefaults] setObject:self.phoneTF.text forKey:LOGIN_PHONE];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }
+        
+        
+        [[UserData currentUser] giveData:resultDic[@"user"]];
+        
+        [[UserData currentUser] giveData:@{@"isCheck":[NSString stringWithFormat:@"%@", resultDic[@"isCheck"]]}];
+//        [[UserData currentUser] giveData:@{@"isCheck":@"1"}];
         
         
         [[UtilsData sharedInstance] postLoginNotice];

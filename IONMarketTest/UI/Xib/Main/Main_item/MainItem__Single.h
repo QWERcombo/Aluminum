@@ -25,6 +25,7 @@ typedef void (^JudgeBlock)(MainModel *info, BOOL lengthIsChanged); // bool yesæ”
 @property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 @property (weak, nonatomic) IBOutlet UITextField *amountTF;
 @property (weak, nonatomic) IBOutlet UILabel *thinLabel;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
 
 @property (nonatomic, copy) ClikBlock click;
 @property (nonatomic, copy) JudgeBlock mainBlock;
