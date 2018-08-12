@@ -27,7 +27,7 @@
 @property (nonatomic,strong)NSString        *openid;
 @property (nonatomic,strong)NSString        *remark;
 @property (nonatomic,strong)NSString        *renzheng;
-//@property (nonatomic,strong)NSString        *renzhengTime;
+@property (nonatomic,strong)NSString        *isCheck;
 @property (nonatomic,strong)NSString        *tuijianren;
 @property (nonatomic,strong)NSString        *tuijianrendianhua;
 @property (nonatomic,strong)NSString        *xiaofeishang;

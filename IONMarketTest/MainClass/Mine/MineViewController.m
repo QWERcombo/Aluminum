@@ -43,7 +43,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.titleArr = @[@"用户信息",@"",@"钱包",@"白条",@"开票",@"企业认证",@"",@"收货地址",@"分享推广",@"设置"];
+    
     self.title = @"我的";
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.userHeader.layer.cornerRadius = 35;
@@ -83,6 +85,24 @@
         UIViewController *nextController = (UIViewController *)[[NSClassFromString(NSStringFromClass([classArray objectAtIndex:indexPath.row])) alloc] init];
         nextController.title = [self.titleArr objectAtIndex:indexPath.row];
         [self.navigationController pushViewController:nextController animated:YES];
+    }
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 2) {
+        
+        return [[UserData currentUser].isCheck integerValue]==0?0:50;
+        
+    } else {
+        if (indexPath.row == 0) {
+            return 120;
+        } else if (indexPath.row == 1 || indexPath.row == 6) {
+            return 10;
+        } else {
+            return 50;
+        }
     }
     
 }

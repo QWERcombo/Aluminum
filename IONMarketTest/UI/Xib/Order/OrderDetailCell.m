@@ -22,7 +22,7 @@
 }
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 80;
+    return 90;
 }
 
 + (instancetype)getOrderDetailCell {
@@ -42,7 +42,7 @@
     }
     
     self.shuliangLab.text = [NSString stringWithFormat:@"数量：%@",dataM.productNum];
-    
+    self.contentView.backgroundColor = [UIColor redColor];
 }
 
 

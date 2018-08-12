@@ -35,7 +35,7 @@
         _openid=[aDecoder decodeObjectForKey:@"openid"];
         _remark=[aDecoder decodeObjectForKey:@"remark"];
         _renzheng=[aDecoder decodeObjectForKey:@"renzheng"];
-//        _renzhengTime=[aDecoder decodeObjectForKey:@"renzhengTime"];
+        _isCheck=[aDecoder decodeObjectForKey:@"isCheck"];
         _xiaofeishang=[aDecoder decodeObjectForKey:@"xiaofeishang"];
         _zhiwei=[aDecoder decodeObjectForKey:@"zhiwei"];
         _baitiaoprocess=[aDecoder decodeObjectForKey:@"baitiaoprocess"];
@@ -62,7 +62,7 @@
     if(_zhiwei) [aCoder encodeObject:_zhiwei forKey:@"zhiwei"];
     if(_xiaofeishang) [aCoder encodeObject:_xiaofeishang forKey:@"xiaofeishang"];
     if(_renzheng) [aCoder encodeObject:_renzheng forKey:@"renzheng"];
-//    if(_renzhengTime) [aCoder encodeObject:_renzhengTime forKey:@"renzhengTime"];
+    if(_isCheck) [aCoder encodeObject:_isCheck forKey:@"isCheck"];
     if(_remark) [aCoder encodeObject:_remark forKey:@"remark"];
     if(_openid) [aCoder encodeObject:_openid forKey:@"openid"];
     if(_tuijianren) [aCoder encodeObject:_tuijianren forKey:@"tuijianren"];

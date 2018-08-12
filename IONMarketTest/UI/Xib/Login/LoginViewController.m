@@ -71,6 +71,14 @@
 //        NSLog(@"++++%@", resultDic);
         [[UserData currentUser] giveData:resultDic[@"user"]];
         
+        if ([AUDIT_UP integerValue]==0) {
+            [[UserData currentUser] giveData:@{@"isCheck":[NSString stringWithFormat:@"%@",resultDic[@"isCheck"]]}];
+        } else {
+            [[UserData currentUser] giveData:@{@"isCheck":@"1"}];
+        }
+        
+        
+        
         //用户手机号存本地
         NSString *login_phone = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE];
         if (![login_phone isEqualToString:self.phoneTF.text]) {
