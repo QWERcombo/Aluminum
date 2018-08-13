@@ -147,9 +147,9 @@
     
     //创建网页内容对象
 //    NSString* thumbURL =  IMG(@"App_Logo");
-    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"欢迎使用乐切App" descr:@"欢迎使用" thumImage:IMG(@"App_Logo")];
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"材质证明" descr:@"欢迎使用乐切App" thumImage:IMG(@"App_Logo")];
     //设置网页地址
-    shareObject.webpageUrl = @"http://118.31.35.233:8080/leqie/adminLogin";
+    shareObject.webpageUrl = self.urlString;
     
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;

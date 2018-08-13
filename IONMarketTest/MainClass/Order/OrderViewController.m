@@ -311,8 +311,8 @@
     
     OrderListModel *model = [self.dataMuArr objectAtIndex:indexpath.row];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    [dict setValue:model.no forKey:@"no"];
-    [dict setValue:@"1533695074645" forKey:@"no"];
+    [dict setValue:model.no forKey:@"no"];
+//    [dict setValue:@"1533695074645" forKey:@"no"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_getInspectionReports andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"_++++++%@", resultDic);
         NSArray *resultArr = resultDic[@"result"];
