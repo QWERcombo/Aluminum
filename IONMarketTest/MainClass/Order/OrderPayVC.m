@@ -23,9 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.orderNo.text = self.orderModel.no;
-    self.priceLab.text = [NSString stringWithFormat:@"%@元",self.orderModel.totalMoney];
+    self.priceLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:self.orderModel.totalMoney]];
     if ([self.orderModel.wuliufei integerValue]>0) {
-        self.wuliufeiLab.text = [NSString stringWithFormat:@"%@元", self.orderModel.wuliufei];
+        self.wuliufeiLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:self.orderModel.wuliufei]];
     } else {
         self.wuliufeiLab.text = @"0元";
     }

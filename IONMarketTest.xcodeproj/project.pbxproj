@@ -1942,7 +1942,7 @@
 				TargetAttributes = {
 					5695BE6D20429F1B0036D54B = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					5695BE8820429F1B0036D54B = {
 						CreatedOnToolsVersion = 9.2;
@@ -2450,8 +2450,8 @@
 			baseConfigurationReference = 05E5DB35DC8D4328FE7679C7 /* Pods-IONMarketTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = N9944VQXC8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2488,8 +2488,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.supekylin.leqie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "b3202918-9ce8-4301-ae82-f156edeaf7bb";
+				PROVISIONING_PROFILE_SPECIFIER = LeqieDistribution;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2499,8 +2499,8 @@
 			baseConfigurationReference = FF6FDCD774362D745E663CEC /* Pods-IONMarketTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = N9944VQXC8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2537,8 +2537,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.supekylin.leqie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "b3202918-9ce8-4301-ae82-f156edeaf7bb";
+				PROVISIONING_PROFILE_SPECIFIER = LeqieDistribution;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
