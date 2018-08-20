@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *wuliufei;
 @property (weak, nonatomic) IBOutlet UILabel *zhifufangshi;
 @property (weak, nonatomic) IBOutlet UILabel *zhifushijian;
+@property (weak, nonatomic) IBOutlet UIView *zhifuView;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 
 
 @property (nonatomic, strong) NSMutableArray *detailDataSource;
@@ -89,6 +91,12 @@
     dateformatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     self.orderDate.text = [dateformatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.orderModel.createDate integerValue]/1000]];
     self.zhifushijian.text = [dateformatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.orderModel.payTime integerValue]/1000]];
+    
+    //没有支付方式和时间不显示高度
+    if (!self.orderModel.payTime.length) {
+        self.headerView.frame = CGRectMake(0, 0, SCREEN_WIGHT, self.headerView.frame.size.height-70);
+        self.zhifuView.hidden = YES;
+    }
     
 }
 /*

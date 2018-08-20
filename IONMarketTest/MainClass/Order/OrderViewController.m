@@ -320,14 +320,17 @@
         NSArray *fileArray = [dictionary objectForKey:@"File"];
         
         NSString *urlString = [NSString stringWithFormat:@"%@%@", @"http://216l0677g9.imwork.net:11422",[fileArray firstObject]];
+        
         //http://216l0677g9.imwork.net:11422/Upload/Material/day_180808/649_1.jpg
         WHWebViewController *whWebVC = [[WHWebViewController alloc] init];
         whWebVC.urlString = urlString;
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:whWebVC];
         [self presentViewController:nav animated:YES completion:nil];
+        
     } failure:^(NSString *error, NSInteger code) {
+        
         WHWebViewController *whWebVC = [[WHWebViewController alloc] init];
-        whWebVC.urlString = @"http://118.31.35.233:8080/leqie/adminLogin";
+        whWebVC.urlString = @"-1";
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:whWebVC];
         [self presentViewController:nav animated:YES completion:nil];
     }];

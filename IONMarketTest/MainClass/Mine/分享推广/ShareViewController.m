@@ -22,6 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor mianColor:1];
+    self.QRImgv.image = [UIImage createQRCodeImageWithSourceData:Share_URL];
 }
 
 
@@ -34,7 +35,7 @@
         //创建网页内容对象
         UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"欢迎使用乐切App" descr:@"欢迎使用" thumImage:IMG(@"App_Logo")];
         //设置网页地址
-        shareObject.webpageUrl = @"http://mobile.umeng.com/social";
+        shareObject.webpageUrl = Share_URL;
         //分享消息对象设置分享内容对象
         messageObject.shareObject = shareObject;
         //调用分享接口
@@ -62,7 +63,7 @@
         //创建网页内容对象
         UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"欢迎使用乐切App" descr:@"欢迎使用" thumImage:IMG(@"App_Logo")];
         //设置网页地址
-        shareObject.webpageUrl = @"http://mobile.umeng.com/social";
+        shareObject.webpageUrl = Share_URL;
         //分享消息对象设置分享内容对象
         messageObject.shareObject = shareObject;
         //调用分享接口
@@ -90,7 +91,7 @@
         //创建网页内容对象
         UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"欢迎使用乐切App" descr:@"欢迎使用" thumImage:IMG(@"App_Logo")];
         //设置网页地址
-        shareObject.webpageUrl = @"http://118.31.35.233:8080/leqie/adminLogin";
+        shareObject.webpageUrl = Share_URL;
         //分享消息对象设置分享内容对象
         messageObject.shareObject = shareObject;
         //调用分享接口

@@ -807,11 +807,11 @@
                                 <constraint firstItem="8dx-W6-q4X" firstAttribute="top" secondItem="vzG-K3-ew0" secondAttribute="top" id="ETS-fD-HiD"/>
                                 <constraint firstItem="WF1-9w-1mj" firstAttribute="leading" secondItem="vzG-K3-ew0" secondAttribute="leading" id="FsM-11-OVr"/>
                                 <constraint firstItem="6rt-J0-rFK" firstAttribute="top" secondItem="qN4-M9-7ai" secondAttribute="bottom" constant="10" id="JJD-6d-doF"/>
+                                <constraint firstItem="AhM-NF-VIB" firstAttribute="top" secondItem="WF1-9w-1mj" secondAttribute="bottom" constant="10" id="LYs-so-d87"/>
                                 <constraint firstItem="6rt-J0-rFK" firstAttribute="leading" secondItem="vzG-K3-ew0" secondAttribute="leading" id="NHh-Yb-yId"/>
                                 <constraint firstAttribute="trailing" secondItem="6rt-J0-rFK" secondAttribute="trailing" id="SH9-ZS-lY7"/>
                                 <constraint firstItem="8dx-W6-q4X" firstAttribute="leading" secondItem="vzG-K3-ew0" secondAttribute="leading" id="U9R-lw-Lbb"/>
                                 <constraint firstAttribute="trailing" secondItem="8dx-W6-q4X" secondAttribute="trailing" id="XmD-Jf-EDH"/>
-                                <constraint firstItem="WF1-9w-1mj" firstAttribute="top" secondItem="6rt-J0-rFK" secondAttribute="bottom" constant="10" id="bqn-Hw-2v1"/>
                                 <constraint firstAttribute="bottom" secondItem="AhM-NF-VIB" secondAttribute="bottom" constant="10" id="fby-zZ-JFR"/>
                                 <constraint firstItem="AhM-NF-VIB" firstAttribute="leading" secondItem="vzG-K3-ew0" secondAttribute="leading" id="hpW-j8-gLo"/>
                                 <constraint firstItem="qN4-M9-7ai" firstAttribute="leading" secondItem="vzG-K3-ew0" secondAttribute="leading" id="tid-9U-3j5"/>
@@ -839,11 +839,13 @@
                     <connections>
                         <outlet property="addressLab" destination="gYE-Yz-Fd6" id="ETJ-4O-QpO"/>
                         <outlet property="chanpinfei" destination="Np5-v8-xWm" id="JSx-mZ-55N"/>
+                        <outlet property="headerView" destination="vzG-K3-ew0" id="Fhb-hV-BKF"/>
                         <outlet property="nameLab" destination="nlz-f5-D8N" id="sa7-cP-qPy"/>
                         <outlet property="orderDate" destination="rGi-Iz-xCQ" id="5sW-MY-pzc"/>
                         <outlet property="orderNo" destination="tCy-Ts-viz" id="zbI-Kw-ubc"/>
                         <outlet property="phoneLab" destination="UcZ-42-fvk" id="HHW-Dh-cIg"/>
                         <outlet property="wuliufei" destination="j3W-aj-djw" id="zmq-Zu-cIM"/>
+                        <outlet property="zhifuView" destination="WF1-9w-1mj" id="NY9-k5-TkN"/>
                         <outlet property="zhifufangshi" destination="Jnn-Cn-UM7" id="t2i-7j-nIX"/>
                         <outlet property="zhifushijian" destination="MTz-HE-eWs" id="5qq-BF-2oL"/>
                     </connections>

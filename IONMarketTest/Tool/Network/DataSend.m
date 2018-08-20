@@ -106,7 +106,7 @@ static NSOperationQueue *queue;
             
             NSLog(@" 🍔🍔 %@", result);
             NSString *status = [NSString stringWithFormat:@"%@", [result objectForKey:@"status"]];//1为成功
-            NSString *msg = [NSString stringWithFormat:@"%@", [result objectForKey:@"msg"]];//返回信息
+            NSString *msg = [result objectForKey:@"msg"];//返回信息
             
 //            success(result,msg);
             if ([status isEqualToString:@"1"]) {    //成功
@@ -115,7 +115,10 @@ static NSOperationQueue *queue;
                 
             } else {                                // 失败
                 NSString *message = [result objectForKey:@"message"];
-                [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:[[UtilsData sharedInstance] isHasValue:message]?message:msg time:0.0 aboutType:WHShowViewMode_Text state:NO];
+                
+                if ([[UtilsData sharedInstance] isHasValue:msg] || [[UtilsData sharedInstance] isHasValue:message]) {
+                    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:[[UtilsData sharedInstance] isHasValue:message]?message:msg time:0.0 aboutType:WHShowViewMode_Text state:NO];
+                }
                 
                 failure(msg,-1);
             }

@@ -118,14 +118,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"材质证明";
-    [self setupUI];
-    [self loadRequest];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     UIButton *recordBtn = [UIButton buttonWithTitle:@"分享" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
     recordBtn.frame = CGRectMake(0, 0, 40, 40);
     [recordBtn addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:recordBtn];
     
+    [self showLeftBarButtonItem];
+    
+    if ([self.urlString isEqualToString:@"-1"]) {
+        //没有材质证明地址显示提示文字
+        UILabel *label = [UILabel lableWithText:@"暂无材质证明" Font:FONT_ArialMT(15) TextColor:[UIColor Black_WordColor]];
+        label.frame = CGRectMake(0, 0, 100, 45);
+        label.textAlignment = NSTextAlignmentCenter;
+        label.center = self.view.center;
+        [self.view addSubview:label];
+    } else {
+        //加载材质证明
+        [self setupUI];
+        [self loadRequest];
+    }
 }
 
 - (void)payCliker:(UIButton *)sender {
@@ -149,7 +161,7 @@
 //    NSString* thumbURL =  IMG(@"App_Logo");
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"材质证明" descr:@"欢迎使用乐切App" thumImage:IMG(@"App_Logo")];
     //设置网页地址
-    shareObject.webpageUrl = self.urlString;
+    shareObject.webpageUrl = [self.urlString isEqualToString:@"-1"]?Share_URL:self.urlString;
     
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;
@@ -177,8 +189,7 @@
 
 #pragma mark private Methods
 - (void)setupUI{
-    self.view.backgroundColor = [UIColor whiteColor];
-    [self showLeftBarButtonItem];
+    
     [self.view addSubview:self.wkWebView];
     [self.view addSubview:self.progress];
     [self.view addSubview:self.reloadBtn];

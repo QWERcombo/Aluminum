@@ -45,11 +45,7 @@
 
 //***********************    审核    ***********************3️⃣
 
-<<<<<<< Updated upstream
 //#define AUDIT_UP @"0"//审核版
-=======
-#define AUDIT_UP @"0"//审核版
->>>>>>> Stashed changes
 //#define AUDIT_UP @"1"//测试版
 
 //*************************************************************➡️
@@ -136,7 +132,7 @@ return __singleton__; \
 #define  AlipayAppkey  @""
 
 //分享链接
-#define Share_URL  [NSString stringWithFormat:@"http://app.wanhongpay.com/app/app_regin.jsp?p=%@&cname=%@", [UserData currentUser].mobileNumber, APP_ID]
+#define Share_URL  @"http://appdown.leqie.cn"
 
 //客服电话
 #define Service_TELL  @"027-87313758"
