@@ -563,7 +563,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="vzG-K3-ew0">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="330"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8dx-W6-q4X">
@@ -812,7 +812,7 @@
                                 <constraint firstAttribute="trailing" secondItem="6rt-J0-rFK" secondAttribute="trailing" id="SH9-ZS-lY7"/>
                                 <constraint firstItem="8dx-W6-q4X" firstAttribute="leading" secondItem="vzG-K3-ew0" secondAttribute="leading" id="U9R-lw-Lbb"/>
                                 <constraint firstAttribute="trailing" secondItem="8dx-W6-q4X" secondAttribute="trailing" id="XmD-Jf-EDH"/>
-                                <constraint firstAttribute="bottom" secondItem="AhM-NF-VIB" secondAttribute="bottom" constant="10" id="fby-zZ-JFR"/>
+                                <constraint firstAttribute="bottom" secondItem="AhM-NF-VIB" secondAttribute="bottom" id="fby-zZ-JFR"/>
                                 <constraint firstItem="AhM-NF-VIB" firstAttribute="leading" secondItem="vzG-K3-ew0" secondAttribute="leading" id="hpW-j8-gLo"/>
                                 <constraint firstItem="qN4-M9-7ai" firstAttribute="leading" secondItem="vzG-K3-ew0" secondAttribute="leading" id="tid-9U-3j5"/>
                                 <constraint firstAttribute="trailing" secondItem="AhM-NF-VIB" secondAttribute="trailing" id="v6m-qU-iD9"/>
@@ -821,7 +821,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="62" id="p2V-VX-n12">
-                                <rect key="frame" x="0.0" y="358" width="375" height="62"/>
+                                <rect key="frame" x="0.0" y="348" width="375" height="62"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p2V-VX-n12" id="oaK-Gb-9fh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>

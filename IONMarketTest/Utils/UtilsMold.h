@@ -27,7 +27,7 @@
 #import "TradeRecordCell.h"
 #import "WhiteBarCell.h"
 #import "WithdrawRecordCell.h"
-
+#import "WuLiuCell.h"
 
 
 

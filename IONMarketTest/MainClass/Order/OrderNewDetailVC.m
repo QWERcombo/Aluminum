@@ -23,7 +23,8 @@
 
 
 @property (nonatomic, strong) NSMutableArray *detailDataSource;
-
+@property (nonatomic, copy) NSArray *wuliuNoArray;
+//@property (nonatomic, assign) BOOL isWuliuNo;
 @property (nonatomic, strong) OrderModel *orderModel;
 
 @end
@@ -33,7 +34,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.detailDataSource = [NSMutableArray array];
+    self.wuliuNoArray = [NSArray array];
     [self getOrderDetail:self.orderid];
+//    NSLog(@"----%@", [@"2222" componentsSeparatedByString:@","]);
 }
 
 
@@ -52,6 +55,10 @@
             
             self.orderModel = [[OrderModel alloc] initWithDictionary:dic error:nil];
             
+            if ([self.orderModel.logisticsNo integerValue]>0) {
+                self.wuliuNoArray = [self.orderModel.logisticsNo componentsSeparatedByString:@","];
+            }
+            
             [self.detailDataSource addObject:car];
         }
         
@@ -64,19 +71,62 @@
 }
 
 #pragma mark - Table view data source
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.detailDataSource.count;
+    if (section==0) {
+        return self.wuliuNoArray.count;
+    } else {
+        return self.detailDataSource.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold creatCell:@"OrderDetailCell" table:tableView deledate:self model:[self.detailDataSource objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+    
+    if (self.wuliuNoArray.count) {
+        if (indexPath.section == 0) {
+            return [UtilsMold creatCell:@"WuLiuCell" table:tableView deledate:self model:[self.wuliuNoArray objectAtIndex:indexPath.row] data:self.orderModel.logisticsName andCliker:^(NSDictionary *clueDic) {
+            }];
+        } else {
+            return [UtilsMold creatCell:@"OrderDetailCell" table:tableView deledate:self model:[self.detailDataSource objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+            }];
+        }
+    } else {
         
-    }];
+        return [UtilsMold creatCell:@"OrderDetailCell" table:tableView deledate:self model:[self.detailDataSource objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+        }];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UtilsMold getCellHight:@"OrderDetailCell" data:nil model:nil indexPath:indexPath];
+    if (self.wuliuNoArray.count) {
+        
+        if (indexPath.section==0) {
+            return [UtilsMold getCellHight:@"WuLiuCell" data:nil model:nil indexPath:indexPath];
+        } else {
+            return [UtilsMold getCellHight:@"OrderDetailCell" data:nil model:nil indexPath:indexPath];
+        }
+    } else {
+        return [UtilsMold getCellHight:@"OrderDetailCell" data:nil model:nil indexPath:indexPath];
+    }
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return section==0?0:10;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section==0) {
+        return nil;
+    } else {
+        UIView *grayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 15)];
+        grayView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        return grayView;
+    }
+}
+
 
 - (void)updateInfomation {
     self.addressLab.text = [NSString stringWithFormat:@"收货地址 : %@",self.orderModel.address];

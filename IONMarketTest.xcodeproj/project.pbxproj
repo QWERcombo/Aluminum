@@ -147,6 +147,8 @@
 		5695BF5D2042AC1D0036D54B /* UIView+EasyShowExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF542042AC1D0036D54B /* UIView+EasyShowExt.m */; };
 		5695BF632042AF8C0036D54B /* DataSend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF602042AF8B0036D54B /* DataSend.m */; };
 		5695BF642042AF8C0036D54B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF622042AF8B0036D54B /* Reachability.m */; };
+		56A37FCE212AF27D00701CD8 /* WuLiuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A37FCC212AF27D00701CD8 /* WuLiuCell.m */; };
+		56A37FCF212AF27D00701CD8 /* WuLiuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A37FCD212AF27D00701CD8 /* WuLiuCell.xib */; };
 		56A5746420ADC54F00A458EB /* ApplyWhiteBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5746320ADC54F00A458EB /* ApplyWhiteBarVC.m */; };
 		56A5746720ADC7BA00A458EB /* UIViewController+CommonFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5746620ADC7BA00A458EB /* UIViewController+CommonFunction.m */; };
 		56A5746A20ADC88E00A458EB /* PhotoAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5746920ADC88E00A458EB /* PhotoAlertController.m */; };
@@ -526,6 +528,9 @@
 		5695BF602042AF8B0036D54B /* DataSend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSend.m; sourceTree = "<group>"; };
 		5695BF612042AF8B0036D54B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		5695BF622042AF8B0036D54B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		56A37FCB212AF27D00701CD8 /* WuLiuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WuLiuCell.h; sourceTree = "<group>"; };
+		56A37FCC212AF27D00701CD8 /* WuLiuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WuLiuCell.m; sourceTree = "<group>"; };
+		56A37FCD212AF27D00701CD8 /* WuLiuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WuLiuCell.xib; sourceTree = "<group>"; };
 		56A5746220ADC54F00A458EB /* ApplyWhiteBarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplyWhiteBarVC.h; sourceTree = "<group>"; };
 		56A5746320ADC54F00A458EB /* ApplyWhiteBarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplyWhiteBarVC.m; sourceTree = "<group>"; };
 		56A5746520ADC7BA00A458EB /* UIViewController+CommonFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CommonFunction.h"; sourceTree = "<group>"; };
@@ -1193,6 +1198,9 @@
 				5650869B205CD0AB00FD8497 /* OrderDetailViewController.m */,
 				56B5215220AB194000F636BD /* OrderNewDetailVC.h */,
 				56B5215320AB194000F636BD /* OrderNewDetailVC.m */,
+				56A37FCB212AF27D00701CD8 /* WuLiuCell.h */,
+				56A37FCC212AF27D00701CD8 /* WuLiuCell.m */,
+				56A37FCD212AF27D00701CD8 /* WuLiuCell.xib */,
 				56B5215520AB246200F636BD /* OrderPayVC.h */,
 				56B5215620AB246200F636BD /* OrderPayVC.m */,
 				A2F8AEB020C11EBC00D9926F /* OrderPayResultVC.h */,
@@ -1983,6 +1991,7 @@
 				565086AA205CFF1800FD8497 /* OrderDetailCell.xib in Resources */,
 				A21B4669207B194000802621 /* Mine.storyboard in Resources */,
 				5695BE8120429F1B0036D54B /* LaunchScreen.storyboard in Resources */,
+				56A37FCF212AF27D00701CD8 /* WuLiuCell.xib in Resources */,
 				A296427620F5AB5E00B6E8B6 /* FSActionSheet_cancel@2x.png in Resources */,
 				A2301B2120635292006B9F20 /* LoginViewController.xib in Resources */,
 				5615B8B92073B730005F2403 /* AddressShowView.xib in Resources */,
@@ -2198,6 +2207,7 @@
 				A2555F4120C0DC6C000C7E03 /* APOrderInfo.m in Sources */,
 				A21B4672207B470A00802621 /* FaPiaoModel.m in Sources */,
 				5695BF632042AF8C0036D54B /* DataSend.m in Sources */,
+				56A37FCE212AF27D00701CD8 /* WuLiuCell.m in Sources */,
 				A296427220F5AB5E00B6E8B6 /* FSActionSheet.m in Sources */,
 				56940C2120515DF900DFA6D6 /* UILabel+YXP.m in Sources */,
 				A2AC1C6B20564B8A00A3B2F9 /* UserInfoSettingViewController.m in Sources */,

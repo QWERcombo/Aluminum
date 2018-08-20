@@ -48,4 +48,6 @@
 
 @property (nonatomic, strong) NSString *address;
 
+@property (nonatomic, strong) NSString *logisticsNo;//快递单号
+@property (nonatomic, strong) NSString *logisticsName;//快递名称
 @end
