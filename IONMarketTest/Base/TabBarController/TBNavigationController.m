@@ -7,6 +7,7 @@
 //
 
 #import "TBNavigationController.h"
+#import "UIImage+YXP.h"
 
 @interface TBNavigationController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
 //返回block回调
@@ -27,9 +28,13 @@
 +(void)initialize
 {
     UINavigationBar *bar = [UINavigationBar appearance];
-
+    
+    NSArray *colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"#6ccbf8"],[UIColor colorWithHexString:@"#7eabe6"], nil];
+    CGRect barRect = CGRectMake(0, 0, SCREEN_WIGHT, 44);
+    UIImage *nav_bg_image = [UIImage imageWithColor:GradientColor(UIGradientStyleTopToBottom, barRect, colors)];
+    
     // 设置背景
-    [bar setBackgroundImage:[UIImage imageNamed:@"Navi_bg"] forBarMetrics:UIBarMetricsDefault];
+    [bar setBackgroundImage:nav_bg_image forBarMetrics:UIBarMetricsDefault];
     [bar setShadowImage:[[UIImage alloc] init]];
 
     // 设置标题文字属性

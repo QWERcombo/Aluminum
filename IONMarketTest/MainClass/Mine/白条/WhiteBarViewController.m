@@ -31,7 +31,11 @@
     self.tabView.backgroundColor = [UIColor mianColor:1];
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.equalTo(self.view);
-        make.bottom.equalTo(self.view.mas_bottom).offset(-50);
+        if (SCREEN_WIGHT==812) {
+            make.bottom.equalTo(self.view.mas_bottom).offset(-84);
+        } else {
+            make.bottom.equalTo(self.view.mas_bottom).offset(-50);
+        }
     }];
 
     NSString *buttonTitle = @"";
@@ -59,7 +63,12 @@
     }
     [applyButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(50));
-        make.left.right.bottom.equalTo(self.view);
+        make.left.right.equalTo(self.view);
+        if (SCREEN_HEIGHT==812) {
+            make.bottom.equalTo(self.view.mas_bottom).offset(-34);
+        } else {
+            make.bottom.equalTo(self.view);
+        }
     }];
     
     

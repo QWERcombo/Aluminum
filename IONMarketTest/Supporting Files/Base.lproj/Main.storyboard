@@ -14,8 +14,8 @@
             <objects>
                 <viewController id="8Aj-1J-Us8" customClass="MessageViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aeo-8N-xAw"/>
-                        <viewControllerLayoutGuide type="bottom" id="be3-iZ-fkC"/>
+                        <viewControllerLayoutGuide type="top" id="w6S-OC-CIf"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kvv-Xb-czb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gsZ-QH-Fuk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -33,8 +33,8 @@
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9WN-kX-ccJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="Jur-KK-hYT"/>
+                        <viewControllerLayoutGuide type="top" id="zOs-GI-B0j"/>
+                        <viewControllerLayoutGuide type="bottom" id="V2g-Te-YDI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
@@ -80,8 +80,8 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="USs-PL-OW7" secondAttribute="trailing" id="CdJ-zb-Mfn"/>
                             <constraint firstItem="USs-PL-OW7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oCd-Eg-3d2"/>
-                            <constraint firstItem="Jur-KK-hYT" firstAttribute="top" secondItem="USs-PL-OW7" secondAttribute="bottom" id="ofy-yw-P0m"/>
-                            <constraint firstItem="USs-PL-OW7" firstAttribute="top" secondItem="9WN-kX-ccJ" secondAttribute="bottom" id="xbz-tT-6K8"/>
+                            <constraint firstItem="V2g-Te-YDI" firstAttribute="top" secondItem="USs-PL-OW7" secondAttribute="bottom" id="ofy-yw-P0m"/>
+                            <constraint firstItem="USs-PL-OW7" firstAttribute="top" secondItem="zOs-GI-B0j" secondAttribute="bottom" id="xbz-tT-6K8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="首页" id="zpn-MS-Qgs"/>
@@ -114,8 +114,8 @@
             <objects>
                 <viewController id="8wd-iJ-ZAO" customClass="OrderViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ev2-q5-qwC"/>
-                        <viewControllerLayoutGuide type="bottom" id="1rH-4s-ixt"/>
+                        <viewControllerLayoutGuide type="top" id="g99-n5-A60"/>
+                        <viewControllerLayoutGuide type="bottom" id="bzj-VF-OMz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="K8o-Dw-Ihb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
@@ -133,8 +133,8 @@
             <objects>
                 <viewController id="xZc-7B-SRa" customClass="ShopCarViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Dg9-ap-Xxl"/>
-                        <viewControllerLayoutGuide type="bottom" id="UM9-G1-kCC"/>
+                        <viewControllerLayoutGuide type="top" id="mu2-UM-Sv4"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dvg-cd-4tl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Br1-ud-ARi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
@@ -713,8 +713,8 @@
             <objects>
                 <viewController storyboardIdentifier="SetOrder" title="照片下单" id="nj8-eq-AJU" customClass="SetOrderViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="exM-GU-oaT"/>
-                        <viewControllerLayoutGuide type="bottom" id="zag-gH-r7c"/>
+                        <viewControllerLayoutGuide type="top" id="NHK-Dj-Hn1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gd0-4v-cHb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ppR-kZ-oir">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -761,11 +761,11 @@
                             <constraint firstAttribute="trailing" secondItem="ZOB-YQ-jSq" secondAttribute="trailing" id="CHp-Xv-0T8"/>
                             <constraint firstItem="wCc-Hn-9gZ" firstAttribute="top" secondItem="xRF-1j-Yyn" secondAttribute="bottom" constant="15" id="F1b-qF-nOj"/>
                             <constraint firstItem="wCc-Hn-9gZ" firstAttribute="centerX" secondItem="ppR-kZ-oir" secondAttribute="centerX" id="GBP-KR-r5T"/>
-                            <constraint firstItem="zag-gH-r7c" firstAttribute="top" secondItem="ZOB-YQ-jSq" secondAttribute="bottom" id="HCi-KO-jRZ"/>
+                            <constraint firstItem="Gd0-4v-cHb" firstAttribute="top" secondItem="ZOB-YQ-jSq" secondAttribute="bottom" id="HCi-KO-jRZ"/>
                             <constraint firstItem="xRF-1j-Yyn" firstAttribute="centerX" secondItem="ppR-kZ-oir" secondAttribute="centerX" id="Inp-e4-BEw"/>
                             <constraint firstAttribute="trailing" secondItem="ZOB-YQ-jSq" secondAttribute="trailing" id="T3Z-fr-UJB"/>
-                            <constraint firstItem="Xxt-gx-USy" firstAttribute="top" secondItem="exM-GU-oaT" secondAttribute="bottom" constant="110" id="Tia-tO-xnE"/>
-                            <constraint firstItem="zag-gH-r7c" firstAttribute="top" secondItem="ZOB-YQ-jSq" secondAttribute="bottom" id="U3v-7A-4TI"/>
+                            <constraint firstItem="Xxt-gx-USy" firstAttribute="top" secondItem="NHK-Dj-Hn1" secondAttribute="bottom" constant="110" id="Tia-tO-xnE"/>
+                            <constraint firstItem="Gd0-4v-cHb" firstAttribute="top" secondItem="ZOB-YQ-jSq" secondAttribute="bottom" id="U3v-7A-4TI"/>
                             <constraint firstItem="ZOB-YQ-jSq" firstAttribute="leading" secondItem="ppR-kZ-oir" secondAttribute="leading" id="yeo-0f-fxu"/>
                         </constraints>
                     </view>
@@ -782,8 +782,8 @@
             <objects>
                 <viewController storyboardIdentifier="InventoryViewController" title="库存" id="VEM-CS-UD2" customClass="InventoryViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="01c-Yz-dxi"/>
-                        <viewControllerLayoutGuide type="bottom" id="l7W-dA-unp"/>
+                        <viewControllerLayoutGuide type="top" id="QCa-pB-8s4"/>
+                        <viewControllerLayoutGuide type="bottom" id="XxR-Tu-AwU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="q1S-vL-IFq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -880,7 +880,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="l7W-dA-unp" firstAttribute="top" secondItem="FjZ-Kl-qXg" secondAttribute="bottom" id="3Jh-1d-3ZA"/>
+                            <constraint firstItem="XxR-Tu-AwU" firstAttribute="top" secondItem="FjZ-Kl-qXg" secondAttribute="bottom" id="3Jh-1d-3ZA"/>
                             <constraint firstItem="eFs-ej-8jv" firstAttribute="leading" secondItem="q1S-vL-IFq" secondAttribute="leading" id="5kC-w1-7HX"/>
                             <constraint firstItem="eFs-ej-8jv" firstAttribute="top" secondItem="q1S-vL-IFq" secondAttribute="top" id="BLm-Ir-pz5"/>
                             <constraint firstAttribute="trailing" secondItem="FjZ-Kl-qXg" secondAttribute="trailing" id="HV6-iH-aVz"/>
@@ -902,8 +902,8 @@
             <objects>
                 <viewController storyboardIdentifier="ShareVC" title="分享推广" id="pIl-fS-nD8" customClass="ShareViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Bzd-tS-Ngh"/>
-                        <viewControllerLayoutGuide type="bottom" id="rKj-3B-Hsj"/>
+                        <viewControllerLayoutGuide type="top" id="1Eo-zI-RWo"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vgn-h1-sec"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ruJ-hL-SvW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -1040,7 +1040,7 @@
                             <constraint firstItem="j5R-8f-Lwx" firstAttribute="centerY" secondItem="bfJ-DJ-aO7" secondAttribute="centerY" id="bhD-0Y-epJ"/>
                             <constraint firstItem="bfJ-DJ-aO7" firstAttribute="leading" secondItem="j5R-8f-Lwx" secondAttribute="trailing" constant="40" id="k1n-di-NjT"/>
                             <constraint firstItem="JYq-rp-PEi" firstAttribute="centerX" secondItem="ruJ-hL-SvW" secondAttribute="centerX" id="mTO-gT-DHv"/>
-                            <constraint firstItem="JYq-rp-PEi" firstAttribute="top" secondItem="Bzd-tS-Ngh" secondAttribute="bottom" constant="100" id="rBZ-bI-HqZ"/>
+                            <constraint firstItem="JYq-rp-PEi" firstAttribute="top" secondItem="1Eo-zI-RWo" secondAttribute="bottom" constant="100" id="rBZ-bI-HqZ"/>
                         </constraints>
                     </view>
                     <connections>

@@ -31,6 +31,11 @@
     // Do any additional setup after loading the view.
     self.remain = @"0";
     [self setupSubviews];
+    if (@available(iOS 11.0, *)) {
+        self.additionalSafeAreaInsets = UIEdgeInsetsMake(0, 0, -34, 0);
+    } else {
+        // Fallback on earlier versions
+    }
 }
 
 - (void)setupSubviews {
@@ -58,12 +63,18 @@
     UIView *bottomView = [[UIView alloc] init];
     [self.view addSubview:bottomView];
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self.view);
+        make.left.right.equalTo(self.view);
+        if (SCREEN_HEIGHT==812) {
+            make.bottom.equalTo(self.view.mas_bottom).offset(-34);
+        } else {
+            make.bottom.equalTo(self.view);
+        }
         make.height.equalTo(@(50));
     }];
     
     UIButton *output = [UIButton buttonWithTitle:@"申请提现" andFont:FONT_ArialMT(18) andtitleNormaColor:[UIColor mianColor:2] andHighlightedTitle:[UIColor mianColor:2] andNormaImage:nil andHighlightedImage:nil];
     [output addTarget:self action:@selector(outputCliker:) forControlEvents:UIControlEventTouchUpInside];
+    output.backgroundColor = [UIColor whiteColor];
     [bottomView addSubview:output];
     [output mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.bottom.equalTo(bottomView);

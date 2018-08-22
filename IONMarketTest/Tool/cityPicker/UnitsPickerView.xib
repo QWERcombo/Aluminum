@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -71,21 +70,20 @@
                     </constraints>
                 </view>
                 <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQt-NU-Lnt">
-                    <rect key="frame" x="0.0" y="20" width="375" height="447"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="a5T-BV-sQU" firstAttribute="top" secondItem="pQt-NU-Lnt" secondAttribute="bottom" id="8MQ-Zj-HvF"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="a5T-BV-sQU" secondAttribute="bottom" id="CwK-Du-Gcb"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pQt-NU-Lnt" secondAttribute="trailing" id="KPx-QS-1D9"/>
-                <constraint firstItem="a5T-BV-sQU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="RiE-MK-sbU"/>
-                <constraint firstItem="pQt-NU-Lnt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ewY-CU-Fx0"/>
-                <constraint firstItem="pQt-NU-Lnt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="pZG-1I-4KI"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="a5T-BV-sQU" secondAttribute="trailing" id="ubM-Vd-xAD"/>
+                <constraint firstAttribute="bottom" secondItem="a5T-BV-sQU" secondAttribute="bottom" id="CwK-Du-Gcb"/>
+                <constraint firstAttribute="trailing" secondItem="pQt-NU-Lnt" secondAttribute="trailing" id="KPx-QS-1D9"/>
+                <constraint firstItem="a5T-BV-sQU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RiE-MK-sbU"/>
+                <constraint firstItem="pQt-NU-Lnt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ewY-CU-Fx0"/>
+                <constraint firstItem="pQt-NU-Lnt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pZG-1I-4KI"/>
+                <constraint firstAttribute="trailing" secondItem="a5T-BV-sQU" secondAttribute="trailing" id="ubM-Vd-xAD"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="pickerView" destination="OBW-ER-DjB" id="p65-CN-cK2"/>
             </connections>

@@ -26,11 +26,6 @@
 
 @implementation TicketViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:YES];
-    
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,8 +42,20 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:recordBtn];
     
     self.ticketTableview.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无数据" andDetailStr:@"" withReloadAction:^{
-        
     }];
+    if (@available(iOS 11.0, *)) {
+        self.additionalSafeAreaInsets = UIEdgeInsetsMake(0, 0, -34, 0);
+    } else {
+        // Fallback on earlier versions
+    }
+//    self.ticketTableview.con
+    
+}
+
+- (void)viewSafeAreaInsetsDidChange {
+    [super viewSafeAreaInsetsDidChange];
+    
+    
 }
 
 - (IBAction)weikaipiaoClicker:(UIButton *)sender {
@@ -173,6 +180,8 @@
     
     [self.ticketTableview reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
+
+
 
 /*
 #pragma mark - Navigation

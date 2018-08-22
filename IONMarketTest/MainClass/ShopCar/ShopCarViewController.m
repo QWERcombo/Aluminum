@@ -69,7 +69,12 @@
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.equalTo(self.view);
         if (self.navigationController.viewControllers.count==1) {
-            make.bottom.equalTo(self.view.mas_bottom).offset(-50-50);
+            if (SCREEN_HEIGHT==812) {
+                make.bottom.equalTo(self.view.mas_bottom).offset(-50-84);
+            } else {
+                make.bottom.equalTo(self.view.mas_bottom).offset(-50-50);
+            }
+            
         } else {
             make.bottom.equalTo(self.view.mas_bottom).offset(-50);
         }
@@ -89,7 +94,11 @@
         make.left.right.equalTo(self.view);
         make.height.equalTo(@(50));
         if (self.navigationController.viewControllers.count==1) {
-            make.bottom.equalTo(self.view.mas_bottom).offset(-50);
+            if (SCREEN_HEIGHT==812) {
+                make.bottom.equalTo(self.view.mas_bottom).offset(-84);
+            } else {
+                make.bottom.equalTo(self.view.mas_bottom).offset(-50);
+            }
         } else {
             make.bottom.equalTo(self.view.mas_bottom).offset(0);
         }

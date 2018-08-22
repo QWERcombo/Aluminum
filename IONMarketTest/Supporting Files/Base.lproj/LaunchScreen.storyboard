@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,8 +14,8 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="55G-ov-tmY"/>
-                        <viewControllerLayoutGuide type="bottom" id="wcs-NW-xAn"/>
+                        <viewControllerLayoutGuide type="top" id="T5F-VE-TE3"/>
+                        <viewControllerLayoutGuide type="bottom" id="RiW-RF-aEb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -24,10 +23,6 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="4dg-1Y-tgt">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="4dg-1Y-tgt" secondAttribute="height" multiplier="375:667" id="TUF-aV-iT3"/>
-                                    <constraint firstAttribute="width" secondItem="4dg-1Y-tgt" secondAttribute="height" multiplier="375:667" id="Xfa-1D-4DR"/>
-                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="乐切" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XtT-Dk-wzG">
                                 <rect key="frame" x="148" y="309.5" width="80.5" height="48"/>
@@ -43,7 +38,7 @@
                             <constraint firstAttribute="trailing" secondItem="4dg-1Y-tgt" secondAttribute="trailing" id="NIo-Ir-upI"/>
                             <constraint firstItem="4dg-1Y-tgt" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="PMC-4D-n9g"/>
                             <constraint firstItem="XtT-Dk-wzG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UxI-iL-N2h"/>
-                            <constraint firstItem="wcs-NW-xAn" firstAttribute="top" secondItem="4dg-1Y-tgt" secondAttribute="bottom" id="nHk-my-57Z"/>
+                            <constraint firstItem="RiW-RF-aEb" firstAttribute="top" secondItem="4dg-1Y-tgt" secondAttribute="bottom" id="nHk-my-57Z"/>
                         </constraints>
                     </view>
                 </viewController>

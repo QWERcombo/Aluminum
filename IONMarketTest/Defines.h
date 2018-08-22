@@ -150,7 +150,6 @@ return __singleton__; \
 #define SCREEN_BOUNDS  ([[UIScreen mainScreen] bounds])
 #define SCREEN_WIGHT   [UIScreen mainScreen].bounds.size.width//屏幕宽度
 #define SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height//屏幕高度
-#define NAVBAR_HEIGHT  (IS_IOS7?64:44)
 /**
  *简化初始化
  */

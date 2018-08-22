@@ -35,13 +35,13 @@
 @end
 
 #define ITEM_WIDTH  60
-
 #define ITEM_HEIGHT  30
 
 //型号间隔
 #define ITEM_TYPE_MARGIN 20
-
-#define CAR_Color  [UIColor colorWithR:97 G:177 B:225 A:1]
+#define CAR_Color       [UIColor colorWithR:97 G:177 B:225 A:1]
+#define NAV_BAR_HEIGHT  ([UIScreen mainScreen].bounds.size.height==812?88:64)
+#define VIEW_BOUNS      CGRectMake(0, 0, SCREEN_WIGHT, SCREEN_HEIGHT-NAV_BAR_HEIGHT)
 
 @implementation MainItemViewController {
     UIButton *radiusButton;
@@ -49,6 +49,7 @@
     UILabel *infoLabel;
     UIView *bottomView;
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -70,8 +71,11 @@
     
     self.lastSelected = 100+self.selectedNum;
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self setSubviews];
-    
 }
 
 #pragma mark --- SubViews
@@ -460,7 +464,7 @@
                         [weakself getNeiByWai:weakself.mainM.waijing returnBlock:^(NSArray *resultArray) {
                             
                             if (resultArray.count) {
-                                UnitsPickerView *pv = [[UnitsPickerView alloc] initWithFrame:self.view.bounds withDataSource:resultArray];
+                                UnitsPickerView *pv = [[UnitsPickerView alloc] initWithFrame:weakself.view.bounds withDataSource:resultArray];
                                 [pv loadData:nil andClickBlock:^(NSString *clueStr) {
                                     
                                     matter.neiLabel.text = clueStr;
@@ -844,20 +848,6 @@
     }];
 }
 
-//- (void)getInfomationWithID:(NSString *)infoID {
-//
-//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    [dict setValue:infoID forKey:@"id"];
-//    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_FindDetail andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
-////        NSLog(@"+++%@", resultDic);
-//
-//
-//    } failure:^(NSString *error, NSInteger code) {
-//
-//    }];
-//
-//}
-
 
 //选择单位
 - (void)selectInfomationForUser:(NSString *)type withMode:(GetWholeBoardMode)mode {
@@ -904,7 +894,7 @@
         
         
         if (sortArr.count) {
-            UnitsPickerView *pv = [[UnitsPickerView alloc] initWithFrame:self.view.bounds withDataSource:sortArr];
+            UnitsPickerView *pv = [[UnitsPickerView alloc] initWithFrame:weakself.view.bounds withDataSource:sortArr];
             [pv loadData:nil andClickBlock:^(NSString *clueStr) {
 //                NSLog(@"++%@", clueStr);
                 if (weakself.passValue) {
@@ -963,7 +953,7 @@
                     return NSOrderedAscending;
                 }
             }];
-            UnitsPickerView *pv = [[UnitsPickerView alloc] initWithFrame:self.view.bounds withDataSource:sortArr];
+            UnitsPickerView *pv = [[UnitsPickerView alloc] initWithFrame:weakself.view.bounds withDataSource:sortArr];
             [pv loadData:nil andClickBlock:^(NSString *clueStr) {
 //                NSLog(@"++%@", clueStr);
                 weakself.passValue(clueStr);

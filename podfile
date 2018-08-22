@@ -14,7 +14,7 @@ pod 'UMCShare/Social/ReducedWeChat'
 pod 'UMCShare/Social/ReducedQQ'
 pod 'WechatOpenSDK'
 pod 'UMCShare/UI'
-
+pod 'ChameleonFramework'
 
 end
 #$ pod update 或  $ pod install

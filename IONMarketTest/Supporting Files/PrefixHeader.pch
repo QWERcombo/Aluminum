@@ -25,8 +25,7 @@
 #import "LYEmptyViewHeader.h"
 #import "Reachability.h"
 #import "XLPhotoBrowser.h"
-#import "TradeListViewController.h"
-
+#import <Chameleon.h>
 
 //Categories
 #import "UIColor+YXP.h"
@@ -106,6 +105,8 @@
 #import "UnitsPickerView.h"
 #import "UIViewController+CommonFunction.h"
 #import "CustomButton.h"
+#import "TradeListViewController.h"
+
 
 
 #define DEVICE_TYPE_IPAD  ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
