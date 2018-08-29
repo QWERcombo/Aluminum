@@ -18,7 +18,7 @@ static NSOperationQueue *queue;
 {
     if (response == nil) {
         NSLog(@"WARNING:数据为空");
-        [[UtilsData sharedInstance]hideAlert];
+        [[UtilsData sharedInstance] hideAlert];
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"数据返回异常" time:1.5 aboutType:WHShowViewMode_Text state:NO];
         return;
     }else{

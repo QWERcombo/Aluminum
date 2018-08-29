@@ -41,7 +41,7 @@
 
 - (BOOL)checkInfo {
     
-    for (NSInteger i=100; i<110; i++) {
+    for (NSInteger i=100; i<109; i++) {
         
         UITextField *textField = [self.view viewWithTag:i];
         if (self.ticketMode == TicketMode_Change) {
@@ -92,7 +92,7 @@
     [dict setValue:self.dataMuArr[6] forKey:@"shoujianren"];
     [dict setValue:self.dataMuArr[7] forKey:@"shoujiandizhi"];
     [dict setValue:self.dataMuArr[8] forKey:@"shoujihao"];
-    [dict setValue:self.dataMuArr[9] forKey:@"yingyewangzhi"];
+//    [dict setValue:self.dataMuArr[9] forKey:@"yingyewangzhi"];
     
     NSString *url = @"";
     if (self.ticketMode == TicketMode_Change) {
