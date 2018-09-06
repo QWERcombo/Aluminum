@@ -18,5 +18,7 @@ typedef void (^onAlbumUsable)(void);
 //获取相册权限
 - (void)userAlbum:(onAlbumUsable)onAlbumUsable;
 
+- (UIViewController *)appRootViewController;
 
++ (UIViewController*)currentViewController;
 @end

@@ -32,6 +32,7 @@
 		5632BFBA205AB6180009CD34 /* QuotationDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5632BFB8205AB6180009CD34 /* QuotationDetailCell.xib */; };
 		563C8D2E20C97F9D003C4822 /* WholeChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563C8D2D20C97F9D003C4822 /* WholeChooseView.m */; };
 		563C8D3020C97FB2003C4822 /* WholeChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563C8D2F20C97FB2003C4822 /* WholeChooseView.xib */; };
+		564D9D0C21415A1B00310AD4 /* ZYNetworkAccessibity.m in Sources */ = {isa = PBXBuildFile; fileRef = 564D9D0A21415A1A00310AD4 /* ZYNetworkAccessibity.m */; };
 		56508699205CBEC500FD8497 /* SpecialMakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56508698205CBEC500FD8497 /* SpecialMakeViewController.m */; };
 		5650869C205CD0AB00FD8497 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5650869B205CD0AB00FD8497 /* OrderDetailViewController.m */; };
 		565086A1205CD98400FD8497 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5650869F205CD98400FD8497 /* OrderListCell.m */; };
@@ -317,6 +318,8 @@
 		563C8D2C20C97F9D003C4822 /* WholeChooseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WholeChooseView.h; sourceTree = "<group>"; };
 		563C8D2D20C97F9D003C4822 /* WholeChooseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WholeChooseView.m; sourceTree = "<group>"; };
 		563C8D2F20C97FB2003C4822 /* WholeChooseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WholeChooseView.xib; sourceTree = "<group>"; };
+		564D9D0A21415A1A00310AD4 /* ZYNetworkAccessibity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYNetworkAccessibity.m; sourceTree = "<group>"; };
+		564D9D0B21415A1A00310AD4 /* ZYNetworkAccessibity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYNetworkAccessibity.h; sourceTree = "<group>"; };
 		56508697205CBEC500FD8497 /* SpecialMakeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpecialMakeViewController.h; sourceTree = "<group>"; };
 		56508698205CBEC500FD8497 /* SpecialMakeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpecialMakeViewController.m; sourceTree = "<group>"; };
 		5650869A205CD0AB00FD8497 /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
@@ -985,6 +988,15 @@
 			path = ShopCar;
 			sourceTree = "<group>";
 		};
+		564D9D0921415A1A00310AD4 /* ZYNetworkAccessibity */ = {
+			isa = PBXGroup;
+			children = (
+				564D9D0B21415A1A00310AD4 /* ZYNetworkAccessibity.h */,
+				564D9D0A21415A1A00310AD4 /* ZYNetworkAccessibity.m */,
+			);
+			path = ZYNetworkAccessibity;
+			sourceTree = "<group>";
+		};
 		5650869D205CD96500FD8497 /* Order */ = {
 			isa = PBXGroup;
 			children = (
@@ -1374,6 +1386,7 @@
 		5695BEB72042A4BA0036D54B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				564D9D0921415A1A00310AD4 /* ZYNetworkAccessibity */,
 				A296424D20F5AB5E00B6E8B6 /* XLPhotoBrowser+CoderXL */,
 				5678495E20C0315800739A3D /* iOS */,
 				A289423C20B3CAE300D8E9E5 /* BezierCurvcLine */,
@@ -2153,6 +2166,7 @@
 				56940C2A20515DF900DFA6D6 /* UIButton+YXP.m in Sources */,
 				5695BF402042AC180036D54B /* UIView+LYExtension.m in Sources */,
 				5695BF572042AC1D0036D54B /* EasyShowLodingView.m in Sources */,
+				564D9D0C21415A1B00310AD4 /* ZYNetworkAccessibity.m in Sources */,
 				56940C2620515DF900DFA6D6 /* UITableView+TB.m in Sources */,
 				5695BF1D2042ABAB0036D54B /* UtilsData.m in Sources */,
 				5695BF1F2042ABAB0036D54B /* UserData.m in Sources */,
