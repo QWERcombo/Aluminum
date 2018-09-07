@@ -19,6 +19,13 @@
         self.frame = frame;
         [self.zhengbanBtn setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
         self.lastSelected = 100;
+        
+        for (UIView *sub in self.contentView.subviews) {
+            if ([sub isKindOfClass:[CustomButton class]]) {
+                CustomButton *button = (CustomButton*)sub;
+                [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            }
+        }
     }
     return self;
 }

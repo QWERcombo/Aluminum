@@ -17,6 +17,7 @@
 
 @interface WholeChooseView : UIView <CAAnimationDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *houduTF;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UITextField *zhijingTF;
 @property (nonatomic, assign) id <WholeChooseViewDelegate> delegate;
 @property (nonatomic, strong) NSMutableDictionary *dataDic;
