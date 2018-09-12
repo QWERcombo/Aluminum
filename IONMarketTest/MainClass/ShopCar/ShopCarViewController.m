@@ -161,7 +161,7 @@
                 weakself.totoal += [car.money floatValue];
             }
             priceLabel.text = [NSString stringWithFormat:@"合计：￥%.2lf元", weakself.totoal];
-            [excuteButton setTitle:[NSString stringWithFormat:@"去结算(%ld)", self.selectArr.count] forState:UIControlStateNormal];
+            [excuteButton setTitle:[NSString stringWithFormat:@"去结算(%ld)", (long)self.selectArr.count] forState:UIControlStateNormal];
         } else {
             allButton.selected = NO;
             priceLabel.text = @"合计：￥0.00元";
@@ -193,6 +193,7 @@
         [self deleteShopCar:car.id];
         [self.dataMuArr removeObject:car];
         [self.tabView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tabView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         
         if ([self.selectArr containsObject:car]) {
             [self.selectArr removeObject:car];
@@ -203,7 +204,7 @@
                     self.totoal += [car.money floatValue];
                 }
                 priceLabel.text = [NSString stringWithFormat:@"合计：￥%.2lf元", self.totoal];
-                [excuteButton setTitle:[NSString stringWithFormat:@"去结算(%ld)", self.selectArr.count] forState:UIControlStateNormal];
+                [excuteButton setTitle:[NSString stringWithFormat:@"去结算(%ld)", (unsigned long)self.selectArr.count] forState:UIControlStateNormal];
             } else {
                 allButton.selected = NO;
                 priceLabel.text = @"合计：￥0.00元";
@@ -241,7 +242,7 @@
         }
         [self.selectArr addObjectsFromArray:self.dataMuArr];
         priceLabel.text = [NSString stringWithFormat:@"合计：￥%.2lf元", totoal];  //更新价格
-        [excuteButton setTitle:[NSString stringWithFormat:@"去结算(%ld)", self.selectArr.count] forState:UIControlStateNormal];
+        [excuteButton setTitle:[NSString stringWithFormat:@"去结算(%ld)", (unsigned long)self.selectArr.count] forState:UIControlStateNormal];
     } else {
         for (ShopCar *car in self.dataMuArr) {
             car.isSelectedCard = NO;
