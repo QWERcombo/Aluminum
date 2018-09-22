@@ -40,8 +40,8 @@
     self.click = click;
     
     FaPiaoModel *dataM = (FaPiaoModel *)model;
-    self.ticketPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.money];
-    self.expressPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.orderIds];
+    self.ticketPrice.text = [NSString stringWithFormat:@"%@ 元", [NSString getStringAfterTwo:dataM.money]];
+    self.expressPrice.text = [NSString stringWithFormat:@"%@ 元", [NSString getStringAfterTwo:dataM.orderIds]];
     self.ticketID.text = [NSString stringWithFormat:@"订单编号: %@", dataM.id];
     [self.statusButton setTitle:dataM.kaipiaoStatus forState:UIControlStateNormal];
     

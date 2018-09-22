@@ -33,7 +33,7 @@
     
     WalletListModel *dataM = (WalletListModel *)model;
     self.dateLab.text = [self getDateString:dataM.createDate];
-    self.moneyLab.text = [NSString stringWithFormat:@"%@元", dataM.money];
+    self.moneyLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:dataM.money]];
 }
 
 - (NSString *)getDateString:(NSString *)string {

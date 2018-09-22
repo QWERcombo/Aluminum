@@ -73,7 +73,7 @@
     OrderListModel *dataM = (OrderListModel *)model;
     
     self.orderIDLabel.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
-    self.expressPrice.text = [NSString stringWithFormat:@"物流费: %@元", dataM.wuliufei];
+    self.expressPrice.text = [NSString stringWithFormat:@"物流费: %@元", [NSString getStringAfterTwo:dataM.wuliufei]];
     self.productPrice.text = [NSString stringWithFormat:@"产品费: %@", [NSString getStringAfterTwo:dataM.totalMoney]];
     
     switch ([dataM.status integerValue]) {

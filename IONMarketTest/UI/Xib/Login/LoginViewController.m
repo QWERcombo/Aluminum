@@ -81,8 +81,8 @@
         
         [[UserData currentUser] giveData:resultDic[@"user"]];
         
-//        [[UserData currentUser] giveData:@{@"isCheck":[NSString stringWithFormat:@"%@", resultDic[@"isCheck"]]}];
-        [[UserData currentUser] giveData:@{@"isCheck":@"1"}];
+        [[UserData currentUser] giveData:@{@"isCheck":[NSString stringWithFormat:@"%@", resultDic[@"isCheck"]]}];
+//        [[UserData currentUser] giveData:@{@"isCheck":@"1"}];
         
         
         [[UtilsData sharedInstance] postLoginNotice];

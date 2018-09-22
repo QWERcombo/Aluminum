@@ -793,12 +793,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5678494F20C02A8E00739A3D /* UIKit.framework in Frameworks */,
 				A2555F9220C0DDE4000C7E03 /* libssl.a in Frameworks */,
 				A2555F9820C0DFF9000C7E03 /* AlipaySDK.framework in Frameworks */,
 				5678495520C02AAC00739A3D /* CoreMotion.framework in Frameworks */,
 				5678495320C02AA300739A3D /* CFNetwork.framework in Frameworks */,
 				5678495120C02A9700739A3D /* Foundation.framework in Frameworks */,
-				5678494F20C02A8E00739A3D /* UIKit.framework in Frameworks */,
 				5605C04420A09BFC00E712A3 /* CoreGraphics.framework in Frameworks */,
 				5678494D20C02A8100739A3D /* CoreText.framework in Frameworks */,
 				5678494B20C02A7700739A3D /* QuartzCore.framework in Frameworks */,
@@ -2548,7 +2548,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F66NLE8FYB;
+				DEVELOPMENT_TEAM = N9944VQXC8;
 				INFOPLIST_FILE = IONMarketTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-.IONMarketTestTests";
@@ -2563,7 +2563,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F66NLE8FYB;
+				DEVELOPMENT_TEAM = N9944VQXC8;
 				INFOPLIST_FILE = IONMarketTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-.IONMarketTestTests";

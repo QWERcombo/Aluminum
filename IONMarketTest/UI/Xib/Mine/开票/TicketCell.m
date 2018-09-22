@@ -53,8 +53,8 @@
     self.click = click;
     OrderListModel *dataM = (OrderListModel *)model;
     
-    self.expressPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.wuliufei];
-    self.ticketPrice.text = [NSString stringWithFormat:@"%@ 元", dataM.totalMoney];
+    self.expressPrice.text = [NSString stringWithFormat:@"%@ 元", [NSString getStringAfterTwo:dataM.wuliufei]];
+    self.ticketPrice.text = [NSString stringWithFormat:@"%@ 元", [NSString getStringAfterTwo:dataM.totalMoney]];
     self.orderID.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
     [self.selectBtn setSelected:dataM.isSelectedCard];
     
