@@ -41,8 +41,8 @@
     self.orderNos = [orderString substringToIndex:orderString.length-1];
     self.totalFee = [NSString stringWithFormat:@"%.2lf", totalFee];
     self.wuliufeiFee = [NSString stringWithFormat:@"%.2lf", wuliufeiFee];
-    self.totalLab.text = [NSString stringWithFormat:@"开票总额: %.2lf元", totalFee];
-    self.wuliufeiLab.text = [NSString stringWithFormat:@"物流费: %.2lf元", wuliufeiFee];
+    self.totalLab.text = [NSString stringWithFormat:@"开票总额: %@元", [NSString getStringAfterTwo:[NSNumber numberWithFloat:totalFee].stringValue]];
+    self.wuliufeiLab.text = [NSString stringWithFormat:@"物流费: %@元", [NSString getStringAfterTwo:[NSNumber numberWithFloat:wuliufeiFee].stringValue]];
 }
 
 

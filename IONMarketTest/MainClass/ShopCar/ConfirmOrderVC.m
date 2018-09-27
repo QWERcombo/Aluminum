@@ -52,7 +52,7 @@
         ShopCar *shopcar = [self.carArr firstObject];
         
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        [dict setValue:shopcar.money forKey:@"type"];
+        [dict setValue:shopcar.type forKey:@"type"];
         [dict setValue:shopcar.productNum forKey:@"amount"];
         [dict setValue:shopcar.zhonglei forKey:@"zhonglei"];
         [dict setValue:shopcar.erjimulu forKey:@"erjimulu"];

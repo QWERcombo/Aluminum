@@ -54,8 +54,6 @@
 
 - (void)viewSafeAreaInsetsDidChange {
     [super viewSafeAreaInsetsDidChange];
-    
-    
 }
 
 - (IBAction)weikaipiaoClicker:(UIButton *)sender {
@@ -69,9 +67,9 @@
 - (IBAction)yikaipiaoClicker:(UIButton *)sender {
     [self.weikaipiaoBtn setSelected:NO];
     [self.yikaipianBtn setSelected:YES];
-    self.bottomHeight.constant = 0;
+    self.bottomHeight.constant = 0.1;
     self.bottomView.hidden = YES;
-    [self getDataSource:@"1"];//已开
+    [self getDataSource:@"开票成功"];//已开
 }
 
 - (void)payCliker:(UIButton *)sender {
@@ -120,16 +118,32 @@
     [self.ticketDataSource removeAllObjects];
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
     [dataDic setValue:type forKey:@"kaipiaoStatus"];
-    [dataDic setValue:[UserData currentUser].phone forKey:@"phone"];
-    self.type = type;
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_OrderList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    self.type = type;
+    NSString *url = @"";
+    if ([type isEqualToString:@"0"]) {
+        url = Interface_OrderList;
+        [dataDic setValue:[UserData currentUser].phone forKey:@"phone"];
+    } else {
+        url = Interface_GetkaipiaoByUser;
+        [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+    }
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:url andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         NSLog(@"--+%@", resultDic);
         
         NSArray *dataSourceArr = resultDic[@"result"];
         for (NSDictionary *dic in dataSourceArr) {
-            OrderListModel *model = [[OrderListModel alloc] initWithDictionary:dic error:nil];
-            [self.ticketDataSource addObject:model];
+            
+            if ([type isEqualToString:@"0"]) {
+                
+                OrderListModel *model = [[OrderListModel alloc] initWithDictionary:dic error:nil];
+                [self.ticketDataSource addObject:model];
+            } else {
+                
+                FaPiaoModel *model = [[FaPiaoModel alloc] initWithDictionary:dic error:nil];
+                [self.ticketDataSource addObject:model];
+            }
         }
         
         [self.selectAllBtn setSelected:NO];
@@ -153,7 +167,8 @@
     } else {
         iskaipiao = NO;
     }
-    return [UtilsMold creatCell:@"TicketCell" table:tableView deledate:self model:[self.ticketDataSource objectAtIndex:indexPath.row] data:SINT(iskaipiao) andCliker:^(NSDictionary *clueDic) {
+    
+    return [UtilsMold creatCell:@"TicketCell" table:tableView deledate:self model:self.ticketDataSource.count?[self.ticketDataSource objectAtIndex:indexPath.row]:nil data:SINT(iskaipiao) andCliker:^(NSDictionary *clueDic) {
         
     }];
 }

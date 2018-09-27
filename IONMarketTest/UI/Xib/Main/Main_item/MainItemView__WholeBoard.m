@@ -72,7 +72,7 @@
         NSString *orderMoney = [NSString stringWithFormat:@"%.2lf",  [orderMoneyStr floatValue]];
         NSString *orderWeight = [NSString stringWithFormat:@"%@", resultDic[@"rule"]];
         self.zhongliangLab.text = orderWeight;
-        self.shuliangLab.text = [NSString stringWithFormat:@"%@元",orderMoney];
+        self.shuliangLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:orderMoney]];
         self.isGetOrderMoney = YES;
         
         if (self.click) {

@@ -16,5 +16,7 @@
 @property (nonatomic, strong) NSString *money;
 @property (nonatomic, strong) NSString *remark;
 @property (nonatomic, strong) NSString *orderIds;
+@property (nonatomic, strong) NSString *kaipiaoTime;
+@property (nonatomic, strong) NSString *wuliufei;
 
 @end

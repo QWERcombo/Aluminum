@@ -33,7 +33,7 @@
     
     WalletListModel *dataM = (WalletListModel *)model;
     self.shenqingshijian.text = [self getDateString:dataM.withDrawTime];
-    self.tixianjine.text = [NSString stringWithFormat:@"%@元", dataM.money];
+    self.tixianjine.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:dataM.money]];
     self.tixiankahao.text = dataM.bankNo;
     self.kaihurenxingming.text = dataM.bankName;
     self.kaihuhangmingcheng.text = dataM.bank;

@@ -51,12 +51,27 @@
 
 - (void)loadData:(NSObject *)model isWeiKaiPiao:(BOOL)isWeiKaiPiao andCliker:(ClikBlock)click {
     self.click = click;
-    OrderListModel *dataM = (OrderListModel *)model;
     
-    self.expressPrice.text = [NSString stringWithFormat:@"%@ 元", [NSString getStringAfterTwo:dataM.wuliufei]];
-    self.ticketPrice.text = [NSString stringWithFormat:@"%@ 元", [NSString getStringAfterTwo:dataM.totalMoney]];
-    self.orderID.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
-    [self.selectBtn setSelected:dataM.isSelectedCard];
+    if ([model isKindOfClass:[OrderListModel class]]) {
+        
+        OrderListModel *dataM = (OrderListModel *)model;
+        self.expressPrice.text = [NSString stringWithFormat:@"%@ 元", [NSString getStringAfterTwo:dataM.wuliufei]];
+        self.ticketPrice.text = [NSString stringWithFormat:@"%@ 元", [NSString getStringAfterTwo:dataM.totalMoney]];
+        self.orderID.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
+        [self.selectBtn setSelected:dataM.isSelectedCard];
+        
+    } else if ([model isKindOfClass:[FaPiaoModel class]]) {
+        
+        FaPiaoModel *dataM = (FaPiaoModel *)model;
+        self.expressPrice.text = [NSString stringWithFormat:@"%@ 元", [NSString getStringAfterTwo:dataM.wuliufei]];
+        self.ticketPrice.text = [NSString stringWithFormat:@"%@ 元", [NSString getStringAfterTwo:dataM.money]];
+        self.orderID.text = [NSString stringWithFormat:@"订单编号: %@", dataM.orderIds];
+        [self.selectBtn setSelected:dataM.isSelectedCard];
+        
+    } else {
+        
+    }
+    
     
     if (isWeiKaiPiao) {
         self.selectWidth.constant = 50;

@@ -181,7 +181,7 @@
             showCount = count;
         }
         if ([totalMoney floatValue] >0) {
-            showMoney = [NSString stringWithFormat:@"%@元", totalMoney];
+            showMoney = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:totalMoney]];
         }
         
         if (block) {

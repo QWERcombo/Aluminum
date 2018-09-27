@@ -161,7 +161,7 @@
 //    }];
 //    termButton.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);
     
-    UILabel *remainLab = [UILabel lableWithText:[NSString stringWithFormat:@"%@元", self.remain] Font:FONT_ArialMT(25) TextColor:[UIColor mianColor:2]];
+    UILabel *remainLab = [UILabel lableWithText:[NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:self.remain]] Font:FONT_ArialMT(25) TextColor:[UIColor mianColor:2]];
     [topView addSubview:remainLab];
     [remainLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(topView.mas_centerY).offset(15);
