@@ -834,7 +834,7 @@
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderMoney andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"+++%@", resultDic);
-        NSString *orderMoneyStr = resultDic[@"orderMoney"];
+        NSString *orderMoneyStr = [NSString stringWithFormat:@"%@", resultDic[@"orderMoney"]];
         NSString *orderMoney = [NSString stringWithFormat:@"%@",  [NSString getStringAfterTwo:orderMoneyStr]];
         NSString *orderWeight = [NSString stringWithFormat:@"%@", resultDic[@"rule"]];
         if (weakself.passTotalPrice) {
