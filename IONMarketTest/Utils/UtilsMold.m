@@ -246,6 +246,17 @@ DEF_SINGLETON(UtilsMold);
         }];
         return cell;
     }
+    else if ([type isEqualToString:@"ConfirmOrderCell"]) {
+        static NSString *IDs = @"ConfirmOrderCell";
+        ConfirmOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:IDs];
+        if (cell == nil) {
+            cell = [ConfirmOrderCell getConfirmOrderCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell loadData:model];
+        return cell;
+    }
+    
     
     
     
@@ -322,6 +333,9 @@ DEF_SINGLETON(UtilsMold);
     } else if ([type isEqualToString:@"WuLiuCell"]) {
         
         return [WuLiuCell getCellHight:data Model:model indexPath:indexpath];
+    } else if ([type isEqualToString:@"ConfirmOrderCell"]) {
+        
+        return [ConfirmOrderCell getCellHight:data Model:model indexPath:indexpath];
     }
     
     

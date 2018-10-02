@@ -164,6 +164,8 @@
 		56DB05CB20FAEA37009FA8C8 /* WithdrawRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DB05C920FAEA37009FA8C8 /* WithdrawRecordCell.m */; };
 		56DB05CC20FAEA37009FA8C8 /* WithdrawRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56DB05CA20FAEA37009FA8C8 /* WithdrawRecordCell.xib */; };
 		56EC993C206D121D00F2D2D0 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC993B206D121D00F2D2D0 /* AddressModel.m */; };
+		56F9E9BF2163790500141852 /* ConfirmOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F9E9BD2163790500141852 /* ConfirmOrderCell.m */; };
+		56F9E9C02163790500141852 /* ConfirmOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56F9E9BE2163790500141852 /* ConfirmOrderCell.xib */; };
 		A21B4669207B194000802621 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A21B4668207B194000802621 /* Mine.storyboard */; };
 		A21B466C207B36DD00802621 /* AuthenticationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A21B466B207B36DD00802621 /* AuthenticationTableViewController.m */; };
 		A21B466F207B3E5D00802621 /* AuthDetailTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A21B466E207B3E5D00802621 /* AuthDetailTViewController.m */; };
@@ -560,6 +562,9 @@
 		56DB05CA20FAEA37009FA8C8 /* WithdrawRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawRecordCell.xib; sourceTree = "<group>"; };
 		56EC993A206D121D00F2D2D0 /* AddressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressModel.h; sourceTree = "<group>"; };
 		56EC993B206D121D00F2D2D0 /* AddressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
+		56F9E9BC2163790500141852 /* ConfirmOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderCell.h; sourceTree = "<group>"; };
+		56F9E9BD2163790500141852 /* ConfirmOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderCell.m; sourceTree = "<group>"; };
+		56F9E9BE2163790500141852 /* ConfirmOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmOrderCell.xib; sourceTree = "<group>"; };
 		A21B4668207B194000802621 /* Mine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
 		A21B466A207B36DD00802621 /* AuthenticationTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationTableViewController.h; sourceTree = "<group>"; };
 		A21B466B207B36DD00802621 /* AuthenticationTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationTableViewController.m; sourceTree = "<group>"; };
@@ -1224,6 +1229,7 @@
 		56940C4220515F6A00DFA6D6 /* ShopCar */ = {
 			isa = PBXGroup;
 			children = (
+				56F9E9BB216378C500141852 /* View */,
 				56940C472051605B00DFA6D6 /* ShopCarViewController.h */,
 				56940C482051605B00DFA6D6 /* ShopCarViewController.m */,
 				A283488C2060AAB200C228AD /* ShopCarDetailViewController.h */,
@@ -1504,6 +1510,16 @@
 				5695BF622042AF8B0036D54B /* Reachability.m */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		56F9E9BB216378C500141852 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				56F9E9BC2163790500141852 /* ConfirmOrderCell.h */,
+				56F9E9BD2163790500141852 /* ConfirmOrderCell.m */,
+				56F9E9BE2163790500141852 /* ConfirmOrderCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A2240125207AFEF800A08E6F /* 企业认证 */ = {
@@ -2024,6 +2040,7 @@
 				A229818B2061FF2B007B6112 /* RemainExplainCell.xib in Resources */,
 				567B14C520C43F1B00B81FD6 /* TradeRecordCell.xib in Resources */,
 				5695BE7E20429F1B0036D54B /* Assets.xcassets in Resources */,
+				56F9E9C02163790500141852 /* ConfirmOrderCell.xib in Resources */,
 				5695BE7920429F1B0036D54B /* Main.storyboard in Resources */,
 				A2301B3320637EE0006B9F20 /* FeedbackViewController.xib in Resources */,
 				5686219A20A9CB6E0030C761 /* ShopCarNewListCell.xib in Resources */,
@@ -2161,6 +2178,7 @@
 				A296427A20F5AB5E00B6E8B6 /* TADotView.m in Sources */,
 				5695BF5D2042AC1D0036D54B /* UIView+EasyShowExt.m in Sources */,
 				565086A9205CFF1800FD8497 /* OrderDetailCell.m in Sources */,
+				56F9E9BF2163790500141852 /* ConfirmOrderCell.m in Sources */,
 				5695BF0E2042AB0E0036D54B /* NEUSecurityUtil.m in Sources */,
 				A2DC6FCA20BBB0E600A41184 /* BezierCurveView.m in Sources */,
 				56940C2A20515DF900DFA6D6 /* UIButton+YXP.m in Sources */,

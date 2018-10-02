@@ -2,4 +2,69 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IONMarketTest/MainClass/ShopCar/ConfirmOrderVC.m"
+            timestampString = "560172464.9823951"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-confirmClicker:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ConfirmOrderVC confirmClicker:]"
+                  moduleName = "IONMarketTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhaoyue/Documents/Aluminum/IONMarketTest/MainClass/ShopCar/ConfirmOrderVC.m"
+                  timestampString = "560172465.117149"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "5058">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__33-[ConfirmOrderVC confirmClicker:]_block_invoke_2"
+                  moduleName = "IONMarketTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhaoyue/Documents/Aluminum/IONMarketTest/MainClass/ShopCar/ConfirmOrderVC.m"
+                  timestampString = "560172465.1201"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.206"
+                  moduleName = "IONMarketTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhaoyue/Documents/Aluminum/IONMarketTest/MainClass/ShopCar/ConfirmOrderVC.m"
+                  timestampString = "560172465.122743"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

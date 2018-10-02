@@ -89,6 +89,7 @@
 
 - (void)createBottomView {
     UIView *bottomView = [[UIView alloc] init];
+    bottomView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:bottomView];
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
@@ -156,11 +157,15 @@
         
         weakself.totoal = 0.f;
         if (self.selectArr.count) {
-            allButton.selected = YES;
+            if (self.selectArr.count == self.dataMuArr.count) {
+                allButton.selected = YES;
+            } else {
+                allButton.selected = NO;
+            }
             for (ShopCar *car in weakself.selectArr) {
                 weakself.totoal += [car.money floatValue];
             }
-            priceLabel.text = [NSString stringWithFormat:@"合计：￥%.2lf元", weakself.totoal];
+            priceLabel.text = [NSString stringWithFormat:@"合计：￥%@元", [NSString getStringAfterTwo:[NSNumber numberWithFloat:weakself.totoal].stringValue]];
             [excuteButton setTitle:[NSString stringWithFormat:@"去结算(%ld)", (long)self.selectArr.count] forState:UIControlStateNormal];
         } else {
             allButton.selected = NO;

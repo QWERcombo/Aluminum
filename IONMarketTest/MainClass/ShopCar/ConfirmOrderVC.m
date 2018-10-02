@@ -21,6 +21,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *wuliufeiLab;
 @property (weak, nonatomic) IBOutlet UILabel *shuliangLab;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *moneyLab;
+@property (weak, nonatomic) IBOutlet UISwitch *zitiSwitch;
+@property (weak, nonatomic) IBOutlet UIView *addressView;
+@property (weak, nonatomic) IBOutlet UISwitch *dayinSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *biaoqianSwitch;
+@property (weak, nonatomic) IBOutlet UITextField *noteTF;
+
+
 @end
 
 @implementation ConfirmOrderVC
@@ -35,13 +44,16 @@
         total += [car.money floatValue];
         shuliang += [car.productNum integerValue];
     }
-    self.priceLab.text = [NSString stringWithFormat:@"%.2lf", total];
-    self.shuliangLab.text = [NSString stringWithFormat:@"%ld", shuliang];
+    self.moneyLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:[NSNumber numberWithFloat:total].stringValue]];
+    NSString *shuliangStr = [NSString stringWithFormat:@"%ld", shuliang];
+    self.shuliangLab.text = [NSString stringWithFormat:@"共 %@ 件", shuliangStr];
+//    self.shuliangLab.attributedText = [UILabel labGetAttributedStringFrom:2 toEnd:shuliangStr.length WithColor:[UIColor colorWithHexString:@"2F75EC"] andFont:nil allFullText:self.shuliangLab.text];
+    self.confirmOrderDataSource.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self getDefaultAddressModel];
 }
 
 - (IBAction)confirmClicker:(UIButton *)sender {
-    if (!self.addressModel) {
+    if (!self.addressModel && !self.zitiSwitch.isOn) {
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择地址！" time:0 aboutType:WHShowViewMode_Text state:NO];
         return;
     }
@@ -58,7 +70,23 @@
         [dict setValue:shopcar.erjimulu forKey:@"erjimulu"];
         [dict setValue:shopcar.money forKey:@"money"];
         [dict setValue:[UserData currentUser].phone forKey:@"phone"];
-        [dict setValue:self.addressModel.id forKey:@"addressId"];
+        if (self.zitiSwitch.isOn) {
+            [dict setValue:nil forKey:@"addressId"];
+            [dict setValue:@"自提" forKey:@"ziti"];
+        } else {
+            [dict setValue:self.addressModel.id forKey:@"addressId"];
+        }
+        if (self.dayinSwitch.isOn) {
+            [dict setValue:@"打包" forKey:@"isPackage"];
+        } else {
+            [dict setValue:@"不打包" forKey:@"isPackage"];
+        }
+        if (self.biaoqianSwitch.isOn) {
+            [dict setValue:@"打印标签" forKey:@"isTip"];
+        } else {
+            [dict setValue:@"不打印标签" forKey:@"isTip"];
+        }
+        [dict setValue:self.noteTF.text forKey:@"remark"];
 
         if ([shopcar.zhonglei isEqualToString:@"圆棒"]) {
             [dict setValue:shopcar.length forKey:@"chang"];
@@ -96,8 +124,27 @@
             [orderIds appendString:@","];
         }
         [dict setValue:[orderIds substringToIndex:orderIds.length-1] forKey:@"gouwucheIds"];
-        [dict setValue:self.addressModel.id forKey:@"addressId"];
+//        [dict setValue:self.addressModel.id forKey:@"addressId"];
         [dict setValue:[UserData currentUser].phone forKey:@"phone"];
+        if (self.zitiSwitch.isOn) {
+            [dict setValue:@"" forKey:@"addressId"];
+            [dict setValue:@"自提" forKey:@"ziti"];
+        } else {
+            [dict setValue:self.addressModel.id forKey:@"addressId"];
+        }
+        if (self.dayinSwitch.isOn) {
+            [dict setValue:@"打包" forKey:@"isPackage"];
+        } else {
+            [dict setValue:@"不打包" forKey:@"isPackage"];
+        }
+        if (self.biaoqianSwitch.isOn) {
+            [dict setValue:@"打印标签" forKey:@"isTip"];
+        } else {
+            [dict setValue:@"不打印标签" forKey:@"isTip"];
+        }
+        [dict setValue:self.noteTF.text forKey:@"remark"];
+        
+        
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveFromGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //            NSLog(@"---%@", resultDic);
             [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"下单成功" time:0 aboutType:WHShowViewMode_Text state:YES];
@@ -143,9 +190,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return [UtilsMold creatCell:@"OrderDetailCell" table:tableView deledate:self model:[self.carArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+    return [UtilsMold creatCell:@"ConfirmOrderCell" table:tableView deledate:self model:[self.carArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
         
     }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [UtilsMold getCellHight:@"ConfirmOrderCell" data:nil model:nil indexPath:indexPath];
 }
 
 
@@ -181,6 +232,22 @@
     
     
 }
+
+#pragma mark --- Handle
+
+- (IBAction)ziti:(UISwitch *)sender {
+    NSLog(@"自提 %d", sender.isOn);
+    self.addressView.hidden = sender.isOn;
+}
+
+- (IBAction)dayin:(UISwitch *)sender {
+    NSLog(@"打印 %d", sender.isOn);
+}
+
+- (IBAction)biaoqian:(UISwitch *)sender {
+    NSLog(@"尺寸 %d", sender.isOn);
+}
+
 
 /*
 #pragma mark - Navigation
