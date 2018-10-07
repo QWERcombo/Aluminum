@@ -39,6 +39,7 @@
         if (self.shorttitleArr.count > 0) {
             self.bnameLab.text = [self.shorttitleArr objectAtIndex:0];
         }
+        
         [self startTimer];
     }
     return self;
@@ -119,19 +120,34 @@
     if (array.count > 1) {     //多张图片
         for (int i = 0 ; i < array.count + 2; i++) {
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)];
-            imageView.backgroundColor = [UIColor lightGrayColor];
             imageView.contentMode = UIViewContentModeScaleAspectFill;
             imageView.layer.masksToBounds = YES;
             [self.scrollView addSubview:imageView];
             if (i == 0) {
-//                [imageView sd_setImageWithURL:[NSURL URLWithString:array[array.count - 1]] placeholderImage:[UIImage imageWithColor:[UIColor Grey_BlankColor]]];
-                imageView.image = array[array.count-1];
+                id url = array[array.count-1];
+                if ([url isKindOfClass:[NSString class]]) {
+                    [imageView sd_setImageWithURL:[NSURL URLWithString:array[array.count - 1]] placeholderImage:[UIImage imageWithColor:[UIColor grayColor]]];
+                    imageView.contentMode = UIViewContentModeScaleAspectFit;
+                } else {
+                    imageView.image = array[array.count-1];
+                }
             }else if(i == array.count + 1){
-//                [imageView sd_setImageWithURL:[NSURL URLWithString:array[0]] placeholderImage:[UIImage imageWithColor:[UIColor Grey_BlankColor]]];
-                imageView.image = array[0];
+                id url = array[0];
+                if ([url isKindOfClass:[NSString class]]) {
+                    [imageView sd_setImageWithURL:[NSURL URLWithString:array[0]] placeholderImage:[UIImage imageWithColor:[UIColor grayColor]]];
+                    imageView.contentMode = UIViewContentModeScaleAspectFit;
+                } else {
+                    imageView.image = array[0];
+                }
             }else{
-//                [imageView sd_setImageWithURL:[NSURL URLWithString:array[i - 1]] placeholderImage:[UIImage imageWithColor:[UIColor Grey_BlankColor]]];
-                imageView.image = array[i-1];
+                id url = array[i-1];
+                if ([url isKindOfClass:[NSString class]]) {
+                    [imageView sd_setImageWithURL:[NSURL URLWithString:array[i - 1]] placeholderImage:[UIImage imageWithColor:[UIColor grayColor]]];
+                    imageView.contentMode = UIViewContentModeScaleAspectFit;
+                } else {
+                    imageView.image = array[i-1];
+                }
+                
             }
             contentSize = CGSizeMake((array.count + 2) * self.frame.size.width,0);
             startPoint = CGPointMake(self.frame.size.width, 0);
@@ -139,7 +155,14 @@
     }else{ //1张图片
         for (int i = 0; i < array.count; i ++) {
             UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * self.frame.size.width, 0, self.frame.size.width, self.frame.size.height - PAGE_H)];
-            [imageView sd_setImageWithURL:[NSURL URLWithString:array[i]] placeholderImage:[UIImage imageWithColor:[UIColor Grey_BlankColor]]];
+            id url = array[i];
+            if ([url isKindOfClass:[NSString class]]) {
+                [imageView sd_setImageWithURL:[NSURL URLWithString:array[i]] placeholderImage:[UIImage imageWithColor:[UIColor grayColor]]];
+                imageView.contentMode = UIViewContentModeScaleAspectFit;
+            } else {
+                imageView.image = url;
+            }
+            
             [self addSubview:imageView];
         }
         contentSize = CGSizeMake(self.frame.size.width, 0);
@@ -163,8 +186,9 @@
 //    self.bnameLab.frame = CGRectMake(10, 0, CGRectGetWidth(self.frame) - 50, 25);
     
     self.pageControl = [[UIPageControl alloc] init];
-    self.pageControl .superview.backgroundColor = [UIColor redColor];
     self.pageControl .numberOfPages = array.count;
+    self.pageControl.currentPageIndicatorTintColor = [UIColor mianColor:2];
+    self.pageControl.pageIndicatorTintColor = [UIColor grayColor];
     //默认是0
     self.pageControl .currentPage = 0;
     self.pageControl.center = CGPointMake(CGRectGetWidth(_scrollView.frame)*0.5, CGRectGetHeight(_scrollView.frame) - 12.0);
@@ -217,7 +241,7 @@
 - (void)startTimer
 {
     __weak typeof(self) weakSelf = self;
-    weakSelf.timer = [NSTimer weakTimer_scheduledTimerWithTimeInterval:_duration==0?5:_duration block:^{
+    weakSelf.timer = [NSTimer weakTimer_scheduledTimerWithTimeInterval:_duration block:^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf updateTimer];
     } repeats:YES];
@@ -272,25 +296,26 @@
     [self startTimer];
 }
 
-- (void)setPageBackgroundColor:(UIColor *)pageBackgroundColor
-{
-    if (pageBackgroundColor) {
-        self.pageControl.backgroundColor = pageBackgroundColor;
-    }
-}
+//- (void)setPageBackgroundColor:(UIColor *)pageBackgroundColor
+//{
+//    if (pageBackgroundColor) {
+//        self.pageControl.backgroundColor = pageBackgroundColor;
+//    }
+//}
 
-- (void)setPageIndicatorTintColor:(UIColor *)pageIndicatorTintColor
-{
-    if (pageIndicatorTintColor) {
-        self.pageControl.pageIndicatorTintColor = pageIndicatorTintColor;
-    }
-}
-- (void)setCurrentPageColor:(UIColor *)currentPageColor
-{
-    if (currentPageColor) {
-        self.pageControl .currentPageIndicatorTintColor = currentPageColor;
-    }
-}
+//- (void)setPageIndicatorTintColor:(UIColor *)pageIndicatorTintColor
+//{
+//    if (pageIndicatorTintColor) {
+//        self.pageControl.pageIndicatorTintColor = pageIndicatorTintColor;
+//    }
+//}
+//- (void)setCurrentPageColor:(UIColor *)currentPageColor
+//{
+//    if (currentPageColor) {
+//        self.pageControl .currentPageIndicatorTintColor = currentPageColor;
+//    }
+//}
+
 -(void)setSelfBackgroundColor:(UIColor *)selfBackgroundColor
 {
     if (selfBackgroundColor) {

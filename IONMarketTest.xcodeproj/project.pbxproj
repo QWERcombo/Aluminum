@@ -114,7 +114,6 @@
 		5695BE8120429F1B0036D54B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5695BE7F20429F1B0036D54B /* LaunchScreen.storyboard */; };
 		5695BE8E20429F1B0036D54B /* IONMarketTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BE8D20429F1B0036D54B /* IONMarketTestTests.m */; };
 		5695BE9920429F1B0036D54B /* IONMarketTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BE9820429F1B0036D54B /* IONMarketTestUITests.m */; };
-		5695BEAA2042A28B0036D54B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BEA92042A28B0036D54B /* ViewController.m */; };
 		5695BEAF2042A30A0036D54B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BEAC2042A30A0036D54B /* main.m */; };
 		5695BEC12042A5300036D54B /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BEBB2042A5300036D54B /* BaseModel.m */; };
 		5695BEC22042A5300036D54B /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BEBD2042A5300036D54B /* BaseCell.m */; };
@@ -161,6 +160,7 @@
 		56B5215C20AB37B700F636BD /* ChoosePayWayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56B5215B20AB37B700F636BD /* ChoosePayWayView.xib */; };
 		56B58D1920BC529A00F92B91 /* WithdrawApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B58D1820BC529A00F92B91 /* WithdrawApplyViewController.m */; };
 		56BDC4CA209A019D00DDE4DE /* WholeBoardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BDC4C9209A019D00DDE4DE /* WholeBoardModel.m */; };
+		56D940752169F1CB00A3CBD9 /* ImageShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D940742169F1CB00A3CBD9 /* ImageShowViewController.m */; };
 		56DB05CB20FAEA37009FA8C8 /* WithdrawRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DB05C920FAEA37009FA8C8 /* WithdrawRecordCell.m */; };
 		56DB05CC20FAEA37009FA8C8 /* WithdrawRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56DB05CA20FAEA37009FA8C8 /* WithdrawRecordCell.xib */; };
 		56EC993C206D121D00F2D2D0 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC993B206D121D00F2D2D0 /* AddressModel.m */; };
@@ -460,8 +460,6 @@
 		5695BE9420429F1B0036D54B /* IONMarketTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IONMarketTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5695BE9820429F1B0036D54B /* IONMarketTestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IONMarketTestUITests.m; sourceTree = "<group>"; };
 		5695BE9A20429F1B0036D54B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5695BEA82042A28B0036D54B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5695BEA92042A28B0036D54B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5695BEAB2042A2B40036D54B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5695BEAC2042A30A0036D54B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5695BEAE2042A30A0036D54B /* IONMarketTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IONMarketTest.xcdatamodel; sourceTree = "<group>"; };
@@ -557,6 +555,8 @@
 		56B58D1820BC529A00F92B91 /* WithdrawApplyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawApplyViewController.m; sourceTree = "<group>"; };
 		56BDC4C8209A019D00DDE4DE /* WholeBoardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WholeBoardModel.h; sourceTree = "<group>"; };
 		56BDC4C9209A019D00DDE4DE /* WholeBoardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WholeBoardModel.m; sourceTree = "<group>"; };
+		56D940732169F1CB00A3CBD9 /* ImageShowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageShowViewController.h; sourceTree = "<group>"; };
+		56D940742169F1CB00A3CBD9 /* ImageShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageShowViewController.m; sourceTree = "<group>"; };
 		56DB05C820FAEA37009FA8C8 /* WithdrawRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawRecordCell.h; sourceTree = "<group>"; };
 		56DB05C920FAEA37009FA8C8 /* WithdrawRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawRecordCell.m; sourceTree = "<group>"; };
 		56DB05CA20FAEA37009FA8C8 /* WithdrawRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawRecordCell.xib; sourceTree = "<group>"; };
@@ -1209,6 +1209,8 @@
 			children = (
 				A2309AC220FA294C00D33914 /* WHWebViewController.h */,
 				A2309AC320FA294D00D33914 /* WHWebViewController.m */,
+				56D940732169F1CB00A3CBD9 /* ImageShowViewController.h */,
+				56D940742169F1CB00A3CBD9 /* ImageShowViewController.m */,
 				56940C4A2051607500DFA6D6 /* OrderViewController.h */,
 				56940C4B2051607500DFA6D6 /* OrderViewController.m */,
 				5650869A205CD0AB00FD8497 /* OrderDetailViewController.h */,
@@ -1329,8 +1331,6 @@
 		5695BEB02042A31B0036D54B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5695BEA82042A28B0036D54B /* ViewController.h */,
-				5695BEA92042A28B0036D54B /* ViewController.m */,
 				5695BEAD2042A30A0036D54B /* IONMarketTest.xcdatamodeld */,
 				5695BEAC2042A30A0036D54B /* main.m */,
 				A21B4668207B194000802621 /* Mine.storyboard */,
@@ -2124,9 +2124,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5695BEAA2042A28B0036D54B /* ViewController.m in Sources */,
 				56940C2720515DF900DFA6D6 /* NSMutableDictionary+YXP.m in Sources */,
 				5695BEC32042A5300036D54B /* BaseViewController.m in Sources */,
+				56D940752169F1CB00A3CBD9 /* ImageShowViewController.m in Sources */,
 				56940C2320515DF900DFA6D6 /* NSBundle+Language.m in Sources */,
 				56B58D1920BC529A00F92B91 /* WithdrawApplyViewController.m in Sources */,
 				5686219520A9C59A0030C761 /* TextTableViewController.m in Sources */,

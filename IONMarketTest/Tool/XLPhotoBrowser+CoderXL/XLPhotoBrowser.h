@@ -103,6 +103,7 @@
  */
 @property(nonatomic, strong) UIImage *placeholderImage;
 
+@property(nonatomic, assign) BOOL isTap;
 
 #pragma mark    ----------------------
 #pragma mark    自定义PageControl样式接口

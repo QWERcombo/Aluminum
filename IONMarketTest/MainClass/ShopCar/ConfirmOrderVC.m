@@ -53,11 +53,11 @@
 }
 
 - (IBAction)confirmClicker:(UIButton *)sender {
+    
     if (!self.addressModel && !self.zitiSwitch.isOn) {
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择地址！" time:0 aboutType:WHShowViewMode_Text state:NO];
         return;
     }
-    
     
     if (self.fromtype == FromVCType_Buy) {
         //直接购买下单
@@ -169,15 +169,15 @@
 }
 
 - (IBAction)addAddress:(UIButton *)sender {
-    AddressViewController *address = [[AddressViewController alloc] init];
     
+    AddressViewController *address = [[AddressViewController alloc] init];
     __weak typeof(self) weakself = self;
     address.SelectAddressBlock = ^(AddressModel *address) {
+        weakself.addressView.hidden = YES;
         weakself.addressModel = address;
         weakself.nameLab.text = address.name;
         weakself.phoneLab.text = address.phone;
         weakself.addressLab.text = [NSString stringWithFormat:@"%@ %@ %@ %@", address.sheng,address.shi,address.qu,address.detailAddress];
-//        weakself.addressBtn.hidden = YES;
         [weakself.addressBtn setTitle:@"" forState:UIControlStateNormal];
     };
     

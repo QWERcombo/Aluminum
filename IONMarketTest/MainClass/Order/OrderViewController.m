@@ -11,6 +11,7 @@
 #import "OrderNewDetailVC.h"
 #import "OrderPayVC.h"
 #import "WHWebViewController.h"
+#import "ImageShowViewController.h"
 
 #define Button_Width  80
 #define Button_Margin  ((SCREEN_WIGHT-80*4)/5)
@@ -312,20 +313,24 @@
     OrderListModel *model = [self.dataMuArr objectAtIndex:indexpath.row];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:model.no forKey:@"no"];
-//    [dict setValue:@"1533695074645" forKey:@"no"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_getInspectionReports andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"_++++++%@", resultDic);
         NSArray *resultArr = resultDic[@"result"];
-        NSDictionary *dictionary = [resultArr firstObject];
-        NSArray *fileArray = [dictionary objectForKey:@"File"];
-        
-        NSString *urlString = [NSString stringWithFormat:@"%@%@", @"http://216l0677g9.imwork.net:11422",[fileArray firstObject]];
+        NSMutableArray *urlArray = [NSMutableArray array];
+        for (NSDictionary *urlDic in resultArr) {
+            NSArray *fileArray = [urlDic objectForKey:@"File"];
+            NSString *urlString = [NSString stringWithFormat:@"%@%@", @"http://216l0677g9.imwork.net:11422",[fileArray firstObject]];
+            [urlArray addObject:urlString];
+        }
         
         //http://216l0677g9.imwork.net:11422/Upload/Material/day_180808/649_1.jpg
-        WHWebViewController *whWebVC = [[WHWebViewController alloc] init];
-        whWebVC.urlString = urlString;
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:whWebVC];
-        [self presentViewController:nav animated:YES completion:nil];
+//        WHWebViewController *whWebVC = [[WHWebViewController alloc] init];
+//        whWebVC.urlString = urlString;
+        ImageShowViewController *show = [ImageShowViewController new];
+        show.imageUrlArray = [urlArray mutableCopy];
+//        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:show];
+//        [self presentViewController:nav animated:YES completion:nil];
+        [self.navigationController pushViewController:show animated:YES];
         
     } failure:^(NSString *error, NSInteger code) {
         

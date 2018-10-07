@@ -964,7 +964,9 @@
     self.alpha = 0.0;
     [self.photoBrowserWindow.rootViewController.view addSubview:self];
     [self.photoBrowserWindow makeKeyAndVisible];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+//    if (!self.isTap) {
+//        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+//    }
     [self iniaialUI];
 }
 
