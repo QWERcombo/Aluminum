@@ -22,7 +22,7 @@
 
 @implementation MainViewController
 
-#define Item_Margin  ((SCREEN_WIGHT-40*4-20)/5)
+#define Item_Margin  ((SCREEN_WIGHT-(40*4)-20)/5)
 
 - (void)viewDidLoad {
     [super viewDidLoad];

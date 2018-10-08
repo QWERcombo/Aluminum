@@ -23,6 +23,7 @@
         for (UIView *sub in self.contentView.subviews) {
             if ([sub isKindOfClass:[CustomButton class]]) {
                 CustomButton *button = (CustomButton*)sub;
+                button.time = 1;
                 [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             }
         }

@@ -36,10 +36,13 @@
     UIImageView *backImgv = [[UIImageView alloc] initWithFrame:self.tableView.bounds];
     backImgv.image = IMG(@"Login_bg");
     self.tableView.backgroundView = backImgv;
+    self.codeBtn.layer.cornerRadius = 5;
+    self.codeBtn.layer.masksToBounds = YES;
     [self.codeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 - (IBAction)codeClicker:(UIButton *)sender {
+    
     [self.view endEditing:YES];
     if (![self.phoneTF.text isValidateMobile]) {
         [[UtilsData sharedInstance] showAlertTitle:@"提示" detailsText:@"请输入正确的手机号" time:2.0 aboutType:WHShowViewMode_Text state:NO];

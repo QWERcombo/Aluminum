@@ -14,6 +14,8 @@
     [super awakeFromNib];
     // Initialization code
     self.defalut.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
+    self.deleteBtn.time = 2;
+    self.editBtn.time = 2;
     [self.deleteBtn setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
     [self.editBtn setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
 }
