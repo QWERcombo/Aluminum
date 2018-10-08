@@ -370,7 +370,7 @@ DEF_SINGLETON(UtilsMold);
         bannerView.duration = 5.0;
         bannerView.selfBackgroundColor = [UIColor Grey_BackColor1];
         bannerView.pageIndicatorTintColor = [UIColor lightTextColor];
-        bannerView.currentPageColor = [UIColor mianColor:1];
+        bannerView.currentPageColor = [UIColor mianColor:2];
         backView = bannerView;
         
         return backView;

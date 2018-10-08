@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -64,7 +62,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAL-8Z-cny">
                                 <rect key="frame" x="0.0" y="64.5" width="375" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atl-Z2-ynp">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atl-Z2-ynp" customClass="CustomButton">
                                         <rect key="frame" x="305" y="8" width="55" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="k4R-T4-uID"/>
@@ -77,7 +75,7 @@
                                             <action selector="cancelAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="JDj-SZ-utn"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCW-Gf-5gi">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCW-Gf-5gi" customClass="CustomButton">
                                         <rect key="frame" x="149" y="8" width="68" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="sRJ-l7-BfA"/>
@@ -90,7 +88,7 @@
                                             <action selector="serviceAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8Da-OG-Dlk"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELW-0S-63J">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELW-0S-63J" customClass="CustomButton">
                                         <rect key="frame" x="227" y="8" width="68" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="jAN-wz-chP"/>
@@ -165,7 +163,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.90337413550000001" green="0.94424313309999997" blue="0.98824238779999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <connections>
-                <outlet property="caizhiBtn" destination="gCW-Gf-5gi" id="b3y-zd-VOK"/>
+                <outlet property="caizhiBtn" destination="gCW-Gf-5gi" id="Ks8-DL-0sp"/>
                 <outlet property="expressPrice" destination="tRH-qF-J1O" id="95c-gd-Mzn"/>
                 <outlet property="itemView" destination="Riy-hd-OJF" id="AjC-BW-WZM"/>
                 <outlet property="orderIDLabel" destination="w8z-3r-bpg" id="2JC-8z-iAx"/>
@@ -175,7 +173,7 @@
                 <outlet property="statusButton" destination="jWn-Wx-Xc6" id="kSO-NQ-6RE"/>
                 <outlet property="zhifuBtn" destination="atl-Z2-ynp" id="arc-TI-gGp"/>
             </connections>
-            <point key="canvasLocation" x="19" y="-18"/>
+            <point key="canvasLocation" x="30.399999999999999" y="-16.191904047976013"/>
         </tableViewCell>
     </objects>
     <resources>

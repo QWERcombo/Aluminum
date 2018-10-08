@@ -40,10 +40,10 @@
             NSLog(@"click---%ld", index);
         }];
         
-        bannerView.duration = 50000000000;
+        bannerView.duration = 6000;
         bannerView.selfBackgroundColor = [UIColor whiteColor];
-//        bannerView.pageIndicatorTintColor = [UIColor lightTextColor];
-//        bannerView.currentPageColor = [UIColor mianColor:1];
+        bannerView.pageIndicatorTintColor = [UIColor grayColor];
+        bannerView.currentPageColor = [UIColor mianColor:2];
         
         [self.view addSubview:bannerView];
     }

@@ -40,7 +40,7 @@
             self.bnameLab.text = [self.shorttitleArr objectAtIndex:0];
         }
         
-        [self startTimer];
+//        [self startTimer];
     }
     return self;
 }
@@ -93,6 +93,7 @@
     _duration = duration;
 //    [self.timer invalidate];
 //    [self startTimer];
+    [self startTimer];
 }
 
 /**
@@ -187,8 +188,6 @@
     
     self.pageControl = [[UIPageControl alloc] init];
     self.pageControl .numberOfPages = array.count;
-    self.pageControl.currentPageIndicatorTintColor = [UIColor mianColor:2];
-    self.pageControl.pageIndicatorTintColor = [UIColor grayColor];
     //默认是0
     self.pageControl .currentPage = 0;
     self.pageControl.center = CGPointMake(CGRectGetWidth(_scrollView.frame)*0.5, CGRectGetHeight(_scrollView.frame) - 12.0);
@@ -245,8 +244,9 @@
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf updateTimer];
     } repeats:YES];
+//    weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:_duration target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
    
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    [[NSRunLoop currentRunLoop] addTimer:weakSelf.timer forMode:NSRunLoopCommonModes];
 }
 
 -(void)updateTimer
@@ -296,25 +296,25 @@
     [self startTimer];
 }
 
-//- (void)setPageBackgroundColor:(UIColor *)pageBackgroundColor
-//{
-//    if (pageBackgroundColor) {
-//        self.pageControl.backgroundColor = pageBackgroundColor;
-//    }
-//}
+- (void)setPageBackgroundColor:(UIColor *)pageBackgroundColor
+{
+    if (pageBackgroundColor) {
+        self.pageControl.backgroundColor = pageBackgroundColor;
+    }
+}
 
-//- (void)setPageIndicatorTintColor:(UIColor *)pageIndicatorTintColor
-//{
-//    if (pageIndicatorTintColor) {
-//        self.pageControl.pageIndicatorTintColor = pageIndicatorTintColor;
-//    }
-//}
-//- (void)setCurrentPageColor:(UIColor *)currentPageColor
-//{
-//    if (currentPageColor) {
-//        self.pageControl .currentPageIndicatorTintColor = currentPageColor;
-//    }
-//}
+- (void)setPageIndicatorTintColor:(UIColor *)pageIndicatorTintColor
+{
+    if (pageIndicatorTintColor) {
+        self.pageControl.pageIndicatorTintColor = pageIndicatorTintColor;
+    }
+}
+- (void)setCurrentPageColor:(UIColor *)currentPageColor
+{
+    if (currentPageColor) {
+        self.pageControl .currentPageIndicatorTintColor = currentPageColor;
+    }
+}
 
 -(void)setSelfBackgroundColor:(UIColor *)selfBackgroundColor
 {

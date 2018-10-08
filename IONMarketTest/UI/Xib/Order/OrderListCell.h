@@ -8,6 +8,7 @@
 
 #import "BaseCell.h"
 
+@class CustomButton;
 @interface OrderListCell : BaseCell
 
 @property (nonatomic, copy) ClikBlock clikerBlock;
@@ -18,10 +19,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *expressPrice;
 @property (weak, nonatomic) IBOutlet UILabel *zhengbanLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPrice;
-@property (weak, nonatomic) IBOutlet UIButton *caizhiBtn;
-@property (weak, nonatomic) IBOutlet UIButton *quxiaoBtn;
-@property (weak, nonatomic) IBOutlet UIButton *zhifuBtn;
+@property (weak, nonatomic) IBOutlet CustomButton *quxiaoBtn;
+@property (weak, nonatomic) IBOutlet CustomButton *zhifuBtn;
 @property (weak, nonatomic) IBOutlet UIView *itemView;
+@property (weak, nonatomic) IBOutlet CustomButton *caizhiBtn;
 
 
 + (instancetype)OrderListCell;
