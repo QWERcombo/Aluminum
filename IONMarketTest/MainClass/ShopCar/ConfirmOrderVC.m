@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *dayinSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *biaoqianSwitch;
 @property (weak, nonatomic) IBOutlet UITextField *noteTF;
+@property (weak, nonatomic) IBOutlet UIButton *addressButton;
 
 
 @end
@@ -53,7 +54,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (!self.zitiSwitch.isOn) {
+    if (!self.zitiSwitch.isOn && !self.addressModel) {
         [self getDefaultAddressModel];
     }
 }
@@ -185,6 +186,7 @@
         weakself.phoneLab.text = address.phone;
         weakself.addressLab.text = [NSString stringWithFormat:@"%@ %@ %@ %@", address.sheng,address.shi,address.qu,address.detailAddress];
         self.addressLab.adjustsFontSizeToFitWidth = YES;
+        self.nameLab.adjustsFontSizeToFitWidth = YES;
         [weakself.addressBtn setTitle:@"" forState:UIControlStateNormal];
     };
     
@@ -208,7 +210,7 @@
 
 
 - (void)getDefaultAddressModel {
-    
+    self.addressButton.hidden = NO;
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].id forKey:@"userId"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetAddressByPhone andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
@@ -226,6 +228,7 @@
                 self.phoneLab.text = model.phone;
                 self.addressLab.text = [NSString stringWithFormat:@"%@ %@ %@ %@", model.sheng,model.shi,model.qu,model.detailAddress];
                 self.addressLab.adjustsFontSizeToFitWidth = YES;
+                self.nameLab.adjustsFontSizeToFitWidth = YES;
                 [self.addressBtn setTitle:@"" forState:UIControlStateNormal];
                 
                 break;
@@ -249,10 +252,12 @@
     if (!sender.isOn) {
         [self getDefaultAddressModel];
     } else {
+        self.addressButton.hidden = YES;
         self.addressLab.text = @"自提地址：江苏省无锡市新吴区展鸿路18号院内乐切金属";
-        self.addressLab.adjustsFontSizeToFitWidth = YES;
         self.nameLab.text = @"联系人：乐切金属";
         self.phoneLab.text = @"0510-88996061";
+        self.addressLab.adjustsFontSizeToFitWidth = YES;
+        self.nameLab.adjustsFontSizeToFitWidth = YES;
     }
 }
 
