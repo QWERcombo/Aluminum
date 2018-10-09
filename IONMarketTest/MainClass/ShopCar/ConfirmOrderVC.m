@@ -45,11 +45,17 @@
         shuliang += [car.productNum integerValue];
     }
     self.moneyLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:[NSNumber numberWithFloat:total].stringValue]];
-    NSString *shuliangStr = [NSString stringWithFormat:@"%ld", shuliang];
+    NSString *shuliangStr = [NSString stringWithFormat:@"%ld", (long)shuliang];
     self.shuliangLab.text = [NSString stringWithFormat:@"共 %@ 件", shuliangStr];
 //    self.shuliangLab.attributedText = [UILabel labGetAttributedStringFrom:2 toEnd:shuliangStr.length WithColor:[UIColor colorWithHexString:@"2F75EC"] andFont:nil allFullText:self.shuliangLab.text];
     self.confirmOrderDataSource.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    [self getDefaultAddressModel];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (!self.zitiSwitch.isOn) {
+        [self getDefaultAddressModel];
+    }
 }
 
 - (IBAction)confirmClicker:(UIButton *)sender {
@@ -175,9 +181,10 @@
     address.SelectAddressBlock = ^(AddressModel *address) {
         weakself.addressView.hidden = YES;
         weakself.addressModel = address;
-        weakself.nameLab.text = address.name;
+        weakself.nameLab.text = [NSString stringWithFormat:@"联系人:%@",address.name];
         weakself.phoneLab.text = address.phone;
         weakself.addressLab.text = [NSString stringWithFormat:@"%@ %@ %@ %@", address.sheng,address.shi,address.qu,address.detailAddress];
+        self.addressLab.adjustsFontSizeToFitWidth = YES;
         [weakself.addressBtn setTitle:@"" forState:UIControlStateNormal];
     };
     
@@ -204,7 +211,7 @@
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].id forKey:@"userId"];
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetAddressByPhone andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetAddressByPhone andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"%@", resultDic);
         NSArray *dataSource = resultDic[@"result"];
         
@@ -213,11 +220,12 @@
             AddressModel *model = [[AddressModel alloc] initWithDictionary:dic error:nil];
             
             if ([model.moren isEqualToString:@"1"]) {
-                
+                self.addressView.hidden = YES;
                 self.addressModel = model;
-                self.nameLab.text = model.name;
+                self.nameLab.text = [NSString stringWithFormat:@"联系人:%@",model.name];
                 self.phoneLab.text = model.phone;
                 self.addressLab.text = [NSString stringWithFormat:@"%@ %@ %@ %@", model.sheng,model.shi,model.qu,model.detailAddress];
+                self.addressLab.adjustsFontSizeToFitWidth = YES;
                 [self.addressBtn setTitle:@"" forState:UIControlStateNormal];
                 
                 break;
@@ -238,6 +246,14 @@
 - (IBAction)ziti:(UISwitch *)sender {
     NSLog(@"自提 %d", sender.isOn);
     self.addressView.hidden = sender.isOn;
+    if (!sender.isOn) {
+        [self getDefaultAddressModel];
+    } else {
+        self.addressLab.text = @"自提地址：江苏省无锡市新吴区展鸿路18号院内乐切金属";
+        self.addressLab.adjustsFontSizeToFitWidth = YES;
+        self.nameLab.text = @"联系人：乐切金属";
+        self.phoneLab.text = @"0510-88996061";
+    }
 }
 
 - (IBAction)dayin:(UISwitch *)sender {

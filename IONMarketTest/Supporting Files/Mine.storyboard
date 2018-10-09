@@ -1202,7 +1202,7 @@
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="江苏省无锡市新吴区展鸿路18号院内乐切金属" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGB-f1-H2l">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="745" text="江苏省无锡市新吴区展鸿路18号院内乐切金属" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGB-f1-H2l">
                                                     <rect key="frame" x="36.5" y="54" width="287" height="19"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.34901960784313724" green="0.36862745098039218" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
@@ -1261,6 +1261,7 @@
                                                 <constraint firstItem="nii-M9-tKI" firstAttribute="leading" secondItem="Mdq-0u-Fgr" secondAttribute="leading" id="PgQ-2e-mx5"/>
                                                 <constraint firstAttribute="trailing" secondItem="nii-M9-tKI" secondAttribute="trailing" id="U8r-6P-5hy"/>
                                                 <constraint firstItem="qt7-ke-Yqv" firstAttribute="top" secondItem="Mdq-0u-Fgr" secondAttribute="top" constant="15" id="Zuq-C2-m2M"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qGB-f1-H2l" secondAttribute="trailing" constant="15" id="dsP-ih-D3W"/>
                                                 <constraint firstItem="n2J-Wz-PjR" firstAttribute="top" secondItem="kYh-yW-zd7" secondAttribute="bottom" constant="19" id="iQp-WN-XYD"/>
                                                 <constraint firstItem="qGB-f1-H2l" firstAttribute="centerY" secondItem="n2J-Wz-PjR" secondAttribute="centerY" id="l6a-qk-a80"/>
                                                 <constraint firstItem="kYh-yW-zd7" firstAttribute="top" secondItem="Mdq-0u-Fgr" secondAttribute="top" constant="16" id="oPT-UN-Hxv"/>
@@ -1273,7 +1274,7 @@
                                         <view tag="103" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UOB-YS-MP0" customClass="BorderView">
                                             <rect key="frame" x="0.0" y="140" width="375" height="44"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否打印" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEH-r3-8cY">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否打包" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEH-r3-8cY">
                                                     <rect key="frame" x="15" y="13" width="61.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1305,7 +1306,7 @@
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hVR-cZ-9vX">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hVR-cZ-9vX">
                                                     <rect key="frame" x="311" y="6.5" width="51" height="31"/>
                                                     <color key="onTintColor" red="0.35686274509999999" green="0.62352941179999999" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>

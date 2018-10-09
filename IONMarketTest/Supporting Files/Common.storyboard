@@ -177,8 +177,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开票总额：0元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpr-2e-hC4">
-                                                    <rect key="frame" x="10" y="15" width="108" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <rect key="frame" x="10" y="16.5" width="94.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -193,9 +193,9 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMR-b4-5dj">
                                             <rect key="frame" x="0.0" y="100.5" width="375" height="49.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发票抬头" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhq-Cs-f3R">
-                                                    <rect key="frame" x="10" y="15" width="65.5" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择发票抬头" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhq-Cs-f3R">
+                                                    <rect key="frame" x="10" y="16.5" width="86" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.023529411760000001" green="0.53725490200000003" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -210,6 +210,7 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggB-nU-sZc">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <connections>
                                                         <action selector="xuanfapiao:" destination="kaa-Br-IH7" eventType="touchUpInside" id="ANT-hh-00U"/>
                                                     </connections>
@@ -233,17 +234,25 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9oE-ca-laL">
                                             <rect key="frame" x="0.0" y="50.5" width="375" height="49"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="物流费：0元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiV-cS-aXO">
-                                                    <rect key="frame" x="10" y="15" width="91.5" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="物流总额：0元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiV-cS-aXO">
+                                                    <rect key="frame" x="270.5" y="16" width="94.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="产品总额：0元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aZ-n3-WGK">
+                                                    <rect key="frame" x="10" y="16" width="94.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="5aZ-n3-WGK" firstAttribute="leading" secondItem="9oE-ca-laL" secondAttribute="leading" constant="10" id="aAc-if-hqW"/>
                                                 <constraint firstItem="HiV-cS-aXO" firstAttribute="centerY" secondItem="9oE-ca-laL" secondAttribute="centerY" id="p79-Zl-BBh"/>
-                                                <constraint firstItem="HiV-cS-aXO" firstAttribute="leading" secondItem="9oE-ca-laL" secondAttribute="leading" constant="10" id="vru-MK-Fnb"/>
+                                                <constraint firstItem="5aZ-n3-WGK" firstAttribute="centerY" secondItem="9oE-ca-laL" secondAttribute="centerY" id="r8C-Cy-PcP"/>
+                                                <constraint firstAttribute="trailing" secondItem="HiV-cS-aXO" secondAttribute="trailing" constant="10" id="wDC-mw-61m"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -300,6 +309,7 @@
                         <viewLayoutGuide key="safeArea" id="x3p-Zs-zh3"/>
                     </view>
                     <connections>
+                        <outlet property="chanpinLab" destination="5aZ-n3-WGK" id="OHv-7i-rNY"/>
                         <outlet property="taitouLab" destination="Bdt-y7-OWg" id="Wvp-bN-F4E"/>
                         <outlet property="totalLab" destination="Dpr-2e-hC4" id="FEf-LS-x2p"/>
                         <outlet property="wuliufeiLab" destination="HiV-cS-aXO" id="ppE-OO-6PQ"/>

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalLab;
 @property (weak, nonatomic) IBOutlet UILabel *taitouLab;
 @property (weak, nonatomic) IBOutlet UILabel *wuliufeiLab;
+@property (weak, nonatomic) IBOutlet UILabel *chanpinLab;
 
 @property (nonatomic, copy) NSString *fapiaoId;
 @property (nonatomic, copy) NSString *totalFee;
@@ -39,10 +40,11 @@
     }
     
     self.orderNos = [orderString substringToIndex:orderString.length-1];
-    self.totalFee = [NSString stringWithFormat:@"%.2lf", totalFee];
-    self.wuliufeiFee = [NSString stringWithFormat:@"%.2lf", wuliufeiFee];
-    self.totalLab.text = [NSString stringWithFormat:@"开票总额: %@元", [NSString getStringAfterTwo:[NSNumber numberWithFloat:totalFee].stringValue]];
-    self.wuliufeiLab.text = [NSString stringWithFormat:@"物流费: %@元", [NSString getStringAfterTwo:[NSNumber numberWithFloat:wuliufeiFee].stringValue]];
+    self.totalFee = [NSString getStringAfterTwo:[NSNumber numberWithFloat:totalFee].stringValue];
+    self.wuliufeiFee = [NSString getStringAfterTwo:[NSNumber numberWithFloat:wuliufeiFee].stringValue];
+    self.totalLab.text = [NSString stringWithFormat:@"开票总额: %@元", [NSString getStringAfterTwo:[NSNumber numberWithFloat:([self.totalFee floatValue]+[self.wuliufeiFee floatValue])].stringValue]];
+    self.wuliufeiLab.text = [NSString stringWithFormat:@"物流费: %@元", self.wuliufeiFee];
+    self.chanpinLab.text = [NSString stringWithFormat:@"产品总额: %@元", self.totalFee];
 }
 
 
@@ -53,6 +55,7 @@
         self.taitouLab.text = billModel.kaipiaotaitou;
         self.fapiaoId = billModel.id;
     };
+    
     [self.navigationController pushViewController:info animated:YES];
 }
 
