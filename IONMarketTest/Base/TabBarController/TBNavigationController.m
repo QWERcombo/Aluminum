@@ -29,9 +29,9 @@
 {
     UINavigationBar *bar = [UINavigationBar appearance];
     
-    NSArray *colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"#6ccbf8"],[UIColor colorWithHexString:@"#7eabe6"], nil];
-    CGRect barRect = CGRectMake(0, 0, SCREEN_WIGHT, 44);
-    UIImage *nav_bg_image = [UIImage imageWithColor:GradientColor(UIGradientStyleTopToBottom, barRect, colors)];
+//    NSArray *colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"#6ccbf8"],[UIColor colorWithHexString:@"#7eabe6"], nil];
+//    CGRect barRect = CGRectMake(0, 0, SCREEN_WIGHT, 44);
+    UIImage *nav_bg_image = [UIImage imageWithColor:[UIColor whiteColor]];
     
     // 设置背景
     [bar setBackgroundImage:nav_bg_image forBarMetrics:UIBarMetricsDefault];
@@ -39,33 +39,38 @@
 
     // 设置标题文字属性
     NSMutableDictionary *barAttrs = [NSMutableDictionary dictionary];
-    barAttrs[NSFontAttributeName] = FONT_ArialMT(18);
-    barAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
+    barAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
+    barAttrs[NSForegroundColorAttributeName] = [UIColor colorWithHexString:@"#333336"];
     [bar setTitleTextAttributes:barAttrs];
-
-    /** 设置UIBarButtonItem */
-    UIBarButtonItem *item = [UIBarButtonItem appearance];
-    // UIControlStateNormal
-    NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary];
-    normalAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
-    normalAttrs[NSFontAttributeName] = [UIFont fontWithSize:18];
-    [item setTitleTextAttributes:normalAttrs forState:UIControlStateNormal];
-
-    // UIControlStateDisabled
-    NSMutableDictionary *disabledAttrs = [NSMutableDictionary dictionary];
-    disabledAttrs[NSForegroundColorAttributeName] = [UIColor grayColor];
-    [item setTitleTextAttributes:disabledAttrs forState:UIControlStateDisabled];
+    
+    bar.tintColor = [UIColor colorWithHexString:@"#333336"];
+    
+//    /** 设置UIBarButtonItem */
+//    UIBarButtonItem *item = [UIBarButtonItem appearance];
+//    // UIControlStateNormal
+//    NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary];
+//    normalAttrs[NSForegroundColorAttributeName] = [UIColor redColor];
+//    normalAttrs[NSFontAttributeName] = [UIFont fontWithSize:18];
+//    [item setTitleTextAttributes:normalAttrs forState:UIControlStateNormal];
+//
+//    // UIControlStateDisabled
+//    NSMutableDictionary *disabledAttrs = [NSMutableDictionary dictionary];
+//    disabledAttrs[NSForegroundColorAttributeName] = [UIColor grayColor];
+//    [item setTitleTextAttributes:disabledAttrs forState:UIControlStateDisabled];
+//
+//    [item setBackButtonTitlePositionAdjustment:UIOffsetMake(7, 0) forBarMetrics:UIBarMetricsDefault];
 }
-
 
 
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if (self.viewControllers.count > 0) {// 如果现在push的不是栈底控制器(最先push进来的那个控制器)
         viewController.hidesBottomBarWhenPushed = YES;
+    
         //设置导航栏的按钮
         UIBarButtonItem *backButton = [self itemWithImageName:@"MGoBack_w" highImageName:@"MGoBack_w" target:self action:@selector(backAction)];
         viewController.navigationItem.leftBarButtonItems = @[backButton];
+
         // 就有滑动返回功能
         self.interactivePopGestureRecognizer.delegate = nil;
     }
@@ -77,18 +82,24 @@
     UIButton *button = [[UIButton alloc] init];
     // 设置按钮的背景图片
     [button setImage:IMG(imageName) forState:UIControlStateNormal];
+    [button setTitle:@"返回" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor colorWithHexString:@"#333336"] forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:15];
+
     if (highImageName != nil) {
         [button setImage:IMG(highImageName) forState:UIControlStateHighlighted];
     }
     // 设置按钮的尺寸为背景图片的尺寸
-    button.size = CGSizeMake(80, 44);
-    button.imageEdgeInsets = UIEdgeInsetsMake(0, -((button.size.width-button.imageView.size.width)/2), 0, (button.size.width-button.imageView.size.width)/2);
+    button.size = CGSizeMake(60, 44);
+    button.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
+    button.titleEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
     button.adjustsImageWhenHighlighted = NO;
     //监听按钮的点击
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
+/*
 -(BOOL) gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
     return self.childViewControllers.count > 1;
@@ -107,6 +118,7 @@
         
     }
 }
+ */
 
 - (void)backAction{
     [self popViewControllerAnimated:YES];
