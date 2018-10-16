@@ -12,8 +12,9 @@
 #import "MineViewController.h"
 #import "MainViewController.h"
 #import "QuotationViewController.h"
+#import "LoginTVC.h"
 
-@interface TBTabBarController ()<UITabBarDelegate>
+@interface TBTabBarController ()<UITabBarDelegate,UITabBarControllerDelegate>
 
 @end
 
@@ -23,10 +24,9 @@
     [super viewDidLoad];
     
     self.view.backgroundColor=[UIColor whiteColor];
-    
+    self.delegate = self;
     [self setUpItem];//TabBar字体
 //    [self changeTabBar];//TabBar按钮
-    
     
 }
 
@@ -98,6 +98,30 @@
     }
 }
 
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    
+    if ([viewController.tabBarItem.title isEqualToString:@"首页"]) {
+        
+        return YES;
+    } else {
+        
+//        if ([UserData currentUser].phone) {
+//
+//            return YES;
+//        } else {
+        
+            LoginTVC *login = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginTVC"];
+            TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:login];
+            [self presentViewController:nav animated:YES completion:^{
+                
+            }];
+            
+            return NO;
+//        }
+        
+    }
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

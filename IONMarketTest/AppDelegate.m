@@ -56,8 +56,8 @@
 
 - (void)setupRootViewController {
     
-    [[UtilsData sharedInstance] loginPlan:nil success:^(UserData *user) {
-    
+//    [[UtilsData sharedInstance] loginPlan:nil success:^(UserData *user) {
+//
         if ([[UserData currentUser].isCheck integerValue]==0) {
             TBTabBarController *tabBar = [TBTabBarController new];
             [tabBar setupchildVc:nil];
@@ -65,14 +65,14 @@
         } else {
             TBTabBarController *tabBar = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TBtabBar"];
             self.window.rootViewController = tabBar;
-        }        
-
-    } failure:^(UserData *user) {
-        LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-        TBNavigationController *navi = [[TBNavigationController alloc] initWithRootViewController:login];
-        self.window.rootViewController = navi;
-        
-    }];
+        }
+//
+//    } failure:^(UserData *user) {
+//        LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+//        TBNavigationController *navi = [[TBNavigationController alloc] initWithRootViewController:login];
+//        self.window.rootViewController = navi;
+//
+//    }];
 
     
 }
