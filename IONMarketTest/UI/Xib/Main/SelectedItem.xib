@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,23 +24,23 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xcz-9Z-8UU">
                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="6kF-OB-H4s"/>
+                        <constraint firstAttribute="width" secondItem="xcz-9Z-8UU" secondAttribute="height" multiplier="1:1" id="wHO-wN-OHT"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sV-fc-bWS">
-                    <rect key="frame" x="3.5" y="50" width="33" height="15"/>
+                    <rect key="frame" x="3.5" y="40" width="33" height="18"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="15" id="Mhd-BF-0ZJ"/>
+                        <constraint firstAttribute="height" constant="18" id="Mhd-BF-0ZJ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="0.58823529409999997" green="0.59215686270000001" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstItem="6sV-fc-bWS" firstAttribute="top" secondItem="xcz-9Z-8UU" secondAttribute="bottom" constant="10" id="Eiy-Zt-zH2"/>
+                <constraint firstItem="6sV-fc-bWS" firstAttribute="top" secondItem="xcz-9Z-8UU" secondAttribute="bottom" id="Eiy-Zt-zH2"/>
                 <constraint firstItem="6sV-fc-bWS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Hlc-mZ-kFG"/>
                 <constraint firstItem="xcz-9Z-8UU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ngu-z3-Xdw"/>
                 <constraint firstItem="xcz-9Z-8UU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="auk-OO-eBX"/>

@@ -54,8 +54,8 @@
     return [UIColor colorWithR:0 G:128 B:255 A:1];
 }
 + (UIColor *)Black_WordColor{
-//    return [UIColor colorWithHexString:@"#27293b"];
-    return [UIColor colorWithR:51 G:51 B:51 A:1];
+    
+    return [UIColor colorWithHexString:@"#333336"];
 }
 
 + (UIColor *)Black_BlackColor//黑色
@@ -78,7 +78,7 @@
 
 + (UIColor *)Grey_WordColor//浅灰
 {
-    return [UIColor colorWithHexString:@"#A5A5A5"];
+    return [UIColor colorWithHexString:@"#8D959D"];
 }
 
 + (UIColor *)YXPYellowColor

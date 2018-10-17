@@ -22,11 +22,12 @@
 
 @implementation MainViewController
 
-#define Item_Margin  ((SCREEN_WIGHT-(40*4)-20)/5)
+#define Item_Margin  ((SCREEN_WIGHT-(48*4)-52)/3)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tabView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:self.tabView];
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.top.equalTo(self.view);
@@ -38,7 +39,7 @@
 
 #pragma mark --- Delegate&DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return section==2?self.dataMuArr.count:0;
@@ -59,18 +60,22 @@
         return [self createTopView];
     } else if (section==1) {
         return [self createSectionView];
-    } else {
+    } else if (section==2) {
         return nil;
+    } else {
+        return [self createBottomView];
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section==0) {
-        return 330;
+        return 311;
     } else if (section==1) {
-        return 40;
-    } else {
+        return 72;
+    } else if (section==2) {
         return 0;
+    } else {
+        return 40;
     }
 }
 
@@ -83,8 +88,8 @@
 
 #pragma mark ---- CreateSubViews
 - (UIView *)createTopView {
-    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 330)];
-    mainView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 311)];
+    mainView.backgroundColor = [UIColor whiteColor];
 
     ABBannerView *bannerView = (ABBannerView *)[[UtilsMold sharedInstance] creatView:@"ABBannerView" data:nil model:@[IMG(@"Banner_0"),IMG(@"Banner_1"),IMG(@"Banner_2"),IMG(@"Banner_3")] deleGate:self andCliker:^(NSDictionary *clueDic) {
         
@@ -93,10 +98,8 @@
     [mainView addSubview:bannerView];
     
     
-    UIView *blank = [[UIView alloc] initWithFrame:CGRectMake(10, 150, SCREEN_WIGHT-20, 170)];
+    UIView *blank = [[UIView alloc] initWithFrame:CGRectMake(0, 145, SCREEN_WIGHT, 166)];
     blank.backgroundColor = [UIColor whiteColor];
-    blank.layer.cornerRadius = 5;
-    
     [mainView addSubview:blank];
     
     
@@ -104,7 +107,7 @@
     NSArray *nameArr = @[@"整板",@"零切",@"圆棒",@"型材",@"管材",@"特殊定制",@"自动下单",@"询价"];
     for (NSInteger i=0; i<2; i++) {
         for (NSInteger j=0; j<4; j++) {
-            SelectedItem *item = [[SelectedItem alloc] initWithFrame:CGRectMake((Item_Margin+40)*j+Item_Margin, ((65+(70/3))*i)+10, 40, 65)];
+            SelectedItem *item = [[SelectedItem alloc] initWithFrame:CGRectMake((Item_Margin+48)*j+26, ((66+19)*i), 48, 66)];
             item.item_name.text = [nameArr objectAtIndex:i*4+j];
             NSString *imageName = [NSString stringWithFormat:@"Main_item_%ld", (long)(i*4+j)];
             item.item_imgv.image = IMG(imageName);
@@ -144,31 +147,79 @@
 }
 
 - (UIView *)createSectionView {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 40)];
-    UILabel *leftlabel = [UILabel lableWithText:@"自选关注" Font:FONT_BoldMT(15) TextColor:[UIColor Black_WordColor]];
-    [headerView addSubview:leftlabel];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 72)];
+    headerView.backgroundColor = [UIColor colorWithHexString:@"#F6F6F6"];
+    
+    UIView *midView = [[UIView alloc] initWithFrame:CGRectMake(0, 8, SCREEN_WIGHT, 40)];
+    midView.backgroundColor = [UIColor whiteColor];
+    [headerView addSubview:midView];
+    
+    UILabel *leftlabel = [UILabel lableWithText:@"自选关注" Font:FONT_ArialMT(14) TextColor:[UIColor Black_WordColor]];
+    [midView addSubview:leftlabel];
     [leftlabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(headerView.mas_centerY);
-        make.left.equalTo(headerView.mas_left).offset(15);
-        make.height.equalTo(@(15));
+        make.centerY.equalTo(midView.mas_centerY);
+        make.left.equalTo(midView.mas_left).offset(15);
     }];
     
-    UIButton *rightlabel = [UIButton buttonWithTitle:@"查看全部" andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor mianColor:3] andHighlightedTitle:[UIColor mianColor:3] andNormaImage:nil andHighlightedImage:nil];
+    UIButton *rightlabel = [UIButton buttonWithTitle:@"全部" andFont:FONT_ArialMT(14) andtitleNormaColor:[UIColor Black_WordColor] andHighlightedTitle:[UIColor Black_WordColor] andNormaImage:nil andHighlightedImage:nil];
     [rightlabel setImage:IMG(@"image_more") forState:UIControlStateNormal];
     
     [rightlabel addTarget:self action:@selector(moreAction:) forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:rightlabel];
+    [midView addSubview:rightlabel];
     [rightlabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@(15));
-        make.centerY.equalTo(headerView.mas_centerY);
-        make.right.equalTo(headerView.mas_right).offset(-10);
+        make.centerY.equalTo(midView.mas_centerY);
+        make.right.equalTo(midView.mas_right).offset(-15);
     }];
     
     rightlabel.titleEdgeInsets = UIEdgeInsetsMake(0, -rightlabel.imageView.width, 0, rightlabel.imageView.width);
     rightlabel.imageEdgeInsets = UIEdgeInsetsMake(0, rightlabel.titleLabel.width, 0, -rightlabel.titleLabel.width-5);
     
+    
+    UILabel *hangqing = [UILabel lableWithText:@"行情" Font:FONT_ArialMT(12) TextColor:[UIColor Grey_WordColor]];
+    [headerView addSubview:hangqing];
+    [hangqing mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(headerView.mas_left).offset(15);
+        make.top.equalTo(midView.mas_bottom).offset(6);
+    }];
+    
+    UILabel *zhangdie = [UILabel lableWithText:@"涨跌" Font:FONT_ArialMT(12) TextColor:[UIColor Grey_WordColor]];
+    zhangdie.textAlignment = NSTextAlignmentCenter;
+    [headerView addSubview:zhangdie];
+    [zhangdie mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(headerView.mas_right).offset(0);
+        make.top.equalTo(midView.mas_bottom).offset(6);
+        make.width.equalTo(@(headerView.width/4));
+    }];
+    
+    UILabel *zuixin = [UILabel lableWithText:@"最新" Font:FONT_ArialMT(12) TextColor:[UIColor Grey_WordColor]];
+    [headerView addSubview:zuixin];
+    zuixin.textAlignment = NSTextAlignmentCenter;
+    [zuixin mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(zhangdie.mas_left).offset(0);
+        make.top.equalTo(midView.mas_bottom).offset(6);
+        make.width.equalTo(@(headerView.width/4));
+    }];
+    
     return headerView;
 }
+
+- (UIView *)createBottomView {
+    
+    UIView *blank = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 40)];
+    blank.backgroundColor = [UIColor colorWithHexString:@"#F6F6F6"];
+    
+    UIImageView *imgv = [[UIImageView alloc] init];
+    imgv.image = IMG(@"main_bottom");
+    [blank addSubview:imgv];
+    [imgv mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(blank.mas_centerY);
+        make.centerX.equalTo(blank.mas_centerX);
+    }];
+    
+    
+    return blank;
+}
+
 
 #pragma mark ---- Action
 

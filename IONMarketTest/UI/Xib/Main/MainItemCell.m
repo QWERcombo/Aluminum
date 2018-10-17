@@ -22,7 +22,7 @@
 }
 
 +(float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 55;
+    return 64;
 }
 
 + (instancetype)MainItemCell {
@@ -30,23 +30,16 @@
 }
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
-    PriceModel *dataM = (PriceModel *)model;
-    if ([[dataM.priceChange substringToIndex:1] isEqualToString:@"-"]) {
-        self.rightCountLabel.backgroundColor = [UIColor colorWithHexString:@"#D97078"];
-    } else {
-        self.rightCountLabel.backgroundColor = [UIColor colorWithHexString:@"#A0DAA8"];
-    }
-    CGSize size = [UILabel getSizeWithText:dataM.priceChange andFont:FONT_ArialMT(13) andSize:CGSizeMake(0, 25)];
-    self.rightCountLabel.layer.cornerRadius = 3;
-    self.rightCountLabel.layer.masksToBounds = YES;
-    [self.rightCountLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.contentView.mas_centerY);
-        make.right.equalTo(self.contentView.mas_right).offset(-20);
-        make.width.equalTo(@(size.width+25));
-        make.height.equalTo(@(25));
-    }];
     
+    PriceModel *dataM = (PriceModel *)model;
+    
+    if ([[dataM.priceChange substringToIndex:1] isEqualToString:@"-"]) {
+        self.rightCountLabel.textColor = [UIColor colorWithHexString:@"#FF0000"];
+    } else {
+        self.rightCountLabel.textColor = [UIColor colorWithHexString:@"#019800"];
+    }
     self.rightCountLabel.text = dataM.priceChange;
+    self.leftCountLabel.textColor = [UIColor colorWithHexString:@"#019800"];
     self.leftCountLabel.text = dataM.averagePrice;
     self.nameLabrl.text = dataM.name;
     self.descriLabel.text = dataM.source;
