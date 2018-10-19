@@ -19,6 +19,9 @@
 		5605C04020A090CB00E712A3 /* ShoppingCarSingle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5605C03F20A090CB00E712A3 /* ShoppingCarSingle.m */; };
 		5605C04220A09BF000E712A3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5605C04120A09BF000E712A3 /* libsqlite3.tbd */; };
 		5605C04420A09BFC00E712A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5605C04320A09BFC00E712A3 /* CoreGraphics.framework */; };
+		560950C82178C3E700B2CCDC /* InviteNumberVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 560950C72178C3E700B2CCDC /* InviteNumberVC.m */; };
+		560950CD2178CB3E00B2CCDC /* WholeBoardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 560950CC2178CB3E00B2CCDC /* WholeBoardVC.m */; };
+		560950CF2178CB5D00B2CCDC /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560950CE2178CB5D00B2CCDC /* Home.storyboard */; };
 		5615B8B72073B721005F2403 /* AddressShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5615B8B62073B721005F2403 /* AddressShowView.m */; };
 		5615B8B92073B730005F2403 /* AddressShowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5615B8B82073B730005F2403 /* AddressShowView.xib */; };
 		561CC0D5206FD24900DB0998 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 561CC0D4206FD24900DB0998 /* MainModel.m */; };
@@ -301,6 +304,11 @@
 		5605C03F20A090CB00E712A3 /* ShoppingCarSingle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingCarSingle.m; sourceTree = "<group>"; };
 		5605C04120A09BF000E712A3 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		5605C04320A09BFC00E712A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		560950C62178C3E700B2CCDC /* InviteNumberVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InviteNumberVC.h; sourceTree = "<group>"; };
+		560950C72178C3E700B2CCDC /* InviteNumberVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InviteNumberVC.m; sourceTree = "<group>"; };
+		560950CB2178CB3E00B2CCDC /* WholeBoardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WholeBoardVC.h; sourceTree = "<group>"; };
+		560950CC2178CB3E00B2CCDC /* WholeBoardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WholeBoardVC.m; sourceTree = "<group>"; };
+		560950CE2178CB5D00B2CCDC /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		5615B8B52073B721005F2403 /* AddressShowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressShowView.h; sourceTree = "<group>"; };
 		5615B8B62073B721005F2403 /* AddressShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressShowView.m; sourceTree = "<group>"; };
 		5615B8B82073B730005F2403 /* AddressShowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressShowView.xib; sourceTree = "<group>"; };
@@ -1001,6 +1009,36 @@
 			path = ShopCar;
 			sourceTree = "<group>";
 		};
+		560950C92178CA1A00B2CCDC /* 首页_(1.1.0) */ = {
+			isa = PBXGroup;
+			children = (
+				560950CA2178CA8B00B2CCDC /* 整板 */,
+			);
+			path = "首页_(1.1.0)";
+			sourceTree = "<group>";
+		};
+		560950CA2178CA8B00B2CCDC /* 整板 */ = {
+			isa = PBXGroup;
+			children = (
+				560950CB2178CB3E00B2CCDC /* WholeBoardVC.h */,
+				560950CC2178CB3E00B2CCDC /* WholeBoardVC.m */,
+			);
+			path = "整板";
+			sourceTree = "<group>";
+		};
+		560950D02178DA9600B2CCDC /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A21B4668207B194000802621 /* Mine.storyboard */,
+				5695BE7720429F1B0036D54B /* Main.storyboard */,
+				5695BE7F20429F1B0036D54B /* LaunchScreen.storyboard */,
+				A26149CC20C53FCE0055BA25 /* Common.storyboard */,
+				567F3E792176164200E2A292 /* Login.storyboard */,
+				560950CE2178CB5D00B2CCDC /* Home.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		564D9D0921415A1A00310AD4 /* ZYNetworkAccessibity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1077,20 +1115,23 @@
 		567F3E7B217616A100E2A292 /* UI_1.1.0 */ = {
 			isa = PBXGroup;
 			children = (
-				567F3E7C217616C200E2A292 /* Login_(1.1.0) */,
+				560950C92178CA1A00B2CCDC /* 首页_(1.1.0) */,
+				567F3E7C217616C200E2A292 /* 登录_(1.1.0) */,
 			);
 			path = UI_1.1.0;
 			sourceTree = "<group>";
 		};
-		567F3E7C217616C200E2A292 /* Login_(1.1.0) */ = {
+		567F3E7C217616C200E2A292 /* 登录_(1.1.0) */ = {
 			isa = PBXGroup;
 			children = (
 				567F3E7D2176197000E2A292 /* LoginTVC.h */,
 				567F3E7E2176197000E2A292 /* LoginTVC.m */,
 				569D7BC7217637B600DA94E8 /* RegisterTVC.h */,
 				569D7BC8217637B600DA94E8 /* RegisterTVC.m */,
+				560950C62178C3E700B2CCDC /* InviteNumberVC.h */,
+				560950C72178C3E700B2CCDC /* InviteNumberVC.m */,
 			);
-			path = "Login_(1.1.0)";
+			path = "登录_(1.1.0)";
 			sourceTree = "<group>";
 		};
 		568CB0862065F82D00B48318 /* Model */ = {
@@ -1332,6 +1373,7 @@
 				A23C3939205259F4000A5E99 /* UI */,
 				5695BEB42042A3F70036D54B /* MainClass */,
 				5695BEB72042A4BA0036D54B /* Tool */,
+				560950D02178DA9600B2CCDC /* Storyboard */,
 				5695BEB02042A31B0036D54B /* Supporting Files */,
 				5695BEB82042A4C90036D54B /* Utils */,
 			);
@@ -1361,11 +1403,6 @@
 			children = (
 				5695BEAD2042A30A0036D54B /* IONMarketTest.xcdatamodeld */,
 				5695BEAC2042A30A0036D54B /* main.m */,
-				A21B4668207B194000802621 /* Mine.storyboard */,
-				5695BE7720429F1B0036D54B /* Main.storyboard */,
-				5695BE7F20429F1B0036D54B /* LaunchScreen.storyboard */,
-				A26149CC20C53FCE0055BA25 /* Common.storyboard */,
-				567F3E792176164200E2A292 /* Login.storyboard */,
 				5695BECF2042A84E0036D54B /* PrefixHeader.pch */,
 			);
 			path = "Supporting Files";
@@ -2053,6 +2090,7 @@
 				A296427620F5AB5E00B6E8B6 /* FSActionSheet_cancel@2x.png in Resources */,
 				A2301B2120635292006B9F20 /* LoginViewController.xib in Resources */,
 				5615B8B92073B730005F2403 /* AddressShowView.xib in Resources */,
+				560950CF2178CB5D00B2CCDC /* Home.storyboard in Resources */,
 				A22981D6206261C1007B6112 /* TicketCell.xib in Resources */,
 				A29996FF207381140003B96C /* ShopCarListCell.xib in Resources */,
 				A2AC1C7620565E4600A3B2F9 /* MainItemCell.xib in Resources */,
@@ -2244,6 +2282,7 @@
 				56940C3E20515E6900DFA6D6 /* PublicFuntionTool.m in Sources */,
 				568CB0902066629900B48318 /* PickerView.m in Sources */,
 				56940C0120515DB300DFA6D6 /* TBTabBar.m in Sources */,
+				560950C82178C3E700B2CCDC /* InviteNumberVC.m in Sources */,
 				A22981D0206261AE007B6112 /* EndTicketCell.m in Sources */,
 				A26149CA20C5379E0055BA25 /* WhiteBarCell.m in Sources */,
 				5602129F20594D37009EF75D /* WalletViewController.m in Sources */,
@@ -2289,6 +2328,7 @@
 				A21B466F207B3E5D00802621 /* AuthDetailTViewController.m in Sources */,
 				5695BF112042AB0E0036D54B /* RSAEncryptor.m in Sources */,
 				A283489620610F6900C228AD /* WallentListCell.m in Sources */,
+				560950CD2178CB3E00B2CCDC /* WholeBoardVC.m in Sources */,
 				5671DBC8206000D9005F1760 /* MainItemView__Tube.m in Sources */,
 				5602129020594CF6009EF75D /* ShareViewController.m in Sources */,
 				5695BEC12042A5300036D54B /* BaseModel.m in Sources */,

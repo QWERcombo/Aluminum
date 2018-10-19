@@ -9,8 +9,10 @@
 #import "LoginTVC.h"
 #import "TextTableViewController.h"
 #import "RegisterTVC.h"
+#import "InviteNumberVC.h"
 
 @interface LoginTVC ()<UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UILabel *codeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn;
 @property (weak, nonatomic) IBOutlet UIView *codeLine;
@@ -24,7 +26,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *forgetBtn;
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
-
 
 @end
 
@@ -41,7 +42,6 @@
 #pragma mark - Table view data source
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     
     return SCREEN_HEIGHT-64;
 }
@@ -80,8 +80,14 @@
             [self.forgetBtn setTitleColor:[UIColor colorWithHexString:@"#595E64"] forState:UIControlStateNormal];
             break;
         case 103:
-            //忘记密码
-            [self goToRegister:@"0"];
+            
+            if ([sender.currentTitle isEqualToString:@"忘记密码"]) {
+                //忘记密码
+                [self goToRegister:@"0"];
+            } else {
+                //获取验证码
+                [self getPhoneCode:sender];
+            }
             break;
         case 104:
             //注册
@@ -89,8 +95,7 @@
             break;
         case 105:
             //登陆
-            NSLog(@"login");
-            [self.view endEditing:YES];
+            [self goToLogin];
             
             break;
         case 106:
@@ -115,6 +120,59 @@
     [self.navigationController pushViewController:regist animated:YES];
     
 }
+
+- (void)getPhoneCode:(UIButton *)sender {
+    
+    [self.view endEditing:YES];
+    if (![self.phoneTF.text isValidateMobile]) {
+        [[UtilsData sharedInstance] showAlertTitle:@"提示" detailsText:@"请输入正确的手机号" time:2.0 aboutType:WHShowViewMode_Text state:NO];
+        return;
+    }
+    [self startTimer:sender];
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:self.phoneTF.text forKey:@"phone"];
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SendMsg andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        //NSLog(@"%@", resultDic);
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+}
+- (void)startTimer:(UIButton *)btnCoder
+{
+    self.codeBtn.enabled = NO;
+    __block int timeout = 60; //倒计时时间
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+    dispatch_source_set_event_handler(_timer, ^{
+        if(timeout<=0){ //倒计时结束，关闭
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.codeBtn.enabled = YES;
+                [btnCoder setTitle:@"重新发送" forState:UIControlStateNormal];
+            });
+        }else{
+            //            int minutes = timeout / 60;
+            NSString *strTime = [NSString stringWithFormat:@"%d 秒",timeout];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //设置界面的按钮显示 根据自己需求设置
+                [btnCoder setTitle:strTime forState:UIControlStateNormal];
+            });
+            timeout--;
+        }
+    });
+    dispatch_resume(_timer);
+}
+
+- (void)goToLogin {
+    
+    [self.view endEditing:YES];
+    InviteNumberVC *invite = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"InviteNumberVC"];
+    [self.navigationController pushViewController:invite animated:YES];
+}
+
+
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     

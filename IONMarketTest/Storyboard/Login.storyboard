@@ -332,6 +332,94 @@
             </objects>
             <point key="canvasLocation" x="96.799999999999997" y="-94.002998500749626"/>
         </scene>
+        <!--Invite NumberVC-->
+        <scene sceneID="16F-tX-6vW">
+            <objects>
+                <tableViewController storyboardIdentifier="InviteNumberVC" id="wNd-S4-6PU" customClass="InviteNumberVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Xv-me-aaz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="prf-cs-PUp">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="448" id="Pcy-nT-g09">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="448"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pcy-nT-g09" id="baz-OL-Qde">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="448"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view tag="103" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cop-ua-GiV" customClass="BorderView">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="76"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入推荐人手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4M-ZM-Yk2">
+                                                            <rect key="frame" x="0.0" y="31" width="345" height="45"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="45" id="6FK-9D-cqs"/>
+                                                            </constraints>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="76" id="1vV-WF-HX0"/>
+                                                        <constraint firstAttribute="bottom" secondItem="d4M-ZM-Yk2" secondAttribute="bottom" id="gan-yg-o9i"/>
+                                                        <constraint firstItem="d4M-ZM-Yk2" firstAttribute="leading" secondItem="cop-ua-GiV" secondAttribute="leading" id="hJO-VI-pwA"/>
+                                                        <constraint firstAttribute="trailing" secondItem="d4M-ZM-Yk2" secondAttribute="trailing" id="n8L-3S-lOI"/>
+                                                    </constraints>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3F-Kd-UoF">
+                                                    <rect key="frame" x="38" y="136" width="299" height="44"/>
+                                                    <color key="backgroundColor" red="0.1843137255" green="0.45882352939999999" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="mXa-cK-hwr"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="提交"/>
+                                                    <connections>
+                                                        <action selector="submit:" destination="wNd-S4-6PU" eventType="touchUpInside" id="pO6-yd-jho"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="en8-CK-DOh">
+                                                    <rect key="frame" x="306" y="214" width="31" height="30"/>
+                                                    <state key="normal" title="跳过"/>
+                                                    <connections>
+                                                        <action selector="close:" destination="wNd-S4-6PU" eventType="touchUpInside" id="6t3-C2-Bpo"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cop-ua-GiV" firstAttribute="leading" secondItem="baz-OL-Qde" secondAttribute="leading" constant="15" id="4RR-PK-KF1"/>
+                                                <constraint firstItem="en8-CK-DOh" firstAttribute="top" secondItem="i3F-Kd-UoF" secondAttribute="bottom" constant="34" id="CkK-Xm-zmW"/>
+                                                <constraint firstItem="cop-ua-GiV" firstAttribute="top" secondItem="baz-OL-Qde" secondAttribute="top" id="Hnf-tx-RS3"/>
+                                                <constraint firstItem="i3F-Kd-UoF" firstAttribute="leading" secondItem="baz-OL-Qde" secondAttribute="leading" constant="38" id="KNf-gJ-AFy"/>
+                                                <constraint firstAttribute="trailing" secondItem="cop-ua-GiV" secondAttribute="trailing" constant="15" id="P7U-kI-2r2"/>
+                                                <constraint firstItem="i3F-Kd-UoF" firstAttribute="top" secondItem="cop-ua-GiV" secondAttribute="bottom" constant="60" id="SED-Aa-PtM"/>
+                                                <constraint firstItem="en8-CK-DOh" firstAttribute="trailing" secondItem="i3F-Kd-UoF" secondAttribute="trailing" id="U6i-lN-XCY"/>
+                                                <constraint firstAttribute="trailing" secondItem="i3F-Kd-UoF" secondAttribute="trailing" constant="38" id="zr1-kO-8J0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="wNd-S4-6PU" id="J0c-Wr-oYB"/>
+                            <outlet property="delegate" destination="wNd-S4-6PU" id="geT-il-QYv"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="inviteTF" destination="d4M-ZM-Yk2" id="NBf-SV-o4E"/>
+                        <outlet property="submitBtn" destination="i3F-Kd-UoF" id="Ds9-rL-aIb"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QYH-ex-Tmo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="96.799999999999997" y="606.74662668665667"/>
+        </scene>
         <!--RegisterTVC-->
         <scene sceneID="kxj-D6-TC7">
             <objects>
