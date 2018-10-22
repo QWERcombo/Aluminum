@@ -24,6 +24,10 @@
 		560950CF2178CB5D00B2CCDC /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560950CE2178CB5D00B2CCDC /* Home.storyboard */; };
 		5615B8B72073B721005F2403 /* AddressShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5615B8B62073B721005F2403 /* AddressShowView.m */; };
 		5615B8B92073B730005F2403 /* AddressShowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5615B8B82073B730005F2403 /* AddressShowView.xib */; };
+		56198BB0217A2B3E009AB9F3 /* WholeBoardListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56198BAE217A2B3E009AB9F3 /* WholeBoardListCell.m */; };
+		56198BB1217A2B3E009AB9F3 /* WholeBoardListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56198BAF217A2B3E009AB9F3 /* WholeBoardListCell.xib */; };
+		56198BB4217A2DAB009AB9F3 /* WholeBoardTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56198BB3217A2DAB009AB9F3 /* WholeBoardTapView.m */; };
+		56198BB6217A2DBD009AB9F3 /* WholeBoardTapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56198BB5217A2DBD009AB9F3 /* WholeBoardTapView.xib */; };
 		561CC0D5206FD24900DB0998 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 561CC0D4206FD24900DB0998 /* MainModel.m */; };
 		562D7CAD20CACAF40093367D /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 562D7CAC20CACAF40093367D /* CustomButton.m */; };
 		562FF27220BA6FC1006048DC /* OrderListItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 562FF27120BA6FC1006048DC /* OrderListItemView.m */; };
@@ -166,6 +170,9 @@
 		56B5215C20AB37B700F636BD /* ChoosePayWayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56B5215B20AB37B700F636BD /* ChoosePayWayView.xib */; };
 		56B58D1920BC529A00F92B91 /* WithdrawApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B58D1820BC529A00F92B91 /* WithdrawApplyViewController.m */; };
 		56BDC4CA209A019D00DDE4DE /* WholeBoardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BDC4C9209A019D00DDE4DE /* WholeBoardModel.m */; };
+		56CA2B5B217A149400F3FED0 /* XunJiaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CA2B5A217A149400F3FED0 /* XunJiaViewController.m */; };
+		56CA2B5E217A14A200F3FED0 /* ZiZhuXiaDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CA2B5D217A14A200F3FED0 /* ZiZhuXiaDanViewController.m */; };
+		56CA2B61217A14E900F3FED0 /* DingZhiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CA2B60217A14E900F3FED0 /* DingZhiViewController.m */; };
 		56D940752169F1CB00A3CBD9 /* ImageShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D940742169F1CB00A3CBD9 /* ImageShowViewController.m */; };
 		56DB05CB20FAEA37009FA8C8 /* WithdrawRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DB05C920FAEA37009FA8C8 /* WithdrawRecordCell.m */; };
 		56DB05CC20FAEA37009FA8C8 /* WithdrawRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56DB05CA20FAEA37009FA8C8 /* WithdrawRecordCell.xib */; };
@@ -312,6 +319,12 @@
 		5615B8B52073B721005F2403 /* AddressShowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressShowView.h; sourceTree = "<group>"; };
 		5615B8B62073B721005F2403 /* AddressShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressShowView.m; sourceTree = "<group>"; };
 		5615B8B82073B730005F2403 /* AddressShowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressShowView.xib; sourceTree = "<group>"; };
+		56198BAD217A2B3E009AB9F3 /* WholeBoardListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WholeBoardListCell.h; sourceTree = "<group>"; };
+		56198BAE217A2B3E009AB9F3 /* WholeBoardListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WholeBoardListCell.m; sourceTree = "<group>"; };
+		56198BAF217A2B3E009AB9F3 /* WholeBoardListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WholeBoardListCell.xib; sourceTree = "<group>"; };
+		56198BB2217A2DAB009AB9F3 /* WholeBoardTapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WholeBoardTapView.h; sourceTree = "<group>"; };
+		56198BB3217A2DAB009AB9F3 /* WholeBoardTapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WholeBoardTapView.m; sourceTree = "<group>"; };
+		56198BB5217A2DBD009AB9F3 /* WholeBoardTapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WholeBoardTapView.xib; sourceTree = "<group>"; };
 		561CC0D3206FD24900DB0998 /* MainModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		561CC0D4206FD24900DB0998 /* MainModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
 		562D7CAB20CACAF40093367D /* CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
@@ -571,6 +584,12 @@
 		56B58D1820BC529A00F92B91 /* WithdrawApplyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawApplyViewController.m; sourceTree = "<group>"; };
 		56BDC4C8209A019D00DDE4DE /* WholeBoardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WholeBoardModel.h; sourceTree = "<group>"; };
 		56BDC4C9209A019D00DDE4DE /* WholeBoardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WholeBoardModel.m; sourceTree = "<group>"; };
+		56CA2B59217A149400F3FED0 /* XunJiaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XunJiaViewController.h; sourceTree = "<group>"; };
+		56CA2B5A217A149400F3FED0 /* XunJiaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XunJiaViewController.m; sourceTree = "<group>"; };
+		56CA2B5C217A14A200F3FED0 /* ZiZhuXiaDanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZiZhuXiaDanViewController.h; sourceTree = "<group>"; };
+		56CA2B5D217A14A200F3FED0 /* ZiZhuXiaDanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZiZhuXiaDanViewController.m; sourceTree = "<group>"; };
+		56CA2B5F217A14E900F3FED0 /* DingZhiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DingZhiViewController.h; sourceTree = "<group>"; };
+		56CA2B60217A14E900F3FED0 /* DingZhiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DingZhiViewController.m; sourceTree = "<group>"; };
 		56D940732169F1CB00A3CBD9 /* ImageShowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageShowViewController.h; sourceTree = "<group>"; };
 		56D940742169F1CB00A3CBD9 /* ImageShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageShowViewController.m; sourceTree = "<group>"; };
 		56DB05C820FAEA37009FA8C8 /* WithdrawRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawRecordCell.h; sourceTree = "<group>"; };
@@ -1012,6 +1031,9 @@
 		560950C92178CA1A00B2CCDC /* 首页_(1.1.0) */ = {
 			isa = PBXGroup;
 			children = (
+				56CA2B58217A147200F3FED0 /* 特殊定制 */,
+				56CA2B57217A146000F3FED0 /* 自助下单 */,
+				56CA2B56217A145700F3FED0 /* 询价 */,
 				560950CA2178CA8B00B2CCDC /* 整板 */,
 			);
 			path = "首页_(1.1.0)";
@@ -1022,6 +1044,12 @@
 			children = (
 				560950CB2178CB3E00B2CCDC /* WholeBoardVC.h */,
 				560950CC2178CB3E00B2CCDC /* WholeBoardVC.m */,
+				56198BB2217A2DAB009AB9F3 /* WholeBoardTapView.h */,
+				56198BB3217A2DAB009AB9F3 /* WholeBoardTapView.m */,
+				56198BB5217A2DBD009AB9F3 /* WholeBoardTapView.xib */,
+				56198BAD217A2B3E009AB9F3 /* WholeBoardListCell.h */,
+				56198BAE217A2B3E009AB9F3 /* WholeBoardListCell.m */,
+				56198BAF217A2B3E009AB9F3 /* WholeBoardListCell.xib */,
 			);
 			path = "整板";
 			sourceTree = "<group>";
@@ -1578,6 +1606,33 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		56CA2B56217A145700F3FED0 /* 询价 */ = {
+			isa = PBXGroup;
+			children = (
+				56CA2B59217A149400F3FED0 /* XunJiaViewController.h */,
+				56CA2B5A217A149400F3FED0 /* XunJiaViewController.m */,
+			);
+			path = "询价";
+			sourceTree = "<group>";
+		};
+		56CA2B57217A146000F3FED0 /* 自助下单 */ = {
+			isa = PBXGroup;
+			children = (
+				56CA2B5C217A14A200F3FED0 /* ZiZhuXiaDanViewController.h */,
+				56CA2B5D217A14A200F3FED0 /* ZiZhuXiaDanViewController.m */,
+			);
+			path = "自助下单";
+			sourceTree = "<group>";
+		};
+		56CA2B58217A147200F3FED0 /* 特殊定制 */ = {
+			isa = PBXGroup;
+			children = (
+				56CA2B5F217A14E900F3FED0 /* DingZhiViewController.h */,
+				56CA2B60217A14E900F3FED0 /* DingZhiViewController.m */,
+			);
+			path = "特殊定制";
+			sourceTree = "<group>";
+		};
 		56F9E9BB216378C500141852 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2088,6 +2143,7 @@
 				5695BE8120429F1B0036D54B /* LaunchScreen.storyboard in Resources */,
 				56A37FCF212AF27D00701CD8 /* WuLiuCell.xib in Resources */,
 				A296427620F5AB5E00B6E8B6 /* FSActionSheet_cancel@2x.png in Resources */,
+				56198BB6217A2DBD009AB9F3 /* WholeBoardTapView.xib in Resources */,
 				A2301B2120635292006B9F20 /* LoginViewController.xib in Resources */,
 				5615B8B92073B730005F2403 /* AddressShowView.xib in Resources */,
 				560950CF2178CB5D00B2CCDC /* Home.storyboard in Resources */,
@@ -2099,6 +2155,7 @@
 				A22981BD20624B48007B6112 /* AddAddressViewController.xib in Resources */,
 				5671DBCF2060011D005F1760 /* MainItemView__Matter.xib in Resources */,
 				A22981C2206260CE007B6112 /* ApplyTicketViewController.xib in Resources */,
+				56198BB1217A2B3E009AB9F3 /* WholeBoardListCell.xib in Resources */,
 				565086B4205D3B3A00FD8497 /* MainItem__Single.xib in Resources */,
 				A22981CC20626193007B6112 /* TicketInfoCell.xib in Resources */,
 				56B5215C20AB37B700F636BD /* ChoosePayWayView.xib in Resources */,
@@ -2212,12 +2269,14 @@
 				A296427420F5AB5E00B6E8B6 /* FSActionSheetConfig.m in Sources */,
 				A229819020620336007B6112 /* InputViewController.m in Sources */,
 				A2555F3B20C0DC65000C7E03 /* APRSASigner.m in Sources */,
+				56CA2B5E217A14A200F3FED0 /* ZiZhuXiaDanViewController.m in Sources */,
 				56B5215720AB246200F636BD /* OrderPayVC.m in Sources */,
 				A2B8DADC20B27AE300633050 /* PriceModel.m in Sources */,
 				5671DBBB205FF1C7005F1760 /* InventoryCell.m in Sources */,
 				A22981B7206248EB007B6112 /* AddressCell.m in Sources */,
 				A289424420B4239500D8E9E5 /* WalletListModel.m in Sources */,
 				56940C3320515E1800DFA6D6 /* NSTimer+WeakTimer.m in Sources */,
+				56198BB0217A2B3E009AB9F3 /* WholeBoardListCell.m in Sources */,
 				5695BF312042AC120036D54B /* ABBannerView.m in Sources */,
 				56940C3520515E1800DFA6D6 /* UIButton+Badge.m in Sources */,
 				5650869C205CD0AB00FD8497 /* OrderDetailViewController.m in Sources */,
@@ -2287,6 +2346,7 @@
 				A26149CA20C5379E0055BA25 /* WhiteBarCell.m in Sources */,
 				5602129F20594D37009EF75D /* WalletViewController.m in Sources */,
 				A296427920F5AB5E00B6E8B6 /* TAAnimatedDotView.m in Sources */,
+				56CA2B61217A14E900F3FED0 /* DingZhiViewController.m in Sources */,
 				A296427B20F5AB5E00B6E8B6 /* TAPageControl.m in Sources */,
 				A26CECC5205FAA5A00B7AF91 /* InventoryViewController.m in Sources */,
 				5695BF5C2042AC1D0036D54B /* EasyShowUtils.m in Sources */,
@@ -2294,6 +2354,7 @@
 				A21B4672207B470A00802621 /* FaPiaoModel.m in Sources */,
 				5695BF632042AF8C0036D54B /* DataSend.m in Sources */,
 				56A37FCE212AF27D00701CD8 /* WuLiuCell.m in Sources */,
+				56198BB4217A2DAB009AB9F3 /* WholeBoardTapView.m in Sources */,
 				A296427220F5AB5E00B6E8B6 /* FSActionSheet.m in Sources */,
 				56940C2120515DF900DFA6D6 /* UILabel+YXP.m in Sources */,
 				A2AC1C6B20564B8A00A3B2F9 /* UserInfoSettingViewController.m in Sources */,
@@ -2319,6 +2380,7 @@
 				568DC2D7207F857D0034416F /* RegisterTViewController.m in Sources */,
 				A2301B3620638923006B9F20 /* TeleServiceViewController.m in Sources */,
 				5695BEC22042A5300036D54B /* BaseCell.m in Sources */,
+				56CA2B5B217A149400F3FED0 /* XunJiaViewController.m in Sources */,
 				568CB08D2066462300B48318 /* CALayer+Addition.m in Sources */,
 				A22981A720623BAD007B6112 /* AddCardViewController.m in Sources */,
 				5632BFAC205AA3F80009CD34 /* SetOrderViewController.m in Sources */,

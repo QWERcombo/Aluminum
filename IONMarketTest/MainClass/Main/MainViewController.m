@@ -16,6 +16,13 @@
 #import "SpecialMakeViewController.h"
 #import "InventoryViewController.h"
 
+#import "DingZhiViewController.h"
+#import "XunJiaViewController.h"
+#import "ZiZhuXiaDanViewController.h"
+#import "WholeBoardVC.h"
+
+
+
 @interface MainViewController ()
 @property (nonatomic, assign) NSInteger pageNumber;
 @end
@@ -116,21 +123,46 @@
 //                NSLog(@"%@", clueStr);
                 NSString *name = [nameArr objectAtIndex:clueStr.integerValue];
                 if ([name isEqualToString:@"自动下单"]) {
-                    SetOrderViewController *set = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SetOrder"];
-                    [self.navigationController pushViewController:set animated:YES];
-
+//                    SetOrderViewController *set = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SetOrder"];
+//                    [self.navigationController pushViewController:set animated:YES];
+                    ZiZhuXiaDanViewController *zizhu = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"ZiZhuXiaDanViewController"];
+                    [self.navigationController pushViewController:zizhu animated:YES];
                 } else if ([name isEqualToString:@"特殊定制"]) {
 //                    SpecialMakeViewController *special = [SpecialMakeViewController new];
 //                    [self.navigationController pushViewController:special animated:YES];
-                    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"此项功能研发中..." time:0 aboutType:WHShowViewMode_Text state:NO];
+//                    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"此项功能研发中..." time:0 aboutType:WHShowViewMode_Text state:NO];
+                    DingZhiViewController *dingzhi = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"DingZhiViewController"];
+                    [self.navigationController pushViewController:dingzhi animated:YES];
+                    
                 } else if ([name isEqualToString:@"询价"]) {
 //                    MessageViewController *message = [MessageViewController new];
 //                    [self.navigationController pushViewController:message animated:YES];
-                    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"此项功能研发中..." time:0 aboutType:WHShowViewMode_Text state:NO];
+//                    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"此项功能研发中..." time:0 aboutType:WHShowViewMode_Text state:NO];
+                    XunJiaViewController *xunjia = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"XunJiaViewController"];
+                    [self.navigationController pushViewController:xunjia animated:YES];
+                    
                 } else if ([name isEqualToString:@"整板"]) {
-                    InventoryViewController *inven = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"InventoryViewController"];
+//                    InventoryViewController *inven = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"InventoryViewController"];
+                    WholeBoardVC *inven = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardVC"];
                     [self.navigationController pushViewController:inven animated:YES];
-                } else {
+                } else if ([name isEqualToString:@"零切"]) {
+                    
+                    
+                    
+                } else if ([name isEqualToString:@"圆棒"]) {
+                    
+                    
+                    
+                } else if ([name isEqualToString:@"管材"]) {
+                    
+                    
+                    
+                } else if ([name isEqualToString:@"型材"]) {
+                    
+
+
+                }
+                else {
                     MainItemViewController *main_item = [[MainItemViewController alloc] init];
                     main_item.titleStr = name;
                     main_item.selectedNum = [clueStr integerValue]-1;

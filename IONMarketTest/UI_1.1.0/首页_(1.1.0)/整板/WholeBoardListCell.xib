@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="WholeBoardListCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shd-Aq-l5A">
+                        <rect key="frame" x="6" y="6" width="308" height="91.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18*1500*3000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkI-Eq-SWg">
+                        <rect key="frame" x="16" y="16" width="125" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="厂家：天津忠旺" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ds1-l5-CsH">
+                        <rect key="frame" x="16" y="39" width="100" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.34901960780000002" green="0.36862745099999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKF-XV-Kf0">
+                        <rect key="frame" x="238.5" y="16" width="67.5" height="19.5"/>
+                        <attributedString key="attributedText">
+                            <fragment content="￥">
+                                <attributes>
+                                    <color key="NSColor" red="0.90980392156862744" green="0.25098039215686274" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="16" name=".PingFangSC-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                            <fragment content="10">
+                                <attributes>
+                                    <color key="NSColor" red="0.90980392156862744" green="0.25098039215686274" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" metaFont="system" size="16"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                            <fragment content="元">
+                                <attributes>
+                                    <color key="NSColor" red="0.90980392156862744" green="0.25098039215686274" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="10" name=".PingFangSC-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                            <fragment content="/">
+                                <attributes>
+                                    <color key="NSColor" red="0.90980392156862744" green="0.25098039215686274" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="10" name=".AppleSystemUIFont"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                            <fragment content="公斤">
+                                <attributes>
+                                    <color key="NSColor" red="0.90980392156862744" green="0.25098039215686274" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="10" name=".PingFangSC-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5555元/件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKq-FT-On2">
+                        <rect key="frame" x="247.5" y="39" width="58.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.55294117649999996" green="0.58431372550000005" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(10件)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qiJ-gQ-9k7">
+                        <rect key="frame" x="141" y="19.5" width="41.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="shd-Aq-l5A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="66h-jB-NcC"/>
+                    <constraint firstAttribute="trailing" secondItem="xKF-XV-Kf0" secondAttribute="trailing" constant="14" id="8FI-Mc-ruG"/>
+                    <constraint firstAttribute="trailing" secondItem="wKq-FT-On2" secondAttribute="trailing" constant="14" id="Al9-1S-eak"/>
+                    <constraint firstItem="xKF-XV-Kf0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Mz9-MA-YBF"/>
+                    <constraint firstAttribute="bottom" secondItem="shd-Aq-l5A" secondAttribute="bottom" constant="2" id="VDC-7q-kKa"/>
+                    <constraint firstItem="qiJ-gQ-9k7" firstAttribute="firstBaseline" secondItem="MkI-Eq-SWg" secondAttribute="firstBaseline" id="aZv-yf-ctp"/>
+                    <constraint firstItem="xKF-XV-Kf0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qiJ-gQ-9k7" secondAttribute="trailing" constant="10" id="bKv-D1-J2c"/>
+                    <constraint firstAttribute="trailing" secondItem="shd-Aq-l5A" secondAttribute="trailing" constant="6" id="evw-rm-Xo2"/>
+                    <constraint firstItem="qiJ-gQ-9k7" firstAttribute="leading" secondItem="MkI-Eq-SWg" secondAttribute="trailing" id="fOE-r9-f0P"/>
+                    <constraint firstItem="Ds1-l5-CsH" firstAttribute="top" secondItem="MkI-Eq-SWg" secondAttribute="bottom" constant="2" id="h8p-VD-P9a"/>
+                    <constraint firstItem="MkI-Eq-SWg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="hTW-Q2-Ssr"/>
+                    <constraint firstItem="MkI-Eq-SWg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ng9-HF-Drw"/>
+                    <constraint firstItem="wKq-FT-On2" firstAttribute="top" secondItem="Ds1-l5-CsH" secondAttribute="top" id="o2u-Vz-S3E"/>
+                    <constraint firstItem="shd-Aq-l5A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="oaP-aF-oOp"/>
+                    <constraint firstItem="Ds1-l5-CsH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="p7B-bO-X2B"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="changjiaLabel" destination="Ds1-l5-CsH" id="FNL-pP-1P8"/>
+                <outlet property="danjiaLabel" destination="xKF-XV-Kf0" id="SDg-U2-Klg"/>
+                <outlet property="guigeLabel" destination="MkI-Eq-SWg" id="WCD-mS-vdA"/>
+                <outlet property="kucunLabel" destination="qiJ-gQ-9k7" id="TAP-xe-xhk"/>
+                <outlet property="priceLabel" destination="wKq-FT-On2" id="PgD-co-gAS"/>
+                <outlet property="showView" destination="shd-Aq-l5A" id="rXs-YB-5re"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

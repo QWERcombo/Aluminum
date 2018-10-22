@@ -16,15 +16,15 @@
         
         self.backgroundColor = [UIColor whiteColor];
         
-        self.line = [[UIView alloc] init];
-        _line.backgroundColor = [UIColor Grey_LineColor];
-        [self.contentView addSubview:_line];
-        [_line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@(1));
-            make.bottom.equalTo(self.mas_bottom);
-            make.width.equalTo(@(SCREEN_WIGHT-40));
-            make.centerX.equalTo(self.contentView.mas_centerX);
-        }];
+//        self.line = [[UIView alloc] init];
+//        _line.backgroundColor = [UIColor Grey_LineColor];
+//        [self.contentView addSubview:_line];
+//        [_line mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.height.equalTo(@(1));
+//            make.bottom.equalTo(self.mas_bottom);
+//            make.width.equalTo(@(SCREEN_WIGHT-40));
+//            make.centerX.equalTo(self.contentView.mas_centerX);
+//        }];
         
         [self initSubView];
     }
@@ -46,6 +46,19 @@
 {
 //    return SCREEN_WIGHT*9/16+10;
     return .1;
+}
+
++ (instancetype)initCell:(UITableView *)tableView cellName:(NSString *)cellName  dataObject:(id)dataObject {
+    
+    BaseCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle]loadNibNamed:cellName owner:nil options:nil] firstObject];
+    }
+    
+    
+    
+    
+    return cell;
 }
 
 - (void)awakeFromNib {
