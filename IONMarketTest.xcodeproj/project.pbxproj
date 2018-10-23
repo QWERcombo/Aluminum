@@ -30,6 +30,9 @@
 		56198BB6217A2DBD009AB9F3 /* WholeBoardTapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56198BB5217A2DBD009AB9F3 /* WholeBoardTapView.xib */; };
 		561CC0D5206FD24900DB0998 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 561CC0D4206FD24900DB0998 /* MainModel.m */; };
 		562D7CAD20CACAF40093367D /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 562D7CAC20CACAF40093367D /* CustomButton.m */; };
+		562E51CF217F659700C90A9E /* ZeroCutTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 562E51CE217F659700C90A9E /* ZeroCutTabVC.m */; };
+		562E51D2217F6EA300C90A9E /* SelectThickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 562E51D1217F6EA300C90A9E /* SelectThickView.m */; };
+		562E51D4217F6EAF00C90A9E /* SelectThickView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 562E51D3217F6EAF00C90A9E /* SelectThickView.xib */; };
 		562FF27220BA6FC1006048DC /* OrderListItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 562FF27120BA6FC1006048DC /* OrderListItemView.m */; };
 		562FF27420BA6FCB006048DC /* OrderListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 562FF27320BA6FCB006048DC /* OrderListItemView.xib */; };
 		5632BFAC205AA3F80009CD34 /* SetOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFAB205AA3F80009CD34 /* SetOrderViewController.m */; };
@@ -334,6 +337,11 @@
 		561CC0D4206FD24900DB0998 /* MainModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
 		562D7CAB20CACAF40093367D /* CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		562D7CAC20CACAF40093367D /* CustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
+		562E51CD217F659700C90A9E /* ZeroCutTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZeroCutTabVC.h; sourceTree = "<group>"; };
+		562E51CE217F659700C90A9E /* ZeroCutTabVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZeroCutTabVC.m; sourceTree = "<group>"; };
+		562E51D0217F6EA300C90A9E /* SelectThickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectThickView.h; sourceTree = "<group>"; };
+		562E51D1217F6EA300C90A9E /* SelectThickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectThickView.m; sourceTree = "<group>"; };
+		562E51D3217F6EAF00C90A9E /* SelectThickView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectThickView.xib; sourceTree = "<group>"; };
 		562FF27020BA6FC1006048DC /* OrderListItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderListItemView.h; sourceTree = "<group>"; };
 		562FF27120BA6FC1006048DC /* OrderListItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderListItemView.m; sourceTree = "<group>"; };
 		562FF27320BA6FCB006048DC /* OrderListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderListItemView.xib; sourceTree = "<group>"; };
@@ -1946,6 +1954,11 @@
 			children = (
 				A29305A6217F136000D72F4A /* ZeroCutVC.h */,
 				A29305A7217F136000D72F4A /* ZeroCutVC.m */,
+				562E51CD217F659700C90A9E /* ZeroCutTabVC.h */,
+				562E51CE217F659700C90A9E /* ZeroCutTabVC.m */,
+				562E51D0217F6EA300C90A9E /* SelectThickView.h */,
+				562E51D1217F6EA300C90A9E /* SelectThickView.m */,
+				562E51D3217F6EAF00C90A9E /* SelectThickView.xib */,
 			);
 			path = "零切";
 			sourceTree = "<group>";
@@ -2195,6 +2208,7 @@
 				A283489720610F6900C228AD /* WallentListCell.xib in Resources */,
 				5671DBC520600073005F1760 /* MainItemView__Pole.xib in Resources */,
 				A229818B2061FF2B007B6112 /* RemainExplainCell.xib in Resources */,
+				562E51D4217F6EAF00C90A9E /* SelectThickView.xib in Resources */,
 				567B14C520C43F1B00B81FD6 /* TradeRecordCell.xib in Resources */,
 				5695BE7E20429F1B0036D54B /* Assets.xcassets in Resources */,
 				56F9E9C02163790500141852 /* ConfirmOrderCell.xib in Resources */,
@@ -2427,6 +2441,7 @@
 				5695BF112042AB0E0036D54B /* RSAEncryptor.m in Sources */,
 				A283489620610F6900C228AD /* WallentListCell.m in Sources */,
 				560950CD2178CB3E00B2CCDC /* WholeBoardVC.m in Sources */,
+				562E51D2217F6EA300C90A9E /* SelectThickView.m in Sources */,
 				5671DBC8206000D9005F1760 /* MainItemView__Tube.m in Sources */,
 				5602129020594CF6009EF75D /* ShareViewController.m in Sources */,
 				5695BEC12042A5300036D54B /* BaseModel.m in Sources */,
@@ -2470,6 +2485,7 @@
 				A22981C1206260CE007B6112 /* ApplyTicketViewController.m in Sources */,
 				5695BF642042AF8C0036D54B /* Reachability.m in Sources */,
 				A283488E2060AAB200C228AD /* ShopCarDetailViewController.m in Sources */,
+				562E51CF217F659700C90A9E /* ZeroCutTabVC.m in Sources */,
 				5695BF562042AC1D0036D54B /* EasyShowLabel.m in Sources */,
 				5686219920A9CB6E0030C761 /* ShopCarNewListCell.m in Sources */,
 				A22981A320623A93007B6112 /* BankCardCell.m in Sources */,

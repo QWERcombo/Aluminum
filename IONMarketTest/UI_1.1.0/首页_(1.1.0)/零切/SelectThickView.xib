@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SelectThickView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pf6-At-U8W">
+                    <rect key="frame" x="0.0" y="347" width="375" height="320"/>
+                    <subviews>
+                        <view tag="103" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyd-dU-W0Z" customClass="BorderView">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择厚度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpH-ky-YXb">
+                                    <rect key="frame" x="15" y="15.5" width="65.5" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6L-Bt-CUu">
+                                    <rect key="frame" x="330" y="10.5" width="30" height="29"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="取消">
+                                        <color key="titleColor" red="0.1843137255" green="0.45882352939999999" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="removeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="0cN-fQ-VJO"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="G6L-Bt-CUu" secondAttribute="trailing" constant="15" id="IzQ-7p-FXt"/>
+                                <constraint firstAttribute="height" constant="50" id="N6g-uq-zZv"/>
+                                <constraint firstItem="G6L-Bt-CUu" firstAttribute="centerY" secondItem="Uyd-dU-W0Z" secondAttribute="centerY" id="U0b-wK-MRt"/>
+                                <constraint firstItem="CpH-ky-YXb" firstAttribute="centerY" secondItem="Uyd-dU-W0Z" secondAttribute="centerY" id="hF4-qB-J9X"/>
+                                <constraint firstItem="CpH-ky-YXb" firstAttribute="leading" secondItem="Uyd-dU-W0Z" secondAttribute="leading" constant="15" id="nDh-JE-SIn"/>
+                            </constraints>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TWG-hm-RUG">
+                            <rect key="frame" x="15" y="60" width="345" height="250"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZKr-6H-ich">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="iN0-l3-epB" id="INa-dJ-yOR"/>
+                                <outlet property="delegate" destination="iN0-l3-epB" id="5En-6K-oqX"/>
+                            </connections>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Uyd-dU-W0Z" firstAttribute="leading" secondItem="pf6-At-U8W" secondAttribute="leading" id="1uO-Gt-9vc"/>
+                        <constraint firstAttribute="bottom" secondItem="TWG-hm-RUG" secondAttribute="bottom" constant="10" id="5ZT-7T-Ulb"/>
+                        <constraint firstItem="Uyd-dU-W0Z" firstAttribute="top" secondItem="pf6-At-U8W" secondAttribute="top" id="SXQ-Al-qXI"/>
+                        <constraint firstItem="TWG-hm-RUG" firstAttribute="top" secondItem="Uyd-dU-W0Z" secondAttribute="bottom" constant="10" id="WBW-hy-MxU"/>
+                        <constraint firstItem="TWG-hm-RUG" firstAttribute="leading" secondItem="pf6-At-U8W" secondAttribute="leading" constant="15" id="Zvz-e8-A7t"/>
+                        <constraint firstAttribute="trailing" secondItem="TWG-hm-RUG" secondAttribute="trailing" constant="15" id="c5K-Bj-5Qo"/>
+                        <constraint firstAttribute="trailing" secondItem="Uyd-dU-W0Z" secondAttribute="trailing" id="drG-xs-k5b"/>
+                        <constraint firstAttribute="height" constant="320" id="nIG-Ae-FuQ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.50235445205479456" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="pf6-At-U8W" secondAttribute="bottom" id="M5p-0d-tni"/>
+                <constraint firstItem="pf6-At-U8W" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="cB8-27-4qx"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pf6-At-U8W" secondAttribute="trailing" id="rCW-Wq-kof"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="collectionView" destination="TWG-hm-RUG" id="cbU-sR-Clk"/>
+                <outlet property="contentView" destination="pf6-At-U8W" id="sK0-Zp-0l7"/>
+            </connections>
+        </view>
+    </objects>
+</document>

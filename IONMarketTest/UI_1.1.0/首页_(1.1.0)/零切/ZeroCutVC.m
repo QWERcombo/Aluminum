@@ -9,14 +9,16 @@
 #import "ZeroCutVC.h"
 #import "DisplayView.h"
 #import "WholeBoardTapView.h"
+#import "ZeroCutTabVC.h"
 
-@interface ZeroCutVC ()<WholeBoardTapViewDelegate>
+@interface ZeroCutVC ()<WholeBoardTapViewDelegate,ZeroCutTabVCDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UIButton *shopcarBtn;
 
 @property (strong, nonatomic) UIScrollView *topScrollView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, assign) NSInteger lastSelected;
+@property (nonatomic, strong) ZeroCutTabVC *zeroTabVC;
 
 @end
 
@@ -82,6 +84,7 @@
     [lastTap selectedStatus:NO];
     
     self.lastSelected = currentTap.tag;
+    [self.zeroTabVC refreshInfoToReset];
 }
 
 
@@ -118,14 +121,21 @@
     
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"ZeroCutTabVC"]) {
+        
+        ZeroCutTabVC *zero = segue.destinationViewController;
+        self.zeroTabVC = zero;
+        self.zeroTabVC.delegate = self;
+    }
+    
 }
-*/
+
 
 @end
