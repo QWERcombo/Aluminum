@@ -30,7 +30,7 @@
 +(CGSize)getSizeWithText:(NSString*)text andFont:(UIFont *)font andSize:(CGSize)size;
 
 //富文本
-+(NSMutableAttributedString *)labGetAttributedStringFrom:(NSInteger )start toEnd:(NSInteger)end WithColor:(UIColor *)color andFont:(UIFont *)font allFullText:(NSString *)labelText;
++ (NSMutableAttributedString *)getAttributedFromRange:(NSRange)range WithColor:(UIColor *)color andFont:(UIFont *)font allFullText:(NSString *)labelText;
 
 //改变行间距
 + (void)changeLineSpaceForLabel:(UILabel *)label WithSpace:(float)space;

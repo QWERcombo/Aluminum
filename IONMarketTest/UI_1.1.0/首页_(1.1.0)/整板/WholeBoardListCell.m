@@ -18,6 +18,7 @@
     self.showView.layer.shadowOffset = CGSizeMake(0, .5);
     
     
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -30,12 +31,43 @@
     WholeBoardListCell *cell = [super initCell:tableView cellName:cellName dataObject:dataObject];
     
     
+    NSArray *array = @[@"美标",@"拉丝",@"覆膜"];
     
+    CGFloat totalMargin = 0;
+    for (NSInteger i=0; i<array.count; i++) {
+        
+        CGSize size = [[array objectAtIndex:i] boundingRectWithSize:CGSizeMake(0, 17) font:[UIFont systemFontOfSize:12] lineSpacing:0];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16+totalMargin+(5*i), cell.height-27, size.width+12, 17)];
+        label.text = [array objectAtIndex:i];
+        label.font = [UIFont systemFontOfSize:12];
+        label.textColor = [UIColor colorWithHexString:@"#595E64"];
+        label.backgroundColor = [UIColor colorWithHexString:@"#EDEDED"];
+        label.textAlignment = NSTextAlignmentCenter;
+        
+        totalMargin += (size.width+12);
+        [cell.contentView addSubview:label];
+    }
     
+    NSRange range = [cell.danjiaLabel.text rangeOfString:@"元/公斤"];
+    cell.danjiaLabel.attributedText = [UILabel getAttributedFromRange:range WithColor:[UIColor colorWithHexString:@"#E8400F"] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:cell.danjiaLabel.text];
+    
+//    [cell.addBtn setSelected:YES];
     
     return cell;
 }
 
+- (IBAction)add:(UIButton *)sender {
+    
+    if (!sender.selected) {
+        
+        self.addBtn.hidden = YES;
+        self.stepper.hidden = NO;
+        
+    } else {
+        
+    }
+    
+}
 
 
 

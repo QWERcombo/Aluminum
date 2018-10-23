@@ -21,7 +21,36 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shd-Aq-l5A">
                         <rect key="frame" x="6" y="6" width="308" height="91.5"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cn-pd-Yqq" customClass="HYStepper">
+                                <rect key="frame" x="217" y="59.5" width="83" height="22"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="jRA-ZS-R0k"/>
+                                    <constraint firstAttribute="width" constant="83" id="mCF-Xz-fvk"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9D-Qx-ALh">
+                                <rect key="frame" x="278" y="59.5" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="qEg-sz-sGF"/>
+                                    <constraint firstAttribute="width" constant="22" id="zJm-WS-Tmj"/>
+                                </constraints>
+                                <state key="normal" image="main_add_1"/>
+                                <state key="selected" image="main_sub_0"/>
+                                <connections>
+                                    <action selector="add:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="x9b-Um-7au"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="K9D-Qx-ALh" firstAttribute="bottom" secondItem="4cn-pd-Yqq" secondAttribute="bottom" id="1NR-t1-rha"/>
+                            <constraint firstItem="K9D-Qx-ALh" firstAttribute="trailing" secondItem="4cn-pd-Yqq" secondAttribute="trailing" id="BpU-yz-F98"/>
+                            <constraint firstAttribute="bottom" secondItem="4cn-pd-Yqq" secondAttribute="bottom" constant="10" id="FQS-p5-ayr"/>
+                            <constraint firstAttribute="trailing" secondItem="4cn-pd-Yqq" secondAttribute="trailing" constant="8" id="K6u-qx-BdK"/>
+                            <constraint firstItem="K9D-Qx-ALh" firstAttribute="top" secondItem="4cn-pd-Yqq" secondAttribute="top" id="vsE-sB-MAN"/>
+                        </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18*1500*3000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkI-Eq-SWg">
                         <rect key="frame" x="16" y="16" width="125" height="21"/>
@@ -35,45 +64,10 @@
                         <color key="textColor" red="0.34901960780000002" green="0.36862745099999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKF-XV-Kf0">
-                        <rect key="frame" x="238.5" y="16" width="67.5" height="19.5"/>
-                        <attributedString key="attributedText">
-                            <fragment content="￥">
-                                <attributes>
-                                    <color key="NSColor" red="0.90980392156862744" green="0.25098039215686274" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
-                                    <font key="NSFont" size="16" name=".PingFangSC-Regular"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                            <fragment content="10">
-                                <attributes>
-                                    <color key="NSColor" red="0.90980392156862744" green="0.25098039215686274" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
-                                    <font key="NSFont" metaFont="system" size="16"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                            <fragment content="元">
-                                <attributes>
-                                    <color key="NSColor" red="0.90980392156862744" green="0.25098039215686274" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
-                                    <font key="NSFont" size="10" name=".PingFangSC-Regular"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                            <fragment content="/">
-                                <attributes>
-                                    <color key="NSColor" red="0.90980392156862744" green="0.25098039215686274" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
-                                    <font key="NSFont" size="10" name=".AppleSystemUIFont"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                            <fragment content="公斤">
-                                <attributes>
-                                    <color key="NSColor" red="0.90980392156862744" green="0.25098039215686274" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
-                                    <font key="NSFont" size="10" name=".PingFangSC-Regular"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥10元/公斤" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKF-XV-Kf0">
+                        <rect key="frame" x="217" y="16" width="89" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                        <color key="textColor" red="0.90980392156862744" green="0.25098039215686274" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5555元/件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKq-FT-On2">
@@ -109,14 +103,22 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="addBtn" destination="K9D-Qx-ALh" id="D37-XT-hkf"/>
                 <outlet property="changjiaLabel" destination="Ds1-l5-CsH" id="FNL-pP-1P8"/>
                 <outlet property="danjiaLabel" destination="xKF-XV-Kf0" id="SDg-U2-Klg"/>
                 <outlet property="guigeLabel" destination="MkI-Eq-SWg" id="WCD-mS-vdA"/>
                 <outlet property="kucunLabel" destination="qiJ-gQ-9k7" id="TAP-xe-xhk"/>
                 <outlet property="priceLabel" destination="wKq-FT-On2" id="PgD-co-gAS"/>
                 <outlet property="showView" destination="shd-Aq-l5A" id="rXs-YB-5re"/>
+                <outlet property="stepper" destination="4cn-pd-Yqq" id="D4S-08-xOl"/>
             </connections>
+            <point key="canvasLocation" x="40" y="46.776611694152926"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="main_add_1" width="22" height="22"/>
+        <image name="main_sub_0" width="22" height="22"/>
+    </resources>
 </document>

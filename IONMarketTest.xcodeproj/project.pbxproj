@@ -239,6 +239,11 @@
 		A285A6592076170400D349AB /* BillTicketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A285A6582076170400D349AB /* BillTicketModel.m */; };
 		A289424020B3CAF900D8E9E5 /* BezierCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A289423E20B3CAF800D8E9E5 /* BezierCurveView.xib */; };
 		A289424420B4239500D8E9E5 /* WalletListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A289424320B4239500D8E9E5 /* WalletListModel.m */; };
+		A293059C217EDCD500D72F4A /* HYStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = A293059B217EDCD500D72F4A /* HYStepper.m */; };
+		A293059F217EFBD800D72F4A /* WholeBoardDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A293059E217EFBD800D72F4A /* WholeBoardDetailVC.m */; };
+		A29305A2217F053200D72F4A /* DisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A29305A1217F053200D72F4A /* DisplayView.m */; };
+		A29305A4217F054800D72F4A /* DisplayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A29305A3217F054800D72F4A /* DisplayView.xib */; };
+		A29305A8217F136000D72F4A /* ZeroCutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A29305A7217F136000D72F4A /* ZeroCutVC.m */; };
 		A296427020F5AB5E00B6E8B6 /* UIImage+XLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A296424F20F5AB5E00B6E8B6 /* UIImage+XLExtension.m */; };
 		A296427120F5AB5E00B6E8B6 /* UIView+XLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A296425120F5AB5E00B6E8B6 /* UIView+XLExtension.m */; };
 		A296427220F5AB5E00B6E8B6 /* FSActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A296425520F5AB5E00B6E8B6 /* FSActionSheet.m */; };
@@ -772,6 +777,15 @@
 		A289423E20B3CAF800D8E9E5 /* BezierCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BezierCurveView.xib; sourceTree = "<group>"; };
 		A289424220B4239500D8E9E5 /* WalletListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletListModel.h; sourceTree = "<group>"; };
 		A289424320B4239500D8E9E5 /* WalletListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletListModel.m; sourceTree = "<group>"; };
+		A293059A217EDCD400D72F4A /* HYStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYStepper.h; sourceTree = "<group>"; };
+		A293059B217EDCD500D72F4A /* HYStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYStepper.m; sourceTree = "<group>"; };
+		A293059D217EFBD800D72F4A /* WholeBoardDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WholeBoardDetailVC.h; sourceTree = "<group>"; };
+		A293059E217EFBD800D72F4A /* WholeBoardDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WholeBoardDetailVC.m; sourceTree = "<group>"; };
+		A29305A0217F053200D72F4A /* DisplayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayView.h; sourceTree = "<group>"; };
+		A29305A1217F053200D72F4A /* DisplayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisplayView.m; sourceTree = "<group>"; };
+		A29305A3217F054800D72F4A /* DisplayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayView.xib; sourceTree = "<group>"; };
+		A29305A6217F136000D72F4A /* ZeroCutVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZeroCutVC.h; sourceTree = "<group>"; };
+		A29305A7217F136000D72F4A /* ZeroCutVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZeroCutVC.m; sourceTree = "<group>"; };
 		A296424E20F5AB5E00B6E8B6 /* UIImage+XLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+XLExtension.h"; sourceTree = "<group>"; };
 		A296424F20F5AB5E00B6E8B6 /* UIImage+XLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+XLExtension.m"; sourceTree = "<group>"; };
 		A296425020F5AB5E00B6E8B6 /* UIView+XLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XLExtension.h"; sourceTree = "<group>"; };
@@ -1031,6 +1045,7 @@
 		560950C92178CA1A00B2CCDC /* 首页_(1.1.0) */ = {
 			isa = PBXGroup;
 			children = (
+				A29305A5217F131200D72F4A /* 零切 */,
 				56CA2B58217A147200F3FED0 /* 特殊定制 */,
 				56CA2B57217A146000F3FED0 /* 自助下单 */,
 				56CA2B56217A145700F3FED0 /* 询价 */,
@@ -1044,12 +1059,19 @@
 			children = (
 				560950CB2178CB3E00B2CCDC /* WholeBoardVC.h */,
 				560950CC2178CB3E00B2CCDC /* WholeBoardVC.m */,
+				A293059D217EFBD800D72F4A /* WholeBoardDetailVC.h */,
+				A293059E217EFBD800D72F4A /* WholeBoardDetailVC.m */,
 				56198BB2217A2DAB009AB9F3 /* WholeBoardTapView.h */,
 				56198BB3217A2DAB009AB9F3 /* WholeBoardTapView.m */,
 				56198BB5217A2DBD009AB9F3 /* WholeBoardTapView.xib */,
 				56198BAD217A2B3E009AB9F3 /* WholeBoardListCell.h */,
 				56198BAE217A2B3E009AB9F3 /* WholeBoardListCell.m */,
 				56198BAF217A2B3E009AB9F3 /* WholeBoardListCell.xib */,
+				A293059A217EDCD400D72F4A /* HYStepper.h */,
+				A293059B217EDCD500D72F4A /* HYStepper.m */,
+				A29305A0217F053200D72F4A /* DisplayView.h */,
+				A29305A1217F053200D72F4A /* DisplayView.m */,
+				A29305A3217F054800D72F4A /* DisplayView.xib */,
 			);
 			path = "整板";
 			sourceTree = "<group>";
@@ -1919,6 +1941,15 @@
 			path = BezierCurvcLine;
 			sourceTree = "<group>";
 		};
+		A29305A5217F131200D72F4A /* 零切 */ = {
+			isa = PBXGroup;
+			children = (
+				A29305A6217F136000D72F4A /* ZeroCutVC.h */,
+				A29305A7217F136000D72F4A /* ZeroCutVC.m */,
+			);
+			path = "零切";
+			sourceTree = "<group>";
+		};
 		A296424D20F5AB5E00B6E8B6 /* XLPhotoBrowser+CoderXL */ = {
 			isa = PBXGroup;
 			children = (
@@ -2157,6 +2188,7 @@
 				A22981C2206260CE007B6112 /* ApplyTicketViewController.xib in Resources */,
 				56198BB1217A2B3E009AB9F3 /* WholeBoardListCell.xib in Resources */,
 				565086B4205D3B3A00FD8497 /* MainItem__Single.xib in Resources */,
+				A29305A4217F054800D72F4A /* DisplayView.xib in Resources */,
 				A22981CC20626193007B6112 /* TicketInfoCell.xib in Resources */,
 				56B5215C20AB37B700F636BD /* ChoosePayWayView.xib in Resources */,
 				5632BFBA205AB6180009CD34 /* QuotationDetailCell.xib in Resources */,
@@ -2283,6 +2315,7 @@
 				56940C2B20515DF900DFA6D6 /* UIColor+YXP.m in Sources */,
 				56B5215420AB194000F636BD /* OrderNewDetailVC.m in Sources */,
 				567D6A3C207B9BA100994BEF /* AuthenticationModel.m in Sources */,
+				A293059C217EDCD500D72F4A /* HYStepper.m in Sources */,
 				5671DBC32060005A005F1760 /* MainItemView__Pole.m in Sources */,
 				A283489220610A8300C228AD /* TradeListViewController.m in Sources */,
 				56940C0220515DB300DFA6D6 /* TBTabBarController.m in Sources */,
@@ -2315,6 +2348,7 @@
 				564D9D0C21415A1B00310AD4 /* ZYNetworkAccessibity.m in Sources */,
 				56940C2620515DF900DFA6D6 /* UITableView+TB.m in Sources */,
 				5695BF1D2042ABAB0036D54B /* UtilsData.m in Sources */,
+				A29305A2217F053200D72F4A /* DisplayView.m in Sources */,
 				5695BF1F2042ABAB0036D54B /* UserData.m in Sources */,
 				56940C3420515E1800DFA6D6 /* UIBarButtonItem+Badge.m in Sources */,
 				A2555F3C20C0DC65000C7E03 /* openssl_wrapper.m in Sources */,
@@ -2322,6 +2356,7 @@
 				A2A8A63F20B7C1400009792F /* OrderListModel.m in Sources */,
 				A2F8AEB220C11EBC00D9926F /* OrderPayResultVC.m in Sources */,
 				560264BA206A7C1D00F9C405 /* ShopCar.m in Sources */,
+				A29305A8217F136000D72F4A /* ZeroCutVC.m in Sources */,
 				5695BF0F2042AB0E0036D54B /* NSData+NEUAES.m in Sources */,
 				5695BF552042AC1D0036D54B /* EasyShowAlertView.m in Sources */,
 				5615B8B72073B721005F2403 /* AddressShowView.m in Sources */,
@@ -2378,6 +2413,7 @@
 				56BDC4CA209A019D00DDE4DE /* WholeBoardModel.m in Sources */,
 				A296427320F5AB5E00B6E8B6 /* FSActionSheetCell.m in Sources */,
 				568DC2D7207F857D0034416F /* RegisterTViewController.m in Sources */,
+				A293059F217EFBD800D72F4A /* WholeBoardDetailVC.m in Sources */,
 				A2301B3620638923006B9F20 /* TeleServiceViewController.m in Sources */,
 				5695BEC22042A5300036D54B /* BaseCell.m in Sources */,
 				56CA2B5B217A149400F3FED0 /* XunJiaViewController.m in Sources */,

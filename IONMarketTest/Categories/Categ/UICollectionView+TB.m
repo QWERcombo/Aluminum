@@ -21,7 +21,7 @@
         NSString *beforeStr = @"已为你推荐了在场 ";
         NSString *numStr = [NSString stringWithFormat:@"%ld",(long)num];
         NSString *allComment = [NSString stringWithFormat:@"%@%@ 人",beforeStr,numStr];
-        l.attributedText = [UILabel labGetAttributedStringFrom:beforeStr.length toEnd:numStr.length WithColor:[UIColor colorWithR:255 G:239 B:54 A:1] andFont:FONT_ArialMT(22) allFullText:allComment];
+//        l.attributedText = [UILabel labGetAttributedStringFrom:beforeStr.length toEnd:numStr.length WithColor:[UIColor colorWithR:255 G:239 B:54 A:1] andFont:FONT_ArialMT(22) allFullText:allComment];
     }else{
         l.text = @"已经没有更多内容";
     }

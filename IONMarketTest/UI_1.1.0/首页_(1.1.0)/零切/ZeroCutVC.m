@@ -1,22 +1,18 @@
 //
-//  WholeBoardVC.m
+//  ZeroCutVC.m
 //  IONMarketTest
 //
-//  Created by 赵越 on 2018/10/18.
+//  Created by 瓜豆2018 on 2018/10/23.
 //  Copyright © 2018年 赵越. All rights reserved.
 //
 
-#import "WholeBoardVC.h"
-#import "WholeBoardListCell.h"
-#import "WholeBoardTapView.h"
-#import "WholeBoardDetailVC.h"
+#import "ZeroCutVC.h"
 #import "DisplayView.h"
+#import "WholeBoardTapView.h"
 
-@interface WholeBoardVC ()<UITableViewDataSource, UITableViewDelegate, WholeBoardTapViewDelegate>
-@property (weak, nonatomic) IBOutlet UIButton *shopCarBtn;
-@property (weak, nonatomic) IBOutlet UIButton *excuteBtn;
+@interface ZeroCutVC ()<WholeBoardTapViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *shopcarBtn;
 
 @property (strong, nonatomic) UIScrollView *topScrollView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -24,7 +20,7 @@
 
 @end
 
-@implementation WholeBoardVC
+@implementation ZeroCutVC
 
 - (UIScrollView *)topScrollView {
     if (!_topScrollView) {
@@ -35,44 +31,20 @@
     return _topScrollView;
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"整板";
+    self.title = @"零切";
+    self.shopcarBtn.badgeValue = @"1";
     self.dataSource = [NSMutableArray array];
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.rowHeight = 100;
     [self configurateTopScrollView];
 }
 
-#pragma mark - TableView
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    WholeBoardListCell *cell = [WholeBoardListCell initCell:tableView cellName:@"WholeBoardListCell" dataObject:nil];
-    
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    WholeBoardDetailVC *detail = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardDetailVC"];
-    TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:detail];
-    [self presentViewController:nav animated:YES completion:^{
-        
-    }];
-    
-}
 
 #pragma mark - Layout
 - (void)configurateTopScrollView {
     
-    NSArray *titleArray = @[@"6061T6",@"6061T651",@"7075T651",@"5052H552",@"5052H112"];
+    NSArray *titleArray = @[@"6061T6",@"7075T651",@"5083超平",@"5052H552",@"6061T633"];
     
     CGFloat contentSizeWidth = 0;
     for (NSInteger i=0; i<titleArray.count; i++) {
@@ -102,7 +74,7 @@
     
 }
 - (void)setSelected:(UIButton *)selectedButton {
-
+    
     WholeBoardTapView *currentTap = (WholeBoardTapView *)(selectedButton.superview);
     [currentTap selectedStatus:YES];
     
@@ -113,27 +85,31 @@
 }
 
 
+
 #pragma mark - Handle
 
-- (IBAction)excute:(UIButton *)sender {
+- (IBAction)shopCar:(UIButton *)sender {
     
 }
 
-- (IBAction)goToShopCar:(UIButton *)sender {
+- (IBAction)addCar:(UIButton *)sender {
     
 }
 
-- (IBAction)displayBtn:(UIButton *)sender {
+- (IBAction)buyNow:(UIButton *)sender {
+    
+}
+
+- (IBAction)display:(UIButton *)sender {
     
     MJWeakSelf
-    [DisplayView showDisplayViewWithDataSource:@[@"6061T6",@"6061T651",@"7075T651",@"5052H552",@"5052H112"] selectedIndexPath:^(NSString * _Nonnull title) {
+    [DisplayView showDisplayViewWithDataSource:@[@"6061T6",@"7075T651",@"5083超平",@"5052H552",@"6061T633"] selectedIndexPath:^(NSString * _Nonnull title) {
         
         [weakSelf scrollTopScrollView:[title integerValue]];
         
     }];
     
 }
-
 - (void)scrollTopScrollView:(NSInteger)index {
     
     WholeBoardTapView *tapV = [self.view viewWithTag:100+index];

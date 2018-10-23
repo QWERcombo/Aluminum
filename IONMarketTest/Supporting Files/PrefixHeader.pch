@@ -106,7 +106,7 @@
 #import "UIViewController+CommonFunction.h"
 #import "CustomButton.h"
 #import "TradeListViewController.h"
-
+#import "HYStepper.h"
 
 
 #define DEVICE_TYPE_IPAD  ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)

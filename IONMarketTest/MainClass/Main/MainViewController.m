@@ -20,7 +20,7 @@
 #import "XunJiaViewController.h"
 #import "ZiZhuXiaDanViewController.h"
 #import "WholeBoardVC.h"
-
+#import "ZeroCutVC.h"
 
 
 @interface MainViewController ()
@@ -147,8 +147,8 @@
                     [self.navigationController pushViewController:inven animated:YES];
                 } else if ([name isEqualToString:@"零切"]) {
                     
-                    
-                    
+                    ZeroCutVC *zero = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"ZeroCutVC"];
+                    [self.navigationController pushViewController:zero animated:YES];
                 } else if ([name isEqualToString:@"圆棒"]) {
                     
                     
@@ -163,10 +163,10 @@
 
                 }
                 else {
-                    MainItemViewController *main_item = [[MainItemViewController alloc] init];
-                    main_item.titleStr = name;
-                    main_item.selectedNum = [clueStr integerValue]-1;
-                    [self.navigationController pushViewController:main_item animated:YES];
+//                    MainItemViewController *main_item = [[MainItemViewController alloc] init];
+//                    main_item.titleStr = name;
+//                    main_item.selectedNum = [clueStr integerValue]-1;
+//                    [self.navigationController pushViewController:main_item animated:YES];
                 }
             }];
             [blank addSubview:item];

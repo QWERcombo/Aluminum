@@ -139,11 +139,10 @@
 
 
 
-+(NSMutableAttributedString *)labGetAttributedStringFrom:(NSInteger )start toEnd:(NSInteger)leng WithColor:(UIColor *)color andFont:(UIFont *)font allFullText:(NSString *)labelText {
-    NSRange rang = NSMakeRange(start, leng);
++ (NSMutableAttributedString *)getAttributedFromRange:(NSRange)range WithColor:(UIColor *)color andFont:(UIFont *)font allFullText:(NSString *)labelText {
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:labelText];
-    [attStr addAttribute:NSFontAttributeName value:font range:rang];
-    [attStr addAttribute:NSForegroundColorAttributeName value:color range:rang];
+    [attStr addAttribute:NSFontAttributeName value:font range:range];
+    [attStr addAttribute:NSForegroundColorAttributeName value:color range:range];
     return attStr;
 }
 

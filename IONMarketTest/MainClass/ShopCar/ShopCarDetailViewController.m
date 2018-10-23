@@ -65,7 +65,7 @@
         make.left.equalTo(bottomView.mas_left).offset(20);
         make.right.equalTo(nextButton.mas_left).offset(-20);
     }];
-    priceLabel.attributedText = [UILabel labGetAttributedStringFrom:0 toEnd:3 WithColor:[UIColor mianColor:2] andFont:FONT_ArialMT(17) allFullText:priceLabel.text];
+    priceLabel.attributedText = [UILabel getAttributedFromRange:[priceLabel.text rangeOfString:@"实付款"] WithColor:[UIColor mianColor:2] andFont:FONT_ArialMT(17) allFullText:priceLabel.text];
     
     
     NSArray *textArr = @[@"产品：51515.00元",@"加工费：586.00元",@"物流费：848232.00元"];
