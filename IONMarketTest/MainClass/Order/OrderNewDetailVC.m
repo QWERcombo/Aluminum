@@ -129,9 +129,16 @@
 
 
 - (void)updateInfomation {
-    self.addressLab.text = [NSString stringWithFormat:@"收货地址 : %@",self.orderModel.address];
-    self.nameLab.text = [NSString stringWithFormat:@"收货人 : %@", self.orderModel.currentAddress[@"name"]];
-    self.phoneLab.text = self.orderModel.userPhone;
+    if ([self.orderModel.ziti isEqualToString:@"自提"]) {
+        self.addressLab.text = @"自提地址：江苏省无锡市新吴区展鸿路18号院内乐切金属";
+        self.nameLab.text = @"联系人：乐切金属";
+        self.phoneLab.text = @"0510-88996061";
+    } else {
+        self.addressLab.text = [NSString stringWithFormat:@"收货地址 : %@",self.orderModel.address];
+        self.nameLab.text = [NSString stringWithFormat:@"联系人 : %@", self.orderModel.currentAddress[@"name"]];
+        self.phoneLab.text = self.orderModel.userPhone;
+    }
+    self.addressLab.adjustsFontSizeToFitWidth = YES;
     self.orderNo.text = self.orderModel.no;
     self.zhifufangshi.text = self.orderModel.paymethod;
     self.wuliufei.text = [NSString getStringAfterTwo:self.listModel.wuliufei];

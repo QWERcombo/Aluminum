@@ -21,6 +21,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *wuliufeiLab;
 @property (weak, nonatomic) IBOutlet UILabel *shuliangLab;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *moneyLab;
+@property (weak, nonatomic) IBOutlet UISwitch *zitiSwitch;
+@property (weak, nonatomic) IBOutlet UIView *addressView;
+@property (weak, nonatomic) IBOutlet UISwitch *dayinSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *biaoqianSwitch;
+@property (weak, nonatomic) IBOutlet UITextField *noteTF;
+@property (weak, nonatomic) IBOutlet UIButton *addressButton;
+
+
 @end
 
 @implementation ConfirmOrderVC
@@ -35,17 +45,26 @@
         total += [car.money floatValue];
         shuliang += [car.productNum integerValue];
     }
-    self.priceLab.text = [NSString stringWithFormat:@"%.2lf", total];
-    self.shuliangLab.text = [NSString stringWithFormat:@"%ld", shuliang];
-    [self getDefaultAddressModel];
+    self.moneyLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:[NSNumber numberWithFloat:total].stringValue]];
+    NSString *shuliangStr = [NSString stringWithFormat:@"%ld", (long)shuliang];
+    self.shuliangLab.text = [NSString stringWithFormat:@"共 %@ 件", shuliangStr];
+//    self.shuliangLab.attributedText = [UILabel labGetAttributedStringFrom:2 toEnd:shuliangStr.length WithColor:[UIColor colorWithHexString:@"2F75EC"] andFont:nil allFullText:self.shuliangLab.text];
+    self.confirmOrderDataSource.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (!self.zitiSwitch.isOn && !self.addressModel) {
+        [self getDefaultAddressModel];
+    }
 }
 
 - (IBAction)confirmClicker:(UIButton *)sender {
-    if (!self.addressModel) {
+    
+    if (!self.addressModel && !self.zitiSwitch.isOn) {
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择地址！" time:0 aboutType:WHShowViewMode_Text state:NO];
         return;
     }
-    
     
     if (self.fromtype == FromVCType_Buy) {
         //直接购买下单
@@ -58,7 +77,23 @@
         [dict setValue:shopcar.erjimulu forKey:@"erjimulu"];
         [dict setValue:shopcar.money forKey:@"money"];
         [dict setValue:[UserData currentUser].phone forKey:@"phone"];
-        [dict setValue:self.addressModel.id forKey:@"addressId"];
+        if (self.zitiSwitch.isOn) {
+            [dict setValue:nil forKey:@"addressId"];
+            [dict setValue:@"自提" forKey:@"ziti"];
+        } else {
+            [dict setValue:self.addressModel.id forKey:@"addressId"];
+        }
+        if (self.dayinSwitch.isOn) {
+            [dict setValue:@"打包" forKey:@"isPackage"];
+        } else {
+            [dict setValue:@"不打包" forKey:@"isPackage"];
+        }
+        if (self.biaoqianSwitch.isOn) {
+            [dict setValue:@"打印标签" forKey:@"isTip"];
+        } else {
+            [dict setValue:@"不打印标签" forKey:@"isTip"];
+        }
+        [dict setValue:self.noteTF.text forKey:@"remark"];
 
         if ([shopcar.zhonglei isEqualToString:@"圆棒"]) {
             [dict setValue:shopcar.length forKey:@"chang"];
@@ -96,8 +131,27 @@
             [orderIds appendString:@","];
         }
         [dict setValue:[orderIds substringToIndex:orderIds.length-1] forKey:@"gouwucheIds"];
-        [dict setValue:self.addressModel.id forKey:@"addressId"];
+//        [dict setValue:self.addressModel.id forKey:@"addressId"];
         [dict setValue:[UserData currentUser].phone forKey:@"phone"];
+        if (self.zitiSwitch.isOn) {
+            [dict setValue:@"" forKey:@"addressId"];
+            [dict setValue:@"自提" forKey:@"ziti"];
+        } else {
+            [dict setValue:self.addressModel.id forKey:@"addressId"];
+        }
+        if (self.dayinSwitch.isOn) {
+            [dict setValue:@"打包" forKey:@"isPackage"];
+        } else {
+            [dict setValue:@"不打包" forKey:@"isPackage"];
+        }
+        if (self.biaoqianSwitch.isOn) {
+            [dict setValue:@"打印标签" forKey:@"isTip"];
+        } else {
+            [dict setValue:@"不打印标签" forKey:@"isTip"];
+        }
+        [dict setValue:self.noteTF.text forKey:@"remark"];
+        
+        
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_SaveFromGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //            NSLog(@"---%@", resultDic);
             [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"下单成功" time:0 aboutType:WHShowViewMode_Text state:YES];
@@ -122,15 +176,17 @@
 }
 
 - (IBAction)addAddress:(UIButton *)sender {
-    AddressViewController *address = [[AddressViewController alloc] init];
     
+    AddressViewController *address = [[AddressViewController alloc] init];
     __weak typeof(self) weakself = self;
     address.SelectAddressBlock = ^(AddressModel *address) {
+        weakself.addressView.hidden = YES;
         weakself.addressModel = address;
-        weakself.nameLab.text = address.name;
+        weakself.nameLab.text = [NSString stringWithFormat:@"联系人:%@",address.name];
         weakself.phoneLab.text = address.phone;
         weakself.addressLab.text = [NSString stringWithFormat:@"%@ %@ %@ %@", address.sheng,address.shi,address.qu,address.detailAddress];
-//        weakself.addressBtn.hidden = YES;
+        self.addressLab.adjustsFontSizeToFitWidth = YES;
+        self.nameLab.adjustsFontSizeToFitWidth = YES;
         [weakself.addressBtn setTitle:@"" forState:UIControlStateNormal];
     };
     
@@ -143,17 +199,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return [UtilsMold creatCell:@"OrderDetailCell" table:tableView deledate:self model:[self.carArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+    return [UtilsMold creatCell:@"ConfirmOrderCell" table:tableView deledate:self model:[self.carArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
         
     }];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [UtilsMold getCellHight:@"ConfirmOrderCell" data:nil model:nil indexPath:indexPath];
+}
+
 
 - (void)getDefaultAddressModel {
-    
+    self.addressButton.hidden = NO;
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].id forKey:@"userId"];
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetAddressByPhone andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetAddressByPhone andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"%@", resultDic);
         NSArray *dataSource = resultDic[@"result"];
         
@@ -162,11 +222,13 @@
             AddressModel *model = [[AddressModel alloc] initWithDictionary:dic error:nil];
             
             if ([model.moren isEqualToString:@"1"]) {
-                
+                self.addressView.hidden = YES;
                 self.addressModel = model;
-                self.nameLab.text = model.name;
+                self.nameLab.text = [NSString stringWithFormat:@"联系人:%@",model.name];
                 self.phoneLab.text = model.phone;
                 self.addressLab.text = [NSString stringWithFormat:@"%@ %@ %@ %@", model.sheng,model.shi,model.qu,model.detailAddress];
+                self.addressLab.adjustsFontSizeToFitWidth = YES;
+                self.nameLab.adjustsFontSizeToFitWidth = YES;
                 [self.addressBtn setTitle:@"" forState:UIControlStateNormal];
                 
                 break;
@@ -181,6 +243,32 @@
     
     
 }
+
+#pragma mark --- Handle
+
+- (IBAction)ziti:(UISwitch *)sender {
+    NSLog(@"自提 %d", sender.isOn);
+    self.addressView.hidden = sender.isOn;
+    if (!sender.isOn) {
+        [self getDefaultAddressModel];
+    } else {
+        self.addressButton.hidden = YES;
+        self.addressLab.text = @"自提地址：江苏省无锡市新吴区展鸿路18号院内乐切金属";
+        self.nameLab.text = @"联系人：乐切金属";
+        self.phoneLab.text = @"0510-88996061";
+        self.addressLab.adjustsFontSizeToFitWidth = YES;
+        self.nameLab.adjustsFontSizeToFitWidth = YES;
+    }
+}
+
+- (IBAction)dayin:(UISwitch *)sender {
+    NSLog(@"打印 %d", sender.isOn);
+}
+
+- (IBAction)biaoqian:(UISwitch *)sender {
+    NSLog(@"尺寸 %d", sender.isOn);
+}
+
 
 /*
 #pragma mark - Navigation
