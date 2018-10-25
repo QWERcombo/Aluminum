@@ -48,7 +48,12 @@
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
     self.clikerBlock = click;
     ShopCar *dataM = (ShopCar *)model;
-    self.selectBtn.selected = dataM.isSelectedCard;
+//    self.selectBtn.selected = dataM.isSelectedCard;
+    if (dataM.isSelectedCard) {
+        [self.selectBtn setSelected:YES];
+    } else {
+        [self.selectBtn setSelected:NO];
+    }
     self.xinghaoLab.text = dataM.erjimulu;
     self.typeLab.text = [NSString stringWithFormat:@"%@/%@",  dataM.zhonglei, dataM.type];
     if (dataM.height.length) {

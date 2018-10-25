@@ -44,6 +44,7 @@
     self.tabView.mj_header.automaticallyChangeAlpha = YES;
     //上拉刷新
     self.tabView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [self refreshSelectedArr];
         [self getDataSource:self.pageNumber+1];
     }];
     
@@ -145,28 +146,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     __weak typeof(self) weakself = self;
+    ShopCar *car = [self.dataMuArr objectAtIndex:indexPath.row];
     return [UtilsMold creatCell:@"ShopCarNewListCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
         if ([clueDic[@"key"] isEqualToString:@"1"]) {
-            [weakself.selectArr addObject:[weakself.dataMuArr objectAtIndex:indexPath.row]];
+            car.isSelectedCard = YES;
+            [weakself.selectArr addObject:car];
         } else if ([clueDic[@"key"] isEqualToString:@"-1"]) {
-            [weakself.selectArr removeObject:[weakself.dataMuArr objectAtIndex:indexPath.row]];
+            car.isSelectedCard = NO;
+            [weakself.selectArr removeObject:car];
         } else {
             
         }
         
-        weakself.totoal = 0.f;
-        if (self.selectArr.count) {
-            allButton.selected = YES;
-            for (ShopCar *car in weakself.selectArr) {
-                weakself.totoal += [car.money floatValue];
-            }
-            priceLabel.text = [NSString stringWithFormat:@"合计：￥%.2lf元", weakself.totoal];
-            [excuteButton setTitle:[NSString stringWithFormat:@"去结算(%ld)", (long)self.selectArr.count] forState:UIControlStateNormal];
-        } else {
-            allButton.selected = NO;
-            priceLabel.text = @"合计：￥0.00元";
-            [excuteButton setTitle:@"去结算(0)" forState:UIControlStateNormal];
-        }
+        [weakself refreshSelectedArr];
         
     }];
 }
@@ -254,12 +246,27 @@
     [self.tabView reloadData];
 }
 
+- (void)refreshSelectedArr {
+    
+    self.totoal = 0.f;
+    if (self.selectArr.count) {
+        allButton.selected = YES;
+        for (ShopCar *car in self.selectArr) {
+            car.isSelectedCard = YES;
+            self.totoal += [car.money floatValue];
+        }
+        priceLabel.text = [NSString stringWithFormat:@"合计：￥%.2lf元", self.totoal];
+        [excuteButton setTitle:[NSString stringWithFormat:@"去结算(%ld)", (long)self.selectArr.count] forState:UIControlStateNormal];
+    } else {
+        allButton.selected = NO;
+        priceLabel.text = @"合计：￥0.00元";
+        [excuteButton setTitle:@"去结算(0)" forState:UIControlStateNormal];
+    }
+    
+    
+}
 
 - (void)getDataSource:(NSInteger)page_number {
-    allButton.selected = NO;
-    [excuteButton setTitle:@"去结算(0)" forState:UIControlStateNormal];
-    priceLabel.text = @"合计：￥0.00元";
-    [self.selectArr removeAllObjects];
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
@@ -283,6 +290,10 @@
             if (!dataSource.count) {
                 priceLabel.text = @"合计：￥0.00元";
             }
+            allButton.selected = NO;
+            [excuteButton setTitle:@"去结算(0)" forState:UIControlStateNormal];
+            priceLabel.text = @"合计：￥0.00元";
+            [self.selectArr removeAllObjects];
         } else {
             if (dataSource.count) {
                 for (NSDictionary *dic in dataSource) {
