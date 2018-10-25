@@ -43,7 +43,10 @@
 		565086B0205D3AED00FD8497 /* MainItem__Single.m in Sources */ = {isa = PBXBuildFile; fileRef = 565086AF205D3AED00FD8497 /* MainItem__Single.m */; };
 		565086B2205D3B1D00FD8497 /* MainItemView__WholeBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565086B1205D3B1D00FD8497 /* MainItemView__WholeBoard.xib */; };
 		565086B4205D3B3A00FD8497 /* MainItem__Single.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565086B3205D3B3A00FD8497 /* MainItem__Single.xib */; };
-		5654FC1220AC6B9900B7DA4E /* ConfirmOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5654FC1120AC6B9900B7DA4E /* ConfirmOrderVC.m */; };
+		56538F242181F21D003AACEE /* ConfirmOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56538F232181F21D003AACEE /* ConfirmOrderVC.m */; };
+		56538F272181F29B003AACEE /* OrderNewDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56538F252181F29A003AACEE /* OrderNewDetailVC.m */; };
+		56538F2B2181F463003AACEE /* ConfirmOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56538F292181F462003AACEE /* ConfirmOrderCell.m */; };
+		56538F2C2181F463003AACEE /* ConfirmOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56538F2A2181F463003AACEE /* ConfirmOrderCell.xib */; };
 		5657412B20538D8A007CB488 /* SelectedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5657412A20538D8A007CB488 /* SelectedItem.m */; };
 		5657413820539313007CB488 /* SelectedItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5657413720539313007CB488 /* SelectedItem.xib */; };
 		5657413B2053AF0E007CB488 /* MineDescrController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5657413A2053AF0E007CB488 /* MineDescrController.m */; };
@@ -155,7 +158,6 @@
 		56A5746A20ADC88E00A458EB /* PhotoAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5746920ADC88E00A458EB /* PhotoAlertController.m */; };
 		56AD6F0720C8391F00344E81 /* ConfirmTicketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AD6F0620C8391E00344E81 /* ConfirmTicketVC.m */; };
 		56AD6F0A20C83ADB00344E81 /* TicketInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AD6F0920C83ADB00344E81 /* TicketInfoVC.m */; };
-		56B5215420AB194000F636BD /* OrderNewDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5215320AB194000F636BD /* OrderNewDetailVC.m */; };
 		56B5215720AB246200F636BD /* OrderPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5215620AB246200F636BD /* OrderPayVC.m */; };
 		56B5215A20AB37A100F636BD /* ChoosePayWayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5215920AB37A100F636BD /* ChoosePayWayView.m */; };
 		56B5215C20AB37B700F636BD /* ChoosePayWayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56B5215B20AB37B700F636BD /* ChoosePayWayView.xib */; };
@@ -336,8 +338,13 @@
 		565086AF205D3AED00FD8497 /* MainItem__Single.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainItem__Single.m; sourceTree = "<group>"; };
 		565086B1205D3B1D00FD8497 /* MainItemView__WholeBoard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItemView__WholeBoard.xib; sourceTree = "<group>"; };
 		565086B3205D3B3A00FD8497 /* MainItem__Single.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItem__Single.xib; sourceTree = "<group>"; };
-		5654FC1020AC6B9900B7DA4E /* ConfirmOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderVC.h; sourceTree = "<group>"; };
-		5654FC1120AC6B9900B7DA4E /* ConfirmOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderVC.m; sourceTree = "<group>"; };
+		56538F222181F21C003AACEE /* ConfirmOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderVC.h; sourceTree = "<group>"; };
+		56538F232181F21D003AACEE /* ConfirmOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderVC.m; sourceTree = "<group>"; };
+		56538F252181F29A003AACEE /* OrderNewDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderNewDetailVC.m; sourceTree = "<group>"; };
+		56538F262181F29B003AACEE /* OrderNewDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderNewDetailVC.h; sourceTree = "<group>"; };
+		56538F282181F462003AACEE /* ConfirmOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderCell.h; sourceTree = "<group>"; };
+		56538F292181F462003AACEE /* ConfirmOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderCell.m; sourceTree = "<group>"; };
+		56538F2A2181F463003AACEE /* ConfirmOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmOrderCell.xib; sourceTree = "<group>"; };
 		5657412920538D8A007CB488 /* SelectedItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedItem.h; sourceTree = "<group>"; };
 		5657412A20538D8A007CB488 /* SelectedItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectedItem.m; sourceTree = "<group>"; };
 		5657413720539313007CB488 /* SelectedItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedItem.xib; sourceTree = "<group>"; };
@@ -544,8 +551,6 @@
 		56AD6F0620C8391E00344E81 /* ConfirmTicketVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmTicketVC.m; sourceTree = "<group>"; };
 		56AD6F0820C83ADB00344E81 /* TicketInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketInfoVC.h; sourceTree = "<group>"; };
 		56AD6F0920C83ADB00344E81 /* TicketInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketInfoVC.m; sourceTree = "<group>"; };
-		56B5215220AB194000F636BD /* OrderNewDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderNewDetailVC.h; sourceTree = "<group>"; };
-		56B5215320AB194000F636BD /* OrderNewDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderNewDetailVC.m; sourceTree = "<group>"; };
 		56B5215520AB246200F636BD /* OrderPayVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderPayVC.h; sourceTree = "<group>"; };
 		56B5215620AB246200F636BD /* OrderPayVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderPayVC.m; sourceTree = "<group>"; };
 		56B5215820AB37A100F636BD /* ChoosePayWayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChoosePayWayView.h; sourceTree = "<group>"; };
@@ -1208,8 +1213,8 @@
 				56940C4B2051607500DFA6D6 /* OrderViewController.m */,
 				5650869A205CD0AB00FD8497 /* OrderDetailViewController.h */,
 				5650869B205CD0AB00FD8497 /* OrderDetailViewController.m */,
-				56B5215220AB194000F636BD /* OrderNewDetailVC.h */,
-				56B5215320AB194000F636BD /* OrderNewDetailVC.m */,
+				56538F262181F29B003AACEE /* OrderNewDetailVC.h */,
+				56538F252181F29A003AACEE /* OrderNewDetailVC.m */,
 				56A37FCB212AF27D00701CD8 /* WuLiuCell.h */,
 				56A37FCC212AF27D00701CD8 /* WuLiuCell.m */,
 				56A37FCD212AF27D00701CD8 /* WuLiuCell.xib */,
@@ -1224,12 +1229,15 @@
 		56940C4220515F6A00DFA6D6 /* ShopCar */ = {
 			isa = PBXGroup;
 			children = (
+				56538F282181F462003AACEE /* ConfirmOrderCell.h */,
+				56538F292181F462003AACEE /* ConfirmOrderCell.m */,
+				56538F2A2181F463003AACEE /* ConfirmOrderCell.xib */,
 				56940C472051605B00DFA6D6 /* ShopCarViewController.h */,
 				56940C482051605B00DFA6D6 /* ShopCarViewController.m */,
 				A283488C2060AAB200C228AD /* ShopCarDetailViewController.h */,
 				A283488D2060AAB200C228AD /* ShopCarDetailViewController.m */,
-				5654FC1020AC6B9900B7DA4E /* ConfirmOrderVC.h */,
-				5654FC1120AC6B9900B7DA4E /* ConfirmOrderVC.m */,
+				56538F222181F21C003AACEE /* ConfirmOrderVC.h */,
+				56538F232181F21D003AACEE /* ConfirmOrderVC.m */,
 				5605C03E20A090CB00E712A3 /* ShoppingCarSingle.h */,
 				5605C03F20A090CB00E712A3 /* ShoppingCarSingle.m */,
 			);
@@ -2024,6 +2032,7 @@
 				A229818B2061FF2B007B6112 /* RemainExplainCell.xib in Resources */,
 				567B14C520C43F1B00B81FD6 /* TradeRecordCell.xib in Resources */,
 				5695BE7E20429F1B0036D54B /* Assets.xcassets in Resources */,
+				56538F2C2181F463003AACEE /* ConfirmOrderCell.xib in Resources */,
 				5695BE7920429F1B0036D54B /* Main.storyboard in Resources */,
 				A2301B3320637EE0006B9F20 /* FeedbackViewController.xib in Resources */,
 				5686219A20A9CB6E0030C761 /* ShopCarNewListCell.xib in Resources */,
@@ -2133,11 +2142,11 @@
 				A22981B7206248EB007B6112 /* AddressCell.m in Sources */,
 				A289424420B4239500D8E9E5 /* WalletListModel.m in Sources */,
 				56940C3320515E1800DFA6D6 /* NSTimer+WeakTimer.m in Sources */,
+				56538F242181F21D003AACEE /* ConfirmOrderVC.m in Sources */,
 				5695BF312042AC120036D54B /* ABBannerView.m in Sources */,
 				56940C3520515E1800DFA6D6 /* UIButton+Badge.m in Sources */,
 				5650869C205CD0AB00FD8497 /* OrderDetailViewController.m in Sources */,
 				56940C2B20515DF900DFA6D6 /* UIColor+YXP.m in Sources */,
-				56B5215420AB194000F636BD /* OrderNewDetailVC.m in Sources */,
 				567D6A3C207B9BA100994BEF /* AuthenticationModel.m in Sources */,
 				5671DBC32060005A005F1760 /* MainItemView__Pole.m in Sources */,
 				A283489220610A8300C228AD /* TradeListViewController.m in Sources */,
@@ -2161,6 +2170,7 @@
 				A296427A20F5AB5E00B6E8B6 /* TADotView.m in Sources */,
 				5695BF5D2042AC1D0036D54B /* UIView+EasyShowExt.m in Sources */,
 				565086A9205CFF1800FD8497 /* OrderDetailCell.m in Sources */,
+				56538F2B2181F463003AACEE /* ConfirmOrderCell.m in Sources */,
 				5695BF0E2042AB0E0036D54B /* NEUSecurityUtil.m in Sources */,
 				A2DC6FCA20BBB0E600A41184 /* BezierCurveView.m in Sources */,
 				56940C2A20515DF900DFA6D6 /* UIButton+YXP.m in Sources */,
@@ -2230,6 +2240,7 @@
 				A296427320F5AB5E00B6E8B6 /* FSActionSheetCell.m in Sources */,
 				568DC2D7207F857D0034416F /* RegisterTViewController.m in Sources */,
 				A2301B3620638923006B9F20 /* TeleServiceViewController.m in Sources */,
+				56538F272181F29B003AACEE /* OrderNewDetailVC.m in Sources */,
 				5695BEC22042A5300036D54B /* BaseCell.m in Sources */,
 				568CB08D2066462300B48318 /* CALayer+Addition.m in Sources */,
 				A22981A720623BAD007B6112 /* AddCardViewController.m in Sources */,
@@ -2262,7 +2273,6 @@
 				A22981BC20624B48007B6112 /* AddAddressViewController.m in Sources */,
 				56AD6F0720C8391F00344E81 /* ConfirmTicketVC.m in Sources */,
 				56B5215A20AB37A100F636BD /* ChoosePayWayView.m in Sources */,
-				5654FC1220AC6B9900B7DA4E /* ConfirmOrderVC.m in Sources */,
 				A2301B2E20637ED1006B9F20 /* SmartViewController.m in Sources */,
 				A2309AC420FA294D00D33914 /* WHWebViewController.m in Sources */,
 				5695BE7320429F1B0036D54B /* AppDelegate.m in Sources */,

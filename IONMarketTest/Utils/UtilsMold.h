@@ -28,7 +28,7 @@
 #import "WhiteBarCell.h"
 #import "WithdrawRecordCell.h"
 #import "WuLiuCell.h"
-
+#import "ConfirmOrderCell.h"
 
 
 
