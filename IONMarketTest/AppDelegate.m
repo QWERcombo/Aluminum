@@ -23,11 +23,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [NSThread sleepForTimeInterval:2];
+    [NSThread sleepForTimeInterval:1];
     
     [self settingEasyShowOptions];//配置菊花
     
-    [self setupRootViewController];//设置根视图
+//    [self setupRootViewController];//设置根视图
     
     [self configUSharePlatforms];//配置友盟
     
@@ -58,14 +58,14 @@
     
 //    [[UtilsData sharedInstance] loginPlan:nil success:^(UserData *user) {
 //
-        if ([[UserData currentUser].isCheck integerValue]==0) {
-            TBTabBarController *tabBar = [TBTabBarController new];
-            [tabBar setupchildVc:nil];
-            self.window.rootViewController = tabBar;
-        } else {
+//        if ([[UserData currentUser].isCheck integerValue]==0) {
+//            TBTabBarController *tabBar = [TBTabBarController new];
+//            [tabBar setupchildVc:nil];
+//            self.window.rootViewController = tabBar;
+//        } else {
             TBTabBarController *tabBar = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TBtabBar"];
             self.window.rootViewController = tabBar;
-        }
+//        }
 //
 //    } failure:^(UserData *user) {
 //        LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];

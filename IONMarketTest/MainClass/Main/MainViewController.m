@@ -21,7 +21,7 @@
 #import "ZiZhuXiaDanViewController.h"
 #import "WholeBoardVC.h"
 #import "ZeroCutVC.h"
-
+#import "HomeListDetailVC.h"
 
 @interface MainViewController ()
 @property (nonatomic, assign) NSInteger pageNumber;
@@ -35,6 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tabView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    [self.tabView removeFromSuperview];
     [self.view addSubview:self.tabView];
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.top.equalTo(self.view);
@@ -87,10 +88,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    PriceModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
-    QuotationDetailViewController *detail = [QuotationDetailViewController new];
-    detail.title = model.name;
-    [self.navigationController pushViewController:detail animated:YES];
+//    PriceModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
+//    QuotationDetailViewController *detail = [QuotationDetailViewController new];
+//    detail.title = model.name;
+//    [self.navigationController pushViewController:detail animated:YES];
+    HomeListDetailVC *list = [HomeListDetailVC new];
+    [self.navigationController pushViewController:list animated:YES];
 }
 
 #pragma mark ---- CreateSubViews

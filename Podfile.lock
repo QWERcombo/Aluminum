@@ -60,22 +60,6 @@ DEPENDENCIES:
   - UMCShare/UI
   - WechatOpenSDK
 
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - AFNetworking
-    - ChameleonFramework
-    - FMDB
-    - JSONModel
-    - Masonry
-    - MBProgressHUD
-    - MHTextField
-    - MJRefresh
-    - SDWebImage
-    - UMCCommon
-    - UMCSecurityPlugins
-    - UMCShare
-    - WechatOpenSDK
-
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
@@ -93,4 +77,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 5fbe90ca0004a2911a037493fecc3188876f3791
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.4.0

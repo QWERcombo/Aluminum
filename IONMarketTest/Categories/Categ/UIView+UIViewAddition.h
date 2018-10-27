@@ -33,7 +33,7 @@
 
 + (id)viewWithBackgroudColor:(UIColor *)backgroudColor;
 
-- (void)addTarget:(id)target action:(SEL)action;
+//- (void)addTarget:(id)target action:(SEL)action;
 
 + (UIView *)joinUsWithStatus:(BOOL)status;
 

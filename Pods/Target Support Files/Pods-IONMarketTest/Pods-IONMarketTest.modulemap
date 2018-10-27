@@ -1,0 +1,6 @@
+framework module Pods_IONMarketTest {
+  umbrella header "Pods-IONMarketTest-umbrella.h"
+
+  export *
+  module * { export * }
+}

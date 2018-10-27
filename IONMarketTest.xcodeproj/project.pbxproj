@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34E660C443B52A7ED9CA721D /* libPods-IONMarketTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F62F654961BFC3D601677071 /* libPods-IONMarketTest.a */; };
 		5602129020594CF6009EF75D /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602128F20594CF6009EF75D /* ShareViewController.m */; };
 		5602129320594D02009EF75D /* BankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602129220594D02009EF75D /* BankCardViewController.m */; };
 		5602129620594D0C009EF75D /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5602129520594D0C009EF75D /* AddressViewController.m */; };
@@ -130,7 +131,6 @@
 		5695BEC12042A5300036D54B /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BEBB2042A5300036D54B /* BaseModel.m */; };
 		5695BEC22042A5300036D54B /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BEBD2042A5300036D54B /* BaseCell.m */; };
 		5695BEC32042A5300036D54B /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BEBF2042A5300036D54B /* BaseViewController.m */; };
-		5695BF012042A9E50036D54B /* UITextField+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF002042A9E50036D54B /* UITextField+Extension.m */; };
 		5695BF0D2042AB0E0036D54B /* NEUBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF042042AB0E0036D54B /* NEUBase64.m */; };
 		5695BF0E2042AB0E0036D54B /* NEUSecurityUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF072042AB0E0036D54B /* NEUSecurityUtil.m */; };
 		5695BF0F2042AB0E0036D54B /* NSData+NEUAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695BF092042AB0E0036D54B /* NSData+NEUAES.m */; };
@@ -211,6 +211,14 @@
 		A22981D1206261AE007B6112 /* EndTicketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22981CF206261AE007B6112 /* EndTicketCell.xib */; };
 		A22981D5206261C1007B6112 /* TicketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A22981D3206261C1007B6112 /* TicketCell.m */; };
 		A22981D6206261C1007B6112 /* TicketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22981D4206261C1007B6112 /* TicketCell.xib */; };
+		A22DCDEB21840ED50078BE06 /* HomeListDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A22DCDEA21840ED50078BE06 /* HomeListDetailVC.m */; };
+		A22DCE0C21841B6D0078BE06 /* UIView+ZJFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = A22DCE0121841B6D0078BE06 /* UIView+ZJFrame.m */; };
+		A22DCE0D21841B6D0078BE06 /* ZJContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A22DCE0321841B6D0078BE06 /* ZJContentView.m */; };
+		A22DCE0E21841B6D0078BE06 /* ZJCustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A22DCE0521841B6D0078BE06 /* ZJCustomLabel.m */; };
+		A22DCE0F21841B6D0078BE06 /* ZJScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A22DCE0721841B6D0078BE06 /* ZJScrollPageView.m */; };
+		A22DCE1021841B6D0078BE06 /* ZJScrollSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A22DCE0921841B6D0078BE06 /* ZJScrollSegmentView.m */; };
+		A22DCE1121841B6D0078BE06 /* ZJSegmentStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = A22DCE0B21841B6D0078BE06 /* ZJSegmentStyle.m */; };
+		A22DCE1421841C860078BE06 /* SubMarketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A22DCE1321841C860078BE06 /* SubMarketVC.m */; };
 		A2301B2020635292006B9F20 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2301B1E20635292006B9F20 /* LoginViewController.m */; };
 		A2301B2120635292006B9F20 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2301B1F20635292006B9F20 /* LoginViewController.xib */; };
 		A2301B2E20637ED1006B9F20 /* SmartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2301B2D20637ED1006B9F20 /* SmartViewController.m */; };
@@ -272,9 +280,9 @@
 		A2AC1C7520565E4600A3B2F9 /* MainItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C7320565E4600A3B2F9 /* MainItemCell.m */; };
 		A2AC1C7620565E4600A3B2F9 /* MainItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2AC1C7420565E4600A3B2F9 /* MainItemCell.xib */; };
 		A2B8DADC20B27AE300633050 /* PriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B8DADB20B27AE300633050 /* PriceModel.m */; };
+		A2D709F32184590A00F2157C /* UITextField+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D709F22184590A00F2157C /* UITextField+Extension.m */; };
 		A2DC6FCA20BBB0E600A41184 /* BezierCurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DC6FC920BBB0E500A41184 /* BezierCurveView.m */; };
 		A2F8AEB220C11EBC00D9926F /* OrderPayResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F8AEB120C11EBC00D9926F /* OrderPayResultVC.m */; };
-		E972879BE4D0D7BB4DF9AE68 /* libPods-IONMarketTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D517D7BAB83CC94FFAC3A20E /* libPods-IONMarketTest.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -511,8 +519,6 @@
 		5695BEBF2042A5300036D54B /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		5695BEC02042A5300036D54B /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		5695BECF2042A84E0036D54B /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		5695BEFF2042A9E40036D54B /* UITextField+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Extension.h"; sourceTree = "<group>"; };
-		5695BF002042A9E50036D54B /* UITextField+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Extension.m"; sourceTree = "<group>"; };
 		5695BF032042AB0E0036D54B /* NEUBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEUBase64.h; sourceTree = "<group>"; };
 		5695BF042042AB0E0036D54B /* NEUBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEUBase64.m; sourceTree = "<group>"; };
 		5695BF052042AB0E0036D54B /* NEUDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEUDefines.h; sourceTree = "<group>"; };
@@ -659,6 +665,22 @@
 		A22981D2206261C1007B6112 /* TicketCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketCell.h; sourceTree = "<group>"; };
 		A22981D3206261C1007B6112 /* TicketCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketCell.m; sourceTree = "<group>"; };
 		A22981D4206261C1007B6112 /* TicketCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TicketCell.xib; sourceTree = "<group>"; };
+		A22DCDE921840ED50078BE06 /* HomeListDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeListDetailVC.h; sourceTree = "<group>"; };
+		A22DCDEA21840ED50078BE06 /* HomeListDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeListDetailVC.m; sourceTree = "<group>"; };
+		A22DCE0021841B6D0078BE06 /* UIView+ZJFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZJFrame.h"; sourceTree = "<group>"; };
+		A22DCE0121841B6D0078BE06 /* UIView+ZJFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZJFrame.m"; sourceTree = "<group>"; };
+		A22DCE0221841B6D0078BE06 /* ZJContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJContentView.h; sourceTree = "<group>"; };
+		A22DCE0321841B6D0078BE06 /* ZJContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJContentView.m; sourceTree = "<group>"; };
+		A22DCE0421841B6D0078BE06 /* ZJCustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCustomLabel.h; sourceTree = "<group>"; };
+		A22DCE0521841B6D0078BE06 /* ZJCustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCustomLabel.m; sourceTree = "<group>"; };
+		A22DCE0621841B6D0078BE06 /* ZJScrollPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJScrollPageView.h; sourceTree = "<group>"; };
+		A22DCE0721841B6D0078BE06 /* ZJScrollPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJScrollPageView.m; sourceTree = "<group>"; };
+		A22DCE0821841B6D0078BE06 /* ZJScrollSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJScrollSegmentView.h; sourceTree = "<group>"; };
+		A22DCE0921841B6D0078BE06 /* ZJScrollSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJScrollSegmentView.m; sourceTree = "<group>"; };
+		A22DCE0A21841B6D0078BE06 /* ZJSegmentStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSegmentStyle.h; sourceTree = "<group>"; };
+		A22DCE0B21841B6D0078BE06 /* ZJSegmentStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSegmentStyle.m; sourceTree = "<group>"; };
+		A22DCE1221841C860078BE06 /* SubMarketVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubMarketVC.h; sourceTree = "<group>"; };
+		A22DCE1321841C860078BE06 /* SubMarketVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubMarketVC.m; sourceTree = "<group>"; };
 		A2301B1D20635292006B9F20 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		A2301B1E20635292006B9F20 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A2301B1F20635292006B9F20 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -842,11 +864,13 @@
 		A2AC1C7420565E4600A3B2F9 /* MainItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItemCell.xib; sourceTree = "<group>"; };
 		A2B8DADA20B27AE300633050 /* PriceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PriceModel.h; sourceTree = "<group>"; };
 		A2B8DADB20B27AE300633050 /* PriceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PriceModel.m; sourceTree = "<group>"; };
+		A2D709F12184590A00F2157C /* UITextField+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Extension.h"; sourceTree = "<group>"; };
+		A2D709F22184590A00F2157C /* UITextField+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Extension.m"; sourceTree = "<group>"; };
 		A2DC6FC820BBB0E500A41184 /* BezierCurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierCurveView.h; sourceTree = "<group>"; };
 		A2DC6FC920BBB0E500A41184 /* BezierCurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierCurveView.m; sourceTree = "<group>"; };
 		A2F8AEB020C11EBC00D9926F /* OrderPayResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderPayResultVC.h; sourceTree = "<group>"; };
 		A2F8AEB120C11EBC00D9926F /* OrderPayResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderPayResultVC.m; sourceTree = "<group>"; };
-		D517D7BAB83CC94FFAC3A20E /* libPods-IONMarketTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IONMarketTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F62F654961BFC3D601677071 /* libPods-IONMarketTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IONMarketTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF6FDCD774362D745E663CEC /* Pods-IONMarketTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IONMarketTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -870,7 +894,7 @@
 				A2555F9120C0DDE4000C7E03 /* libcrypto.a in Frameworks */,
 				5678494320C02A5600739A3D /* libc++.tbd in Frameworks */,
 				5605C04220A09BF000E712A3 /* libsqlite3.tbd in Frameworks */,
-				E972879BE4D0D7BB4DF9AE68 /* libPods-IONMarketTest.a in Frameworks */,
+				34E660C443B52A7ED9CA721D /* libPods-IONMarketTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -906,7 +930,7 @@
 				5678494220C02A5600739A3D /* libc++.tbd */,
 				5605C04320A09BFC00E712A3 /* CoreGraphics.framework */,
 				5605C04120A09BF000E712A3 /* libsqlite3.tbd */,
-				D517D7BAB83CC94FFAC3A20E /* libPods-IONMarketTest.a */,
+				F62F654961BFC3D601677071 /* libPods-IONMarketTest.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1053,6 +1077,7 @@
 		560950C92178CA1A00B2CCDC /* 首页_(1.1.0) */ = {
 			isa = PBXGroup;
 			children = (
+				A22DCDE821840EA20078BE06 /* 详情 */,
 				A29305A5217F131200D72F4A /* 零切 */,
 				56CA2B58217A147200F3FED0 /* 特殊定制 */,
 				56CA2B57217A146000F3FED0 /* 自助下单 */,
@@ -1505,10 +1530,10 @@
 		5695BEB52042A3FD0036D54B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				5695BEFF2042A9E40036D54B /* UITextField+Extension.h */,
-				5695BF002042A9E50036D54B /* UITextField+Extension.m */,
 				5695BF122042AB340036D54B /* CIImage+Extension.h */,
 				5695BF132042AB340036D54B /* CIImage+Extension.m */,
+				A2D709F12184590A00F2157C /* UITextField+Extension.h */,
+				A2D709F22184590A00F2157C /* UITextField+Extension.m */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1516,6 +1541,7 @@
 		5695BEB72042A4BA0036D54B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				A22DCDFF21841B6D0078BE06 /* ZJScrollPageView */,
 				564D9D0921415A1A00310AD4 /* ZYNetworkAccessibity */,
 				A296424D20F5AB5E00B6E8B6 /* XLPhotoBrowser+CoderXL */,
 				5678495E20C0315800739A3D /* iOS */,
@@ -1754,6 +1780,36 @@
 				A22981D4206261C1007B6112 /* TicketCell.xib */,
 			);
 			path = "开票";
+			sourceTree = "<group>";
+		};
+		A22DCDE821840EA20078BE06 /* 详情 */ = {
+			isa = PBXGroup;
+			children = (
+				A22DCDE921840ED50078BE06 /* HomeListDetailVC.h */,
+				A22DCDEA21840ED50078BE06 /* HomeListDetailVC.m */,
+				A22DCE1221841C860078BE06 /* SubMarketVC.h */,
+				A22DCE1321841C860078BE06 /* SubMarketVC.m */,
+			);
+			path = "详情";
+			sourceTree = "<group>";
+		};
+		A22DCDFF21841B6D0078BE06 /* ZJScrollPageView */ = {
+			isa = PBXGroup;
+			children = (
+				A22DCE0021841B6D0078BE06 /* UIView+ZJFrame.h */,
+				A22DCE0121841B6D0078BE06 /* UIView+ZJFrame.m */,
+				A22DCE0221841B6D0078BE06 /* ZJContentView.h */,
+				A22DCE0321841B6D0078BE06 /* ZJContentView.m */,
+				A22DCE0421841B6D0078BE06 /* ZJCustomLabel.h */,
+				A22DCE0521841B6D0078BE06 /* ZJCustomLabel.m */,
+				A22DCE0621841B6D0078BE06 /* ZJScrollPageView.h */,
+				A22DCE0721841B6D0078BE06 /* ZJScrollPageView.m */,
+				A22DCE0821841B6D0078BE06 /* ZJScrollSegmentView.h */,
+				A22DCE0921841B6D0078BE06 /* ZJScrollSegmentView.m */,
+				A22DCE0A21841B6D0078BE06 /* ZJSegmentStyle.h */,
+				A22DCE0B21841B6D0078BE06 /* ZJSegmentStyle.m */,
+			);
+			path = ZJScrollPageView;
 			sourceTree = "<group>";
 		};
 		A2301B1C20635260006B9F20 /* Login */ = {
@@ -2078,6 +2134,7 @@
 				5695BE6B20429F1B0036D54B /* Frameworks */,
 				5695BE6C20429F1B0036D54B /* Resources */,
 				40E05663B3723EE7CF21BF87 /* [CP] Copy Pods Resources */,
+				017B0D7C3B0F3B26B6CEDE20 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2250,6 +2307,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		017B0D7C3B0F3B26B6CEDE20 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/JSONModel/JSONModel.framework",
+				"${BUILT_PRODUCTS_DIR}/LTScrollView/LTScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MHTextField/MHTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MHTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		40E05663B3723EE7CF21BF87 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2306,6 +2399,7 @@
 				56940C2820515DF900DFA6D6 /* UIImageView+YXP.m in Sources */,
 				56EC993C206D121D00F2D2D0 /* AddressModel.m in Sources */,
 				562D7CAD20CACAF40093367D /* CustomButton.m in Sources */,
+				A22DCE0F21841B6D0078BE06 /* ZJScrollPageView.m in Sources */,
 				A26149D020C540280055BA25 /* WhiteBarVC.m in Sources */,
 				A24B0B6B20722C01009ECD41 /* OrderModel.m in Sources */,
 				A296427E20F5AB5E00B6E8B6 /* XLZoomingScrollView.m in Sources */,
@@ -2313,6 +2407,7 @@
 				5695BF1E2042ABAB0036D54B /* UtilsMold.m in Sources */,
 				56940C2520515DF900DFA6D6 /* UITabBar+TB.m in Sources */,
 				A296427420F5AB5E00B6E8B6 /* FSActionSheetConfig.m in Sources */,
+				A22DCE1421841C860078BE06 /* SubMarketVC.m in Sources */,
 				A229819020620336007B6112 /* InputViewController.m in Sources */,
 				A2555F3B20C0DC65000C7E03 /* APRSASigner.m in Sources */,
 				56CA2B5E217A14A200F3FED0 /* ZiZhuXiaDanViewController.m in Sources */,
@@ -2343,6 +2438,7 @@
 				A2AC1C6820564AB900A3B2F9 /* UserInfoViewController.m in Sources */,
 				563C8D2E20C97F9D003C4822 /* WholeChooseView.m in Sources */,
 				561CC0D5206FD24900DB0998 /* MainModel.m in Sources */,
+				A22DCE1021841B6D0078BE06 /* ZJScrollSegmentView.m in Sources */,
 				56940C2220515DF900DFA6D6 /* UIView+UIViewAddition.m in Sources */,
 				56940C4C2051607500DFA6D6 /* OrderViewController.m in Sources */,
 				56940C462051603600DFA6D6 /* MineViewController.m in Sources */,
@@ -2357,6 +2453,7 @@
 				A2DC6FCA20BBB0E600A41184 /* BezierCurveView.m in Sources */,
 				56940C2A20515DF900DFA6D6 /* UIButton+YXP.m in Sources */,
 				5695BF402042AC180036D54B /* UIView+LYExtension.m in Sources */,
+				A22DCE0C21841B6D0078BE06 /* UIView+ZJFrame.m in Sources */,
 				5695BF572042AC1D0036D54B /* EasyShowLodingView.m in Sources */,
 				569D7BC9217637B600DA94E8 /* RegisterTVC.m in Sources */,
 				564D9D0C21415A1B00310AD4 /* ZYNetworkAccessibity.m in Sources */,
@@ -2394,6 +2491,7 @@
 				A22981D0206261AE007B6112 /* EndTicketCell.m in Sources */,
 				A26149CA20C5379E0055BA25 /* WhiteBarCell.m in Sources */,
 				5602129F20594D37009EF75D /* WalletViewController.m in Sources */,
+				A22DCDEB21840ED50078BE06 /* HomeListDetailVC.m in Sources */,
 				A296427920F5AB5E00B6E8B6 /* TAAnimatedDotView.m in Sources */,
 				56CA2B61217A14E900F3FED0 /* DingZhiViewController.m in Sources */,
 				A296427B20F5AB5E00B6E8B6 /* TAPageControl.m in Sources */,
@@ -2416,8 +2514,10 @@
 				56A5746420ADC54F00A458EB /* ApplyWhiteBarVC.m in Sources */,
 				568CB08A2065F90900B48318 /* MainItemTypeModel.m in Sources */,
 				A2AC1C652056481B00A3B2F9 /* MainItemViewController.m in Sources */,
+				A22DCE1121841B6D0078BE06 /* ZJSegmentStyle.m in Sources */,
 				560212A620596537009EF75D /* ChangeCodeViewController.m in Sources */,
 				5632BFAF205AB47D0009CD34 /* QuotationViewController.m in Sources */,
+				A2D709F32184590A00F2157C /* UITextField+Extension.m in Sources */,
 				56A5746720ADC7BA00A458EB /* UIViewController+CommonFunction.m in Sources */,
 				5695BEAF2042A30A0036D54B /* main.m in Sources */,
 				A22981AA20624069007B6112 /* AddBankCardView.m in Sources */,
@@ -2442,6 +2542,7 @@
 				A283489620610F6900C228AD /* WallentListCell.m in Sources */,
 				560950CD2178CB3E00B2CCDC /* WholeBoardVC.m in Sources */,
 				562E51D2217F6EA300C90A9E /* SelectThickView.m in Sources */,
+				A22DCE0E21841B6D0078BE06 /* ZJCustomLabel.m in Sources */,
 				5671DBC8206000D9005F1760 /* MainItemView__Tube.m in Sources */,
 				5602129020594CF6009EF75D /* ShareViewController.m in Sources */,
 				5695BEC12042A5300036D54B /* BaseModel.m in Sources */,
@@ -2455,7 +2556,6 @@
 				A2555F4220C0DC6C000C7E03 /* APAuthInfo.m in Sources */,
 				A2AC1C622056476F00A3B2F9 /* MessageViewController.m in Sources */,
 				56940C0320515DB300DFA6D6 /* TBNavigationController.m in Sources */,
-				5695BF012042A9E50036D54B /* UITextField+Extension.m in Sources */,
 				5695BF592042AC1D0036D54B /* EasyShowTextBgView.m in Sources */,
 				565086AD205D3A8F00FD8497 /* MainItemView__WholeBoard.m in Sources */,
 				5671DBCD20600109005F1760 /* MainItemView__Matter.m in Sources */,
@@ -2485,6 +2585,7 @@
 				A22981C1206260CE007B6112 /* ApplyTicketViewController.m in Sources */,
 				5695BF642042AF8C0036D54B /* Reachability.m in Sources */,
 				A283488E2060AAB200C228AD /* ShopCarDetailViewController.m in Sources */,
+				A22DCE0D21841B6D0078BE06 /* ZJContentView.m in Sources */,
 				562E51CF217F659700C90A9E /* ZeroCutTabVC.m in Sources */,
 				5695BF562042AC1D0036D54B /* EasyShowLabel.m in Sources */,
 				5686219920A9CB6E0030C761 /* ShopCarNewListCell.m in Sources */,
