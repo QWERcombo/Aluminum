@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YNPageViewController.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeListDetailVC : UIViewController
+@interface HomeListDetailVC : YNPageViewController
 
++ (instancetype)topPageVC;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *chicunLab;
 @property (weak, nonatomic) IBOutlet UILabel *jiageLab;
 @property (weak, nonatomic) IBOutlet UILabel *shuliangLab;
-@property (weak, nonatomic) IBOutlet UILabel *typeLab;
+@property (weak, nonatomic) IBOutlet UIImageView *typeImgv;
 
 
 @property (nonatomic, copy) ClikBlock clikerBlock;

@@ -6,7 +6,6 @@ pod 'SDWebImage'
 pod 'JSONModel'
 pod 'Masonry'
 pod 'MBProgressHUD'
-pod 'MHTextField'
 pod 'FMDB'
 pod 'UMCCommon'
 pod 'UMCSecurityPlugins'
@@ -15,6 +14,6 @@ pod 'UMCShare/Social/ReducedQQ'
 pod 'WechatOpenSDK'
 pod 'UMCShare/UI'
 pod 'ChameleonFramework'
-
+pod 'YNPageViewController'
 end
 #$ pod update 或  $ pod install

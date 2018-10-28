@@ -63,7 +63,6 @@
     self.tabView.dataSource = self;
     self.tabView.showsVerticalScrollIndicator = NO;
     self.tabView.showsHorizontalScrollIndicator = NO;
-    self.tabView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tabView.backgroundColor = [UIColor mianColor:1];
     [self.view addSubview:self.tabView];
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -106,7 +105,8 @@
         
     }];
     
-    excuteButton = [UIButton buttonWithTitle:[NSString stringWithFormat:@"去结算(0)"] andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:IMG(@"Main_buy") andHighlightedImage:IMG(@"Main_buy")];
+    excuteButton = [UIButton buttonWithTitle:[NSString stringWithFormat:@"去结算(0)"] andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+    excuteButton.backgroundColor = [UIColor mianColor:2];
     [excuteButton addTarget:self action:@selector(excuteAction:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:excuteButton];
     [excuteButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -114,7 +114,7 @@
         make.width.equalTo(@(140));
     }];
     
-    allButton = [UIButton buttonWithTitle:@"全选" andFont:FONT_ArialMT(13) andtitleNormaColor:[UIColor Black_WordColor] andHighlightedTitle:[UIColor Black_WordColor] andNormaImage:nil andHighlightedImage:nil];
+    allButton = [UIButton buttonWithTitle:@"全选" andFont:FONT_ArialMT(14) andtitleNormaColor:[UIColor Grey_WordColor] andHighlightedTitle:[UIColor Grey_WordColor] andNormaImage:nil andHighlightedImage:nil];
     [allButton setImage:IMG(@"select_0") forState:UIControlStateNormal];
     [allButton setImage:IMG(@"select_1") forState:UIControlStateSelected];
     [allButton addTarget:self action:@selector(allButtonCliker:) forControlEvents:UIControlEventTouchUpInside];
@@ -125,13 +125,13 @@
         make.left.equalTo(bottomView.mas_left).offset(15);
         make.centerY.equalTo(bottomView.mas_centerY);
     }];
-    allButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
+    allButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     
     
-    priceLabel = [UILabel lableWithText:@"合计：￥0.00元" Font:FONT_ArialMT(13) TextColor:[UIColor Black_WordColor]];
+    priceLabel = [UILabel lableWithText:@"合计：￥0.00元" Font:FONT_ArialMT(16) TextColor:[UIColor Black_WordColor]];
     [bottomView addSubview:priceLabel];
     [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@(15));
+//        make.height.equalTo(@(15));
         make.left.equalTo(allButton.mas_right).offset(10);
         make.centerY.equalTo(allButton.mas_centerY);
     }];

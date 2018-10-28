@@ -38,7 +38,7 @@
 
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 100;
+    return 72;
 }
 
 + (instancetype)getShopCarNewListCell {
@@ -50,14 +50,20 @@
     ShopCar *dataM = (ShopCar *)model;
     self.selectBtn.selected = dataM.isSelectedCard;
     self.xinghaoLab.text = dataM.erjimulu;
-    self.typeLab.text = [NSString stringWithFormat:@"%@/%@",  dataM.zhonglei, dataM.type];
-    if (dataM.height.length) {
-        self.chicunLab.text = [NSString stringWithFormat:@"尺寸：%@x%@x%@",dataM.length, dataM.width, dataM.height];
+    if ([dataM.type isEqualToString:@"整只"]) {
+        self.typeImgv.image = IMG(@"order_整板");
+    } else if ([dataM.type isEqualToString:@"快速"]) {
+        self.typeImgv.image = IMG(@"order_速切");
     } else {
-        self.chicunLab.text = [NSString stringWithFormat:@"尺寸：%@x%@",dataM.length, dataM.width];
+        self.typeImgv.image = IMG(@"order_优切");
     }
-    self.jiageLab.text = [NSString stringWithFormat:@"价格：%@元", [NSString getStringAfterTwo:dataM.money]];
-    self.shuliangLab.text = [NSString stringWithFormat:@"数量：%@", dataM.productNum];
+    if (dataM.height.length) {
+        self.chicunLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.length, dataM.width, dataM.height];
+    } else {
+        self.chicunLab.text = [NSString stringWithFormat:@"%@x%@",dataM.length, dataM.width];
+    }
+    self.jiageLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:dataM.money]];
+    self.shuliangLab.text = [NSString stringWithFormat:@"%@件", dataM.productNum];
 }
 
 @end

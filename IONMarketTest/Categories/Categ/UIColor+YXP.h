@@ -30,6 +30,10 @@ colorTypes;
 
 + (UIColor *)Grey_BackColor1;
 
++ (UIColor *)Grey_GreenColor;
+
++ (UIColor *)Grey_RedColor;
+
 + (UIColor *)Grey_LineColor;
 
 + (UIColor *)Grey_WordColor;

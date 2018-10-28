@@ -107,6 +107,14 @@
     return [UIColor colorWithR:235 G:51 B:15 A:1];
 }
 
++ (UIColor *)Grey_GreenColor {
+    return [UIColor colorWithHexString:@"#7ED321"];
+}
+
++ (UIColor *)Grey_RedColor {
+    return [UIColor colorWithHexString:@"#E8400F"];
+}
+
 + (UIColor *)Grey_PurColor {
     return [UIColor colorWithHexString:@"#D97078"];
 }
@@ -118,7 +126,7 @@
 + (UIColor *)mianColor:(colorTypes)type
 {
     if (type == 1) {
-        return  [UIColor colorWithR:244 G:245 B:246 A:1];
+        return  [UIColor colorWithHexString:@"#F6F6F6"];
     } else if(type==2) {
         return  [UIColor colorWithHexString:@"#2F75EC"];
     } else {

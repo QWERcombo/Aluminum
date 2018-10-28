@@ -23,7 +23,6 @@ PODS:
   - JSONModel (1.7.0)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
-  - MHTextField (0.6)
   - MJRefresh (3.1.15.3)
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
@@ -42,6 +41,7 @@ PODS:
     - UMCCommon
     - UMCShare/Core
   - WechatOpenSDK (1.8.2)
+  - YNPageViewController (0.2.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -50,7 +50,6 @@ DEPENDENCIES:
   - JSONModel
   - Masonry
   - MBProgressHUD
-  - MHTextField
   - MJRefresh (~> 3.1.0)
   - SDWebImage
   - UMCCommon
@@ -59,6 +58,23 @@ DEPENDENCIES:
   - UMCShare/Social/ReducedWeChat
   - UMCShare/UI
   - WechatOpenSDK
+  - YNPageViewController
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - ChameleonFramework
+    - FMDB
+    - JSONModel
+    - Masonry
+    - MBProgressHUD
+    - MJRefresh
+    - SDWebImage
+    - UMCCommon
+    - UMCSecurityPlugins
+    - UMCShare
+    - WechatOpenSDK
+    - YNPageViewController
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -67,14 +83,14 @@ SPEC CHECKSUMS:
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  MHTextField: c13dad029b2a3da5e6a1c7adc7fa499ca8a976e5
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   UMCCommon: 82d21f4bb9532a5472cc533bbd8ed48aff376a14
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   UMCShare: f8be567946c3aa68deefd03b0ffaa0710a3b07ea
   WechatOpenSDK: 676feec516a11173eafd1fe64b10d27babf28701
+  YNPageViewController: 7c6067a324a729990db2ea3d4d0458668a2d9849
 
-PODFILE CHECKSUM: 5fbe90ca0004a2911a037493fecc3188876f3791
+PODFILE CHECKSUM: 203988504544c0a5d395f48ed9ac3d9325d3ffd8
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

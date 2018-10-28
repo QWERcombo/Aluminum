@@ -92,7 +92,8 @@
 //    QuotationDetailViewController *detail = [QuotationDetailViewController new];
 //    detail.title = model.name;
 //    [self.navigationController pushViewController:detail animated:YES];
-    HomeListDetailVC *list = [HomeListDetailVC new];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UIViewController *list = [HomeListDetailVC topPageVC];
     [self.navigationController pushViewController:list animated:YES];
 }
 
@@ -152,11 +153,13 @@
                     
                     ZeroCutVC *zero = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"ZeroCutVC"];
                     [self.navigationController pushViewController:zero animated:YES];
-                } else if ([name isEqualToString:@"圆棒"]) {
-                    
-                    
-                    
-                } else if ([name isEqualToString:@"管材"]) {
+                }
+//                else if ([name isEqualToString:@"圆棒"]) {
+//
+//
+//
+//                }
+                else if ([name isEqualToString:@"管材"]) {
                     
                     
                     
@@ -166,10 +169,10 @@
 
                 }
                 else {
-//                    MainItemViewController *main_item = [[MainItemViewController alloc] init];
-//                    main_item.titleStr = name;
-//                    main_item.selectedNum = [clueStr integerValue]-1;
-//                    [self.navigationController pushViewController:main_item animated:YES];
+                    MainItemViewController *main_item = [[MainItemViewController alloc] init];
+                    main_item.titleStr = name;
+                    main_item.selectedNum = [clueStr integerValue]-1;
+                    [self.navigationController pushViewController:main_item animated:YES];
                 }
             }];
             [blank addSubview:item];

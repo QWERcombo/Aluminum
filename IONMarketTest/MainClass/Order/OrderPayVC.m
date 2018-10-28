@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLab;
 @property (weak, nonatomic) IBOutlet UILabel *payWayLab;
 @property (weak, nonatomic) IBOutlet UILabel *wuliufeiLab;
+@property (weak, nonatomic) IBOutlet UILabel *totalLab;
 
 @end
 
@@ -23,12 +24,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.orderNo.text = self.orderModel.no;
-    self.priceLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:self.orderModel.totalMoney]];
+    self.priceLab.text = [NSString stringWithFormat:@"￥%@", [NSString getStringAfterTwo:self.orderModel.totalMoney]];
     if ([self.orderModel.wuliufei integerValue]>0) {
-        self.wuliufeiLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:self.orderModel.wuliufei]];
+        self.wuliufeiLab.text = [NSString stringWithFormat:@"￥%@", [NSString getStringAfterTwo:self.orderModel.wuliufei]];
     } else {
-        self.wuliufeiLab.text = @"0元";
+        self.wuliufeiLab.text = @"￥0.00";
     }
+    NSLog(@"%@", self.orderModel);
+    NSNumber *total = [NSNumber numberWithFloat:([self.orderModel.totalMoney floatValue] + [self.orderModel.wuliufei floatValue])];
+    self.totalLab.text = [NSString stringWithFormat:@"￥%@", [NSString getStringAfterTwo:total.stringValue]];
 //    [self getOrderDetail:self.orderModel.no];
 }
 
@@ -42,22 +46,22 @@
     }
     
     if ([self.payWayLab.text isEqualToString:@"微信支付"]) {
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney userPayMode:weixinPayMode_order paySuccessBlock:^{
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:self.orderModel.no andTotalfee:self.totalLab.text userPayMode:weixinPayMode_order paySuccessBlock:^{
             [self goToPayResuit];
         }];
     }
     if ([self.payWayLab.text isEqualToString:@"钱包支付"]) {
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWalletWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney paySuccessBlock:^{
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWalletWithOrderId:self.orderModel.no andTotalfee:self.totalLab.text paySuccessBlock:^{
             [self goToPayResuit];
         }];
     }
     if ([self.payWayLab.text isEqualToString:@"白条支付"]) {
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney paySuccessBlock:^{
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:self.orderModel.no andTotalfee:self.totalLab.text paySuccessBlock:^{
             [self goToPayResuit];
         }];
     }
     if ([self.payWayLab.text isEqualToString:@"支付宝支付"]) {
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:self.orderModel.no andTotalfee:self.orderModel.totalMoney userPayMode:aliPayMode_order paySuccessBlock:^{
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:self.orderModel.no andTotalfee:self.totalLab.text userPayMode:aliPayMode_order paySuccessBlock:^{
             [self goToPayResuit];
         }];
     }

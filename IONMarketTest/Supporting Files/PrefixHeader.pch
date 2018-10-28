@@ -20,7 +20,6 @@
 #import "MBProgressHUD.h"
 #import "JSONModel.h"
 #import "MJRefresh.h"
-#import "MHTextField.h"
 #import <FMDB.h>
 #import "LYEmptyViewHeader.h"
 #import "Reachability.h"
@@ -81,6 +80,7 @@
 //Vender
 #import "EasyShowView.h"
 #import "EasyShowOptions.h"
+#import "AAGlobalMacro.h"
 
 
 //Model

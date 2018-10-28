@@ -84,7 +84,7 @@ static char exKeyboardFrameBeginToEndKey;
     self.ex_canMove = YES;
     self.exKeyboardY = 0;
     self.exTotalHeight = 0;
-//    self.exTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+    self.exTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
 }
 /**
  *  接收键盘的显示的通知
