@@ -90,12 +90,12 @@
             return [UtilsMold creatCell:@"WuLiuCell" table:tableView deledate:self model:[self.wuliuNoArray objectAtIndex:indexPath.row] data:self.orderModel.logisticsName andCliker:^(NSDictionary *clueDic) {
             }];
         } else {
-            return [UtilsMold creatCell:@"OrderDetailCell" table:tableView deledate:self model:[self.detailDataSource objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+            return [UtilsMold creatCell:@"ConfirmOrderCell" table:tableView deledate:self model:[self.detailDataSource objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
             }];
         }
     } else {
         
-        return [UtilsMold creatCell:@"OrderDetailCell" table:tableView deledate:self model:[self.detailDataSource objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+        return [UtilsMold creatCell:@"ConfirmOrderCell" table:tableView deledate:self model:[self.detailDataSource objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
         }];
     }
 }
@@ -106,10 +106,10 @@
         if (indexPath.section==0) {
             return [UtilsMold getCellHight:@"WuLiuCell" data:nil model:nil indexPath:indexPath];
         } else {
-            return [UtilsMold getCellHight:@"OrderDetailCell" data:nil model:nil indexPath:indexPath];
+            return [UtilsMold getCellHight:@"ConfirmOrderCell" data:nil model:nil indexPath:indexPath];
         }
     } else {
-        return [UtilsMold getCellHight:@"OrderDetailCell" data:nil model:nil indexPath:indexPath];
+        return [UtilsMold getCellHight:@"ConfirmOrderCell" data:nil model:nil indexPath:indexPath];
     }
 }
 

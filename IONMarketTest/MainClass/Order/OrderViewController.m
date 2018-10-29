@@ -14,7 +14,7 @@
 #import "ImageShowViewController.h"
 
 #define Button_Width  80
-#define Button_Margin  ((SCREEN_WIGHT-80*4)/5)
+#define Button_Margin  ((SCREEN_WIGHT-80*5)/6)
 
 @interface OrderViewController ()
 @property (nonatomic, assign) NSInteger lastSelected;
@@ -33,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"订单";
     self.view.backgroundColor = [UIColor mianColor:1];
     [self setupSubviews];
     
@@ -67,11 +68,11 @@
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
     
-    NSArray *array = @[@"全部",@"待付款",@"待收货",@"已完成"];
+    NSArray *array = @[@"全部",@"待付款",@"已付款",@"完成",@"过期"];
     UIButton *lastButton = nil;
     for (NSInteger b=0; b<array.count; b++) {
         
-        UIButton *button = [UIButton buttonWithTitle:[array objectAtIndex:b] andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor Black_WordColor] andHighlightedTitle:[UIColor Black_WordColor] andNormaImage:nil andHighlightedImage:nil];
+        UIButton *button = [UIButton buttonWithTitle:[array objectAtIndex:b] andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor Grey_WordColor] andHighlightedTitle:[UIColor Grey_WordColor] andNormaImage:nil andHighlightedImage:nil];
         if (b==0) {
             [button setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
         }
@@ -98,9 +99,9 @@
         bottomLine.backgroundColor = [UIColor mianColor:2];
         [topView addSubview:bottomLine];
         [bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.equalTo(@(Button_Width));
-            make.left.equalTo(button.mas_left);
-            make.height.equalTo(@(3));
+            make.width.equalTo(@(32));
+            make.centerX.equalTo(button.mas_centerX);
+            make.height.equalTo(@(2));
             make.bottom.equalTo(topView.mas_bottom);
         }];
     }
@@ -166,7 +167,7 @@
     [sender setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
     
     UIButton *button = [self.view viewWithTag:self.lastSelected];
-    [button setTitleColor:[UIColor Black_WordColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor Grey_WordColor] forState:UIControlStateNormal];
     
     UIView *lastLine = [self.view viewWithTag:self.lastSelected+50];
     lastLine.hidden = YES;
