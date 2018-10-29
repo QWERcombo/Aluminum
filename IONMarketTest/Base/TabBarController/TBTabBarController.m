@@ -101,24 +101,24 @@
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     
     if ([viewController.tabBarItem.title isEqualToString:@"首页"]) {
-        
+
         return YES;
     } else {
-        
+
         if ([UserData currentUser].phone) {
 
             return YES;
         } else {
-        
+
             LoginTVC *login = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginTVC"];
             TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:login];
             [self presentViewController:nav animated:YES completion:^{
-                
+
             }];
-            
+
             return NO;
         }
-        
+
     }
     
 }

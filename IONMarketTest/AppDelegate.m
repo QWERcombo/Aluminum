@@ -13,6 +13,7 @@
 #import <WXApi.h>
 #import <AlipaySDK/AlipaySDK.h>
 #import "ZYNetworkAccessibity.h"
+#import "LoginTVC.h"
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -27,7 +28,7 @@
     
     [self settingEasyShowOptions];//配置菊花
     
-//    [self setupRootViewController];//设置根视图
+    [self setupRootViewController];//设置根视图
     
     [self configUSharePlatforms];//配置友盟
     
@@ -56,7 +57,7 @@
 
 - (void)setupRootViewController {
     
-//    [[UtilsData sharedInstance] loginPlan:nil success:^(UserData *user) {
+    [[UtilsData sharedInstance] loginPlan:nil success:^(UserData *user) {
 //
 //        if ([[UserData currentUser].isCheck integerValue]==0) {
 //            TBTabBarController *tabBar = [TBTabBarController new];
@@ -67,12 +68,19 @@
             self.window.rootViewController = tabBar;
 //        }
 //
-//    } failure:^(UserData *user) {
+    } failure:^(UserData *user) {
 //        LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
 //        TBNavigationController *navi = [[TBNavigationController alloc] initWithRootViewController:login];
 //        self.window.rootViewController = navi;
+//        LoginTVC *login = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginTVC"];
+//        TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:login];
+//        [self.window.rootViewController presentViewController:nav animated:YES completion:^{
 //
-//    }];
+//        }];
+        TBTabBarController *tabBar = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TBtabBar"];
+        self.window.rootViewController = tabBar;
+
+    }];
 
     
 }

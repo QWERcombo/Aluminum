@@ -9,6 +9,7 @@
 #import "SettingTableViewController.h"
 #import "TextTableViewController.h"
 #import "ChangeCodeViewController.h"
+#import "LoginTVC.h"
 
 @interface SettingTableViewController ()
 @property (nonatomic, strong) NSArray *titleArr;
@@ -74,6 +75,11 @@
             
             [[UserData currentUser] removeMe];
             [[UtilsData sharedInstance] postLogoutNotice];
+//            LoginTVC *login = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginTVC"];
+//            TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:login];
+//            [self presentViewController:nav animated:YES completion:^{
+//
+//            }];
             
         } controller:self];
     } else {

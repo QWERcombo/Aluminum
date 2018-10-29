@@ -262,7 +262,7 @@
 }
 
 - (IBAction)dayin:(UISwitch *)sender {
-    NSLog(@"打印 %d", sender.isOn);
+    NSLog(@"打包 %d", sender.isOn);
 }
 
 - (IBAction)biaoqian:(UISwitch *)sender {

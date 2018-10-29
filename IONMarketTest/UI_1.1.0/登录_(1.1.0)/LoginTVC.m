@@ -11,6 +11,12 @@
 #import "RegisterTVC.h"
 #import "InviteNumberVC.h"
 
+typedef NS_ENUM(NSUInteger, LoginType) {
+    LoginType_Code,     //短信登陆
+    LoginType_Account,  //账号登陆
+};
+
+
 @interface LoginTVC ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *codeLabel;
@@ -27,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
+@property (nonatomic, assign) LoginType loginType;
+
 @end
 
 @implementation LoginTVC
@@ -37,6 +45,11 @@
     self.loginBtn.layer.masksToBounds = YES;
     [self.loginBtn setEnabled:NO];
     self.loginBtn.backgroundColor = [[UIColor mianColor:2] colorWithAlphaComponent:0.5];
+    self.loginType = LoginType_Account;
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE]) {
+        self.phoneTF.text = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE];
+    }
 }
 
 #pragma mark - Table view data source
@@ -68,6 +81,8 @@
             self.psdTF.keyboardType = UIKeyboardTypeNumberPad;
             [self.forgetBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
             [self.forgetBtn setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
+            self.loginType = LoginType_Code;
+            self.psdTF.text = @"";
             break;
         case 102:
             //账号密码登陆
@@ -76,8 +91,11 @@
             self.accountLIne.backgroundColor = [UIColor mianColor:2];
             self.accountLabel.textColor = [UIColor mianColor:2];
             self.psdTF.placeholder = @"请输入登录密码";
+            self.psdTF.secureTextEntry = YES;
             [self.forgetBtn setTitle:@"忘记密码" forState:UIControlStateNormal];
             [self.forgetBtn setTitleColor:[UIColor colorWithHexString:@"#595E64"] forState:UIControlStateNormal];
+            self.loginType = LoginType_Account;
+            self.psdTF.text = @"";
             break;
         case 103:
             
@@ -168,8 +186,40 @@
 - (void)goToLogin {
     
     [self.view endEditing:YES];
-    InviteNumberVC *invite = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"InviteNumberVC"];
-    [self.navigationController pushViewController:invite animated:YES];
+    
+    if (self.loginType == LoginType_Account) {
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:self.phoneTF.text forKey:@"phone"];
+        [dict setValue:self.psdTF.text forKey:@"password"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Login andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            //NSLog(@"++++%@", resultDic);
+            //用户手机号存本地
+            NSString *login_phone = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE];
+            if (![login_phone isEqualToString:self.phoneTF.text]) {
+                [[NSUserDefaults standardUserDefaults] setObject:self.phoneTF.text forKey:LOGIN_PHONE];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+            
+            
+            [[UserData currentUser] giveData:resultDic[@"user"]];
+            [[UserData currentUser] giveData:@{@"isCheck":[NSString stringWithFormat:@"%@", resultDic[@"isCheck"]]}];
+            //[[UserData currentUser] giveData:@{@"isCheck":@"1"}];
+            //[[UtilsData sharedInstance] postLoginNotice];
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+    } else {
+        
+        InviteNumberVC *invite = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"InviteNumberVC"];
+        [self.navigationController pushViewController:invite animated:YES];
+
+    }
+    
 }
 
 

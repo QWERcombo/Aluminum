@@ -264,6 +264,7 @@
 		A2555F9220C0DDE4000C7E03 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2555F9020C0DDE3000C7E03 /* libssl.a */; };
 		A2555F9720C0DFF9000C7E03 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A2555F9520C0DFF8000C7E03 /* AlipaySDK.bundle */; };
 		A2555F9820C0DFF9000C7E03 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2555F9620C0DFF9000C7E03 /* AlipaySDK.framework */; };
+		A2593DF32186AEE9004794FE /* SettingPayPsdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A2593DF22186AEE9004794FE /* SettingPayPsdVC.m */; };
 		A26149CA20C5379E0055BA25 /* WhiteBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A26149C820C5379E0055BA25 /* WhiteBarCell.m */; };
 		A26149CB20C5379E0055BA25 /* WhiteBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26149C920C5379E0055BA25 /* WhiteBarCell.xib */; };
 		A26149CD20C53FCE0055BA25 /* Common.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A26149CC20C53FCE0055BA25 /* Common.storyboard */; };
@@ -865,6 +866,8 @@
 		A2555F9020C0DDE3000C7E03 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		A2555F9520C0DFF8000C7E03 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		A2555F9620C0DFF9000C7E03 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		A2593DF12186AEE9004794FE /* SettingPayPsdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingPayPsdVC.h; sourceTree = "<group>"; };
+		A2593DF22186AEE9004794FE /* SettingPayPsdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingPayPsdVC.m; sourceTree = "<group>"; };
 		A26149C720C5379E0055BA25 /* WhiteBarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WhiteBarCell.h; sourceTree = "<group>"; };
 		A26149C820C5379E0055BA25 /* WhiteBarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WhiteBarCell.m; sourceTree = "<group>"; };
 		A26149C920C5379E0055BA25 /* WhiteBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WhiteBarCell.xib; sourceTree = "<group>"; };
@@ -1451,6 +1454,8 @@
 				56A37FCD212AF27D00701CD8 /* WuLiuCell.xib */,
 				56B5215520AB246200F636BD /* OrderPayVC.h */,
 				56B5215620AB246200F636BD /* OrderPayVC.m */,
+				A2593DF12186AEE9004794FE /* SettingPayPsdVC.h */,
+				A2593DF22186AEE9004794FE /* SettingPayPsdVC.m */,
 				A2F8AEB020C11EBC00D9926F /* OrderPayResultVC.h */,
 				A2F8AEB120C11EBC00D9926F /* OrderPayResultVC.m */,
 			);
@@ -2659,6 +2664,7 @@
 				5695BEC22042A5300036D54B /* BaseCell.m in Sources */,
 				56CA2B5B217A149400F3FED0 /* XunJiaViewController.m in Sources */,
 				568CB08D2066462300B48318 /* CALayer+Addition.m in Sources */,
+				A2593DF32186AEE9004794FE /* SettingPayPsdVC.m in Sources */,
 				A22981A720623BAD007B6112 /* AddCardViewController.m in Sources */,
 				5632BFAC205AA3F80009CD34 /* SetOrderViewController.m in Sources */,
 				56A5746A20ADC88E00A458EB /* PhotoAlertController.m in Sources */,

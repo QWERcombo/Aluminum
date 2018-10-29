@@ -9,6 +9,7 @@
 #import "OrderPayVC.h"
 #import "ChoosePayWayView.h"
 #import "OrderPayResultVC.h"
+#import "SettingPayPsdVC.h"
 
 @interface OrderPayVC ()
 @property (weak, nonatomic) IBOutlet UILabel *orderNo;
@@ -51,11 +52,19 @@
         }];
     }
     if ([self.payWayLab.text isEqualToString:@"钱包支付"]) {
+        
+        [self showSettingPayVC];
+        return;
+        
         [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWalletWithOrderId:self.orderModel.no andTotalfee:self.totalLab.text paySuccessBlock:^{
             [self goToPayResuit];
         }];
     }
     if ([self.payWayLab.text isEqualToString:@"白条支付"]) {
+        
+        [self showSettingPayVC];
+        return;
+        
         [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:self.orderModel.no andTotalfee:self.totalLab.text paySuccessBlock:^{
             [self goToPayResuit];
         }];
@@ -79,8 +88,17 @@
     [ChoosePayWayView showSelfWithBlock:^(NSString *value) {
 //        NSLog(@"---%@", value);
         self.payWayLab.text = value;
+        self.payWayLab.textColor = [UIColor Black_WordColor];
     }];
     
+}
+
+- (void)showSettingPayVC {
+    
+    SettingPayPsdVC *payset = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"SettingPayPsdVC"];
+    TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:payset];
+    [self presentViewController:nav animated:YES completion:^{
+    }];
 }
 
 //- (void)getOrderDetail:(NSString *)orderId {
