@@ -46,11 +46,11 @@ static void resetState (){
 
 - (void)initCommon {
     
-    self.layer.borderColor = [UIColor mianColor:2].CGColor;
-    self.layer.borderWidth = 1;
-    self.layer.cornerRadius = 5;
+    self.layer.borderColor = [UIColor Grey_WordColor].CGColor;
+    self.layer.borderWidth = 0.5;
+    self.layer.cornerRadius = 2;
     self.layer.masksToBounds = YES;
-    [self setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
+    [self setTitleColor:[UIColor Grey_WordColor] forState:UIControlStateNormal];
     
 }
 

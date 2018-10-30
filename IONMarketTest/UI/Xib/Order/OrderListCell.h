@@ -14,15 +14,11 @@
 @property (nonatomic, copy) ClikBlock clikerBlock;
 @property (weak, nonatomic) IBOutlet UILabel *orderIDLabel;
 @property (weak, nonatomic) IBOutlet UIButton *statusButton;
-@property (weak, nonatomic) IBOutlet UILabel *productPrice;
-@property (weak, nonatomic) IBOutlet UILabel *processPrice;
-@property (weak, nonatomic) IBOutlet UILabel *expressPrice;
-@property (weak, nonatomic) IBOutlet UILabel *zhengbanLabel;
-@property (weak, nonatomic) IBOutlet UILabel *totalPrice;
 @property (weak, nonatomic) IBOutlet CustomButton *quxiaoBtn;
 @property (weak, nonatomic) IBOutlet CustomButton *zhifuBtn;
 @property (weak, nonatomic) IBOutlet UIView *itemView;
 @property (weak, nonatomic) IBOutlet CustomButton *caizhiBtn;
+@property (weak, nonatomic) IBOutlet UIView *buttonView;
 
 
 + (instancetype)OrderListCell;

@@ -8,7 +8,7 @@
 
 #import "OrderListCell.h"
 #import "CALayer+Addition.h"
-#import "OrderListItemView.h"
+#import "ConfirmOrderCell.h"
 
 @implementation OrderListCell
 
@@ -29,9 +29,10 @@
 }
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    
+//    过期
+//    return (32)+[count integerValue]*72;
     NSString *count = (NSString *)model;
-    return 106+[count integerValue]*40;
+    return (32+40)+[count integerValue]*72;
 }
 
 + (instancetype)OrderListCell {
@@ -57,43 +58,61 @@
     }
 }
 
-
-- (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
-    _clikerBlock = click;
-    OrderListModel *dataM = (OrderListModel *)model;
++ (instancetype)initCell:(UITableView *)tableView cellName:(NSString *)cellName dataObject:(id)dataObject {
     
-    self.orderIDLabel.text = [NSString stringWithFormat:@"订单编号: %@", dataM.no];
-    self.expressPrice.text = [NSString stringWithFormat:@"物流费: %@元", [NSString getStringAfterTwo:dataM.wuliufei]];
-    self.productPrice.text = [NSString stringWithFormat:@"产品费: %@", [NSString getStringAfterTwo:dataM.totalMoney]];
+    OrderListCell *cell = [super initCell:tableView cellName:cellName dataObject:dataObject];
+    
+    OrderListModel *dataM = (OrderListModel *)dataObject;
+    
+    cell.orderIDLabel.text = [NSString stringWithFormat:@"订单编号:%@", dataM.no];
+    cell.zhifuBtn.layer.borderColor = [UIColor colorWithHexString:@"#6D9EF1"].CGColor;
+    cell.zhifuBtn.layer.borderWidth = 0.5;
+    [cell.zhifuBtn setTitleColor:[UIColor colorWithHexString:@"#6D9EF1"] forState:UIControlStateNormal];
     
     switch ([dataM.status integerValue]) {
         case 0:
-            [self.statusButton setTitle:@"待付款" forState:UIControlStateNormal];            
+            [cell.statusButton setTitle:@"待付款" forState:UIControlStateNormal];
+            [cell.statusButton setTitleColor:[UIColor Grey_OrangeColor] forState:UIControlStateNormal];
             break;
         case 1:
-            [self.statusButton setTitle:@"待收货" forState:UIControlStateNormal];
-            [self.zhifuBtn setTitle:@"  确认收货  " forState:UIControlStateNormal];
-            [self.quxiaoBtn setTitle:@"  材质证明  " forState:UIControlStateNormal];
-            self.caizhiBtn.hidden = YES;
+            [cell.statusButton setTitle:@"待收货" forState:UIControlStateNormal];
+            [cell.statusButton setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
+            [cell.zhifuBtn setTitle:@" 确认收货 " forState:UIControlStateNormal];
+            [cell.quxiaoBtn setTitle:@" 材质证明 " forState:UIControlStateNormal];
+            cell.caizhiBtn.hidden = YES;
             break;
         case 2:
-            [self.statusButton setTitle:@"已完成" forState:UIControlStateNormal];
-            [self.zhifuBtn setTitle:@"  材质证明  " forState:UIControlStateNormal];
-            self.caizhiBtn.hidden = YES;
-            self.quxiaoBtn.hidden = YES;
+            [cell.statusButton setTitle:@"完成" forState:UIControlStateNormal];
+            [cell.statusButton setTitleColor:[UIColor Black_WordColor] forState:UIControlStateNormal];
+            [cell.zhifuBtn setTitle:@" 材质证明 " forState:UIControlStateNormal];
+            cell.caizhiBtn.hidden = YES;
+            cell.quxiaoBtn.hidden = YES;
             
             break;
+//        case 3:
+//            [cell.statusButton setTitle:@"过期" forState:UIControlStateNormal];
+//            [cell.statusButton setTitleColor:[UIColor Grey_WordColor] forState:UIControlStateNormal];
+//            cell.buttonView.hidden = YES;
+//            [cell.buttonView setFrame:CGRectMake(0, 0, SCREEN_WIGHT, 0)];
+//            break;
         default:
             break;
     }
     
+    
     for (NSInteger i=0; i<dataM.detail.count; i++) {
-        OrderListItemView *label = [[OrderListItemView alloc] initWithFrame:CGRectMake(0, 40*i, SCREEN_WIGHT, 40)];
-        [label loadData:[dataM.detail objectAtIndex:i]];
-        label.backgroundColor = [UIColor purpleColor];
-        [self.itemView addSubview:label];
+
+        ConfirmOrderCell *scell = [ConfirmOrderCell initCell:tableView cellName:@"ConfirmOrderCell" dataObject:[dataM.detail objectAtIndex:i]];
+        scell.frame = CGRectMake(0, 72*i, SCREEN_WIGHT, 72);
+        [cell.itemView addSubview:scell];
     }
     
+    
+    return cell;
+}
+
+- (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
+    _clikerBlock = click;
 }
 
 @end

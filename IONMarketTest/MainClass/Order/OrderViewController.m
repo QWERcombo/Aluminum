@@ -59,6 +59,7 @@
 
 - (void)setupSubviews {
     [self.view addSubview:self.tabView];
+    self.tabView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
         make.top.equalTo(self.view.mas_top).offset(50);
@@ -120,29 +121,56 @@
     OrderListModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
     __weak typeof(self) weakself = self;
     
-    return [UtilsMold creatCell:@"OrderListCell" table:tableView deledate:self model:model data:nil andCliker:^(NSDictionary *clueDic) {
-//        NSLog(@"%@---%ld", clueDic, indexPath.row);
-//        [weakself getExpressMoney:model.id];
-        if ([clueDic[@"key"] isEqualToString:@"  材质证明  "]) {
+    
+    OrderListCell *cell = [OrderListCell initCell:tableView cellName:@"OrderListCell" dataObject:model];
+    
+    [cell loadData:nil andCliker:^(NSString *clueStr) {
+        
+        if ([clueStr isEqualToString:@" 材质证明 "]) {
             
-            [self getCaizhizhengming:indexPath];
+            [weakself getCaizhizhengming:indexPath];
         }
         
-        if ([clueDic[@"key"] isEqualToString:@"  去支付  "]) {
+        if ([clueStr isEqualToString:@" 前往支付 "]) {
             OrderPayVC *pay = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayVC"];
-            pay.orderModel = [self.dataMuArr objectAtIndex:indexPath.row];
-            [self.navigationController pushViewController:pay animated:YES];
+            pay.orderModel = [weakself.dataMuArr objectAtIndex:indexPath.row];
+            [weakself.navigationController pushViewController:pay animated:YES];
         }
         
-        if ([clueDic[@"key"] isEqualToString:@"  取消订单  "]) {
+        if ([clueStr isEqualToString:@" 取消订单 "]) {
             [weakself cancelOrder:model.no withIndexPath:indexPath];
         }
         
-        if ([clueDic[@"key"] isEqualToString:@"  确认收货  "]) {
-            [self confirmProduct:model.no withIndexPath:indexPath];
+        if ([clueStr isEqualToString:@" 确认收货 "]) {
+            [weakself confirmProduct:model.no withIndexPath:indexPath];
         }
         
     }];
+    
+    return cell;
+//    return [UtilsMold creatCell:@"OrderListCell" table:tableView deledate:self model:model data:nil andCliker:^(NSDictionary *clueDic) {
+////        NSLog(@"%@---%ld", clueDic, indexPath.row);
+////        [weakself getExpressMoney:model.id];
+//        if ([clueDic[@"key"] isEqualToString:@"  材质证明  "]) {
+//
+//            [self getCaizhizhengming:indexPath];
+//        }
+//
+//        if ([clueDic[@"key"] isEqualToString:@"  去支付  "]) {
+//            OrderPayVC *pay = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayVC"];
+//            pay.orderModel = [self.dataMuArr objectAtIndex:indexPath.row];
+//            [self.navigationController pushViewController:pay animated:YES];
+//        }
+//
+//        if ([clueDic[@"key"] isEqualToString:@"  取消订单  "]) {
+//            [weakself cancelOrder:model.no withIndexPath:indexPath];
+//        }
+//
+//        if ([clueDic[@"key"] isEqualToString:@"  确认收货  "]) {
+//            [self confirmProduct:model.no withIndexPath:indexPath];
+//        }
+//
+//    }];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -157,6 +185,7 @@
     OrderListModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
     detail.orderid = model.no;
     detail.listModel = model;
+    detail.orderDetailType = OrderDetailType_Ziti;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *zhifushijian;
 @property (weak, nonatomic) IBOutlet UIView *zhifuView;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UIView *kuaidiView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *kuaidiHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *zhifuHeight;
 
 
 @property (nonatomic, strong) NSMutableArray *detailDataSource;
@@ -36,7 +39,31 @@
     self.detailDataSource = [NSMutableArray array];
     self.wuliuNoArray = [NSArray array];
     [self getOrderDetail:self.orderid];
-//    NSLog(@"----%@", [@"2222" componentsSeparatedByString:@","]);
+
+    switch (self.orderDetailType) {
+        case OrderDetailType_WillPay:
+            self.kuaidiHeight.constant = 0.0;
+            self.zhifuHeight.constant = 0.0;
+            self.kuaidiView.hidden = YES;
+            self.zhifuView.hidden = YES;
+            self.headerView.frame = CGRectMake(0, 0, SCREEN_WIGHT, self.headerView.frame.size.height-74-74);
+            break;
+        case OrderDetailType_Ziti:
+            self.kuaidiView.hidden = YES;
+            self.kuaidiHeight.constant = 0.0;
+            self.headerView.frame = CGRectMake(0, 0, SCREEN_WIGHT, self.headerView.frame.size.height-74);
+            break;
+        case OrderDetailType_WillSend:
+            
+            break;
+        case OrderDetailType_Sended:
+            self.kuaidiView.hidden = YES;
+            self.kuaidiHeight.constant = 0.0;
+            self.headerView.frame = CGRectMake(0, 0, SCREEN_WIGHT, self.headerView.frame.size.height-74);
+            break;
+        default:
+            break;
+    }
 }
 
 
@@ -113,19 +140,19 @@
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return section==0?0:10;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (section==0) {
-        return nil;
-    } else {
-        UIView *grayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 15)];
-        grayView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        return grayView;
-    }
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return section==0?0:10;
+//}
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    if (section==0) {
+//        return nil;
+//    } else {
+//        UIView *grayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 15)];
+//        grayView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+//        return grayView;
+//    }
+//}
 
 
 - (void)updateInfomation {
@@ -150,10 +177,10 @@
     self.zhifushijian.text = [dateformatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.orderModel.payTime integerValue]/1000]];
     
     //没有支付方式和时间不显示高度
-    if (!self.orderModel.payTime.length) {
-        self.headerView.frame = CGRectMake(0, 0, SCREEN_WIGHT, self.headerView.frame.size.height-70);
-        self.zhifuView.hidden = YES;
-    }
+//    if (!self.orderModel.payTime.length) {
+//        self.headerView.frame = CGRectMake(0, 0, SCREEN_WIGHT, self.headerView.frame.size.height-70);
+//        self.zhifuView.hidden = YES;
+//    }
     
 }
 /*

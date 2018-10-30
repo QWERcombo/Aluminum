@@ -34,8 +34,6 @@
 		562E51CF217F659700C90A9E /* ZeroCutTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 562E51CE217F659700C90A9E /* ZeroCutTabVC.m */; };
 		562E51D2217F6EA300C90A9E /* SelectThickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 562E51D1217F6EA300C90A9E /* SelectThickView.m */; };
 		562E51D4217F6EAF00C90A9E /* SelectThickView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 562E51D3217F6EAF00C90A9E /* SelectThickView.xib */; };
-		562FF27220BA6FC1006048DC /* OrderListItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 562FF27120BA6FC1006048DC /* OrderListItemView.m */; };
-		562FF27420BA6FCB006048DC /* OrderListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 562FF27320BA6FCB006048DC /* OrderListItemView.xib */; };
 		5632BFAC205AA3F80009CD34 /* SetOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFAB205AA3F80009CD34 /* SetOrderViewController.m */; };
 		5632BFAF205AB47D0009CD34 /* QuotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFAE205AB47D0009CD34 /* QuotationViewController.m */; };
 		5632BFB2205AB5920009CD34 /* QuotationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFB1205AB5920009CD34 /* QuotationDetailViewController.m */; };
@@ -377,9 +375,6 @@
 		562E51D0217F6EA300C90A9E /* SelectThickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectThickView.h; sourceTree = "<group>"; };
 		562E51D1217F6EA300C90A9E /* SelectThickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectThickView.m; sourceTree = "<group>"; };
 		562E51D3217F6EAF00C90A9E /* SelectThickView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectThickView.xib; sourceTree = "<group>"; };
-		562FF27020BA6FC1006048DC /* OrderListItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderListItemView.h; sourceTree = "<group>"; };
-		562FF27120BA6FC1006048DC /* OrderListItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderListItemView.m; sourceTree = "<group>"; };
-		562FF27320BA6FCB006048DC /* OrderListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderListItemView.xib; sourceTree = "<group>"; };
 		5632BFAA205AA3F80009CD34 /* SetOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetOrderViewController.h; sourceTree = "<group>"; };
 		5632BFAB205AA3F80009CD34 /* SetOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetOrderViewController.m; sourceTree = "<group>"; };
 		5632BFAD205AB47D0009CD34 /* QuotationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuotationViewController.h; sourceTree = "<group>"; };
@@ -1218,9 +1213,6 @@
 				5650869E205CD98400FD8497 /* OrderListCell.h */,
 				5650869F205CD98400FD8497 /* OrderListCell.m */,
 				565086A0205CD98400FD8497 /* OrderListCell.xib */,
-				562FF27020BA6FC1006048DC /* OrderListItemView.h */,
-				562FF27120BA6FC1006048DC /* OrderListItemView.m */,
-				562FF27320BA6FCB006048DC /* OrderListItemView.xib */,
 				565086A6205CFF1800FD8497 /* OrderDetailCell.h */,
 				565086A7205CFF1800FD8497 /* OrderDetailCell.m */,
 				565086A8205CFF1800FD8497 /* OrderDetailCell.xib */,
@@ -2401,7 +2393,6 @@
 				A22981D6206261C1007B6112 /* TicketCell.xib in Resources */,
 				A29996FF207381140003B96C /* ShopCarListCell.xib in Resources */,
 				A2AC1C7620565E4600A3B2F9 /* MainItemCell.xib in Resources */,
-				562FF27420BA6FCB006048DC /* OrderListItemView.xib in Resources */,
 				565086A2205CD98400FD8497 /* OrderListCell.xib in Resources */,
 				A22981BD20624B48007B6112 /* AddAddressViewController.xib in Resources */,
 				5671DBCF2060011D005F1760 /* MainItemView__Matter.xib in Resources */,
@@ -2639,7 +2630,6 @@
 				A2AC1C6B20564B8A00A3B2F9 /* UserInfoSettingViewController.m in Sources */,
 				5605C04020A090CB00E712A3 /* ShoppingCarSingle.m in Sources */,
 				A2301B2020635292006B9F20 /* LoginViewController.m in Sources */,
-				562FF27220BA6FC1006048DC /* OrderListItemView.m in Sources */,
 				5695BF2B2042AC0A0036D54B /* SlideSwitchView.m in Sources */,
 				A2AC1C7520565E4600A3B2F9 /* MainItemCell.m in Sources */,
 				A296427D20F5AB5E00B6E8B6 /* XLProgressView.m in Sources */,
