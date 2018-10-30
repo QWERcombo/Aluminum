@@ -49,6 +49,7 @@ typedef NS_ENUM(NSUInteger, LoginType) {
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE]) {
         self.phoneTF.text = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE];
+        self.code_img.image = [UIImage imageNamed:@"login_account"];
     }
 }
 
@@ -156,6 +157,7 @@ typedef NS_ENUM(NSUInteger, LoginType) {
         
     }];
 }
+
 - (void)startTimer:(UIButton *)btnCoder
 {
     self.codeBtn.enabled = NO;
@@ -203,8 +205,8 @@ typedef NS_ENUM(NSUInteger, LoginType) {
             
             
             [[UserData currentUser] giveData:resultDic[@"user"]];
-            [[UserData currentUser] giveData:@{@"isCheck":[NSString stringWithFormat:@"%@", resultDic[@"isCheck"]]}];
-            //[[UserData currentUser] giveData:@{@"isCheck":@"1"}];
+//            [[UserData currentUser] giveData:@{@"isCheck":[NSString stringWithFormat:@"%@", resultDic[@"isCheck"]]}];
+            [[UserData currentUser] giveData:@{@"isCheck":@"1"}];
             //[[UtilsData sharedInstance] postLoginNotice];
             [self dismissViewControllerAnimated:YES completion:^{
                 
@@ -215,9 +217,31 @@ typedef NS_ENUM(NSUInteger, LoginType) {
         }];
     } else {
         
-        InviteNumberVC *invite = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"InviteNumberVC"];
-        [self.navigationController pushViewController:invite animated:YES];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:self.phoneTF.text forKey:@"phone"];
+        [dict setValue:self.psdTF.text forKey:@"number"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_loginByCode andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            NSString *userRegisterFlag = [resultDic objectForKey:@"userRegisterFlag"];
+            if ([userRegisterFlag integerValue]==1) {
+                //老用户不跳
+//                [[UserData currentUser] giveData:resultDic[@"user"]];
+                [[UserData currentUser] giveData:@{@"phone":self.phoneTF.text}];
+                [self dismissViewControllerAnimated:YES completion:^{
+                    
+                }];
+            } else {
+                //新用户跳转推荐人
+                InviteNumberVC *invite = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"InviteNumberVC"];
+                [self.navigationController pushViewController:invite animated:YES];
 
+            }
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+        
     }
     
 }

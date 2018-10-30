@@ -9,13 +9,16 @@
 #ifndef InterfaceDefines_h
 #define InterfaceDefines_h
 
-//《 测试地址 》
-#define  BASE_URL    @"http://118.31.35.233:8080/leqie"
-//#define  BASE_URL    @"http://118.31.35.233:8999/leqie"
+//《正式地址》
+//#define  BASE_URL    @"http://118.31.35.233:8080/leqie"
+//#define  BASE_URL_V_110  @"http://118.31.35.233:8080/leqiev110"
+//《测试地址》
+#define  BASE_URL    @"http://118.31.35.233:8999/leqiev110"
+//#define  BASE_URL_V_110  @"http://118.31.35.233:8999/leqiev110"
 
 //获取图片地址
-#define  BASE_URL_IMAGE    @"http://118.31.35.233:8080/"
-//#define  BASE_URL_IMAGE    @"http://118.31.35.233:8999/"
+//#define  BASE_URL_IMAGE    @"http://118.31.35.233:8080/"
+#define  BASE_URL_IMAGE    @"http://118.31.35.233:8999/"
 
 //登陆
 #define Interface_Login  @"login"
@@ -171,6 +174,20 @@
 
 //根据订单编号获取材质证明
 #define Interface_getInspectionReports   @"user/getInspectionReports"
+
+
+#pragma mark --- V.1.1.0
+//验证码登陆
+#define Interface_loginByCode           @"loginByCode"
+//绑定推荐人号码
+#define Interface_updatePromotePhone    @"user/updatePromotePhone"
+//判断是否含有密码
+#define Interface_hasPassword           @"user/hasPassword"
+//设置密码(支付?)
+#define Interface_setPassword           @"user/setPassword"
+
+
+
 
 
 

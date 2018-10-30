@@ -499,6 +499,7 @@
                                                             </state>
                                                             <connections>
                                                                 <action selector="buttonClicker:" destination="CZy-ro-EbJ" eventType="touchUpInside" id="QsF-gG-lCD"/>
+                                                                <action selector="getSMSCode:" destination="XiM-8M-ANi" eventType="touchUpInside" id="BYz-6O-iLh"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
