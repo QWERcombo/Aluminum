@@ -96,7 +96,7 @@
     [dict setValue:self.phoneTF.text forKey:@"phone"];
     [dict setValue:self.codeTF.text forKey:@"number"];
     [dict setValue:self.psdTF.text forKey:@"password1"];
-//    [dict setValue:self.confirmTF.text forKey:@"password2"];
+    [dict setValue:@"123456" forKey:@"password2"];
     if (self.type == FromVCType_regist) {
         //邀请人手机号非必填
         if ([[UtilsData sharedInstance] isHasValue:self.inviteTF.text]) {
@@ -104,7 +104,7 @@
         }
     }
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:self.type == FromVCType_regist?Interface_Register:Interface_Forget andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        //        NSLog(@"%@", resultDic);
+        //NSLog(@"%@", resultDic);
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:self.type==FromVCType_regist?@"注册成功":@"修改成功" time:0 aboutType:WHShowViewMode_Text state:YES];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSString *error, NSInteger code) {

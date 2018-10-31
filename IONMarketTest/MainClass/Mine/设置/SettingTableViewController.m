@@ -9,7 +9,7 @@
 #import "SettingTableViewController.h"
 #import "TextTableViewController.h"
 #import "ChangeCodeViewController.h"
-#import "LoginTVC.h"
+#import "InviteNumberVC.h"
 
 @interface SettingTableViewController ()
 @property (nonatomic, strong) NSArray *titleArr;
@@ -71,17 +71,49 @@
         descri.title = [self.titleArr objectAtIndex:indexPath.row];
         [self.navigationController pushViewController:descri animated:YES];
     } else if (indexPath.row==4) {
-        [[UtilsData sharedInstance] showAlertControllerWithTitle:@"提示" detail:@"是否确定退出登录" doneTitle:@"确定" cancelTitle:@"取消" haveCancel:YES doneAction:^{
+        
+        
+        NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+        [parDic setObject:[UserData currentUser].id forKey:@"userId"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_hasPassword andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+
+            NSString *hasPasswordFlag = [NSString stringWithFormat:@"%@", [resultDic objectForKey:@"hasPasswordFlag"]];
+            if ([hasPasswordFlag integerValue]==0) {
+                //不存在密码去设置
+                InviteNumberVC *invite = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"InviteNumberVC"];
+                invite.showType = ShowType_SetPsd;
+                TBNavigationController *navi = [[TBNavigationController alloc] initWithRootViewController:invite];
+                [self presentViewController:navi animated:YES completion:^{
+                    [invite setCallBlock:^{
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [[UtilsData sharedInstance] showAlertControllerWithTitle:@"提示" detail:@"是否确定退出登录" doneTitle:@"确定" cancelTitle:@"取消" haveCancel:YES doneAction:^{
+                                
+                                [[UserData currentUser] removeMe];
+                                [[UtilsData sharedInstance] postLogoutNotice];
+                                
+                            } controller:self];
+                        });
+                        
+                    }];
+                }];
+            } else {
+                
+                [[UtilsData sharedInstance] showAlertControllerWithTitle:@"提示" detail:@"是否确定退出登录" doneTitle:@"确定" cancelTitle:@"取消" haveCancel:YES doneAction:^{
+                    
+                    [[UserData currentUser] removeMe];
+                    [[UtilsData sharedInstance] postLogoutNotice];
+                    
+                } controller:self];
+            }
             
-            [[UserData currentUser] removeMe];
-            [[UtilsData sharedInstance] postLogoutNotice];
-//            LoginTVC *login = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginTVC"];
-//            TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:login];
-//            [self presentViewController:nav animated:YES completion:^{
-//
-//            }];
             
-        } controller:self];
+        } failure:^(NSString *error, NSInteger code) {
+
+        }];
+    
+        
     } else {
         
     }

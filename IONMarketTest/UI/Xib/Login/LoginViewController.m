@@ -80,7 +80,6 @@
         
         
         [[UserData currentUser] giveData:resultDic[@"user"]];
-        
         [[UserData currentUser] giveData:@{@"isCheck":[NSString stringWithFormat:@"%@", resultDic[@"isCheck"]]}];
 //        [[UserData currentUser] giveData:@{@"isCheck":@"1"}];
         

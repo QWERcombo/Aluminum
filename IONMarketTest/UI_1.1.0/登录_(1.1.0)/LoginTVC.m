@@ -46,6 +46,7 @@ typedef NS_ENUM(NSUInteger, LoginType) {
     [self.loginBtn setEnabled:NO];
     self.loginBtn.backgroundColor = [[UIColor mianColor:2] colorWithAlphaComponent:0.5];
     self.loginType = LoginType_Account;
+    self.psdTF.secureTextEntry = YES;
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE]) {
         self.phoneTF.text = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE];
@@ -79,6 +80,7 @@ typedef NS_ENUM(NSUInteger, LoginType) {
             self.accountLIne.backgroundColor = [UIColor whiteColor];
             self.accountLabel.textColor = [UIColor colorWithHexString:@"#8D959D"];
             self.psdTF.placeholder = @"请输入验证码";
+            self.psdTF.secureTextEntry = NO;
             self.psdTF.keyboardType = UIKeyboardTypeNumberPad;
             [self.forgetBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
             [self.forgetBtn setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
@@ -93,6 +95,7 @@ typedef NS_ENUM(NSUInteger, LoginType) {
             self.accountLabel.textColor = [UIColor mianColor:2];
             self.psdTF.placeholder = @"请输入登录密码";
             self.psdTF.secureTextEntry = YES;
+            self.psdTF.keyboardType = UIKeyboardTypeASCIICapable;
             [self.forgetBtn setTitle:@"忘记密码" forState:UIControlStateNormal];
             [self.forgetBtn setTitleColor:[UIColor colorWithHexString:@"#595E64"] forState:UIControlStateNormal];
             self.loginType = LoginType_Account;
@@ -203,7 +206,6 @@ typedef NS_ENUM(NSUInteger, LoginType) {
                 [[NSUserDefaults standardUserDefaults] synchronize];
             }
             
-            
             [[UserData currentUser] giveData:resultDic[@"user"]];
 //            [[UserData currentUser] giveData:@{@"isCheck":[NSString stringWithFormat:@"%@", resultDic[@"isCheck"]]}];
             [[UserData currentUser] giveData:@{@"isCheck":@"1"}];
@@ -222,20 +224,27 @@ typedef NS_ENUM(NSUInteger, LoginType) {
         [dict setValue:self.psdTF.text forKey:@"number"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_loginByCode andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            //用户手机号存本地
+            NSString *login_phone = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE];
+            if (![login_phone isEqualToString:self.phoneTF.text]) {
+                [[NSUserDefaults standardUserDefaults] setObject:self.phoneTF.text forKey:LOGIN_PHONE];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+            [[UserData currentUser] giveData:resultDic[@"user"]];
+            [[UserData currentUser] giveData:@{@"isCheck":@"1"}];
+            
             
             NSString *userRegisterFlag = [resultDic objectForKey:@"userRegisterFlag"];
+            
             if ([userRegisterFlag integerValue]==1) {
                 //老用户不跳
-//                [[UserData currentUser] giveData:resultDic[@"user"]];
-                [[UserData currentUser] giveData:@{@"phone":self.phoneTF.text}];
                 [self dismissViewControllerAnimated:YES completion:^{
-                    
                 }];
             } else {
                 //新用户跳转推荐人
                 InviteNumberVC *invite = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"InviteNumberVC"];
+                invite.showType = ShowType_Invite;
                 [self.navigationController pushViewController:invite animated:YES];
-
             }
             
         } failure:^(NSString *error, NSInteger code) {

@@ -183,7 +183,7 @@
 #define Interface_updatePromotePhone    @"user/updatePromotePhone"
 //判断是否含有密码
 #define Interface_hasPassword           @"user/hasPassword"
-//设置密码(支付?)
+//设置密码
 #define Interface_setPassword           @"user/setPassword"
 
 

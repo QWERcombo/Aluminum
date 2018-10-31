@@ -18,7 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"登录";
+    if (self.showType == ShowType_Invite) {
+        self.title = @"推荐人";
+        self.inviteTF.placeholder = @"请输入推荐人手机号";
+    } else {
+        self.title = @"设置密码";
+        self.inviteTF.placeholder = @"请设置账号密码";
+    }
     self.submitBtn.layer.cornerRadius = 4;
     self.submitBtn.layer.masksToBounds = YES;
     [self.inviteTF setValue:[UIFont systemFontOfSize:20 weight:UIFontWeightBold] forKeyPath:@"_placeholderLabel.font"];
@@ -29,14 +35,57 @@
 
 - (IBAction)submit:(UIButton *)sender {
     
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.showType == ShowType_Invite) {
+        //推荐人
+        if (![[UtilsData sharedInstance] isHasValue:self.inviteTF.text]) {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请输入推荐人手机号" time:0 aboutType:WHShowViewMode_Text state:NO];
+            return;
+        }
+        NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+        [parDic setObject:self.inviteTF.text forKey:@"promotePhone"];
+        [parDic setObject:[UserData currentUser].id forKey:@"userId"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_updatePromotePhone andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            [self dismissViewControllerAnimated:YES completion:^{
+            }];
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+        
+    } else {
+        //账号密码
+        if (![[UtilsData sharedInstance] isHasValue:self.inviteTF.text]) {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请输入账号密码" time:0 aboutType:WHShowViewMode_Text state:NO];
+            return;
+        }
+        NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+        [parDic setObject:self.inviteTF.text forKey:@"password"];
+        [parDic setObject:[UserData currentUser].id forKey:@"userId"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_setPassword andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            if (self.callBlock) {
+                self.callBlock();
+                [self dismissViewControllerAnimated:YES completion:^{
+                }];
+            }
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+        
+    }
     
 }
 
 
 - (IBAction)close:(UIButton *)sender {
+    if (self.callBlock) {
+        self.callBlock();
+    }
     [self dismissViewControllerAnimated:YES completion:^{
-        
     }];
 }
 
