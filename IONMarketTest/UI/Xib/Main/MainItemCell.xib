@@ -25,8 +25,8 @@
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MK-V6-E9z">
-                        <rect key="frame" x="281.5" y="0.0" width="93.5" height="63.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MK-V6-E9z">
+                        <rect key="frame" x="281.5" y="0.0" width="62.5" height="63.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -58,13 +58,13 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="5MK-V6-E9z" firstAttribute="width" secondItem="vFA-lx-DSn" secondAttribute="width" id="3s2-11-kwf"/>
                     <constraint firstItem="Fup-7r-eSw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4fJ-wx-1K2"/>
                     <constraint firstItem="vFA-lx-DSn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="EYn-7w-1qT"/>
                     <constraint firstItem="5MK-V6-E9z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HFV-bT-JJ7"/>
                     <constraint firstItem="Fup-7r-eSw" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.5" id="Nhr-jf-Q1q"/>
+                    <constraint firstItem="vFA-lx-DSn" firstAttribute="width" secondItem="Fup-7r-eSw" secondAttribute="width" multiplier="1:2" id="RqG-dB-6p9"/>
+                    <constraint firstItem="5MK-V6-E9z" firstAttribute="width" secondItem="vFA-lx-DSn" secondAttribute="width" multiplier="2:3" id="UMe-my-RlM"/>
                     <constraint firstAttribute="bottom" secondItem="vFA-lx-DSn" secondAttribute="bottom" id="WKG-kQ-lVz"/>
-                    <constraint firstAttribute="trailing" secondItem="5MK-V6-E9z" secondAttribute="trailing" id="WTy-ib-WhU"/>
                     <constraint firstAttribute="bottom" secondItem="5MK-V6-E9z" secondAttribute="bottom" id="XF5-yX-fPl"/>
                     <constraint firstItem="vFA-lx-DSn" firstAttribute="leading" secondItem="Fup-7r-eSw" secondAttribute="trailing" id="b6P-yc-vg4"/>
                     <constraint firstAttribute="bottom" secondItem="Fup-7r-eSw" secondAttribute="bottom" id="eK7-7D-rMn"/>

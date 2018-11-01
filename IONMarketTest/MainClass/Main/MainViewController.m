@@ -154,11 +154,11 @@
                     ZeroCutVC *zero = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"ZeroCutVC"];
                     [self.navigationController pushViewController:zero animated:YES];
                 }
-//                else if ([name isEqualToString:@"圆棒"]) {
-//
-//
-//
-//                }
+                else if ([name isEqualToString:@"圆棒"]) {
+
+
+
+                }
                 else if ([name isEqualToString:@"管材"]) {
                     
                     
@@ -270,13 +270,8 @@
 
 #pragma mark ----- DataSource
 - (void)getDataSource:(NSInteger)pageNumber {
-    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
-    [dataDic setValue:@"1" forKey:@"pageNum"];
-    [dataDic setValue:@"10" forKey:@"pageSize"];
-    [dataDic setValue:@"2018-01-01" forKey:@"beginDate"];
-    [dataDic setValue:[self getTodayDateString] forKey:@"endDate"];
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_PricePageList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_getLastestPrice andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
         NSArray *dataArr = resultDic[@"result"];
         

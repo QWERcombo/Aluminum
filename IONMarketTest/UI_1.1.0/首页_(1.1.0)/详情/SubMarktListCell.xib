@@ -37,8 +37,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95C-B7-HVb">
-                        <rect key="frame" x="240" y="0.0" width="80" height="39.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95C-B7-HVb">
+                        <rect key="frame" x="240" y="0.0" width="53.5" height="39.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -46,11 +46,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="pxl-0T-xlV" secondAttribute="bottom" id="4Tb-87-xcC"/>
+                    <constraint firstItem="95C-B7-HVb" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:6" id="5jt-a9-Pq3"/>
                     <constraint firstItem="pxl-0T-xlV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7U7-LC-g76"/>
                     <constraint firstAttribute="bottom" secondItem="xJJ-bN-zmv" secondAttribute="bottom" id="81g-R3-E45"/>
                     <constraint firstItem="xJJ-bN-zmv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="9KO-dF-vNe"/>
                     <constraint firstAttribute="bottom" secondItem="95C-B7-HVb" secondAttribute="bottom" id="IG6-wB-yRN"/>
-                    <constraint firstAttribute="trailing" secondItem="95C-B7-HVb" secondAttribute="trailing" id="KGd-Dl-hfC"/>
                     <constraint firstItem="HsW-A2-ETL" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="3:12" id="KOF-uW-O9n"/>
                     <constraint firstItem="95C-B7-HVb" firstAttribute="leading" secondItem="HsW-A2-ETL" secondAttribute="trailing" id="Ol6-0s-OTh"/>
                     <constraint firstItem="HsW-A2-ETL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="PIW-Xd-CgQ"/>

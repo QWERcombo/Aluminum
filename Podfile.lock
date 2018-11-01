@@ -58,6 +58,22 @@ DEPENDENCIES:
   - WechatOpenSDK
   - YNPageViewController
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - ChameleonFramework
+    - DateTools
+    - JSONModel
+    - Masonry
+    - MBProgressHUD
+    - MJRefresh
+    - SDWebImage
+    - UMCCommon
+    - UMCSecurityPlugins
+    - UMCShare
+    - WechatOpenSDK
+    - YNPageViewController
+
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
@@ -75,4 +91,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: e1379d0666cdd141a515e023f64daf10d2961935
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

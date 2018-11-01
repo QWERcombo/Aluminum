@@ -51,9 +51,10 @@
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"display_cell" forIndexPath:indexPath];
     
+    MainItemTypeModel *model = [self.dataSource objectAtIndex:indexPath.row];
     UILabel *showLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
     showLabel.backgroundColor = [UIColor colorWithHexString:@"#F6F6F6"];
-    showLabel.text = [self.dataSource objectAtIndex:indexPath.row];
+    showLabel.text = model.name;
     showLabel.font = [UIFont systemFontOfSize:15];
     showLabel.textColor = [UIColor colorWithHexString:@"#333336"];
     showLabel.textAlignment = NSTextAlignmentCenter;

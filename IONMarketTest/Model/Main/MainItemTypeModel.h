@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) NSString *name;
 
+@property (nonatomic, strong) NSString *ord;
+
 @property (nonatomic, strong) NSString *picture;
 
 @end

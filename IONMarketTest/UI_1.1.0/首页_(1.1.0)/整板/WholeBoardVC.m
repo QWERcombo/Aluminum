@@ -19,7 +19,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) UIScrollView *topScrollView;
-@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSMutableArray *dataSource;//數據源
+@property (nonatomic, strong) NSMutableArray *titleArray;//型號數據源
 @property (nonatomic, assign) NSInteger lastSelected;
 @property (nonatomic, assign) NSInteger cur_page;//当前页数
 @property (nonatomic, copy) NSString *xinghao;//选中的型号
@@ -43,15 +44,19 @@
     // Do any additional setup after loading the view.
     self.title = @"整板";
     self.dataSource = [NSMutableArray array];
+    self.titleArray = [NSMutableArray array];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.rowHeight = 100;
-    [self configurateTopScrollView];
-    self.xinghao = @"6061";
+
     [[UtilsData sharedInstance] MJRefreshNormalHeaderTarget:self table:self.tableView actionSelector:@selector(loadHeader)];
     [[UtilsData sharedInstance] MJRefreshAutoNormalFooterTarget:self table:self.tableView actionSelector:@selector(loadFooterMore)];
+    self.tableView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无数据" andDetailStr:@"" withReloadAction:^{
+    }];
     
-    [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
+    [self getCateList];
+    
 }
+
 
 #pragma mark - TableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -68,10 +73,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     WholeBoardDetailVC *detail = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardDetailVC"];
+    detail.wholeModel = [self.dataSource objectAtIndex:indexPath.row];
+    detail.selectCount = 2;
     TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:detail];
     [self presentViewController:nav animated:YES completion:^{
-        
     }];
     
 }
@@ -79,18 +86,18 @@
 #pragma mark - Layout
 - (void)configurateTopScrollView {
     
-    NSArray *titleArray = @[@"6061T6",@"6061T651",@"7075T651",@"5052H552",@"5052H112"];
+//    NSArray *titleArray = @[@"6061T6",@"6061T651",@"7075T651",@"5052H552",@"5052H112"];
     
     CGFloat contentSizeWidth = 0;
-    for (NSInteger i=0; i<titleArray.count; i++) {
+    for (NSInteger i=0; i<_titleArray.count; i++) {
         
-        NSString *title = [titleArray objectAtIndex:i];
+        MainItemTypeModel *dataModel = [_titleArray objectAtIndex:i];
         
-        CGSize rect = [title boundingRectWithSize:CGSizeMake(0, 38) font:[UIFont systemFontOfSize:14] lineSpacing:0];
+        CGSize rect = [dataModel.name boundingRectWithSize:CGSizeMake(0, 38) font:[UIFont systemFontOfSize:14] lineSpacing:0];
         WholeBoardTapView *tapView = [[WholeBoardTapView alloc] initWithFrame:CGRectMake(contentSizeWidth, 0, rect.width+40, 40)];
         tapView.tag = 100+i;
         tapView.delegate = self;
-        [tapView.showButton setTitle:title forState:UIControlStateNormal];
+        [tapView.showButton setTitle:dataModel.name forState:UIControlStateNormal];
         
         contentSizeWidth += (rect.width+40);
         
@@ -100,8 +107,10 @@
             //默认选中第一个
             [tapView selectedStatus:YES];
             self.lastSelected = tapView.tag;
-            
-            
+            //設置選中型號
+            self.xinghao = dataModel.name;
+            //請求列表數據
+            [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
         }
     }
     
@@ -117,6 +126,8 @@
     [lastTap selectedStatus:NO];
     
     self.lastSelected = currentTap.tag;
+    self.xinghao = ((MainItemTypeModel *)[self.titleArray objectAtIndex:self.lastSelected-100]).name;
+    [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
 }
 
 
@@ -144,7 +155,7 @@
 - (IBAction)displayBtn:(UIButton *)sender {
     
     MJWeakSelf
-    [DisplayView showDisplayViewWithDataSource:@[@"6061T6",@"6061T651",@"7075T651",@"5052H552",@"5052H112"] selectedIndexPath:^(NSString * _Nonnull title) {
+    [DisplayView showDisplayViewWithDataSource:self.titleArray selectedIndexPath:^(NSString * _Nonnull title) {
         
         [weakSelf scrollTopScrollView:[title integerValue]];
         
@@ -157,7 +168,8 @@
     WholeBoardTapView *tapV = [self.view viewWithTag:100+index];
     [self setSelected:tapV.showButton];
     [self.topScrollView scrollRectToVisible:CGRectMake(tapV.mj_x, tapV.mj_y, tapV.mj_w, tapV.mj_h) animated:YES];
-    
+    self.xinghao = ((MainItemTypeModel *)[self.titleArray objectAtIndex:index]).name;
+    [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
 }
 
 #pragma mark --- Data
@@ -174,8 +186,8 @@
     [parDic setObject:@"10" forKey:@"pageSize"];
     [parDic setObject:xinghao forKey:@"xinghao"];
     [parDic setObject:@"整板" forKey:@"zhonglei"];
-    [parDic setObject:@"" forKey:@"houdu"];
-    [parDic setObject:@"" forKey:@"zhijing"];
+//    [parDic setObject:@"" forKey:@"houdu"];
+//    [parDic setObject:@"" forKey:@"zhijing"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_ZhengbanList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
@@ -207,6 +219,25 @@
     } failure:^(NSString *error, NSInteger code) {
         [self.tableView.mj_footer endRefreshing];
         [self.tableView.mj_header endRefreshing];
+    }];
+    
+    
+}
+
+- (void)getCateList {
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        NSArray *dataArr = [resultDic objectForKey:@"list"];
+        
+        for (NSDictionary *dataDic in dataArr) {
+            MainItemTypeModel *model = [[MainItemTypeModel alloc] initWithDictionary:dataDic error:nil];
+            [self.titleArray addObject:model];
+        }
+        
+        [self configurateTopScrollView];
+    } failure:^(NSString *error, NSInteger code) {
+        
     }];
     
     

@@ -185,11 +185,10 @@
 #define Interface_hasPassword           @"user/hasPassword"
 //设置密码
 #define Interface_setPassword           @"user/setPassword"
-
 //设置支付密码
 #define Interface_setPayPassword           @"user/setPayPassword"
-
-
+//获取最新的铝锭价
+#define Interface_getLastestPrice           @"getLastestPrice"
 
 
 

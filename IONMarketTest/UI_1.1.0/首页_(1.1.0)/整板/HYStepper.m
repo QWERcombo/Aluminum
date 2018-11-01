@@ -42,9 +42,8 @@
     _isValueEditable = true;
     _stepValue = 1;
     _minValue = 0;
-    _maxValue = 10;
-    
-    self.value = 0;
+//    _maxValue = 10;
+//    self.value = 0;
 }
 
 -(void)setupUI{

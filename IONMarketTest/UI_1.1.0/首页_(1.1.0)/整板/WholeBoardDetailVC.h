@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WholeBoardDetailVC : UIViewController
 
+@property (nonatomic, strong) WholeBoardModel *wholeModel;
+@property (nonatomic, assign) NSInteger selectCount;
+
 @end
 
 NS_ASSUME_NONNULL_END

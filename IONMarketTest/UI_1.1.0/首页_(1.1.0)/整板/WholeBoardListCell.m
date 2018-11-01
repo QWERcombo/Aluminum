@@ -17,8 +17,6 @@
     self.showView.layer.shadowOpacity = 0.3;
     self.showView.layer.shadowOffset = CGSizeMake(0, .5);
     
-    
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -35,9 +33,10 @@
     cell.guigeLabel.text = dataModel.guige;
     cell.changjiaLabel.text = [NSString stringWithFormat:@"厂家: %@", dataModel.canzhaozhishu];
     cell.priceLabel.text = [NSString stringWithFormat:@"%@元/件", dataModel.danpianzhengbanjiage];
+    cell.stepper.maxValue = [dataModel.kucun integerValue]>10?10:[dataModel.kucun integerValue];
     cell.kucunLabel.text = [NSString stringWithFormat:@"(%@件)", dataModel.kucun];
     
-    NSArray *array = @[@"美标",@"拉丝",@"覆膜"];
+    NSArray *array = @[dataModel.gongyibiaozhun,dataModel.lasi,dataModel.fumo];
     
     CGFloat totalMargin = 0;
     for (NSInteger i=0; i<array.count; i++) {
@@ -51,6 +50,7 @@
         label.textAlignment = NSTextAlignmentCenter;
         
         totalMargin += (size.width+12);
+        [label removeFromSuperview];
         [cell.contentView addSubview:label];
     }
     

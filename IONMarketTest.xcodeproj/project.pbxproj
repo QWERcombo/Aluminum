@@ -2272,7 +2272,6 @@
 				5695BE6B20429F1B0036D54B /* Frameworks */,
 				5695BE6C20429F1B0036D54B /* Resources */,
 				40E05663B3723EE7CF21BF87 /* [CP] Copy Pods Resources */,
-				9CC531FE9108E4AD4817EACD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2466,21 +2465,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9CC531FE9108E4AD4817EACD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CB912A6F22B0E499BE7214FE /* [CP] Check Pods Manifest.lock */ = {

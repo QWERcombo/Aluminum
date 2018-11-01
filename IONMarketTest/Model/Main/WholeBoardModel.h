@@ -33,6 +33,7 @@
 @property (nonatomic, copy) NSString *danjia;//单价
 @property (nonatomic, copy) NSString *danpianzhengbanjiage;//单片整板价格
 @property (nonatomic, copy) NSString *fumo;
+@property (nonatomic, copy) NSString *lasi;
 @property (nonatomic, copy) NSString *gongyibiaozhun;
 @property (nonatomic, copy) NSString *guige;
 @property (nonatomic, copy) NSString *id;

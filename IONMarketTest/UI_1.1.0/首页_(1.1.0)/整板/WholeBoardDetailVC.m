@@ -32,8 +32,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.stepper.value = 5;
     self.shopBtn.badgeValue = @"1";
+    //配置信息
+    [self configurateInfo];
 }
 
 - (IBAction)close:(UIBarButtonItem *)sender {
@@ -50,7 +51,23 @@
     
 }
 
-
+- (void)configurateInfo {
+    
+    self.stepper.maxValue = [_wholeModel.kucun integerValue]>10?10:[_wholeModel.kucun integerValue];
+    self.stepper.value = self.selectCount;
+    _guigeLabel.text = _wholeModel.guige;
+    _paihaoLabel.text = _wholeModel.xinghao;
+    _zhuangtaiLabel.text = _wholeModel.zhuangtai;
+    _biaozhunLabel.text = _wholeModel.gongyibiaozhun;
+    _biaomianLabel.text = _wholeModel.lasi;
+    _fumoLabel.text = _wholeModel.fumo;
+    _changjiaLabel.text = _wholeModel.canzhaozhishu;
+    _zhongliangLabel.text = [NSString stringWithFormat:@"%@kg",_wholeModel.zhongliang];
+    _shengyuLabel.text = [NSString stringWithFormat:@"%@件",_wholeModel.kucun];
+    _danjianLabel.text = [NSString stringWithFormat:@"%@元",_wholeModel.danpianzhengbanjiage];
+    _gongjinLabel.text = [NSString stringWithFormat:@"%@元/公斤", _wholeModel.danjia];
+    _gongjinLabel.attributedText = [UILabel getAttributedFromRange:[_gongjinLabel.text rangeOfString:@"元/公斤"] WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:_gongjinLabel.text];
+}
 
 
 
