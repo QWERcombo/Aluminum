@@ -89,12 +89,12 @@
             cell.quxiaoBtn.hidden = YES;
             
             break;
-//        case 3:
-//            [cell.statusButton setTitle:@"过期" forState:UIControlStateNormal];
-//            [cell.statusButton setTitleColor:[UIColor Grey_WordColor] forState:UIControlStateNormal];
-//            cell.buttonView.hidden = YES;
-//            [cell.buttonView setFrame:CGRectMake(0, 0, SCREEN_WIGHT, 0)];
-//            break;
+        case 3:
+            [cell.statusButton setTitle:@"过期" forState:UIControlStateNormal];
+            [cell.statusButton setTitleColor:[UIColor Grey_WordColor] forState:UIControlStateNormal];
+            cell.buttonView.hidden = YES;
+            [cell.buttonView setFrame:CGRectMake(0, 0, SCREEN_WIGHT, 0)];
+            break;
         default:
             break;
     }

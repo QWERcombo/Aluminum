@@ -17,7 +17,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
@@ -25,10 +24,19 @@
     
     SubMarktListCell *cell = [super initCell:tableView cellName:cellName dataObject:dataObject];
     
-    //↑ ↓
-    cell.junjiaLabel.textColor = [UIColor Grey_RedColor];
-    cell.zhangdieLabel.textColor = [UIColor Grey_GreenColor];
-    cell.zhangdieLabel.text = @"↑ 777";
+    PriceModel *dataModel = (PriceModel *)dataObject;
+    
+    cell.dateLabel.text = [[NSDate dateWithTimeIntervalSince1970:[dataModel.riqi integerValue]/1000] formattedDateWithFormat:@"M-dd"];
+    cell.jiageLabel.text = dataModel.priceRange;
+    cell.junjiaLabel.text = dataModel.averagePrice;
+    if ([[dataModel.priceChange substringToIndex:1] isEqualToString:@"-"]) {
+        cell.zhangdieLabel.textColor = [UIColor Grey_GreenColor];
+        cell.zhangdieLabel.text = [NSString stringWithFormat:@"↓%@",dataModel.priceChange];
+    } else {
+        cell.zhangdieLabel.textColor = [UIColor Grey_RedColor];
+        cell.zhangdieLabel.text = [NSString stringWithFormat:@"↑ %@",dataModel.priceChange];
+    }
+    
     
     return cell;
 }

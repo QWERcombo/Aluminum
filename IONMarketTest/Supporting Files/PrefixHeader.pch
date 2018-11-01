@@ -20,7 +20,7 @@
 #import "MBProgressHUD.h"
 #import "JSONModel.h"
 #import "MJRefresh.h"
-#import <FMDB.h>
+#import <DateTools.h>
 #import "LYEmptyViewHeader.h"
 #import "Reachability.h"
 #import "XLPhotoBrowser.h"
@@ -72,7 +72,6 @@
 #import "NEUDefines.h"
 #import "NSData+NEUAES.h"
 #import "PublicFuntionTool.h"
-#import "DataForFMDB.h"
 #import "RSAEncryptor.h"
 
 

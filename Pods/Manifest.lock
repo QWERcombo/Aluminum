@@ -17,9 +17,7 @@ PODS:
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
-  - FMDB (2.7.2):
-    - FMDB/standard (= 2.7.2)
-  - FMDB/standard (2.7.2)
+  - DateTools (2.0.0)
   - JSONModel (1.7.0)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
@@ -46,7 +44,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - ChameleonFramework
-  - FMDB
+  - DateTools
   - JSONModel
   - Masonry
   - MBProgressHUD
@@ -60,26 +58,10 @@ DEPENDENCIES:
   - WechatOpenSDK
   - YNPageViewController
 
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - AFNetworking
-    - ChameleonFramework
-    - FMDB
-    - JSONModel
-    - Masonry
-    - MBProgressHUD
-    - MJRefresh
-    - SDWebImage
-    - UMCCommon
-    - UMCSecurityPlugins
-    - UMCShare
-    - WechatOpenSDK
-    - YNPageViewController
-
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
@@ -91,6 +73,6 @@ SPEC CHECKSUMS:
   WechatOpenSDK: 676feec516a11173eafd1fe64b10d27babf28701
   YNPageViewController: 7c6067a324a729990db2ea3d4d0458668a2d9849
 
-PODFILE CHECKSUM: 203988504544c0a5d395f48ed9ac3d9325d3ffd8
+PODFILE CHECKSUM: e1379d0666cdd141a515e023f64daf10d2961935
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.4.0

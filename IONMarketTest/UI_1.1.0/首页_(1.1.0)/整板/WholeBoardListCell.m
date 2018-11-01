@@ -30,6 +30,12 @@
     
     WholeBoardListCell *cell = [super initCell:tableView cellName:cellName dataObject:dataObject];
     
+    WholeBoardModel *dataModel = (WholeBoardModel *)dataObject;
+    
+    cell.guigeLabel.text = dataModel.guige;
+    cell.changjiaLabel.text = [NSString stringWithFormat:@"厂家: %@", dataModel.canzhaozhishu];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@元/件", dataModel.danpianzhengbanjiage];
+    cell.kucunLabel.text = [NSString stringWithFormat:@"(%@件)", dataModel.kucun];
     
     NSArray *array = @[@"美标",@"拉丝",@"覆膜"];
     
@@ -48,6 +54,7 @@
         [cell.contentView addSubview:label];
     }
     
+    cell.danjiaLabel.text = [NSString stringWithFormat:@"￥%@元/公斤", dataModel.danjia];
     NSRange range = [cell.danjiaLabel.text rangeOfString:@"元/公斤"];
     cell.danjiaLabel.attributedText = [UILabel getAttributedFromRange:range WithColor:[UIColor colorWithHexString:@"#E8400F"] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:cell.danjiaLabel.text];
     

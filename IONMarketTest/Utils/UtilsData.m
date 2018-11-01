@@ -63,7 +63,9 @@ DEF_SINGLETON(UtilsData);
     
     [footer setTitle:@"" forState:MJRefreshStateIdle];
     [footer setTitle:@"" forState:MJRefreshStateRefreshing];
-    [footer setTitle:@"————我也是有底线的————" forState:MJRefreshStateNoMoreData];
+    [footer setTitle:@"———— 我也是有底线的 ————" forState:MJRefreshStateNoMoreData];
+    footer.stateLabel.textColor = [UIColor Grey_WordColor];
+    footer.stateLabel.font = [UIFont systemFontOfSize:12];
     footer.refreshingTitleHidden = YES;
 //    footer.stateLabel.hidden = YES;
     return footer;

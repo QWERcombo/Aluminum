@@ -12,11 +12,11 @@
 
 @interface SubMarketVC ()<UITableViewDataSource, UITableViewDelegate>
 
-
-
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) AAChartModel *aaChartModel;
 @property (nonatomic, strong) AAChartView  *aaChartView;
+@property (nonatomic, assign) NSInteger cur_page;
+@property (nonatomic, strong) NSArray *chartArray;
 
 @end
 
@@ -30,11 +30,14 @@
     self.tableView.dataSource = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.tableView];
-    
+    self.cur_page = 1;
     self.dataSource = [NSMutableArray array];
+    self.chartArray = [NSArray array];
 
+    [[UtilsData sharedInstance] MJRefreshAutoNormalFooterTarget:self table:self.tableView actionSelector:@selector(loadFooterMore)];
+    [[UtilsData sharedInstance] MJRefreshNormalHeaderTarget:self table:self.tableView actionSelector:@selector(loadHeader)];
     
-    [self createTableViewHeaderView];
+    [self getDataSource:1];
     
 }
 - (void)createTableViewHeaderView {
@@ -62,11 +65,27 @@
                   @[@1,@"rgba(0,100,255,0.4)"]]//颜色字符串设置支持十六进制类型和 rgba 类型
       };
     
+    //单位
+    NSString *unitString = [NSString stringWithFormat:@"单位 (%@)",((PriceModel *)[self.chartArray firstObject]).unit];
+    //X轴
+    NSMutableArray *dateArr = [NSMutableArray array];
+    //Y轴
+    NSMutableArray *dataArr = [NSMutableArray array];
+    
+    for (PriceModel *dataObject in self.chartArray) {
+        
+        NSString *riqi = [[NSDate dateWithTimeIntervalSince1970:[dataObject.riqi integerValue]/1000] formattedDateWithFormat:@"M月dd日"];
+        NSNumber *number = [[NSNumber alloc] initWithInteger:[[dataObject.averagePrice substringFromIndex:1] integerValue]];
+        
+        [dateArr addObject:riqi];
+        [dataArr addObject:number];
+    }
+    
     AAChartModel *aaChartModel = AAChartModel.new
     .chartTypeSet(AAChartTypeArea)
     .titleSet(@"")
     .markerRadiusSet(@0)//设置折线连接点宽度为0,即是隐藏连接点
-    .subtitleSet(@"单位 (元/吨)")
+    .subtitleSet(unitString)
     .subtitleFontSizeSet(@12)
     .subtitleFontColorSet(@"#595E64")
     .xAxisLabelsEnabledSet(true)
@@ -76,16 +95,14 @@
     .yAxisTitleSet(@"")
     .xAxisCrosshairDashStyleTypeSet(AALineDashSyleTypeDot)
     .legendEnabledSet(NO)
-    .categoriesSet(@[@"9月25日",@"9月26日",@"9月27日",@"9月28日",@"9月29日"])
+    .categoriesSet(dateArr)
     .yAxisGridLineWidthSet(@.5)
     .seriesSet(@[AASeriesElement.new
                  .nameSet(self.title)
 //                 .colorSet((id)gradientColorDic)
-                 .dataSet(@[@70, @69, @95, @85, @82])
+                 .dataSet(dataArr)
                  .lineWidthSet(@3)
                  .fillColorSet((id)gradientColorDic)]);
-    
-    
     
     return aaChartModel;
     
@@ -96,13 +113,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SubMarktListCell *cell = [SubMarktListCell initCell:tableView cellName:@"SubMarktListCell" dataObject:nil];
-
+    SubMarktListCell *cell = [SubMarktListCell initCell:tableView cellName:@"SubMarktListCell" dataObject:[self.dataSource objectAtIndex:indexPath.row]];
     
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section==0?10:0;
+    return section==0?self.dataSource.count:0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -153,6 +169,61 @@
     
     return section==0?blank:nil;
 }
+
+
+- (void)loadHeader {
+    [self getDataSource:1];
+}
+
+- (void)loadFooterMore {
+    [self getDataSource:self.cur_page+1];
+}
+
+- (void)getDataSource:(NSInteger)pageNumber {
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+    [dataDic setValue:[NSString stringWithFormat:@"%ld", pageNumber] forKey:@"pageNum"];
+    [dataDic setValue:@"15" forKey:@"pageSize"];
+    [dataDic setValue:@"2018-01-01" forKey:@"beginDate"];
+    [dataDic setValue:[[NSDate date] formattedDateWithFormat:@"yyyy-MM-dd"] forKey:@"endDate"];
+    [dataDic setValue:self.title forKey:@"source"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_PricePageList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        NSArray *dataArr = resultDic[@"result"];
+        
+        if (pageNumber == 1) {
+            [self.dataSource removeAllObjects];
+            [self.tableView.mj_header endRefreshing];
+            self.cur_page = 1;
+        } else {
+            if (dataArr.count) {
+                [self.tableView.mj_footer endRefreshing];
+            } else {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            self.cur_page++;
+        }
+        
+        for (NSDictionary *dict in dataArr) {
+            
+            PriceModel *model = [[PriceModel alloc] initWithDictionary:dict error:nil];
+            
+            [self.dataSource addObject:model];
+        }
+        if (pageNumber == 1) {
+            //构建折线图
+            self.chartArray = [[[self.dataSource subarrayWithRange:NSMakeRange(0, 5)] reverseObjectEnumerator] allObjects];
+            [self createTableViewHeaderView];
+        }
+        
+        [self.tableView reloadData];
+    } failure:^(NSString *error, NSInteger code) {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+    }];
+    
+}
+
 
 /*
 #pragma mark - Navigation

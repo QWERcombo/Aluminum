@@ -21,6 +21,8 @@
 @property (strong, nonatomic) UIScrollView *topScrollView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, assign) NSInteger lastSelected;
+@property (nonatomic, assign) NSInteger cur_page;//当前页数
+@property (nonatomic, copy) NSString *xinghao;//选中的型号
 
 @end
 
@@ -44,16 +46,21 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.rowHeight = 100;
     [self configurateTopScrollView];
+    self.xinghao = @"6061";
+    [[UtilsData sharedInstance] MJRefreshNormalHeaderTarget:self table:self.tableView actionSelector:@selector(loadHeader)];
+    [[UtilsData sharedInstance] MJRefreshAutoNormalFooterTarget:self table:self.tableView actionSelector:@selector(loadFooterMore)];
+    
+    [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
 }
 
 #pragma mark - TableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    WholeBoardListCell *cell = [WholeBoardListCell initCell:tableView cellName:@"WholeBoardListCell" dataObject:nil];
+    WholeBoardListCell *cell = [WholeBoardListCell initCell:tableView cellName:@"WholeBoardListCell" dataObject:[self.dataSource objectAtIndex:indexPath.row]];
     
     return cell;
 }
@@ -117,10 +124,21 @@
 
 - (IBAction)excute:(UIButton *)sender {
     
+    [[PublicFuntionTool sharedInstance] isHadLogin:^{
+        NSLog(@"结算");
+        
+        
+    }];
+    
 }
 
 - (IBAction)goToShopCar:(UIButton *)sender {
     
+    [[PublicFuntionTool sharedInstance] isHadLogin:^{
+        NSLog(@"购物车");
+        
+        
+    }];
 }
 
 - (IBAction)displayBtn:(UIButton *)sender {
@@ -141,6 +159,59 @@
     [self.topScrollView scrollRectToVisible:CGRectMake(tapV.mj_x, tapV.mj_y, tapV.mj_w, tapV.mj_h) animated:YES];
     
 }
+
+#pragma mark --- Data
+- (void)loadHeader {
+    [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
+}
+- (void)loadFooterMore {
+    [self getZhengBanListCur_page:self.cur_page+1 withXinghao:self.xinghao];
+}
+- (void)getZhengBanListCur_page:(NSInteger)cur_page withXinghao:(NSString *)xinghao {
+    
+    NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+    [parDic setObject:[NSString stringWithFormat:@"%ld", cur_page] forKey:@"pageNum"];
+    [parDic setObject:@"10" forKey:@"pageSize"];
+    [parDic setObject:xinghao forKey:@"xinghao"];
+    [parDic setObject:@"整板" forKey:@"zhonglei"];
+    [parDic setObject:@"" forKey:@"houdu"];
+    [parDic setObject:@"" forKey:@"zhijing"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_ZhengbanList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        NSArray *dataArr = [resultDic objectForKey:@"result"];
+        NSString *count = [resultDic objectForKey:@"count"];
+        
+        if (cur_page == 1) {
+            self.cur_page = 1;
+            [self.dataSource removeAllObjects];
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            self.cur_page ++;
+        }
+        
+        for (NSDictionary *dataDic in dataArr) {
+            
+            WholeBoardModel *model = [[WholeBoardModel alloc] initWithDictionary:dataDic error:nil];
+            
+            [self.dataSource addObject:model];
+        }
+        
+        if (self.dataSource.count < [count integerValue]) {
+            [self.tableView.mj_footer endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        
+        [self.tableView reloadData];
+    } failure:^(NSString *error, NSInteger code) {
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_header endRefreshing];
+    }];
+    
+    
+}
+
 
 /*
 #pragma mark - Navigation

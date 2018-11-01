@@ -262,8 +262,10 @@
 #pragma mark ---- Action
 
 - (void)moreAction:(UIButton *)sender {
-    QuotationViewController *quo = [QuotationViewController new];
-    [self.navigationController pushViewController:quo animated:YES];
+//    QuotationViewController *quo = [QuotationViewController new];
+//    [self.navigationController pushViewController:quo animated:YES];
+    UIViewController *list = [HomeListDetailVC topPageVC];
+    [self.navigationController pushViewController:list animated:YES];
 }
 
 #pragma mark ----- DataSource

@@ -30,6 +30,8 @@
 @property (nonatomic, copy) NSString *baozhuang;
 @property (nonatomic, copy) NSString *butiee;
 @property (nonatomic, copy) NSString *canzhaozhishu;
+@property (nonatomic, copy) NSString *danjia;//单价
+@property (nonatomic, copy) NSString *danpianzhengbanjiage;//单片整板价格
 @property (nonatomic, copy) NSString *fumo;
 @property (nonatomic, copy) NSString *gongyibiaozhun;
 @property (nonatomic, copy) NSString *guige;

@@ -113,7 +113,6 @@
 		56940C3320515E1800DFA6D6 /* NSTimer+WeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940C2D20515E1700DFA6D6 /* NSTimer+WeakTimer.m */; };
 		56940C3420515E1800DFA6D6 /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940C2E20515E1700DFA6D6 /* UIBarButtonItem+Badge.m */; };
 		56940C3520515E1800DFA6D6 /* UIButton+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940C2F20515E1800DFA6D6 /* UIButton+Badge.m */; };
-		56940C3D20515E6900DFA6D6 /* DataForFMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940C3820515E6800DFA6D6 /* DataForFMDB.m */; };
 		56940C3E20515E6900DFA6D6 /* PublicFuntionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940C3920515E6800DFA6D6 /* PublicFuntionTool.m */; };
 		56940C462051603600DFA6D6 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940C452051603600DFA6D6 /* MineViewController.m */; };
 		56940C492051605B00DFA6D6 /* ShopCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940C482051605B00DFA6D6 /* ShopCarViewController.m */; };
@@ -506,8 +505,6 @@
 		56940C3020515E1800DFA6D6 /* NSTimer+WeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+WeakTimer.h"; sourceTree = "<group>"; };
 		56940C3120515E1800DFA6D6 /* UIButton+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Badge.h"; sourceTree = "<group>"; };
 		56940C3220515E1800DFA6D6 /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
-		56940C3720515E6800DFA6D6 /* DataForFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataForFMDB.h; sourceTree = "<group>"; };
-		56940C3820515E6800DFA6D6 /* DataForFMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataForFMDB.m; sourceTree = "<group>"; };
 		56940C3920515E6800DFA6D6 /* PublicFuntionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicFuntionTool.m; sourceTree = "<group>"; };
 		56940C3A20515E6800DFA6D6 /* PublicFuntionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicFuntionTool.h; sourceTree = "<group>"; };
 		56940C442051603600DFA6D6 /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
@@ -1397,8 +1394,6 @@
 		56940C3620515E5900DFA6D6 /* PublicFunction */ = {
 			isa = PBXGroup;
 			children = (
-				56940C3720515E6800DFA6D6 /* DataForFMDB.h */,
-				56940C3820515E6800DFA6D6 /* DataForFMDB.m */,
 				56940C3A20515E6800DFA6D6 /* PublicFuntionTool.h */,
 				56940C3920515E6800DFA6D6 /* PublicFuntionTool.m */,
 			);
@@ -2277,6 +2272,7 @@
 				5695BE6B20429F1B0036D54B /* Frameworks */,
 				5695BE6C20429F1B0036D54B /* Resources */,
 				40E05663B3723EE7CF21BF87 /* [CP] Copy Pods Resources */,
+				9CC531FE9108E4AD4817EACD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2457,17 +2453,34 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-resources.sh",
+				"${PODS_ROOT}/DateTools/DateTools/DateTools/DateTools.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/UMCShare/UMShare/UMSocialUI/UMSocialSDKResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DateTools.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CC531FE9108E4AD4817EACD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CB912A6F22B0E499BE7214FE /* [CP] Check Pods Manifest.lock */ = {
@@ -2675,7 +2688,6 @@
 				56940C2920515DF900DFA6D6 /* UIImage+YXP.m in Sources */,
 				565086A1205CD98400FD8497 /* OrderListCell.m in Sources */,
 				A2301B3220637EE0006B9F20 /* FeedbackViewController.m in Sources */,
-				56940C3D20515E6900DFA6D6 /* DataForFMDB.m in Sources */,
 				A296427C20F5AB5E00B6E8B6 /* XLPhotoBrowser.m in Sources */,
 				56B78CE72185E5850056D812 /* AAOptions.m in Sources */,
 				A2555F4220C0DC6C000C7E03 /* APAuthInfo.m in Sources */,

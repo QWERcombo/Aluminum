@@ -7,6 +7,7 @@
 //
 
 #import "PublicFuntionTool.h"
+#import "LoginTVC.h"
 
 @implementation PublicFuntionTool
 DEF_SINGLETON(PublicFuntionTool);
@@ -278,6 +279,26 @@ DEF_SINGLETON(PublicFuntionTool);
     }];
     
     return empty;
+}
+
+
+- (void)isHadLogin:(HadLoginBlock)loginBlock {
+    
+    if ([UserData currentUser].id.length) {
+        
+        loginBlock();
+        
+    } else {
+        
+        LoginTVC *login = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginTVC"];
+        TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:login];
+        [[UIViewController currentViewController] presentViewController:nav animated:YES completion:^{
+            
+        }];
+        
+        
+    }
+    
 }
 
 

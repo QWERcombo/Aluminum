@@ -186,7 +186,8 @@
 //设置密码
 #define Interface_setPassword           @"user/setPassword"
 
-
+//设置支付密码
+#define Interface_setPayPassword           @"user/setPayPassword"
 
 
 

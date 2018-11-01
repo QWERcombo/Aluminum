@@ -24,9 +24,6 @@
 }
 
 
-
-
-
 + (instancetype)topPageVC {
     
     YNPageConfigration *configration = [YNPageConfigration defaultConfig];

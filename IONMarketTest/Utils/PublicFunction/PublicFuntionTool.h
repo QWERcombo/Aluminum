@@ -18,8 +18,11 @@ typedef enum : NSInteger {
     WHShowEmptyMode_noNetWork,//无网络
 } WHShowEmptyViewMode;
 
-@property (nonatomic, copy) ClikBlock clikBlock;
+//判断是否登录 没登录的跳登录页
+typedef void (^HadLoginBlock)(void);
 
+@property (nonatomic, copy) ClikBlock clikBlock;
+@property (nonatomic, copy) HadLoginBlock loginBlock;
 
 AS_SINGLETON(PublicFuntionTool);
 
@@ -55,5 +58,7 @@ AS_SINGLETON(PublicFuntionTool);
 //返回自定义空视图
 - (LYEmptyView *)getEmptyViewWithType:(WHShowEmptyViewMode)mode withHintText:(NSString *)titleStr andDetailStr:(NSString *)detailStr withReloadAction:(ReloadDataBlock)reload;
 
+//某些操作需要登录状态
+- (void)isHadLogin:(HadLoginBlock)loginBlock;
 
 @end

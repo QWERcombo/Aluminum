@@ -148,29 +148,7 @@
     }];
     
     return cell;
-//    return [UtilsMold creatCell:@"OrderListCell" table:tableView deledate:self model:model data:nil andCliker:^(NSDictionary *clueDic) {
-////        NSLog(@"%@---%ld", clueDic, indexPath.row);
-////        [weakself getExpressMoney:model.id];
-//        if ([clueDic[@"key"] isEqualToString:@"  材质证明  "]) {
-//
-//            [self getCaizhizhengming:indexPath];
-//        }
-//
-//        if ([clueDic[@"key"] isEqualToString:@"  去支付  "]) {
-//            OrderPayVC *pay = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderPayVC"];
-//            pay.orderModel = [self.dataMuArr objectAtIndex:indexPath.row];
-//            [self.navigationController pushViewController:pay animated:YES];
-//        }
-//
-//        if ([clueDic[@"key"] isEqualToString:@"  取消订单  "]) {
-//            [weakself cancelOrder:model.no withIndexPath:indexPath];
-//        }
-//
-//        if ([clueDic[@"key"] isEqualToString:@"  确认收货  "]) {
-//            [self confirmProduct:model.no withIndexPath:indexPath];
-//        }
-//
-//    }];
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -231,7 +209,7 @@
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
     [dict setValue:SINT(page_number) forKey:@"pageNum"];
     [dict setValue:@"10" forKey:@"pageSize"];
-    [dict setValue:type forKey:@"type"]; // 0:待付款；1：待收货；2:已完成；不传查找全部
+    [dict setValue:type forKey:@"type"]; // 0:待付款；1：待收货；2:已完成；3：已过期；不传查找全部
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrdersList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"++++%@", resultDic);
