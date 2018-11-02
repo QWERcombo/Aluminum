@@ -12,7 +12,7 @@
 #import "WholeBoardDetailVC.h"
 #import "DisplayView.h"
 
-@interface WholeBoardVC ()<UITableViewDataSource, UITableViewDelegate, WholeBoardTapViewDelegate>
+@interface WholeBoardVC ()<UITableViewDataSource, UITableViewDelegate, WholeBoardTapViewDelegate,UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *shopCarBtn;
 @property (weak, nonatomic) IBOutlet UIButton *excuteBtn;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
@@ -66,10 +66,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     WholeBoardListCell *cell = [WholeBoardListCell initCell:tableView cellName:@"WholeBoardListCell" dataObject:[self.dataSource objectAtIndex:indexPath.row]];
+    //添加手势判断 enable为NO时 不跳转
+    UITapGestureRecognizer *cell_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+    cell_tap.delegate = self;
+    [cell.contentView addGestureRecognizer:cell_tap];
     
     return cell;
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([touch.view isKindOfClass:[HYStepper class]]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -83,10 +94,10 @@
     
 }
 
+
+
 #pragma mark - Layout
 - (void)configurateTopScrollView {
-    
-//    NSArray *titleArray = @[@"6061T6",@"6061T651",@"7075T651",@"5052H552",@"5052H112"];
     
     CGFloat contentSizeWidth = 0;
     for (NSInteger i=0; i<_titleArray.count; i++) {
@@ -239,7 +250,6 @@
     } failure:^(NSString *error, NSInteger code) {
         
     }];
-    
     
 }
 

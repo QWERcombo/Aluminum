@@ -24,7 +24,7 @@
     // Configure the view for the selected state
 }
 
-+ (instancetype)initCell:(UITableView *)tableView cellName:(NSString *)cellName  dataObject:(id)dataObject {
++ (instancetype)initCell:(UITableView *)tableView cellName:(NSString *)cellName dataObject:(id)dataObject {
     
     WholeBoardListCell *cell = [super initCell:tableView cellName:cellName dataObject:dataObject];
     
@@ -35,6 +35,14 @@
     cell.priceLabel.text = [NSString stringWithFormat:@"%@元/件", dataModel.danpianzhengbanjiage];
     cell.stepper.maxValue = [dataModel.kucun integerValue]>10?10:[dataModel.kucun integerValue];
     cell.kucunLabel.text = [NSString stringWithFormat:@"(%@件)", dataModel.kucun];
+    if ([dataModel.value integerValue]>0) {
+        cell.addBtn.hidden = YES;
+        cell.stepper.hidden = NO;
+        cell.stepper.value = [dataModel.value floatValue];
+    } else {
+        cell.addBtn.hidden = NO;
+        cell.stepper.hidden = YES;
+    }
     
     NSArray *array = @[dataModel.gongyibiaozhun,dataModel.lasi,dataModel.fumo];
     
@@ -50,7 +58,6 @@
         label.textAlignment = NSTextAlignmentCenter;
         
         totalMargin += (size.width+12);
-        [label removeFromSuperview];
         [cell.contentView addSubview:label];
     }
     
@@ -58,7 +65,10 @@
     NSRange range = [cell.danjiaLabel.text rangeOfString:@"元/公斤"];
     cell.danjiaLabel.attributedText = [UILabel getAttributedFromRange:range WithColor:[UIColor colorWithHexString:@"#E8400F"] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:cell.danjiaLabel.text];
     
-//    [cell.addBtn setSelected:YES];
+    cell.stepper.valueChanged = ^(double value) {
+        NSLog(@"%f", value);
+        dataModel.value = [[NSNumber numberWithDouble:value] stringValue];
+    };
     
     return cell;
 }

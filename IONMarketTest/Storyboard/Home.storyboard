@@ -760,7 +760,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入厚度" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UzX-OD-bR1">
-                                                    <rect key="frame" x="88" y="0.0" width="243" height="43.5"/>
+                                                    <rect key="frame" x="93" y="0.0" width="238" height="43.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -780,7 +780,7 @@
                                                 <constraint firstItem="UzX-OD-bR1" firstAttribute="centerY" secondItem="7VM-v5-HHr" secondAttribute="centerY" id="Vrz-Ym-ZNl"/>
                                                 <constraint firstItem="KCy-d0-rhh" firstAttribute="top" secondItem="7VM-v5-HHr" secondAttribute="top" id="dB6-Kk-Mwz"/>
                                                 <constraint firstItem="KCy-d0-rhh" firstAttribute="leading" secondItem="7VM-v5-HHr" secondAttribute="leading" id="eJV-yZ-qBB"/>
-                                                <constraint firstItem="UzX-OD-bR1" firstAttribute="leading" secondItem="rc7-0r-MHE" secondAttribute="trailing" constant="40" id="hSZ-OZ-dcl"/>
+                                                <constraint firstItem="UzX-OD-bR1" firstAttribute="leading" secondItem="rc7-0r-MHE" secondAttribute="trailing" constant="45" id="hSZ-OZ-dcl"/>
                                                 <constraint firstAttribute="trailing" secondItem="UzX-OD-bR1" secondAttribute="trailing" constant="10" id="nIs-lG-hcq"/>
                                                 <constraint firstItem="rc7-0r-MHE" firstAttribute="leading" secondItem="7VM-v5-HHr" secondAttribute="leading" constant="15" id="pDx-sB-f7h"/>
                                                 <constraint firstAttribute="trailing" secondItem="KCy-d0-rhh" secondAttribute="trailing" id="y8T-Kv-EvF"/>
@@ -1317,7 +1317,7 @@
         <image name="caidan" width="36" height="36"/>
         <image name="login_close" width="24" height="24"/>
         <image name="main_shop" width="38" height="38"/>
-        <image name="select_0" width="44" height="44"/>
+        <image name="select_0" width="22" height="22"/>
         <image name="添加" width="164" height="164"/>
         <image name="询价" width="312" height="486"/>
     </resources>

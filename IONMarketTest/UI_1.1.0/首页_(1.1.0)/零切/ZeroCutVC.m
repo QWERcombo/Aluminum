@@ -19,6 +19,9 @@
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, assign) NSInteger lastSelected;
 @property (nonatomic, strong) ZeroCutTabVC *zeroTabVC;
+@property (nonatomic, strong) NSMutableArray *titleArray;//型号数据
+@property (nonatomic, copy) NSString *xinghao;//选中的型号
+
 
 @end
 
@@ -39,25 +42,25 @@
     self.title = @"零切";
     self.shopcarBtn.badgeValue = @"1";
     self.dataSource = [NSMutableArray array];
-    [self configurateTopScrollView];
+    self.titleArray = [NSMutableArray array];
+    
+    [self getCateList];
 }
 
 
 #pragma mark - Layout
 - (void)configurateTopScrollView {
     
-    NSArray *titleArray = @[@"6061T6",@"7075T651",@"5083超平",@"5052H552",@"6061T633"];
-    
     CGFloat contentSizeWidth = 0;
-    for (NSInteger i=0; i<titleArray.count; i++) {
+    for (NSInteger i=0; i<_titleArray.count; i++) {
         
-        NSString *title = [titleArray objectAtIndex:i];
+        MainItemTypeModel *title = [_titleArray objectAtIndex:i];
         
-        CGSize rect = [title boundingRectWithSize:CGSizeMake(0, 38) font:[UIFont systemFontOfSize:14] lineSpacing:0];
+        CGSize rect = [title.name boundingRectWithSize:CGSizeMake(0, 38) font:[UIFont systemFontOfSize:14] lineSpacing:0];
         WholeBoardTapView *tapView = [[WholeBoardTapView alloc] initWithFrame:CGRectMake(contentSizeWidth, 0, rect.width+40, 40)];
-        tapView.tag = 100+i;
+        tapView.tag = 200+i;
         tapView.delegate = self;
-        [tapView.showButton setTitle:title forState:UIControlStateNormal];
+        [tapView.showButton setTitle:title.name forState:UIControlStateNormal];
         
         contentSizeWidth += (rect.width+40);
         
@@ -67,7 +70,7 @@
             //默认选中第一个
             [tapView selectedStatus:YES];
             self.lastSelected = tapView.tag;
-            
+            self.xinghao = title.name;
             
         }
     }
@@ -106,7 +109,7 @@
 - (IBAction)display:(UIButton *)sender {
     
     MJWeakSelf
-    [DisplayView showDisplayViewWithDataSource:@[@"6061T6",@"7075T651",@"5083超平",@"5052H552",@"6061T633"] selectedIndexPath:^(NSString * _Nonnull title) {
+    [DisplayView showDisplayViewWithDataSource:_titleArray selectedIndexPath:^(NSString * _Nonnull title) {
         
         [weakSelf scrollTopScrollView:[title integerValue]];
         
@@ -115,9 +118,27 @@
 }
 - (void)scrollTopScrollView:(NSInteger)index {
     
-    WholeBoardTapView *tapV = [self.view viewWithTag:100+index];
+    WholeBoardTapView *tapV = [self.view viewWithTag:200+index];
     [self setSelected:tapV.showButton];
     [self.topScrollView scrollRectToVisible:CGRectMake(tapV.mj_x, tapV.mj_y, tapV.mj_w, tapV.mj_h) animated:YES];
+}
+
+#pragma mark --- Data
+- (void)getCateList {
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        NSArray *dataArr = [resultDic objectForKey:@"list"];
+        
+        for (NSDictionary *dataDic in dataArr) {
+            MainItemTypeModel *model = [[MainItemTypeModel alloc] initWithDictionary:dataDic error:nil];
+            [self.titleArray addObject:model];
+        }
+        
+        [self configurateTopScrollView];
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
     
 }
 
