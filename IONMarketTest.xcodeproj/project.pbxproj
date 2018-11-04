@@ -29,6 +29,8 @@
 		56198BB1217A2B3E009AB9F3 /* WholeBoardListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56198BAF217A2B3E009AB9F3 /* WholeBoardListCell.xib */; };
 		56198BB4217A2DAB009AB9F3 /* WholeBoardTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56198BB3217A2DAB009AB9F3 /* WholeBoardTapView.m */; };
 		56198BB6217A2DBD009AB9F3 /* WholeBoardTapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56198BB5217A2DBD009AB9F3 /* WholeBoardTapView.xib */; };
+		561A7306218EF7F20064294B /* CommonItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 561A7305218EF7F20064294B /* CommonItemVC.m */; };
+		561A7309218EF8150064294B /* CommonItemTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 561A7308218EF8150064294B /* CommonItemTabVC.m */; };
 		561CC0D5206FD24900DB0998 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 561CC0D4206FD24900DB0998 /* MainModel.m */; };
 		562D7CAD20CACAF40093367D /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 562D7CAC20CACAF40093367D /* CustomButton.m */; };
 		562E51CF217F659700C90A9E /* ZeroCutTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 562E51CE217F659700C90A9E /* ZeroCutTabVC.m */; };
@@ -365,6 +367,10 @@
 		56198BB2217A2DAB009AB9F3 /* WholeBoardTapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WholeBoardTapView.h; sourceTree = "<group>"; };
 		56198BB3217A2DAB009AB9F3 /* WholeBoardTapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WholeBoardTapView.m; sourceTree = "<group>"; };
 		56198BB5217A2DBD009AB9F3 /* WholeBoardTapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WholeBoardTapView.xib; sourceTree = "<group>"; };
+		561A7304218EF7F20064294B /* CommonItemVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonItemVC.h; sourceTree = "<group>"; };
+		561A7305218EF7F20064294B /* CommonItemVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonItemVC.m; sourceTree = "<group>"; };
+		561A7307218EF8150064294B /* CommonItemTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonItemTabVC.h; sourceTree = "<group>"; };
+		561A7308218EF8150064294B /* CommonItemTabVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonItemTabVC.m; sourceTree = "<group>"; };
 		561CC0D3206FD24900DB0998 /* MainModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		561CC0D4206FD24900DB0998 /* MainModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
 		562D7CAB20CACAF40093367D /* CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
@@ -1150,6 +1156,7 @@
 		560950C92178CA1A00B2CCDC /* 首页_(1.1.0) */ = {
 			isa = PBXGroup;
 			children = (
+				561A7303218EF7A20064294B /* 圆型管 */,
 				A22DCDE821840EA20078BE06 /* 详情 */,
 				A29305A5217F131200D72F4A /* 零切 */,
 				56CA2B58217A147200F3FED0 /* 特殊定制 */,
@@ -1193,6 +1200,17 @@
 				560950CE2178CB5D00B2CCDC /* Home.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		561A7303218EF7A20064294B /* 圆型管 */ = {
+			isa = PBXGroup;
+			children = (
+				561A7304218EF7F20064294B /* CommonItemVC.h */,
+				561A7305218EF7F20064294B /* CommonItemVC.m */,
+				561A7307218EF8150064294B /* CommonItemTabVC.h */,
+				561A7308218EF8150064294B /* CommonItemTabVC.m */,
+			);
+			path = "圆型管";
 			sourceTree = "<group>";
 		};
 		564D9D0921415A1A00310AD4 /* ZYNetworkAccessibity */ = {
@@ -2654,6 +2672,7 @@
 				A2593DF32186AEE9004794FE /* SettingPayPsdVC.m in Sources */,
 				A22981A720623BAD007B6112 /* AddCardViewController.m in Sources */,
 				5632BFAC205AA3F80009CD34 /* SetOrderViewController.m in Sources */,
+				561A7306218EF7F20064294B /* CommonItemVC.m in Sources */,
 				56A5746A20ADC88E00A458EB /* PhotoAlertController.m in Sources */,
 				5695BF582042AC1D0036D54B /* EasyShowOptions.m in Sources */,
 				5602129320594D02009EF75D /* BankCardViewController.m in Sources */,
@@ -2664,6 +2683,7 @@
 				562E51D2217F6EA300C90A9E /* SelectThickView.m in Sources */,
 				5671DBC8206000D9005F1760 /* MainItemView__Tube.m in Sources */,
 				56B78CD22185E5850056D812 /* AALine.m in Sources */,
+				561A7309218EF8150064294B /* CommonItemTabVC.m in Sources */,
 				5602129020594CF6009EF75D /* ShareViewController.m in Sources */,
 				5695BEC12042A5300036D54B /* BaseModel.m in Sources */,
 				5686219D20A9E0DC0030C761 /* BorderView.m in Sources */,

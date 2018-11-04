@@ -31,10 +31,26 @@
 
 - (IBAction)submit:(UIButton *)sender {
     [self.view endEditing:YES];
-    self.inputString = self.inoutTextView.text;
-    [self.inoutTextView setText:@""];
-    [self.placeHolderLabel setText:self.inputString];
-    [self textViewDidChange:self.inoutTextView];
+    
+    [[PublicFuntionTool sharedInstance] isHadLogin:^{
+        
+        NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+        [parDic setObject:[UserData currentUser].id forKey:@"userId"];
+        [parDic setObject:self.inoutTextView.text forKey:@"specialTxt"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_saveSpOrder andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0 aboutType:WHShowViewMode_Text state:YES];
+            self.inputString = self.inoutTextView.text;
+            [self.inoutTextView setText:@""];
+            [self.placeHolderLabel setText:self.inputString];
+            [self textViewDidChange:self.inoutTextView];
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+        
+    }];
 }
 
 - (void)textViewDidChange:(UITextView *)textView {

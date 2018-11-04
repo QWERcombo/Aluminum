@@ -1,31 +1,32 @@
 //
-//  ZeroCutVC.m
+//  CommonItemVC.m
 //  IONMarketTest
 //
-//  Created by 瓜豆2018 on 2018/10/23.
-//  Copyright © 2018年 赵越. All rights reserved.
+//  Created by 赵越 on 2018/11/4.
+//  Copyright © 2018 赵越. All rights reserved.
 //
 
-#import "ZeroCutVC.h"
-#import "DisplayView.h"
+#import "CommonItemVC.h"
+#import "CommonItemTabVC.h"
 #import "WholeBoardTapView.h"
-#import "ZeroCutTabVC.h"
+#import "DisplayView.h"
 
-@interface ZeroCutVC ()<WholeBoardTapViewDelegate,ZeroCutTabVCDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
-@property (weak, nonatomic) IBOutlet UIButton *shopcarBtn;
+@interface CommonItemVC ()<CommonItemTabVCDelegate,WholeBoardTapViewDelegate>
 
+@property (nonatomic, strong) CommonItemTabVC *commonTabVC;
 @property (strong, nonatomic) UIScrollView *topScrollView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, assign) NSInteger lastSelected;
-@property (nonatomic, strong) ZeroCutTabVC *zeroTabVC;
 @property (nonatomic, strong) NSMutableArray *titleArray;//型号数据
 @property (nonatomic, copy) NSString *xinghao;//选中的型号
+@property (nonatomic, assign) NSInteger lastSelected;
+
+@property (weak, nonatomic) IBOutlet UIButton *shopcatBtn;
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 
 
 @end
 
-@implementation ZeroCutVC
+@implementation CommonItemVC
 
 - (UIScrollView *)topScrollView {
     if (!_topScrollView) {
@@ -39,14 +40,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"零切";
-    self.shopcarBtn.badgeValue = @"1";
+    switch (self.showType) {
+        case ShowType_YuanBang:
+            self.title = @"圆棒";
+            break;
+        case ShowType_XingCai:
+            self.title = @"型材";
+            break;
+        case ShowType_GuanCai:
+            self.title = @"管材";
+            break;
+        default:
+            break;
+    }
     self.dataSource = [NSMutableArray array];
     self.titleArray = [NSMutableArray array];
     
     [self getCateList];
 }
-
 
 #pragma mark - Layout
 - (void)configurateTopScrollView {
@@ -87,41 +98,9 @@
     [lastTap selectedStatus:NO];
     
     self.lastSelected = currentTap.tag;
-    [self.zeroTabVC refreshInfoToReset];
+    [self.commonTabVC refreshInfoToReset];
 }
 
-
-
-#pragma mark - Handle
-
-- (IBAction)shopCar:(UIButton *)sender {
-    [[PublicFuntionTool sharedInstance] isHadLogin:^{
-        NSLog(@"结算");        
-    }];
-}
-
-- (IBAction)addCar:(UIButton *)sender {
-    [[PublicFuntionTool sharedInstance] isHadLogin:^{
-        NSLog(@"结算");
-    }];
-}
-
-- (IBAction)buyNow:(UIButton *)sender {
-    [[PublicFuntionTool sharedInstance] isHadLogin:^{
-        NSLog(@"结算");
-    }];
-}
-
-- (IBAction)display:(UIButton *)sender {
-    
-    MJWeakSelf
-    [DisplayView showDisplayViewWithDataSource:_titleArray selectedIndexPath:^(NSString * _Nonnull title) {
-        
-        [weakSelf scrollTopScrollView:[title integerValue]];
-        
-    }];
-    
-}
 - (void)scrollTopScrollView:(NSInteger)index {
     
     WholeBoardTapView *tapV = [self.view viewWithTag:200+index];
@@ -148,6 +127,42 @@
     
 }
 
+#pragma mark - Handle
+
+- (IBAction)display:(UIButton *)sender {
+    
+    MJWeakSelf
+    [DisplayView showDisplayViewWithDataSource:_titleArray selectedIndexPath:^(NSString * _Nonnull title) {
+        
+        [weakSelf scrollTopScrollView:[title integerValue]];
+        
+    }];
+}
+
+- (IBAction)buyNow:(UIButton *)sender {
+    [[PublicFuntionTool sharedInstance] isHadLogin:^{
+        NSLog(@"结算");
+        
+        
+    }];
+}
+
+- (IBAction)excute:(UIButton *)sender {
+    [[PublicFuntionTool sharedInstance] isHadLogin:^{
+        NSLog(@"结算");
+        
+        
+    }];
+}
+
+- (IBAction)shopCar:(UIButton *)sender {
+    [[PublicFuntionTool sharedInstance] isHadLogin:^{
+        NSLog(@"结算");
+        
+        
+    }];
+}
+
 
 #pragma mark - Navigation
 
@@ -155,13 +170,14 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"ZeroCutTabVC"]) {
+    if ([segue.identifier isEqualToString:@"CommonItemTabVC"]) {
         
-        ZeroCutTabVC *zero = segue.destinationViewController;
-        self.zeroTabVC = zero;
-        self.zeroTabVC.delegate = self;
+        CommonItemTabVC *common = segue.destinationViewController;
+        
+        self.commonTabVC = common;
+        self.commonTabVC.showType = self.showType;
+        self.commonTabVC.delegate = self;
     }
-    
 }
 
 

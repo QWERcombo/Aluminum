@@ -85,9 +85,9 @@
         [arr addObject:[NSString stringWithFormat:@"%ld", (long)i]];
     }
     
-    [SelectThickView showSelectThickViewWithDataSource:arr selectBlock:^(NSInteger selectIndex) {
-        NSLog(@"---%ld", selectIndex);
-        
+    
+    [SelectThickView showSelectThickViewWithSelectShowType:SelectShowType_LingQie dataSource:arr selectBlock:^(NSString *selectIndexString) {
+        NSLog(@"%@", selectIndexString);
         
     }];
     

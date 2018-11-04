@@ -26,7 +26,7 @@
         self = [[[NSBundle mainBundle] loadNibNamed:@"SelectThickView" owner:self options:nil] firstObject];
         [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"collectionViewCell"];
         self.dataSource = [NSMutableArray arrayWithArray:dataArr];
-        
+        self.isSelectLeft = YES;
         self.frame = frame;
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeTap:)];
@@ -74,8 +74,53 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (self.selectBlock) {
-        self.selectBlock(indexPath.row);
+        
+        switch (self.selectShowType) {
+            case SelectShowType_LingQie:
+                [self hideSelf];
+                self.selectBlock([NSString stringWithFormat:@"%ld", indexPath.row]);
+                break;
+            case SelectShowType_YuanBang:
+                [self hideSelf];
+                self.selectBlock([NSString stringWithFormat:@"%ld", indexPath.row]);
+                break;
+            case SelectShowType_XingCai:
+                
+                if (self.isSelectLeft) {
+                    self.left_label.text = [self.dataSource objectAtIndex:indexPath.row];
+                    self.leftIndex = indexPath.row;
+                } else {
+                    self.right_label.text = [self.dataSource objectAtIndex:indexPath.row];
+                    self.rightIndex = indexPath.row;
+                }
+                
+                if (self.left_label.text.length && self.right_label.text.length) {
+                    [self hideSelf];
+                    self.selectBlock([NSString stringWithFormat:@"%ld-%ld", self.leftIndex, self.rightIndex]);
+                }
+                break;
+            case SelectShowType_GuanCai:
+                
+                if (self.isSelectLeft) {
+                    self.left_label.text = [self.dataSource objectAtIndex:indexPath.row];
+                    self.leftIndex = indexPath.row;
+                } else {
+                    self.right_label.text = [self.dataSource objectAtIndex:indexPath.row];
+                    self.rightIndex = indexPath.row;
+                }
+                
+                if (self.left_label.text.length && self.right_label.text.length) {
+                    [self hideSelf];
+                    self.selectBlock([NSString stringWithFormat:@"%ld-%ld", self.leftIndex, self.rightIndex]);
+                }
+                break;
+            default:
+                break;
+        }
+        
+        
     }
 }
 
@@ -107,14 +152,60 @@
         }
     }];
     
-    
 }
 
-+ (void)showSelectThickViewWithDataSource:(NSArray *)dataArr selectBlock:(SelectThickBlock)selectBlock {
+- (IBAction)leftSelect:(UIButton *)sender {
+    _isSelectLeft = YES;
+    [sender setTitleColor:[UIColor Black_WordColor] forState:UIControlStateNormal];
+    [self.right_btn setTitleColor:[UIColor colorWithHexString:@"#CED4DA"] forState:UIControlStateNormal];
+}
+
+- (IBAction)rightSelect:(UIButton *)sender {
+    _isSelectLeft = NO;
+    [sender setTitleColor:[UIColor Black_WordColor] forState:UIControlStateNormal];
+    [self.left_btn setTitleColor:[UIColor colorWithHexString:@"#CED4DA"] forState:UIControlStateNormal];
+}
+
+
++ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType dataSource:(NSArray *)dataArr selectBlock:(SelectThickBlock)selectBlock; {
     
     SelectThickView *selectV = [[SelectThickView alloc] initWithFrame:MY_WINDOW.bounds dataArr:dataArr];
     selectV.selectBlock = selectBlock;
+    selectV.selectShowType = selectType;
     selectV.contentView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIGHT, 320);
+    
+    switch (selectV.selectShowType) {
+        case SelectShowType_LingQie:
+            selectV.infoView.hidden = YES;
+            selectV.infoHeight.constant = 0;
+            selectV.hintLabel.text = @"选择厚度";
+            
+            break;
+        case SelectShowType_YuanBang:
+            selectV.infoView.hidden = YES;
+            selectV.infoHeight.constant = 0;
+            selectV.hintLabel.text = @"选择直径";
+            
+            break;
+        case SelectShowType_XingCai:
+            selectV.infoView.hidden = NO;
+            selectV.infoHeight.constant = 30;
+            selectV.hintLabel.text = @"选择规格";
+            [selectV.left_btn setTitle:@"侧面长" forState:UIControlStateNormal];
+            [selectV.right_btn setTitle:@"侧面宽" forState:UIControlStateNormal];
+            
+            break;
+        case SelectShowType_GuanCai:
+            selectV.infoView.hidden = NO;
+            selectV.infoHeight.constant = 30;
+            selectV.hintLabel.text = @"选择规格";
+            [selectV.left_btn setTitle:@"外径" forState:UIControlStateNormal];
+            [selectV.right_btn setTitle:@"内径" forState:UIControlStateNormal];
+            
+            break;
+        default:
+            break;
+    }
     
     [UIView animateWithDuration:0.3 animations:^{
         selectV.contentView.frame = CGRectMake(0, SCREEN_HEIGHT-320, SCREEN_WIGHT, 320);
