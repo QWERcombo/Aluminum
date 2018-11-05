@@ -13,13 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol ZeroCutTabVCDelegate <NSObject>
 
 
-
 @end
 
 @interface ZeroCutTabVC : UITableViewController
 
 @property (nonatomic, weak) id<ZeroCutTabVCDelegate> delegate;
-
+@property (nonatomic, copy) NSString *erjimulu_id;
 
 
 - (void)refreshInfoToReset;

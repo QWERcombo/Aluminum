@@ -40,7 +40,7 @@ typedef NS_ENUM(NSUInteger, SelectShowType) {
 @property (nonatomic, assign) NSInteger rightIndex;//选中的右索引
 
 
-+ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType dataSource:(NSArray *)dataArr selectBlock:(SelectThickBlock)selectBlock;
++ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType erjimulu_id:(NSString *)erjimulu_id selectBlock:(SelectThickBlock)selectBlock;
 
 @end
 

@@ -96,8 +96,7 @@
                 break;
         }
         
-        [SelectThickView showSelectThickViewWithSelectShowType:type dataSource:arr selectBlock:^(NSString *selectIndexString) {
-            NSLog(@"%@", selectIndexString);
+        [SelectThickView showSelectThickViewWithSelectShowType:type erjimulu_id:@"" selectBlock:^(NSString * _Nonnull selectIndexString) {
             
         }];
     }

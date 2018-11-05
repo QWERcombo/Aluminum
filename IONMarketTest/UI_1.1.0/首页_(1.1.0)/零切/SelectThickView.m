@@ -18,15 +18,17 @@
 }
 */
 
-- (instancetype)initWithFrame:(CGRect)frame dataArr:(NSArray *)dataArr
+- (instancetype)initWithFrame:(CGRect)frame erjimulu:(NSString *)erjimulu_id
 {
     self = [super initWithFrame:frame];
     if (self) {
         
         self = [[[NSBundle mainBundle] loadNibNamed:@"SelectThickView" owner:self options:nil] firstObject];
         [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"collectionViewCell"];
-        self.dataSource = [NSMutableArray arrayWithArray:dataArr];
+        self.dataSource = [NSMutableArray array];
+        [self getListDataWith:erjimulu_id];
         self.isSelectLeft = YES;
+        
         self.frame = frame;
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeTap:)];
@@ -47,6 +49,39 @@
 
 - (void)removeTap:(UITapGestureRecognizer *)sender {
     [self hideSelf];
+}
+
+- (void)getListDataWith:(NSString *)erjimulu {
+    
+    NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+    [parDic setObject:erjimulu forKey:@"xinghao"];
+    switch (self.selectShowType) {
+        case SelectShowType_LingQie:
+            [parDic setObject:@"零切" forKey:@"zhonglei"];
+            break;
+        case SelectShowType_YuanBang:
+            [parDic setObject:@"圆棒" forKey:@"zhonglei"];
+            break;
+        case SelectShowType_XingCai:
+            [parDic setObject:@"型材" forKey:@"zhonglei"];
+            break;
+        case SelectShowType_GuanCai:
+            [parDic setObject:@"管材" forKey:@"zhonglei"];
+            break;
+            
+        default:
+            break;
+    }
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_GetByZhongleiAndXinghao andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        NSArray *dataArr = [resultDic objectForKey:@"houdus"];
+        [self.dataSource addObjectsFromArray:dataArr];
+        
+        [self.collectionView reloadData];
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
 }
 
 
@@ -80,11 +115,11 @@
         switch (self.selectShowType) {
             case SelectShowType_LingQie:
                 [self hideSelf];
-                self.selectBlock([NSString stringWithFormat:@"%ld", indexPath.row]);
+                self.selectBlock([self.dataSource objectAtIndex:indexPath.row]);
                 break;
             case SelectShowType_YuanBang:
                 [self hideSelf];
-                self.selectBlock([NSString stringWithFormat:@"%ld", indexPath.row]);
+                self.selectBlock([self.dataSource objectAtIndex:indexPath.row]);
                 break;
             case SelectShowType_XingCai:
                 
@@ -167,9 +202,9 @@
 }
 
 
-+ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType dataSource:(NSArray *)dataArr selectBlock:(SelectThickBlock)selectBlock; {
++ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType erjimulu_id:(NSString *)erjimulu_id selectBlock:(SelectThickBlock)selectBlock {
     
-    SelectThickView *selectV = [[SelectThickView alloc] initWithFrame:MY_WINDOW.bounds dataArr:dataArr];
+    SelectThickView *selectV = [[SelectThickView alloc] initWithFrame:MY_WINDOW.bounds erjimulu:erjimulu_id];
     selectV.selectBlock = selectBlock;
     selectV.selectShowType = selectType;
     selectV.contentView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIGHT, 320);

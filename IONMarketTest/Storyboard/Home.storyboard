@@ -1077,10 +1077,12 @@
                         <outlet property="lengthTF" destination="3id-ja-LKo" id="wd0-pa-3pn"/>
                         <outlet property="suqieImgv" destination="kE0-Zg-bYS" id="EaZ-oh-9RH"/>
                         <outlet property="suqieLab" destination="RWH-7a-sVg" id="IlT-iW-H5I"/>
+                        <outlet property="suqie_btn" destination="wcw-Tr-drM" id="94l-9c-L3n"/>
                         <outlet property="thinTF" destination="UzX-OD-bR1" id="fGL-eH-Gp8"/>
                         <outlet property="widthTF" destination="kvb-cE-z7a" id="ot9-O7-Nw3"/>
                         <outlet property="youqieImgv" destination="Nc0-Zj-XjS" id="uyR-TP-8rJ"/>
                         <outlet property="youqieLab" destination="dGY-Y2-LCz" id="jo3-gs-gOG"/>
+                        <outlet property="youqie_btn" destination="O1A-Vh-egj" id="tvD-t1-C6C"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifH-dT-30x" userLabel="First Responder" sceneMemberID="firstResponder"/>

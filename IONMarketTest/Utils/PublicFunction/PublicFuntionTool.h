@@ -9,17 +9,31 @@
 #import <Foundation/Foundation.h>
 //#import <UMSocialCore/UMSocialCore.h>
 
+typedef NS_ENUM(NSUInteger, GetOrderType) {
+    GetOrderType_ZhengBan,  //整板
+    GetOrderType_LingQie,   //零切
+    GetOrderType_YuanBang,  //圆棒
+    GetOrderType_XingCai,   //型材
+    GetOrderType_GuanCai,   //管材
+};
+
 @interface PublicFuntionTool : NSObject
 
 typedef void (^ReloadDataBlock)(void);
+
+//判断是否登录 没登录的跳登录页
+typedef void (^HadLoginBlock)(void);
+
+//获取价格成功的回调
+typedef void (^GetOrderMoneySuccessBlock)(NSDictionary *dataDic);
+
 
 typedef enum : NSInteger {
     WHShowEmptyMode_noData,//无数据
     WHShowEmptyMode_noNetWork,//无网络
 } WHShowEmptyViewMode;
 
-//判断是否登录 没登录的跳登录页
-typedef void (^HadLoginBlock)(void);
+
 
 @property (nonatomic, copy) ClikBlock clikBlock;
 @property (nonatomic, copy) HadLoginBlock loginBlock;
@@ -60,5 +74,8 @@ AS_SINGLETON(PublicFuntionTool);
 
 //某些操作需要登录状态
 - (void)isHadLogin:(HadLoginBlock)loginBlock;
+
+//获取价格
+- (void)getOrderMoneyWithOrderType:(GetOrderType)orderType chang:(NSString *)chang kuan:(NSString *)kuan hou:(NSString *)hou amount:(NSString *)amount type:(NSString *)type erjimulu_id:(NSString *)erjimulu_id successBlock:(GetOrderMoneySuccessBlock)successBlock;
 
 @end

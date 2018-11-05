@@ -22,7 +22,6 @@
 @property (nonatomic, strong) NSMutableArray *titleArray;//型号数据
 @property (nonatomic, copy) NSString *xinghao;//选中的型号
 
-
 @end
 
 @implementation ZeroCutVC
@@ -71,6 +70,7 @@
             [tapView selectedStatus:YES];
             self.lastSelected = tapView.tag;
             self.xinghao = title.name;
+            self.zeroTabVC.erjimulu_id = title.id;
             
         }
     }
@@ -87,6 +87,8 @@
     [lastTap selectedStatus:NO];
     
     self.lastSelected = currentTap.tag;
+    MainItemTypeModel *model = [self.titleArray objectAtIndex:self.lastSelected-200];
+    self.zeroTabVC.erjimulu_id = model.id;
     [self.zeroTabVC refreshInfoToReset];
 }
 
@@ -127,6 +129,7 @@
     WholeBoardTapView *tapV = [self.view viewWithTag:200+index];
     [self setSelected:tapV.showButton];
     [self.topScrollView scrollRectToVisible:CGRectMake(tapV.mj_x, tapV.mj_y, tapV.mj_w, tapV.mj_h) animated:YES];
+    
 }
 
 #pragma mark --- Data

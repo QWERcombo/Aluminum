@@ -301,5 +301,47 @@ DEF_SINGLETON(PublicFuntionTool);
     
 }
 
+- (void)getOrderMoneyWithOrderType:(GetOrderType)orderType chang:(NSString *)chang kuan:(NSString *)kuan hou:(NSString *)hou amount:(NSString *)amount type:(NSString *)type erjimulu_id:(NSString *)erjimulu_id successBlock:(GetOrderMoneySuccessBlock)successBlock {
+    
+    NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+    
+    [parDic setObject:chang forKey:@"chang"];
+    [parDic setObject:kuan forKey:@"kuang"];
+    [parDic setObject:hou forKey:@"hou"];
+    [parDic setObject:amount forKey:@"amount"];
+    [parDic setObject:type forKey:@"type"];
+    [parDic setObject:erjimulu_id forKey:@"erjimulu"];
+    switch (orderType) {
+        case GetOrderType_ZhengBan:
+            [parDic setObject:@"整板" forKey:@"zhonglei"];
+            break;
+        case GetOrderType_LingQie:
+            [parDic setObject:@"零切" forKey:@"zhonglei"];
+            break;
+        case GetOrderType_YuanBang:
+            [parDic setObject:@"圆棒" forKey:@"zhonglei"];
+            break;
+        case GetOrderType_XingCai:
+            [parDic setObject:@"型材" forKey:@"zhonglei"];
+            break;
+        case GetOrderType_GuanCai:
+            [parDic setObject:@"管材" forKey:@"zhonglei"];
+            break;
+        default:
+            break;
+    }
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_OrderMoney andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        successBlock(resultDic[@"result"]);
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+        
+    }];
+    
+    
+}
+
 
 @end

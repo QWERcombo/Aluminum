@@ -9,7 +9,7 @@
 #import "ZeroCutTabVC.h"
 #import "SelectThickView.h"
 
-@interface ZeroCutTabVC ()
+@interface ZeroCutTabVC ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *lengthTF;
 @property (weak, nonatomic) IBOutlet UITextField *widthTF;
@@ -28,7 +28,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *label3;
 @property (weak, nonatomic) IBOutlet UILabel *label4;
 @property (weak, nonatomic) IBOutlet UIView *infoView;
+@property (weak, nonatomic) IBOutlet UIButton *suqie_btn;
+@property (weak, nonatomic) IBOutlet UIButton *youqie_btn;
 
+@property (nonatomic, strong) NSDictionary *dataDic;
 
 @end
 
@@ -36,16 +39,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.lengthTF.delegate = self;
+    self.widthTF.delegate = self;
+    self.countTF.delegate = self;
     
 }
 
 #pragma mark - Table view data source
-
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    [self getOrderMoney];
+}
 
 
 #pragma mark - Handle
-
+//速切
 - (IBAction)suqie:(UIButton *)sender {
+    
+    if(!_dataDic) return;
     
     _label1.textColor = [UIColor mianColor:2];
     _label2.textColor = [UIColor mianColor:2];
@@ -56,12 +67,14 @@
     _youqieLab.textColor = [UIColor Grey_WordColor];
     _suqieImgv.image = [UIImage imageNamed:@"select_1"];
     _suqieLab.textColor = [UIColor Grey_OrangeColor];
-    _suqieLab.text = @"￥18.5元/公斤";
     
-    [self updateInfoView];
+//    [self getOrderMoney];
+    [self updateInfoView:sender];
 }
-
+//优切
 - (IBAction)youqie:(UIButton *)sender {
+    
+    if(!_dataDic) return;
     
     _label1.textColor = [UIColor Grey_WordColor];
     _label2.textColor = [UIColor Grey_WordColor];
@@ -70,36 +83,85 @@
     
     _youqieImgv.image = [UIImage imageNamed:@"select_1"];
     _youqieLab.textColor = [UIColor Grey_OrangeColor];
-    _youqieLab.text = @"￥19.5元/公斤";
     _suqieImgv.image = [UIImage imageNamed:@"select_0"];
     _suqieLab.textColor = [UIColor Grey_WordColor];
     
-    [self updateInfoView];
+//    [self getOrderMoney];
+    [self updateInfoView:sender];
 }
 
+
+//选择厚度
 - (IBAction)selectThin:(UIButton *)sender {
     
-    NSMutableArray *arr = [NSMutableArray array];
-    for (NSInteger i=0; i<50; i++) {
-        
-        [arr addObject:[NSString stringWithFormat:@"%ld", (long)i]];
-    }
-    
-    
-    [SelectThickView showSelectThickViewWithSelectShowType:SelectShowType_LingQie dataSource:arr selectBlock:^(NSString *selectIndexString) {
-        NSLog(@"%@", selectIndexString);
-        
+    [SelectThickView showSelectThickViewWithSelectShowType:SelectShowType_LingQie erjimulu_id:self.erjimulu_id selectBlock:^(NSString * _Nonnull selectIndexString) {
+        self.thinTF.text = selectIndexString;
+        [self getOrderMoney];
     }];
     
 }
 
 
-- (void)updateInfoView {
+- (void)updateInfoView:(UIButton *)sender {
     self.infoView.hidden = NO;
     
+    NSRange range1 = [self.youqieLab.text rangeOfString:@"元/公斤"];
+    NSRange range2 = [self.suqieLab.text rangeOfString:@"元/公斤"];
+    _jianshuLab.text = [NSString stringWithFormat:@"%@件",self.countTF.text];
+    _danjianzhongliangLab.text = [NSString stringWithFormat:@"%@kg", [self.dataDic objectForKey:@"danpianzhongliang"]];
+    
+    if (sender == self.youqie_btn) {
+        //优切
+        self.youqieLab.attributedText = [UILabel getAttributedFromRange:range1 WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.youqieLab.text];
+        self.suqieLab.attributedText = [UILabel getAttributedFromRange:range2 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.suqieLab.text];
+        
+        _hejiLab.text = [NSString stringWithFormat:@"￥%@", [self.dataDic objectForKey:@"orderMoney_youqie"]];
+        _danjianjiageLab.text = [NSString stringWithFormat:@"%@元", [self.dataDic objectForKey:@"danpianjiage_youqie"]];
+    } else {
+        //速切
+        self.suqieLab.attributedText = [UILabel getAttributedFromRange:range2 WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.suqieLab.text];
+        self.youqieLab.attributedText = [UILabel getAttributedFromRange:range1 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.youqieLab.text];
+        
+        _hejiLab.text = [NSString stringWithFormat:@"￥%@", [self.dataDic objectForKey:@"orderMoney_kuaisu"]];
+        _danjianjiageLab.text = [NSString stringWithFormat:@"%@元", [self.dataDic objectForKey:@"danpianjiage_kuaisu"]];
+    }
     
 }
 
+
+//获取价格
+- (void)getOrderMoney {
+    
+    if (self.lengthTF.text.length && self.widthTF.text.length && self.thinTF.text.length && self.countTF.text.length) {
+        
+        [self.view endEditing:YES];
+        [[PublicFuntionTool sharedInstance] getOrderMoneyWithOrderType:GetOrderType_LingQie chang:self.lengthTF.text kuan:self.widthTF.text hou:self.thinTF.text amount:self.countTF.text type:@"全部" erjimulu_id:self.erjimulu_id successBlock:^(NSDictionary *dataDic) {
+            
+            self.dataDic = dataDic;
+            
+            self.youqieLab.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage_youqie"]];
+            self.suqieLab.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage_kuaisu"]];
+            NSRange range1 = [self.youqieLab.text rangeOfString:@"元/公斤"];
+            NSRange range2 = [self.suqieLab.text rangeOfString:@"元/公斤"];
+           self.youqieLab.attributedText = [UILabel getAttributedFromRange:range1 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.youqieLab.text];
+            self.suqieLab.attributedText = [UILabel getAttributedFromRange:range2 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.suqieLab.text];
+            
+        }];
+        
+        if ([self.lengthTF.text integerValue]<150 && [self.widthTF.text integerValue]<150) {
+            //小于150*150  不可选优切
+            self.youqie_btn.hidden = YES;
+            self.youqieLab.text = @"不可优切";
+        } else {
+            self.youqie_btn.hidden = NO;
+        }
+        
+    }
+    
+}
+
+
+//重置信息
 - (void)refreshInfoToReset {
     self.infoView.hidden = YES;
     _label1.textColor = [UIColor Grey_WordColor];
@@ -118,6 +180,7 @@
     self.widthTF.text = @"";
     self.thinTF.text = @"";
     self.countTF.text = @"";
+    
 }
 /*
 #pragma mark - Navigation
