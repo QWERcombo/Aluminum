@@ -307,25 +307,28 @@ DEF_SINGLETON(PublicFuntionTool);
     
     [parDic setObject:chang forKey:@"chang"];
     [parDic setObject:kuan forKey:@"kuang"];
-    [parDic setObject:hou forKey:@"hou"];
     [parDic setObject:amount forKey:@"amount"];
     [parDic setObject:type forKey:@"type"];
     [parDic setObject:erjimulu_id forKey:@"erjimulu"];
     switch (orderType) {
         case GetOrderType_ZhengBan:
             [parDic setObject:@"整板" forKey:@"zhonglei"];
+            [parDic setObject:hou forKey:@"hou"];
             break;
         case GetOrderType_LingQie:
             [parDic setObject:@"零切" forKey:@"zhonglei"];
+            [parDic setObject:hou forKey:@"hou"];
             break;
         case GetOrderType_YuanBang:
             [parDic setObject:@"圆棒" forKey:@"zhonglei"];
             break;
         case GetOrderType_XingCai:
             [parDic setObject:@"型材" forKey:@"zhonglei"];
+            [parDic setObject:hou forKey:@"hou"];
             break;
         case GetOrderType_GuanCai:
             [parDic setObject:@"管材" forKey:@"zhonglei"];
+            [parDic setObject:hou forKey:@"hou"];
             break;
         default:
             break;

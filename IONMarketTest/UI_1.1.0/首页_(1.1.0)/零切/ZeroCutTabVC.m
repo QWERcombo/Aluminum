@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *suqie_btn;
 @property (weak, nonatomic) IBOutlet UIButton *youqie_btn;
 
-@property (nonatomic, strong) NSDictionary *dataDic;
+@property (nonatomic, strong) NSDictionary *dataDic;//保存获取的价格信息
 
 @end
 
@@ -180,6 +180,7 @@
     self.widthTF.text = @"";
     self.thinTF.text = @"";
     self.countTF.text = @"";
+    self.dataDic = nil;
     
 }
 /*

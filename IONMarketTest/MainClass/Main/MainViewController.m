@@ -157,7 +157,7 @@
                     [self.navigationController pushViewController:zero animated:YES];
                 }
                 else if ([name isEqualToString:@"圆棒"]) {
-                    
+
                     CommonItemVC *common = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"CommonItemVC"];
                     common.showType = ShowType_YuanBang;
                     [self.navigationController pushViewController:common animated:YES];

@@ -82,6 +82,7 @@
             [tapView selectedStatus:YES];
             self.lastSelected = tapView.tag;
             self.xinghao = title.name;
+            self.commonTabVC.erjimulu_id = title.id;
             
         }
     }

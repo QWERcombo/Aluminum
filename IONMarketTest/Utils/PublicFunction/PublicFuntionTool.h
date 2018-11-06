@@ -78,4 +78,11 @@ AS_SINGLETON(PublicFuntionTool);
 //获取价格
 - (void)getOrderMoneyWithOrderType:(GetOrderType)orderType chang:(NSString *)chang kuan:(NSString *)kuan hou:(NSString *)hou amount:(NSString *)amount type:(NSString *)type erjimulu_id:(NSString *)erjimulu_id successBlock:(GetOrderMoneySuccessBlock)successBlock;
 
+//加入购物车
+
+
+//立即购买
+
+
+
 @end

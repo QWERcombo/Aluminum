@@ -39,7 +39,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"零切";
-    self.shopcarBtn.badgeValue = @"1";
+//    self.shopcarBtn.badgeValue = @"1";
     self.dataSource = [NSMutableArray array];
     self.titleArray = [NSMutableArray array];
     
