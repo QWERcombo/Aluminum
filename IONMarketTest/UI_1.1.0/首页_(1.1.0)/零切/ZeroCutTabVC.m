@@ -94,7 +94,7 @@
 //选择厚度
 - (IBAction)selectThin:(UIButton *)sender {
     
-    [SelectThickView showSelectThickViewWithSelectShowType:SelectShowType_LingQie erjimulu_id:self.erjimulu_id selectBlock:^(NSString * _Nonnull selectIndexString) {
+    [SelectThickView showSelectThickViewWithSelectShowType:SelectShowType_LingQie erjimulu_id:self.erjimulu_id parDic:@{} selectBlock:^(NSString * _Nonnull selectIndexString) {
         self.thinTF.text = selectIndexString;
         [self getOrderMoney];
     }];

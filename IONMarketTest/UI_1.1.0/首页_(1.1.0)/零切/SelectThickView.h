@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, SelectShowType) {
     SelectShowType_YuanBang,    //圆棒
     SelectShowType_GuanCai,     //管材
     SelectShowType_XingCai,     //型材
+    SelectShowType_Length,      //type为整只时选择长度
 };
 
 @interface SelectThickView : UIView<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate>
@@ -38,9 +39,12 @@ typedef NS_ENUM(NSUInteger, SelectShowType) {
 @property (nonatomic, assign) BOOL isSelectLeft;//默认选中左边YES
 @property (nonatomic, assign) NSInteger leftIndex;//选中的左索引
 @property (nonatomic, assign) NSInteger rightIndex;//选中的右索引
+@property (nonatomic, copy) NSDictionary *parDic;//选整只时选择长度传的参数
+@property (nonatomic, copy) NSString *erjimulu_id;//传入的型号
+@property (nonatomic, assign) BOOL isRequest;//
 
 
-+ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType erjimulu_id:(NSString *)erjimulu_id selectBlock:(SelectThickBlock)selectBlock;
++ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType erjimulu_id:(NSString *)erjimulu_id parDic:(NSDictionary *)parDic selectBlock:(SelectThickBlock)selectBlock;
 
 @end
 

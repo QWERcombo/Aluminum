@@ -99,6 +99,8 @@
     [lastTap selectedStatus:NO];
     
     self.lastSelected = currentTap.tag;
+    MainItemTypeModel *model = [self.titleArray objectAtIndex:self.lastSelected-200];
+    self.commonTabVC.erjimulu_id = model.id;
     [self.commonTabVC refreshInfoToReset];
 }
 

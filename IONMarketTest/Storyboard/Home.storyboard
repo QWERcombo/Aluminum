@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1603,21 +1603,33 @@
                                                     <color key="textColor" red="0.12549019607843137" green="0.12941176470588234" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入长度" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cxc-aR-h63">
-                                                    <rect key="frame" x="121" y="0.0" width="244" height="49.5"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入长度" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cxc-aR-h63">
+                                                    <rect key="frame" x="58" y="0.0" width="307" height="49.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SqZ-pe-0ZN">
+                                                    <rect key="frame" x="58" y="0.0" width="307" height="49.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <state key="normal" title="请选择长度"/>
+                                                    <connections>
+                                                        <action selector="selectLength:" destination="G0e-aK-vCW" eventType="touchUpInside" id="tpu-rW-cgk"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Cxc-aR-h63" firstAttribute="top" secondItem="xCZ-N7-Nek" secondAttribute="top" id="0j4-Y9-mK1"/>
+                                                <constraint firstItem="SqZ-pe-0ZN" firstAttribute="height" secondItem="Cxc-aR-h63" secondAttribute="height" id="4EQ-rY-uIA"/>
+                                                <constraint firstItem="SqZ-pe-0ZN" firstAttribute="width" secondItem="Cxc-aR-h63" secondAttribute="width" id="BVx-NS-ZLr"/>
                                                 <constraint firstItem="0F6-Xb-oRN" firstAttribute="centerY" secondItem="xCZ-N7-Nek" secondAttribute="centerY" id="H82-Rx-Cjo"/>
                                                 <constraint firstItem="Cxc-aR-h63" firstAttribute="centerY" secondItem="xCZ-N7-Nek" secondAttribute="centerY" id="WXs-p6-7eS"/>
+                                                <constraint firstItem="SqZ-pe-0ZN" firstAttribute="top" secondItem="Cxc-aR-h63" secondAttribute="top" id="ZEJ-z8-9It"/>
                                                 <constraint firstAttribute="trailing" secondItem="Cxc-aR-h63" secondAttribute="trailing" constant="10" id="cH6-1h-Jfz"/>
-                                                <constraint firstItem="Cxc-aR-h63" firstAttribute="leading" secondItem="0F6-Xb-oRN" secondAttribute="trailing" constant="73" id="kWK-wh-q1n"/>
+                                                <constraint firstItem="Cxc-aR-h63" firstAttribute="leading" secondItem="0F6-Xb-oRN" secondAttribute="trailing" constant="10" id="kWK-wh-q1n"/>
                                                 <constraint firstItem="0F6-Xb-oRN" firstAttribute="leading" secondItem="xCZ-N7-Nek" secondAttribute="leading" constant="15" id="q2s-Az-12h"/>
                                                 <constraint firstAttribute="bottom" secondItem="Cxc-aR-h63" secondAttribute="bottom" id="thF-12-4pl"/>
+                                                <constraint firstItem="SqZ-pe-0ZN" firstAttribute="leading" secondItem="Cxc-aR-h63" secondAttribute="leading" id="vqC-Fb-RwP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1634,8 +1646,8 @@
                                                     <color key="textColor" red="0.12549019607843137" green="0.12941176470588234" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入数量" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nrL-va-yvm">
-                                                    <rect key="frame" x="121" y="0.0" width="244" height="49.5"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入数量" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nrL-va-yvm">
+                                                    <rect key="frame" x="58" y="0.0" width="307" height="49.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -1648,7 +1660,7 @@
                                                 <constraint firstItem="nrL-va-yvm" firstAttribute="centerY" secondItem="dmz-yS-YGT" secondAttribute="centerY" id="U9b-QS-cLd"/>
                                                 <constraint firstAttribute="trailing" secondItem="nrL-va-yvm" secondAttribute="trailing" constant="10" id="UGe-ot-q9U"/>
                                                 <constraint firstItem="nrL-va-yvm" firstAttribute="top" secondItem="dmz-yS-YGT" secondAttribute="top" id="ta2-82-gdH"/>
-                                                <constraint firstItem="nrL-va-yvm" firstAttribute="leading" secondItem="pPS-pi-nq3" secondAttribute="trailing" constant="73" id="ye7-Cx-6QI"/>
+                                                <constraint firstItem="nrL-va-yvm" firstAttribute="leading" secondItem="pPS-pi-nq3" secondAttribute="trailing" constant="10" id="ye7-Cx-6QI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="500" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1769,6 +1781,7 @@
                         <outlet property="danjianzhongliang" destination="GGR-bR-a2C" id="wYf-7B-PkU"/>
                         <outlet property="guigeLabel" destination="ANf-j0-seR" id="Thc-1q-fYf"/>
                         <outlet property="jianshu" destination="xFA-Ms-Td8" id="E1z-Pp-acY"/>
+                        <outlet property="lengthBtn" destination="SqZ-pe-0ZN" id="ZxE-lB-Iid"/>
                         <outlet property="lengthTF" destination="Cxc-aR-h63" id="n5y-4f-gjt"/>
                         <outlet property="totalLabel" destination="ep4-Lo-t7f" id="bi8-55-z4w"/>
                         <outlet property="zhengzhi_imgv" destination="iC1-a0-Kzl" id="c2g-ao-RX1"/>
@@ -1788,7 +1801,7 @@
         <image name="caidan" width="36" height="36"/>
         <image name="login_close" width="24" height="24"/>
         <image name="main_shop" width="38" height="38"/>
-        <image name="select_0" width="44" height="44"/>
+        <image name="select_0" width="22" height="22"/>
         <image name="添加" width="164" height="164"/>
         <image name="询价" width="312" height="486"/>
     </resources>

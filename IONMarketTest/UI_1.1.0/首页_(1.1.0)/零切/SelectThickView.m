@@ -26,9 +26,9 @@
         self = [[[NSBundle mainBundle] loadNibNamed:@"SelectThickView" owner:self options:nil] firstObject];
         [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"collectionViewCell"];
         self.dataSource = [NSMutableArray array];
-        [self getListDataWith:erjimulu_id];
+
+
         self.isSelectLeft = YES;
-        
         self.frame = frame;
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeTap:)];
@@ -55,27 +55,56 @@
     
     NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
     [parDic setObject:erjimulu forKey:@"xinghao"];
+    NSString *request_url = @"";
     switch (self.selectShowType) {
         case SelectShowType_LingQie:
             [parDic setObject:@"零切" forKey:@"zhonglei"];
+            request_url = Interface_GetByZhongleiAndXinghao;
             break;
         case SelectShowType_YuanBang:
             [parDic setObject:@"圆棒" forKey:@"zhonglei"];
+            request_url = Interface_GetByZhongleiAndXinghao;
             break;
         case SelectShowType_XingCai:
             [parDic setObject:@"型材" forKey:@"zhonglei"];
+            request_url = Interface_GetByZhongleiAndXinghao;
             break;
         case SelectShowType_GuanCai:
             [parDic setObject:@"管材" forKey:@"zhonglei"];
+            request_url = Interface_GetByZhongleiAndXinghao;
             break;
-            
+        case SelectShowType_Length:
+            [parDic setObject:@"圆棒" forKey:@"zhonglei"];
+            [parDic setObject:self.parDic[@"zhijing"] forKey:@"zhijing"];
+            request_url = Inuterface_GetLengthByOthers;
         default:
             break;
     }
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_GetByZhongleiAndXinghao andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:request_url andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
-        NSArray *dataArr = [resultDic objectForKey:@"houdus"];
+        NSArray *dataArr = nil;
+        switch (self.selectShowType) {
+            case SelectShowType_LingQie:
+                dataArr = [resultDic objectForKey:@"houdus"];
+                break;
+            case SelectShowType_YuanBang:
+                dataArr = [resultDic objectForKey:@"zhijings"];
+                break;
+            case SelectShowType_XingCai:
+                dataArr = [resultDic objectForKey:@"houdus"];
+                break;
+            case SelectShowType_GuanCai:
+                dataArr = [resultDic objectForKey:@"houdus"];
+                break;
+            case SelectShowType_Length:
+                dataArr = [resultDic objectForKey:@"changdus"];
+                break;
+                
+            default:
+                break;
+        }
+        
         [self.dataSource addObjectsFromArray:dataArr];
         
         [self.collectionView reloadData];
@@ -151,6 +180,10 @@
                     self.selectBlock([NSString stringWithFormat:@"%ld-%ld", self.leftIndex, self.rightIndex]);
                 }
                 break;
+            case SelectShowType_Length:
+                [self hideSelf];
+                self.selectBlock([self.dataSource objectAtIndex:indexPath.row]);
+                break;
             default:
                 break;
         }
@@ -202,12 +235,15 @@
 }
 
 
-+ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType erjimulu_id:(NSString *)erjimulu_id selectBlock:(SelectThickBlock)selectBlock {
++ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType erjimulu_id:(NSString *)erjimulu_id parDic:(NSDictionary *)parDic selectBlock:(SelectThickBlock)selectBlock {
     
     SelectThickView *selectV = [[SelectThickView alloc] initWithFrame:MY_WINDOW.bounds erjimulu:erjimulu_id];
     selectV.selectBlock = selectBlock;
     selectV.selectShowType = selectType;
+    selectV.parDic = parDic;
+    selectV.erjimulu_id = erjimulu_id;
     selectV.contentView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIGHT, 320);
+    [selectV layoutIfNeeded];
     
     switch (selectV.selectShowType) {
         case SelectShowType_LingQie:
@@ -238,6 +274,12 @@
             [selectV.right_btn setTitle:@"内径" forState:UIControlStateNormal];
             
             break;
+        case SelectShowType_Length:
+            selectV.infoView.hidden = YES;
+            selectV.infoHeight.constant = 0;
+            selectV.hintLabel.text = @"选择长度";
+            
+            break;
         default:
             break;
     }
@@ -249,5 +291,15 @@
     [MY_WINDOW addSubview:selectV];
 }
 
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    //获取数据源
+    if (!_isRequest) {
+        [self getListDataWith:self.erjimulu_id];
+        _isRequest = YES;
+    }
+}
 
 @end
