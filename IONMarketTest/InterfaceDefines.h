@@ -10,9 +10,9 @@
 #define InterfaceDefines_h
 
 //《正式地址》
-#define  BASE_URL    @"http://118.31.35.233:8080/leqie"
+//#define  BASE_URL    @"http://118.31.35.233:8080/leqie"
 //《测试地址》
-//#define  BASE_URL    @"http://118.31.35.233:8999/leqiev110"
+#define  BASE_URL    @"http://118.31.35.233:8999/leqiev110"
 
 //获取图片地址
 //#define  BASE_URL_IMAGE    @"http://118.31.35.233:8080/"
