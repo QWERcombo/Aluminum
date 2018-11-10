@@ -26,8 +26,9 @@
         self = [[[NSBundle mainBundle] loadNibNamed:@"SelectThickView" owner:self options:nil] firstObject];
         [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"collectionViewCell"];
         self.dataSource = [NSMutableArray array];
-
-
+        self.leftdataSource = [NSMutableArray array];
+        self.rightdataSource = [NSMutableArray array];
+        
         self.isSelectLeft = YES;
         self.frame = frame;
         
@@ -55,57 +56,76 @@
     
     NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
     [parDic setObject:erjimulu forKey:@"xinghao"];
-    NSString *request_url = @"";
     switch (self.selectShowType) {
         case SelectShowType_LingQie:
             [parDic setObject:@"零切" forKey:@"zhonglei"];
-            request_url = Interface_GetByZhongleiAndXinghao;
             break;
         case SelectShowType_YuanBang:
             [parDic setObject:@"圆棒" forKey:@"zhonglei"];
-            request_url = Interface_GetByZhongleiAndXinghao;
             break;
         case SelectShowType_XingCai:
             [parDic setObject:@"型材" forKey:@"zhonglei"];
-            request_url = Interface_GetByZhongleiAndXinghao;
             break;
         case SelectShowType_GuanCai:
             [parDic setObject:@"管材" forKey:@"zhonglei"];
-            request_url = Interface_GetByZhongleiAndXinghao;
             break;
-        case SelectShowType_Length:
-            [parDic setObject:@"圆棒" forKey:@"zhonglei"];
-            [parDic setObject:self.parDic[@"zhijing"] forKey:@"zhijing"];
-            request_url = Inuterface_GetLengthByOthers;
         default:
             break;
     }
     
+    NSString *request_url = @"";
+    if (self.getInfoType == GetInfoType_GuiGe) {
+        //获取规格
+        request_url = Interface_GetByZhongleiAndXinghao;
+    } else {
+        //获取长度
+        request_url = Inuterface_GetLengthByOthers;
+        if (self.selectShowType == SelectShowType_YuanBang) {
+            [parDic setObject:self.parDic[@"zhijing"] forKey:@"zhijing"];
+        } else if (self.selectShowType == SelectShowType_XingCai) {
+            [parDic setObject:self.parDic[@"hou"] forKey:@"hou"];
+            [parDic setObject:self.parDic[@"kuang"] forKey:@"kuang"];
+        } else if (self.selectShowType == SelectShowType_GuanCai) {
+            [parDic setObject:self.parDic[@"waijing"] forKey:@"waijing"];
+            [parDic setObject:self.parDic[@"neijing"] forKey:@"neijing"];
+        } else {
+        }
+    }
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:request_url andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
         NSArray *dataArr = nil;
-        switch (self.selectShowType) {
-            case SelectShowType_LingQie:
-                dataArr = [resultDic objectForKey:@"houdus"];
-                break;
-            case SelectShowType_YuanBang:
-                dataArr = [resultDic objectForKey:@"zhijings"];
-                break;
-            case SelectShowType_XingCai:
-                dataArr = [resultDic objectForKey:@"houdus"];
-                break;
-            case SelectShowType_GuanCai:
-                dataArr = [resultDic objectForKey:@"houdus"];
-                break;
-            case SelectShowType_Length:
-                dataArr = [resultDic objectForKey:@"changdus"];
-                break;
-                
-            default:
-                break;
+        if (self.getInfoType == GetInfoType_GuiGe) {
+            //获取规格
+            switch (self.selectShowType) {
+                case SelectShowType_LingQie:
+                    dataArr = [resultDic objectForKey:@"houdus"];
+                    break;
+                case SelectShowType_YuanBang:
+                    dataArr = [resultDic objectForKey:@"zhijings"];
+                    break;
+                case SelectShowType_XingCai:
+                    dataArr = [resultDic objectForKey:@"houdus"];
+                    [self.leftdataSource addObjectsFromArray:[resultDic objectForKey:@"houdus"]];
+                    [self.rightdataSource addObjectsFromArray:[resultDic objectForKey:@"kuangdus"]];
+                    break;
+                case SelectShowType_GuanCai:
+                    dataArr = [resultDic objectForKey:@"waijings"];
+                    [self.leftdataSource addObjectsFromArray:[resultDic objectForKey:@"waijings"]];
+                    [self.rightdataSource addObjectsFromArray:[resultDic objectForKey:@"neijings"]];
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            //获取长度
+            dataArr = [resultDic objectForKey:@"changdus"];
         }
         
-        [self.dataSource addObjectsFromArray:dataArr];
+        if (dataArr.count) {
+            [self.dataSource addObjectsFromArray:dataArr];
+        } else {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"暂无数据" time:0 aboutType:WHShowViewMode_Text state:NO];
+        }
         
         [self.collectionView reloadData];
     } failure:^(NSString *error, NSInteger code) {
@@ -141,51 +161,55 @@
     
     if (self.selectBlock) {
         
-        switch (self.selectShowType) {
-            case SelectShowType_LingQie:
-                [self hideSelf];
-                self.selectBlock([self.dataSource objectAtIndex:indexPath.row]);
-                break;
-            case SelectShowType_YuanBang:
-                [self hideSelf];
-                self.selectBlock([self.dataSource objectAtIndex:indexPath.row]);
-                break;
-            case SelectShowType_XingCai:
-                
-                if (self.isSelectLeft) {
-                    self.left_label.text = [self.dataSource objectAtIndex:indexPath.row];
-                    self.leftIndex = indexPath.row;
-                } else {
-                    self.right_label.text = [self.dataSource objectAtIndex:indexPath.row];
-                    self.rightIndex = indexPath.row;
-                }
-                
-                if (self.left_label.text.length && self.right_label.text.length) {
+        if (self.getInfoType == GetInfoType_GuiGe) {
+            
+            switch (self.selectShowType) {
+                    
+                case SelectShowType_LingQie:
                     [self hideSelf];
-                    self.selectBlock([NSString stringWithFormat:@"%ld-%ld", self.leftIndex, self.rightIndex]);
-                }
-                break;
-            case SelectShowType_GuanCai:
-                
-                if (self.isSelectLeft) {
-                    self.left_label.text = [self.dataSource objectAtIndex:indexPath.row];
-                    self.leftIndex = indexPath.row;
-                } else {
-                    self.right_label.text = [self.dataSource objectAtIndex:indexPath.row];
-                    self.rightIndex = indexPath.row;
-                }
-                
-                if (self.left_label.text.length && self.right_label.text.length) {
+                    self.selectBlock([self.dataSource objectAtIndex:indexPath.row]);
+                    break;
+                case SelectShowType_YuanBang:
                     [self hideSelf];
-                    self.selectBlock([NSString stringWithFormat:@"%ld-%ld", self.leftIndex, self.rightIndex]);
-                }
-                break;
-            case SelectShowType_Length:
-                [self hideSelf];
-                self.selectBlock([self.dataSource objectAtIndex:indexPath.row]);
-                break;
-            default:
-                break;
+                    self.selectBlock([self.dataSource objectAtIndex:indexPath.row]);
+                    break;
+                case SelectShowType_XingCai:
+                    
+                    if (self.isSelectLeft) {
+                        self.left_label.text = [self.dataSource objectAtIndex:indexPath.row];
+                        self.leftIndex = [self.dataSource objectAtIndex:indexPath.row];
+                    } else {
+                        self.right_label.text = [self.dataSource objectAtIndex:indexPath.row];
+                        self.rightIndex = [self.dataSource objectAtIndex:indexPath.row];
+                    }
+                    
+                    if (self.left_label.text.length && self.right_label.text.length) {
+                        [self hideSelf];
+                        self.selectBlock([NSString stringWithFormat:@"%@*%@", self.leftIndex, self.rightIndex]);
+                    }
+                    break;
+                case SelectShowType_GuanCai:
+                    
+                    if (self.isSelectLeft) {
+                        self.left_label.text = [self.dataSource objectAtIndex:indexPath.row];
+                        self.leftIndex = [self.dataSource objectAtIndex:indexPath.row];
+                    } else {
+                        self.right_label.text = [self.dataSource objectAtIndex:indexPath.row];
+                        self.rightIndex = [self.dataSource objectAtIndex:indexPath.row];
+                    }
+                    
+                    if (self.left_label.text.length && self.right_label.text.length) {
+                        [self hideSelf];
+                        self.selectBlock([NSString stringWithFormat:@"%@*%@", self.leftIndex, self.rightIndex]);
+                    }
+                    break;
+                default:
+                    break;
+            }
+            
+        } else {
+            [self hideSelf];
+            self.selectBlock([self.dataSource objectAtIndex:indexPath.row]);
         }
         
         
@@ -226,63 +250,77 @@
     _isSelectLeft = YES;
     [sender setTitleColor:[UIColor Black_WordColor] forState:UIControlStateNormal];
     [self.right_btn setTitleColor:[UIColor colorWithHexString:@"#CED4DA"] forState:UIControlStateNormal];
+    //切换数据源
+    [self.dataSource removeAllObjects];
+    [self.dataSource addObjectsFromArray:self.leftdataSource];
+    [self.collectionView reloadData];
 }
 
 - (IBAction)rightSelect:(UIButton *)sender {
     _isSelectLeft = NO;
     [sender setTitleColor:[UIColor Black_WordColor] forState:UIControlStateNormal];
     [self.left_btn setTitleColor:[UIColor colorWithHexString:@"#CED4DA"] forState:UIControlStateNormal];
+    //切换数据源
+    [self.dataSource removeAllObjects];
+    [self.dataSource addObjectsFromArray:self.rightdataSource];
+    [self.collectionView reloadData];
 }
 
 
-+ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType erjimulu_id:(NSString *)erjimulu_id parDic:(NSDictionary *)parDic selectBlock:(SelectThickBlock)selectBlock {
++ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType getInfoType:(GetInfoType)getInfoType erjimulu_id:(NSString *)erjimulu_id parDic:(NSDictionary *)parDic selectBlock:(SelectThickBlock)selectBlock {
     
     SelectThickView *selectV = [[SelectThickView alloc] initWithFrame:MY_WINDOW.bounds erjimulu:erjimulu_id];
     selectV.selectBlock = selectBlock;
     selectV.selectShowType = selectType;
+    selectV.getInfoType = getInfoType;
     selectV.parDic = parDic;
     selectV.erjimulu_id = erjimulu_id;
     selectV.contentView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIGHT, 320);
     [selectV layoutIfNeeded];
     
-    switch (selectV.selectShowType) {
-        case SelectShowType_LingQie:
-            selectV.infoView.hidden = YES;
-            selectV.infoHeight.constant = 0;
-            selectV.hintLabel.text = @"选择厚度";
-            
-            break;
-        case SelectShowType_YuanBang:
-            selectV.infoView.hidden = YES;
-            selectV.infoHeight.constant = 0;
-            selectV.hintLabel.text = @"选择直径";
-            
-            break;
-        case SelectShowType_XingCai:
-            selectV.infoView.hidden = NO;
-            selectV.infoHeight.constant = 30;
-            selectV.hintLabel.text = @"选择规格";
-            [selectV.left_btn setTitle:@"侧面长" forState:UIControlStateNormal];
-            [selectV.right_btn setTitle:@"侧面宽" forState:UIControlStateNormal];
-            
-            break;
-        case SelectShowType_GuanCai:
-            selectV.infoView.hidden = NO;
-            selectV.infoHeight.constant = 30;
-            selectV.hintLabel.text = @"选择规格";
-            [selectV.left_btn setTitle:@"外径" forState:UIControlStateNormal];
-            [selectV.right_btn setTitle:@"内径" forState:UIControlStateNormal];
-            
-            break;
-        case SelectShowType_Length:
-            selectV.infoView.hidden = YES;
-            selectV.infoHeight.constant = 0;
-            selectV.hintLabel.text = @"选择长度";
-            
-            break;
-        default:
-            break;
+    if (selectV.getInfoType == GetInfoType_GuiGe) {
+        
+        switch (selectV.selectShowType) {
+                
+            case SelectShowType_LingQie:
+                selectV.infoView.hidden = YES;
+                selectV.infoHeight.constant = 0;
+                selectV.hintLabel.text = @"选择厚度";
+                
+                break;
+            case SelectShowType_YuanBang:
+                selectV.infoView.hidden = YES;
+                selectV.infoHeight.constant = 0;
+                selectV.hintLabel.text = @"选择直径";
+                
+                break;
+            case SelectShowType_XingCai:
+                selectV.infoView.hidden = NO;
+                selectV.infoHeight.constant = 30;
+                selectV.hintLabel.text = @"选择规格";
+                [selectV.left_btn setTitle:@"侧面长" forState:UIControlStateNormal];
+                [selectV.right_btn setTitle:@"侧面宽" forState:UIControlStateNormal];
+                
+                break;
+            case SelectShowType_GuanCai:
+                selectV.infoView.hidden = NO;
+                selectV.infoHeight.constant = 30;
+                selectV.hintLabel.text = @"选择规格";
+                [selectV.left_btn setTitle:@"外径" forState:UIControlStateNormal];
+                [selectV.right_btn setTitle:@"内径" forState:UIControlStateNormal];
+                
+                break;
+            default:
+                break;
+        }
+        
+    } else {
+        
+        selectV.infoView.hidden = YES;
+        selectV.infoHeight.constant = 0;
+        selectV.hintLabel.text = @"选择长度";
     }
+    
     
     [UIView animateWithDuration:0.3 animations:^{
         selectV.contentView.frame = CGRectMake(0, SCREEN_HEIGHT-320, SCREEN_WIGHT, 320);

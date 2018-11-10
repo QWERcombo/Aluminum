@@ -12,6 +12,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol CommonItemTabVCDelegate <NSObject>
+//更新价格
+- (void)refreshBottomTotalPrice:(NSString *)total;
+//直接购买跳转
+- (void)goToBuyNow:(ShopCar *)shopCar;
 
 @end
 
@@ -19,10 +23,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id<CommonItemTabVCDelegate> delegate;
 @property (nonatomic, assign) ShowType showType;
-@property (nonatomic, copy) NSString *erjimulu_id;
+@property (nonatomic, strong) MainItemTypeModel *erjimulu_id;
 
 //重置信息
 - (void)refreshInfoToReset;
+//下单相关操作
+- (void)placeOrder:(UseType)useType;
 
 @end
 

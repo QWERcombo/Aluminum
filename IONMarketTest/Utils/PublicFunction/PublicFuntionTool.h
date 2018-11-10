@@ -17,6 +17,14 @@ typedef NS_ENUM(NSUInteger, GetOrderType) {
     GetOrderType_GuanCai,   //管材
 };
 
+typedef NS_ENUM(NSUInteger, UseType) {
+    UseType_OrderMoney,     //获取价格
+    UseType_AddShopCar,     //加入购物车
+    UseType_BuyNow,         //直接购买
+};
+
+
+@class ShopCar, MainItemTypeModel;
 @interface PublicFuntionTool : NSObject
 
 typedef void (^ReloadDataBlock)(void);
@@ -27,13 +35,16 @@ typedef void (^HadLoginBlock)(void);
 //获取价格成功的回调
 typedef void (^GetOrderMoneySuccessBlock)(NSDictionary *dataDic);
 
+//直接购买拼装参数
+typedef void (^GetBuyNowSuccessBlock)(ShopCar *shopCar);
+
+
+
 
 typedef enum : NSInteger {
     WHShowEmptyMode_noData,//无数据
     WHShowEmptyMode_noNetWork,//无网络
 } WHShowEmptyViewMode;
-
-
 
 @property (nonatomic, copy) ClikBlock clikBlock;
 @property (nonatomic, copy) HadLoginBlock loginBlock;
@@ -42,7 +53,6 @@ AS_SINGLETON(PublicFuntionTool);
 
 //发送验证码
 //- (void)getSmsCodeByPhoneString:(NSString *)phone;
-
 //调用分享
 //- (void)uMengShareWithObject:(UMSocialPlatformType)dataType andBaseController:(BaseViewController *)controller;
 
@@ -75,13 +85,11 @@ AS_SINGLETON(PublicFuntionTool);
 //某些操作需要登录状态
 - (void)isHadLogin:(HadLoginBlock)loginBlock;
 
-//获取价格
-- (void)getOrderMoneyWithOrderType:(GetOrderType)orderType chang:(NSString *)chang kuan:(NSString *)kuan hou:(NSString *)hou amount:(NSString *)amount type:(NSString *)type erjimulu_id:(NSString *)erjimulu_id successBlock:(GetOrderMoneySuccessBlock)successBlock;
-
-//加入购物车
 
 
-//立即购买
+//下单通用接口(价格 购买 加购物车)
+- (void)placeOrderCommonInterfaceWithUseType:(UseType)useType moneyWithOrderType:(GetOrderType)orderType chang:(NSString *)chang kuan:(NSString *)kuan hou:(NSString *)hou amount:(NSString *)amount type:(NSString *)type erjimulu:(MainItemTypeModel *)erjimulu orderMoney:(NSString *)orderMoney successBlock:(GetOrderMoneySuccessBlock)successBlock buyNowSuccessBlock:(GetBuyNowSuccessBlock)buyNowSuccessBlock;
+
 
 
 

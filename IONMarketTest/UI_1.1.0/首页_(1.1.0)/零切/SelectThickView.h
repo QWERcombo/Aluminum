@@ -12,13 +12,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^SelectThickBlock)(NSString *selectIndexString);
 
+//型号类型
 typedef NS_ENUM(NSUInteger, SelectShowType) {
     SelectShowType_LingQie,     //零切
     SelectShowType_YuanBang,    //圆棒
     SelectShowType_GuanCai,     //管材
     SelectShowType_XingCai,     //型材
-    SelectShowType_Length,      //type为整只时选择长度
 };
+
+//获取信息类型
+typedef NS_ENUM(NSUInteger, GetInfoType) {
+    GetInfoType_Length,     //获取长度
+    GetInfoType_GuiGe,      //获取规格
+};
+
 
 @interface SelectThickView : UIView<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate>
 
@@ -32,19 +39,24 @@ typedef NS_ENUM(NSUInteger, SelectShowType) {
 @property (weak, nonatomic) IBOutlet UIButton *right_btn;
 @property (weak, nonatomic) IBOutlet UILabel *right_label;
 
+@property (nonatomic, strong) NSMutableArray *dataSource;//默认数据
+@property (nonatomic, strong) NSMutableArray *leftdataSource;//两组默认左边
+@property (nonatomic, strong) NSMutableArray *rightdataSource;//两组默认右边
 
-@property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, copy) SelectThickBlock selectBlock;
+
+@property (nonatomic, assign) GetInfoType getInfoType;
 @property (nonatomic, assign) SelectShowType selectShowType;
+
 @property (nonatomic, assign) BOOL isSelectLeft;//默认选中左边YES
-@property (nonatomic, assign) NSInteger leftIndex;//选中的左索引
-@property (nonatomic, assign) NSInteger rightIndex;//选中的右索引
+@property (nonatomic, copy) NSString *leftIndex;//选中的左索引
+@property (nonatomic, copy) NSString *rightIndex;//选中的右索引
 @property (nonatomic, copy) NSDictionary *parDic;//选整只时选择长度传的参数
 @property (nonatomic, copy) NSString *erjimulu_id;//传入的型号
 @property (nonatomic, assign) BOOL isRequest;//
 
 
-+ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType erjimulu_id:(NSString *)erjimulu_id parDic:(NSDictionary *)parDic selectBlock:(SelectThickBlock)selectBlock;
++ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType getInfoType:(GetInfoType)getInfoType erjimulu_id:(NSString *)erjimulu_id parDic:(NSDictionary *)parDic selectBlock:(SelectThickBlock)selectBlock;
 
 @end
 

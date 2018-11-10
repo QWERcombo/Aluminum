@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *youqie_btn;
 
 @property (nonatomic, strong) NSDictionary *dataDic;//保存获取的价格信息
+@property (nonatomic, copy) NSString *orderMoney;//订单价格
 
 @end
 
@@ -48,7 +49,7 @@
 #pragma mark - Table view data source
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
-    [self getOrderMoney];
+    [self placeOrder:UseType_OrderMoney];
 }
 
 
@@ -68,7 +69,7 @@
     _suqieImgv.image = [UIImage imageNamed:@"select_1"];
     _suqieLab.textColor = [UIColor Grey_OrangeColor];
     
-//    [self getOrderMoney];
+    
     [self updateInfoView:sender];
 }
 //优切
@@ -86,7 +87,7 @@
     _suqieImgv.image = [UIImage imageNamed:@"select_0"];
     _suqieLab.textColor = [UIColor Grey_WordColor];
     
-//    [self getOrderMoney];
+
     [self updateInfoView:sender];
 }
 
@@ -94,9 +95,9 @@
 //选择厚度
 - (IBAction)selectThin:(UIButton *)sender {
     
-    [SelectThickView showSelectThickViewWithSelectShowType:SelectShowType_LingQie erjimulu_id:self.erjimulu_id parDic:@{} selectBlock:^(NSString * _Nonnull selectIndexString) {
+    [SelectThickView showSelectThickViewWithSelectShowType:SelectShowType_LingQie getInfoType:GetInfoType_GuiGe erjimulu_id:self.erjimulu_id.id parDic:@{} selectBlock:^(NSString * _Nonnull selectIndexString) {
         self.thinTF.text = selectIndexString;
-        [self getOrderMoney];
+        [self placeOrder:UseType_OrderMoney];
     }];
     
 }
@@ -115,27 +116,31 @@
         self.youqieLab.attributedText = [UILabel getAttributedFromRange:range1 WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.youqieLab.text];
         self.suqieLab.attributedText = [UILabel getAttributedFromRange:range2 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.suqieLab.text];
         
-        _hejiLab.text = [NSString stringWithFormat:@"￥%@", [self.dataDic objectForKey:@"orderMoney_youqie"]];
+        _orderMoney = [self.dataDic objectForKey:@"orderMoney_youqie"];
+        _hejiLab.text = [NSString stringWithFormat:@"￥%@", _orderMoney];
         _danjianjiageLab.text = [NSString stringWithFormat:@"%@元", [self.dataDic objectForKey:@"danpianjiage_youqie"]];
     } else {
         //速切
         self.suqieLab.attributedText = [UILabel getAttributedFromRange:range2 WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.suqieLab.text];
         self.youqieLab.attributedText = [UILabel getAttributedFromRange:range1 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.youqieLab.text];
         
-        _hejiLab.text = [NSString stringWithFormat:@"￥%@", [self.dataDic objectForKey:@"orderMoney_kuaisu"]];
+        _orderMoney = [self.dataDic objectForKey:@"orderMoney_kuaisu"];
+        _hejiLab.text = [NSString stringWithFormat:@"￥%@", _orderMoney];
         _danjianjiageLab.text = [NSString stringWithFormat:@"%@元", [self.dataDic objectForKey:@"danpianjiage_kuaisu"]];
     }
     
+    //刷新总价格
+    if (self.delegate && [self.delegate respondsToSelector:@selector(refreshBottomTotalPrice:)]) {
+        [self.delegate refreshBottomTotalPrice:self.hejiLab.text];
+    }
 }
 
-
-//获取价格
-- (void)getOrderMoney {
+- (void)placeOrder:(UseType)useType {
     
     if (self.lengthTF.text.length && self.widthTF.text.length && self.thinTF.text.length && self.countTF.text.length) {
         
         [self.view endEditing:YES];
-        [[PublicFuntionTool sharedInstance] getOrderMoneyWithOrderType:GetOrderType_LingQie chang:self.lengthTF.text kuan:self.widthTF.text hou:self.thinTF.text amount:self.countTF.text type:@"全部" erjimulu_id:self.erjimulu_id successBlock:^(NSDictionary *dataDic) {
+        [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_LingQie chang:self.lengthTF.text kuan:self.widthTF.text hou:self.thinTF.text amount:self.countTF.text type:@"全部" erjimulu:self.erjimulu_id orderMoney:self.orderMoney successBlock:^(NSDictionary *dataDic) {
             
             self.dataDic = dataDic;
             
@@ -143,9 +148,13 @@
             self.suqieLab.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage_kuaisu"]];
             NSRange range1 = [self.youqieLab.text rangeOfString:@"元/公斤"];
             NSRange range2 = [self.suqieLab.text rangeOfString:@"元/公斤"];
-           self.youqieLab.attributedText = [UILabel getAttributedFromRange:range1 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.youqieLab.text];
+            self.youqieLab.attributedText = [UILabel getAttributedFromRange:range1 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.youqieLab.text];
             self.suqieLab.attributedText = [UILabel getAttributedFromRange:range2 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.suqieLab.text];
+        } buyNowSuccessBlock:^(ShopCar *shopCar) {
             
+            if (self.delegate && [self.delegate respondsToSelector:@selector(goToBuyNow:)]) {
+                [self.delegate goToBuyNow:shopCar];
+            }
         }];
         
         if ([self.lengthTF.text integerValue]<150 && [self.widthTF.text integerValue]<150) {
@@ -157,7 +166,7 @@
         }
         
     }
-    
+
 }
 
 
@@ -183,6 +192,11 @@
     self.dataDic = nil;
     
 }
+
+
+
+
+
 /*
 #pragma mark - Navigation
 

@@ -562,7 +562,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrO-hV-KWs">
-                                        <rect key="frame" x="63" y="16" width="48.5" height="18"/>
+                                        <rect key="frame" x="58" y="16" width="117" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.34901960780000002" green="0.36862745099999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -581,10 +581,10 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6a5-4c-DGa">
-                                        <rect key="frame" x="180.5" y="0.0" width="0.5" height="50"/>
+                                        <rect key="frame" x="180" y="0.0" width="1" height="50"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="0.5" id="Lb7-Gs-4Xa"/>
+                                            <constraint firstAttribute="width" constant="1" id="Lb7-Gs-4Xa"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -594,7 +594,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="0Gd-Dc-bzL"/>
-                                    <constraint firstItem="SrO-hV-KWs" firstAttribute="leading" secondItem="tZK-ts-q8w" secondAttribute="trailing" constant="10" id="1jM-iW-jb6"/>
+                                    <constraint firstItem="SrO-hV-KWs" firstAttribute="leading" secondItem="tZK-ts-q8w" secondAttribute="trailing" constant="5" id="1jM-iW-jb6"/>
                                     <constraint firstItem="O9i-Np-42f" firstAttribute="leading" secondItem="6a5-4c-DGa" secondAttribute="trailing" id="4rs-oA-LPK"/>
                                     <constraint firstAttribute="bottom" secondItem="bdT-jO-77K" secondAttribute="bottom" id="CF4-it-WCl"/>
                                     <constraint firstAttribute="trailing" secondItem="bdT-jO-77K" secondAttribute="trailing" id="DeP-LC-eJI"/>
@@ -604,6 +604,7 @@
                                     <constraint firstAttribute="bottom" secondItem="O9i-Np-42f" secondAttribute="bottom" id="a7f-Iq-t0Z"/>
                                     <constraint firstItem="SrO-hV-KWs" firstAttribute="centerY" secondItem="lEk-WE-J30" secondAttribute="centerY" id="bP1-6i-ePi"/>
                                     <constraint firstItem="tZK-ts-q8w" firstAttribute="leading" secondItem="lEk-WE-J30" secondAttribute="leading" constant="15" id="hYI-96-YVP"/>
+                                    <constraint firstItem="6a5-4c-DGa" firstAttribute="leading" secondItem="SrO-hV-KWs" secondAttribute="trailing" constant="5" id="q8m-sN-w2P"/>
                                     <constraint firstItem="tZK-ts-q8w" firstAttribute="centerY" secondItem="lEk-WE-J30" secondAttribute="centerY" id="qts-LS-eSj"/>
                                     <constraint firstItem="bdT-jO-77K" firstAttribute="leading" secondItem="O9i-Np-42f" secondAttribute="trailing" id="rgZ-7O-YdV"/>
                                     <constraint firstAttribute="height" constant="50" id="sTs-fC-xSV"/>
@@ -1345,7 +1346,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1s-91-h7V">
-                                        <rect key="frame" x="63" y="16" width="48.5" height="18"/>
+                                        <rect key="frame" x="58" y="16" width="117" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.34901960780000002" green="0.36862745099999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1364,10 +1365,10 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFh-5k-b59">
-                                        <rect key="frame" x="180.5" y="0.0" width="0.5" height="50"/>
+                                        <rect key="frame" x="180" y="0.0" width="1" height="50"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="0.5" id="8qK-N2-SoH"/>
+                                            <constraint firstAttribute="width" constant="1" id="8qK-N2-SoH"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -1378,7 +1379,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="m4w-qG-pwb" secondAttribute="bottom" id="0GO-5E-J29"/>
                                     <constraint firstAttribute="bottom" secondItem="tFh-5k-b59" secondAttribute="bottom" id="2f7-QA-bOI"/>
-                                    <constraint firstItem="L1s-91-h7V" firstAttribute="leading" secondItem="ifq-xP-G7a" secondAttribute="trailing" constant="10" id="3Wv-Pd-pNf"/>
+                                    <constraint firstItem="L1s-91-h7V" firstAttribute="leading" secondItem="ifq-xP-G7a" secondAttribute="trailing" constant="5" id="3Wv-Pd-pNf"/>
                                     <constraint firstItem="m4w-qG-pwb" firstAttribute="top" secondItem="jgl-rj-x31" secondAttribute="top" id="5M3-hB-dVJ"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="7uu-aY-Z76"/>
                                     <constraint firstAttribute="trailing" secondItem="PTs-8J-rcq" secondAttribute="trailing" id="I2u-gr-5Jx"/>
@@ -1389,6 +1390,7 @@
                                     <constraint firstItem="tFh-5k-b59" firstAttribute="top" secondItem="jgl-rj-x31" secondAttribute="top" id="bCF-ij-2Ah"/>
                                     <constraint firstItem="L1s-91-h7V" firstAttribute="centerY" secondItem="jgl-rj-x31" secondAttribute="centerY" id="cM6-uD-p7d"/>
                                     <constraint firstItem="ifq-xP-G7a" firstAttribute="leading" secondItem="jgl-rj-x31" secondAttribute="leading" constant="15" id="fvn-VL-SOu"/>
+                                    <constraint firstItem="tFh-5k-b59" firstAttribute="leading" secondItem="L1s-91-h7V" secondAttribute="trailing" constant="5" id="gnR-er-VeW"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="vyI-4k-jJa"/>
                                     <constraint firstItem="ifq-xP-G7a" firstAttribute="centerY" secondItem="jgl-rj-x31" secondAttribute="centerY" id="wMW-4k-wzs"/>
                                     <constraint firstAttribute="bottom" secondItem="PTs-8J-rcq" secondAttribute="bottom" id="zQ5-5p-xXa"/>
@@ -1612,7 +1614,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SqZ-pe-0ZN">
                                                     <rect key="frame" x="58" y="0.0" width="307" height="49.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <state key="normal" title="请选择长度"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="selectLength:" destination="G0e-aK-vCW" eventType="touchUpInside" id="tpu-rW-cgk"/>
                                                     </connections>

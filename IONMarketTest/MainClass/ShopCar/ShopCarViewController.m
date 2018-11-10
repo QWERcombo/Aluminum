@@ -18,7 +18,6 @@
 
 @implementation ShopCarViewController {
     UILabel *priceLabel;
-    UILabel *infoLabel;
     UIButton *allButton;
     UIButton *excuteButton;
 }
@@ -129,11 +128,12 @@
     
     
     priceLabel = [UILabel lableWithText:@"合计：￥0.00元" Font:FONT_ArialMT(16) TextColor:[UIColor Black_WordColor]];
+    priceLabel.adjustsFontSizeToFitWidth = YES;
     [bottomView addSubview:priceLabel];
     [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.height.equalTo(@(15));
         make.left.equalTo(allButton.mas_right).offset(10);
         make.centerY.equalTo(allButton.mas_centerY);
+        make.right.equalTo(excuteButton.mas_left).offset(-5);
     }];
 
     
@@ -272,7 +272,7 @@
     [dict setValue:SINT(page_number) forKey:@"pageNum"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetGouwucheByUser andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        NSLog(@"++---%@", resultDic);
+//        NSLog(@"++---%@", resultDic);
         
         NSArray *dataSource = resultDic[@"result"];
         

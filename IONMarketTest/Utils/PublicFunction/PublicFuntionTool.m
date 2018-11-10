@@ -301,41 +301,100 @@ DEF_SINGLETON(PublicFuntionTool);
     
 }
 
-- (void)getOrderMoneyWithOrderType:(GetOrderType)orderType chang:(NSString *)chang kuan:(NSString *)kuan hou:(NSString *)hou amount:(NSString *)amount type:(NSString *)type erjimulu_id:(NSString *)erjimulu_id successBlock:(GetOrderMoneySuccessBlock)successBlock {
+- (void)placeOrderCommonInterfaceWithUseType:(UseType)useType moneyWithOrderType:(GetOrderType)orderType chang:(NSString *)chang kuan:(NSString *)kuan hou:(NSString *)hou amount:(NSString *)amount type:(NSString *)type erjimulu:(MainItemTypeModel *)erjimulu orderMoney:(NSString *)orderMoney successBlock:(GetOrderMoneySuccessBlock)successBlock buyNowSuccessBlock:(GetBuyNowSuccessBlock)buyNowSuccessBlock {
+    
     
     NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+    
+    NSString *url = @"";
+    ShopCar *shopCar = [ShopCar new];
+    
+    switch (useType) {
+        case UseType_OrderMoney:
+            url = Interface_OrderMoney;
+            break;
+        case UseType_AddShopCar:
+            url = Interface_SaveToGouwuche;
+            [parDic setObject:chang forKey:@"chang"];
+            [parDic setObject:[UserData currentUser].phone forKey:@"phone"];
+            [parDic setObject:orderMoney forKey:@"money"];
+            break;
+        case UseType_BuyNow:
+            url = @"";
+            break;
+            
+        default:
+            break;
+    }
     
     [parDic setObject:chang forKey:@"chang"];
     [parDic setObject:kuan forKey:@"kuang"];
     [parDic setObject:amount forKey:@"amount"];
     [parDic setObject:type forKey:@"type"];
-    [parDic setObject:erjimulu_id forKey:@"erjimulu"];
+    [parDic setObject:erjimulu.id forKey:@"erjimulu"];
     switch (orderType) {
         case GetOrderType_ZhengBan:
             [parDic setObject:@"整板" forKey:@"zhonglei"];
             [parDic setObject:hou forKey:@"hou"];
+            
+            shopCar.zhonglei = @"整板";
+            
             break;
         case GetOrderType_LingQie:
             [parDic setObject:@"零切" forKey:@"zhonglei"];
             [parDic setObject:hou forKey:@"hou"];
+            
+            shopCar.zhonglei = @"零切";
+            shopCar.length = chang;
+            shopCar.width = kuan;
+            shopCar.height = hou;
             break;
         case GetOrderType_YuanBang:
             [parDic setObject:@"圆棒" forKey:@"zhonglei"];
+            
+            shopCar.zhonglei = @"圆棒";
+            shopCar.length = chang;
+            shopCar.width = kuan;
             break;
         case GetOrderType_XingCai:
             [parDic setObject:@"型材" forKey:@"zhonglei"];
             [parDic setObject:hou forKey:@"hou"];
+            
+            shopCar.zhonglei = @"型材";
+            shopCar.width = kuan;
+            shopCar.height = hou;
+            shopCar.length = chang;
             break;
         case GetOrderType_GuanCai:
             [parDic setObject:@"管材" forKey:@"zhonglei"];
             [parDic setObject:hou forKey:@"hou"];
+            
+            shopCar.zhonglei = @"管材";
+            shopCar.length = chang;
+            shopCar.width = kuan;
+            shopCar.height = hou;
             break;
         default:
             break;
     }
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_OrderMoney andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    if (useType == UseType_BuyNow) {
         
+        shopCar.productNum = amount;
+        shopCar.type = type;
+        shopCar.erjimulu = erjimulu.name;
+        shopCar.money = [NSString stringWithFormat:@"%@", orderMoney];
+        
+        buyNowSuccessBlock(shopCar);
+        
+        return;
+    }
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:url andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        if (msg) {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0 aboutType:WHShowViewMode_Text state:YES];
+        }
         successBlock(resultDic[@"result"]);
         
     } failure:^(NSString *error, NSInteger code) {

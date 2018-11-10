@@ -10,6 +10,8 @@
 #import "CommonItemTabVC.h"
 #import "WholeBoardTapView.h"
 #import "DisplayView.h"
+#import "ShopCarViewController.h"
+#import "ConfirmOrderVC.h"
 
 @interface CommonItemVC ()<CommonItemTabVCDelegate,WholeBoardTapViewDelegate>
 
@@ -55,8 +57,11 @@
     }
     self.dataSource = [NSMutableArray array];
     self.titleArray = [NSMutableArray array];
+    self.totalLabel.adjustsFontSizeToFitWidth = YES;
+    
     
     [self getCateList];
+    [self refreshBottomViewInfo];
 }
 
 #pragma mark - Layout
@@ -82,7 +87,7 @@
             [tapView selectedStatus:YES];
             self.lastSelected = tapView.tag;
             self.xinghao = title.name;
-            self.commonTabVC.erjimulu_id = title.id;
+            self.commonTabVC.erjimulu_id = title;
             
         }
     }
@@ -100,7 +105,7 @@
     
     self.lastSelected = currentTap.tag;
     MainItemTypeModel *model = [self.titleArray objectAtIndex:self.lastSelected-200];
-    self.commonTabVC.erjimulu_id = model.id;
+    self.commonTabVC.erjimulu_id = model;
     [self.commonTabVC refreshInfoToReset];
 }
 
@@ -130,6 +135,15 @@
     
 }
 
+- (void)refreshBottomViewInfo {
+    
+    [[ShoppingCarSingle sharedShoppingCarSingle] getServerShopCarAmountAndTotalfee:^(NSString *amout, NSString *totalfee) {
+        
+        self.shopcatBtn.badgeValue = amout;
+    }];
+}
+
+
 #pragma mark - Handle
 
 - (IBAction)display:(UIButton *)sender {
@@ -143,27 +157,46 @@
 }
 
 - (IBAction)buyNow:(UIButton *)sender {
+    
+    MJWeakSelf
     [[PublicFuntionTool sharedInstance] isHadLogin:^{
-        NSLog(@"结算");
         
-        
+        [weakSelf.commonTabVC placeOrder:UseType_BuyNow];
     }];
 }
 
 - (IBAction)excute:(UIButton *)sender {
+    
+    MJWeakSelf
     [[PublicFuntionTool sharedInstance] isHadLogin:^{
-        NSLog(@"结算");
         
-        
+        [weakSelf.commonTabVC placeOrder:UseType_AddShopCar];
     }];
 }
 
+//跳转购物车
 - (IBAction)shopCar:(UIButton *)sender {
     [[PublicFuntionTool sharedInstance] isHadLogin:^{
-        NSLog(@"结算");
         
-        
+        ShopCarViewController *shopcar = [[ShopCarViewController alloc] init];
+        [self.navigationController pushViewController:shopcar animated:YES];
     }];
+}
+
+
+#pragma mark - Delegate
+
+- (void)refreshBottomTotalPrice:(NSString *)total {
+    
+    self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", total];
+}
+
+- (void)goToBuyNow:(ShopCar *)shopCar {
+    
+    ConfirmOrderVC *confirm = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrderVC"];
+    confirm.carArr = @[shopCar];
+    confirm.fromtype = FromVCType_Buy;
+    [self.navigationController pushViewController:confirm animated:YES];
 }
 
 
