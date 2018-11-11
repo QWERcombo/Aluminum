@@ -31,7 +31,7 @@
     cell.junjiaLabel.text = dataModel.averagePrice;
     if ([[dataModel.priceChange substringToIndex:1] isEqualToString:@"-"]) {
         cell.zhangdieLabel.textColor = [UIColor Grey_GreenColor];
-        cell.zhangdieLabel.text = [NSString stringWithFormat:@"↓%@",dataModel.priceChange];
+        cell.zhangdieLabel.text = [NSString stringWithFormat:@"↓ %@",[dataModel.priceChange substringFromIndex:1]];
     } else {
         cell.zhangdieLabel.textColor = [UIColor Grey_RedColor];
         cell.zhangdieLabel.text = [NSString stringWithFormat:@"↑ %@",dataModel.priceChange];

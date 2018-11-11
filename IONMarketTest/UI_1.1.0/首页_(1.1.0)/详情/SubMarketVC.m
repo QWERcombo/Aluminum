@@ -75,7 +75,7 @@
     for (PriceModel *dataObject in self.chartArray) {
         
         NSString *riqi = [[NSDate dateWithTimeIntervalSince1970:[dataObject.riqi integerValue]/1000] formattedDateWithFormat:@"M月dd日"];
-        NSNumber *number = [[NSNumber alloc] initWithInteger:[[dataObject.averagePrice substringFromIndex:1] integerValue]];
+        NSNumber *number = [[NSNumber alloc] initWithInteger:[dataObject.averagePrice integerValue]];
         
         [dateArr addObject:riqi];
         [dataArr addObject:number];

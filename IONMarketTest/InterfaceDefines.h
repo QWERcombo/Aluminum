@@ -189,6 +189,14 @@
 #define Interface_getLastestPrice       @"getLastestPrice"
 //保存特殊定制
 #define Interface_saveSpOrder           @"user/saveSpOrder"
+//修改购物车
+#define Interface_updateGouwuche        @"user/updateGouwuche"
+
+
+
+
+
+
 
 
 

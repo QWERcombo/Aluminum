@@ -312,26 +312,34 @@ DEF_SINGLETON(PublicFuntionTool);
     switch (useType) {
         case UseType_OrderMoney:
             url = Interface_OrderMoney;
+            [parDic setObject:erjimulu.id forKey:@"erjimulu"];
             break;
         case UseType_AddShopCar:
             url = Interface_SaveToGouwuche;
             [parDic setObject:chang forKey:@"chang"];
             [parDic setObject:[UserData currentUser].phone forKey:@"phone"];
             [parDic setObject:orderMoney forKey:@"money"];
+            [parDic setObject:erjimulu.name forKey:@"erjimulu"];
             break;
         case UseType_BuyNow:
             url = @"";
+            break;
+        case UseType_DanJia:
+            url = Interface_OrderMoney;
+            [parDic setObject:erjimulu.id forKey:@"erjimulu"];
             break;
             
         default:
             break;
     }
     
-    [parDic setObject:chang forKey:@"chang"];
+    if (useType != UseType_DanJia) {
+        [parDic setObject:chang forKey:@"chang"];
+        [parDic setObject:amount forKey:@"amount"];
+    }
     [parDic setObject:kuan forKey:@"kuang"];
-    [parDic setObject:amount forKey:@"amount"];
     [parDic setObject:type forKey:@"type"];
-    [parDic setObject:erjimulu.id forKey:@"erjimulu"];
+    
     switch (orderType) {
         case GetOrderType_ZhengBan:
             [parDic setObject:@"整板" forKey:@"zhonglei"];
@@ -392,7 +400,7 @@ DEF_SINGLETON(PublicFuntionTool);
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:url andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
-        if (msg) {
+        if (msg && (useType != UseType_DanJia)) {
             [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0 aboutType:WHShowViewMode_Text state:YES];
         }
         successBlock(resultDic[@"result"]);

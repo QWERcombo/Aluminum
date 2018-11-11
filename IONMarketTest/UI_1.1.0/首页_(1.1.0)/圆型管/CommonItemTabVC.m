@@ -24,13 +24,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *danjianjiage;
 @property (weak, nonatomic) IBOutlet UILabel *jianshu;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
-@property (weak, nonatomic) IBOutlet UILabel *guigeLabel;
+@property (weak, nonatomic) IBOutlet UITextField *guigeTF;
+
 
 @property (nonatomic, copy) NSString *zhengZhi;// 1整只  2零切
 @property (nonatomic, assign) BOOL isShowInfoView;
 
 @property (nonatomic, strong) NSDictionary *dataDic;//保存获取的价格信息
 @property (nonatomic, copy) NSString *orderMoney;//订单价格
+@property (nonatomic, copy) NSString *zhengzhiDanJia;//整只单价
+@property (nonatomic, copy) NSString *zidingyiDanJia;//自定义单价
+@property (weak, nonatomic) IBOutlet UILabel *guigeLab;
+
+
 
 @end
 
@@ -42,7 +48,23 @@
     self.amountTF.delegate = self;
     self.lengthTF.delegate = self;
     self.lengthBtn.hidden = NO;
-    _zhengZhi = @"0";
+    _zhengZhi = @"1";
+    switch (self.showType) {
+        case ShowType_YuanBang:
+            self.guigeTF.placeholder = @"请选择直径";
+            self.guigeLab.text = @"直径";
+            break;
+        case ShowType_XingCai:
+            self.guigeTF.placeholder = @"请选择规格";
+            self.guigeLab.text = @"规格";
+            break;
+        case ShowType_GuanCai:
+            self.guigeTF.placeholder = @"请选择规格";
+            self.guigeLab.text = @"规格";
+            break;
+        default:
+            break;
+    }
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
@@ -109,13 +131,13 @@
         [SelectThickView showSelectThickViewWithSelectShowType:type getInfoType:GetInfoType_GuiGe erjimulu_id:self.erjimulu_id.id parDic:@{} selectBlock:^(NSString * _Nonnull selectIndexString) {
             switch (self.showType) {
                 case ShowType_YuanBang:
-                    self.guigeLabel.text = selectIndexString;
+                    self.guigeTF.text = selectIndexString;
                     break;
                 case ShowType_GuanCai:
-                    self.guigeLabel.text = selectIndexString;
+                    self.guigeTF.text = selectIndexString;
                     break;
                 case ShowType_XingCai:
-                    self.guigeLabel.text = selectIndexString;
+                    self.guigeTF.text = selectIndexString;
                     break;
                 default:
                     break;
@@ -139,10 +161,13 @@
     
     self.zidingyi_imgv.image = [UIImage imageNamed:@"select_1"];
     self.zidingyi_left_label.textColor = [UIColor mianColor:2];
+    self.zidingyi_right_label.textColor = [UIColor Grey_OrangeColor];
     
     self.zhengzhi_imgv.image = [UIImage imageNamed:@"select_0"];
     self.zhengzhi_left_label.textColor = [UIColor colorWithHexString:@"#202124"];
+    self.zhengzhi_right_label.textColor = [UIColor Grey_WordColor];
  
+    [self placeOrder:UseType_DanJia];
     [self.tableView reloadData];
 }
 
@@ -157,17 +182,20 @@
     
     self.zidingyi_imgv.image = [UIImage imageNamed:@"select_0"];
     self.zidingyi_left_label.textColor = [UIColor colorWithHexString:@"#202124"];
+    self.zidingyi_right_label.textColor = [UIColor Grey_WordColor];
     
     self.zhengzhi_imgv.image = [UIImage imageNamed:@"select_1"];
     self.zhengzhi_left_label.textColor = [UIColor mianColor:2];
+    self.zhengzhi_right_label.textColor = [UIColor Grey_OrangeColor];
 
+    [self placeOrder:UseType_DanJia];
     [self.tableView reloadData];
 }
 
 //整只选择长度
 - (IBAction)selectLength:(UIButton *)sender {
     
-    if (!self.guigeLabel.text.length) {
+    if (!self.guigeTF.text.length) {
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择规格" time:0 aboutType:WHShowViewMode_Text state:NO];
         return;
     }
@@ -179,11 +207,11 @@
     SelectShowType type;
     NSDictionary *parDic = nil;
     //型材 管材有值
-    NSArray *infoArr = [self.guigeLabel.text componentsSeparatedByString:@"*"];
+    NSArray *infoArr = [self.guigeTF.text componentsSeparatedByString:@"*"];
     switch (self.showType) {
         case ShowType_YuanBang:
             type = SelectShowType_YuanBang;
-            parDic = [NSDictionary dictionaryWithObject:self.guigeLabel.text forKey:@"zhijing"];
+            parDic = [NSDictionary dictionaryWithObject:self.guigeTF.text forKey:@"zhijing"];
             break;
         case ShowType_XingCai:
             type = SelectShowType_XingCai;
@@ -211,18 +239,18 @@
 
 - (void)placeOrder:(UseType)useType {
     
-    if (self.amountTF.text.length && self.guigeLabel.text.length && (self.lengthTF.text.length || self.lengthBtn.currentTitle.length)) {
-        
+    if ((self.amountTF.text.length && self.guigeTF.text.length && (self.lengthTF.text.length || self.lengthBtn.currentTitle.length)) || (self.guigeTF.text.length)) {
+    
         GetOrderType type;
         NSString *chang = self.lengthTF.text.length?self.lengthTF.text:self.lengthBtn.currentTitle;
         NSString *kuan = @"";
         NSString *hou = nil;
-        NSArray *infoArr = [self.guigeLabel.text componentsSeparatedByString:@"*"];
+        NSArray *infoArr = [self.guigeTF.text componentsSeparatedByString:@"*"];
         
         switch (self.showType) {
             case ShowType_YuanBang:
                 type = GetOrderType_YuanBang;
-                kuan = self.guigeLabel.text;
+                kuan = self.guigeTF.text;
                 break;
             case ShowType_XingCai:
                 type = GetOrderType_XingCai;
@@ -243,14 +271,19 @@
         [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:type chang:chang kuan:kuan hou:hou amount:self.amountTF.text type:[_zhengZhi isEqualToString:@"1"]?@"整只":@"零切" erjimulu:self.erjimulu_id orderMoney:self.orderMoney successBlock:^(NSDictionary *dataDic) {
             
             self.dataDic = dataDic;
-            _isShowInfoView = YES;
+            if (useType == UseType_OrderMoney) _isShowInfoView = YES;
             
-            if ([_zhengZhi isEqualToString:@"2"]) {
+            if ([_zhengZhi isEqualToString:@"1"]) {
                 [self updateInfoView:@"整只"];
+                self.zhengzhiDanJia = [NSString stringWithFormat:@"%@", [self.dataDic objectForKey:@"danjia"]];
             } else {
                 [self updateInfoView:@"自定义"];
+                self.zidingyiDanJia = [NSString stringWithFormat:@"%@", [self.dataDic objectForKey:@"danjia"]];
             }
             
+            if (useType == UseType_AddShopCar) {
+                [[UIViewController currentViewController].navigationController popViewControllerAnimated:YES];
+            }
             [self.tableView reloadData];
             
         } buyNowSuccessBlock:^(ShopCar *shopCar) {
@@ -274,15 +307,19 @@
     
     if ([type isEqualToString:@"整只"]) {
         
-        self.danjianjiage.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage_youqie"]];
-        self.orderMoney = [self.dataDic objectForKey:@"orderMoney_youqie"];
+        self.danjianjiage.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage"]];
+        self.orderMoney = [self.dataDic objectForKey:@"orderMoney"];
         self.totalLabel.text = [NSString stringWithFormat:@"%@元", self.orderMoney];
+        self.zhengzhi_right_label.text = [NSString stringWithFormat:@"%@元/公斤", self.zhengzhiDanJia];
+        self.zhengzhi_right_label.attributedText = [UILabel getAttributedFromRange:[self.zhengzhi_right_label.text rangeOfString:@"元/公斤"] WithColor:nil andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.zhengzhi_right_label.text];
         
     } else {
         
-        self.danjianjiage.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage_kuaisu"]];
-        self.orderMoney = [self.dataDic objectForKey:@"orderMoney_kuaisu"];
+        self.danjianjiage.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage"]];
+        self.orderMoney = [self.dataDic objectForKey:@"orderMoney"];
         self.totalLabel.text = [NSString stringWithFormat:@"%@元", self.orderMoney];
+        self.zidingyi_right_label.text = [NSString stringWithFormat:@"%@元/公斤", self.zidingyiDanJia];
+        self.zidingyi_right_label.attributedText = [UILabel getAttributedFromRange:[self.zidingyi_right_label.text rangeOfString:@"元/公斤"] WithColor:nil andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.zidingyi_right_label.text];
         
     }
     
@@ -305,7 +342,7 @@
     
     self.amountTF.text = @"";
     self.lengthTF.text = @"";
-    self.guigeLabel.text = @"";
+    self.guigeTF.text = @"";
     
     self.zhengzhi_imgv.image = [UIImage imageNamed:@"select_0"];
     self.zidingyi_imgv.image = [UIImage imageNamed:@"select_0"];

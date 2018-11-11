@@ -1471,18 +1471,22 @@
                                                     <color key="textColor" red="0.12549019607843137" green="0.12941176470588234" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANf-j0-seR">
-                                                    <rect key="frame" x="121" y="25" width="0.0" height="0.0"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择规格" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BJP-gY-lSA">
+                                                    <rect key="frame" x="58" y="5" width="273" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="IPl-ef-WIL"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="PTW-ux-KJg" firstAttribute="leading" secondItem="zFL-Ca-F1R" secondAttribute="leading" constant="15" id="QJk-zE-hs3"/>
-                                                <constraint firstItem="ANf-j0-seR" firstAttribute="centerY" secondItem="zFL-Ca-F1R" secondAttribute="centerY" id="RAd-an-4uD"/>
+                                                <constraint firstItem="BJP-gY-lSA" firstAttribute="centerY" secondItem="zFL-Ca-F1R" secondAttribute="centerY" id="c7y-ht-oKq"/>
                                                 <constraint firstItem="PTW-ux-KJg" firstAttribute="centerY" secondItem="zFL-Ca-F1R" secondAttribute="centerY" id="dFx-jY-nFP"/>
-                                                <constraint firstItem="ANf-j0-seR" firstAttribute="leading" secondItem="PTW-ux-KJg" secondAttribute="trailing" constant="73" id="y07-az-jdW"/>
+                                                <constraint firstItem="BJP-gY-lSA" firstAttribute="leading" secondItem="PTW-ux-KJg" secondAttribute="trailing" constant="10" id="km7-5P-2iy"/>
+                                                <constraint firstAttribute="trailing" secondItem="BJP-gY-lSA" secondAttribute="trailing" constant="10" id="ytA-4O-4KQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1496,7 +1500,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="整只" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ame-jB-9kg">
                                                     <rect key="frame" x="15" y="16" width="33" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.12549019607843137" green="0.12941176470588234" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.1843137255" green="0.45882352939999999" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Yi-Vb-SF9">
@@ -1505,7 +1509,7 @@
                                                     <color key="textColor" red="0.55294117649999996" green="0.58431372550000005" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select_0" translatesAutoresizingMaskIntoConstraints="NO" id="iC1-a0-Kzl">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select_1" translatesAutoresizingMaskIntoConstraints="NO" id="iC1-a0-Kzl">
                                                     <rect key="frame" x="338" y="15" width="22" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="22" id="419-jF-F0c"/>
@@ -1783,7 +1787,8 @@
                         <outlet property="amountTF" destination="nrL-va-yvm" id="hmz-T2-aN8"/>
                         <outlet property="danjianjiage" destination="yZE-40-ODu" id="K49-pE-je2"/>
                         <outlet property="danjianzhongliang" destination="GGR-bR-a2C" id="wYf-7B-PkU"/>
-                        <outlet property="guigeLabel" destination="ANf-j0-seR" id="Thc-1q-fYf"/>
+                        <outlet property="guigeLab" destination="PTW-ux-KJg" id="svg-38-Daj"/>
+                        <outlet property="guigeTF" destination="BJP-gY-lSA" id="4zq-mN-PEL"/>
                         <outlet property="jianshu" destination="xFA-Ms-Td8" id="E1z-Pp-acY"/>
                         <outlet property="lengthBtn" destination="SqZ-pe-0ZN" id="ZxE-lB-Iid"/>
                         <outlet property="lengthTF" destination="Cxc-aR-h63" id="n5y-4f-gjt"/>
@@ -1805,7 +1810,8 @@
         <image name="caidan" width="36" height="36"/>
         <image name="login_close" width="24" height="24"/>
         <image name="main_shop" width="38" height="38"/>
-        <image name="select_0" width="22" height="22"/>
+        <image name="select_0" width="44" height="44"/>
+        <image name="select_1" width="44" height="44"/>
         <image name="添加" width="164" height="164"/>
         <image name="询价" width="312" height="486"/>
     </resources>

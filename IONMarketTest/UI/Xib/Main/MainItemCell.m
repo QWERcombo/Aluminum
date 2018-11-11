@@ -34,12 +34,13 @@
     PriceModel *dataM = (PriceModel *)model;
     
     if ([[dataM.priceChange substringToIndex:1] isEqualToString:@"-"]) {
-        self.rightCountLabel.textColor = [UIColor colorWithHexString:@"#FF0000"];
-    } else {
         self.rightCountLabel.textColor = [UIColor colorWithHexString:@"#019800"];
+        self.leftCountLabel.textColor = [UIColor colorWithHexString:@"#019800"];
+    } else {
+        self.rightCountLabel.textColor = [UIColor colorWithHexString:@"#FF0000"];
+        self.leftCountLabel.textColor = [UIColor colorWithHexString:@"#FF0000"];
     }
     self.rightCountLabel.text = dataM.priceChange;
-    self.leftCountLabel.textColor = [UIColor colorWithHexString:@"#019800"];
     self.leftCountLabel.text = dataM.averagePrice;
     self.nameLabrl.text = dataM.name;
     self.descriLabel.text = dataM.source;

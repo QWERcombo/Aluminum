@@ -21,6 +21,7 @@ typedef NS_ENUM(NSUInteger, UseType) {
     UseType_OrderMoney,     //获取价格
     UseType_AddShopCar,     //加入购物车
     UseType_BuyNow,         //直接购买
+    UseType_DanJia,         //获取单价
 };
 
 

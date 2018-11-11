@@ -144,12 +144,17 @@
             
             self.dataDic = dataDic;
             
-            self.youqieLab.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage_youqie"]];
-            self.suqieLab.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage_kuaisu"]];
+            self.youqieLab.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danjia_youqie"]];
+            self.suqieLab.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danjia_kuaisu"]];
             NSRange range1 = [self.youqieLab.text rangeOfString:@"元/公斤"];
             NSRange range2 = [self.suqieLab.text rangeOfString:@"元/公斤"];
             self.youqieLab.attributedText = [UILabel getAttributedFromRange:range1 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.youqieLab.text];
             self.suqieLab.attributedText = [UILabel getAttributedFromRange:range2 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.suqieLab.text];
+            
+            if (useType == UseType_AddShopCar) {
+                [[UIViewController currentViewController].navigationController popViewControllerAnimated:YES];
+            }
+            
         } buyNowSuccessBlock:^(ShopCar *shopCar) {
             
             if (self.delegate && [self.delegate respondsToSelector:@selector(goToBuyNow:)]) {
