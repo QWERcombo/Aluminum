@@ -346,7 +346,9 @@ DEF_SINGLETON(PublicFuntionTool);
             [parDic setObject:hou forKey:@"hou"];
             
             shopCar.zhonglei = @"整板";
-            
+            shopCar.length = chang;
+            shopCar.width = kuan;
+            shopCar.height = hou;
             break;
         case GetOrderType_LingQie:
             [parDic setObject:@"零切" forKey:@"zhonglei"];

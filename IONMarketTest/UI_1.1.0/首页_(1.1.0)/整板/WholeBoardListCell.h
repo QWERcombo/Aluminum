@@ -10,6 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^SelectedBlock)(void);
+
 @interface WholeBoardListCell : BaseCell
 
 @property (weak, nonatomic) IBOutlet UIView *showView;
@@ -20,6 +22,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *kucunLabel;
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;
 @property (weak, nonatomic) IBOutlet HYStepper *stepper;
+
+@property (nonatomic, copy) SelectedBlock selectBlock;
+
+
+- (void)showSelectedBlock:(SelectedBlock)selectBlock;
 
 @end
 

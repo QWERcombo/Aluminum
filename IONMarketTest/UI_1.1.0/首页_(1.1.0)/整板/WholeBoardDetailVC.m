@@ -8,6 +8,7 @@
 
 #import "WholeBoardDetailVC.h"
 #import "ShopCarViewController.h"
+#import "ConfirmOrderVC.h"
 
 @interface WholeBoardDetailVC ()
 
@@ -28,7 +29,6 @@
 
 @property (nonatomic, copy) NSDictionary *dataDic;
 @property (nonatomic, assign) NSInteger orderMoney;
-@property (nonatomic, assign) NSInteger totalOrderMoney;
 
 
 @end
@@ -61,6 +61,21 @@
         
         if (_stepper.value > 0) {
             
+            [self placeOrder:UseType_OrderMoney];
+            
+        } else {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先添加数量" time:0 aboutType:WHShowViewMode_Text state:NO];
+        }
+        
+    }];
+}
+
+- (IBAction)buyNow:(UIButton *)sender {
+    
+    [[PublicFuntionTool sharedInstance] isHadLogin:^{
+        
+        if (_stepper.value > 0) {
+            
             [self placeOrder:UseType_BuyNow];
             
         } else {
@@ -70,8 +85,10 @@
     }];
 }
 
+
 - (void)configurateInfo {
     
+    _totalLabel.adjustsFontSizeToFitWidth = YES;
     self.stepper.maxValue = [_wholeModel.kucun integerValue]>10?10:[_wholeModel.kucun integerValue];
     self.stepper.value = _wholeModel.value;
     _guigeLabel.text = _wholeModel.guige;
@@ -90,13 +107,6 @@
     MJWeakSelf
     _stepper.valueChanged = ^(double value) {
 //        NSLog(@"%f---%ld", value, _wholeModel.value);
-        if (value>_wholeModel.value) {
-            //加
-            [weakSelf placeOrder:UseType_OrderMoney];
-        } else {
-            //减
-            
-        }
         if (weakSelf.selectValue) {
             weakSelf.selectValue(value);
         }
@@ -115,41 +125,28 @@
 
 - (void)placeOrder:(UseType)useType {
     
-    NSString *amount = @"";
-    if (useType == UseType_AddShopCar) {
-        amount = @"1";
-    } else {
-        amount = [NSNumber numberWithFloat:_stepper.value].stringValue;
-    }
+    NSString *amount = [NSNumber numberWithFloat:_stepper.value].stringValue;
     
-    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:_wholeModel.arg3 kuan:_wholeModel.arg2 hou:_wholeModel.arg1 amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:[[NSNumber alloc] initWithInteger:self.orderMoney].stringValue successBlock:^(NSDictionary *dataDic) {
+    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:_wholeModel.arg1 kuan:_wholeModel.arg2 hou:_wholeModel.arg3 amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:[[NSNumber alloc] initWithInteger:self.orderMoney].stringValue successBlock:^(NSDictionary *dataDic) {
         
         self.dataDic = dataDic;
         self.orderMoney = [self.dataDic[@"orderMoney"] integerValue];
-        self.totalOrderMoney += [self.dataDic[@"orderMoney"] integerValue];
         [self placeOrder:UseType_AddShopCar];
         
     } buyNowSuccessBlock:^(ShopCar *shopCar) {
         
-        
+        ConfirmOrderVC *confirm = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrderVC"];
+        confirm.carArr = @[shopCar];
+        confirm.fromtype = FromVCType_Buy;
+        [self.navigationController pushViewController:confirm animated:YES];
         
     } addCarSuccessBlock:^{
         
         [self refreshBottomViewInfo];
-        self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithInteger:self.totalOrderMoney]];
+        self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithInteger:self.orderMoney]];
     }];
 }
 
-
-//
-- (void)deleteShopCar {
-    
-    
-    
-    
-    
-    
-}
 
 
 

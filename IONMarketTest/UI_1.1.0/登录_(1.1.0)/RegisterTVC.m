@@ -96,7 +96,7 @@
     [dict setValue:self.phoneTF.text forKey:@"phone"];
     [dict setValue:self.codeTF.text forKey:@"number"];
     [dict setValue:self.psdTF.text forKey:@"password1"];
-    [dict setValue:@"123456" forKey:@"password2"];
+//    [dict setValue:se forKey:@"password2"];
     if (self.type == FromVCType_regist) {
         //邀请人手机号非必填
         if ([[UtilsData sharedInstance] isHasValue:self.inviteTF.text]) {

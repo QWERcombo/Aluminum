@@ -68,6 +68,10 @@
     cell.stepper.valueChanged = ^(double value) {
 
         dataModel.value = value;
+        
+        if (value>0 && cell.selectBlock) {
+            cell.selectBlock();
+        }
     };
     
     return cell;
@@ -86,6 +90,10 @@
     
 }
 
+- (void)showSelectedBlock:(SelectedBlock)selectBlock {
+    _selectBlock = selectBlock;
+    
+}
 
 
 @end

@@ -22,13 +22,13 @@
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xrl-HT-ioZ">
-                                        <rect key="frame" x="237" y="0.0" width="138" height="50"/>
+                                        <rect key="frame" x="269" y="0.0" width="106" height="50"/>
                                         <color key="backgroundColor" red="0.1843137255" green="0.45882352939999999" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="138" id="3ZV-Y6-SPy"/>
+                                            <constraint firstAttribute="width" constant="106" id="3ZV-Y6-SPy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <state key="normal" title="去结算"/>
+                                        <state key="normal" title="加入购物车"/>
                                         <connections>
                                             <action selector="excute:" destination="aBX-hK-qOa" eventType="touchUpInside" id="AMc-FY-53A"/>
                                         </connections>
@@ -41,23 +41,53 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计: 0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Taa-sU-Wiw">
-                                        <rect key="frame" x="63" y="16" width="164" height="18"/>
+                                        <rect key="frame" x="58" y="16" width="117" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.34901960780000002" green="0.36862745099999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7yT-NI-y2T">
+                                        <rect key="frame" x="181" y="0.0" width="88" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="LLH-fC-WXb"/>
+                                            <constraint firstAttribute="width" constant="88" id="OhU-Bj-75r"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="立即购买">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buyNow:" destination="aBX-hK-qOa" eventType="touchUpInside" id="XNk-0o-dkD"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5H-G0-PVi">
+                                        <rect key="frame" x="180" y="0.0" width="1" height="50"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="nqY-1P-VTw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="f5H-G0-PVi" firstAttribute="leading" secondItem="Taa-sU-Wiw" secondAttribute="trailing" constant="5" id="3mV-T3-m8g"/>
                                     <constraint firstAttribute="height" constant="50" id="4KI-Mu-6wR"/>
                                     <constraint firstItem="Xrl-HT-ioZ" firstAttribute="top" secondItem="Hkh-6V-m3q" secondAttribute="top" id="8U0-cF-0aJ"/>
                                     <constraint firstItem="Taa-sU-Wiw" firstAttribute="centerY" secondItem="Hkh-6V-m3q" secondAttribute="centerY" id="B9i-3Z-gVL"/>
-                                    <constraint firstItem="Taa-sU-Wiw" firstAttribute="leading" secondItem="l8S-sg-5BE" secondAttribute="trailing" constant="10" id="JGA-bu-Tjd"/>
-                                    <constraint firstItem="Xrl-HT-ioZ" firstAttribute="leading" secondItem="Taa-sU-Wiw" secondAttribute="trailing" constant="10" id="RCD-2p-v3R"/>
+                                    <constraint firstItem="Taa-sU-Wiw" firstAttribute="leading" secondItem="l8S-sg-5BE" secondAttribute="trailing" constant="5" id="JGA-bu-Tjd"/>
                                     <constraint firstAttribute="trailing" secondItem="Xrl-HT-ioZ" secondAttribute="trailing" id="Rzr-fL-f6w"/>
+                                    <constraint firstItem="f5H-G0-PVi" firstAttribute="top" secondItem="Hkh-6V-m3q" secondAttribute="top" id="WkH-hR-cIp"/>
                                     <constraint firstItem="l8S-sg-5BE" firstAttribute="centerY" secondItem="Hkh-6V-m3q" secondAttribute="centerY" id="b7l-X1-4Hb"/>
                                     <constraint firstAttribute="bottom" secondItem="Xrl-HT-ioZ" secondAttribute="bottom" id="hc9-Me-6RQ"/>
+                                    <constraint firstItem="7yT-NI-y2T" firstAttribute="top" secondItem="Hkh-6V-m3q" secondAttribute="top" id="jN4-kz-YfC"/>
+                                    <constraint firstAttribute="bottom" secondItem="7yT-NI-y2T" secondAttribute="bottom" id="qyS-II-shu"/>
+                                    <constraint firstAttribute="bottom" secondItem="f5H-G0-PVi" secondAttribute="bottom" id="rfC-LK-aA1"/>
+                                    <constraint firstItem="7yT-NI-y2T" firstAttribute="leading" secondItem="f5H-G0-PVi" secondAttribute="trailing" id="sWm-ek-clf"/>
                                     <constraint firstItem="l8S-sg-5BE" firstAttribute="leading" secondItem="Hkh-6V-m3q" secondAttribute="leading" constant="15" id="xJX-9d-bgX"/>
+                                    <constraint firstItem="Xrl-HT-ioZ" firstAttribute="leading" secondItem="7yT-NI-y2T" secondAttribute="trailing" id="zHJ-Lj-IkY"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WbW-CN-8AZ">
@@ -438,13 +468,13 @@
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwl-rC-t9T">
-                                        <rect key="frame" x="237" y="0.0" width="138" height="50"/>
+                                        <rect key="frame" x="269" y="0.0" width="106" height="50"/>
                                         <color key="backgroundColor" red="0.1843137255" green="0.45882352939999999" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="138" id="tWF-lv-eSp"/>
+                                            <constraint firstAttribute="width" constant="106" id="tWF-lv-eSp"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <state key="normal" title="去结算"/>
+                                        <state key="normal" title="加入购物车"/>
                                         <connections>
                                             <action selector="excute:" destination="9YL-xa-9Ws" eventType="touchUpInside" id="72s-Qb-Tcv"/>
                                             <action selector="excute:" destination="aBX-hK-qOa" eventType="touchUpInside" id="rVX-It-mC7"/>
@@ -459,24 +489,53 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计: 0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRb-aM-0mj">
-                                        <rect key="frame" x="63" y="16" width="164" height="18"/>
+                                        <rect key="frame" x="58" y="16" width="117" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.34901960780000002" green="0.36862745099999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5al-Pe-mKa">
+                                        <rect key="frame" x="181" y="0.0" width="88" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="88" id="DC1-Zf-N2a"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="立即购买">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buyNow:" destination="9YL-xa-9Ws" eventType="touchUpInside" id="erx-Xq-JfD"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abE-8V-viC">
+                                        <rect key="frame" x="180" y="0.0" width="1" height="50"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="OIR-UT-Hvm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="VRb-aM-0mj" firstAttribute="centerY" secondItem="9EZ-T2-orM" secondAttribute="centerY" id="0f0-gT-q6E"/>
-                                    <constraint firstItem="VRb-aM-0mj" firstAttribute="leading" secondItem="p32-LT-0Q9" secondAttribute="trailing" constant="10" id="7zD-Fc-4vD"/>
+                                    <constraint firstItem="5al-Pe-mKa" firstAttribute="leading" secondItem="abE-8V-viC" secondAttribute="trailing" id="1Ej-Kr-9Yk"/>
+                                    <constraint firstItem="5al-Pe-mKa" firstAttribute="top" secondItem="9EZ-T2-orM" secondAttribute="top" id="4kY-gm-EpQ"/>
+                                    <constraint firstItem="VRb-aM-0mj" firstAttribute="leading" secondItem="p32-LT-0Q9" secondAttribute="trailing" constant="5" id="7zD-Fc-4vD"/>
                                     <constraint firstItem="p32-LT-0Q9" firstAttribute="centerY" secondItem="9EZ-T2-orM" secondAttribute="centerY" id="A8Z-mH-eRC"/>
+                                    <constraint firstAttribute="bottom" secondItem="abE-8V-viC" secondAttribute="bottom" id="BaZ-uy-pVW"/>
                                     <constraint firstAttribute="bottom" secondItem="uwl-rC-t9T" secondAttribute="bottom" id="VJ7-B5-usf"/>
-                                    <constraint firstItem="uwl-rC-t9T" firstAttribute="leading" secondItem="VRb-aM-0mj" secondAttribute="trailing" constant="10" id="Yjn-a6-MLj"/>
+                                    <constraint firstItem="abE-8V-viC" firstAttribute="top" secondItem="9EZ-T2-orM" secondAttribute="top" id="Ytd-Jy-PQa"/>
                                     <constraint firstItem="p32-LT-0Q9" firstAttribute="leading" secondItem="9EZ-T2-orM" secondAttribute="leading" constant="15" id="aOz-IV-2aw"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="gXS-Pj-s8n"/>
                                     <constraint firstAttribute="trailing" secondItem="uwl-rC-t9T" secondAttribute="trailing" id="mhq-yz-Es1"/>
+                                    <constraint firstItem="uwl-rC-t9T" firstAttribute="leading" secondItem="5al-Pe-mKa" secondAttribute="trailing" id="oCU-wc-ElW"/>
+                                    <constraint firstAttribute="bottom" secondItem="5al-Pe-mKa" secondAttribute="bottom" id="p0I-1k-mpg"/>
                                     <constraint firstItem="uwl-rC-t9T" firstAttribute="top" secondItem="9EZ-T2-orM" secondAttribute="top" id="p14-Vw-UHL"/>
                                     <constraint firstAttribute="height" constant="50" id="x11-dV-cTj"/>
+                                    <constraint firstItem="abE-8V-viC" firstAttribute="leading" secondItem="VRb-aM-0mj" secondAttribute="trailing" constant="5" id="yzR-X2-srO"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1810,8 +1869,8 @@
         <image name="caidan" width="36" height="36"/>
         <image name="login_close" width="24" height="24"/>
         <image name="main_shop" width="38" height="38"/>
-        <image name="select_0" width="22" height="22"/>
-        <image name="select_1" width="22" height="22"/>
+        <image name="select_0" width="44" height="44"/>
+        <image name="select_1" width="44" height="44"/>
         <image name="添加" width="164" height="164"/>
         <image name="询价" width="312" height="486"/>
     </resources>

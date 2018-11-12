@@ -12,6 +12,7 @@
 #import "WholeBoardDetailVC.h"
 #import "DisplayView.h"
 #import "ShopCarViewController.h"
+#import "ConfirmOrderVC.h"
 
 @interface WholeBoardVC ()<UITableViewDataSource, UITableViewDelegate, WholeBoardTapViewDelegate,UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *shopCarBtn;
@@ -22,9 +23,14 @@
 @property (strong, nonatomic) UIScrollView *topScrollView;
 @property (nonatomic, strong) NSMutableArray *dataSource;//數據源
 @property (nonatomic, strong) NSMutableArray *titleArray;//型號數據源
+@property (nonatomic, strong) NSMutableArray *selectArray;//有数量修改的数据源
 @property (nonatomic, assign) NSInteger lastSelected;
 @property (nonatomic, assign) NSInteger cur_page;//当前页数
 @property (nonatomic, copy) NSString *xinghao;//选中的型号
+
+@property (nonatomic, copy) NSDictionary *dataDic;
+@property (nonatomic, assign) NSInteger orderMoney;
+
 
 @end
 
@@ -44,8 +50,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"整板";
+    self.totalLabel.adjustsFontSizeToFitWidth = YES;
     self.dataSource = [NSMutableArray array];
     self.titleArray = [NSMutableArray array];
+    self.selectArray = [NSMutableArray array];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.rowHeight = 100;
 
@@ -55,9 +63,13 @@
     }];
     
     [self getCateList];
-    [self refreshBottomViewInfo];
+    
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self refreshBottomViewInfo];
+}
 
 #pragma mark - TableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -72,6 +84,14 @@
     cell_tap.delegate = self;
     [cell.contentView addGestureRecognizer:cell_tap];
     
+    WholeBoardModel *model = [self.dataSource objectAtIndex:indexPath.row];
+    MJWeakSelf
+    [cell showSelectedBlock:^{
+        //有值修改的数据
+        if (![weakSelf.selectArray containsObject:model]) {
+            [weakSelf.selectArray addObject:model];
+        }
+    }];
     return cell;
 }
 
@@ -152,12 +172,34 @@
 
 - (IBAction)excute:(UIButton *)sender {
     
+    MJWeakSelf
     [[PublicFuntionTool sharedInstance] isHadLogin:^{
         
-        ShopCarViewController *shopcar = [[ShopCarViewController alloc] init];
-        [self.navigationController pushViewController:shopcar animated:YES];
+//        if (weakSelf.selectArray.count) {
+//            for (WholeBoardModel *model in weakSelf.selectArray) {
+//                [weakSelf placeOrder:UseType_OrderMoney wholeBoardModel:model];
+//            }
+//        } else {
+//            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先添加数据" time:0 aboutType:WHShowViewMode_Text state:NO];
+//        }
     }];
 }
+
+- (IBAction)buyNow:(UIButton *)sender {
+    
+    MJWeakSelf
+    [[PublicFuntionTool sharedInstance] isHadLogin:^{
+        
+//        if (weakSelf.selectArray.count) {
+//            for (WholeBoardModel *model in weakSelf.selectArray) {
+//                [weakSelf placeOrder:UseType_BuyNow wholeBoardModel:model];
+//            }
+//        } else {
+//            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先添加数据" time:0 aboutType:WHShowViewMode_Text state:NO];
+//        }
+    }];
+}
+
 
 - (IBAction)goToShopCar:(UIButton *)sender {
     
@@ -255,6 +297,32 @@
     }];
     
 }
+
+- (void)placeOrder:(UseType)useType wholeBoardModel:(WholeBoardModel *)dataModel {
+    
+    NSString *amount = [NSNumber numberWithInteger:dataModel.value].stringValue;
+    
+    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:dataModel.arg1 kuan:dataModel.arg2 hou:dataModel.arg3 amount:amount type:@"整只" erjimulu:dataModel.lvxing orderMoney:[[NSNumber alloc] initWithInteger:0].stringValue successBlock:^(NSDictionary *dataDic) {
+        
+        self.dataDic = dataDic;
+        self.orderMoney = [self.dataDic[@"orderMoney"] integerValue];
+        [self placeOrder:UseType_AddShopCar wholeBoardModel:dataModel];
+        
+    } buyNowSuccessBlock:^(ShopCar *shopCar) {
+        
+        ConfirmOrderVC *confirm = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrderVC"];
+        confirm.carArr = @[shopCar];
+        confirm.fromtype = FromVCType_Buy;
+        [self.navigationController pushViewController:confirm animated:YES];
+        
+    } addCarSuccessBlock:^{
+        
+        [self refreshBottomViewInfo];
+        self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithInteger:self.orderMoney]];
+    }];
+}
+
+
 
 
 
