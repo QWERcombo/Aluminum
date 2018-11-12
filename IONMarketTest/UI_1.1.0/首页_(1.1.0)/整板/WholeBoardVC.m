@@ -11,6 +11,7 @@
 #import "WholeBoardTapView.h"
 #import "WholeBoardDetailVC.h"
 #import "DisplayView.h"
+#import "ShopCarViewController.h"
 
 @interface WholeBoardVC ()<UITableViewDataSource, UITableViewDelegate, WholeBoardTapViewDelegate,UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *shopCarBtn;
@@ -54,7 +55,7 @@
     }];
     
     [self getCateList];
-    
+    [self refreshBottomViewInfo];
 }
 
 
@@ -86,14 +87,19 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     WholeBoardDetailVC *detail = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardDetailVC"];
-    detail.wholeModel = [self.dataSource objectAtIndex:indexPath.row];
-    detail.selectCount = 2;
+    WholeBoardModel *model = [self.dataSource objectAtIndex:indexPath.row];
+    detail.wholeModel = model;
+    MJWeakSelf
+    [detail setSelectValue:^(NSInteger selectNumber) {
+        model.value = selectNumber;
+        [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }];
+    
     TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:detail];
     [self presentViewController:nav animated:YES completion:^{
     }];
     
 }
-
 
 
 #pragma mark - Layout
@@ -147,19 +153,18 @@
 - (IBAction)excute:(UIButton *)sender {
     
     [[PublicFuntionTool sharedInstance] isHadLogin:^{
-        NSLog(@"结算");
         
-        
+        ShopCarViewController *shopcar = [[ShopCarViewController alloc] init];
+        [self.navigationController pushViewController:shopcar animated:YES];
     }];
-    
 }
 
 - (IBAction)goToShopCar:(UIButton *)sender {
     
     [[PublicFuntionTool sharedInstance] isHadLogin:^{
-        NSLog(@"购物车");
         
-        
+        ShopCarViewController *shopcar = [[ShopCarViewController alloc] init];
+        [self.navigationController pushViewController:shopcar animated:YES];
     }];
 }
 
@@ -197,8 +202,6 @@
     [parDic setObject:@"10" forKey:@"pageSize"];
     [parDic setObject:xinghao forKey:@"xinghao"];
     [parDic setObject:@"整板" forKey:@"zhonglei"];
-//    [parDic setObject:@"" forKey:@"houdu"];
-//    [parDic setObject:@"" forKey:@"zhijing"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_ZhengbanList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
@@ -251,6 +254,16 @@
         
     }];
     
+}
+
+
+
+- (void)refreshBottomViewInfo {
+    
+    [[ShoppingCarSingle sharedShoppingCarSingle] getServerShopCarAmountAndTotalfee:^(NSString *amout, NSString *totalfee) {
+        
+        self.shopCarBtn.badgeValue = amout;
+    }];
 }
 
 

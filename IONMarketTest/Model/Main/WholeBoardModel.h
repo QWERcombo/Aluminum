@@ -49,9 +49,9 @@
 @property (nonatomic, copy) NSString *zhongliang;
 @property (nonatomic, copy) NSString *zhuangtai;
 @property (nonatomic, copy) NSString *createDate;
-@property (nonatomic, copy) NSDictionary *lvxing;
+@property (nonatomic, copy) MainItemTypeModel *lvxing;
 @property (nonatomic, strong) ProductCate *productCate;
-@property (nonatomic, copy) NSString *value;//记录选择的数量
+@property (nonatomic, assign) NSInteger value;//记录选择的数量
 
 @end
 

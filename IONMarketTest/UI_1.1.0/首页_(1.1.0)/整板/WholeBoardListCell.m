@@ -35,10 +35,10 @@
     cell.priceLabel.text = [NSString stringWithFormat:@"%@元/件", dataModel.danpianzhengbanjiage];
     cell.stepper.maxValue = [dataModel.kucun integerValue]>10?10:[dataModel.kucun integerValue];
     cell.kucunLabel.text = [NSString stringWithFormat:@"(%@件)", dataModel.kucun];
-    if ([dataModel.value integerValue]>0) {
+    if (dataModel.value>0) {
         cell.addBtn.hidden = YES;
         cell.stepper.hidden = NO;
-        cell.stepper.value = [dataModel.value floatValue];
+        cell.stepper.value = dataModel.value;
     } else {
         cell.addBtn.hidden = NO;
         cell.stepper.hidden = YES;
@@ -64,10 +64,10 @@
     cell.danjiaLabel.text = [NSString stringWithFormat:@"￥%@元/公斤", dataModel.danjia];
     NSRange range = [cell.danjiaLabel.text rangeOfString:@"元/公斤"];
     cell.danjiaLabel.attributedText = [UILabel getAttributedFromRange:range WithColor:[UIColor colorWithHexString:@"#E8400F"] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:cell.danjiaLabel.text];
-    
+    //修改选中的数量
     cell.stepper.valueChanged = ^(double value) {
-        NSLog(@"%f", value);
-        dataModel.value = [[NSNumber numberWithDouble:value] stringValue];
+
+        dataModel.value = value;
     };
     
     return cell;

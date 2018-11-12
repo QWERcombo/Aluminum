@@ -124,12 +124,6 @@
     }];
 }
 
-- (void)refreshBottomTotalPrice:(NSString *)total {
-    
-    self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", total];
-    
-}
-
 - (IBAction)display:(UIButton *)sender {
     
     MJWeakSelf
@@ -175,6 +169,16 @@
         
         self.shopcarBtn.badgeValue = amout;
     }];
+}
+
+- (void)refreshBottomTotalPrice:(NSString *)total {
+    
+    self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", total];
+}
+
+- (void)refreshBottomShopCarNumber {
+    [self refreshBottomViewInfo];
+    self.totalLabel.text = @"合计:0.00元";
 }
 
 - (void)goToBuyNow:(ShopCar *)shopCar {

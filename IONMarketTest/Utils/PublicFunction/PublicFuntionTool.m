@@ -301,7 +301,7 @@ DEF_SINGLETON(PublicFuntionTool);
     
 }
 
-- (void)placeOrderCommonInterfaceWithUseType:(UseType)useType moneyWithOrderType:(GetOrderType)orderType chang:(NSString *)chang kuan:(NSString *)kuan hou:(NSString *)hou amount:(NSString *)amount type:(NSString *)type erjimulu:(MainItemTypeModel *)erjimulu orderMoney:(NSString *)orderMoney successBlock:(GetOrderMoneySuccessBlock)successBlock buyNowSuccessBlock:(GetBuyNowSuccessBlock)buyNowSuccessBlock {
+- (void)placeOrderCommonInterfaceWithUseType:(UseType)useType moneyWithOrderType:(GetOrderType)orderType chang:(NSString *)chang kuan:(NSString *)kuan hou:(NSString *)hou amount:(NSString *)amount type:(NSString *)type erjimulu:(MainItemTypeModel *)erjimulu orderMoney:(NSString *)orderMoney successBlock:(GetOrderMoneySuccessBlock)successBlock buyNowSuccessBlock:(GetBuyNowSuccessBlock)buyNowSuccessBlock addCarSuccessBlock:(GetAddCarSuccessBlock)addCarSuccessBlock {
     
     
     NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
@@ -398,12 +398,23 @@ DEF_SINGLETON(PublicFuntionTool);
         return;
     }
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:url andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:url andCookie:nil showAnimation:useType==UseType_DanJia?NO:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
         if (msg && (useType != UseType_DanJia)) {
             [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0 aboutType:WHShowViewMode_Text state:YES];
         }
-        successBlock(resultDic[@"result"]);
+        
+        NSString *danjia = [resultDic objectForKey:@"danjia"];
+        NSDictionary *result = [resultDic objectForKey:@"result"];
+        if (danjia) {
+            successBlock(@{@"danjia":danjia});
+        }
+        if (result) {
+            successBlock(resultDic[@"result"]);
+        }
+        if (useType == UseType_AddShopCar) {
+            addCarSuccessBlock();
+        }
         
     } failure:^(NSString *error, NSInteger code) {
         

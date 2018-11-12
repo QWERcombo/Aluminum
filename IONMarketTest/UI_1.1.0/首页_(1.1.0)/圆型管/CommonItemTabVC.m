@@ -68,7 +68,7 @@
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
-    [self placeOrder:UseType_OrderMoney];
+    [self judgePlaceOrder];
 }
 
 
@@ -142,7 +142,8 @@
                 default:
                     break;
             }
-            [self placeOrder:UseType_OrderMoney];
+
+            [self judgePlaceOrder];
         }];
     }
 }
@@ -167,7 +168,8 @@
     self.zhengzhi_left_label.textColor = [UIColor colorWithHexString:@"#202124"];
     self.zhengzhi_right_label.textColor = [UIColor Grey_WordColor];
  
-    [self placeOrder:UseType_DanJia];
+
+    [self judgePlaceOrder];
     [self.tableView reloadData];
 }
 
@@ -188,7 +190,8 @@
     self.zhengzhi_left_label.textColor = [UIColor mianColor:2];
     self.zhengzhi_right_label.textColor = [UIColor Grey_OrangeColor];
 
-    [self placeOrder:UseType_DanJia];
+
+    [self judgePlaceOrder];
     [self.tableView reloadData];
 }
 
@@ -231,70 +234,90 @@
         [self.lengthBtn setTitle:selectIndexString forState:UIControlStateNormal];
         self.lengthTF.placeholder = @"";
         
-        [self placeOrder:UseType_OrderMoney];
+        [self judgePlaceOrder];
     }];
     
 }
 
 
+- (void)judgePlaceOrder {
+    
+    if (self.amountTF.text.length && self.guigeTF.text.length && (self.lengthTF.text.length || self.lengthBtn.currentTitle.length)) {
+        [self placeOrder:UseType_OrderMoney];
+    } else {
+        [self placeOrder:UseType_DanJia];
+    }
+}
+
+
 - (void)placeOrder:(UseType)useType {
     
-    if ((self.amountTF.text.length && self.guigeTF.text.length && (self.lengthTF.text.length || self.lengthBtn.currentTitle.length)) || (self.guigeTF.text.length)) {
-    
-        GetOrderType type;
-        NSString *chang = self.lengthTF.text.length?self.lengthTF.text:self.lengthBtn.currentTitle;
-        NSString *kuan = @"";
-        NSString *hou = nil;
-        NSArray *infoArr = [self.guigeTF.text componentsSeparatedByString:@"*"];
+    if (useType == UseType_DanJia) {
         
-        switch (self.showType) {
-            case ShowType_YuanBang:
-                type = GetOrderType_YuanBang;
-                kuan = self.guigeTF.text;
-                break;
-            case ShowType_XingCai:
-                type = GetOrderType_XingCai;
-                hou = [infoArr firstObject];
-                kuan = [infoArr lastObject];
-                break;
-            case ShowType_GuanCai:
-                type = GetOrderType_GuanCai;
-                hou = self.lengthTF.text.length?self.lengthTF.text:self.lengthBtn.currentTitle;
-                chang = [infoArr firstObject];
-                kuan = [infoArr lastObject];
-                break;
-            default:
-                break;
+    } else {
+        if (self.amountTF.text.length && self.guigeTF.text.length && (self.lengthTF.text.length || self.lengthBtn.currentTitle.length)) {
+        } else {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"参数配置不齐全" time:0 aboutType:WHShowViewMode_Text state:NO];
+            return;
+        }
+    }
+    
+    GetOrderType type;
+    NSString *chang = self.lengthTF.text.length?self.lengthTF.text:self.lengthBtn.currentTitle;
+    NSString *kuan = @"";
+    NSString *hou = nil;
+    NSArray *infoArr = [self.guigeTF.text componentsSeparatedByString:@"*"];
+    
+    switch (self.showType) {
+        case ShowType_YuanBang:
+            type = GetOrderType_YuanBang;
+            kuan = self.guigeTF.text;
+            break;
+        case ShowType_XingCai:
+            type = GetOrderType_XingCai;
+            hou = [infoArr firstObject];
+            kuan = [infoArr lastObject];
+            break;
+        case ShowType_GuanCai:
+            type = GetOrderType_GuanCai;
+            hou = self.lengthTF.text.length?self.lengthTF.text:self.lengthBtn.currentTitle;
+            chang = [infoArr firstObject];
+            kuan = [infoArr lastObject];
+            break;
+        default:
+            break;
+    }
+    
+    
+    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:type chang:chang kuan:kuan hou:hou amount:self.amountTF.text type:[_zhengZhi isEqualToString:@"1"]?@"整只":@"零切" erjimulu:self.erjimulu_id orderMoney:self.orderMoney successBlock:^(NSDictionary *dataDic) {
+        
+        self.dataDic = dataDic;
+        if (useType == UseType_OrderMoney) _isShowInfoView = YES;
+        
+        if ([_zhengZhi isEqualToString:@"1"]) {
+            self.zhengzhiDanJia = [NSString stringWithFormat:@"%@", [self.dataDic objectForKey:@"danjia"]];
+            [self updateInfoView:@"整只"];
+        } else {
+            self.zidingyiDanJia = [NSString stringWithFormat:@"%@", [self.dataDic objectForKey:@"danjia"]];
+            [self updateInfoView:@"自定义"];
         }
         
         
-        [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:type chang:chang kuan:kuan hou:hou amount:self.amountTF.text type:[_zhengZhi isEqualToString:@"1"]?@"整只":@"零切" erjimulu:self.erjimulu_id orderMoney:self.orderMoney successBlock:^(NSDictionary *dataDic) {
-            
-            self.dataDic = dataDic;
-            if (useType == UseType_OrderMoney) _isShowInfoView = YES;
-            
-            if ([_zhengZhi isEqualToString:@"1"]) {
-                [self updateInfoView:@"整只"];
-                self.zhengzhiDanJia = [NSString stringWithFormat:@"%@", [self.dataDic objectForKey:@"danjia"]];
-            } else {
-                [self updateInfoView:@"自定义"];
-                self.zidingyiDanJia = [NSString stringWithFormat:@"%@", [self.dataDic objectForKey:@"danjia"]];
-            }
-            
-            if (useType == UseType_AddShopCar) {
-                [[UIViewController currentViewController].navigationController popViewControllerAnimated:YES];
-            }
-            [self.tableView reloadData];
-            
-        } buyNowSuccessBlock:^(ShopCar *shopCar) {
-            
-            if (self.delegate && [self.delegate respondsToSelector:@selector(goToBuyNow:)]) {
-                [self.delegate goToBuyNow:shopCar];
-            }
-        }];
+        [self.tableView reloadData];
         
-    }
-    
+    } buyNowSuccessBlock:^(ShopCar *shopCar) {
+        
+        if (self.delegate && [self.delegate respondsToSelector:@selector(goToBuyNow:)]) {
+            [self.delegate goToBuyNow:shopCar];
+        }
+    } addCarSuccessBlock:^() {
+        
+        if (self.delegate && [self.delegate respondsToSelector:@selector(refreshBottomShopCarNumber)]) {
+            [self.delegate refreshBottomShopCarNumber];
+        }
+        
+        [self refreshInfoToReset];
+    }];
     
 }
 
@@ -309,22 +332,26 @@
         
         self.danjianjiage.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage"]];
         self.orderMoney = [self.dataDic objectForKey:@"orderMoney"];
-        self.totalLabel.text = [NSString stringWithFormat:@"%@元", self.orderMoney];
+        if (self.orderMoney) {
+            self.totalLabel.text = [NSString stringWithFormat:@"%@元", self.orderMoney];
+        }
         self.zhengzhi_right_label.text = [NSString stringWithFormat:@"%@元/公斤", self.zhengzhiDanJia];
-        self.zhengzhi_right_label.attributedText = [UILabel getAttributedFromRange:[self.zhengzhi_right_label.text rangeOfString:@"元/公斤"] WithColor:nil andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.zhengzhi_right_label.text];
+        self.zhengzhi_right_label.attributedText = [UILabel getAttributedFromRange:[self.zhengzhi_right_label.text rangeOfString:@"元/公斤"] WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.zhengzhi_right_label.text];
         
     } else {
         
         self.danjianjiage.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage"]];
         self.orderMoney = [self.dataDic objectForKey:@"orderMoney"];
-        self.totalLabel.text = [NSString stringWithFormat:@"%@元", self.orderMoney];
+        if (self.orderMoney) {
+            self.totalLabel.text = [NSString stringWithFormat:@"%@元", self.orderMoney];
+        }
         self.zidingyi_right_label.text = [NSString stringWithFormat:@"%@元/公斤", self.zidingyiDanJia];
-        self.zidingyi_right_label.attributedText = [UILabel getAttributedFromRange:[self.zidingyi_right_label.text rangeOfString:@"元/公斤"] WithColor:nil andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.zidingyi_right_label.text];
+        self.zidingyi_right_label.attributedText = [UILabel getAttributedFromRange:[self.zidingyi_right_label.text rangeOfString:@"元/公斤"] WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.zidingyi_right_label.text];
         
     }
     
     //刷新总价格
-    if (self.delegate && [self.delegate respondsToSelector:@selector(refreshBottomTotalPrice:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(refreshBottomTotalPrice:)] && self.isShowInfoView) {
         [self.delegate refreshBottomTotalPrice:self.totalLabel.text];
     }
 }
@@ -334,6 +361,8 @@
     _zhengZhi = @"0";
     _isShowInfoView = NO;
     self.dataDic = nil;
+    self.zhengzhiDanJia = @"";
+    self.zidingyiDanJia = @"";
     
     self.danjianjiage.text = @"";
     self.danjianzhongliang.text = @"";
@@ -344,10 +373,12 @@
     self.lengthTF.text = @"";
     self.guigeTF.text = @"";
     
-    self.zhengzhi_imgv.image = [UIImage imageNamed:@"select_0"];
+    self.zhengzhi_imgv.image = [UIImage imageNamed:@"select_1"];
     self.zidingyi_imgv.image = [UIImage imageNamed:@"select_0"];
-    self.zhengzhi_left_label.textColor = [UIColor colorWithHexString:@"#202124"];
+    self.zhengzhi_left_label.textColor = [UIColor mianColor:2];
+    self.zhengzhi_right_label.text = @"";
     self.zidingyi_left_label.textColor = [UIColor colorWithHexString:@"#202124"];
+    self.zidingyi_right_label.text = @"";
     
     [self.lengthBtn setTitleColor:[UIColor colorWithHexString:@"#C7C7C7"] forState:UIControlStateNormal];
     [self.lengthBtn setTitle:@"请选择长度" forState:UIControlStateNormal];

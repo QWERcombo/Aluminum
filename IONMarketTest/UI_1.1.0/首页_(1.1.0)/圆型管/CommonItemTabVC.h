@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)refreshBottomTotalPrice:(NSString *)total;
 //直接购买跳转
 - (void)goToBuyNow:(ShopCar *)shopCar;
+//刷新购物车数量
+- (void)refreshBottomShopCarNumber;
+
 
 @end
 

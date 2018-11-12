@@ -39,6 +39,8 @@ typedef void (^GetOrderMoneySuccessBlock)(NSDictionary *dataDic);
 //直接购买拼装参数
 typedef void (^GetBuyNowSuccessBlock)(ShopCar *shopCar);
 
+//加入购物车成功回调
+typedef void (^GetAddCarSuccessBlock)(void);
 
 
 
@@ -89,7 +91,7 @@ AS_SINGLETON(PublicFuntionTool);
 
 
 //下单通用接口(价格 购买 加购物车)
-- (void)placeOrderCommonInterfaceWithUseType:(UseType)useType moneyWithOrderType:(GetOrderType)orderType chang:(NSString *)chang kuan:(NSString *)kuan hou:(NSString *)hou amount:(NSString *)amount type:(NSString *)type erjimulu:(MainItemTypeModel *)erjimulu orderMoney:(NSString *)orderMoney successBlock:(GetOrderMoneySuccessBlock)successBlock buyNowSuccessBlock:(GetBuyNowSuccessBlock)buyNowSuccessBlock;
+- (void)placeOrderCommonInterfaceWithUseType:(UseType)useType moneyWithOrderType:(GetOrderType)orderType chang:(NSString *)chang kuan:(NSString *)kuan hou:(NSString *)hou amount:(NSString *)amount type:(NSString *)type erjimulu:(MainItemTypeModel *)erjimulu orderMoney:(NSString *)orderMoney successBlock:(GetOrderMoneySuccessBlock)successBlock buyNowSuccessBlock:(GetBuyNowSuccessBlock)buyNowSuccessBlock addCarSuccessBlock:(GetAddCarSuccessBlock)addCarSuccessBlock;
 
 
 

@@ -160,6 +160,13 @@
             if (self.delegate && [self.delegate respondsToSelector:@selector(goToBuyNow:)]) {
                 [self.delegate goToBuyNow:shopCar];
             }
+        } addCarSuccessBlock:^() {
+            
+            if (self.delegate && [self.delegate respondsToSelector:@selector(refreshBottomShopCarNumber)]) {
+                [self.delegate refreshBottomShopCarNumber];
+            }
+            
+            [self refreshInfoToReset];
         }];
         
         if ([self.lengthTF.text integerValue]<150 && [self.widthTF.text integerValue]<150) {

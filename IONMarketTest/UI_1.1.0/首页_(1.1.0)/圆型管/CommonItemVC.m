@@ -191,6 +191,11 @@
     self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", total];
 }
 
+- (void)refreshBottomShopCarNumber {
+    [self refreshBottomViewInfo];
+    self.totalLabel.text = @"合计:0.00元";
+}
+
 - (void)goToBuyNow:(ShopCar *)shopCar {
     
     ConfirmOrderVC *confirm = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrderVC"];

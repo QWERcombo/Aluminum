@@ -10,10 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^SelectedValue)(NSInteger selectNumber);
+
 @interface WholeBoardDetailVC : UIViewController
 
 @property (nonatomic, strong) WholeBoardModel *wholeModel;
 @property (nonatomic, assign) NSInteger selectCount;
+@property (nonatomic, copy) SelectedValue selectValue;
 
 @end
 
