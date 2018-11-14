@@ -39,6 +39,7 @@
         _xiaofeishang=[aDecoder decodeObjectForKey:@"xiaofeishang"];
         _zhiwei=[aDecoder decodeObjectForKey:@"zhiwei"];
         _baitiaoprocess=[aDecoder decodeObjectForKey:@"baitiaoprocess"];
+        _zhifumima=[aDecoder decodeObjectForKey:@"zhifumima"];
         
     }
     return self;
@@ -69,6 +70,7 @@
     if(_tuijianrendianhua) [aCoder encodeObject:_tuijianrendianhua forKey:@"tuijianrendianhua"];
     if(_jingyingmoshi) [aCoder encodeObject:_jingyingmoshi forKey:@"jingyingmoshi"];
     if(_baitiaoprocess) [aCoder encodeObject:_baitiaoprocess forKey:@"baitiaoprocess"];
+    if(_zhifumima) [aCoder encodeObject:_zhifumima forKey:@"zhifumima"];
  }
 
 -(void)giveData:(NSDictionary *)dic{

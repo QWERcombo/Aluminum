@@ -111,6 +111,7 @@
             weakSelf.selectValue(value);
         }
         
+        weakSelf.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithFloat:[_wholeModel.danpianzhengbanjiage floatValue]*value]];
     };
 }
 
@@ -120,6 +121,7 @@
         
         self.shopBtn.badgeValue = amout;
     }];
+    self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithFloat:[_wholeModel.danpianzhengbanjiage floatValue]*_wholeModel.value]];
 }
 
 

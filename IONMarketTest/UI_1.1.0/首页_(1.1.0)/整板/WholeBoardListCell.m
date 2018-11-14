@@ -69,10 +69,15 @@
 
         dataModel.value = value;
         
-        if (value>0 && cell.selectBlock) {
+        if (cell.selectBlock) {
             cell.selectBlock();
         }
     };
+    if ([dataModel.kucun integerValue]==0) {
+        [cell.addBtn setEnabled:NO];
+    } else {
+        [cell.addBtn setEnabled:YES];
+    }
     
     return cell;
 }

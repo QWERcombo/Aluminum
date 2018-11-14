@@ -124,7 +124,7 @@
     
 }
 
-- (void)beginPayUserWalletWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee paySuccessBlock:(paySuccessBlock)paySuccessBlock {
+- (void)beginPayUserWalletWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee payPassword:(NSString *)payPassword paySuccessBlock:(paySuccessBlock)paySuccessBlock {
     
     self.payBlock = paySuccessBlock;
     
@@ -132,6 +132,7 @@
     [dict setValue:[UserData currentUser].id forKey:@"userId"];
     [dict setValue:totalfee forKey:@"totalfee"]; //不能带小数点
     [dict setValue:orderId forKey:@"no"];
+    [dict setValue:payPassword forKey:@"payPassword"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_qianbaoPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
@@ -143,7 +144,7 @@
     
 }
 
-- (void)beginPayUserWhiteBarWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee paySuccessBlock:(paySuccessBlock)paySuccessBlock {
+- (void)beginPayUserWhiteBarWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee payPassword:(NSString *)payPassword paySuccessBlock:(paySuccessBlock)paySuccessBlock {
     
     self.payBlock = paySuccessBlock;
     
@@ -151,6 +152,7 @@
     [dict setValue:[UserData currentUser].id forKey:@"userId"];
     [dict setValue:totalfee forKey:@"totalfee"]; //不能带小数点
     [dict setValue:orderId forKey:@"no"];
+    [dict setValue:payPassword forKey:@"payPassword"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_baitiaoPay andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         

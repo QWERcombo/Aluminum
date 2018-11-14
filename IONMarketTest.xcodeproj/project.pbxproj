@@ -213,6 +213,12 @@
 		56EC993C206D121D00F2D2D0 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC993B206D121D00F2D2D0 /* AddressModel.m */; };
 		56F9E9BF2163790500141852 /* ConfirmOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F9E9BD2163790500141852 /* ConfirmOrderCell.m */; };
 		56F9E9C02163790500141852 /* ConfirmOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56F9E9BE2163790500141852 /* ConfirmOrderCell.xib */; };
+		56FD4697219C6B4000AC0BA4 /* CYConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FD468C219C6B4000AC0BA4 /* CYConst.m */; };
+		56FD4698219C6B4000AC0BA4 /* CYPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FD468D219C6B4000AC0BA4 /* CYPasswordView.m */; };
+		56FD4699219C6B4000AC0BA4 /* CYPasswordInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FD468E219C6B4000AC0BA4 /* CYPasswordInputView.m */; };
+		56FD469A219C6B4000AC0BA4 /* NSBundle+CYPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FD4694219C6B4000AC0BA4 /* NSBundle+CYPasswordView.m */; };
+		56FD469B219C6B4000AC0BA4 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FD4695219C6B4000AC0BA4 /* UIView+Extension.m */; };
+		56FD469C219C6B4000AC0BA4 /* CYPasswordView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 56FD4696219C6B4000AC0BA4 /* CYPasswordView.bundle */; };
 		A21B4669207B194000802621 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A21B4668207B194000802621 /* Mine.storyboard */; };
 		A21B466C207B36DD00802621 /* AuthenticationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A21B466B207B36DD00802621 /* AuthenticationTableViewController.m */; };
 		A21B466F207B3E5D00802621 /* AuthDetailTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A21B466E207B3E5D00802621 /* AuthDetailTViewController.m */; };
@@ -708,6 +714,17 @@
 		56F9E9BC2163790500141852 /* ConfirmOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderCell.h; sourceTree = "<group>"; };
 		56F9E9BD2163790500141852 /* ConfirmOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderCell.m; sourceTree = "<group>"; };
 		56F9E9BE2163790500141852 /* ConfirmOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmOrderCell.xib; sourceTree = "<group>"; };
+		56FD468C219C6B4000AC0BA4 /* CYConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYConst.m; sourceTree = "<group>"; };
+		56FD468D219C6B4000AC0BA4 /* CYPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYPasswordView.m; sourceTree = "<group>"; };
+		56FD468E219C6B4000AC0BA4 /* CYPasswordInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYPasswordInputView.m; sourceTree = "<group>"; };
+		56FD468F219C6B4000AC0BA4 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		56FD4690219C6B4000AC0BA4 /* NSBundle+CYPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+CYPasswordView.h"; sourceTree = "<group>"; };
+		56FD4691219C6B4000AC0BA4 /* CYPasswordInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYPasswordInputView.h; sourceTree = "<group>"; };
+		56FD4692219C6B4000AC0BA4 /* CYPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYPasswordView.h; sourceTree = "<group>"; };
+		56FD4693219C6B4000AC0BA4 /* CYConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYConst.h; sourceTree = "<group>"; };
+		56FD4694219C6B4000AC0BA4 /* NSBundle+CYPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+CYPasswordView.m"; sourceTree = "<group>"; };
+		56FD4695219C6B4000AC0BA4 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		56FD4696219C6B4000AC0BA4 /* CYPasswordView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CYPasswordView.bundle; sourceTree = "<group>"; };
 		A21B4668207B194000802621 /* Mine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
 		A21B466A207B36DD00802621 /* AuthenticationTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationTableViewController.h; sourceTree = "<group>"; };
 		A21B466B207B36DD00802621 /* AuthenticationTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationTableViewController.m; sourceTree = "<group>"; };
@@ -1629,6 +1646,7 @@
 		5695BEB72042A4BA0036D54B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				56FD468B219C6B4000AC0BA4 /* CYPasswordView */,
 				56B78C8B2185E5850056D812 /* AAChartKitLib */,
 				564D9D0921415A1A00310AD4 /* ZYNetworkAccessibity */,
 				A296424D20F5AB5E00B6E8B6 /* XLPhotoBrowser+CoderXL */,
@@ -1869,6 +1887,24 @@
 				56F9E9BE2163790500141852 /* ConfirmOrderCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		56FD468B219C6B4000AC0BA4 /* CYPasswordView */ = {
+			isa = PBXGroup;
+			children = (
+				56FD468C219C6B4000AC0BA4 /* CYConst.m */,
+				56FD468D219C6B4000AC0BA4 /* CYPasswordView.m */,
+				56FD468E219C6B4000AC0BA4 /* CYPasswordInputView.m */,
+				56FD468F219C6B4000AC0BA4 /* UIView+Extension.h */,
+				56FD4690219C6B4000AC0BA4 /* NSBundle+CYPasswordView.h */,
+				56FD4691219C6B4000AC0BA4 /* CYPasswordInputView.h */,
+				56FD4692219C6B4000AC0BA4 /* CYPasswordView.h */,
+				56FD4693219C6B4000AC0BA4 /* CYConst.h */,
+				56FD4694219C6B4000AC0BA4 /* NSBundle+CYPasswordView.m */,
+				56FD4695219C6B4000AC0BA4 /* UIView+Extension.m */,
+				56FD4696219C6B4000AC0BA4 /* CYPasswordView.bundle */,
+			);
+			path = CYPasswordView;
 			sourceTree = "<group>";
 		};
 		A2240125207AFEF800A08E6F /* 企业认证 */ = {
@@ -2421,6 +2457,7 @@
 				A229818B2061FF2B007B6112 /* RemainExplainCell.xib in Resources */,
 				562E51D4217F6EAF00C90A9E /* SelectThickView.xib in Resources */,
 				567B14C520C43F1B00B81FD6 /* TradeRecordCell.xib in Resources */,
+				56FD469C219C6B4000AC0BA4 /* CYPasswordView.bundle in Resources */,
 				5695BE7E20429F1B0036D54B /* Assets.xcassets in Resources */,
 				56B78CCB2185E5850056D812 /* AAJSFiles.bundle in Resources */,
 				56F9E9C02163790500141852 /* ConfirmOrderCell.xib in Resources */,
@@ -2545,8 +2582,10 @@
 				56B78CE32185E5850056D812 /* AAPie.m in Sources */,
 				56B78CCD2185E5850056D812 /* AALabels.m in Sources */,
 				A289424420B4239500D8E9E5 /* WalletListModel.m in Sources */,
+				56FD4697219C6B4000AC0BA4 /* CYConst.m in Sources */,
 				56940C3320515E1800DFA6D6 /* NSTimer+WeakTimer.m in Sources */,
 				56198BB0217A2B3E009AB9F3 /* WholeBoardListCell.m in Sources */,
+				56FD469B219C6B4000AC0BA4 /* UIView+Extension.m in Sources */,
 				5695BF312042AC120036D54B /* ABBannerView.m in Sources */,
 				56940C3520515E1800DFA6D6 /* UIButton+Badge.m in Sources */,
 				5650869C205CD0AB00FD8497 /* OrderDetailViewController.m in Sources */,
@@ -2643,6 +2682,7 @@
 				A296427220F5AB5E00B6E8B6 /* FSActionSheet.m in Sources */,
 				56940C2120515DF900DFA6D6 /* UILabel+YXP.m in Sources */,
 				A2AC1C6B20564B8A00A3B2F9 /* UserInfoSettingViewController.m in Sources */,
+				56FD4698219C6B4000AC0BA4 /* CYPasswordView.m in Sources */,
 				5605C04020A090CB00E712A3 /* ShoppingCarSingle.m in Sources */,
 				A2301B2020635292006B9F20 /* LoginViewController.m in Sources */,
 				5695BF2B2042AC0A0036D54B /* SlideSwitchView.m in Sources */,
@@ -2653,6 +2693,7 @@
 				A2AC1C652056481B00A3B2F9 /* MainItemViewController.m in Sources */,
 				560212A620596537009EF75D /* ChangeCodeViewController.m in Sources */,
 				5632BFAF205AB47D0009CD34 /* QuotationViewController.m in Sources */,
+				56FD469A219C6B4000AC0BA4 /* NSBundle+CYPasswordView.m in Sources */,
 				A2D709F32184590A00F2157C /* UITextField+Extension.m in Sources */,
 				56A5746720ADC7BA00A458EB /* UIViewController+CommonFunction.m in Sources */,
 				5695BEAF2042A30A0036D54B /* main.m in Sources */,
@@ -2722,6 +2763,7 @@
 				5695BF202042ABAB0036D54B /* YXPUtil.m in Sources */,
 				56AD6F0A20C83ADB00344E81 /* TicketInfoVC.m in Sources */,
 				A296427520F5AB5E00B6E8B6 /* FSActionSheetItem.m in Sources */,
+				56FD4699219C6B4000AC0BA4 /* CYPasswordInputView.m in Sources */,
 				567B14C420C43F1B00B81FD6 /* TradeRecordCell.m in Sources */,
 				56508699205CBEC500FD8497 /* SpecialMakeViewController.m in Sources */,
 				A22981D5206261C1007B6112 /* TicketCell.m in Sources */,

@@ -46,9 +46,10 @@
     [dict setValue:self.codeTF.text forKey:@"number"];
     [dict setValue:self.psdTF.text forKey:@"payPassword"];
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_setPassword andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_setPayPassword andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         //NSLog(@"%@", resultDic);
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"设置成功" time:0 aboutType:WHShowViewMode_Text state:YES];
+        [[UserData currentUser] giveData:@{@"zhifumima":@"123456"}];
         [self dismissViewControllerAnimated:YES completion:^{
             
         }];

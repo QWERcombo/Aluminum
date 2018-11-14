@@ -191,8 +191,8 @@
 #define Interface_saveSpOrder           @"user/saveSpOrder"
 //修改购物车
 #define Interface_updateGouwuche        @"user/updateGouwuche"
-
-
+//批量加入购物车
+#define Interface_batchSaveToGouwuche   @"user/batchSaveToGouwuche"
 
 
 

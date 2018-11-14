@@ -34,6 +34,8 @@
 @property (nonatomic,strong)NSString        *zhiwei;
 @property (nonatomic,strong)NSString        *nickname;
 @property (nonatomic,strong)NSString        *baitiaoprocess;// 0未申请 1审核中 2通过
+@property (nonatomic,strong)NSString        *zhifumima;//支付密码
+
 
 //赋值
 -(void)giveData:(NSDictionary *)dic;

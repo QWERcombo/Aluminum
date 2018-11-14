@@ -68,7 +68,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    //刷新信息
     [self refreshBottomViewInfo];
+    [self refreshTotalLabel];
 }
 
 #pragma mark - TableView
@@ -88,9 +90,14 @@
     MJWeakSelf
     [cell showSelectedBlock:^{
         //有值修改的数据
-        if (![weakSelf.selectArray containsObject:model]) {
-            [weakSelf.selectArray addObject:model];
+        if (model.value==0) {
+            [weakSelf.selectArray removeObject:model];
+        } else {
+            if (![weakSelf.selectArray containsObject:model]) {
+                [weakSelf.selectArray addObject:model];
+            }
         }
+        [weakSelf refreshTotalLabel];
     }];
     return cell;
 }
@@ -175,13 +182,12 @@
     MJWeakSelf
     [[PublicFuntionTool sharedInstance] isHadLogin:^{
         
-//        if (weakSelf.selectArray.count) {
-//            for (WholeBoardModel *model in weakSelf.selectArray) {
-//                [weakSelf placeOrder:UseType_OrderMoney wholeBoardModel:model];
-//            }
-//        } else {
-//            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先添加数据" time:0 aboutType:WHShowViewMode_Text state:NO];
-//        }
+        if (weakSelf.selectArray.count) {
+            
+            [weakSelf multipleAddToShopCar];
+        } else {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先添加数据" time:0 aboutType:WHShowViewMode_Text state:NO];
+        }
     }];
 }
 
@@ -190,13 +196,28 @@
     MJWeakSelf
     [[PublicFuntionTool sharedInstance] isHadLogin:^{
         
-//        if (weakSelf.selectArray.count) {
-//            for (WholeBoardModel *model in weakSelf.selectArray) {
-//                [weakSelf placeOrder:UseType_BuyNow wholeBoardModel:model];
-//            }
-//        } else {
-//            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先添加数据" time:0 aboutType:WHShowViewMode_Text state:NO];
-//        }
+        NSMutableArray *dataArr = [NSMutableArray array];
+        for (WholeBoardModel *model in self.selectArray) {
+            
+            ShopCar *car = [ShopCar new];
+            car.productNum = [NSNumber numberWithInteger:model.value].stringValue;
+            car.type = @"整只";
+            car.erjimulu = model.lvxing.name;
+            car.money = [NSNumber numberWithFloat:[model.danpianzhengbanjiage floatValue]*model.value].stringValue;
+            car.zhonglei = @"整板";
+            car.length = model.arg1;
+            car.width = model.arg2;
+            car.height = model.arg3;
+            
+            [dataArr addObject:car];
+        }
+        
+        
+        ConfirmOrderVC *confirm = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrderVC"];
+        confirm.carArr = dataArr;
+        confirm.fromtype = FromVCType_Buy;
+        [weakSelf.navigationController pushViewController:confirm animated:YES];
+
     }];
 }
 
@@ -298,33 +319,44 @@
     
 }
 
-- (void)placeOrder:(UseType)useType wholeBoardModel:(WholeBoardModel *)dataModel {
+- (void)multipleAddToShopCar {
     
-    NSString *amount = [NSNumber numberWithInteger:dataModel.value].stringValue;
+    NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+    [parDic setObject:[UserData currentUser].phone forKey:@"phone"];
+    NSMutableArray *dataArray = [NSMutableArray array];
+    for (WholeBoardModel *model in self.selectArray) {
+        
+        if (model.value==0) {
+            //
+            continue;
+        }
+        
+        NSMutableDictionary *subDataDic = [NSMutableDictionary dictionary];
+        [subDataDic setObject:model.arg1 forKey:@"chang"];
+        [subDataDic setObject:model.arg2 forKey:@"kuang"];
+        [subDataDic setObject:model.arg3 forKey:@"hou"];
+        [subDataDic setObject:@"整板" forKey:@"zhonglei"];
+        [subDataDic setObject:@"整只" forKey:@"type"];
+        [subDataDic setObject:model.lvxing.name forKey:@"erjimulu"];
+        [subDataDic setObject:[NSNumber numberWithFloat:[model.danpianzhengbanjiage floatValue]*model.value].stringValue forKey:@"money"];
+        [subDataDic setObject:[NSNumber numberWithInteger:model.value].stringValue forKey:@"amount"];
+        
+        [dataArray addObject:subDataDic];
+    }
     
-    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:dataModel.arg1 kuan:dataModel.arg2 hou:dataModel.arg3 amount:amount type:@"整只" erjimulu:dataModel.lvxing orderMoney:[[NSNumber alloc] initWithInteger:0].stringValue successBlock:^(NSDictionary *dataDic) {
+    [parDic setObject:[NEUSecurityUtil FormatJSONString:dataArray] forKey:@"data"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_batchSaveToGouwuche andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
-        self.dataDic = dataDic;
-        self.orderMoney = [self.dataDic[@"orderMoney"] integerValue];
-        [self placeOrder:UseType_AddShopCar wholeBoardModel:dataModel];
-        
-    } buyNowSuccessBlock:^(ShopCar *shopCar) {
-        
-        ConfirmOrderVC *confirm = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrderVC"];
-        confirm.carArr = @[shopCar];
-        confirm.fromtype = FromVCType_Buy;
-        [self.navigationController pushViewController:confirm animated:YES];
-        
-    } addCarSuccessBlock:^{
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0 aboutType:WHShowViewMode_Text state:YES];
+        self.totalLabel.text = @"合计:0";
         
         [self refreshBottomViewInfo];
-        self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithInteger:self.orderMoney]];
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
     }];
 }
-
-
-
-
 
 - (void)refreshBottomViewInfo {
     
@@ -332,6 +364,17 @@
         
         self.shopCarBtn.badgeValue = amout;
     }];
+}
+
+- (void)refreshTotalLabel {
+    
+    float totalPrice = 0.00;
+    for (WholeBoardModel *model in self.selectArray) {
+        
+        totalPrice += ([model.danpianzhengbanjiage floatValue]*model.value);
+    }
+    
+    self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithFloat:totalPrice]];
 }
 
 

@@ -39,10 +39,10 @@ typedef void(^paySuccessBlock)(void);
 - (void)beginPayUserWeixiWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee userPayMode:(weixinPayMode)mode paySuccessBlock:(paySuccessBlock)paySuccessBlock;
 
 //钱包支付
-- (void)beginPayUserWalletWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee paySuccessBlock:(paySuccessBlock)paySuccessBlock;
+- (void)beginPayUserWalletWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee payPassword:(NSString *)payPassword paySuccessBlock:(paySuccessBlock)paySuccessBlock;
 
 //白条支付
-- (void)beginPayUserWhiteBarWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee paySuccessBlock:(paySuccessBlock)paySuccessBlock;
+- (void)beginPayUserWhiteBarWithOrderId:(NSString *)orderId andTotalfee:(NSString *)totalfee payPassword:(NSString *)payPassword paySuccessBlock:(paySuccessBlock)paySuccessBlock;
 
 //获取购物车数量和总价
 - (void)getServerShopCarAmountAndTotalfee:(getAmountTotalfeeBlock)block;
