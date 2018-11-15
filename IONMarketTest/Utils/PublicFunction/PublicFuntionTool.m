@@ -334,7 +334,11 @@ DEF_SINGLETON(PublicFuntionTool);
     }
     
     if (useType != UseType_DanJia) {
-        [parDic setObject:chang forKey:@"chang"];
+        if (orderType == GetOrderType_GuanCai) {
+            [parDic setObject:hou forKey:@"hou"];
+        } else {
+            [parDic setObject:chang forKey:@"chang"];
+        }
         [parDic setObject:amount forKey:@"amount"];
     }
     [parDic setObject:kuan forKey:@"kuang"];
@@ -377,7 +381,7 @@ DEF_SINGLETON(PublicFuntionTool);
             break;
         case GetOrderType_GuanCai:
             [parDic setObject:@"管材" forKey:@"zhonglei"];
-            [parDic setObject:hou forKey:@"hou"];
+            [parDic setObject:chang forKey:@"chang"];
             
             shopCar.zhonglei = @"管材";
             shopCar.length = chang;

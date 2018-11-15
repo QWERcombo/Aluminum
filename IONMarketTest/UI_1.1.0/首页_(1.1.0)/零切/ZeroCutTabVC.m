@@ -94,7 +94,7 @@
 
 //选择厚度
 - (IBAction)selectThin:(UIButton *)sender {
-    
+    [self.view endEditing:YES];
     [SelectThickView showSelectThickViewWithSelectShowType:SelectShowType_LingQie getInfoType:GetInfoType_GuiGe erjimulu_id:self.erjimulu_id.id parDic:@{} selectBlock:^(NSString * _Nonnull selectIndexString) {
         self.thinTF.text = selectIndexString;
         [self placeOrder:UseType_OrderMoney];
@@ -104,6 +104,7 @@
 
 
 - (void)updateInfoView:(UIButton *)sender {
+    [self.view endEditing:YES];
     self.infoView.hidden = NO;
     
     NSRange range1 = [self.youqieLab.text rangeOfString:@"元/公斤"];
@@ -136,11 +137,10 @@
 }
 
 - (void)placeOrder:(UseType)useType {
-    
+//    [self.view endEditing:YES];
     
     if (self.lengthTF.text.length && self.widthTF.text.length && self.thinTF.text.length && self.countTF.text.length) {
         
-        [self.view endEditing:YES];
         [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_LingQie chang:self.lengthTF.text kuan:self.widthTF.text hou:self.thinTF.text amount:self.countTF.text type:@"全部" erjimulu:self.erjimulu_id orderMoney:self.orderMoney successBlock:^(NSDictionary *dataDic) {
             
             self.dataDic = dataDic;

@@ -127,7 +127,7 @@
                 break;
         }
         
-        
+        [self.view endEditing:YES];
         [SelectThickView showSelectThickViewWithSelectShowType:type getInfoType:GetInfoType_GuiGe erjimulu_id:self.erjimulu_id.id parDic:@{} selectBlock:^(NSString * _Nonnull selectIndexString) {
             switch (self.showType) {
                 case ShowType_YuanBang:
@@ -197,7 +197,7 @@
 
 //整只选择长度
 - (IBAction)selectLength:(UIButton *)sender {
-    
+    [self.view endEditing:YES];
     if (!self.guigeTF.text.length) {
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择规格" time:0 aboutType:WHShowViewMode_Text state:NO];
         return;
@@ -241,7 +241,7 @@
 
 
 - (void)judgePlaceOrder {
-    
+    [self.view endEditing:YES];
     if (self.amountTF.text.length && self.guigeTF.text.length && (self.lengthTF.text.length || self.lengthBtn.currentTitle.length)) {
         [self placeOrder:UseType_OrderMoney];
     } else {
@@ -293,6 +293,9 @@
         
         self.dataDic = dataDic;
         if (useType == UseType_OrderMoney) _isShowInfoView = YES;
+        if (useType == UseType_OrderMoney && !self.dataDic[@"orderMoney"]) {
+            _isShowInfoView = NO;
+        }
         
         if ([_zhengZhi isEqualToString:@"1"]) {
             self.zhengzhiDanJia = [NSString stringWithFormat:@"%@", [self.dataDic objectForKey:@"danjia"]];
@@ -358,7 +361,7 @@
 
 
 - (void)refreshInfoToReset {
-    _zhengZhi = @"0";
+    _zhengZhi = @"1";
     _isShowInfoView = NO;
     self.dataDic = nil;
     self.zhengzhiDanJia = @"";
@@ -380,8 +383,8 @@
     self.zidingyi_left_label.textColor = [UIColor colorWithHexString:@"#202124"];
     self.zidingyi_right_label.text = @"";
     
-    [self.lengthBtn setTitleColor:[UIColor colorWithHexString:@"#C7C7C7"] forState:UIControlStateNormal];
-    [self.lengthBtn setTitle:@"请选择长度" forState:UIControlStateNormal];
+    _lengthTF.placeholder = @"请选择长度";
+    [_lengthBtn setTitle:@"" forState:UIControlStateNormal];
     
     [self.tableView reloadData];
 }
