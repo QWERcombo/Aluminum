@@ -51,7 +51,9 @@
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"设置成功" time:0 aboutType:WHShowViewMode_Text state:YES];
         [[UserData currentUser] giveData:@{@"zhifumima":@"123456"}];
         [self dismissViewControllerAnimated:YES completion:^{
-            
+            if (self.delegate && [self.delegate respondsToSelector:@selector(settingPayPsdFinish)]) {
+                [self.delegate settingPayPsdFinish];
+            }
         }];
     } failure:^(NSString *error, NSInteger code) {
         

@@ -12,7 +12,7 @@
 #import "SettingPayPsdVC.h"
 #import "CYPasswordView.h"
 
-@interface OrderPayVC ()
+@interface OrderPayVC ()<SettingPayPsdVCDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *orderNo;
 @property (weak, nonatomic) IBOutlet UILabel *priceLab;
 @property (weak, nonatomic) IBOutlet UILabel *payWayLab;
@@ -126,11 +126,39 @@
 - (void)showSettingPayVC {
     
     SettingPayPsdVC *payset = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"SettingPayPsdVC"];
+    payset.delegate = self;
     TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:payset];
     [self presentViewController:nav animated:YES completion:^{
     }];
 }
 
+- (void)settingPayPsdFinish {
+    
+    if ([self.payWayLab.text isEqualToString:@"白条支付"]) {
+        MJWeakSelf
+        self.passwordView.finish = ^(NSString *password) {
+            
+            [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:weakSelf.orderModel.no andTotalfee:weakSelf.totalLab.text payPassword:password paySuccessBlock:^{
+                
+                [weakSelf goToPayResuit];
+            }];
+        };
+    } else if ([self.payWayLab.text isEqualToString:@"钱包支付"]) {
+        
+        MJWeakSelf
+        self.passwordView.finish = ^(NSString *password) {
+            
+            [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWalletWithOrderId:weakSelf.orderModel.no andTotalfee:weakSelf.totalLab.text payPassword:password paySuccessBlock:^{
+                
+                [weakSelf goToPayResuit];
+            }];
+            
+        };
+        
+    } else {
+    }
+    
+}
 //- (void)getOrderDetail:(NSString *)orderId {
 //
 //    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];

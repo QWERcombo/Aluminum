@@ -106,12 +106,12 @@
                 case SelectShowType_XingCai:
                     dataArr = [resultDic objectForKey:@"houdus"];
                     [self.leftdataSource addObjectsFromArray:[resultDic objectForKey:@"houdus"]];
-                    [self.rightdataSource addObjectsFromArray:[resultDic objectForKey:@"kuangdus"]];
+//                    [self.rightdataSource addObjectsFromArray:[resultDic objectForKey:@"kuangdus"]];
                     break;
                 case SelectShowType_GuanCai:
                     dataArr = [resultDic objectForKey:@"waijings"];
                     [self.leftdataSource addObjectsFromArray:[resultDic objectForKey:@"waijings"]];
-                    [self.rightdataSource addObjectsFromArray:[resultDic objectForKey:@"neijings"]];
+//                    [self.rightdataSource addObjectsFromArray:[resultDic objectForKey:@"neijings"]];
                     break;
                 default:
                     break;
@@ -133,6 +133,59 @@
     }];
 }
 
+//根据厚度获取宽度
+- (void)getWidthByHou:(NSString *)parString {
+    
+    NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+    [parDic setObject:parString forKey:@"houdu"];
+    [parDic setObject:self.erjimulu_id forKey:@"xinghaoId"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_GetKuanduByHoudu andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        NSArray *dataArr = resultDic[@"result"];
+        if (dataArr.count) {
+            [self.dataSource removeAllObjects];
+            [self.dataSource addObjectsFromArray:dataArr];
+            [self.rightdataSource removeAllObjects];
+            [self.rightdataSource addObjectsFromArray:dataArr];
+            
+            [self rightSelect:self.right_btn];
+        } else {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"暂无数据" time:0 aboutType:WHShowViewMode_Text state:NO];
+        }
+        
+        [self.collectionView reloadData];
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+}
+
+//根据外径获取内径
+- (void)getNeiJingByWaiJing:(NSString *)parString {
+    
+    NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+    [parDic setObject:parString forKey:@"waijing"];
+    [parDic setObject:self.erjimulu_id forKey:@"xinghaoId"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_GetNeijingByWaijing andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        NSArray *dataArr = resultDic[@"result"];
+        if (dataArr.count) {
+            [self.dataSource removeAllObjects];
+            [self.dataSource addObjectsFromArray:dataArr];
+            [self.rightdataSource removeAllObjects];
+            [self.rightdataSource addObjectsFromArray:dataArr];
+            
+            [self rightSelect:self.right_btn];
+        } else {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"暂无数据" time:0 aboutType:WHShowViewMode_Text state:NO];
+        }
+        
+        [self.collectionView reloadData];
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+}
 
 #pragma mark - CollectionView
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -178,6 +231,8 @@
                     if (self.isSelectLeft) {
                         self.left_label.text = [self.dataSource objectAtIndex:indexPath.row];
                         self.leftIndex = [self.dataSource objectAtIndex:indexPath.row];
+                        
+                        [self getWidthByHou:self.left_label.text];
                     } else {
                         self.right_label.text = [self.dataSource objectAtIndex:indexPath.row];
                         self.rightIndex = [self.dataSource objectAtIndex:indexPath.row];
@@ -193,6 +248,8 @@
                     if (self.isSelectLeft) {
                         self.left_label.text = [self.dataSource objectAtIndex:indexPath.row];
                         self.leftIndex = [self.dataSource objectAtIndex:indexPath.row];
+                        
+                        [self getNeiJingByWaiJing:self.left_label.text];
                     } else {
                         self.right_label.text = [self.dataSource objectAtIndex:indexPath.row];
                         self.rightIndex = [self.dataSource objectAtIndex:indexPath.row];

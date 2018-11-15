@@ -10,7 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol SettingPayPsdVCDelegate <NSObject>
+
+- (void)settingPayPsdFinish;
+
+@end
+
 @interface SettingPayPsdVC : UITableViewController
+
+@property (nonatomic, weak) id<SettingPayPsdVCDelegate> delegate;
 
 @end
 
