@@ -38,12 +38,19 @@
     self.totalLab.text = [NSString stringWithFormat:@"￥%@", [NSString getStringAfterTwo:total.stringValue]];
 //    [self getOrderDetail:self.orderModel.no];
     
+    
+    
+}
+
+- (void)resetPasswordView {
+    _passwordView = [[CYPasswordView alloc] init];
     /** 注册取消按钮点击的通知 */
     [CYNotificationCenter addObserver:self selector:@selector(cancel) name:CYPasswordViewCancleButtonClickNotification object:nil];
-    self.passwordView = [[CYPasswordView alloc] init];
-    self.passwordView.title = @"输入支付密码";
+    _passwordView.title = @"输入支付密码";
+    [_passwordView showInView:self.view];
 //    [CYNotificationCenter addObserver:self selector:@selector(forgetPWD) name:CYPasswordViewForgetPWDButtonClickNotification object:nil];
 }
+
 
 #pragma mark - Method
 
@@ -59,18 +66,20 @@
     }
     
     if ([self.payWayLab.text isEqualToString:@"微信支付"]) {
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:self.orderModel.no andTotalfee:self.totalLab.text userPayMode:weixinPayMode_order paySuccessBlock:^{
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:self.orderModel.no andTotalfee:[self.totalLab.text substringToIndex:1] userPayMode:weixinPayMode_order paySuccessBlock:^{
             [self goToPayResuit];
         }];
     }
     if ([self.payWayLab.text isEqualToString:@"钱包支付"]) {
         
         if ([UserData currentUser].zhifumima.length) {
-            
+            [self resetPasswordView];
             MJWeakSelf
             self.passwordView.finish = ^(NSString *password) {
+                [weakSelf.passwordView hide];
+                [weakSelf.passwordView hideKeyboard];
                 
-                [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWalletWithOrderId:weakSelf.orderModel.no andTotalfee:weakSelf.totalLab.text payPassword:password paySuccessBlock:^{
+                [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWalletWithOrderId:weakSelf.orderModel.no andTotalfee:[weakSelf.totalLab.text substringToIndex:1] payPassword:password paySuccessBlock:^{
                     
                     [weakSelf goToPayResuit];
                 }];
@@ -85,12 +94,13 @@
     if ([self.payWayLab.text isEqualToString:@"白条支付"]) {
         
         if ([UserData currentUser].zhifumima.length) {
-            
+            [self resetPasswordView];
             MJWeakSelf
             self.passwordView.finish = ^(NSString *password) {
+                [weakSelf.passwordView hide];
+                [weakSelf.passwordView hideKeyboard];
                 
-                [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:weakSelf.orderModel.no andTotalfee:weakSelf.totalLab.text payPassword:password paySuccessBlock:^{
-                    
+                [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:weakSelf.orderModel.no andTotalfee:[weakSelf.totalLab.text substringToIndex:1] payPassword:password paySuccessBlock:^{
                     [weakSelf goToPayResuit];
                 }];
             };
@@ -100,7 +110,8 @@
         
     }
     if ([self.payWayLab.text isEqualToString:@"支付宝支付"]) {
-        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:self.orderModel.no andTotalfee:self.totalLab.text userPayMode:aliPayMode_order paySuccessBlock:^{
+        [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:self.orderModel.no andTotalfee:[self.totalLab.text substringToIndex:1] userPayMode:aliPayMode_order paySuccessBlock:^{
+            
             [self goToPayResuit];
         }];
     }
@@ -135,21 +146,24 @@
 - (void)settingPayPsdFinish {
     
     if ([self.payWayLab.text isEqualToString:@"白条支付"]) {
+        [self resetPasswordView];
         MJWeakSelf
         self.passwordView.finish = ^(NSString *password) {
+            [weakSelf.passwordView hide];
+            [weakSelf.passwordView hideKeyboard];
             
-            [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:weakSelf.orderModel.no andTotalfee:weakSelf.totalLab.text payPassword:password paySuccessBlock:^{
-                
+            [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWhiteBarWithOrderId:weakSelf.orderModel.no andTotalfee:[weakSelf.totalLab.text substringToIndex:1] payPassword:password paySuccessBlock:^{
                 [weakSelf goToPayResuit];
             }];
         };
     } else if ([self.payWayLab.text isEqualToString:@"钱包支付"]) {
-        
+        [self resetPasswordView];
         MJWeakSelf
         self.passwordView.finish = ^(NSString *password) {
+            [weakSelf.passwordView hide];
+            [weakSelf.passwordView hideKeyboard];
             
-            [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWalletWithOrderId:weakSelf.orderModel.no andTotalfee:weakSelf.totalLab.text payPassword:password paySuccessBlock:^{
-                
+            [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWalletWithOrderId:weakSelf.orderModel.no andTotalfee:[weakSelf.totalLab.text substringToIndex:1] payPassword:password paySuccessBlock:^{
                 [weakSelf goToPayResuit];
             }];
             

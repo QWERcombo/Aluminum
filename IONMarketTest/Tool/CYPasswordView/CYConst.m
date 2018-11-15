@@ -2,7 +2,7 @@
 #import "CYConst.h"
 
 // 常量
-const CGFloat CYPasswordInputViewHeight = (196 + 216);
+const CGFloat CYPasswordInputViewHeight = (196 + 216+64);
 const CGFloat CYPasswordViewTitleHeight = 55;
 const CGFloat CYPasswordViewAnimationDuration = 0.25;
 const CGFloat CYPasswordViewCloseButtonWH = 55;

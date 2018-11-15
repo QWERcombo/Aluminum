@@ -99,11 +99,17 @@
             break;
     }
     
+    for (UIView *subView in cell.itemView.subviews) {
+        if ([subView isKindOfClass:[ConfirmOrderCell class]]) {
+            [subView removeFromSuperview];
+        }
+    }
     
     for (NSInteger i=0; i<dataM.detail.count; i++) {
 
         ConfirmOrderCell *scell = [ConfirmOrderCell initCell:tableView cellName:@"ConfirmOrderCell" dataObject:[dataM.detail objectAtIndex:i]];
         scell.frame = CGRectMake(0, 72*i, SCREEN_WIGHT, 72);
+        
         [cell.itemView addSubview:scell];
     }
     

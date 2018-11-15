@@ -18,7 +18,7 @@
 @property (nonatomic, strong) UITextField *txfResponsder;
 
 /** 蒙板 */
-@property (nonatomic, strong) UIControl *coverView;
+@property (nonatomic, strong) UIView *coverView;
 /** 返回密码 */
 @property (nonatomic, copy) NSString *password;
 
@@ -221,18 +221,21 @@ static NSString *tempStr;
 }
 
 #pragma mark  - 懒加载
-- (UIControl *)coverView
+- (UIView *)coverView
 {
     if (_coverView == nil)
     {
-        _coverView = [[UIControl alloc] init];
+        _coverView = [[UIView alloc] init];
         [_coverView setBackgroundColor:[UIColor blackColor]];
         _coverView.alpha = 0.4;
         _coverView.frame = self.bounds;
+        UITapGestureRecognizer *mmm = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(aaa)];
+        [_coverView addGestureRecognizer:mmm];
     }
     return _coverView;
 }
-
+- (void)aaa {
+}
 - (CYPasswordInputView *)passwordInputView
 {
     if (_passwordInputView == nil)
