@@ -137,6 +137,7 @@
 
 - (void)placeOrder:(UseType)useType {
     
+    
     if (self.lengthTF.text.length && self.widthTF.text.length && self.thinTF.text.length && self.countTF.text.length) {
         
         [self.view endEditing:YES];
@@ -146,13 +147,24 @@
             
             self.youqieLab.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danjia_youqie"]];
             self.suqieLab.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danjia_kuaisu"]];
+
+            
             NSRange range1 = [self.youqieLab.text rangeOfString:@"元/公斤"];
             NSRange range2 = [self.suqieLab.text rangeOfString:@"元/公斤"];
             self.youqieLab.attributedText = [UILabel getAttributedFromRange:range1 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.youqieLab.text];
-            self.suqieLab.attributedText = [UILabel getAttributedFromRange:range2 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.suqieLab.text];
+            self.suqieLab.attributedText = [UILabel getAttributedFromRange:range2 WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.suqieLab.text];
             
-            if (useType == UseType_AddShopCar) {
-                [[UIViewController currentViewController].navigationController popViewControllerAnimated:YES];
+            //默认选中速切
+            [self suqie:self.suqie_btn];
+            [self updateInfoView:self.suqie_btn];
+            
+            if ([self.lengthTF.text integerValue]<150 && [self.widthTF.text integerValue]<150) {
+                //小于150*150  不可选优切
+                self.youqie_btn.hidden = YES;
+                self.youqieLab.text = @"不可优切";
+                
+            } else {
+                self.youqie_btn.hidden = NO;
             }
             
         } buyNowSuccessBlock:^(ShopCar *shopCar) {
@@ -169,13 +181,6 @@
             [self refreshInfoToReset];
         }];
         
-        if ([self.lengthTF.text integerValue]<150 && [self.widthTF.text integerValue]<150) {
-            //小于150*150  不可选优切
-            self.youqie_btn.hidden = YES;
-            self.youqieLab.text = @"不可优切";
-        } else {
-            self.youqie_btn.hidden = NO;
-        }
         
     }
 

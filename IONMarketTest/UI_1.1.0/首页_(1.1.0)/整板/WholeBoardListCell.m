@@ -88,6 +88,7 @@
         
         self.addBtn.hidden = YES;
         self.stepper.hidden = NO;
+        self.stepper.value = 1;
         
     } else {
         
