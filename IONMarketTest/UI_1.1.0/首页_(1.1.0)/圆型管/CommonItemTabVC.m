@@ -299,6 +299,9 @@
         
         if ([_zhengZhi isEqualToString:@"1"]) {
             self.zhengzhiDanJia = [NSString stringWithFormat:@"%@", [self.dataDic objectForKey:@"danjia"]];
+            if ([self.dataDic objectForKey:@"danpianjiage_youqie"]) {
+                self.zidingyiDanJia = [NSString stringWithFormat:@"%@", [self.dataDic objectForKey:@"danpianjiage_youqie"]];
+            }
             [self updateInfoView:@"整只"];
         } else {
             self.zidingyiDanJia = [NSString stringWithFormat:@"%@", [self.dataDic objectForKey:@"danjia"]];
@@ -340,6 +343,9 @@
         }
         self.zhengzhi_right_label.text = [NSString stringWithFormat:@"%@元/公斤", self.zhengzhiDanJia];
         self.zhengzhi_right_label.attributedText = [UILabel getAttributedFromRange:[self.zhengzhi_right_label.text rangeOfString:@"元/公斤"] WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.zhengzhi_right_label.text];
+        self.zidingyi_right_label.text = [NSString stringWithFormat:@"%@元/公斤", self.zidingyiDanJia];
+        self.zidingyi_right_label.textColor = [UIColor Grey_WordColor];
+        self.zidingyi_right_label.attributedText = [UILabel getAttributedFromRange:[self.zidingyi_right_label.text rangeOfString:@"元/公斤"] WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.zidingyi_right_label.text];
         
     } else {
         
