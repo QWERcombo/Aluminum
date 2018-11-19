@@ -16,9 +16,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+typedef NS_ENUM(NSUInteger, ChangeType) {
+    ChangeType_None,
+    ChangeType_PayPsd,
+    ChangeType_LogPsd,
+};
+
 @interface SettingPayPsdVC : UITableViewController
 
 @property (nonatomic, weak) id<SettingPayPsdVCDelegate> delegate;
+@property (nonatomic, assign) ChangeType changeType;
 
 @end
 

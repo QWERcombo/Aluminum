@@ -41,6 +41,7 @@
 		5632BFB2205AB5920009CD34 /* QuotationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFB1205AB5920009CD34 /* QuotationDetailViewController.m */; };
 		5632BFB9205AB6180009CD34 /* QuotationDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5632BFB7205AB6180009CD34 /* QuotationDetailCell.m */; };
 		5632BFBA205AB6180009CD34 /* QuotationDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5632BFB8205AB6180009CD34 /* QuotationDetailCell.xib */; };
+		56357040219FE5E800C14728 /* SettingTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5635703F219FE5E800C14728 /* SettingTVC.m */; };
 		563C8D2E20C97F9D003C4822 /* WholeChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563C8D2D20C97F9D003C4822 /* WholeChooseView.m */; };
 		563C8D3020C97FB2003C4822 /* WholeChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563C8D2F20C97FB2003C4822 /* WholeChooseView.xib */; };
 		564D9D0C21415A1B00310AD4 /* ZYNetworkAccessibity.m in Sources */ = {isa = PBXBuildFile; fileRef = 564D9D0A21415A1A00310AD4 /* ZYNetworkAccessibity.m */; };
@@ -395,6 +396,8 @@
 		5632BFB6205AB6180009CD34 /* QuotationDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuotationDetailCell.h; sourceTree = "<group>"; };
 		5632BFB7205AB6180009CD34 /* QuotationDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuotationDetailCell.m; sourceTree = "<group>"; };
 		5632BFB8205AB6180009CD34 /* QuotationDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuotationDetailCell.xib; sourceTree = "<group>"; };
+		5635703E219FE5E800C14728 /* SettingTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingTVC.h; sourceTree = "<group>"; };
+		5635703F219FE5E800C14728 /* SettingTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTVC.m; sourceTree = "<group>"; };
 		563C8D2C20C97F9D003C4822 /* WholeChooseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WholeChooseView.h; sourceTree = "<group>"; };
 		563C8D2D20C97F9D003C4822 /* WholeChooseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WholeChooseView.m; sourceTree = "<group>"; };
 		563C8D2F20C97FB2003C4822 /* WholeChooseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WholeChooseView.xib; sourceTree = "<group>"; };
@@ -1123,6 +1126,8 @@
 			children = (
 				560212A1205961D9009EF75D /* SettingTableViewController.h */,
 				560212A2205961D9009EF75D /* SettingTableViewController.m */,
+				5635703E219FE5E800C14728 /* SettingTVC.h */,
+				5635703F219FE5E800C14728 /* SettingTVC.m */,
 				560212A420596537009EF75D /* ChangeCodeViewController.h */,
 				560212A520596537009EF75D /* ChangeCodeViewController.m */,
 				5686219320A9C59A0030C761 /* TextTableViewController.h */,
@@ -2591,6 +2596,7 @@
 				5650869C205CD0AB00FD8497 /* OrderDetailViewController.m in Sources */,
 				56940C2B20515DF900DFA6D6 /* UIColor+YXP.m in Sources */,
 				56B5215420AB194000F636BD /* OrderNewDetailVC.m in Sources */,
+				56357040219FE5E800C14728 /* SettingTVC.m in Sources */,
 				567D6A3C207B9BA100994BEF /* AuthenticationModel.m in Sources */,
 				A293059C217EDCD500D72F4A /* HYStepper.m in Sources */,
 				5671DBC32060005A005F1760 /* MainItemView__Pole.m in Sources */,

@@ -71,6 +71,8 @@ AS_SINGLETON(PublicFuntionTool);
 
 //获取app名称
 - (NSString *)getAppName;
+//获取app版本号
+- (NSString *)getAppVersion;
 
 //根据版本号判断是否审核
 - (void)checkAppId;

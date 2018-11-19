@@ -142,7 +142,12 @@
                 default:
                     break;
             }
-
+            
+            
+            [self.lengthBtn setTitle:@"" forState:UIControlStateNormal];
+            _lengthTF.placeholder = @"请选择长度";
+            _amountTF.text = @"";
+            _isShowInfoView = NO;
             [self judgePlaceOrder];
         }];
     }
@@ -252,10 +257,13 @@
 
 - (void)placeOrder:(UseType)useType {
     
+    NSString *showType = [_zhengZhi isEqualToString:@"1"]?@"整只":@"零切";
+    
     if (useType == UseType_DanJia) {
-        
+//        showType = @"全部";
     } else {
         if (self.amountTF.text.length && self.guigeTF.text.length && (self.lengthTF.text.length || self.lengthBtn.currentTitle.length)) {
+            
         } else {
             [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"参数配置不齐全" time:0 aboutType:WHShowViewMode_Text state:NO];
             return;
@@ -289,7 +297,7 @@
     }
     
     
-    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:type chang:chang kuan:kuan hou:hou amount:self.amountTF.text type:[_zhengZhi isEqualToString:@"1"]?@"整只":@"零切" erjimulu:self.erjimulu_id orderMoney:self.orderMoney successBlock:^(NSDictionary *dataDic) {
+    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:type chang:chang kuan:kuan hou:hou amount:self.amountTF.text type:showType erjimulu:self.erjimulu_id orderMoney:self.orderMoney successBlock:^(NSDictionary *dataDic) {
         
         self.dataDic = dataDic;
         if (useType == UseType_OrderMoney) _isShowInfoView = YES;

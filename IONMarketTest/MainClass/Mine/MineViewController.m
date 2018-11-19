@@ -18,6 +18,7 @@
 #import "SettingTableViewController.h"
 #import "AuthenticationTableViewController.h"
 #import "WhiteBarVC.h"
+#import "SettingTVC.h"
 
 
 @interface MineViewController ()
@@ -80,6 +81,9 @@
     } else if (indexPath.row == 4) {//开票
         TicketViewController *share = [[UIStoryboard storyboardWithName:@"Common" bundle:nil] instantiateViewControllerWithIdentifier:@"TicketViewController"];
         [self.navigationController pushViewController:share animated:YES];
+    } else if (indexPath.row == 9) {
+        SettingTVC *setting = [[UIStoryboard storyboardWithName:@"Common" bundle:nil] instantiateViewControllerWithIdentifier:@"SettingTVC"];
+        [self.navigationController pushViewController:setting animated:YES];
     }
     else {
         UIViewController *nextController = (UIViewController *)[[NSClassFromString(NSStringFromClass([classArray objectAtIndex:indexPath.row])) alloc] init];

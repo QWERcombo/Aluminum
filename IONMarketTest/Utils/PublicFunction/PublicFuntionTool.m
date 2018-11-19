@@ -161,6 +161,11 @@ DEF_SINGLETON(PublicFuntionTool);
     NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
     return app_Name;
 }
+- (NSString *)getAppVersion {
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    return app_Version;
+}
 
 - (void)checkAppId {
     //0自己 以后新的依次+1

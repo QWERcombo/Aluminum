@@ -24,7 +24,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"设置支付密码";
+    switch (_changeType) {
+        case ChangeType_None:
+            self.title = @"设置支付密码";
+            [self.doneBtn setTitle:@"设置" forState:UIControlStateNormal];
+            break;
+        case ChangeType_PayPsd:
+            self.title = @"修改支付密码";
+            [self.doneBtn setTitle:@"提交" forState:UIControlStateNormal];
+            break;
+        case ChangeType_LogPsd:
+            self.title = @"修改登录密码";
+            [self.doneBtn setTitle:@"提交" forState:UIControlStateNormal];
+            break;
+        default:
+            break;
+    }
+    
     self.doneBtn.layer.cornerRadius = 4;
     self.doneBtn.layer.masksToBounds = YES;
     [self.doneBtn setEnabled:NO];
@@ -41,25 +57,45 @@
 
 - (IBAction)done:(UIButton *)sender {
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:self.phoneTF.text forKey:@"phone"];
-    [dict setValue:self.codeTF.text forKey:@"number"];
-    [dict setValue:self.psdTF.text forKey:@"payPassword"];
+    switch (_changeType) {
+        case ChangeType_None:
+            [self uploadDataWithType:ChangeType_None];
+            break;
+        case ChangeType_PayPsd:
+            [self uploadDataWithType:ChangeType_PayPsd];
+            break;
+        case ChangeType_LogPsd:
+            [self uploadDataWithType:ChangeType_LogPsd];
+            break;
+        default:
+            break;
+    }
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_setPayPassword andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-        //NSLog(@"%@", resultDic);
-        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"设置成功" time:0 aboutType:WHShowViewMode_Text state:YES];
-        [[UserData currentUser] giveData:@{@"zhifumima":@"123456"}];
-        [self dismissViewControllerAnimated:YES completion:^{
-            if (self.delegate && [self.delegate respondsToSelector:@selector(settingPayPsdFinish)]) {
-                [self.delegate settingPayPsdFinish];
-            }
-        }];
-    } failure:^(NSString *error, NSInteger code) {
+    
+}
+
+- (void)uploadDataWithType:(NSInteger)type {
+    
+    if (type==ChangeType_None) {
         
-    }];
-    
-    
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:self.phoneTF.text forKey:@"phone"];
+        [dict setValue:self.codeTF.text forKey:@"number"];
+        [dict setValue:self.psdTF.text forKey:@"payPassword"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_setPayPassword andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            //NSLog(@"%@", resultDic);
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"设置成功" time:0 aboutType:WHShowViewMode_Text state:YES];
+            [[UserData currentUser] giveData:@{@"zhifumima":@"123456"}];
+            [self dismissViewControllerAnimated:YES completion:^{
+                if (self.delegate && [self.delegate respondsToSelector:@selector(settingPayPsdFinish)]) {
+                    [self.delegate settingPayPsdFinish];
+                }
+            }];
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+    }
 }
 
 - (IBAction)code:(UIButton *)sender {
