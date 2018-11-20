@@ -46,7 +46,7 @@
         return;
     }
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
-    [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+    [dataDic setValue:[UserData currentUser].user_id forKey:@"userId"];
     switch (self.updateMode) {
         case UpdateMode_name:
             [dataDic setValue:self.inputTF.text forKey:@"name"];

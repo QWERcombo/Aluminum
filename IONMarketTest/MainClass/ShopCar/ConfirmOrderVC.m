@@ -212,7 +212,7 @@
 - (void)getDefaultAddressModel {
     self.addressButton.hidden = NO;
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:[UserData currentUser].id forKey:@"userId"];
+    [dict setValue:[UserData currentUser].user_id forKey:@"userId"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetAddressByPhone andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"%@", resultDic);
         NSArray *dataSource = resultDic[@"result"];

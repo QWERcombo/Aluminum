@@ -10,31 +10,41 @@
 
 @interface UserData : BaseModel
 
-@property (nonatomic,strong)NSString        *id;//
-@property (nonatomic,strong)NSString        *lastLoginIp;//
-@property (nonatomic,strong)NSString        *company;//
-@property (nonatomic,strong)NSString        *balance;//
-@property (nonatomic,strong)NSString        *commission;//
-@property (nonatomic,strong)NSString        *addressId;//
-@property (nonatomic,strong)NSString        *baitiao;//
-@property (nonatomic,strong)NSString        *deleted;//
-@property (nonatomic,strong)NSString        *headImgUrl;//
-@property (nonatomic,strong)NSString        *phone;
+@property (nonatomic, copy) NSString *activeTime;
+@property (nonatomic, copy) NSString *addressId;
+@property (nonatomic, copy) NSString *baitiao;
+@property (nonatomic, copy) NSString *balance;
+@property (nonatomic, copy) NSString *commission;
+@property (nonatomic, copy) NSString *company;
+@property (nonatomic, copy) NSString *dangyuebaitiaozhangdan;
+@property (nonatomic, copy) NSString *dangyuehuankuan;
+@property (nonatomic, copy) NSString *deleted;
+@property (nonatomic, copy) NSString *headImgUrl;
+@property (nonatomic, copy) NSString *user_id;
+@property (nonatomic, copy) NSString *jingyingmoshi;
+@property (nonatomic, copy) NSString *lastLoginIp;
+@property (nonatomic, copy) NSString *loginCount;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *nickname;
+@property (nonatomic, copy) NSString *no;
+@property (nonatomic, copy) NSString *openid;
+@property (nonatomic, copy) NSString *password;
+@property (nonatomic, copy) NSString *phone;
+@property (nonatomic, copy) NSString *promoteMoney;
+@property (nonatomic, copy) NSString *promotePhone;
+@property (nonatomic, copy) NSString *registerIp;
+@property (nonatomic, copy) NSString *remark;
+@property (nonatomic, copy) NSString *renzheng;
+@property (nonatomic, copy) NSString *renzhengTime;
+@property (nonatomic, copy) NSString *status;
+@property (nonatomic, copy) NSString *statusDate;
+@property (nonatomic, copy) NSString *superior;
+@property (nonatomic, copy) NSString *tuijianren;
+@property (nonatomic, copy) NSString *tuijianrendianhua;
+@property (nonatomic, copy) NSString *xiaofeishang;
+@property (nonatomic, copy) NSString *zhifumima;
+@property (nonatomic, copy) NSString *zhiwei;
 
-@property (nonatomic,strong)NSString        *jingyingmoshi;
-@property (nonatomic,strong)NSString        *name;
-@property (nonatomic,strong)NSString        *no;
-@property (nonatomic,strong)NSString        *openid;
-@property (nonatomic,strong)NSString        *remark;
-@property (nonatomic,strong)NSString        *renzheng;
-@property (nonatomic,strong)NSString        *isCheck;
-@property (nonatomic,strong)NSString        *tuijianren;
-@property (nonatomic,strong)NSString        *tuijianrendianhua;
-@property (nonatomic,strong)NSString        *xiaofeishang;
-@property (nonatomic,strong)NSString        *zhiwei;
-@property (nonatomic,strong)NSString        *nickname;
-@property (nonatomic,strong)NSString        *baitiaoprocess;// 0未申请 1审核中 2通过
-@property (nonatomic,strong)NSString        *zhifumima;//支付密码
 
 
 //赋值

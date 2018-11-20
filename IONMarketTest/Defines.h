@@ -53,7 +53,8 @@
 #define REQ_KEY_VERSION    @"ver"
 #define REQ_KEY_PLATFORM   @"platform"
 #define REQ_KEY_USERID     @"uid"
-#define APPSTORE_URL    @"itms-apps://itunes.apple.com/cn/app/e-wan-bei/id1266199457?mt=8"
+//#define APPSTORE_URL    @"itms-apps://itunes.apple.com/cn/app/e-wan-bei/id1266199457?mt=8"
+#define APPSTORE_URL   @"https://itunes.apple.com/cn/app/%E4%B9%90%E5%88%87/id1421880553?mt=8"
 
 // 单例
 #undef	AS_SINGLETON

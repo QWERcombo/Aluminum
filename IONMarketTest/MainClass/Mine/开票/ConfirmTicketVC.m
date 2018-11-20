@@ -72,7 +72,7 @@
     
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
     
-    [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+    [dataDic setValue:[UserData currentUser].user_id forKey:@"userId"];
     [dataDic setValue:self.fapiaoId forKey:@"fapiaoId"];
     [dataDic setValue:self.totalFee forKey:@"money"];
     [dataDic setValue:self.wuliufeiFee forKey:@"wuliufei"];

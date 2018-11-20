@@ -47,7 +47,7 @@
     
     if (mode == weixinPayMode_wallet) {
         
-        [dict setValue:[UserData currentUser].id forKey:@"userId"];
+        [dict setValue:[UserData currentUser].user_id forKey:@"userId"];
         [dict setValue:totalfeeFormate forKey:@"totalfee"]; //不能带小数点
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_wxChongzhi andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
@@ -61,7 +61,7 @@
     
     if (mode == weixinPayMode_baitiao) {
         
-        [dict setValue:[UserData currentUser].id forKey:@"userId"];
+        [dict setValue:[UserData currentUser].user_id forKey:@"userId"];
         [dict setValue:totalfeeFormate forKey:@"totalfee"]; //不能带小数点
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WxHuanKuan andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
@@ -129,7 +129,7 @@
     self.payBlock = paySuccessBlock;
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:[UserData currentUser].id forKey:@"userId"];
+    [dict setValue:[UserData currentUser].user_id forKey:@"userId"];
     [dict setValue:totalfee forKey:@"totalfee"]; //不能带小数点
     [dict setValue:orderId forKey:@"no"];
     [dict setValue:payPassword forKey:@"payPassword"];
@@ -149,7 +149,7 @@
     self.payBlock = paySuccessBlock;
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:[UserData currentUser].id forKey:@"userId"];
+    [dict setValue:[UserData currentUser].user_id forKey:@"userId"];
     [dict setValue:totalfee forKey:@"totalfee"]; //不能带小数点
     [dict setValue:orderId forKey:@"no"];
     [dict setValue:payPassword forKey:@"payPassword"];
@@ -168,7 +168,7 @@
 - (void)getServerShopCarAmountAndTotalfee:(getAmountTotalfeeBlock)block {
     
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
-    [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+    [dataDic setValue:[UserData currentUser].user_id forKey:@"userId"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_countGouwucheByUser andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
         
@@ -221,7 +221,7 @@
     
     if (mode == aliPayMode_wallet) {
         
-        [dict setValue:[UserData currentUser].id forKey:@"userId"];
+        [dict setValue:[UserData currentUser].user_id forKey:@"userId"];
         [dict setValue:totalfee forKey:@"totalfee"];
 //        [dict setValue:@"0.01" forKey:@"totalfee"];
         
@@ -238,7 +238,7 @@
     
     if (mode == aliPayMode_baitiao) {
         
-        [dict setValue:[UserData currentUser].id forKey:@"userId"];
+        [dict setValue:[UserData currentUser].user_id forKey:@"userId"];
 //        [dict setValue:@"0.01" forKey:@"totalfee"];
         [dict setValue:totalfee forKey:@"totalfee"];
         

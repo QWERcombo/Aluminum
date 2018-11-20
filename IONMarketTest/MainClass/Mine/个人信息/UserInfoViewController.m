@@ -9,6 +9,7 @@
 #import "UserInfoViewController.h"
 #import "UserInfoSettingViewController.h"
 #import "PhotoAlertController.h"
+#import <UMShare/UMShare.h>
 
 @interface UserInfoViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *userHeader;
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userPhone;
 @property (weak, nonatomic) IBOutlet UILabel *userCompany;
 @property (weak, nonatomic) IBOutlet UILabel *userRole;
+@property (weak, nonatomic) IBOutlet UILabel *weixinBind;
 
 @property (nonatomic, strong) NSString *path;
 @property (nonatomic, strong) UIImage *image;
@@ -36,46 +38,54 @@
     self.userRole.text = [UserData currentUser].zhiwei;
     self.userCompany.text = [UserData currentUser].company;
     self.userPhone.text = [UserData currentUser].phone;
+    self.weixinBind.text = @"未绑定";
+    self.weixinBind.textColor = [UIColor colorWithHexString:@"#CED4DA"];
     
 }
 
 #pragma mark --- Delegate&DataSource
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UserInfoSettingViewController *setting = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"UserInfoSettingViewController"];
+    if (indexPath.section==0) {
+        if (indexPath.row==1) {
+            
+            PhotoAlertController *photoAlert = [PhotoAlertController initPhotoAlertControllerOnRebackImageBlock:^(UIImage *pickerImage) {
+                
+                self.image = pickerImage;
+                [self uploadImage:pickerImage];
+                
+            } andRootViewController:self];
+            
+            [self presentViewController:photoAlert animated:YES completion:nil];
+            
+        }
+        if (indexPath.row==2) {
+            setting.updateMode = UpdateMode_name;
+            [setting setPassValueBlock:^(NSString *value) {
+                self.userName.text = value;
+            }];
+            [self.navigationController pushViewController:setting animated:YES];
+        }
+        if (indexPath.row==3) {
+            [setting setPassValueBlock:^(NSString *value) {
+                self.userCompany.text = value;
+            }];
+            setting.updateMode = UpdateMode_company;
+            [self.navigationController pushViewController:setting animated:YES];
+        }
+        if (indexPath.row==4) {
+            [setting setPassValueBlock:^(NSString *value) {
+                self.userRole.text = value;
+            }];
+            setting.updateMode = UpdateMode_role;
+            [self.navigationController pushViewController:setting animated:YES];
+        }
+        if (indexPath.row == 7 && [_weixinBind.text isEqualToString:@"未绑定"]) {
+            //微信绑定
+            [self bindWeiXin];
+        }
+    }
     
-    if (indexPath.row==1) {
-        
-        PhotoAlertController *photoAlert = [PhotoAlertController initPhotoAlertControllerOnRebackImageBlock:^(UIImage *pickerImage) {
-            
-            self.image = pickerImage;
-            [self uploadImage:pickerImage];
-            
-        } andRootViewController:self];
-        
-        [self presentViewController:photoAlert animated:YES completion:nil];
-        
-    }
-    if (indexPath.row==2) {
-        setting.updateMode = UpdateMode_name;
-        [setting setPassValueBlock:^(NSString *value) {
-            self.userName.text = value;
-        }];
-        [self.navigationController pushViewController:setting animated:YES];
-    }
-    if (indexPath.row==5) {
-        [setting setPassValueBlock:^(NSString *value) {
-            self.userCompany.text = value;
-        }];
-        setting.updateMode = UpdateMode_company;
-        [self.navigationController pushViewController:setting animated:YES];
-    }
-    if (indexPath.row==6) {
-        [setting setPassValueBlock:^(NSString *value) {
-            self.userRole.text = value;
-        }];
-        setting.updateMode = UpdateMode_role;
-        [self.navigationController pushViewController:setting animated:YES];
-    }
     
 }
 
@@ -96,7 +106,7 @@
 - (void)change:(NSString *)imageUrl {
     
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
-    [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+    [dataDic setValue:[UserData currentUser].user_id forKey:@"userId"];
     [dataDic setValue:imageUrl forKey:@"headImgUrl"];
     [dataDic setValue:[UserData currentUser].zhiwei forKey:@"zhiwei"];
     [dataDic setValue:[UserData currentUser].company forKey:@"company"];
@@ -110,6 +120,33 @@
         
     }];
     
+}
+
+- (void)bindWeiXin {
+    
+    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
+        if (error) {
+            
+            
+        } else {
+            UMSocialUserInfoResponse *resp = result;
+            // 授权信息
+            NSLog(@"Wechat uid: %@", resp.uid);
+            NSLog(@"Wechat openid: %@", resp.openid);
+            NSLog(@"Wechat unionid: %@", resp.unionId);
+            NSLog(@"Wechat accessToken: %@", resp.accessToken);
+            NSLog(@"Wechat refreshToken: %@", resp.refreshToken);
+            NSLog(@"Wechat expiration: %@", resp.expiration);
+            // 用户信息
+            NSLog(@"Wechat name: %@", resp.name);
+            NSLog(@"Wechat iconurl: %@", resp.iconurl);
+            NSLog(@"Wechat gender: %@", resp.unionGender);
+            // 第三方平台SDK源数据
+            NSLog(@"Wechat originalResponse: %@", resp.originalResponse);
+            self.weixinBind.text = @"已绑定";
+            self.weixinBind.textColor = [UIColor mianColor:2];
+        }
+    }];
 }
 
 

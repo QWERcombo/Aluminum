@@ -289,7 +289,7 @@ DEF_SINGLETON(PublicFuntionTool);
 
 - (void)isHadLogin:(HadLoginBlock)loginBlock {
     
-    if ([UserData currentUser].id.length) {
+    if ([UserData currentUser].user_id.length) {
         
         loginBlock();
         
@@ -305,6 +305,33 @@ DEF_SINGLETON(PublicFuntionTool);
     }
     
 }
+
+- (void)checkUpdateNewVersion {
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_getVersionAndUrl andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        NSString *serviceVersion = [NSString stringWithFormat:@"%@", resultDic[@"version"]];
+        NSString *appVersion = [self getAppVersion];
+        if (serviceVersion>appVersion) {
+            
+            UIAlertController *updateAlert = [UIAlertController alertControllerWithTitle:@"更新" message:@"有新版本发布了，请前往App Store更新最新版本" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *updateAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APPSTORE_URL]];
+                
+            }];
+            
+            [updateAlert addAction:updateAction];
+            [[UIViewController currentViewController] presentViewController:updateAlert animated:YES completion:nil];
+        }
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
+    
+}
+
 
 - (void)placeOrderCommonInterfaceWithUseType:(UseType)useType moneyWithOrderType:(GetOrderType)orderType chang:(NSString *)chang kuan:(NSString *)kuan hou:(NSString *)hou amount:(NSString *)amount type:(NSString *)type erjimulu:(MainItemTypeModel *)erjimulu orderMoney:(NSString *)orderMoney successBlock:(GetOrderMoneySuccessBlock)successBlock buyNowSuccessBlock:(GetBuyNowSuccessBlock)buyNowSuccessBlock addCarSuccessBlock:(GetAddCarSuccessBlock)addCarSuccessBlock {
     

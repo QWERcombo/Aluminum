@@ -44,7 +44,7 @@
         [dataDic setValue:self.oldTF.text forKey:@"oldPassword"];
         [dataDic setValue:self.theNewTF.text forKey:@"newPassword1"];
         [dataDic setValue:self.confirmTF.text forKey:@"newPassword2"];
-        [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+        [dataDic setValue:[UserData currentUser].user_id forKey:@"userId"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_changePassword andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"修改成功!" time:2 aboutType:WHShowViewMode_Text state:YES];

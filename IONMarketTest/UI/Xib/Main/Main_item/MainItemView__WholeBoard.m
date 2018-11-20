@@ -16,7 +16,7 @@
     if (self) {
         self = [[[NSBundle mainBundle] loadNibNamed:@"MainItemView__WholeBoard" owner:self options:nil] firstObject];
         
-        self.addButton.hidden = ![[UserData currentUser].isCheck boolValue];
+//        self.addButton.hidden = ![[UserData currentUser].isCheck boolValue];
         self.frame = frame;
     }
     

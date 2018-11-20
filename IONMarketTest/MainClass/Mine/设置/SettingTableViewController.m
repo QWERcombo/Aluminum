@@ -74,7 +74,7 @@
         
         
         NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
-        [parDic setObject:[UserData currentUser].id forKey:@"userId"];
+        [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_hasPassword andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
 

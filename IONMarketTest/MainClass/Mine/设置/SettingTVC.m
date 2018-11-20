@@ -41,6 +41,9 @@
         descri.title = @"用户协议";
         [self.navigationController pushViewController:descri animated:YES];
     }
+    if (indexPath.row == 3) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APPSTORE_URL]];
+    }
     if (indexPath.row == 5) {
         SettingPayPsdVC *payset = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"SettingPayPsdVC"];
         payset.changeType = ChangeType_PayPsd;

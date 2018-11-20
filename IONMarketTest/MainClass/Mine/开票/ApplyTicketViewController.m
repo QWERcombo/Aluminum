@@ -99,7 +99,7 @@
         [dict setValue:self.billModel.id forKey:@"fapiaoId"];
         url = Interface_UpdateFapiao;
     } else {
-        [dict setValue:[UserData currentUser].id forKey:@"userId"];
+        [dict setValue:[UserData currentUser].user_id forKey:@"userId"];
         url = Interface_SaveFapiao;
     }
     

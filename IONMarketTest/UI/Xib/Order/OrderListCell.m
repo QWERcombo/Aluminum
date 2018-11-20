@@ -108,7 +108,13 @@
     for (NSInteger i=0; i<dataM.detail.count; i++) {
 
         ConfirmOrderCell *scell = [ConfirmOrderCell initCell:tableView cellName:@"ConfirmOrderCell" dataObject:[dataM.detail objectAtIndex:i]];
+        scell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
         scell.frame = CGRectMake(0, 72*i, SCREEN_WIGHT, 72);
+        if (i!=dataM.detail.count-1) {
+            UIView *line_view = [[UIView alloc] initWithFrame:CGRectMake(0, 71, SCREEN_WIGHT, 1)];
+            line_view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+            [scell addSubview:line_view];
+        }
         
         [cell.itemView addSubview:scell];
     }

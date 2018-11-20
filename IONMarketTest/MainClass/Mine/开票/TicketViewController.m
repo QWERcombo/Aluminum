@@ -126,7 +126,7 @@
         [dataDic setValue:[UserData currentUser].phone forKey:@"phone"];
     } else {
         url = Interface_GetkaipiaoByUser;
-        [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+        [dataDic setValue:[UserData currentUser].user_id forKey:@"userId"];
     }
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:url andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {

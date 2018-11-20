@@ -136,7 +136,7 @@
         [dataDic setValue:self.baitiaoID forKey:@"baitiaoId"];
         url = Interface_UpdateBaitiao;
     } else {
-        [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+        [dataDic setValue:[UserData currentUser].user_id forKey:@"userId"];
         url = Interface_SaveBaitiao;
     }
     

@@ -158,7 +158,7 @@
             [self suqie:self.suqie_btn];
             [self updateInfoView:self.suqie_btn];
             
-            if ([self.lengthTF.text integerValue]<150 && [self.widthTF.text integerValue]<150) {
+            if ([self.lengthTF.text integerValue]<150 || [self.widthTF.text integerValue]<150) {
                 //小于150*150  不可选优切
                 self.youqie_btn.hidden = YES;
                 self.youqieLab.text = @"不可优切";

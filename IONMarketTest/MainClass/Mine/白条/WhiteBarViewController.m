@@ -91,7 +91,7 @@
 - (void)getDataSource {
     
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
-    [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+    [dataDic setValue:[UserData currentUser].user_id forKey:@"userId"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_GetBaitiaoById andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
        

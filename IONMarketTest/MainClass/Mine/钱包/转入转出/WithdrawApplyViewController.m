@@ -49,7 +49,7 @@
     }
     
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
-    [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+    [dataDic setValue:[UserData currentUser].user_id forKey:@"userId"];
     [dataDic setValue:self.shuruTF.text forKey:@"money"];
     [dataDic setValue:self.kaihuhangTF.text forKey:@"bank"];
     [dataDic setValue:self.kaihuhangzhanghaoTF.text forKey:@"bankNo"];

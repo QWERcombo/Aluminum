@@ -82,7 +82,7 @@
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
     NSString *url = @"";
     
-    [dataDic setValue:[UserData currentUser].id forKey:@"userId"];
+    [dataDic setValue:[UserData currentUser].user_id forKey:@"userId"];
     
     if (self.listType == ListType_Record) {
         [dataDic setValue:SINT(pageNum) forKey:@"pageNum"];

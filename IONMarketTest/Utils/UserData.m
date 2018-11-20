@@ -13,64 +13,65 @@
 @end
 @implementation UserData
 
++ (JSONKeyMapper *)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
+                                                                  @"user_id": @"id"
+                                                                  }];
+}
+
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if(self=[super init])
     {
-        _id =[aDecoder decodeObjectForKey:@"id"];
-        _lastLoginIp=[aDecoder decodeObjectForKey:@"lastLoginIp"];
-        _company=[aDecoder decodeObjectForKey:@"company"];
-        _balance=[aDecoder decodeObjectForKey:@"balance"];
-        _commission=[aDecoder decodeObjectForKey:@"commission"];
-        _deleted=[aDecoder decodeObjectForKey:@"deleted"];
-        _headImgUrl=[aDecoder decodeObjectForKey:@"headImgUrl"];
-        _phone=[aDecoder decodeObjectForKey:@"phone"];
+        unsigned int count = 0;
         
-        _name=[aDecoder decodeObjectForKey:@"name"];
-        _no=[aDecoder decodeObjectForKey:@"no"];
-        _nickname=[aDecoder decodeObjectForKey:@"nickname"];
-        _jingyingmoshi=[aDecoder decodeObjectForKey:@"jingyingmoshi"];
-        _tuijianren=[aDecoder decodeObjectForKey:@"tuijianren"];
-        _tuijianrendianhua=[aDecoder decodeObjectForKey:@"tuijianrendianhua"];
-        _openid=[aDecoder decodeObjectForKey:@"openid"];
-        _remark=[aDecoder decodeObjectForKey:@"remark"];
-        _renzheng=[aDecoder decodeObjectForKey:@"renzheng"];
-        _isCheck=[aDecoder decodeObjectForKey:@"isCheck"];
-        _xiaofeishang=[aDecoder decodeObjectForKey:@"xiaofeishang"];
-        _zhiwei=[aDecoder decodeObjectForKey:@"zhiwei"];
-        _baitiaoprocess=[aDecoder decodeObjectForKey:@"baitiaoprocess"];
-        _zhifumima=[aDecoder decodeObjectForKey:@"zhifumima"];
+        Ivar *ivars = class_copyIvarList([self class], &count);
         
+        for (int i = 0 ; i < count; i++) {
+            //取出对应的成员变量
+            Ivar ivar = ivars[i];
+            
+            //查看成员变量
+            const char *name = ivar_getName(ivar);
+            
+            //归档
+            NSString *key = [NSString stringWithUTF8String:name];
+            id value = [aDecoder decodeObjectForKey:key];
+            [self setValue:value forKey:key];
+            
+        }
+        free(ivars);
     }
+
     return self;
 }
 
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    if(_id) [aCoder encodeObject:_id forKey:@"id"];
-    if(_lastLoginIp) [aCoder encodeObject:_lastLoginIp forKey:@"lastLoginIp"];
-    if(_company) [aCoder encodeObject:_company forKey:@"company"];
-    if(_balance) [aCoder encodeObject:_balance forKey:@"balance"];
-    if(_commission) [aCoder encodeObject:_commission forKey:@"commission"];
-    if(_deleted) [aCoder encodeObject:_deleted forKey:@"deleted"];
-    if(_headImgUrl) [aCoder encodeObject:_headImgUrl forKey:@"headImgUrl"];
-    if(_phone) [aCoder encodeObject:_phone forKey:@"phone"];
     
-    if(_name) [aCoder encodeObject:_name forKey:@"name"];
-    if(_no) [aCoder encodeObject:_no forKey:@"no"];
-    if(_nickname) [aCoder encodeObject:_nickname forKey:@"nickname"];
-    if(_zhiwei) [aCoder encodeObject:_zhiwei forKey:@"zhiwei"];
-    if(_xiaofeishang) [aCoder encodeObject:_xiaofeishang forKey:@"xiaofeishang"];
-    if(_renzheng) [aCoder encodeObject:_renzheng forKey:@"renzheng"];
-    if(_isCheck) [aCoder encodeObject:_isCheck forKey:@"isCheck"];
-    if(_remark) [aCoder encodeObject:_remark forKey:@"remark"];
-    if(_openid) [aCoder encodeObject:_openid forKey:@"openid"];
-    if(_tuijianren) [aCoder encodeObject:_tuijianren forKey:@"tuijianren"];
-    if(_tuijianrendianhua) [aCoder encodeObject:_tuijianrendianhua forKey:@"tuijianrendianhua"];
-    if(_jingyingmoshi) [aCoder encodeObject:_jingyingmoshi forKey:@"jingyingmoshi"];
-    if(_baitiaoprocess) [aCoder encodeObject:_baitiaoprocess forKey:@"baitiaoprocess"];
-    if(_zhifumima) [aCoder encodeObject:_zhifumima forKey:@"zhifumima"];
+    unsigned int count = 0;
+    
+    Ivar *ivars = class_copyIvarList([self class], &count);
+    
+    for (int i = 0 ; i < count; i++) {
+        //取出对应的成员变量
+        Ivar ivar = ivars[i];
+        
+        //查看成员变量
+        const char *name = ivar_getName(ivar);
+        
+        //归档
+        NSString *key = [NSString stringWithUTF8String:name];
+        id value = [self valueForKey:key];
+        [aCoder encodeObject:value forKey:key];
+        
+    }
+    free(ivars);
+    
+    
  }
 
 -(void)giveData:(NSDictionary *)dic{

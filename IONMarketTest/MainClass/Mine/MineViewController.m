@@ -97,8 +97,8 @@
     
     if (indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 2) {
         
-        return [[UserData currentUser].isCheck integerValue]==0?0:50;
-        
+//        return [[UserData currentUser].isCheck integerValue]==0?0:50;
+        return 50;
     } else {
         if (indexPath.row == 0) {
             return 120;

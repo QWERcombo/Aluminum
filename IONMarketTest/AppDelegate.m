@@ -114,7 +114,7 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
-    
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
         // 其他如支付等SDK的回调
         if ([url.host isEqualToString:@"safepay"]) {
             
@@ -154,12 +154,13 @@
         }
         
         
-    return YES;
+    return result?result:YES;
 }
 
 // NOTE: 9.0以后使用新API接口
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
 {
+    BOOL result = [[UMSocialManager defaultManager]  handleOpenURL:url options:options];
     if ([url.host isEqualToString:@"safepay"]) {
         
         // 支付跳转支付宝钱包进行支付，处理支付结果
@@ -197,7 +198,8 @@
         // 处理微信的支付结果
         [WXApi handleOpenURL:url delegate:self];
     }
-    return YES;
+    
+    return result?result:YES;
 }
 
 
@@ -269,6 +271,10 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    
+    //检测版本更新
+//    [[PublicFuntionTool sharedInstance] checkUpdateNewVersion];
+    
 }
 
 

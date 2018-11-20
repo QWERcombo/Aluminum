@@ -43,7 +43,7 @@
         }
         NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
         [parDic setObject:self.inviteTF.text forKey:@"promotePhone"];
-        [parDic setObject:[UserData currentUser].id forKey:@"userId"];
+        [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_updatePromotePhone andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             
@@ -62,7 +62,7 @@
         }
         NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
         [parDic setObject:self.inviteTF.text forKey:@"password"];
-        [parDic setObject:[UserData currentUser].id forKey:@"userId"];
+        [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_setPassword andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             

@@ -193,7 +193,8 @@
 #define Interface_updateGouwuche        @"user/updateGouwuche"
 //批量加入购物车
 #define Interface_batchSaveToGouwuche   @"user/batchSaveToGouwuche"
-
+//获取版本信息
+#define Interface_getVersionAndUrl      @"getVersionAndUrl"
 
 
 

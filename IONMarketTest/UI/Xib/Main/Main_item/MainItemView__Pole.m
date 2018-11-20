@@ -21,7 +21,7 @@
         self.mainM = [[MainModel alloc] init];
         self.changduS = [NSMutableString string];
         self.shuliangS = [NSMutableString string];
-        self.addButton.hidden = ![[UserData currentUser].isCheck boolValue];
+//        self.addButton.hidden = ![[UserData currentUser].isCheck boolValue];
     }
     
     return self;

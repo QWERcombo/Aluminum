@@ -54,11 +54,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if ([[UserData currentUser].isCheck integerValue]==0) {
-        self.title = @"模拟价格";
-    } else {
+//    if ([[UserData currentUser].isCheck integerValue]==0) {
+//        self.title = @"模拟价格";
+//    } else {
         self.title = @"下单";
-    }
+//    }
     self.mainM = [[MainModel alloc] init];
     
 //    UIButton *rightButton = [UIButton buttonWithTitle:@"特殊定制" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
@@ -86,10 +86,10 @@
     
     [self createScrollLayoutView];//中部变化
     
-    if ([[UserData currentUser].isCheck integerValue]==1) {
-        
+//    if ([[UserData currentUser].isCheck integerValue]==1) {
+//
         [self createBottomView];//底部购买
-    }
+//    }
 }
 
 - (void)createTopActionView {

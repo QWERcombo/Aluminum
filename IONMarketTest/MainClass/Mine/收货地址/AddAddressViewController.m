@@ -138,7 +138,7 @@
         url = Interface_UpdateAddress;
     } else {
         
-        [dict setValue:[UserData currentUser].id forKey:@"userId"];
+        [dict setValue:[UserData currentUser].user_id forKey:@"userId"];
         
         
         if (![self showErrorMessage:@"" hint:@""]) {

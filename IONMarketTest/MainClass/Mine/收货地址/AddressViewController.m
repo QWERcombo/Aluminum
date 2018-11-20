@@ -105,7 +105,7 @@
     
     [self.dataMuArr removeAllObjects];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:[UserData currentUser].id forKey:@"userId"];
+    [dict setValue:[UserData currentUser].user_id forKey:@"userId"];
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetAddressByPhone andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //        NSLog(@"%@", resultDic);
         NSArray *dataSource = resultDic[@"result"];

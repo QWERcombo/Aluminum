@@ -42,6 +42,9 @@ typedef void (^GetBuyNowSuccessBlock)(ShopCar *shopCar);
 //加入购物车成功回调
 typedef void (^GetAddCarSuccessBlock)(void);
 
+//版本更新回调
+typedef void (^GetUpdateVersionBlock)(void);
+
 
 
 typedef enum : NSInteger {
@@ -90,6 +93,8 @@ AS_SINGLETON(PublicFuntionTool);
 //某些操作需要登录状态
 - (void)isHadLogin:(HadLoginBlock)loginBlock;
 
+//版本更新检测
+- (void)checkUpdateNewVersion;
 
 
 //下单通用接口(价格 购买 加购物车)

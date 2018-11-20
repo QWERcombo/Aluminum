@@ -35,7 +35,7 @@
     [[PublicFuntionTool sharedInstance] isHadLogin:^{
         
         NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
-        [parDic setObject:[UserData currentUser].id forKey:@"userId"];
+        [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
         [parDic setObject:self.inoutTextView.text forKey:@"specialTxt"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_saveSpOrder andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
