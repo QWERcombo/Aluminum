@@ -125,7 +125,7 @@ return __singleton__; \
 #define  UmengAppkey  @"5aee7160f29d984ee60007ab"
 //微信支付/分享
 #define  WeixiPayAppkey  @"wxab2010af57549b79"
-#define  WeixiPayAppsecret  @""
+#define  WeixiPayAppsecret  @"8a9c3b8138fa9e199a54c7ca22166a02"
 //QQ分享
 #define  QQAppkey @"1106811569"
 #define  QQAppkeySecret @"03JKfKDMFXcHdPHW"

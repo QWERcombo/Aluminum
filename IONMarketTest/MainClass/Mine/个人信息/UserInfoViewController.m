@@ -80,10 +80,10 @@
             setting.updateMode = UpdateMode_role;
             [self.navigationController pushViewController:setting animated:YES];
         }
-        if (indexPath.row == 7 && [_weixinBind.text isEqualToString:@"未绑定"]) {
-            //微信绑定
-            [self bindWeiXin];
-        }
+//        if (indexPath.row == 7 && [_weixinBind.text isEqualToString:@"未绑定"]) {
+//            //微信绑定
+//            [self bindWeiXin];
+//        }
     }
     
     

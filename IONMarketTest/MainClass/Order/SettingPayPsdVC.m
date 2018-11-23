@@ -36,6 +36,7 @@
         case ChangeType_LogPsd:
             self.title = @"修改登录密码";
             [self.doneBtn setTitle:@"提交" forState:UIControlStateNormal];
+            self.psdTF.placeholder = @"请输入登陆密码";
             break;
         default:
             break;
@@ -95,6 +96,38 @@
         } failure:^(NSString *error, NSInteger code) {
             
         }];
+    } else if (type == ChangeType_LogPsd) {
+        
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:self.phoneTF.text forKey:@"phone"];
+        [dict setValue:self.codeTF.text forKey:@"number"];
+        [dict setValue:self.psdTF.text forKey:@"payPassword"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_changePassword andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            //NSLog(@"%@", resultDic);
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"修改成功" time:0 aboutType:WHShowViewMode_Text state:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+    } else if (type == ChangeType_PayPsd) {
+        
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:self.phoneTF.text forKey:@"phone"];
+        [dict setValue:self.codeTF.text forKey:@"number"];
+        [dict setValue:self.psdTF.text forKey:@"payPassword"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_setPayPassword andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            //NSLog(@"%@", resultDic);
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"修改成功" time:0 aboutType:WHShowViewMode_Text state:YES];
+            [[UserData currentUser] giveData:@{@"zhifumima":@"123456"}];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+    } else {
+        
     }
 }
 
