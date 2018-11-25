@@ -153,7 +153,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     OrderListModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
-    return [UtilsMold getCellHight:@"OrderListCell" data:nil model:SINT(model.detail.count) indexPath:indexPath];
+    return [UtilsMold getCellHight:@"OrderListCell" data:nil model:model indexPath:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

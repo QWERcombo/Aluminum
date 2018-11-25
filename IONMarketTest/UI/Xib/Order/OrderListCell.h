@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIView *itemView;
 @property (weak, nonatomic) IBOutlet CustomButton *caizhiBtn;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonViewHeight;
 
 
 + (instancetype)OrderListCell;

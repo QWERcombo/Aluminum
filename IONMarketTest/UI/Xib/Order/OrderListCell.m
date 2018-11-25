@@ -30,9 +30,11 @@
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
 //    过期
-//    return (32)+[count integerValue]*72;
-    NSString *count = (NSString *)model;
-    return (32+40)+[count integerValue]*72;
+    OrderListModel *dataModel = (OrderListModel *)model;
+    NSInteger status = [dataModel.status integerValue];
+    NSInteger count = dataModel.detail.count;
+    
+    return status==3?((32+10)+(count*72)):((32+40+10)+(count*72));
 }
 
 + (instancetype)OrderListCell {
@@ -97,6 +99,13 @@
             break;
         default:
             break;
+    }
+    if ([dataM.status integerValue] ==3) {
+        cell.buttonView.hidden = YES;
+        cell.buttonViewHeight.constant = 0;
+    } else {
+        cell.buttonView.hidden = NO;
+        cell.buttonViewHeight.constant = 40;
     }
     
     for (UIView *subView in cell.itemView.subviews) {
