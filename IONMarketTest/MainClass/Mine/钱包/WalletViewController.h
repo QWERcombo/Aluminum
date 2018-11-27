@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface WalletViewController : BaseViewController
+@interface WalletViewController : UIViewController
 
 @end

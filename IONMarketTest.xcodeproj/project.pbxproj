@@ -306,6 +306,7 @@
 		A29996FE207381140003B96C /* ShopCarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A29996FC207381140003B96C /* ShopCarListCell.m */; };
 		A29996FF207381140003B96C /* ShopCarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A29996FD207381140003B96C /* ShopCarListCell.xib */; };
 		A2A8A63F20B7C1400009792F /* OrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A8A63E20B7C1400009792F /* OrderListModel.m */; };
+		A2A9D76221AD171E00133898 /* NewChargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A9D76121AD171E00133898 /* NewChargeVC.m */; };
 		A2AC1C622056476F00A3B2F9 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C612056476F00A3B2F9 /* MessageViewController.m */; };
 		A2AC1C652056481B00A3B2F9 /* MainItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C642056481B00A3B2F9 /* MainItemViewController.m */; };
 		A2AC1C6820564AB900A3B2F9 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C6720564AB900A3B2F9 /* UserInfoViewController.m */; };
@@ -950,6 +951,8 @@
 		A29996FD207381140003B96C /* ShopCarListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCarListCell.xib; sourceTree = "<group>"; };
 		A2A8A63D20B7C1400009792F /* OrderListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderListModel.h; sourceTree = "<group>"; };
 		A2A8A63E20B7C1400009792F /* OrderListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderListModel.m; sourceTree = "<group>"; };
+		A2A9D76021AD171E00133898 /* NewChargeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewChargeVC.h; sourceTree = "<group>"; };
+		A2A9D76121AD171E00133898 /* NewChargeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewChargeVC.m; sourceTree = "<group>"; };
 		A2AC1C602056476F00A3B2F9 /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		A2AC1C612056476F00A3B2F9 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		A2AC1C632056481B00A3B2F9 /* MainItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItemViewController.h; sourceTree = "<group>"; };
@@ -1930,6 +1933,8 @@
 				A229818F20620336007B6112 /* InputViewController.m */,
 				56B58D1720BC529A00F92B91 /* WithdrawApplyViewController.h */,
 				56B58D1820BC529A00F92B91 /* WithdrawApplyViewController.m */,
+				A2A9D76021AD171E00133898 /* NewChargeVC.h */,
+				A2A9D76121AD171E00133898 /* NewChargeVC.m */,
 			);
 			path = "转入转出";
 			sourceTree = "<group>";
@@ -2577,6 +2582,7 @@
 				56B78CEC2185F3040056D812 /* SubMarktListCell.m in Sources */,
 				A22DCE1421841C860078BE06 /* SubMarketVC.m in Sources */,
 				A229819020620336007B6112 /* InputViewController.m in Sources */,
+				A2A9D76221AD171E00133898 /* NewChargeVC.m in Sources */,
 				56B78CDC2185E5850056D812 /* AATitle.m in Sources */,
 				A2555F3B20C0DC65000C7E03 /* APRSASigner.m in Sources */,
 				56CA2B5E217A14A200F3FED0 /* ZiZhuXiaDanViewController.m in Sources */,

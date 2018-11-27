@@ -196,6 +196,7 @@ typedef NS_ENUM(NSUInteger, LoginType) {
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [dict setValue:self.phoneTF.text forKey:@"phone"];
         [dict setValue:self.psdTF.text forKey:@"password"];
+        [dict setValue:[self getLastVersion] forKey:@"lastVersion"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Login andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             //NSLog(@"++++%@", resultDic);
@@ -222,6 +223,7 @@ typedef NS_ENUM(NSUInteger, LoginType) {
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [dict setValue:self.phoneTF.text forKey:@"phone"];
         [dict setValue:self.psdTF.text forKey:@"number"];
+        [dict setValue:[self getLastVersion] forKey:@"lastVersion"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_loginByCode andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             //用户手机号存本地
@@ -254,7 +256,12 @@ typedef NS_ENUM(NSUInteger, LoginType) {
     }
     
 }
-
+- (NSString *)getLastVersion {
+    
+    NSString *lastVersion = [[[[PublicFuntionTool sharedInstance] getAppVersion] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"."]] componentsJoinedByString:@""];
+    
+    return [NSString stringWithFormat:@"v%@", lastVersion];
+}
 
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {

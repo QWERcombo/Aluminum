@@ -261,6 +261,11 @@
     
     if (useType == UseType_DanJia) {
 //        showType = @"全部";
+        if (!self.guigeTF.text.length) {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择规格获取单价" time:0 aboutType:WHShowViewMode_Text state:NO];
+            return;
+        }
+        
     } else {
         if (self.amountTF.text.length && self.guigeTF.text.length && (self.lengthTF.text.length || self.lengthBtn.currentTitle.length)) {
             

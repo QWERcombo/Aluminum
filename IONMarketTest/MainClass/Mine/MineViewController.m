@@ -81,9 +81,12 @@
     } else if (indexPath.row == 4) {//开票
         TicketViewController *share = [[UIStoryboard storyboardWithName:@"Common" bundle:nil] instantiateViewControllerWithIdentifier:@"TicketViewController"];
         [self.navigationController pushViewController:share animated:YES];
-    } else if (indexPath.row == 9) {
+    } else if (indexPath.row == 9) {//设置
         SettingTVC *setting = [[UIStoryboard storyboardWithName:@"Common" bundle:nil] instantiateViewControllerWithIdentifier:@"SettingTVC"];
         [self.navigationController pushViewController:setting animated:YES];
+    } else if (indexPath.row == 2) {//钱包
+        WalletViewController *wallet = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"WalletViewController"];
+        [self.navigationController pushViewController:wallet animated:YES];
     }
     else {
         UIViewController *nextController = (UIViewController *)[[NSClassFromString(NSStringFromClass([classArray objectAtIndex:indexPath.row])) alloc] init];

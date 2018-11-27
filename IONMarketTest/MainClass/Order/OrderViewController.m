@@ -17,9 +17,11 @@
 #define Button_Margin  ((SCREEN_WIGHT-80*5)/6)
 
 @interface OrderViewController ()
-@property (nonatomic, assign) NSInteger lastSelected;
-@property (nonatomic, assign) NSInteger pageNumber;
-@property (nonatomic, copy) NSString *type;
+@property (nonatomic, assign)   NSInteger lastSelected;
+@property (nonatomic, assign)   NSInteger pageNumber;
+@property (nonatomic, copy)     NSString *type;
+@property (nonatomic,strong)    UIView *topShowView;
+
 @end
 
 @implementation OrderViewController
@@ -53,16 +55,42 @@
     self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无数据" andDetailStr:@"" withReloadAction:^{
         
     }];
-//    self.tabView.estimatedRowHeight = 44.0f;
-//    self.tabView.rowHeight = UITableViewAutomaticDimension;
+
 }
 
 - (void)setupSubviews {
+    
+    self.topShowView = [[UIView alloc] init];
+    self.topShowView.backgroundColor = [UIColor colorWithHexString:@"#FEFCEB"];
+    [self.view addSubview:self.topShowView];
+    [self.topShowView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(50);
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(@(32));
+    }];
+    UIImageView *hintImgv = [UIImageView new];
+    hintImgv.image = IMG(@"order_hint");
+    [self.topShowView addSubview:hintImgv];
+    [hintImgv mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.topShowView.mas_centerY);
+        make.left.equalTo(self.topShowView.mas_left).offset(15);
+    }];
+    UILabel *hintLab = [UILabel new];
+    [self.topShowView addSubview:hintLab];
+    hintLab.font = [UIFont systemFontOfSize:14];
+    hintLab.text = @"待付款订单有效时间12小时";
+    hintLab.textColor = [UIColor colorWithHexString:@"#F96A0E"];
+    [hintLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.topShowView.mas_centerY);
+        make.left.equalTo(hintImgv.mas_right).offset(10);
+    }];
+    
+    
     [self.view addSubview:self.tabView];
-    self.tabView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tabView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
-        make.top.equalTo(self.view.mas_top).offset(50);
+        make.top.equalTo(self.topShowView.mas_bottom).offset(0);
     }];
     
     UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 50)];
@@ -188,6 +216,19 @@
         self.type = @"";
     } else {
         self.type = SINT((sender.tag-151));
+    }
+    if (sender.tag == 150 || sender.tag == 151) {
+        [self.topShowView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view.mas_top).offset(50);
+            make.left.right.equalTo(self.view);
+            make.height.equalTo(@(32));
+        }];
+    } else {
+        [self.topShowView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view.mas_top).offset(50);
+            make.left.right.equalTo(self.view);
+            make.height.equalTo(@(0));
+        }];
     }
     [self loadHeaderNewData];
 }

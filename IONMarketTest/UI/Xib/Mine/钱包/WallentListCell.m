@@ -22,7 +22,7 @@
 }
 
 + (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 65;
+    return 68;
 }
 
 + (instancetype)getWallentListCell {
@@ -33,7 +33,7 @@
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
     
     WalletListModel *dataM = (WalletListModel *)model;
-    self.orderID.text = [NSString stringWithFormat:@"购买订单编号: %@", dataM.no];
+    self.orderID.text = [NSString stringWithFormat:@"订单: %@", dataM.no];
     self.dateLab.text = [self getDateString:dataM.createDate];
     self.countLab.text = dataM.money;
 }
