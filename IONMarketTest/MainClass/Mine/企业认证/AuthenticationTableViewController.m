@@ -199,8 +199,8 @@
             
             
             
-            dispatch_async(dispatch_queue_create("concurrent", DISPATCH_QUEUE_CONCURRENT), ^{
-                
+//            dispatch_async(dispatch_queue_create("concurrent", DISPATCH_QUEUE_CONCURRENT), ^{
+            
                 if (![self.authModel.shenhezhuangtai isEqualToString:@"审核拒绝"]) {
                     
                     if ([self.authModel.yingyezhizhao hasPrefix:@"http"]) {
@@ -216,7 +216,7 @@
                 }
                 
                 
-            });
+//            });
             
             if ([self.authModel.shenhezhuangtai isEqualToString:@"审核拒绝"]) {
                 self.isScale = NO;

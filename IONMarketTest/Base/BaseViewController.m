@@ -77,7 +77,7 @@
 
     _appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
-    self.view.backgroundColor = [UIColor clearColor];
+//    self.view.backgroundColor = [UIColor clearColor];
     [self changeNavMianColor];
 
     self.view.backgroundColor = [UIColor mianColor:1];

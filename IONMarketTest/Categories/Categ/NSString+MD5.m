@@ -691,14 +691,13 @@
 
 + (NSString *)getStringAfterTwo:(NSString *)string {
 
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSNumber *number = [numberFormatter numberFromString:string];
+    NSNumber *number = [NSNumber numberWithFloat:[string floatValue]];
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setPositiveFormat:@"###0.00"];
-    formatter.roundingMode = NSNumberFormatterRoundDown;
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
     formatter.maximumFractionDigits = 2;
+    formatter.roundingMode = NSNumberFormatterRoundUp;//只入不舍
 //    NSLog(@"%@", [formatter stringFromNumber:number]);
     return [formatter stringFromNumber:number];
 }

@@ -61,6 +61,8 @@
         case ShowType_GuanCai:
             self.guigeTF.placeholder = @"请选择规格";
             self.guigeLab.text = @"规格";
+            self.zidingyi_right_label.text = @"不可零切";
+            
             break;
         default:
             break;
@@ -158,6 +160,9 @@
 //自定义
 - (IBAction)ziDingYi:(UIButton *)sender {
     
+    if (self.showType == ShowType_GuanCai) {
+        return;
+    }
     _zhengZhi = @"2";
     _isShowInfoView = NO;
     _lengthBtn.hidden = YES;
@@ -190,6 +195,7 @@
     self.zidingyi_imgv.image = [UIImage imageNamed:@"select_0"];
     self.zidingyi_left_label.textColor = [UIColor colorWithHexString:@"#202124"];
     self.zidingyi_right_label.textColor = [UIColor Grey_WordColor];
+    
     
     self.zhengzhi_imgv.image = [UIImage imageNamed:@"select_1"];
     self.zhengzhi_left_label.textColor = [UIColor mianColor:2];
@@ -352,22 +358,25 @@
         self.danjianjiage.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage"]];
         self.orderMoney = [self.dataDic objectForKey:@"orderMoney"];
         if (self.orderMoney) {
-            self.totalLabel.text = [NSString stringWithFormat:@"%@元", self.orderMoney];
+            self.totalLabel.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:self.orderMoney]];
         }
-        self.zhengzhi_right_label.text = [NSString stringWithFormat:@"%@元/公斤", self.zhengzhiDanJia];
+        self.zhengzhi_right_label.text = [NSString stringWithFormat:@"%@元/公斤", [NSString getStringAfterTwo:self.zhengzhiDanJia]];
         self.zhengzhi_right_label.attributedText = [UILabel getAttributedFromRange:[self.zhengzhi_right_label.text rangeOfString:@"元/公斤"] WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.zhengzhi_right_label.text];
-        self.zidingyi_right_label.text = [NSString stringWithFormat:@"%@元/公斤", self.zidingyiDanJia];
-        self.zidingyi_right_label.textColor = [UIColor Grey_WordColor];
-        self.zidingyi_right_label.attributedText = [UILabel getAttributedFromRange:[self.zidingyi_right_label.text rangeOfString:@"元/公斤"] WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.zidingyi_right_label.text];
+        
+        if (self.showType != ShowType_GuanCai) {
+            self.zidingyi_right_label.text = [NSString stringWithFormat:@"%@元/公斤", [NSString getStringAfterTwo:self.zidingyiDanJia]];
+            self.zidingyi_right_label.textColor = [UIColor Grey_WordColor];
+            self.zidingyi_right_label.attributedText = [UILabel getAttributedFromRange:[self.zidingyi_right_label.text rangeOfString:@"元/公斤"] WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.zidingyi_right_label.text];
+        }
         
     } else {
         
         self.danjianjiage.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage"]];
         self.orderMoney = [self.dataDic objectForKey:@"orderMoney"];
         if (self.orderMoney) {
-            self.totalLabel.text = [NSString stringWithFormat:@"%@元", self.orderMoney];
+            self.totalLabel.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:self.orderMoney]];
         }
-        self.zidingyi_right_label.text = [NSString stringWithFormat:@"%@元/公斤", self.zidingyiDanJia];
+        self.zidingyi_right_label.text = [NSString stringWithFormat:@"%@元/公斤", [NSString getStringAfterTwo:self.zidingyiDanJia]];
         self.zidingyi_right_label.attributedText = [UILabel getAttributedFromRange:[self.zidingyi_right_label.text rangeOfString:@"元/公斤"] WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.zidingyi_right_label.text];
         
     }

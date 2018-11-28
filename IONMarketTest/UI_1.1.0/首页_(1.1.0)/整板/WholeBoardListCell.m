@@ -32,8 +32,8 @@
     
     cell.guigeLabel.text = dataModel.guige;
     cell.changjiaLabel.text = [NSString stringWithFormat:@"厂家: %@", dataModel.canzhaozhishu];
-    cell.priceLabel.text = [NSString stringWithFormat:@"%@元/件", dataModel.danpianzhengbanjiage];
-    cell.stepper.maxValue = [dataModel.kucun integerValue]>10?10:[dataModel.kucun integerValue];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@元/件", [NSString getStringAfterTwo:dataModel.danpianzhengbanjiage]];
+    cell.stepper.maxValue = [dataModel.kucun integerValue];
     cell.kucunLabel.text = [NSString stringWithFormat:@"(%@件)", dataModel.kucun];
     if (dataModel.value>0) {
         cell.addBtn.hidden = YES;

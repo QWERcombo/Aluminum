@@ -117,17 +117,17 @@
         self.youqieLab.attributedText = [UILabel getAttributedFromRange:range1 WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.youqieLab.text];
         self.suqieLab.attributedText = [UILabel getAttributedFromRange:range2 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.suqieLab.text];
         
-        _orderMoney = [self.dataDic objectForKey:@"orderMoney_youqie"];
-        _hejiLab.text = [NSString stringWithFormat:@"￥%@", _orderMoney];
-        _danjianjiageLab.text = [NSString stringWithFormat:@"%@元", [self.dataDic objectForKey:@"danpianjiage_youqie"]];
+        _orderMoney = [NSString stringWithFormat:@"%@",[self.dataDic objectForKey:@"orderMoney_youqie"]];
+        _hejiLab.text = [NSString stringWithFormat:@"￥%@", [NSString getStringAfterTwo:_orderMoney]];
+        _danjianjiageLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataDic objectForKey:@"danpianjiage_youqie"]]]];
     } else {
         //速切
         self.suqieLab.attributedText = [UILabel getAttributedFromRange:range2 WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.suqieLab.text];
         self.youqieLab.attributedText = [UILabel getAttributedFromRange:range1 WithColor:[UIColor Grey_WordColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.youqieLab.text];
         
-        _orderMoney = [self.dataDic objectForKey:@"orderMoney_kuaisu"];
-        _hejiLab.text = [NSString stringWithFormat:@"￥%@", _orderMoney];
-        _danjianjiageLab.text = [NSString stringWithFormat:@"%@元", [self.dataDic objectForKey:@"danpianjiage_kuaisu"]];
+        _orderMoney = [NSString stringWithFormat:@"%@",[self.dataDic objectForKey:@"orderMoney_kuaisu"]];
+        _hejiLab.text = [NSString stringWithFormat:@"￥%@", [NSString getStringAfterTwo:_orderMoney]];
+        _danjianjiageLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataDic objectForKey:@"danpianjiage_kuaisu"]]]];
     }
     
     //刷新总价格
