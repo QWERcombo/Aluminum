@@ -39,21 +39,13 @@
     return YES;
 }
 
+
 - (void)checkNetWork {
 //    [[NSNotificationCenter defaultCenter] removeObserver:self name:ZYNetworkAccessibityChangedNotification object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkChanged:) name:ZYNetworkAccessibityChangedNotification object:nil];
     [ZYNetworkAccessibity start];
     [ZYNetworkAccessibity setAlertEnable:YES];
 }
-
-//- (void)networkChanged:(NSNotification *)notification {
-//
-//    ZYNetworkAccessibleState state = ZYNetworkAccessibity.currentState;
-//
-//    if (state == ZYNetworkRestricted) {
-//        NSLog(@"网络权限被关闭");
-//    }
-//}
 
 - (void)setupRootViewController {
     

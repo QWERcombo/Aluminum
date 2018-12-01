@@ -26,6 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
@@ -212,7 +213,12 @@
         }
         if (pageNumber == 1) {
             //构建折线图
-            self.chartArray = [[[self.dataSource subarrayWithRange:NSMakeRange(0, 5)] reverseObjectEnumerator] allObjects];
+            if (self.dataSource.count<5) {
+                self.chartArray = [[self.dataSource reverseObjectEnumerator] allObjects];
+            } else {
+                self.chartArray = [[[self.dataSource subarrayWithRange:NSMakeRange(0, 5)] reverseObjectEnumerator] allObjects];
+            }
+            
             [self createTableViewHeaderView];
         }
         

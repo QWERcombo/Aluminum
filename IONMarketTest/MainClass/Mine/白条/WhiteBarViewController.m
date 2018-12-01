@@ -109,7 +109,7 @@
                     [white.view setFrame:self.view.bounds];
                     [self.view addSubview:white.view];
                     
-                    UIButton *recordBtn = [UIButton buttonWithTitle:@"还款记录" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+                    UIButton *recordBtn = [UIButton buttonWithTitle:@"还款记录" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor blackColor] andHighlightedTitle:[UIColor blackColor] andNormaImage:nil andHighlightedImage:nil];
                     recordBtn.frame = CGRectMake(0, 0, 70, 40);
                     [recordBtn addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
                     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:recordBtn];

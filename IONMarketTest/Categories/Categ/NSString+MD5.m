@@ -697,7 +697,7 @@
     [formatter setPositiveFormat:@"###0.00"];
     formatter.numberStyle = NSNumberFormatterDecimalStyle;
     formatter.maximumFractionDigits = 2;
-    formatter.roundingMode = NSNumberFormatterRoundUp;//只入不舍
+//    formatter.roundingMode = NSNumberFormatterRoundUp;//只入不舍
 //    NSLog(@"%@", [formatter stringFromNumber:number]);
     return [formatter stringFromNumber:number];
 }

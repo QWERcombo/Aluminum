@@ -31,7 +31,7 @@
 @property (nonatomic, assign) BOOL isScale; //图片点击放大
 @end
 
-#define imageBaseUrl    @"http://118.31.35.233:8080/"
+//#define imageBaseUrl    @"http://118.31.35.233:8080/"
 
 @implementation AuthenticationTableViewController {
     UIImagePickerController *_imagePickerController;
@@ -92,8 +92,8 @@
         [self.dataSource addObject:self.descLab.text];
         
         
-        [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.leftImageUrl]];
-        [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.rightImageUrl]];
+        [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE,self.leftImageUrl]];
+        [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE,self.rightImageUrl]];
         
     }
     
@@ -209,8 +209,8 @@
                         [self.rightButton sd_setImageWithURL:[NSURL URLWithString:self.authModel.yingyezhizhao] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
                     } else  {
                         
-                        [self.leftButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.authModel.fuzerenshenfenzheng]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
-                        [self.rightButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", imageBaseUrl,self.authModel.yingyezhizhao]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
+                        [self.leftButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE,self.authModel.fuzerenshenfenzheng]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
+                        [self.rightButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE,self.authModel.yingyezhizhao]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
                     }
                     
                 }
@@ -441,7 +441,7 @@
     if ([self.authModel.yingyezhizhao hasPrefix:@"http"]) {
         [XLPhotoBrowser showPhotoBrowserWithImages:@[self.authModel.fuzerenshenfenzheng, self.authModel.yingyezhizhao] currentImageIndex:0];
     } else {
-        [XLPhotoBrowser showPhotoBrowserWithImages:@[[NSString stringWithFormat:@"%@%@", imageBaseUrl, self.authModel.fuzerenshenfenzheng], [NSString stringWithFormat:@"%@%@", imageBaseUrl, self.authModel.yingyezhizhao]] currentImageIndex:0];
+        [XLPhotoBrowser showPhotoBrowserWithImages:@[[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE, self.authModel.fuzerenshenfenzheng], [NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE, self.authModel.yingyezhizhao]] currentImageIndex:0];
     }
     
 }

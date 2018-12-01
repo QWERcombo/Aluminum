@@ -23,7 +23,7 @@
 #import "ZeroCutVC.h"
 #import "HomeListDetailVC.h"
 #import "CommonItemVC.h"
-
+#import "DHGuidePageHUD.h"
 
 @interface MainViewController ()
 @property (nonatomic, assign) NSInteger pageNumber;
@@ -48,6 +48,7 @@
 //        [[PublicFuntionTool sharedInstance] checkUpdateNewVersion];
 //    });
     
+    [self configurateGuideView];//配置引导页
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -112,7 +113,7 @@
     UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 311)];
     mainView.backgroundColor = [UIColor whiteColor];
 
-    ABBannerView *bannerView = (ABBannerView *)[[UtilsMold sharedInstance] creatView:@"ABBannerView" data:nil model:@[IMG(@"Banner_0"),IMG(@"Banner_1"),IMG(@"Banner_2"),IMG(@"Banner_3")] deleGate:self andCliker:^(NSDictionary *clueDic) {
+    ABBannerView *bannerView = (ABBannerView *)[[UtilsMold sharedInstance] creatView:@"ABBannerView" data:nil model:@[IMG(@"Banner_0"),IMG(@"Banner_1"),IMG(@"Banner_2")] deleGate:self andCliker:^(NSDictionary *clueDic) {
         
     }];
     
@@ -129,12 +130,13 @@
     for (NSInteger i=0; i<2; i++) {
         for (NSInteger j=0; j<4; j++) {
             SelectedItem *item = [[SelectedItem alloc] initWithFrame:CGRectMake((Item_Margin+48)*j+26, ((66+19)*i), 48, 66)];
+            item.tag = 1000+((4*i)+j);
             item.item_name.text = [nameArr objectAtIndex:i*4+j];
             NSString *imageName = [NSString stringWithFormat:@"Main_item_%ld", (long)(i*4+j)];
             item.item_imgv.image = IMG(imageName);
             
             [item loadData:nil andCliker:^(NSString *clueStr) {
-//                NSLog(@"%@", clueStr);
+                NSLog(@"%@", clueStr);
                 NSString *name = [nameArr objectAtIndex:clueStr.integerValue];
                 if ([name isEqualToString:@"自动下单"]) {
 //                    SetOrderViewController *set = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SetOrder"];
@@ -326,7 +328,19 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+- (void)configurateGuideView {
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:BOOLFORKEY]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:BOOLFORKEY];
+        // 在这里写初始化图片数组和DHGuidePageHUD库引导页的代码
+        // 静态引导图片数组初始化
+        NSArray *imageNameArray = @[@"guideImage1",@"guideImage2",@"guideImage3"];
+        DHGuidePageHUD *guidePage = [[DHGuidePageHUD alloc] dh_initWithFrame:MY_WINDOW.frame imageNameArray:imageNameArray buttonIsHidden:YES];
+        
+        [MY_WINDOW addSubview:guidePage];
+    }
+    
+}
 
 
 @end

@@ -32,10 +32,21 @@
 
 - (void)loadData:(NSObject *)model andCliker:(ClikBlock)click {
     
+    NSNumberFormatter *numform = [NSNumberFormatter new];
+    numform.numberStyle = NSNumberFormatterDecimalStyle;
     WalletListModel *dataM = (WalletListModel *)model;
-    self.orderID.text = [NSString stringWithFormat:@"订单: %@", dataM.no];
+    if ([dataM.money floatValue]>0) {
+        self.orderID.text = dataM.method;
+        numform.positivePrefix = @"+";
+        self.countLab.text = [numform stringFromNumber:[NSNumber numberWithFloat:[dataM.money floatValue]]];
+    } else {
+        self.orderID.text = [NSString stringWithFormat:@"订单: %@", dataM.no];
+        numform.positivePrefix = @"-";
+        self.countLab.text = [numform stringFromNumber:[NSNumber numberWithFloat:[dataM.money floatValue]]];
+    }
+    
     self.dateLab.text = [self getDateString:dataM.createDate];
-    self.countLab.text = dataM.money;
+    
 }
 
 - (NSString *)getDateString:(NSString *)string {

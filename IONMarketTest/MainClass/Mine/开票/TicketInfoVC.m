@@ -25,7 +25,7 @@
     self.title = @"我的开票信息";
     self.infoDataSource = [NSMutableArray array];
     
-    UIButton *recordBtn = [UIButton buttonWithTitle:@"新增" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+    UIButton *recordBtn = [UIButton buttonWithTitle:@"新增" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor blackColor] andHighlightedTitle:[UIColor blackColor] andNormaImage:nil andHighlightedImage:nil];
     recordBtn.frame = CGRectMake(0, 0, 50, 40);
     [recordBtn addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:recordBtn];

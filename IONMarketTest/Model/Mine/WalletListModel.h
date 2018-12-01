@@ -14,11 +14,15 @@
 @property (nonatomic, strong) NSString *no;
 @property (nonatomic, strong) NSString *status;
 @property (nonatomic, strong) NSString *createDate;
+@property (nonatomic, strong) NSString *id;
+@property (nonatomic, strong) NSString *method;
+@property (nonatomic, strong) NSString *phone;
 
 @property (nonatomic, strong) NSString *withDrawTime;
 @property (nonatomic, strong) NSString *bankNo;
 @property (nonatomic, strong) NSString *bank;
 @property (nonatomic, strong) NSString *bankName;
 @property (nonatomic, strong) NSString *shenheyijian;
+
 
 @end

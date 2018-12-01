@@ -167,6 +167,9 @@
 		56A5746A20ADC88E00A458EB /* PhotoAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5746920ADC88E00A458EB /* PhotoAlertController.m */; };
 		56AD6F0720C8391F00344E81 /* ConfirmTicketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AD6F0620C8391E00344E81 /* ConfirmTicketVC.m */; };
 		56AD6F0A20C83ADB00344E81 /* TicketInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AD6F0920C83ADB00344E81 /* TicketInfoVC.m */; };
+		56B4BCA821B2BAEE00C38B8F /* GuideImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 56B4BCA321B2BAEE00C38B8F /* GuideImage.bundle */; };
+		56B4BCA921B2BAEE00C38B8F /* DHGifImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B4BCA421B2BAEE00C38B8F /* DHGifImageOperation.m */; };
+		56B4BCAA21B2BAEE00C38B8F /* DHGuidePageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B4BCA721B2BAEE00C38B8F /* DHGuidePageHUD.m */; };
 		56B5215420AB194000F636BD /* OrderNewDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5215320AB194000F636BD /* OrderNewDetailVC.m */; };
 		56B5215720AB246200F636BD /* OrderPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5215620AB246200F636BD /* OrderPayVC.m */; };
 		56B5215A20AB37A100F636BD /* ChoosePayWayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5215920AB37A100F636BD /* ChoosePayWayView.m */; };
@@ -627,6 +630,11 @@
 		56AD6F0620C8391E00344E81 /* ConfirmTicketVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmTicketVC.m; sourceTree = "<group>"; };
 		56AD6F0820C83ADB00344E81 /* TicketInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketInfoVC.h; sourceTree = "<group>"; };
 		56AD6F0920C83ADB00344E81 /* TicketInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketInfoVC.m; sourceTree = "<group>"; };
+		56B4BCA321B2BAEE00C38B8F /* GuideImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GuideImage.bundle; sourceTree = "<group>"; };
+		56B4BCA421B2BAEE00C38B8F /* DHGifImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGifImageOperation.m; sourceTree = "<group>"; };
+		56B4BCA521B2BAEE00C38B8F /* DHGuidePageHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGuidePageHUD.h; sourceTree = "<group>"; };
+		56B4BCA621B2BAEE00C38B8F /* DHGifImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGifImageOperation.h; sourceTree = "<group>"; };
+		56B4BCA721B2BAEE00C38B8F /* DHGuidePageHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGuidePageHUD.m; sourceTree = "<group>"; };
 		56B5215220AB194000F636BD /* OrderNewDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderNewDetailVC.h; sourceTree = "<group>"; };
 		56B5215320AB194000F636BD /* OrderNewDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderNewDetailVC.m; sourceTree = "<group>"; };
 		56B5215520AB246200F636BD /* OrderPayVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderPayVC.h; sourceTree = "<group>"; };
@@ -1654,6 +1662,7 @@
 		5695BEB72042A4BA0036D54B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				56B4BCA221B2BAEE00C38B8F /* DHGuidePageHUD */,
 				56FD468B219C6B4000AC0BA4 /* CYPasswordView */,
 				56B78C8B2185E5850056D812 /* AAChartKitLib */,
 				564D9D0921415A1A00310AD4 /* ZYNetworkAccessibity */,
@@ -1774,6 +1783,18 @@
 				5695BF622042AF8B0036D54B /* Reachability.m */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		56B4BCA221B2BAEE00C38B8F /* DHGuidePageHUD */ = {
+			isa = PBXGroup;
+			children = (
+				56B4BCA321B2BAEE00C38B8F /* GuideImage.bundle */,
+				56B4BCA421B2BAEE00C38B8F /* DHGifImageOperation.m */,
+				56B4BCA521B2BAEE00C38B8F /* DHGuidePageHUD.h */,
+				56B4BCA621B2BAEE00C38B8F /* DHGifImageOperation.h */,
+				56B4BCA721B2BAEE00C38B8F /* DHGuidePageHUD.m */,
+			);
+			path = DHGuidePageHUD;
 			sourceTree = "<group>";
 		};
 		56B78C8B2185E5850056D812 /* AAChartKitLib */ = {
@@ -2466,6 +2487,7 @@
 				5671DBC520600073005F1760 /* MainItemView__Pole.xib in Resources */,
 				A229818B2061FF2B007B6112 /* RemainExplainCell.xib in Resources */,
 				562E51D4217F6EAF00C90A9E /* SelectThickView.xib in Resources */,
+				56B4BCA821B2BAEE00C38B8F /* GuideImage.bundle in Resources */,
 				567B14C520C43F1B00B81FD6 /* TradeRecordCell.xib in Resources */,
 				56FD469C219C6B4000AC0BA4 /* CYPasswordView.bundle in Resources */,
 				5695BE7E20429F1B0036D54B /* Assets.xcassets in Resources */,
@@ -2644,8 +2666,10 @@
 				56940C2620515DF900DFA6D6 /* UITableView+TB.m in Sources */,
 				5695BF1D2042ABAB0036D54B /* UtilsData.m in Sources */,
 				56B78CD52185E5850056D812 /* AAYAxis.m in Sources */,
+				56B4BCAA21B2BAEE00C38B8F /* DHGuidePageHUD.m in Sources */,
 				A29305A2217F053200D72F4A /* DisplayView.m in Sources */,
 				56B78CDF2185E5850056D812 /* AALegend.m in Sources */,
+				56B4BCA921B2BAEE00C38B8F /* DHGifImageOperation.m in Sources */,
 				5695BF1F2042ABAB0036D54B /* UserData.m in Sources */,
 				56940C3420515E1800DFA6D6 /* UIBarButtonItem+Badge.m in Sources */,
 				A2555F3C20C0DC65000C7E03 /* openssl_wrapper.m in Sources */,

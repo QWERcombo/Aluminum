@@ -27,21 +27,16 @@
     
     UITapGestureRecognizer *tapAction = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(item_action:)];
     [self addGestureRecognizer:tapAction];
+    
+    self.frame = frame;
+    
     return self;
 }
 
 - (void)item_action:(UITapGestureRecognizer *)sender {
-    CGFloat margin = (SCREEN_WIGHT-(48*4)-52)/3;
-    CGFloat width = self.item_imgv.size.width;
-    CGPoint point = [sender locationInView:self.superview];
-    NSInteger index = point.x/(width+margin);
-//    NSLog(@"---%@", NSStringFromCGPoint([sender locationInView:self.superview]));
-    if (point.y>(66+19)) {
-        _click(SINT(index+4));
-    } else {
-        _click(SINT(index));
+    if (_click) {
+        _click(SINT(self.tag-1000));
     }
-    
 }
 
 - (void)loadData:(NSObject *)data andCliker:(ClikBlock)click {

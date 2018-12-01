@@ -36,7 +36,7 @@
     self.selectDataSource = [NSMutableArray array];
     [self.weikaipiaoBtn setSelected:YES];
     self.ticketTableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    UIButton *recordBtn = [UIButton buttonWithTitle:@"我的发票" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor whiteColor] andHighlightedTitle:[UIColor whiteColor] andNormaImage:nil andHighlightedImage:nil];
+    UIButton *recordBtn = [UIButton buttonWithTitle:@"我的发票" andFont:FONT_ArialMT(15) andtitleNormaColor:[UIColor blackColor] andHighlightedTitle:[UIColor blackColor] andNormaImage:nil andHighlightedImage:nil];
     recordBtn.frame = CGRectMake(0, 0, 70, 40);
     [recordBtn addTarget:self action:@selector(payCliker:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:recordBtn];
