@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIView *kuaidiView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *kuaidiHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *zhifuHeight;
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
 
 @property (nonatomic, strong) NSMutableArray *detailDataSource;
@@ -170,6 +171,11 @@
     self.zhifufangshi.text = self.orderModel.paymethod;
     self.wuliufei.text = [NSString getStringAfterTwo:self.listModel.wuliufei];
     self.chanpinfei.text = [NSString getStringAfterTwo:self.listModel.totalMoney];
+    NSInteger count=0;
+    for (ShopCar *car in self.detailDataSource) {
+        count+=[car.productNum integerValue];
+    }
+    self.countLabel.text = [NSString stringWithFormat:@"%ld",count];
     
     NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
     dateformatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";

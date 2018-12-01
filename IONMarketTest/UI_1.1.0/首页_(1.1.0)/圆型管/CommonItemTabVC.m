@@ -161,6 +161,7 @@
 - (IBAction)ziDingYi:(UIButton *)sender {
     
     if (self.showType == ShowType_GuanCai) {
+        
         return;
     }
     _zhengZhi = @"2";
@@ -355,8 +356,8 @@
     
     if ([type isEqualToString:@"整只"]) {
         
-        self.danjianjiage.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage"]];
-        self.orderMoney = [self.dataDic objectForKey:@"orderMoney"];
+        self.danjianjiage.text = [NSString stringWithFormat:@"%@元/公斤", [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataDic objectForKey:@"danpianjiage"]]]];
+        self.orderMoney = [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataDic objectForKey:@"orderMoney"]]];
         if (self.orderMoney) {
             self.totalLabel.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:self.orderMoney]];
         }

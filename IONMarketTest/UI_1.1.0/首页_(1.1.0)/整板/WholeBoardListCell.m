@@ -61,7 +61,7 @@
         [cell.contentView addSubview:label];
     }
     
-    cell.danjiaLabel.text = [NSString stringWithFormat:@"￥%@元/公斤", dataModel.danjia];
+    cell.danjiaLabel.text = [NSString stringWithFormat:@"￥%@元/公斤", [NSString getStringAfterTwo:dataModel.danjia]];
     NSRange range = [cell.danjiaLabel.text rangeOfString:@"元/公斤"];
     cell.danjiaLabel.attributedText = [UILabel getAttributedFromRange:range WithColor:[UIColor colorWithHexString:@"#E8400F"] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:cell.danjiaLabel.text];
     //修改选中的数量

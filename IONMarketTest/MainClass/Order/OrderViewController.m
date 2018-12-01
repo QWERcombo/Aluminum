@@ -146,9 +146,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     OrderListModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
     __weak typeof(self) weakself = self;
-    
     
     OrderListCell *cell = [OrderListCell initCell:tableView cellName:@"OrderListCell" dataObject:model];
     
@@ -191,7 +191,12 @@
     OrderListModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
     detail.orderid = model.no;
     detail.listModel = model;
-    detail.orderDetailType = OrderDetailType_Ziti;
+    if ([model.status integerValue]==0) {
+        detail.orderDetailType = OrderDetailType_WillPay;
+    } else {
+        detail.orderDetailType = OrderDetailType_Sended;
+    }
+    
     [self.navigationController pushViewController:detail animated:YES];
 }
 

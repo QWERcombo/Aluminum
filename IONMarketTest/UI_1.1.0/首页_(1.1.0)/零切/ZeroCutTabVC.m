@@ -33,7 +33,7 @@
 
 @property (nonatomic, strong) NSDictionary *dataDic;//保存获取的价格信息
 @property (nonatomic, copy) NSString *orderMoney;//订单价格
-
+@property (nonatomic, copy) NSString *showType;//1速切  2优切
 @end
 
 @implementation ZeroCutTabVC
@@ -141,12 +141,19 @@
     
     if (self.lengthTF.text.length && self.widthTF.text.length && self.thinTF.text.length && self.countTF.text.length) {
         
-        [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_LingQie chang:self.lengthTF.text kuan:self.widthTF.text hou:self.thinTF.text amount:self.countTF.text type:@"全部" erjimulu:self.erjimulu_id orderMoney:self.orderMoney successBlock:^(NSDictionary *dataDic) {
+        NSString *type = @"";
+        if (useType == UseType_BuyNow || useType == UseType_AddShopCar) {
+            type = [self.showType isEqualToString:@"1"]?@"快速":@"优切";
+        } else {
+            type = @"全部";
+        }
+        
+        [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_LingQie chang:self.lengthTF.text kuan:self.widthTF.text hou:self.thinTF.text amount:self.countTF.text type:type erjimulu:self.erjimulu_id orderMoney:self.orderMoney successBlock:^(NSDictionary *dataDic) {
             
             self.dataDic = dataDic;
             
-            self.youqieLab.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danjia_youqie"]];
-            self.suqieLab.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danjia_kuaisu"]];
+            self.youqieLab.text = [NSString stringWithFormat:@"%@元/公斤", [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataDic objectForKey:@"danjia_youqie"]]]];
+            self.suqieLab.text = [NSString stringWithFormat:@"%@元/公斤", [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataDic objectForKey:@"danjia_kuaisu"]]]];
 
             
             NSRange range1 = [self.youqieLab.text rangeOfString:@"元/公斤"];

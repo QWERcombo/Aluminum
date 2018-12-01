@@ -11,4 +11,5 @@
 @interface AuthDetailTViewController : UITableViewController
 @property (nonatomic, copy) void(^PassValueBlock)(NSString *inputStr);
 @property (nonatomic, strong) NSString *contentStr;
+@property (nonatomic, assign) NSInteger index;
 @end

@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *code_img;
 @property (weak, nonatomic) IBOutlet UIImageView *phone_img;
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn;
+@property (weak, nonatomic) IBOutlet UILabel *showLabel;
 
 @end
 
@@ -37,6 +38,7 @@
             self.title = @"修改登录密码";
             [self.doneBtn setTitle:@"提交" forState:UIControlStateNormal];
             self.psdTF.placeholder = @"请输入登陆密码";
+            self.showLabel.text = @"*登录密码8-16个数字和字母组成";
             break;
         default:
             break;
@@ -101,9 +103,9 @@
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [dict setValue:self.phoneTF.text forKey:@"phone"];
         [dict setValue:self.codeTF.text forKey:@"number"];
-        [dict setValue:self.psdTF.text forKey:@"payPassword"];
+        [dict setValue:self.psdTF.text forKey:@"password1"];
         
-        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_changePassword andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Forget andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             //NSLog(@"%@", resultDic);
             [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"修改成功" time:0 aboutType:WHShowViewMode_Text state:YES];
             [self dismissViewControllerAnimated:YES completion:nil];

@@ -42,6 +42,7 @@
         [[UMSocialManager defaultManager] shareToPlatform:UMSocialPlatformType_WechatTimeLine messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
             if (error) {
                 UMSocialLogInfo(@"************Share fail with error %@*********",error);
+                
             }else{
                 if ([data isKindOfClass:[UMSocialShareResponse class]]) {
                     UMSocialShareResponse *resp = data;

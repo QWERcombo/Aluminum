@@ -998,6 +998,7 @@
                     <connections>
                         <outlet property="addressLab" destination="gYE-Yz-Fd6" id="ETJ-4O-QpO"/>
                         <outlet property="chanpinfei" destination="Np5-v8-xWm" id="JSx-mZ-55N"/>
+                        <outlet property="countLabel" destination="izd-bp-xfO" id="Xwm-1a-Pas"/>
                         <outlet property="headerView" destination="vzG-K3-ew0" id="Fhb-hV-BKF"/>
                         <outlet property="kuaidiHeight" destination="Nm4-Ab-zjH" id="yLI-AI-8DS"/>
                         <outlet property="kuaidiView" destination="dGm-Lr-Ygl" id="L40-WC-3Zw"/>
@@ -1406,10 +1407,10 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_more" translatesAutoresizingMaskIntoConstraints="NO" id="pe4-P9-kvJ">
-                                                            <rect key="frame" x="345" y="36.5" width="15" height="15"/>
+                                                            <rect key="frame" x="330" y="29" width="30" height="30"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0v6-Ce-NE6">
-                                                            <rect key="frame" x="15" y="0.0" width="330" height="88"/>
+                                                            <rect key="frame" x="15" y="0.0" width="315" height="88"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                             <state key="normal" title="请选择收货地址">
                                                                 <color key="titleColor" red="0.80784313725490198" green="0.83137254901960778" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1520,10 +1521,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_more" translatesAutoresizingMaskIntoConstraints="NO" id="xhb-23-Cyw">
-                                                    <rect key="frame" x="345" y="14.5" width="15" height="15"/>
+                                                    <rect key="frame" x="330" y="7" width="30" height="30"/>
                                                 </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="可输入备注要求" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2wj-f1-5dD">
-                                                    <rect key="frame" x="56" y="13" width="284" height="18"/>
+                                                    <rect key="frame" x="56" y="13" width="269" height="18"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -2913,16 +2914,16 @@
     <resources>
         <image name="Login_code" width="15" height="18"/>
         <image name="Login_phone" width="18" height="17"/>
-        <image name="Order_address" width="14" height="17"/>
-        <image name="White_add" width="32" height="32"/>
+        <image name="Order_address" width="14" height="17.5"/>
+        <image name="White_add" width="64" height="64"/>
         <image name="head_default" width="50" height="50"/>
-        <image name="image_more" width="15" height="15"/>
+        <image name="image_more" width="30" height="30"/>
         <image name="order_phone" width="14" height="13"/>
-        <image name="pay_0" width="16" height="16"/>
-        <image name="pay_1" width="16" height="16"/>
-        <image name="pay_result" width="50" height="50"/>
-        <image name="select_0" width="22" height="22"/>
-        <image name="select_1" width="22" height="22"/>
+        <image name="pay_0" width="32" height="32"/>
+        <image name="pay_1" width="32" height="32"/>
+        <image name="pay_result" width="100" height="100"/>
+        <image name="select_0" width="44" height="44"/>
+        <image name="select_1" width="44" height="44"/>
         <image name="user_phone" width="28" height="28"/>
         <image name="user_weixin" width="28" height="28"/>
         <image name="wallet_hint" width="16" height="16"/>

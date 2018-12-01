@@ -264,6 +264,7 @@
         NSArray *array = @[@"公司名称",@"",@"公司负责人",@"公开联系人",@"公开联系人号码",@"详细地址",@"公司介绍",@"联系我们",@""];
         AuthDetailTViewController *detail = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthDetail"];
         detail.title = [array objectAtIndex:indexPath.row];
+        detail.index = indexPath.row;
         
         __weak typeof(self) weakself = self;
         detail.PassValueBlock = ^(NSString *inputStr) {

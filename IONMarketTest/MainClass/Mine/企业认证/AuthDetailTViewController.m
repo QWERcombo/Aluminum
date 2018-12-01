@@ -25,6 +25,11 @@
     self.inputTextView.layer.masksToBounds = YES;
     self.inputTextView.layer.cornerRadius = 5;
     self.inputTextView.text = self.contentStr;
+    if (self.index == 4) {
+        self.inputTextView.keyboardType = UIKeyboardTypePhonePad;
+    } else {
+        self.inputTextView.keyboardType = UIKeyboardTypeDefault;
+    }
     self.inputTextView.delegate = self;
 }
 
