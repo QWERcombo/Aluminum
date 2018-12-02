@@ -58,11 +58,7 @@
         self.typeImgv.image = IMG(@"order_优切");
     }
     if (dataM.height.length) {
-        if ([dataM.zhonglei isEqualToString:@"整板"]) {
-            self.chicunLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.height, dataM.width, dataM.length];
-        } else {
-            self.chicunLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.length, dataM.width, dataM.height];
-        }
+        self.chicunLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.length, dataM.width, dataM.height];
     } else {
         self.chicunLab.text = [NSString stringWithFormat:@"%@x%@",dataM.length, dataM.width];
     }

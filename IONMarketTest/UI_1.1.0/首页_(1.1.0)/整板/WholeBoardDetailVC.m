@@ -129,20 +129,7 @@
     
     NSString *amount = [NSNumber numberWithFloat:_stepper.value].stringValue;
     
-    NSString *chang = @"";
-    NSString *kuan = @"";
-    NSString *hou = @"";
-    if (useType == UseType_BuyNow) {
-        chang = _wholeModel.arg3;
-        kuan = _wholeModel.arg2;
-        hou = _wholeModel.arg1;
-    } else {
-        chang = _wholeModel.arg1;
-        kuan = _wholeModel.arg2;
-        hou = _wholeModel.arg3;
-    }
-    
-    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:chang kuan:kuan hou:hou amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:[[NSNumber alloc] initWithInteger:self.orderMoney].stringValue successBlock:^(NSDictionary *dataDic) {
+    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:_wholeModel.arg3 kuan:_wholeModel.arg2 hou:_wholeModel.arg1 amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:[[NSNumber alloc] initWithInteger:self.orderMoney].stringValue successBlock:^(NSDictionary *dataDic) {
         
         self.dataDic = dataDic;
         self.orderMoney = [self.dataDic[@"orderMoney"] integerValue];

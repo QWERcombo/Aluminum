@@ -32,11 +32,7 @@
         
         self.moneyLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:dataM.money]];
         if ([dataM.height floatValue]>0) {
-            if ([dataM.zhonglei isEqualToString:@"整板"]) {
-                self.guigeLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.height, dataM.width, dataM.length];
-            } else {
-                self.guigeLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.length, dataM.width, dataM.height];
-            }
+            self.guigeLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.length, dataM.width, dataM.height];
         } else {
             self.guigeLab.text = [NSString stringWithFormat:@"规格：%@x%@", dataM.length, dataM.width];
         }
@@ -55,11 +51,7 @@
         OrderListDetailModel *dataM = (OrderListDetailModel *)model;
         self.moneyLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:dataM.money]];
         if ([dataM.height floatValue]>0) {
-            if ([dataM.zhonglei isEqualToString:@"整板"]) {
-                self.guigeLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.height, dataM.width, dataM.length];
-            } else {
-                self.guigeLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.length, dataM.width, dataM.height];
-            }
+            self.guigeLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.length, dataM.width, dataM.height];
         } else {
             self.guigeLab.text = [NSString stringWithFormat:@"规格：%@x%@", dataM.length, dataM.width];
         }

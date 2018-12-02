@@ -332,9 +332,9 @@
         }
         
         NSMutableDictionary *subDataDic = [NSMutableDictionary dictionary];
-        [subDataDic setObject:model.arg1 forKey:@"chang"];
+        [subDataDic setObject:model.arg3 forKey:@"chang"];
         [subDataDic setObject:model.arg2 forKey:@"kuang"];
-        [subDataDic setObject:model.arg3 forKey:@"hou"];
+        [subDataDic setObject:model.arg1 forKey:@"hou"];
         [subDataDic setObject:@"整板" forKey:@"zhonglei"];
         [subDataDic setObject:@"整只" forKey:@"type"];
         [subDataDic setObject:model.lvxing.name forKey:@"erjimulu"];
