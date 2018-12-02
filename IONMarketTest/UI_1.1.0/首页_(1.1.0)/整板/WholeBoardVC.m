@@ -205,9 +205,9 @@
             car.erjimulu = model.lvxing.name;
             car.money = [NSNumber numberWithFloat:[model.danpianzhengbanjiage floatValue]*model.value].stringValue;
             car.zhonglei = @"整板";
-            car.length = model.arg1;
+            car.length = model.arg3;
             car.width = model.arg2;
-            car.height = model.arg3;
+            car.height = model.arg1;
             
             [dataArr addObject:car];
         }
@@ -261,7 +261,7 @@
 - (void)getZhengBanListCur_page:(NSInteger)cur_page withXinghao:(NSString *)xinghao {
     
     NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
-    [parDic setObject:[NSString stringWithFormat:@"%ld", cur_page] forKey:@"pageNum"];
+    [parDic setObject:[NSString stringWithFormat:@"%ld", (long)cur_page] forKey:@"pageNum"];
     [parDic setObject:@"10" forKey:@"pageSize"];
     [parDic setObject:xinghao forKey:@"xinghao"];
     [parDic setObject:@"整板" forKey:@"zhonglei"];
@@ -352,7 +352,9 @@
         self.totalLabel.text = @"合计:0";
         
         [self refreshBottomViewInfo];
-        
+        [self.selectArray removeAllObjects];
+        [self refreshTotalLabel];
+        [self.tableView.mj_header beginRefreshing];
     } failure:^(NSString *error, NSInteger code) {
         
     }];

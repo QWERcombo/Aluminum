@@ -30,7 +30,7 @@
     
     WholeBoardModel *dataModel = (WholeBoardModel *)dataObject;
     
-    cell.guigeLabel.text = dataModel.guige;
+    cell.guigeLabel.text = [NSString stringWithFormat:@"%@*%@*%@", dataModel.arg3, dataModel.arg2, dataModel.arg1];
     cell.changjiaLabel.text = [NSString stringWithFormat:@"厂家: %@", dataModel.canzhaozhishu];
     cell.priceLabel.text = [NSString stringWithFormat:@"%@元/件", [NSString getStringAfterTwo:dataModel.danpianzhengbanjiage]];
     cell.stepper.maxValue = [dataModel.kucun integerValue];

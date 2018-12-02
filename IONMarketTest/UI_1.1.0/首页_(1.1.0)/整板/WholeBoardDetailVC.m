@@ -91,7 +91,7 @@
     _totalLabel.adjustsFontSizeToFitWidth = YES;
     self.stepper.maxValue = [_wholeModel.kucun integerValue]>10?10:[_wholeModel.kucun integerValue];
     self.stepper.value = _wholeModel.value;
-    _guigeLabel.text = _wholeModel.guige;
+    _guigeLabel.text = [NSString stringWithFormat:@"%@*%@*%@", _wholeModel.arg3, _wholeModel.arg2, _wholeModel.arg1];
     _paihaoLabel.text = _wholeModel.xinghao;
     _zhuangtaiLabel.text = _wholeModel.zhuangtai;
     _biaozhunLabel.text = _wholeModel.gongyibiaozhun;
@@ -129,7 +129,20 @@
     
     NSString *amount = [NSNumber numberWithFloat:_stepper.value].stringValue;
     
-    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:_wholeModel.arg3 kuan:_wholeModel.arg2 hou:_wholeModel.arg1 amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:[[NSNumber alloc] initWithInteger:self.orderMoney].stringValue successBlock:^(NSDictionary *dataDic) {
+    NSString *chang = @"";
+    NSString *kuan = @"";
+    NSString *hou = @"";
+    if (useType == UseType_BuyNow) {
+        chang = _wholeModel.arg3;
+        kuan = _wholeModel.arg2;
+        hou = _wholeModel.arg1;
+    } else {
+        chang = _wholeModel.arg1;
+        kuan = _wholeModel.arg2;
+        hou = _wholeModel.arg3;
+    }
+    
+    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:chang kuan:kuan hou:hou amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:[[NSNumber alloc] initWithInteger:self.orderMoney].stringValue successBlock:^(NSDictionary *dataDic) {
         
         self.dataDic = dataDic;
         self.orderMoney = [self.dataDic[@"orderMoney"] integerValue];
@@ -138,6 +151,7 @@
     } buyNowSuccessBlock:^(ShopCar *shopCar) {
         
         ConfirmOrderVC *confirm = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrderVC"];
+        shopCar.money = [NSNumber numberWithFloat:[_wholeModel.danpianzhengbanjiage floatValue]*_stepper.value].stringValue;
         confirm.carArr = @[shopCar];
         confirm.fromtype = FromVCType_Buy;
         [self.navigationController pushViewController:confirm animated:YES];
