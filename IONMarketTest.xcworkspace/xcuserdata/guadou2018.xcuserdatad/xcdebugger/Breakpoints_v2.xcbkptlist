@@ -4,28 +4,18 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            scope = "0"
-            stopOnStyle = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IONMarketTest/MainClass/Mine/&#x4f01;&#x4e1a;&#x8ba4;&#x8bc1;/AuthenticationTableViewController.m"
-            timestampString = "565072134.577991"
+            filePath = "IONMarketTest/MainClass/Mine/&#x5206;&#x4eab;&#x63a8;&#x5e7f;/ShareViewController.m"
+            timestampString = "565240304.761992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
-            landmarkName = "-getData"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-TapAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +25,77 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IONMarketTest/MainClass/Mine/&#x4f01;&#x4e1a;&#x8ba4;&#x8bc1;/AuthenticationTableViewController.m"
-            timestampString = "565072134.578052"
+            filePath = "IONMarketTest/MainClass/Mine/&#x5206;&#x4eab;&#x63a8;&#x5e7f;/ShareViewController.m"
+            timestampString = "565240304.7623661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "-getData"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "-TapAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IONMarketTest/MainClass/Mine/&#x5206;&#x4eab;&#x63a8;&#x5e7f;/ShareViewController.m"
+            timestampString = "565240304.7624609"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-TapAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IONMarketTest/MainClass/Mine/&#x5206;&#x4eab;&#x63a8;&#x5e7f;/ShareViewController.m"
+            timestampString = "565240304.762548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-TapAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IONMarketTest/MainClass/Mine/&#x5206;&#x4eab;&#x63a8;&#x5e7f;/ShareViewController.m"
+            timestampString = "565240304.762609"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "-TapAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IONMarketTest/MainClass/Mine/&#x5206;&#x4eab;&#x63a8;&#x5e7f;/ShareViewController.m"
+            timestampString = "565240304.762695"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-TapAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

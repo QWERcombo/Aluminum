@@ -329,6 +329,7 @@
                 break;
         }
         
+        detail.index = indexPath.row;
         [self.navigationController pushViewController:detail animated:YES];
     }
 }

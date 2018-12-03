@@ -11,17 +11,12 @@
 @class OrderListDetailModel;
 @interface OrderListModel : BaseModel
 
-@property (nonatomic, strong) NSString *createDate;
-
-@property (nonatomic, strong) NSArray<OrderListDetailModel *> *detail;
-
-@property (nonatomic, strong) NSString *no;
-
-@property (nonatomic, strong) NSString *status;
-
-@property (nonatomic, strong) NSString *totalMoney;
-
-@property (nonatomic, strong) NSString *wuliufei;
+@property (nonatomic, copy) NSString *createDate;
+@property (nonatomic, copy) NSArray<OrderListDetailModel *> *detail;
+@property (nonatomic, copy) NSString *no;
+@property (nonatomic, copy) NSString *status;
+@property (nonatomic, copy) NSString *totalMoney;
+@property (nonatomic, copy) NSString *wuliufei;
 
 @end
 
