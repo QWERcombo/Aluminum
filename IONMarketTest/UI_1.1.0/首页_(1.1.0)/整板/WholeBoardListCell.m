@@ -30,7 +30,8 @@
     
     WholeBoardModel *dataModel = (WholeBoardModel *)dataObject;
     
-    cell.guigeLabel.text = [NSString stringWithFormat:@"%@*%@*%@", dataModel.arg3, dataModel.arg2, dataModel.arg1];
+//    cell.guigeLabel.text = [NSString stringWithFormat:@"%@*%@*%@", dataModel.arg3, dataModel.arg2, dataModel.arg1];
+    cell.guigeLabel.text = dataModel.guige;
     cell.changjiaLabel.text = [NSString stringWithFormat:@"厂家: %@", dataModel.canzhaozhishu];
     cell.priceLabel.text = [NSString stringWithFormat:@"%@元/件", [NSString getStringAfterTwo:dataModel.danpianzhengbanjiage]];
     cell.stepper.maxValue = [dataModel.kucun integerValue];
@@ -44,7 +45,16 @@
         cell.stepper.hidden = YES;
     }
     
-    NSArray *array = @[dataModel.gongyibiaozhun,dataModel.lasi,dataModel.fumo];
+    NSMutableArray *array = [NSMutableArray array];
+    if (dataModel.gongyibiaozhun.length) {
+        [array addObject:dataModel.gongyibiaozhun];
+    }
+    if (dataModel.lasi.length) {
+        [array addObject:dataModel.lasi];
+    }
+    if (dataModel.fumo.length) {
+        [array addObject:dataModel.fumo];
+    }
     
     CGFloat totalMargin = 0;
     for (NSInteger i=0; i<array.count; i++) {

@@ -43,7 +43,6 @@
     self.lengthTF.delegate = self;
     self.widthTF.delegate = self;
     self.countTF.delegate = self;
-    
 }
 
 #pragma mark - Table view data source
@@ -58,7 +57,7 @@
 - (IBAction)suqie:(UIButton *)sender {
     
     if(!_dataDic) return;
-    
+    self.showType = @"1";
     _label1.textColor = [UIColor mianColor:2];
     _label2.textColor = [UIColor mianColor:2];
     _label3.textColor = [UIColor Grey_WordColor];
@@ -76,7 +75,7 @@
 - (IBAction)youqie:(UIButton *)sender {
     
     if(!_dataDic) return;
-    
+    self.showType = @"2";
     _label1.textColor = [UIColor Grey_WordColor];
     _label2.textColor = [UIColor Grey_WordColor];
     _label3.textColor = [UIColor mianColor:2];
@@ -137,7 +136,6 @@
 }
 
 - (void)placeOrder:(UseType)useType {
-//    [self.view endEditing:YES];
     
     if (self.lengthTF.text.length && self.widthTF.text.length && self.thinTF.text.length && self.countTF.text.length) {
         

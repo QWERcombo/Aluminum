@@ -48,7 +48,7 @@
 //        [[PublicFuntionTool sharedInstance] checkUpdateNewVersion];
 //    });
     
-    [self configurateGuideView];//配置引导页
+//    [self configurateGuideView];//配置引导页
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -113,7 +113,7 @@
     UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 311)];
     mainView.backgroundColor = [UIColor whiteColor];
 
-    ABBannerView *bannerView = (ABBannerView *)[[UtilsMold sharedInstance] creatView:@"ABBannerView" data:nil model:@[IMG(@"Banner_0"),IMG(@"Banner_1"),IMG(@"Banner_2")] deleGate:self andCliker:^(NSDictionary *clueDic) {
+    ABBannerView *bannerView = (ABBannerView *)[[UtilsMold sharedInstance] creatView:@"ABBannerView" data:nil model:@[IMG(@"Banner_0"),IMG(@"Banner_1")] deleGate:self andCliker:^(NSDictionary *clueDic) {
         
     }];
     

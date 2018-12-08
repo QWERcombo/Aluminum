@@ -197,6 +197,7 @@ typedef NS_ENUM(NSUInteger, LoginType) {
         [dict setValue:self.phoneTF.text forKey:@"phone"];
         [dict setValue:self.psdTF.text forKey:@"password"];
         [dict setValue:[self getLastVersion] forKey:@"lastVersion"];
+//        [dict setValue:@"v110" forKey:@"lastVersion"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Login andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             //NSLog(@"++++%@", resultDic);

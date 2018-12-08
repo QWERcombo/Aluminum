@@ -91,7 +91,8 @@
     _totalLabel.adjustsFontSizeToFitWidth = YES;
     self.stepper.maxValue = [_wholeModel.kucun integerValue]>10?10:[_wholeModel.kucun integerValue];
     self.stepper.value = _wholeModel.value;
-    _guigeLabel.text = [NSString stringWithFormat:@"%@*%@*%@", _wholeModel.arg3, _wholeModel.arg2, _wholeModel.arg1];
+//    _guigeLabel.text = [NSString stringWithFormat:@"%@*%@*%@", _wholeModel.arg3, _wholeModel.arg2, _wholeModel.arg1];
+    _guigeLabel.text = _wholeModel.guige;
     _paihaoLabel.text = _wholeModel.xinghao;
     _zhuangtaiLabel.text = _wholeModel.zhuangtai;
     _biaozhunLabel.text = _wholeModel.gongyibiaozhun;
