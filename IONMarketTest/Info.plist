@@ -64,7 +64,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wechat</string>
@@ -171,7 +171,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Access to the camera to take photo</string>
+	<string>Access to the camera to take photo send to Leqie</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Access to the album choose a picture send to Leqie</string>
 	<key>NSPhotoLibraryUsageDescription</key>
