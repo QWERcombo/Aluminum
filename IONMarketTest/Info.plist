@@ -171,11 +171,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Access to the camera</string>
+	<string>Access to the camera to take photo</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Access to the album</string>
+	<string>Access to the album choose a picture send to Leqie</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Access to the album</string>
+	<string>Access to the album choose a picture send to Leqie</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
