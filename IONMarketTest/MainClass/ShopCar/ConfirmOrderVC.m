@@ -82,6 +82,7 @@
             [dict setValue:@"自提" forKey:@"ziti"];
         } else {
             [dict setValue:self.addressModel.id forKey:@"addressId"];
+            [dict setValue:@"不自提" forKey:@"ziti"];
         }
         if (self.dayinSwitch.isOn) {
             [dict setValue:@"打包" forKey:@"isPackage"];
@@ -138,6 +139,7 @@
             [dict setValue:@"自提" forKey:@"ziti"];
         } else {
             [dict setValue:self.addressModel.id forKey:@"addressId"];
+            [dict setValue:@"不自提" forKey:@"ziti"];
         }
         if (self.dayinSwitch.isOn) {
             [dict setValue:@"打包" forKey:@"isPackage"];
@@ -247,7 +249,7 @@
 #pragma mark --- Handle
 
 - (IBAction)ziti:(UISwitch *)sender {
-    NSLog(@"自提 %d", sender.isOn);
+//    NSLog(@"自提 %d", sender.isOn);
     self.addressView.hidden = sender.isOn;
     if (!sender.isOn) {
         [self getDefaultAddressModel];

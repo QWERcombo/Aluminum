@@ -175,7 +175,7 @@
     for (ShopCar *car in self.detailDataSource) {
         count+=[car.productNum integerValue];
     }
-    self.countLabel.text = [NSString stringWithFormat:@"%ld",count];
+    self.countLabel.text = [NSString stringWithFormat:@"%ld",(long)count];
     
     NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
     dateformatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
