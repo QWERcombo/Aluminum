@@ -64,7 +64,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>4</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wechat</string>
@@ -171,11 +171,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Access to the camera to take photo send to Leqie</string>
+	<string>乐切App会在拍摄照片时访问您的相机权限</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Access to the album choose a picture send to Leqie</string>
+	<string>乐切App会在上传照片时访问您的相册权限</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Access to the album choose a picture send to Leqie</string>
+	<string>乐切App会在上传照片时访问您的相册权限</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
