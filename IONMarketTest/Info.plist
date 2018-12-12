@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.1</string>
+	<string>1.1.2</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -64,7 +64,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wechat</string>
@@ -171,11 +171,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>乐切App会在拍摄照片时访问您的相机权限</string>
+	<string>乐切App会在拍摄照片时访问您的相机权限，诺不允许，您将无法在乐切中更新头像和上传相应的信息图片</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>乐切App会在上传照片时访问您的相册权限</string>
+	<string>乐切App会在上传照片时访问您的相册权限，诺不允许，您将无法在乐切中更新头像和上传相应的信息图片</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>乐切App会在上传照片时访问您的相册权限</string>
+	<string>乐切App会在上传照片时访问您的相册权限，诺不允许，您将无法在乐切中更新头像和上传相应的信息图片</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

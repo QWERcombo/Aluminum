@@ -44,16 +44,13 @@
     }];
     self.pageNumber = 1;
     [self getDataSource:self.pageNumber];
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [[PublicFuntionTool sharedInstance] checkUpdateNewVersion];
-//    });
     
 //    [self configurateGuideView];//配置引导页
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     //强制更新
-    [[PublicFuntionTool sharedInstance] checkUpdateNewVersion];
+//    [[PublicFuntionTool sharedInstance] checkUpdateNewVersion];
 }
 
 #pragma mark --- Delegate&DataSource
