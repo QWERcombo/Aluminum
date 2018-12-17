@@ -351,7 +351,7 @@
 //刷新价格信息
 - (void)updateInfoView:(NSString *)type {
     
-    self.danjianzhongliang.text = [NSString stringWithFormat:@"%@kg", [self.dataDic objectForKey:@"danpianzhongliang"]];
+    self.danjianzhongliang.text = [NSString stringWithFormat:@"%@kg", [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataDic objectForKey:@"danpianzhongliang"]]]];
     self.jianshu.text = [NSString stringWithFormat:@"%@件", self.amountTF.text];
     
     if ([type isEqualToString:@"整只"]) {

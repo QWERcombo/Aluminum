@@ -109,7 +109,7 @@
     NSRange range1 = [self.youqieLab.text rangeOfString:@"元/公斤"];
     NSRange range2 = [self.suqieLab.text rangeOfString:@"元/公斤"];
     _jianshuLab.text = [NSString stringWithFormat:@"%@件",self.countTF.text];
-    _danjianzhongliangLab.text = [NSString stringWithFormat:@"%@kg", [self.dataDic objectForKey:@"danpianzhongliang"]];
+    _danjianzhongliangLab.text = [NSString stringWithFormat:@"%@kg", [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataDic objectForKey:@"danpianzhongliang"]]]];
     
     if (sender == self.youqie_btn) {
         //优切
