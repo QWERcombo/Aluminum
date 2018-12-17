@@ -98,17 +98,17 @@ static NSOperationQueue *queue;
             [DataSend verdictResponseString:responseObject];
             
             NSError *err;
-            NSString *jsonStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+//            NSString *jsonStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+//            NSDictionary *result = [NEUSecurityUtil dictionaryWithJsonString:jsonStr];
 //            NSLog(@"---%@", jsonStr);
-            NSData *jsonData = [[self removeUnescapedCharacter:jsonStr] dataUsingEncoding:NSUTF8StringEncoding];
+//            NSData *jsonData = [[self removeUnescapedCharacter:jsonStr] dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:&err];
             
-            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&err];
             
             NSLog(@" 🍔🍔 %@", result);
             NSString *status = [NSString stringWithFormat:@"%@", [result objectForKey:@"status"]];//1为成功
             NSString *msg = [result objectForKey:@"msg"];//返回信息
             
-//            success(result,msg);
             if ([status isEqualToString:@"1"]) {    //成功
                 
                 success(result,msg);
