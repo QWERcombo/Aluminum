@@ -55,6 +55,7 @@
 		565086B0205D3AED00FD8497 /* MainItem__Single.m in Sources */ = {isa = PBXBuildFile; fileRef = 565086AF205D3AED00FD8497 /* MainItem__Single.m */; };
 		565086B2205D3B1D00FD8497 /* MainItemView__WholeBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565086B1205D3B1D00FD8497 /* MainItemView__WholeBoard.xib */; };
 		565086B4205D3B3A00FD8497 /* MainItem__Single.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565086B3205D3B3A00FD8497 /* MainItem__Single.xib */; };
+		5650F46221F0D2F0009BD7CE /* WholeBoardTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5650F46121F0D2F0009BD7CE /* WholeBoardTableVC.m */; };
 		5654FC1220AC6B9900B7DA4E /* ConfirmOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5654FC1120AC6B9900B7DA4E /* ConfirmOrderVC.m */; };
 		5657412B20538D8A007CB488 /* SelectedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5657412A20538D8A007CB488 /* SelectedItem.m */; };
 		5657413820539313007CB488 /* SelectedItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5657413720539313007CB488 /* SelectedItem.xib */; };
@@ -423,6 +424,8 @@
 		565086AF205D3AED00FD8497 /* MainItem__Single.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainItem__Single.m; sourceTree = "<group>"; };
 		565086B1205D3B1D00FD8497 /* MainItemView__WholeBoard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItemView__WholeBoard.xib; sourceTree = "<group>"; };
 		565086B3205D3B3A00FD8497 /* MainItem__Single.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItem__Single.xib; sourceTree = "<group>"; };
+		5650F46021F0D2F0009BD7CE /* WholeBoardTableVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WholeBoardTableVC.h; sourceTree = "<group>"; };
+		5650F46121F0D2F0009BD7CE /* WholeBoardTableVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WholeBoardTableVC.m; sourceTree = "<group>"; };
 		5654FC1020AC6B9900B7DA4E /* ConfirmOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderVC.h; sourceTree = "<group>"; };
 		5654FC1120AC6B9900B7DA4E /* ConfirmOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderVC.m; sourceTree = "<group>"; };
 		5657412920538D8A007CB488 /* SelectedItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedItem.h; sourceTree = "<group>"; };
@@ -1207,6 +1210,8 @@
 				560950CC2178CB3E00B2CCDC /* WholeBoardVC.m */,
 				A293059D217EFBD800D72F4A /* WholeBoardDetailVC.h */,
 				A293059E217EFBD800D72F4A /* WholeBoardDetailVC.m */,
+				5650F46021F0D2F0009BD7CE /* WholeBoardTableVC.h */,
+				5650F46121F0D2F0009BD7CE /* WholeBoardTableVC.m */,
 				56198BB2217A2DAB009AB9F3 /* WholeBoardTapView.h */,
 				56198BB3217A2DAB009AB9F3 /* WholeBoardTapView.m */,
 				56198BB5217A2DBD009AB9F3 /* WholeBoardTapView.xib */,
@@ -2636,6 +2641,7 @@
 				56B78CCC2185E5850056D812 /* AAAreaspline.m in Sources */,
 				5671DBBF205FF525005F1760 /* WholeBoardViewController.m in Sources */,
 				A22981AF20624447007B6112 /* AddBankCardUploadView.m in Sources */,
+				5650F46221F0D2F0009BD7CE /* WholeBoardTableVC.m in Sources */,
 				A22981862061FE97007B6112 /* RemainExplainViewController.m in Sources */,
 				56DB05CB20FAEA37009FA8C8 /* WithdrawRecordCell.m in Sources */,
 				5691A3D520C833C5008065F4 /* TicketViewController.m in Sources */,

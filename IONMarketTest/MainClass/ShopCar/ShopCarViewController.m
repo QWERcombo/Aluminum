@@ -272,7 +272,7 @@
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[UserData currentUser].phone forKey:@"phone"];
-    [dict setValue:@"10" forKey:@"pageSize"];
+    [dict setValue:@"999" forKey:@"pageSize"];
     [dict setValue:SINT(page_number) forKey:@"pageNum"];
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_GetGouwucheByUser andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {

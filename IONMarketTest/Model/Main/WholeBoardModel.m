@@ -8,6 +8,10 @@
 
 #import "WholeBoardModel.h"
 
+@implementation ProductCate
+
+@end
+
 @implementation WholeBoardModel
 
 + (JSONKeyMapper *)keyMapper

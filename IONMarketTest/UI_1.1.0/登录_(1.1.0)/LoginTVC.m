@@ -196,7 +196,7 @@ typedef NS_ENUM(NSUInteger, LoginType) {
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [dict setValue:self.phoneTF.text forKey:@"phone"];
         [dict setValue:self.psdTF.text forKey:@"password"];
-        [dict setValue:[self getLastVersion] forKey:@"lastVersion"];
+//        [dict setValue:[self getLastVersion] forKey:@"lastVersion"];
 //        [dict setValue:@"v110" forKey:@"lastVersion"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Login andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
@@ -224,7 +224,7 @@ typedef NS_ENUM(NSUInteger, LoginType) {
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [dict setValue:self.phoneTF.text forKey:@"phone"];
         [dict setValue:self.psdTF.text forKey:@"number"];
-        [dict setValue:[self getLastVersion] forKey:@"lastVersion"];
+//        [dict setValue:[self getLastVersion] forKey:@"lastVersion"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_loginByCode andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             //用户手机号存本地

@@ -19,6 +19,7 @@
 @property (nonatomic, copy) NSString *fatherId;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *ord;
+@property (nonatomic, copy) NSString *picture;
 
 @end
 
