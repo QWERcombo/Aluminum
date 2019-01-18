@@ -123,6 +123,7 @@
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)];
             imageView.contentMode = UIViewContentModeScaleAspectFill;
             imageView.layer.masksToBounds = YES;
+//            imageView.backgroundColor = [UIColor purpleColor];
             [self.scrollView addSubview:imageView];
             if (i == 0) {
                 id url = array[array.count-1];

@@ -51,7 +51,7 @@
 - (void)setupchildVc:(NSObject *)model {
     NSArray *tabBarItemImages = @[@"main",@"order",@"mine"];
     NSArray *tabBarItemTitle = @[@"首页",@"行情",@"我的"];
-//    image_main_0
+
     for (int i = 0;i < 3; i ++ ) {
         NSString *titleString = [tabBarItemTitle objectAtIndex:i];
         NSString *selectedimage = [NSString stringWithFormat:@"image_%@_1",[tabBarItemImages objectAtIndex:i]];
@@ -99,7 +99,7 @@
 }
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    
+
     if ([viewController.tabBarItem.title isEqualToString:@"首页"]) {
 
         return YES;
@@ -120,7 +120,7 @@
         }
 
     }
-    
+
 }
 
 - (void)didReceiveMemoryWarning {

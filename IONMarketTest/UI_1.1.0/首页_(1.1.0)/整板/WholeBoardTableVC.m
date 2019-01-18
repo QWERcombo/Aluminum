@@ -10,7 +10,7 @@
 
 @interface WholeBoardTableVC ()
 
-@property (weak, nonatomic) IBOutlet HYStepper *stepper;
+
 @property (weak, nonatomic) IBOutlet UILabel *guigeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *paihaoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *zhuangtaiLabel;
@@ -56,16 +56,7 @@
     _danjianLabel.text = [NSString stringWithFormat:@"%@元",_wholeModel.danpianzhengbanjiage];
     _gongjinLabel.text = [NSString stringWithFormat:@"%@元/公斤", _wholeModel.danjia];
     _gongjinLabel.attributedText = [UILabel getAttributedFromRange:[_gongjinLabel.text rangeOfString:@"元/公斤"] WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:_gongjinLabel.text];
-    //修改选中的数量
-//    MJWeakSelf
-    _stepper.valueChanged = ^(double value) {
-        //        NSLog(@"%f---%ld", value, _wholeModel.value);
-//        if (weakSelf.selectValue) {
-//            weakSelf.selectValue(value);
-//        }
-        
-//        weakSelf.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithFloat:[_wholeModel.danpianzhengbanjiage floatValue]*value]];
-    };
+    
 }
 
 

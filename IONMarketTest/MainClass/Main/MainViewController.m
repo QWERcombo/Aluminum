@@ -27,6 +27,8 @@
 
 @interface MainViewController ()
 @property (nonatomic, assign) NSInteger pageNumber;
+@property (nonatomic, strong) NSMutableArray *bannerArray;
+
 @end
 
 @implementation MainViewController
@@ -37,6 +39,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tabView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.bannerArray = [NSMutableArray array];
     [self.tabView removeFromSuperview];
     [self.view addSubview:self.tabView];
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -50,7 +53,13 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     //强制更新
-//    [[PublicFuntionTool sharedInstance] checkUpdateNewVersion];
+    [[PublicFuntionTool sharedInstance] checkUpdateNewVersion:^(NSArray *bannerArr) {
+        if (self.bannerArray.count) {
+            [self.bannerArray removeAllObjects];
+        }
+        [self.bannerArray addObjectsFromArray:bannerArr];
+        [self.tabView reloadData];
+    }];
 }
 
 #pragma mark --- Delegate&DataSource
@@ -110,7 +119,8 @@
     UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 311)];
     mainView.backgroundColor = [UIColor whiteColor];
 
-    ABBannerView *bannerView = (ABBannerView *)[[UtilsMold sharedInstance] creatView:@"ABBannerView" data:nil model:@[IMG(@"Banner_0"),IMG(@"Banner_1")] deleGate:self andCliker:^(NSDictionary *clueDic) {
+//    @[IMG(@"Banner_0"),IMG(@"Banner_1")]
+    ABBannerView *bannerView = (ABBannerView *)[[UtilsMold sharedInstance] creatView:@"ABBannerView" data:nil model:self.bannerArray deleGate:self andCliker:^(NSDictionary *clueDic) {
         
     }];
     

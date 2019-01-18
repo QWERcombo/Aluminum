@@ -351,7 +351,7 @@ DEF_SINGLETON(UtilsMold);
     
 }
 
-- (UIView *)creatView:(NSString *)type data:(id)data  model:(NSObject *)model deleGate:(id)delegate andCliker:(ShowBlock)clue{
+- (UIView *)creatView:(NSString *)type data:(id)data model:(NSObject *)model deleGate:(id)delegate andCliker:(ShowBlock)clue{
     __showBlock = clue;
     
     UIView *backView = nil;

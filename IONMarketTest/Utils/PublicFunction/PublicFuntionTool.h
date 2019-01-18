@@ -94,7 +94,7 @@ AS_SINGLETON(PublicFuntionTool);
 - (void)isHadLogin:(HadLoginBlock)loginBlock;
 
 //版本更新检测
-- (void)checkUpdateNewVersion;
+- (void)checkUpdateNewVersion:(void(^)(NSArray *bannerArr))bannerBlock;
 
 
 //下单通用接口(价格 购买 加购物车)

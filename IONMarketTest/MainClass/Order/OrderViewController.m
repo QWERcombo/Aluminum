@@ -187,6 +187,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    OrderDetailViewController *detail_o = [OrderDetailViewController new];
 //    [self.navigationController pushViewController: detail_o animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     OrderNewDetailVC *detail = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderNewDetailVC"];
     OrderListModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
     detail.orderid = model.no;

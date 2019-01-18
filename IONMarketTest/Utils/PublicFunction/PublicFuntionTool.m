@@ -306,11 +306,24 @@ DEF_SINGLETON(PublicFuntionTool);
     
 }
 
-- (void)checkUpdateNewVersion {
+- (void)checkUpdateNewVersion:(void(^)(NSArray *bannerArr))bannerBlock {
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_getVersionAndUrl andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
         
-        NSString *serviceVersion = [NSString stringWithFormat:@"%@", resultDic[@"version"]];
+        NSMutableArray *array = [NSMutableArray array];
+        for (int i=0; i<5; i++) {
+            
+            NSString *bannerStr = [resultDic objectForKey:[NSString stringWithFormat:@"banner%d", i+1]];
+            if (bannerStr.length) {
+                [array addObject:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE,bannerStr]];
+            }
+        }
+        bannerBlock(array);
+        
+        NSString *serviceVersion = resultDic[@"version"];
+        if (!serviceVersion.length) {
+            serviceVersion = @"0";
+        }
         NSString *appVersion = [self getAppVersion];
         if (serviceVersion>appVersion) {
             

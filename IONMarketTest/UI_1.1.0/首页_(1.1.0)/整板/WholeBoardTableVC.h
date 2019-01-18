@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger selectCount;
 //@property (nonatomic, copy) SelectedValue selectValue;
 
+@property (weak, nonatomic) IBOutlet HYStepper *stepper;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -264,22 +264,22 @@
                         <sections>
                             <tableViewSection id="VBc-2C-udV">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="270" id="e8z-Mo-Lkp">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="285" id="e8z-Mo-Lkp">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="285"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e8z-Mo-Lkp" id="YDz-yv-hPi">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="269.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="284.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jEv-P5-bf6">
-                                                    <rect key="frame" x="15" y="10" width="345" height="100"/>
+                                                    <rect key="frame" x="15" y="10" width="345" height="115"/>
                                                     <color key="backgroundColor" red="0.1843137255" green="0.45882352939999999" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="CCw-2V-hrj"/>
+                                                        <constraint firstAttribute="height" constant="115" id="CCw-2V-hrj"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lCF-vD-TBC" customClass="BorderView">
-                                                    <rect key="frame" x="15" y="171" width="345" height="94"/>
+                                                    <rect key="frame" x="15" y="186" width="345" height="94"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cdh-XA-BeB">
                                                             <rect key="frame" x="0.0" y="0.0" width="345" height="21"/>
@@ -372,13 +372,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18*1500*3000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfs-yk-GdM">
-                                                    <rect key="frame" x="15" y="130" width="125" height="21"/>
+                                                    <rect key="frame" x="15" y="145" width="125" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CXK-e2-u3a" customClass="HYStepper">
-                                                    <rect key="frame" x="277" y="129.5" width="83" height="22"/>
+                                                    <rect key="frame" x="277" y="144.5" width="83" height="22"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="83" id="4EL-kj-e9H"/>
@@ -402,7 +402,7 @@
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="240" id="Mvl-06-CkW">
-                                        <rect key="frame" x="0.0" y="270" width="375" height="240"/>
+                                        <rect key="frame" x="0.0" y="285" width="375" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mvl-06-CkW" id="tl0-kC-wos">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="239.5"/>
@@ -781,7 +781,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ZeroCutTabVC" id="aBg-Ht-zsY" customClass="ZeroCutTabVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Q3a-x1-Ktg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -1612,16 +1612,16 @@
                                                     <rect key="frame" x="0.0" y="225" width="375" height="60"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet_ali" translatesAutoresizingMaskIntoConstraints="NO" id="nqY-Ru-3J8">
-                                                            <rect key="frame" x="15" y="6" width="48" height="48"/>
+                                                            <rect key="frame" x="15" y="18" width="24" height="24"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHv-SC-qMZ">
-                                                            <rect key="frame" x="76" y="19.5" width="52" height="21"/>
+                                                            <rect key="frame" x="52" y="19.5" width="52" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVx-mf-zXU">
-                                                            <rect key="frame" x="316" y="8" width="44" height="44"/>
+                                                            <rect key="frame" x="338" y="19" width="22" height="22"/>
                                                             <state key="normal" image="select_0"/>
                                                             <state key="selected" image="select_1"/>
                                                         </button>
@@ -1651,16 +1651,16 @@
                                                     <rect key="frame" x="0.0" y="285" width="375" height="60"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet_weixin" translatesAutoresizingMaskIntoConstraints="NO" id="9RT-sb-QBE">
-                                                            <rect key="frame" x="15" y="6" width="48" height="48"/>
+                                                            <rect key="frame" x="15" y="18" width="24" height="24"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NH7-LR-yO4">
-                                                            <rect key="frame" x="76" y="19.5" width="35" height="21"/>
+                                                            <rect key="frame" x="52" y="19.5" width="35" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2g-lz-dvd">
-                                                            <rect key="frame" x="316" y="8" width="44" height="44"/>
+                                                            <rect key="frame" x="338" y="19" width="22" height="22"/>
                                                             <state key="normal" image="select_0"/>
                                                             <state key="selected" image="select_1"/>
                                                         </button>
@@ -2233,10 +2233,10 @@
         <image name="caidan" width="36" height="36"/>
         <image name="login_close" width="24" height="24"/>
         <image name="main_shop" width="38" height="38"/>
-        <image name="select_0" width="44" height="44"/>
-        <image name="select_1" width="44" height="44"/>
-        <image name="wallet_ali" width="48" height="48"/>
-        <image name="wallet_weixin" width="48" height="48"/>
+        <image name="select_0" width="22" height="22"/>
+        <image name="select_1" width="22" height="22"/>
+        <image name="wallet_ali" width="24" height="24"/>
+        <image name="wallet_weixin" width="24" height="24"/>
         <image name="添加" width="164" height="164"/>
         <image name="询价" width="312" height="486"/>
     </resources>

@@ -21,13 +21,13 @@
     // Configure the view for the selected state
 }
 
-+(float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
-    return 25;
++ (float)getCellHight:(id)data Model:(NSObject *)model indexPath:(NSIndexPath *)indexpath {
+    return 72;
 }
 
 + (instancetype)WuLiuCell {
-    WuLiuCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"WuLiuCell" owner:nil options:nil] firstObject];
     
+    WuLiuCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"WuLiuCell" owner:nil options:nil] firstObject];
     
     return cell;
 }
@@ -38,4 +38,8 @@
     
     self.showLabel.text = [NSString stringWithFormat:@"(%@) %@", name, wuliuno];
 }
+
+
+
+
 @end

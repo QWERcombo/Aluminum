@@ -47,7 +47,7 @@ typedef NS_ENUM(NSUInteger, LoginType) {
     self.loginBtn.backgroundColor = [[UIColor mianColor:2] colorWithAlphaComponent:0.5];
     self.loginType = LoginType_Account;
     self.psdTF.secureTextEntry = YES;
-    
+
     if ([[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE]) {
         self.phoneTF.text = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE];
         self.code_img.image = [UIImage imageNamed:@"login_account"];

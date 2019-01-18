@@ -27,8 +27,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
     _totalLabel.adjustsFontSizeToFitWidth = YES;
+    //修改选中的数量
+    MJWeakSelf
+    _showVC.stepper.valueChanged = ^(double value) {
+        NSLog(@"%f---%ld", value, _wholeModel.value);
+        if (weakSelf.selectValue) {
+            weakSelf.selectValue(value);
+        }
+        weakSelf.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithFloat:[_wholeModel.danpianzhengbanjiage floatValue]*value]];
+    };
+    
     [self refreshBottomViewInfo];
 }
 
@@ -48,13 +57,13 @@
 - (IBAction)excute:(UIButton *)sender {
     [[PublicFuntionTool sharedInstance] isHadLogin:^{
         
-//        if (_stepper.value > 0) {
-//
-//            [self placeOrder:UseType_OrderMoney];
-//
-//        } else {
-//            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先添加数量" time:0 aboutType:WHShowViewMode_Text state:NO];
-//        }
+        if (_showVC.stepper.value > 0) {
+
+            [self placeOrder:UseType_OrderMoney];
+
+        } else {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先添加数量" time:0 aboutType:WHShowViewMode_Text state:NO];
+        }
         
     }];
 }
@@ -63,13 +72,13 @@
     
     [[PublicFuntionTool sharedInstance] isHadLogin:^{
         
-//        if (_stepper.value > 0) {
-//
-//            [self placeOrder:UseType_BuyNow];
-//
-//        } else {
-//            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先添加数量" time:0 aboutType:WHShowViewMode_Text state:NO];
-//        }
+        if (_showVC.stepper.value > 0) {
+
+            [self placeOrder:UseType_BuyNow];
+
+        } else {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先添加数量" time:0 aboutType:WHShowViewMode_Text state:NO];
+        }
         
     }];
 }
@@ -81,17 +90,17 @@
     
     [[ShoppingCarSingle sharedShoppingCarSingle] getServerShopCarAmountAndTotalfee:^(NSString *amout, NSString *totalfee) {
         
-//        self.shopBtn.badgeValue = amout;
+        self.shopBtn.badgeValue = amout;
     }];
-//    self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithFloat:[_wholeModel.danpianzhengbanjiage floatValue]*_wholeModel.value]];
+    self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithFloat:[_wholeModel.danpianzhengbanjiage floatValue]*_wholeModel.value]];
 }
 
 
 - (void)placeOrder:(UseType)useType {
     
-//    NSString *amount = [NSNumber numberWithFloat:_stepper.value].stringValue;
+    NSString *amount = [NSNumber numberWithFloat:_showVC.stepper.value].stringValue;
     
-    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:_wholeModel.arg3 kuan:_wholeModel.arg2 hou:_wholeModel.arg1 amount:@"" type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:[[NSNumber alloc] initWithInteger:self.orderMoney].stringValue successBlock:^(NSDictionary *dataDic) {
+    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:_wholeModel.arg3 kuan:_wholeModel.arg2 hou:_wholeModel.arg1 amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:[[NSNumber alloc] initWithInteger:self.orderMoney].stringValue successBlock:^(NSDictionary *dataDic) {
         
         self.dataDic = dataDic;
         self.orderMoney = [self.dataDic[@"orderMoney"] integerValue];
@@ -100,7 +109,7 @@
     } buyNowSuccessBlock:^(ShopCar *shopCar) {
         
         ConfirmOrderVC *confirm = [[UIStoryboard storyboardWithName:@"Mine" bundle:nil] instantiateViewControllerWithIdentifier:@"ConfirmOrderVC"];
-//        shopCar.money = [NSNumber numberWithFloat:[_wholeModel.danpianzhengbanjiage floatValue]*_stepper.value].stringValue;
+        shopCar.money = [NSNumber numberWithFloat:[_wholeModel.danpianzhengbanjiage floatValue]*_showVC.stepper.value].stringValue;
         confirm.carArr = @[shopCar];
         confirm.fromtype = FromVCType_Buy;
         [self.navigationController pushViewController:confirm animated:YES];
@@ -108,7 +117,7 @@
     } addCarSuccessBlock:^{
         
         [self refreshBottomViewInfo];
-//        self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithInteger:self.orderMoney]];
+        self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithInteger:self.orderMoney]];
     }];
 }
 

@@ -58,12 +58,12 @@
                   moduleName = "IONMarketTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guadou2018/Documents/Aluminum/IONMarketTest/MainClass/Mine/%E5%88%86%E4%BA%AB%E6%8E%A8%E5%B9%BF/ShareViewController.m"
-                  timestampString = "566726866.092339"
+                  timestampString = "569498531.9372"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "81"
                   endingLineNumber = "81"
-                  offsetFromSymbolStart = "452">
+                  offsetFromSymbolStart = "484">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -73,12 +73,12 @@
                   moduleName = "IONMarketTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guadou2018/Documents/Aluminum/IONMarketTest/MainClass/Mine/%E5%88%86%E4%BA%AB%E6%8E%A8%E5%B9%BF/ShareViewController.m"
-                  timestampString = "566726866.097865"
+                  timestampString = "569498531.938845"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "81"
                   endingLineNumber = "81"
-                  offsetFromSymbolStart = "460">
+                  offsetFromSymbolStart = "492">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -138,12 +138,12 @@
                   moduleName = "IONMarketTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guadou2018/Documents/Aluminum/IONMarketTest/MainClass/Mine/%E5%88%86%E4%BA%AB%E6%8E%A8%E5%B9%BF/ShareViewController.m"
-                  timestampString = "566726866.260673"
+                  timestampString = "569498531.9515361"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "109"
                   endingLineNumber = "109"
-                  offsetFromSymbolStart = "452">
+                  offsetFromSymbolStart = "484">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -153,12 +153,12 @@
                   moduleName = "IONMarketTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guadou2018/Documents/Aluminum/IONMarketTest/MainClass/Mine/%E5%88%86%E4%BA%AB%E6%8E%A8%E5%B9%BF/ShareViewController.m"
-                  timestampString = "566726866.262894"
+                  timestampString = "569498531.953253"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "109"
                   endingLineNumber = "109"
-                  offsetFromSymbolStart = "460">
+                  offsetFromSymbolStart = "492">
                </Location>
             </Locations>
          </BreakpointContent>

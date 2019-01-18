@@ -10,6 +10,9 @@
 
 @interface WuLiuCell : BaseCell
 @property (weak, nonatomic) IBOutlet UILabel *showLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLab;
+
+
 + (instancetype)WuLiuCell;
 - (void)loadData:(NSObject *)model name:(NSString *)name andCliker:(ClikBlock)click;
 @end

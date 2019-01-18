@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rdQ-ny-eFn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rdQ-ny-eFn">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,7 +37,7 @@
                         <viewControllerLayoutGuide type="bottom" id="V2g-Te-YDI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -75,7 +75,7 @@
                         <viewControllerLayoutGuide type="bottom" id="bzj-VF-OMz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="K8o-Dw-Ihb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -94,7 +94,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Dvg-cd-4tl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Br1-ud-ARi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -109,7 +109,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="MineViewController" title="我的" id="wpS-EP-YpC" customClass="MineViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Xai-Ts-kx5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -313,14 +313,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q3G-V3-wve">
-                                                    <rect key="frame" x="69" y="0.0" width="271" height="49.5"/>
+                                                    <rect key="frame" x="50" y="0.0" width="290" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Mine_item_7" id="nwv-qZ-qjl">
-                                                    <rect key="frame" x="16" y="5" width="38" height="38"/>
+                                                    <rect key="frame" x="16" y="15" width="19" height="19"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -335,14 +335,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="客服电话" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UwU-eb-JGC">
-                                                    <rect key="frame" x="69" y="16" width="61.5" height="18"/>
+                                                    <rect key="frame" x="50" y="16" width="61.5" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Mine_item_8" id="7yG-z8-XFz">
-                                                    <rect key="frame" x="16" y="5" width="38" height="38"/>
+                                                    <rect key="frame" x="16" y="15" width="19" height="19"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="0510-88996061" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V84-bc-l43">
@@ -1045,12 +1045,12 @@
         <!--Tab Bar Controller-->
         <scene sceneID="QsH-9M-2q1">
             <objects>
-                <tabBarController storyboardIdentifier="TBtabBar" automaticallyAdjustsScrollViewInsets="NO" id="rdQ-ny-eFn" customClass="TBTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TBtabBar" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="rdQ-ny-eFn" customClass="TBTabBarController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1fE-9J-OLP" customClass="TBTabBar">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" itemPositioning="centered" id="1fE-9J-OLP" customClass="TBTabBar">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="RFE-7g-Sgo" kind="relationship" relationship="viewControllers" id="6Mz-TE-ibu"/>
@@ -1067,27 +1067,27 @@
     <resources>
         <image name="Login_code" width="15" height="18"/>
         <image name="Main_choose" width="15" height="13"/>
-        <image name="Main_select" width="4.5" height="8.5"/>
-        <image name="Main_unselect" width="4.5" height="8.5"/>
+        <image name="Main_select" width="4" height="8"/>
+        <image name="Main_unselect" width="4" height="8"/>
         <image name="Mine_item_0" width="16" height="16"/>
         <image name="Mine_item_1" width="19" height="19"/>
         <image name="Mine_item_3" width="19" height="19"/>
         <image name="Mine_item_4" width="19" height="19"/>
         <image name="Mine_item_6" width="19" height="19"/>
-        <image name="Mine_item_7" width="38" height="38"/>
-        <image name="Mine_item_8" width="38" height="38"/>
-        <image name="QR_image" width="112.5" height="112.5"/>
+        <image name="Mine_item_7" width="19" height="19"/>
+        <image name="Mine_item_8" width="19" height="19"/>
+        <image name="QR_image" width="112" height="112"/>
         <image name="Settings_0" width="20" height="20"/>
         <image name="Settings_1" width="20" height="20"/>
         <image name="Share_0" width="45" height="45"/>
         <image name="Share_1" width="45" height="45"/>
-        <image name="Share_2" width="64" height="64"/>
-        <image name="White_add" width="64" height="64"/>
+        <image name="Share_2" width="32" height="32"/>
+        <image name="White_add" width="32" height="32"/>
         <image name="head_default" width="50" height="50"/>
         <image name="image_car_0" width="32" height="32"/>
         <image name="image_car_1" width="32" height="32"/>
         <image name="image_main_0" width="32" height="32"/>
-        <image name="image_main_1" width="64" height="64"/>
+        <image name="image_main_1" width="32" height="32"/>
         <image name="image_mine_0" width="32" height="32"/>
         <image name="image_mine_1" width="32" height="32"/>
         <image name="image_order_0" width="32" height="32"/>
