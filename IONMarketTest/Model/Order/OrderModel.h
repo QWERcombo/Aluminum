@@ -50,4 +50,8 @@
 @property (nonatomic, strong) NSString *ziti;
 @property (nonatomic, strong) NSString *logisticsNo;//快递单号
 @property (nonatomic, strong) NSString *logisticsName;//快递名称
+@property (nonatomic, strong) NSString *totalMoney;//快递名称
+//@property (nonatomic, strong) NSString *wuliufei;//快递名称
+@property (nonatomic, strong) NSString *zongzhongliang;//快递名称
+@property (nonatomic, strong) NSString *zongjianshu;//快递名称
 @end

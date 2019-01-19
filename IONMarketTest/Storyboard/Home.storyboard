@@ -10,6 +10,94 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Wu LiuVC-->
+        <scene sceneID="jz4-uO-HWW">
+            <objects>
+                <viewController storyboardIdentifier="WuLiuVC" id="7ha-bc-ZZ6" customClass="WuLiuVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ho9-18-z7k">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IZb-yD-9lj">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="1G3-yy-zwZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1bC-4U-GIn">
+                                            <rect key="frame" x="0.0" y="8" width="375" height="64"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kuaidi" translatesAutoresizingMaskIntoConstraints="NO" id="Q79-9h-2sZ">
+                                                    <rect key="frame" x="15" y="21" width="23" height="22"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快递" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2UP-M0-ri0">
+                                                    <rect key="frame" x="52" y="9" width="33" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1111" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yi7-xI-Nre">
+                                                    <rect key="frame" x="52" y="35" width="26" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.34901960780000002" green="0.36862745099999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="2UP-M0-ri0" firstAttribute="bottom" secondItem="1bC-4U-GIn" secondAttribute="centerY" constant="-3" id="6ye-yd-Ktk"/>
+                                                <constraint firstItem="Yi7-xI-Nre" firstAttribute="leading" secondItem="2UP-M0-ri0" secondAttribute="leading" id="8U3-Hc-U3n"/>
+                                                <constraint firstItem="2UP-M0-ri0" firstAttribute="leading" secondItem="Q79-9h-2sZ" secondAttribute="trailing" constant="14" id="LMi-bQ-Dqo"/>
+                                                <constraint firstItem="Q79-9h-2sZ" firstAttribute="centerY" secondItem="1bC-4U-GIn" secondAttribute="centerY" id="LPz-UM-PkO"/>
+                                                <constraint firstItem="Q79-9h-2sZ" firstAttribute="leading" secondItem="1bC-4U-GIn" secondAttribute="leading" constant="15" id="UJ4-8p-p1m"/>
+                                                <constraint firstItem="Yi7-xI-Nre" firstAttribute="top" secondItem="1bC-4U-GIn" secondAttribute="centerY" constant="3" id="gLt-2X-hgP"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="1bC-4U-GIn" firstAttribute="leading" secondItem="1G3-yy-zwZ" secondAttribute="leading" id="4aL-cm-puf"/>
+                                        <constraint firstItem="1bC-4U-GIn" firstAttribute="top" secondItem="1G3-yy-zwZ" secondAttribute="top" constant="8" id="Lmb-6q-4NT"/>
+                                        <constraint firstAttribute="trailing" secondItem="1bC-4U-GIn" secondAttribute="trailing" id="Xkc-OD-Spy"/>
+                                        <constraint firstAttribute="bottom" secondItem="1bC-4U-GIn" secondAttribute="bottom" constant="6" id="iu8-Nc-bD1"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Wca-If-YdG">
+                                        <rect key="frame" x="0.0" y="106" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wca-If-YdG" id="WLU-NK-Nq2">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="7ha-bc-ZZ6" id="lU8-9x-wQ9"/>
+                                    <outlet property="delegate" destination="7ha-bc-ZZ6" id="imP-6F-JEd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IZb-yD-9lj" firstAttribute="leading" secondItem="ZXL-Ba-Z9a" secondAttribute="leading" id="8GD-Us-ux5"/>
+                            <constraint firstItem="IZb-yD-9lj" firstAttribute="top" secondItem="ZXL-Ba-Z9a" secondAttribute="top" id="Ji5-dJ-F48"/>
+                            <constraint firstItem="ZXL-Ba-Z9a" firstAttribute="trailing" secondItem="IZb-yD-9lj" secondAttribute="trailing" id="LQd-Tp-gnV"/>
+                            <constraint firstItem="ZXL-Ba-Z9a" firstAttribute="bottom" secondItem="IZb-yD-9lj" secondAttribute="bottom" id="tbL-gS-PHw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZXL-Ba-Z9a"/>
+                    </view>
+                    <connections>
+                        <outlet property="name" destination="2UP-M0-ri0" id="jHX-ZC-FbE"/>
+                        <outlet property="numCode" destination="Yi7-xI-Nre" id="r3F-Wq-iBb"/>
+                        <outlet property="tableView" destination="IZb-yD-9lj" id="hxY-Hb-8M0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iFn-9K-md8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-964" y="-167.76611694152925"/>
+        </scene>
         <!--Whole BoardVC-->
         <scene sceneID="yz5-5l-EpL">
             <objects>
@@ -781,7 +869,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ZeroCutTabVC" id="aBg-Ht-zsY" customClass="ZeroCutTabVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Q3a-x1-Ktg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -1612,16 +1700,16 @@
                                                     <rect key="frame" x="0.0" y="225" width="375" height="60"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet_ali" translatesAutoresizingMaskIntoConstraints="NO" id="nqY-Ru-3J8">
-                                                            <rect key="frame" x="15" y="18" width="24" height="24"/>
+                                                            <rect key="frame" x="15" y="6" width="48" height="48"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHv-SC-qMZ">
-                                                            <rect key="frame" x="52" y="19.5" width="52" height="21"/>
+                                                            <rect key="frame" x="76" y="19.5" width="52" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVx-mf-zXU">
-                                                            <rect key="frame" x="338" y="19" width="22" height="22"/>
+                                                            <rect key="frame" x="316" y="8" width="44" height="44"/>
                                                             <state key="normal" image="select_0"/>
                                                             <state key="selected" image="select_1"/>
                                                         </button>
@@ -1651,16 +1739,16 @@
                                                     <rect key="frame" x="0.0" y="285" width="375" height="60"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet_weixin" translatesAutoresizingMaskIntoConstraints="NO" id="9RT-sb-QBE">
-                                                            <rect key="frame" x="15" y="18" width="24" height="24"/>
+                                                            <rect key="frame" x="15" y="6" width="48" height="48"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NH7-LR-yO4">
-                                                            <rect key="frame" x="52" y="19.5" width="35" height="21"/>
+                                                            <rect key="frame" x="76" y="19.5" width="35" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2g-lz-dvd">
-                                                            <rect key="frame" x="338" y="19" width="22" height="22"/>
+                                                            <rect key="frame" x="316" y="8" width="44" height="44"/>
                                                             <state key="normal" image="select_0"/>
                                                             <state key="selected" image="select_1"/>
                                                         </button>
@@ -2231,12 +2319,13 @@
     </scenes>
     <resources>
         <image name="caidan" width="36" height="36"/>
+        <image name="kuaidi" width="23" height="22"/>
         <image name="login_close" width="24" height="24"/>
         <image name="main_shop" width="38" height="38"/>
-        <image name="select_0" width="22" height="22"/>
-        <image name="select_1" width="22" height="22"/>
-        <image name="wallet_ali" width="24" height="24"/>
-        <image name="wallet_weixin" width="24" height="24"/>
+        <image name="select_0" width="44" height="44"/>
+        <image name="select_1" width="44" height="44"/>
+        <image name="wallet_ali" width="48" height="48"/>
+        <image name="wallet_weixin" width="48" height="48"/>
         <image name="添加" width="164" height="164"/>
         <image name="询价" width="312" height="486"/>
     </resources>

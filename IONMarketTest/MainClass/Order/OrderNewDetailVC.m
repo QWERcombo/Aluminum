@@ -7,6 +7,9 @@
 //
 
 #import "OrderNewDetailVC.h"
+#import "NewDetailInfoCell.h"
+#import "NewDetailListCell.h"
+#import "WuLiuVC.h"
 
 @interface OrderNewDetailVC ()
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
@@ -41,6 +44,7 @@
     self.wuliuNoArray = [NSArray array];
     [self getOrderDetail:self.orderid];
 
+    /*
     switch (self.orderDetailType) {
         case OrderDetailType_WillPay:
             self.kuaidiHeight.constant = 0.0;
@@ -65,6 +69,7 @@
         default:
             break;
     }
+     */
 }
 
 
@@ -77,6 +82,7 @@
 //        NSLog(@"___===%@", resultDic);
         NSArray *dataArr = resultDic[@"result"];
         
+        float totalWeight=0;
         for (NSDictionary *dic in dataArr) {
             
             ShopCar *car = [[ShopCar alloc] initWithDictionary:dic error:nil];
@@ -87,10 +93,16 @@
                 self.wuliuNoArray = [self.orderModel.logisticsNo componentsSeparatedByString:@","];
             }
             
+            totalWeight += [car.zongzhongliang floatValue];
             [self.detailDataSource addObject:car];
         }
+        self.orderModel.zongjianshu = [NSString stringWithFormat:@"%ld件", self.listModel.detail.count];
+        self.orderModel.totalMoney = [NSString stringWithFormat:@"%@元",self.listModel.totalMoney];
+        self.orderModel.wuliufei = [NSString stringWithFormat:@"%@元",self.listModel.wuliufei];
+        self.orderModel.zongzhongliang = [NSNumber numberWithFloat:totalWeight].stringValue;
         
-        [self updateInfomation];
+        
+//        [self updateInfomation];
         [self.tableView reloadData];
     } failure:^(NSString *error, NSInteger code) {
         
@@ -100,12 +112,14 @@
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section==0) {
-        return self.wuliuNoArray.count;
+        return 1;
+    } else if (section==1) {
+        return 1;
     } else {
         return self.detailDataSource.count;
     }
@@ -113,50 +127,58 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (self.wuliuNoArray.count) {
-        if (indexPath.section == 0) {
-            return [UtilsMold creatCell:@"WuLiuCell" table:tableView deledate:self model:[self.wuliuNoArray objectAtIndex:indexPath.row] data:self.orderModel.logisticsName andCliker:^(NSDictionary *clueDic) {
-            }];
-        } else {
-            return [UtilsMold creatCell:@"ConfirmOrderCell" table:tableView deledate:self model:[self.detailDataSource objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
-            }];
-        }
+    if (indexPath.section == 0) {
+        
+        return [UtilsMold creatCell:@"WuLiuCell" table:tableView deledate:self model:nil data:self.orderModel.logisticsName andCliker:^(NSDictionary *clueDic) {
+        }];
+
+    } else if (indexPath.section == 1) {
+        
+        NewDetailInfoCell *cell = [NewDetailInfoCell initCell:tableView cellName:@"NewDetailInfoCell" dataObject:self.orderModel];
+        
+        return cell;
+        
     } else {
         
-        return [UtilsMold creatCell:@"ConfirmOrderCell" table:tableView deledate:self model:[self.detailDataSource objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
-        }];
+        NewDetailListCell *cell = [NewDetailListCell initCell:tableView cellName:@"NewDetailListCell" dataObject:[self.detailDataSource objectAtIndex:indexPath.row]];
+        
+        return cell;
     }
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.wuliuNoArray.count) {
-        
-        if (indexPath.section==0) {
-            return [UtilsMold getCellHight:@"WuLiuCell" data:nil model:nil indexPath:indexPath];
-        } else {
-            return [UtilsMold getCellHight:@"ConfirmOrderCell" data:nil model:nil indexPath:indexPath];
-        }
-    } else {
-        return [UtilsMold getCellHight:@"ConfirmOrderCell" data:nil model:nil indexPath:indexPath];
+    switch (indexPath.section) {
+        case 0:
+            return 70;
+            break;
+        case 1:
+            return UITableViewAutomaticDimension;
+            break;
+        case 2:
+            return 72;
+            break;
+        default:
+            return 44;
+            break;
     }
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return section==0?0:10;
-//}
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    if (section==0) {
-//        return nil;
-//    } else {
-//        UIView *grayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 15)];
-//        grayView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-//        return grayView;
-//    }
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        
+        WuLiuVC *wuliu = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WuLiuVC"];
+        
+        [self.navigationController pushViewController:wuliu animated:YES];
+        
+    }
+    
+}
 
 
 - (void)updateInfomation {
+    
     if ([self.orderModel.ziti isEqualToString:@"自提"]) {
         self.addressLab.text = @"自提地址：江苏省无锡市新吴区展鸿路18号院内乐切金属";
         self.nameLab.text = @"联系人：乐切金属";

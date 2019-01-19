@@ -320,7 +320,7 @@ DEF_SINGLETON(PublicFuntionTool);
         }
         bannerBlock(array);
         
-        NSString *serviceVersion = resultDic[@"version"];
+        NSString *serviceVersion = resultDic[@"appleVersion"];
         if (!serviceVersion.length) {
             serviceVersion = @"0";
         }
@@ -333,8 +333,12 @@ DEF_SINGLETON(PublicFuntionTool);
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APPSTORE_URL]];
                 
             }];
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
             
             [updateAlert addAction:updateAction];
+            [updateAlert addAction:cancel];
             [[UIViewController currentViewController] presentViewController:updateAlert animated:YES completion:nil];
         }
         

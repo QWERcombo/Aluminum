@@ -33,12 +33,10 @@
     } else {
         self.wuliufeiLab.text = @"￥0.00";
     }
-    NSLog(@"%@", self.orderModel);
+//    NSLog(@"%@", self.orderModel);
     NSNumber *total = [NSNumber numberWithFloat:([self.orderModel.totalMoney floatValue] + [self.orderModel.wuliufei floatValue])];
     self.totalLab.text = [NSString stringWithFormat:@"￥%@", [NSString getStringAfterTwo:total.stringValue]];
-//    [self getOrderDetail:self.orderModel.no];
-    
-    
+
     
 }
 
@@ -53,14 +51,13 @@
 
 
 #pragma mark - Method
-
 - (void)cancel {
     
 }
 
 - (IBAction)payClicker:(UIButton *)sender {
     
-    if (!self.payWayLab.text.length) {
+    if ([self.payWayLab.text isEqualToString:@"选择支付方式"]) {
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请选择支付方式!" time:0 aboutType:WHShowViewMode_Text state:NO];
         return;
     }

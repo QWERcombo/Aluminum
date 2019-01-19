@@ -34,9 +34,9 @@
 
 - (void)loadData:(NSObject *)model name:(NSString *)name andCliker:(ClikBlock)click {
     
-    NSString *wuliuno = (NSString *)model;
+//    NSString *wuliuno = (NSString *)model;
     
-    self.showLabel.text = [NSString stringWithFormat:@"(%@) %@", name, wuliuno];
+//    self.showLabel.text = [NSString stringWithFormat:@"(%@) %@", name, wuliuno];
 }
 
 

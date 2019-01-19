@@ -36,5 +36,6 @@
 @property (nonatomic, strong) NSString *ziti;//自提
 @property (nonatomic, strong) NSString *logisticsNo;//快递单号
 @property (nonatomic, strong) NSString *logisticsName;//快递名称
+@property (nonatomic, copy) NSString *zongzhongliang;//重量
 
 @end

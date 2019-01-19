@@ -19,13 +19,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IONMarketTest/Utils/PublicFunction/PublicFuntionTool.m"
-            timestampString = "569426027.823406"
+            filePath = "IONMarketTest/MainClass/Order/OrderNewDetailVC.m"
+            timestampString = "569603053.9964449"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
-            landmarkName = "-checkUpdateNewVersion"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-getOrderDetail:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

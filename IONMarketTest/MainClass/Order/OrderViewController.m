@@ -26,8 +26,9 @@
 
 @implementation OrderViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:YES];
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     //进入刷新状态
     [self.tabView.mj_header beginRefreshing];
 }

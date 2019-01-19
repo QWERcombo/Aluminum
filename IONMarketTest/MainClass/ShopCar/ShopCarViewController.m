@@ -70,7 +70,7 @@
             if (SCREEN_HEIGHT==812) {
                 make.bottom.equalTo(self.view.mas_bottom).offset(-50-84);
             } else {
-                make.bottom.equalTo(self.view.mas_bottom).offset(-50-50);
+                make.bottom.equalTo(self.view.mas_bottom).offset(-50);
             }
             
         } else {
@@ -96,7 +96,7 @@
             if (SCREEN_HEIGHT==812) {
                 make.bottom.equalTo(self.view.mas_bottom).offset(-84);
             } else {
-                make.bottom.equalTo(self.view.mas_bottom).offset(-50);
+                make.bottom.equalTo(self.view.mas_bottom).offset(0);
             }
         } else {
             make.bottom.equalTo(self.view.mas_bottom).offset(0);

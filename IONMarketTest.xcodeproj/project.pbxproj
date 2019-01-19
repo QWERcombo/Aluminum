@@ -168,6 +168,13 @@
 		56A5746A20ADC88E00A458EB /* PhotoAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A5746920ADC88E00A458EB /* PhotoAlertController.m */; };
 		56AD6F0720C8391F00344E81 /* ConfirmTicketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AD6F0620C8391E00344E81 /* ConfirmTicketVC.m */; };
 		56AD6F0A20C83ADB00344E81 /* TicketInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AD6F0920C83ADB00344E81 /* TicketInfoVC.m */; };
+		56B2150921F3427E004E37A5 /* NewDetailListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B2150721F3427E004E37A5 /* NewDetailListCell.m */; };
+		56B2150A21F3427E004E37A5 /* NewDetailListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56B2150821F3427E004E37A5 /* NewDetailListCell.xib */; };
+		56B2150E21F342A3004E37A5 /* NewDetailInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B2150C21F342A3004E37A5 /* NewDetailInfoCell.m */; };
+		56B2150F21F342A3004E37A5 /* NewDetailInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56B2150D21F342A3004E37A5 /* NewDetailInfoCell.xib */; };
+		56B2151221F35C03004E37A5 /* WuLiuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B2151121F35C03004E37A5 /* WuLiuVC.m */; };
+		56B2151621F36A86004E37A5 /* PostListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B2151421F36A86004E37A5 /* PostListCell.m */; };
+		56B2151721F36A86004E37A5 /* PostListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56B2151521F36A86004E37A5 /* PostListCell.xib */; };
 		56B4BCA821B2BAEE00C38B8F /* GuideImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 56B4BCA321B2BAEE00C38B8F /* GuideImage.bundle */; };
 		56B4BCA921B2BAEE00C38B8F /* DHGifImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B4BCA421B2BAEE00C38B8F /* DHGifImageOperation.m */; };
 		56B4BCAA21B2BAEE00C38B8F /* DHGuidePageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B4BCA721B2BAEE00C38B8F /* DHGuidePageHUD.m */; };
@@ -633,6 +640,17 @@
 		56AD6F0620C8391E00344E81 /* ConfirmTicketVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmTicketVC.m; sourceTree = "<group>"; };
 		56AD6F0820C83ADB00344E81 /* TicketInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketInfoVC.h; sourceTree = "<group>"; };
 		56AD6F0920C83ADB00344E81 /* TicketInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketInfoVC.m; sourceTree = "<group>"; };
+		56B2150621F3427E004E37A5 /* NewDetailListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewDetailListCell.h; sourceTree = "<group>"; };
+		56B2150721F3427E004E37A5 /* NewDetailListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewDetailListCell.m; sourceTree = "<group>"; };
+		56B2150821F3427E004E37A5 /* NewDetailListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewDetailListCell.xib; sourceTree = "<group>"; };
+		56B2150B21F342A3004E37A5 /* NewDetailInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewDetailInfoCell.h; sourceTree = "<group>"; };
+		56B2150C21F342A3004E37A5 /* NewDetailInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewDetailInfoCell.m; sourceTree = "<group>"; };
+		56B2150D21F342A3004E37A5 /* NewDetailInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewDetailInfoCell.xib; sourceTree = "<group>"; };
+		56B2151021F35C03004E37A5 /* WuLiuVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WuLiuVC.h; sourceTree = "<group>"; };
+		56B2151121F35C03004E37A5 /* WuLiuVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WuLiuVC.m; sourceTree = "<group>"; };
+		56B2151321F36A86004E37A5 /* PostListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostListCell.h; sourceTree = "<group>"; };
+		56B2151421F36A86004E37A5 /* PostListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostListCell.m; sourceTree = "<group>"; };
+		56B2151521F36A86004E37A5 /* PostListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostListCell.xib; sourceTree = "<group>"; };
 		56B4BCA321B2BAEE00C38B8F /* GuideImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GuideImage.bundle; sourceTree = "<group>"; };
 		56B4BCA421B2BAEE00C38B8F /* DHGifImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGifImageOperation.m; sourceTree = "<group>"; };
 		56B4BCA521B2BAEE00C38B8F /* DHGuidePageHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGuidePageHUD.h; sourceTree = "<group>"; };
@@ -1492,6 +1510,17 @@
 				5650869B205CD0AB00FD8497 /* OrderDetailViewController.m */,
 				56B5215220AB194000F636BD /* OrderNewDetailVC.h */,
 				56B5215320AB194000F636BD /* OrderNewDetailVC.m */,
+				56B2151021F35C03004E37A5 /* WuLiuVC.h */,
+				56B2151121F35C03004E37A5 /* WuLiuVC.m */,
+				56B2151321F36A86004E37A5 /* PostListCell.h */,
+				56B2151421F36A86004E37A5 /* PostListCell.m */,
+				56B2151521F36A86004E37A5 /* PostListCell.xib */,
+				56B2150B21F342A3004E37A5 /* NewDetailInfoCell.h */,
+				56B2150C21F342A3004E37A5 /* NewDetailInfoCell.m */,
+				56B2150D21F342A3004E37A5 /* NewDetailInfoCell.xib */,
+				56B2150621F3427E004E37A5 /* NewDetailListCell.h */,
+				56B2150721F3427E004E37A5 /* NewDetailListCell.m */,
+				56B2150821F3427E004E37A5 /* NewDetailListCell.xib */,
 				56A37FCB212AF27D00701CD8 /* WuLiuCell.h */,
 				56A37FCC212AF27D00701CD8 /* WuLiuCell.m */,
 				56A37FCD212AF27D00701CD8 /* WuLiuCell.xib */,
@@ -2484,6 +2513,7 @@
 				A22981C2206260CE007B6112 /* ApplyTicketViewController.xib in Resources */,
 				56198BB1217A2B3E009AB9F3 /* WholeBoardListCell.xib in Resources */,
 				565086B4205D3B3A00FD8497 /* MainItem__Single.xib in Resources */,
+				56B2150F21F342A3004E37A5 /* NewDetailInfoCell.xib in Resources */,
 				A29305A4217F054800D72F4A /* DisplayView.xib in Resources */,
 				A22981CC20626193007B6112 /* TicketInfoCell.xib in Resources */,
 				56B5215C20AB37B700F636BD /* ChoosePayWayView.xib in Resources */,
@@ -2498,6 +2528,7 @@
 				5695BE7E20429F1B0036D54B /* Assets.xcassets in Resources */,
 				56B78CCB2185E5850056D812 /* AAJSFiles.bundle in Resources */,
 				56F9E9C02163790500141852 /* ConfirmOrderCell.xib in Resources */,
+				56B2151721F36A86004E37A5 /* PostListCell.xib in Resources */,
 				5695BE7920429F1B0036D54B /* Main.storyboard in Resources */,
 				A2301B3320637EE0006B9F20 /* FeedbackViewController.xib in Resources */,
 				5686219A20A9CB6E0030C761 /* ShopCarNewListCell.xib in Resources */,
@@ -2509,6 +2540,7 @@
 				5695BF102042AB0E0036D54B /* rsa_public_key.der in Resources */,
 				5657413820539313007CB488 /* SelectedItem.xib in Resources */,
 				A296427720F5AB5E00B6E8B6 /* FSActionSheet_cancel@3x.png in Resources */,
+				56B2150A21F3427E004E37A5 /* NewDetailListCell.xib in Resources */,
 				568CB092206662A800B48318 /* PickerView.xib in Resources */,
 				A22981A420623A93007B6112 /* BankCardCell.xib in Resources */,
 				A22981D1206261AE007B6112 /* EndTicketCell.xib in Resources */,
@@ -2626,6 +2658,7 @@
 				56FD469B219C6B4000AC0BA4 /* UIView+Extension.m in Sources */,
 				5695BF312042AC120036D54B /* ABBannerView.m in Sources */,
 				56940C3520515E1800DFA6D6 /* UIButton+Badge.m in Sources */,
+				56B2151621F36A86004E37A5 /* PostListCell.m in Sources */,
 				5650869C205CD0AB00FD8497 /* OrderDetailViewController.m in Sources */,
 				56940C2B20515DF900DFA6D6 /* UIColor+YXP.m in Sources */,
 				56B5215420AB194000F636BD /* OrderNewDetailVC.m in Sources */,
@@ -2667,6 +2700,7 @@
 				5695BF402042AC180036D54B /* UIView+LYExtension.m in Sources */,
 				5695BF572042AC1D0036D54B /* EasyShowLodingView.m in Sources */,
 				569D7BC9217637B600DA94E8 /* RegisterTVC.m in Sources */,
+				56B2151221F35C03004E37A5 /* WuLiuVC.m in Sources */,
 				564D9D0C21415A1B00310AD4 /* ZYNetworkAccessibity.m in Sources */,
 				56B78CD82185E5850056D812 /* AAPlotLinesElement.m in Sources */,
 				56940C2620515DF900DFA6D6 /* UITableView+TB.m in Sources */,
@@ -2765,6 +2799,7 @@
 				560950CD2178CB3E00B2CCDC /* WholeBoardVC.m in Sources */,
 				562E51D2217F6EA300C90A9E /* SelectThickView.m in Sources */,
 				5671DBC8206000D9005F1760 /* MainItemView__Tube.m in Sources */,
+				56B2150E21F342A3004E37A5 /* NewDetailInfoCell.m in Sources */,
 				56B78CD22185E5850056D812 /* AALine.m in Sources */,
 				561A7309218EF8150064294B /* CommonItemTabVC.m in Sources */,
 				5602129020594CF6009EF75D /* ShareViewController.m in Sources */,
@@ -2813,6 +2848,7 @@
 				A229819620620596007B6112 /* InOutputView.m in Sources */,
 				56940C492051605B00DFA6D6 /* ShopCarViewController.m in Sources */,
 				5602129620594D0C009EF75D /* AddressViewController.m in Sources */,
+				56B2150921F3427E004E37A5 /* NewDetailListCell.m in Sources */,
 				A22981C1206260CE007B6112 /* ApplyTicketViewController.m in Sources */,
 				5695BF642042AF8C0036D54B /* Reachability.m in Sources */,
 				56B78CE62185E5850056D812 /* AAChartModel.m in Sources */,
