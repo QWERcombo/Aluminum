@@ -47,11 +47,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSu-4i-XEj">
                         <rect key="frame" x="0.0" y="32" width="375" height="111.5"/>
                         <subviews>
-                            <view tag="103" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Riy-hd-OJF" customClass="BorderView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Riy-hd-OJF" customClass="BorderView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAL-8Z-cny">
+                            <view tag="101" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAL-8Z-cny" customClass="BorderView">
                                 <rect key="frame" x="0.0" y="71.5" width="375" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atl-Z2-ynp" customClass="CustomButton">

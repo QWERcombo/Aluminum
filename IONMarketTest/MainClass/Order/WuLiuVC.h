@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WuLiuVC : UIViewController
 
+@property (nonatomic, copy) NSString *expCode;
+@property (nonatomic, copy) NSString *expNo;
+@property (nonatomic, copy) NSString *expName;
+
 @end
 
 NS_ASSUME_NONNULL_END

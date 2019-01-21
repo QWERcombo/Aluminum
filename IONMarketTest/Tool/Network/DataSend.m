@@ -64,20 +64,60 @@ static NSOperationQueue *queue;
 
 + (void)sendPostWastedRequestWithBaseURL:(NSString *)baseUrl valueDictionary:(NSMutableDictionary*)dict imageArray:(NSArray *)imgArr WithType:(NSString*)type andCookie:(NSString *)cookie showAnimation:(BOOL)animation success:(SuccessBlock)success failure:(FailureBlock)failure{
     
-    NSString *httpStr = [NSString stringWithFormat:@"%@/%@",baseUrl,type];
-    
+    NSString *httpStr = @"";
+    if (type.length) {
+        httpStr = [NSString stringWithFormat:@"%@/%@",baseUrl,type];
+    } else {
+        httpStr = [NSString stringWithFormat:@"%@",baseUrl];
+    }
     NSLog(@"链接 🔗🔗 == %@  -----%@",httpStr, dict);
     
     [DataSend AFHTTPRequestWithURL:httpStr valueDictionary:dict imageArray:imgArr andCookie:cookie showAnimation:animation success:success failure:failure];
 }
 
-
++(void)sendPostRequestWithReqDic:(NSDictionary *)reqDic success:(SuccessBlock)success failure:(FailureBlock)failure {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.requestSerializer.timeoutInterval = 20.f;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json", nil];
+    
+    NSString *requestURL = @"http://api.kdniao.com/Ebusiness/EbusinessOrderHandle.aspx";
+    
+    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"加载中..." time:30.0 aboutType:WHShowViewMode_Load state:NO];
+    
+    [manager POST:requestURL parameters:reqDic progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [[UtilsData sharedInstance] hideAlert];
+        //请求成功
+        [DataSend verdictResponseString:responseObject];
+        
+        NSError *err;
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:&err];
+        
+        NSString *code = [result[@"Success"] stringValue];
+        if ([code isEqualToString:@"1"]) {
+            success(result,code);
+        } else {
+            
+            failure(@"暂无数据",-1);
+        }
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[UtilsData sharedInstance] hideAlert];
+        failure(@"failure",-1);
+    }];
+    
+}
 
 + (void)AFHTTPRequestWithURL:(NSString *)URLString valueDictionary:(NSDictionary *)valueDic imageArray:(NSArray *)imgArr andCookie:(NSString *)cookie showAnimation:(BOOL)animation success:(SuccessBlock)success failure:(FailureBlock)failure
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//
+
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         manager.requestSerializer.timeoutInterval = 20.f;
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json", nil];
@@ -103,7 +143,6 @@ static NSOperationQueue *queue;
 //            NSLog(@"---%@", jsonStr);
 //            NSData *jsonData = [[self removeUnescapedCharacter:jsonStr] dataUsingEncoding:NSUTF8StringEncoding];
             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:&err];
-            
             
             NSLog(@" 🍔🍔 %@", result);
             NSString *status = [NSString stringWithFormat:@"%@", [result objectForKey:@"status"]];//1为成功

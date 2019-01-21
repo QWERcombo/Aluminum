@@ -10,28 +10,12 @@
 #import "NewDetailInfoCell.h"
 #import "NewDetailListCell.h"
 #import "WuLiuVC.h"
+#import "ExpressInfoManager.h"
 
 @interface OrderNewDetailVC ()
-@property (weak, nonatomic) IBOutlet UILabel *nameLab;
-@property (weak, nonatomic) IBOutlet UILabel *phoneLab;
-@property (weak, nonatomic) IBOutlet UILabel *addressLab;
-@property (weak, nonatomic) IBOutlet UILabel *orderNo;
-@property (weak, nonatomic) IBOutlet UILabel *orderDate;
-@property (weak, nonatomic) IBOutlet UILabel *chanpinfei;
-@property (weak, nonatomic) IBOutlet UILabel *wuliufei;
-@property (weak, nonatomic) IBOutlet UILabel *zhifufangshi;
-@property (weak, nonatomic) IBOutlet UILabel *zhifushijian;
-@property (weak, nonatomic) IBOutlet UIView *zhifuView;
-@property (weak, nonatomic) IBOutlet UIView *headerView;
-@property (weak, nonatomic) IBOutlet UIView *kuaidiView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *kuaidiHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *zhifuHeight;
-@property (weak, nonatomic) IBOutlet UILabel *countLabel;
-
 
 @property (nonatomic, strong) NSMutableArray *detailDataSource;
-@property (nonatomic, copy) NSArray *wuliuNoArray;
-//@property (nonatomic, assign) BOOL isWuliuNo;
+@property (nonatomic, strong) NSMutableArray *wuliuArray;
 @property (nonatomic, strong) OrderModel *orderModel;
 
 @end
@@ -41,9 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.detailDataSource = [NSMutableArray array];
-    self.wuliuNoArray = [NSArray array];
+    self.wuliuArray = [NSMutableArray array];
     [self getOrderDetail:self.orderid];
-
     /*
     switch (self.orderDetailType) {
         case OrderDetailType_WillPay:
@@ -90,7 +73,21 @@
             self.orderModel = [[OrderModel alloc] initWithDictionary:dic error:nil];
             
             if ([self.orderModel.logisticsNo integerValue]>0) {
-                self.wuliuNoArray = [self.orderModel.logisticsNo componentsSeparatedByString:@","];
+                NSArray *expNoArr = [self.orderModel.logisticsNo componentsSeparatedByString:@","];
+                NSArray *expNameArr = [self.orderModel.logisticsName componentsSeparatedByString:@","];
+                
+                for (int i=0; i<expNoArr.count; i++) {
+                    
+                    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                    
+                    [dic setObject:expNameArr[i] forKey:@"expName"];
+                    [dic setObject:[ExpressInfoManager getExpressCodeWithName:expNameArr[i]] forKey:@"expCode"];
+                    [dic setObject:expNoArr[i] forKey:@"expNo"];
+                    [dic setObject:self.orderModel.logisticsTime forKey:@"expTime"];
+                    
+                    [self.wuliuArray addObject:dic];
+                    
+                }
             }
             
             totalWeight += [car.zongzhongliang floatValue];
@@ -101,8 +98,6 @@
         self.orderModel.wuliufei = [NSString stringWithFormat:@"%@元",self.listModel.wuliufei];
         self.orderModel.zongzhongliang = [NSNumber numberWithFloat:totalWeight].stringValue;
         
-        
-//        [self updateInfomation];
         [self.tableView reloadData];
     } failure:^(NSString *error, NSInteger code) {
         
@@ -117,7 +112,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section==0) {
-        return 1;
+        return self.wuliuArray.count;
     } else if (section==1) {
         return 1;
     } else {
@@ -129,7 +124,7 @@
     
     if (indexPath.section == 0) {
         
-        return [UtilsMold creatCell:@"WuLiuCell" table:tableView deledate:self model:nil data:self.orderModel.logisticsName andCliker:^(NSDictionary *clueDic) {
+        return [UtilsMold creatCell:@"WuLiuCell" table:tableView deledate:self model:[self.wuliuArray objectAtIndex:indexPath.row] data:@"" andCliker:^(NSDictionary *clueDic) {
         }];
 
     } else if (indexPath.section == 1) {
@@ -168,49 +163,18 @@
     
     if (indexPath.section == 0) {
         
+        NSDictionary *dic = [self.wuliuArray objectAtIndex:indexPath.row];
+        
         WuLiuVC *wuliu = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WuLiuVC"];
+        wuliu.expNo = [dic objectForKey:@"expNo"];
+        wuliu.expCode = [dic objectForKey:@"expCode"];
+        wuliu.expName = [dic objectForKey:@"expName"];
         
         [self.navigationController pushViewController:wuliu animated:YES];
-        
     }
     
 }
 
-
-- (void)updateInfomation {
-    
-    if ([self.orderModel.ziti isEqualToString:@"自提"]) {
-        self.addressLab.text = @"自提地址：江苏省无锡市新吴区展鸿路18号院内乐切金属";
-        self.nameLab.text = @"联系人：乐切金属";
-        self.phoneLab.text = @"0510-88996061";
-    } else {
-        self.addressLab.text = [NSString stringWithFormat:@"收货地址 : %@",self.orderModel.address];
-        self.nameLab.text = [NSString stringWithFormat:@"联系人 : %@", self.orderModel.currentAddress[@"name"]];
-        self.phoneLab.text = self.orderModel.userPhone;
-    }
-    self.addressLab.adjustsFontSizeToFitWidth = YES;
-    self.orderNo.text = self.orderModel.no;
-    self.zhifufangshi.text = self.orderModel.paymethod;
-    self.wuliufei.text = [NSString getStringAfterTwo:self.listModel.wuliufei];
-    self.chanpinfei.text = [NSString getStringAfterTwo:self.listModel.totalMoney];
-    NSInteger count=0;
-    for (ShopCar *car in self.detailDataSource) {
-        count+=[car.productNum integerValue];
-    }
-    self.countLabel.text = [NSString stringWithFormat:@"%ld",(long)count];
-    
-    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
-    dateformatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    self.orderDate.text = [dateformatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.orderModel.createDate integerValue]/1000]];
-    self.zhifushijian.text = [dateformatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.orderModel.payTime integerValue]/1000]];
-    
-    //没有支付方式和时间不显示高度
-//    if (!self.orderModel.payTime.length) {
-//        self.headerView.frame = CGRectMake(0, 0, SCREEN_WIGHT, self.headerView.frame.size.height-70);
-//        self.zhifuView.hidden = YES;
-//    }
-    
-}
 /*
 #pragma mark - Navigation
 

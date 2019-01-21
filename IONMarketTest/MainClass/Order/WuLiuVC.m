@@ -8,6 +8,7 @@
 
 #import "WuLiuVC.h"
 #import "PostListCell.h"
+#import "ExpressInfoManager.h"
 
 @interface WuLiuVC ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -27,7 +28,21 @@
     self.title = @"物流跟踪";
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.listArray = [NSMutableArray array];
-    [self.listArray addObjectsFromArray:@[@"1",@"1",@"1",@"1",@"1"]];
+    self.name.text = self.expName;
+    self.numCode.text = self.expNo;
+    
+    [ExpressInfoManager getExpressInfo:@{@"expCode":self.expCode,@"expNo":self.expNo} block:^(NSInteger sucess, NSDictionary * _Nonnull dataDict, NSString * _Nonnull error) {
+        
+        if (sucess == 1) {
+            
+            NSArray *traces = [dataDict objectForKey:@"Traces"];
+            
+            [self.listArray addObjectsFromArray:traces];
+            
+            [self.tableView reloadData];
+        }
+        
+    }];
 }
 
 
@@ -37,7 +52,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PostListCell *cell = [PostListCell initCell:tableView cellName:@"PostListCell" dataObject:nil];
+    PostListCell *cell = [PostListCell initCell:tableView cellName:@"PostListCell" dataObject:[self.listArray objectAtIndex:indexPath.row]];
     
     if (indexPath.row==0) {
         cell.topLine.hidden = YES;

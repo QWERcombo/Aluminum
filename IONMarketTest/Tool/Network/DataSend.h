@@ -19,6 +19,7 @@ typedef void (^FailureBlock)(NSString *error,NSInteger code);
 
 
 +(void)sendPostWastedRequestWithBaseURL:(NSString *)baseUrl valueDictionary:(NSMutableDictionary*)dict imageArray:(NSArray *)imgArr WithType:(NSString*)type andCookie:(NSString *)cookie showAnimation:(BOOL)animation success:(SuccessBlock)success failure:(FailureBlock)failure;
++(void)sendPostRequestWithReqDic:(NSDictionary *)reqDic success:(SuccessBlock)success failure:(FailureBlock)failure;
 
 +(void)cancelAllRequest;
 

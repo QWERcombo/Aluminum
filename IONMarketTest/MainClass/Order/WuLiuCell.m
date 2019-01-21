@@ -34,9 +34,14 @@
 
 - (void)loadData:(NSObject *)model name:(NSString *)name andCliker:(ClikBlock)click {
     
-//    NSString *wuliuno = (NSString *)model;
+    NSDictionary *dic = (NSDictionary *)model;
     
-//    self.showLabel.text = [NSString stringWithFormat:@"(%@) %@", name, wuliuno];
+    self.showLabel.text = [dic objectForKey:@"expName"];
+    
+    NSDateFormatter *fff = [NSDateFormatter new];
+    fff.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    
+    self.dateLab.text = [fff stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[dic objectForKey:@"expTime"] integerValue]/1000]];
 }
 
 
