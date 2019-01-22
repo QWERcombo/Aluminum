@@ -37,7 +37,7 @@
             
             NSArray *traces = [dataDict objectForKey:@"Traces"];
             
-            [self.listArray addObjectsFromArray:traces];
+            [self.listArray addObjectsFromArray:[[traces reverseObjectEnumerator] allObjects]];
             
             [self.tableView reloadData];
         }
