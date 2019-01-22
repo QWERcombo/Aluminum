@@ -53,6 +53,7 @@
 @property (nonatomic, copy) MainItemTypeModel *lvxing;
 @property (nonatomic, strong) ProductCate *productCate;
 @property (nonatomic, assign) NSInteger value;//记录选择的数量
+@property (nonatomic, copy) NSString *picture;
 
 @end
 

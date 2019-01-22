@@ -118,34 +118,31 @@
     CGSize contentSize = CGSizeZero;
     CGPoint startPoint = CGPointZero;
 //    NSLog(@"---%d",_isWebImage);
+    
     if (array.count > 1) {     //多张图片
         for (int i = 0 ; i < array.count + 2; i++) {
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)];
             imageView.contentMode = UIViewContentModeScaleAspectFill;
-            imageView.layer.masksToBounds = YES;
-//            imageView.backgroundColor = [UIColor purpleColor];
+//            imageView.layer.masksToBounds = YES;
             [self.scrollView addSubview:imageView];
             if (i == 0) {
                 id url = array[array.count-1];
                 if ([url isKindOfClass:[NSString class]]) {
-                    [imageView sd_setImageWithURL:[NSURL URLWithString:array[array.count - 1]] placeholderImage:[UIImage imageNamed:@"Banner_0"]];
-                    imageView.contentMode = UIViewContentModeScaleAspectFit;
+                    [imageView sd_setImageWithURL:[NSURL URLWithString:array[array.count - 1]] placeholderImage:[UIImage imageNamed:@"temp_0"]];
                 } else {
                     imageView.image = array[array.count-1];
                 }
             }else if(i == array.count + 1){
                 id url = array[0];
                 if ([url isKindOfClass:[NSString class]]) {
-                    [imageView sd_setImageWithURL:[NSURL URLWithString:array[0]] placeholderImage:[UIImage imageNamed:@"Banner_0"]];
-                    imageView.contentMode = UIViewContentModeScaleAspectFit;
+                    [imageView sd_setImageWithURL:[NSURL URLWithString:array[0]] placeholderImage:[UIImage imageNamed:@"temp_0"]];
                 } else {
                     imageView.image = array[0];
                 }
             }else{
                 id url = array[i-1];
                 if ([url isKindOfClass:[NSString class]]) {
-                    [imageView sd_setImageWithURL:[NSURL URLWithString:array[i - 1]] placeholderImage:[UIImage imageNamed:@"Banner_0"]];
-                    imageView.contentMode = UIViewContentModeScaleAspectFit;
+                    [imageView sd_setImageWithURL:[NSURL URLWithString:array[i - 1]] placeholderImage:[UIImage imageNamed:@"temp_0"]];
                 } else {
                     imageView.image = array[i-1];
                 }
@@ -156,11 +153,11 @@
         }
     }else{ //1张图片
         for (int i = 0; i < array.count; i ++) {
-            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * self.frame.size.width, 0, self.frame.size.width, self.frame.size.height - PAGE_H)];
+            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)];
             id url = array[i];
             if ([url isKindOfClass:[NSString class]]) {
-                [imageView sd_setImageWithURL:[NSURL URLWithString:array[i]] placeholderImage:[UIImage imageNamed:@"Banner_0"]];
-                imageView.contentMode = UIViewContentModeScaleAspectFit;
+                [imageView sd_setImageWithURL:[NSURL URLWithString:array[i]] placeholderImage:[UIImage imageNamed:@"temp_0"]];
+                imageView.contentMode = UIViewContentModeScaleAspectFill;
             } else {
                 imageView.image = url;
             }
@@ -169,10 +166,9 @@
         }
         
         if (array.count==0) {
-            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - PAGE_H)];
-            imageView.image = [UIImage imageNamed:@"Banner_0"];
+            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+            imageView.image = [UIImage imageNamed:@"temp_0"];
             imageView.contentMode = UIViewContentModeScaleAspectFill;
-//            imageView.
             [self addSubview:imageView];
         }
         contentSize = CGSizeMake(self.frame.size.width, 0);

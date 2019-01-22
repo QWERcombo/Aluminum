@@ -66,6 +66,7 @@
         NSArray *dataArr = resultDic[@"result"];
         
         float totalWeight=0;
+        int totalAmount=0;
         for (NSDictionary *dic in dataArr) {
             
             ShopCar *car = [[ShopCar alloc] initWithDictionary:dic error:nil];
@@ -91,9 +92,10 @@
             }
             
             totalWeight += [car.zongzhongliang floatValue];
+            totalAmount += [car.productNum intValue];
             [self.detailDataSource addObject:car];
         }
-        self.orderModel.zongjianshu = [NSString stringWithFormat:@"%ld件", self.listModel.detail.count];
+        self.orderModel.zongjianshu = [NSString stringWithFormat:@"%d件", totalAmount];
         self.orderModel.totalMoney = [NSString stringWithFormat:@"%@元",self.listModel.totalMoney];
         self.orderModel.wuliufei = [NSString stringWithFormat:@"%@元",self.listModel.wuliufei];
         self.orderModel.zongzhongliang = [NSNumber numberWithFloat:totalWeight].stringValue;

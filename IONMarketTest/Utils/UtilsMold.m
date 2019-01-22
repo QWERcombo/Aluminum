@@ -362,14 +362,13 @@ DEF_SINGLETON(UtilsMold);
             [IMGArr addObject:[dataSource objectAtIndex:i]];
         }
         ABBannerView *bannerView = [[ABBannerView alloc] initPageViewFrame:CGRectMake(0, 0, SCREEN_WIGHT, 132) webImageStr:IMGArr titleStr:nil didSelectPageViewAction:^(NSInteger index) {
-            NSLog(@"click---%ld", index);
-            
+//            NSLog(@"click---%ld", index);
         }];
         
         bannerView.duration = 5.0;
         bannerView.selfBackgroundColor = [UIColor Grey_BackColor1];
         bannerView.pageIndicatorTintColor = [UIColor lightTextColor];
-        bannerView.currentPageColor = [UIColor mianColor:2];
+        bannerView.currentPageColor = [UIColor grayColor];
         backView = bannerView;
         
         return backView;
