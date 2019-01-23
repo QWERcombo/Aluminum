@@ -30,7 +30,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     //进入刷新状态
-    [self.tabView.mj_header beginRefreshing];
+//    [self.tabView.mj_header beginRefreshing];
 }
 
 - (void)viewDidLoad {
@@ -52,6 +52,7 @@
     self.tabView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [self getDataSource:self.pageNumber+1 withType:self.type];
     }];
+    [self.tabView.mj_header beginRefreshing];
     
     self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无数据" andDetailStr:@"" withReloadAction:^{
         

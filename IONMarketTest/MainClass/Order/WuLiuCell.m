@@ -36,12 +36,12 @@
     
     NSDictionary *dic = (NSDictionary *)model;
     
-    self.showLabel.text = [dic objectForKey:@"expName"];
+    self.showLabel.text = [NSString stringWithFormat:@"物流单号:%@",[dic objectForKey:@"expNo"]];
+    self.dateLab.text = [NSString stringWithFormat:@"物流名称:%@", [dic objectForKey:@"expName"]];
     
-    NSDateFormatter *fff = [NSDateFormatter new];
-    fff.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    
-    self.dateLab.text = [fff stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[dic objectForKey:@"expTime"] integerValue]/1000]];
+//    NSDateFormatter *fff = [NSDateFormatter new];
+//    fff.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+//    self.dateLab.text = [fff stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[dic objectForKey:@"expTime"] integerValue]/1000]];
 }
 
 

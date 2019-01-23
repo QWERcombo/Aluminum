@@ -28,8 +28,12 @@
     self.title = @"物流跟踪";
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.listArray = [NSMutableArray array];
+    
     self.name.text = self.expName;
     self.numCode.text = self.expNo;
+    
+    self.tableView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无数据" andDetailStr:@"" withReloadAction:^{
+    }];
     
     [ExpressInfoManager getExpressInfo:@{@"expCode":self.expCode,@"expNo":self.expNo} block:^(NSInteger sucess, NSDictionary * _Nonnull dataDict, NSString * _Nonnull error) {
         

@@ -197,7 +197,7 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionViewCell" forIndexPath:indexPath];
     
     UILabel *showLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
-    showLabel.text = [self.dataSource objectAtIndex:indexPath.row];
+    showLabel.text = [[self.dataSource objectAtIndex:indexPath.row] stringValue];
     showLabel.backgroundColor = [UIColor colorWithHexString:@"#F6F6F6"];
     showLabel.textColor = [UIColor colorWithHexString:@"#333336"];
     showLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightSemibold];

@@ -138,11 +138,11 @@ static NSOperationQueue *queue;
             [DataSend verdictResponseString:responseObject];
             
             NSError *err;
-//            NSString *jsonStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-//            NSDictionary *result = [NEUSecurityUtil dictionaryWithJsonString:jsonStr];
-//            NSLog(@"---%@", jsonStr);
-//            NSData *jsonData = [[self removeUnescapedCharacter:jsonStr] dataUsingEncoding:NSUTF8StringEncoding];
-            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:&err];
+            NSString *jsonStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+//            NSDictionary *result1 = [NEUSecurityUtil dictionaryWithJsonString:jsonStr];
+//            NSLog(@"---%@++%@", jsonStr,result1);
+            NSData *jsonData = [[self removeUnescapedCharacter:jsonStr] dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&err];
             
             NSLog(@" 🍔🍔 %@", result);
             NSString *status = [NSString stringWithFormat:@"%@", [result objectForKey:@"status"]];//1为成功
