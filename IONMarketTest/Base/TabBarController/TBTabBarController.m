@@ -11,7 +11,6 @@
 #import "TBTabBar.h"
 #import "MineViewController.h"
 #import "MainViewController.h"
-#import "QuotationViewController.h"
 #import "LoginTVC.h"
 
 @interface TBTabBarController ()<UITabBarDelegate,UITabBarControllerDelegate>
@@ -49,28 +48,28 @@
 
 
 - (void)setupchildVc:(NSObject *)model {
-    NSArray *tabBarItemImages = @[@"main",@"order",@"mine"];
-    NSArray *tabBarItemTitle = @[@"首页",@"行情",@"我的"];
-
-    for (int i = 0;i < 3; i ++ ) {
-        NSString *titleString = [tabBarItemTitle objectAtIndex:i];
-        NSString *selectedimage = [NSString stringWithFormat:@"image_%@_1",[tabBarItemImages objectAtIndex:i]];
-        NSString *unselectedimage = [NSString stringWithFormat:@"image_%@_0",[tabBarItemImages objectAtIndex:i]];
-        UIViewController *newVC = nil;
-        if (i == 0) {
-            MainViewController *main = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainViewController"];
-            newVC = main;
-        }else if (i == 1){
-             QuotationViewController *order = [[QuotationViewController alloc] init];
-            newVC = order;
-        }else if (i == 2){
-            MineViewController *shop = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MineViewController"];
-            newVC = shop;
-        }
-        
-        newVC.title = titleString;
-        [self setupChildVC:newVC title:titleString image:unselectedimage image1:selectedimage model:nil];
-    }
+//    NSArray *tabBarItemImages = @[@"main",@"order",@"mine"];
+//    NSArray *tabBarItemTitle = @[@"首页",@"行情",@"我的"];
+//
+//    for (int i = 0;i < 3; i ++ ) {
+//        NSString *titleString = [tabBarItemTitle objectAtIndex:i];
+//        NSString *selectedimage = [NSString stringWithFormat:@"image_%@_1",[tabBarItemImages objectAtIndex:i]];
+//        NSString *unselectedimage = [NSString stringWithFormat:@"image_%@_0",[tabBarItemImages objectAtIndex:i]];
+//        UIViewController *newVC = nil;
+//        if (i == 0) {
+//            MainViewController *main = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainViewController"];
+//            newVC = main;
+//        }else if (i == 1){
+//             QuotationViewController *order = [[QuotationViewController alloc] init];
+//            newVC = order;
+//        }else if (i == 2){
+//            MineViewController *shop = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MineViewController"];
+//            newVC = shop;
+//        }
+//
+//        newVC.title = titleString;
+//        [self setupChildVC:newVC title:titleString image:unselectedimage image1:selectedimage model:nil];
+//    }
     
     
 }

@@ -7,14 +7,8 @@
 //
 
 #import "MainViewController.h"
-#import "SelectedItem.h"
 #import "MainItemViewController.h"
-#import "SetOrderViewController.h"
-#import "QuotationViewController.h"
-#import "QuotationDetailViewController.h"
 #import "MessageViewController.h"
-#import "SpecialMakeViewController.h"
-#import "InventoryViewController.h"
 
 #import "DingZhiViewController.h"
 #import "XunJiaViewController.h"
@@ -33,7 +27,8 @@
 
 @implementation MainViewController
 
-#define Item_Margin  ((SCREEN_WIGHT-(48*4)-52)/3)
+#define Item_Width      55
+#define Item_Margin     ((SCREEN_WIGHT-(Item_Width*5)-30)/4)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -67,7 +62,7 @@
     return 4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section==2?self.dataMuArr.count:0;
+    return section==2?self.dataArr.count:0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -77,6 +72,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     return [UtilsMold getCellHight:@"MainItemCell" data:nil model:nil indexPath:indexPath];
 }
 
@@ -105,13 +101,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    PriceModel *model = [self.dataMuArr objectAtIndex:indexPath.row];
-//    QuotationDetailViewController *detail = [QuotationDetailViewController new];
-//    detail.title = model.name;
-//    [self.navigationController pushViewController:detail animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UIViewController *list = [HomeListDetailVC topPageVC];
-    [self.navigationController pushViewController:list animated:YES];
+    
+    if (indexPath.section == 3) {
+        
+        UIViewController *list = [HomeListDetailVC topPageVC];
+        [self.navigationController pushViewController:list animated:YES];
+    }
 }
 
 #pragma mark ---- CreateSubViews
@@ -129,79 +125,29 @@
     
     UIView *blank = [[UIView alloc] initWithFrame:CGRectMake(0, 145, SCREEN_WIGHT, 166)];
     blank.backgroundColor = [UIColor whiteColor];
-    [mainView addSubview:blank];
+    [mainView addSubview:blank];    
     
+    NSArray *nameArr = @[@"整件",@"半成品",@"切铝板",@"淘小料",@"约包",@"切圆棒",@"切型材",@"特殊定制",@"自动下单",@"询价"];
     
-    
-    NSArray *nameArr = @[@"整板",@"零切",@"圆棒",@"型材",@"管材",@"特殊定制",@"自动下单",@"询价"];
     for (NSInteger i=0; i<2; i++) {
-        for (NSInteger j=0; j<4; j++) {
-            SelectedItem *item = [[SelectedItem alloc] initWithFrame:CGRectMake((Item_Margin+48)*j+26, ((66+19)*i), 48, 66)];
-            item.tag = 1000+((4*i)+j);
-            item.item_name.text = [nameArr objectAtIndex:i*4+j];
-            NSString *imageName = [NSString stringWithFormat:@"Main_item_%ld", (long)(i*4+j)];
-            item.item_imgv.image = IMG(imageName);
+        for (NSInteger j=0; j<5; j++) {
             
-            [item loadData:nil andCliker:^(NSString *clueStr) {
-                NSLog(@"%@", clueStr);
-                NSString *name = [nameArr objectAtIndex:clueStr.integerValue];
-                if ([name isEqualToString:@"自动下单"]) {
-//                    SetOrderViewController *set = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SetOrder"];
-//                    [self.navigationController pushViewController:set animated:YES];
-                    ZiZhuXiaDanViewController *zizhu = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"ZiZhuXiaDanViewController"];
-                    [self.navigationController pushViewController:zizhu animated:YES];
-                } else if ([name isEqualToString:@"特殊定制"]) {
-//                    SpecialMakeViewController *special = [SpecialMakeViewController new];
-//                    [self.navigationController pushViewController:special animated:YES];
-//                    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"此项功能研发中..." time:0 aboutType:WHShowViewMode_Text state:NO];
-                    DingZhiViewController *dingzhi = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"DingZhiViewController"];
-                    [self.navigationController pushViewController:dingzhi animated:YES];
-                    
-                } else if ([name isEqualToString:@"询价"]) {
-//                    MessageViewController *message = [MessageViewController new];
-//                    [self.navigationController pushViewController:message animated:YES];
-//                    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"此项功能研发中..." time:0 aboutType:WHShowViewMode_Text state:NO];
-                    XunJiaViewController *xunjia = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"XunJiaViewController"];
-                    [self.navigationController pushViewController:xunjia animated:YES];
-                    
-                } else if ([name isEqualToString:@"整板"]) {
-//                    InventoryViewController *inven = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"InventoryViewController"];
-                    WholeBoardVC *inven = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardVC"];
-                    [self.navigationController pushViewController:inven animated:YES];
-                } else if ([name isEqualToString:@"零切"]) {
-                    
-                    ZeroCutVC *zero = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"ZeroCutVC"];
-                    [self.navigationController pushViewController:zero animated:YES];
-                }
-                else if ([name isEqualToString:@"圆棒"]) {
-
-                    CommonItemVC *common = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"CommonItemVC"];
-                    common.showType = ShowType_YuanBang;
-                    [self.navigationController pushViewController:common animated:YES];
-                }
-                else if ([name isEqualToString:@"管材"]) {
-                    
-                    CommonItemVC *common = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"CommonItemVC"];
-                    common.showType = ShowType_GuanCai;
-                    [self.navigationController pushViewController:common animated:YES];
-                } else if ([name isEqualToString:@"型材"]) {
-                    
-                    CommonItemVC *common = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"CommonItemVC"];
-                    common.showType = ShowType_XingCai;
-                    [self.navigationController pushViewController:common animated:YES];
-                }
-                else {
-                    MainItemViewController *main_item = [[MainItemViewController alloc] init];
-                    main_item.titleStr = name;
-                    main_item.selectedNum = [clueStr integerValue]-1;
-                    [self.navigationController pushViewController:main_item animated:YES];
-                }
-            }];
-            [blank addSubview:item];
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            button.frame = CGRectMake((Item_Margin+Item_Width)*j+15, ((66+19)*i), Item_Width, 66);
+            
+            NSString *imageName = [NSString stringWithFormat:@"Main_item_%ld", (long)(i*5+j)];
+            [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont systemFontOfSize:13];
+            [button setTitleColor:[UIColor Black_WordColor] forState:UIControlStateNormal];
+            [button setTitle:[nameArr objectAtIndex:(i*5+j)] forState:UIControlStateNormal];
+            
+            button.tag = 1000+(i*5+j);
+            [button addTarget:self action:@selector(MainViewEnterClick:) forControlEvents:UIControlEventTouchUpInside];
+            
+            [blank addSubview:button];
+            [button layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:3];
         }
     }
-    
-    
     
     return mainView;
 }
@@ -284,8 +230,6 @@
 #pragma mark ---- Action
 
 - (void)moreAction:(UIButton *)sender {
-//    QuotationViewController *quo = [QuotationViewController new];
-//    [self.navigationController pushViewController:quo animated:YES];
     UIViewController *list = [HomeListDetailVC topPageVC];
     [self.navigationController pushViewController:list animated:YES];
 }
@@ -348,6 +292,54 @@
     }
     
 }
+
+- (void)MainViewEnterClick:(UIButton *)sender {
+    
+    if (sender.tag == 1000) {
+        //整件
+        WholeBoardVC *inven = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardVC"];
+        [self.navigationController pushViewController:inven animated:YES];
+    } else if (sender.tag == 1001) {
+        //半成品
+        NSLog(@"%@", sender.currentTitle);
+    } else if (sender.tag == 1002) {
+        //切铝板
+        NSLog(@"%@", sender.currentTitle);
+        ZeroCutVC *zero = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"ZeroCutVC"];
+        [self.navigationController pushViewController:zero animated:YES];
+    } else if (sender.tag == 1003) {
+        //淘小料
+        NSLog(@"%@", sender.currentTitle);
+    } else if (sender.tag == 1004) {
+        //约包
+        NSLog(@"%@", sender.currentTitle);
+    } else if (sender.tag == 1005) {
+        //切圆棒
+        CommonItemVC *common = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"CommonItemVC"];
+        common.showType = ShowType_YuanBang;
+        [self.navigationController pushViewController:common animated:YES];
+    } else if (sender.tag == 1006) {
+        //切型材
+        CommonItemVC *common = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"CommonItemVC"];
+        common.showType = ShowType_XingCai;
+        [self.navigationController pushViewController:common animated:YES];
+    } else if (sender.tag == 1007) {
+        //特殊定制
+        DingZhiViewController *dingzhi = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"DingZhiViewController"];
+        [self.navigationController pushViewController:dingzhi animated:YES];
+    } else if (sender.tag == 1008) {
+        //自助下单
+        ZiZhuXiaDanViewController *zizhu = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"ZiZhuXiaDanViewController"];
+        [self.navigationController pushViewController:zizhu animated:YES];
+    } else if (sender.tag == 1009) {
+        //询价
+        XunJiaViewController *xunjia = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"XunJiaViewController"];
+        [self.navigationController pushViewController:xunjia animated:YES];
+    } else {
+    }
+    
+}
+
 
 
 @end

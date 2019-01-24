@@ -7,7 +7,6 @@
 //
 
 #import "MainItemViewController.h"
-#import "SpecialMakeViewController.h"
 #import "MainItem__Single.h"//零切
 #import "MainItemView__Pole.h"//圆棒
 #import "MainItemView__Tube.h"//型材
@@ -592,8 +591,8 @@
 - (void)buttonCliker:(UIButton *)sender {
 //    NSLog(@"%@", sender.currentTitle);
     if (sender.tag==1010) {
-        SpecialMakeViewController *special = [SpecialMakeViewController new];
-        [self.navigationController pushViewController:special animated:YES];
+//        SpecialMakeViewController *special = [SpecialMakeViewController new];
+//        [self.navigationController pushViewController:special animated:YES];
     } else {
         [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [sender setBackgroundImage:IMG(@"Main_button_bg") forState:UIControlStateNormal];
