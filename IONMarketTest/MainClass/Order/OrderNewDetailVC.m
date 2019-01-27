@@ -71,23 +71,25 @@
             
             ShopCar *car = [[ShopCar alloc] initWithDictionary:dic error:nil];
             
-            self.orderModel = [[OrderModel alloc] initWithDictionary:dic error:nil];
-            
-            if ([self.orderModel.logisticsNo integerValue]>0) {
-                NSArray *expNoArr = [self.orderModel.logisticsNo componentsSeparatedByString:@","];
-                NSArray *expNameArr = [self.orderModel.logisticsName componentsSeparatedByString:@","];
+            if (!self.orderModel) {
+                self.orderModel = [[OrderModel alloc] initWithDictionary:dic error:nil];
                 
-                for (int i=0; i<expNoArr.count; i++) {
+                if ([self.orderModel.logisticsNo integerValue]>0) {
+                    NSArray *expNoArr = [self.orderModel.logisticsNo componentsSeparatedByString:@","];
+                    NSArray *expNameArr = [self.orderModel.logisticsName componentsSeparatedByString:@","];
                     
-                    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-                    
-                    [dic setObject:expNameArr[i] forKey:@"expName"];
-                    [dic setObject:[ExpressInfoManager getExpressCodeWithName:expNameArr[i]] forKey:@"expCode"];
-                    [dic setObject:expNoArr[i] forKey:@"expNo"];
-                    [dic setObject:self.orderModel.logisticsTime forKey:@"expTime"];
-                    
-                    [self.wuliuArray addObject:dic];
-                    
+                    for (int i=0; i<expNoArr.count; i++) {
+                        
+                        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                        
+                        [dic setObject:expNameArr[i] forKey:@"expName"];
+                        [dic setObject:self.orderModel.logisticsNumber forKey:@"expCode"];
+                        [dic setObject:expNoArr[i] forKey:@"expNo"];
+                        [dic setObject:self.orderModel.logisticsTime forKey:@"expTime"];
+                        
+                        [self.wuliuArray addObject:dic];
+                        
+                    }
                 }
             }
             
@@ -96,8 +98,8 @@
             [self.detailDataSource addObject:car];
         }
         self.orderModel.zongjianshu = [NSString stringWithFormat:@"%d件", totalAmount];
-        self.orderModel.totalMoney = [NSString stringWithFormat:@"%@元",self.listModel.totalMoney];
-        self.orderModel.wuliufei = [NSString stringWithFormat:@"%@元",self.listModel.wuliufei];
+        self.orderModel.totalMoney = [NSString stringWithFormat:@"%@元",[NSString getStringAfterTwo:self.listModel.totalMoney]];
+        self.orderModel.wuliufei = [NSString stringWithFormat:@"%@元",[NSString getStringAfterTwo:self.listModel.wuliufei]];
         self.orderModel.zongzhongliang = [NSNumber numberWithFloat:totalWeight].stringValue;
         
         [self.tableView reloadData];

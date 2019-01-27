@@ -38,6 +38,6 @@
 @property (nonatomic, strong) NSString *totalMoney;//快递名称
 @property (nonatomic, strong) NSString *zongzhongliang;//重量
 @property (nonatomic, strong) NSString *zongjianshu;//数量
-
+@property (nonatomic, strong) NSString *logisticsNumber;//物流编号
 
 @end

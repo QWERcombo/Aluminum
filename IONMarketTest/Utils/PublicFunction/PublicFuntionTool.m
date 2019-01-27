@@ -320,27 +320,46 @@ DEF_SINGLETON(PublicFuntionTool);
         }
         bannerBlock(array);
         
-        NSString *serviceVersion = resultDic[@"appleVersion"];
-        if (!serviceVersion.length) {
-            serviceVersion = @"0";
+        //当前版本
+        NSString *serviceVersion = [NSString stringWithFormat:@"%@",resultDic[@"appleVersion"]];
+        //最低兼容版本
+        NSString *appleLowestVersion = [NSString stringWithFormat:@"%@",resultDic[@"appleLowestVersion"]];
+        //强制更新版本
+        NSString *appleForceUpdateVersion = [NSString stringWithFormat:@"%@",resultDic[@"appleForceUpdateVersion"]];
+//        NSString *appleForceUpdateVersion = @"1.1.0, 1.1.2, 1.1.1";
+        NSArray *sortArr = nil;
+        NSPredicate * filterPredicate = [NSPredicate predicateWithFormat:@"NOT (SELF IN %@)",@[@""]];
+        
+        if ([appleForceUpdateVersion floatValue]>1) {
+            sortArr = [[[appleForceUpdateVersion componentsSeparatedByString:@","] filteredArrayUsingPredicate:filterPredicate] sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                //升序
+                return [obj1 compare:obj2];
+            }];
         }
+        
         NSString *appVersion = [self getAppVersion];
-        if (serviceVersion>appVersion) {
+        [appVersion compare:appleLowestVersion];
+        //强制更新
+        //非强制更新只提示一次
+        if ([appVersion compare:appleLowestVersion] == NSOrderedAscending) {
             
-            UIAlertController *updateAlert = [UIAlertController alertControllerWithTitle:@"更新" message:@"有新版本发布了，请前往App Store更新最新版本" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *updateAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APPSTORE_URL]];
-                
-            }];
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-            
-            [updateAlert addAction:updateAction];
-            [updateAlert addAction:cancel];
-            [[UIViewController currentViewController] presentViewController:updateAlert animated:YES completion:nil];
+            [self updateAlert:YES];
+        } else {
+            if (sortArr.count) {
+                //有故障版本
+                if ([appVersion compare:sortArr.lastObject] == NSOrderedAscending) {
+                    [self updateAlert:YES];
+                } else {
+                    [self updateAlert:NO];
+                }
+            } else {
+                //无故障版本
+                if ([appVersion compare:serviceVersion] == NSOrderedAscending) {
+                    [self updateAlert:NO];
+                }
+            }
         }
+        
         
     } failure:^(NSString *error, NSInteger code) {
         
@@ -473,7 +492,36 @@ DEF_SINGLETON(PublicFuntionTool);
         
     } failure:^(NSString *error, NSInteger code) {
         
+    }];
+}
+
+- (void)updateAlert:(BOOL)isMust {
+    //1强制 0非强制
+    UIAlertController *updateAlert = [UIAlertController alertControllerWithTitle:@"更新" message:@"有新版本发布了，请前往App Store更新最新版本" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *updateAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APPSTORE_URL]];
+        
+    }];
+    [updateAlert addAction:updateAction];
+    
+    if (!isMust) {
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        
+        [updateAlert addAction:cancel];
+    }
+    
+    
+    if (!isMust && [[[NSUserDefaults standardUserDefaults] objectForKey:@"CHECK_UPDATE"] boolValue]) {
+        return;
+    }
+    [[UIViewController currentViewController] presentViewController:updateAlert animated:YES completion:^{
+        
+        if (!isMust && ![[[NSUserDefaults standardUserDefaults] objectForKey:@"CHECK_UPDATE"] boolValue]) {
+            [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"CHECK_UPDATE"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
     }];
     
     
