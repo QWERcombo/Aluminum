@@ -35,18 +35,23 @@
     self.tableView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无数据" andDetailStr:@"" withReloadAction:^{
     }];
     
-    [ExpressInfoManager getExpressInfo:@{@"expCode":self.expCode,@"expNo":self.expNo} block:^(NSInteger sucess, NSDictionary * _Nonnull dataDict, NSString * _Nonnull error) {
-        
-        if (sucess == 1) {
+    if (self.expCode.length) {
+        [ExpressInfoManager getExpressInfo:@{@"expCode":self.expCode,@"expNo":self.expNo} block:^(NSInteger sucess, NSDictionary * _Nonnull dataDict, NSString * _Nonnull error) {
             
-            NSArray *traces = [dataDict objectForKey:@"Traces"];
+            if (sucess == 1) {
+                
+                NSArray *traces = [dataDict objectForKey:@"Traces"];
+                
+                [self.listArray addObjectsFromArray:[[traces reverseObjectEnumerator] allObjects]];
+                
+                [self.tableView reloadData];
+            }
             
-            [self.listArray addObjectsFromArray:[[traces reverseObjectEnumerator] allObjects]];
-            
-            [self.tableView reloadData];
-        }
-        
-    }];
+        }];
+    } else {
+        [self.listArray removeAllObjects];
+        [self.tableView reloadData];
+    }
 }
 
 

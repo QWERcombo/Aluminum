@@ -161,13 +161,12 @@ static char base64EncodeChars[] = {
 
 + (NSString *)getExpressCodeWithName:(NSString *)expName {
     
-    NSArray *nameArr = @[@"壹米滴答",@"圆通",@"圆通速递",@"韵达快运",@"韵达快递",@"韵达速递"];
-    NSArray *codeArr = @[@"YMDD",@"YTO",@"YTO",@"YDKY",@"YDKY",@"YD"];
+    NSDictionary *nameDic = @{@"顺丰速运":@"SF",@"圆通":@"YTO",@"圆通快递":@"YTO",@"百世快递":@"HTKY",@"中通快递":@"ZTO",@"韵达速递":@"YD",@"申通快递":@"STO",@"EMS":@"EMS",@"天天快递":@"HHTT",@"优速快递":@"UC",@"德邦快递":@"DBL",@"宅急送":@"ZJS",@"阿里跨境电商物流":@"ALKJWL",@"亚马逊物流":@"AMAZON",@"安能快运":@"ANEKY",@"八达通":@"BDT",@"八方安运":@"BFAY",@"百世快运":@"BTWL",@"城市100":@"CITY100",@"城际快递":@"CJKD",@"大田物流":@"DTWL",@"东骏快捷物流":@"DJKJWL",@"德邦快运":@"DBLKY",@"汇丰物流":@"HFWL",@"辉隆物流":@"HLONGWL",@"京东快运":@"JDKY",@"民航快递":@"MHKD",@"苏宁物流":@"SNWL",@"壹米滴答":@"YMDD",@"韵达快运":@"YDKY",@"中通快运":@"ZTOKY",@"中骅物流":@"ZHWL",@"跨越物流":@"KYWL",@"圆通速递":@"YTO"};
     
-    if ([nameArr containsObject:expName]) {
-        return [codeArr objectAtIndex:[nameArr indexOfObject:expName]];
+    if ([nameDic.allKeys containsObject:expName]) {
+        return [nameDic objectForKey:expName];
     } else {
-        return @"暂未知";
+        return @"";
     }
     
 }

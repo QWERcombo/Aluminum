@@ -83,7 +83,11 @@
                         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
                         
                         [dic setObject:expNameArr[i] forKey:@"expName"];
-                        [dic setObject:self.orderModel.logisticsNumber forKey:@"expCode"];
+                        if (self.orderModel.logisticsNumber.length) {
+                            [dic setObject:self.orderModel.logisticsNumber forKey:@"expCode"];
+                        } else {
+                            [dic setObject:[ExpressInfoManager getExpressCodeWithName:[expNameArr objectAtIndex:i]] forKey:@"expCode"];
+                        }
                         [dic setObject:expNoArr[i] forKey:@"expNo"];
                         [dic setObject:self.orderModel.logisticsTime forKey:@"expTime"];
                         
