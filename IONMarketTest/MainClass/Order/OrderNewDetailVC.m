@@ -87,9 +87,9 @@
                             [dic setObject:self.orderModel.logisticsNumber forKey:@"expCode"];
                         } else {
                             [dic setObject:[ExpressInfoManager getExpressCodeWithName:[expNameArr objectAtIndex:i]] forKey:@"expCode"];
-                        }
+                        }                        
                         [dic setObject:expNoArr[i] forKey:@"expNo"];
-                        [dic setObject:self.orderModel.logisticsTime forKey:@"expTime"];
+//                        [dic setObject:self.orderModel.logisticsTime forKey:@"expTime"];
                         
                         [self.wuliuArray addObject:dic];
                         
@@ -106,12 +106,43 @@
         self.orderModel.wuliufei = [NSString stringWithFormat:@"%@元",[NSString getStringAfterTwo:self.listModel.wuliufei]];
         self.orderModel.zongzhongliang = [NSNumber numberWithFloat:totalWeight].stringValue;
         
+        [self getExpressInfo];
         [self.tableView reloadData];
     } failure:^(NSString *error, NSInteger code) {
         
     }];
     
 }
+
+- (void)getExpressInfo {
+    
+    for (NSMutableDictionary *dic in self.wuliuArray) {
+        
+        [ExpressInfoManager getExpressInfo:@{@"expCode":[dic objectForKey:@"expCode"],@"expNo":[dic objectForKey:@"expNo"]} block:^(NSInteger sucess, NSDictionary * _Nonnull dataDict, NSString * _Nonnull error) {
+            
+            if (sucess == 1) {
+                
+                NSArray *traces = [dataDict objectForKey:@"Traces"];
+                NSDictionary *lastDic = [traces lastObject];
+                
+                if (traces.count) {
+                    [dic setObject:[lastDic objectForKey:@"AcceptStation"] forKey:@"expStation"];
+                    [dic setObject:[lastDic objectForKey:@"AcceptTime"] forKey:@"expTime"];
+                } else {
+                    [dic setObject:[NSString stringWithFormat:@"快递名称:%@", [dic objectForKey:@"expName"]] forKey:@"expStation"];
+                    [dic setObject:[NSString stringWithFormat:@"快递单号:%@", [dic objectForKey:@"expNo"]] forKey:@"expTime"];
+                }
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+            }
+            
+        }];
+        
+        
+    }
+    
+    
+}
+
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

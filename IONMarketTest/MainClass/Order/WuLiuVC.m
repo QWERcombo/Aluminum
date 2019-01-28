@@ -45,6 +45,14 @@
                 [self.listArray addObjectsFromArray:[[traces reverseObjectEnumerator] allObjects]];
                 
                 [self.tableView reloadData];
+                
+                NSString *msg = [dataDict objectForKey:@"Reason"];
+
+                if (msg.length) {
+                    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:2 aboutType:WHShowViewMode_Text state:NO];
+                }
+            } else {
+                
             }
             
         }];

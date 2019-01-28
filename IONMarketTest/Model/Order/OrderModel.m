@@ -10,4 +10,11 @@
 
 @implementation OrderModel
 
++ (JSONKeyMapper *)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
+                                                                  @"phone": @"currentAddress.phone"
+                                                                  }];
+}
+
 @end

@@ -326,15 +326,11 @@ DEF_SINGLETON(PublicFuntionTool);
         NSString *appleLowestVersion = [NSString stringWithFormat:@"%@",resultDic[@"appleLowestVersion"]];
         //强制更新版本
         NSString *appleForceUpdateVersion = [NSString stringWithFormat:@"%@",resultDic[@"appleForceUpdateVersion"]];
-//        NSString *appleForceUpdateVersion = @"1.1.0, 1.1.2, 1.1.1";
+//        NSString *appleForceUpdateVersion = @"";
         NSArray *sortArr = nil;
-        NSPredicate * filterPredicate = [NSPredicate predicateWithFormat:@"NOT (SELF IN %@)",@[@""]];
-        
-        if ([appleForceUpdateVersion floatValue]>1) {
-            sortArr = [[[appleForceUpdateVersion componentsSeparatedByString:@","] filteredArrayUsingPredicate:filterPredicate] sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-                //升序
-                return [obj1 compare:obj2];
-            }];
+//        NSPredicate * filterPredicate = [NSPredicate predicateWithFormat:@"NOT (SELF IN %@)",@[@""]];
+        if (appleForceUpdateVersion.length) {
+            sortArr = [appleForceUpdateVersion componentsSeparatedByString:@","];
         }
         
         NSString *appVersion = [self getAppVersion];
@@ -347,7 +343,7 @@ DEF_SINGLETON(PublicFuntionTool);
         } else {
             if (sortArr.count) {
                 //有故障版本
-                if ([appVersion compare:sortArr.lastObject] == NSOrderedAscending) {
+                if ([sortArr containsObject:appVersion]) {
                     [self updateAlert:YES];
                 } else {
                     [self updateAlert:NO];

@@ -34,7 +34,7 @@
     } else {
         cell.address.text = [NSString stringWithFormat:@"收货地址 : %@",model.address];
         cell.name.text = [NSString stringWithFormat:@"联系人 : %@", model.currentAddress[@"name"]];
-        cell.phone.text = model.userPhone;
+        cell.phone.text = model.phone;
     }
     cell.address.adjustsFontSizeToFitWidth = YES;
     cell.bianhao.text = model.no;
