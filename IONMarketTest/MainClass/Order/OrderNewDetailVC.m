@@ -89,7 +89,6 @@
                             [dic setObject:[ExpressInfoManager getExpressCodeWithName:[expNameArr objectAtIndex:i]] forKey:@"expCode"];
                         }                        
                         [dic setObject:expNoArr[i] forKey:@"expNo"];
-//                        [dic setObject:self.orderModel.logisticsTime forKey:@"expTime"];
                         
                         [self.wuliuArray addObject:dic];
                         
@@ -132,6 +131,10 @@
                     [dic setObject:[NSString stringWithFormat:@"快递名称:%@", [dic objectForKey:@"expName"]] forKey:@"expStation"];
                     [dic setObject:[NSString stringWithFormat:@"快递单号:%@", [dic objectForKey:@"expNo"]] forKey:@"expTime"];
                 }
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+            } else {
+                [dic setObject:[NSString stringWithFormat:@"快递名称:%@", [dic objectForKey:@"expName"]] forKey:@"expStation"];
+                [dic setObject:[NSString stringWithFormat:@"快递单号:%@", [dic objectForKey:@"expNo"]] forKey:@"expTime"];
                 [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
             }
             
