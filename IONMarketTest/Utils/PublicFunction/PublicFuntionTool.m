@@ -346,7 +346,13 @@ DEF_SINGLETON(PublicFuntionTool);
                 if ([sortArr containsObject:appVersion]) {
                     [self updateAlert:YES];
                 } else {
-                    [self updateAlert:NO];
+
+                    if ([appVersion compare:serviceVersion] == NSOrderedAscending) {
+                        //当前版本小于最新版本提示非强制更新
+                        [self updateAlert:NO];
+                    } else {
+                        //当前版本与最新版本一致不提示
+                    }
                 }
             } else {
                 //无故障版本
