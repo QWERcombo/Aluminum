@@ -106,12 +106,10 @@
                 case SelectShowType_XingCai:
                     dataArr = [resultDic objectForKey:@"houdus"];
                     [self.leftdataSource addObjectsFromArray:[resultDic objectForKey:@"houdus"]];
-//                    [self.rightdataSource addObjectsFromArray:[resultDic objectForKey:@"kuangdus"]];
                     break;
                 case SelectShowType_GuanCai:
                     dataArr = [resultDic objectForKey:@"waijings"];
                     [self.leftdataSource addObjectsFromArray:[resultDic objectForKey:@"waijings"]];
-//                    [self.rightdataSource addObjectsFromArray:[resultDic objectForKey:@"neijings"]];
                     break;
                 default:
                     break;
@@ -197,7 +195,7 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionViewCell" forIndexPath:indexPath];
     
     UILabel *showLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
-    showLabel.text = [[self.dataSource objectAtIndex:indexPath.row] stringValue];
+    showLabel.text = [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataSource objectAtIndex:indexPath.row]]];
     showLabel.backgroundColor = [UIColor colorWithHexString:@"#F6F6F6"];
     showLabel.textColor = [UIColor colorWithHexString:@"#333336"];
     showLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightSemibold];
@@ -220,22 +218,22 @@
                     
                 case SelectShowType_LingQie:
                     [self hideSelf];
-                    self.selectBlock([self.dataSource objectAtIndex:indexPath.row]);
+                    self.selectBlock([NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataSource objectAtIndex:indexPath.row]]]);
                     break;
                 case SelectShowType_YuanBang:
                     [self hideSelf];
-                    self.selectBlock([self.dataSource objectAtIndex:indexPath.row]);
+                    self.selectBlock([NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataSource objectAtIndex:indexPath.row]]]);
                     break;
                 case SelectShowType_XingCai:
                     
                     if (self.isSelectLeft) {
-                        self.left_label.text = [self.dataSource objectAtIndex:indexPath.row];
-                        self.leftIndex = [self.dataSource objectAtIndex:indexPath.row];
+                        self.left_label.text = [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataSource objectAtIndex:indexPath.row]]];
+                        self.leftIndex = [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataSource objectAtIndex:indexPath.row]]];
                         
                         [self getWidthByHou:self.left_label.text];
                     } else {
-                        self.right_label.text = [self.dataSource objectAtIndex:indexPath.row];
-                        self.rightIndex = [self.dataSource objectAtIndex:indexPath.row];
+                        self.right_label.text = [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataSource objectAtIndex:indexPath.row]]];
+                        self.rightIndex = [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataSource objectAtIndex:indexPath.row]]];
                     }
                     
                     if (self.left_label.text.length && self.right_label.text.length) {
@@ -246,13 +244,13 @@
                 case SelectShowType_GuanCai:
                     
                     if (self.isSelectLeft) {
-                        self.left_label.text = [self.dataSource objectAtIndex:indexPath.row];
-                        self.leftIndex = [self.dataSource objectAtIndex:indexPath.row];
+                        self.left_label.text = [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataSource objectAtIndex:indexPath.row]]];
+                        self.leftIndex = [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataSource objectAtIndex:indexPath.row]]];
                         
                         [self getNeiJingByWaiJing:self.left_label.text];
                     } else {
-                        self.right_label.text = [self.dataSource objectAtIndex:indexPath.row];
-                        self.rightIndex = [self.dataSource objectAtIndex:indexPath.row];
+                        self.right_label.text = [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataSource objectAtIndex:indexPath.row]]];
+                        self.rightIndex = [NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataSource objectAtIndex:indexPath.row]]];
                     }
                     
                     if (self.left_label.text.length && self.right_label.text.length) {
@@ -266,7 +264,7 @@
             
         } else {
             [self hideSelf];
-            self.selectBlock([self.dataSource objectAtIndex:indexPath.row]);
+            self.selectBlock([NSString getStringAfterTwo:[NSString stringWithFormat:@"%@",[self.dataSource objectAtIndex:indexPath.row]]]);
         }
         
         

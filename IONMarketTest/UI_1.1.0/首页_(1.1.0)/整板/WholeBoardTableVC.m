@@ -51,10 +51,10 @@
     _biaomianLabel.text = _wholeModel.lasi;
     _fumoLabel.text = _wholeModel.fumo;
     _changjiaLabel.text = _wholeModel.canzhaozhishu;
-    _zhongliangLabel.text = [NSString stringWithFormat:@"%@kg",_wholeModel.zhongliang];
-    _shengyuLabel.text = [NSString stringWithFormat:@"%@件",_wholeModel.kucun];
-    _danjianLabel.text = [NSString stringWithFormat:@"%@元",_wholeModel.danpianzhengbanjiage];
-    _gongjinLabel.text = [NSString stringWithFormat:@"%@元/公斤", _wholeModel.danjia];
+    _zhongliangLabel.text = [NSString stringWithFormat:@"%@kg",[NSString getStringAfterTwo:_wholeModel.zhongliang]];
+    _shengyuLabel.text = [NSString stringWithFormat:@"%@件",[NSString getStringAfterTwo:_wholeModel.kucun]];
+    _danjianLabel.text = [NSString stringWithFormat:@"%@元",[NSString getStringAfterTwo:_wholeModel.danpianzhengbanjiage]];
+    _gongjinLabel.text = [NSString stringWithFormat:@"%@元/公斤", [NSString getStringAfterTwo:_wholeModel.danjia]];
     _gongjinLabel.attributedText = [UILabel getAttributedFromRange:[_gongjinLabel.text rangeOfString:@"元/公斤"] WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:_gongjinLabel.text];
     
 }
