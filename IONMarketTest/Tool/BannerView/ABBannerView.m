@@ -123,7 +123,7 @@
         for (int i = 0 ; i < array.count + 2; i++) {
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)];
             imageView.contentMode = UIViewContentModeScaleAspectFill;
-//            imageView.layer.masksToBounds = YES;
+            imageView.layer.masksToBounds = YES;
             [self.scrollView addSubview:imageView];
             if (i == 0) {
                 id url = array[array.count-1];
@@ -157,11 +157,11 @@
             id url = array[i];
             if ([url isKindOfClass:[NSString class]]) {
                 [imageView sd_setImageWithURL:[NSURL URLWithString:array[i]] placeholderImage:[UIImage imageNamed:@"temp_0"]];
-                imageView.contentMode = UIViewContentModeScaleAspectFill;
             } else {
                 imageView.image = url;
             }
-            
+            imageView.contentMode = UIViewContentModeScaleAspectFill;
+            imageView.layer.masksToBounds = YES;
             [self addSubview:imageView];
         }
         
@@ -169,6 +169,7 @@
             UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
             imageView.image = [UIImage imageNamed:@"temp_0"];
             imageView.contentMode = UIViewContentModeScaleAspectFill;
+            imageView.layer.masksToBounds = YES;
             [self addSubview:imageView];
         }
         contentSize = CGSizeMake(self.frame.size.width, 0);
