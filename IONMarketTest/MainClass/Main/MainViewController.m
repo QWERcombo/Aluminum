@@ -28,7 +28,7 @@
 @implementation MainViewController
 
 #define Item_Width      55
-#define Item_Margin     ((SCREEN_WIGHT-(Item_Width*5)-30)/4)
+#define Item_Margin     ((SCREEN_WIGHT-(Item_Width*4)-30)/3)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -127,22 +127,22 @@
     blank.backgroundColor = [UIColor whiteColor];
     [mainView addSubview:blank];    
     
-    NSArray *nameArr = @[@"整件",@"半成品",@"切铝板",@"淘小料",@"约包",@"切圆棒",@"切型材",@"特殊定制",@"自动下单",@"询价"];
+    NSArray *nameArr = @[@"整件",@"零切",@"半成品",@"淘小料",@"期货",@"圆棒",@"型材",@"询价"];
 //    NSArray *nameArr = @[@"整板",@"零切",@"圆棒",@"型材",@"管材",@"特殊定制",@"自动下单",@"询价"];
     
     for (NSInteger i=0; i<2; i++) {
-        for (NSInteger j=0; j<5; j++) {
+        for (NSInteger j=0; j<4; j++) {
             
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.frame = CGRectMake((Item_Margin+Item_Width)*j+15, ((66+19)*i), Item_Width, 66);
             
-            NSString *imageName = [NSString stringWithFormat:@"Main_item_%ld", (long)(i*5+j)];
+            NSString *imageName = [NSString stringWithFormat:@"Main_item_%ld", (long)(i*4+j)];
             [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
             button.titleLabel.font = [UIFont systemFontOfSize:13];
             [button setTitleColor:[UIColor Black_WordColor] forState:UIControlStateNormal];
-            [button setTitle:[nameArr objectAtIndex:(i*5+j)] forState:UIControlStateNormal];
+            [button setTitle:[nameArr objectAtIndex:(i*4+j)] forState:UIControlStateNormal];
             
-            button.tag = 1000+(i*5+j);
+            button.tag = 1000+(i*4+j);
             [button addTarget:self action:@selector(MainViewEnterClick:) forControlEvents:UIControlEventTouchUpInside];
             
             [blank addSubview:button];
@@ -295,27 +295,27 @@
 }
 
 - (void)MainViewEnterClick:(UIButton *)sender {
-    
+//    NSArray *nameArr = @[@"整件",@"零切",@"半成品",@"淘小料",@"期货",@"圆棒",@"型材",@"询价"];
     if (sender.tag == 1000) {
         //整件
         WholeBoardVC *inven = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardVC"];
         [self.navigationController pushViewController:inven animated:YES];
     }
     else if (sender.tag == 1001) {
-        //半成品
-        NSLog(@"%@", sender.currentTitle);
-    }
-    else if (sender.tag == 1002) {
-        //切铝板
+        //零切
         NSLog(@"%@", sender.currentTitle);
         ZeroCutVC *zero = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"ZeroCutVC"];
         [self.navigationController pushViewController:zero animated:YES];
+    }
+    else if (sender.tag == 1002) {
+        //半成品
+        NSLog(@"%@", sender.currentTitle);
     }
     else if (sender.tag == 1003) {
         //淘小料
         NSLog(@"%@", sender.currentTitle);
     } else if (sender.tag == 1004) {
-        //约包
+        //期货
         NSLog(@"%@", sender.currentTitle);
     }
     else if (sender.tag == 1005) {
@@ -335,15 +335,16 @@
 //        common.showType = ShowType_GuanCai;
 //        [self.navigationController pushViewController:common animated:YES];
 //    }
-    else if (sender.tag == 1007) {
-        //特殊定制
-        DingZhiViewController *dingzhi = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"DingZhiViewController"];
-        [self.navigationController pushViewController:dingzhi animated:YES];
-    } else if (sender.tag == 1008) {
-        //自助下单
-        ZiZhuXiaDanViewController *zizhu = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"ZiZhuXiaDanViewController"];
-        [self.navigationController pushViewController:zizhu animated:YES];
-    } else if (sender.tag == 1009) {
+//    else if (sender.tag == 1007) {
+//        //特殊定制
+//        DingZhiViewController *dingzhi = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"DingZhiViewController"];
+//        [self.navigationController pushViewController:dingzhi animated:YES];
+//    } else if (sender.tag == 1008) {
+//        //自助下单
+//        ZiZhuXiaDanViewController *zizhu = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"ZiZhuXiaDanViewController"];
+//        [self.navigationController pushViewController:zizhu animated:YES];
+//    }
+        else if (sender.tag == 1007) {
         //询价
         XunJiaViewController *xunjia = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"XunJiaViewController"];
         [self.navigationController pushViewController:xunjia animated:YES];

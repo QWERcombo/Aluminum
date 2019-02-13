@@ -75,6 +75,10 @@
         case 0:
             [cell.statusButton setTitle:@"待付款" forState:UIControlStateNormal];
             [cell.statusButton setTitleColor:[UIColor Grey_OrangeColor] forState:UIControlStateNormal];
+            [cell.zhifuBtn setTitle:@" 前往支付 " forState:UIControlStateNormal];
+            [cell.caizhiBtn setTitle:@" 材质证明 " forState:UIControlStateNormal];
+            [cell.quxiaoBtn setTitle:@" 取消订单 " forState:UIControlStateNormal];
+            cell.caizhiBtn.hidden = NO;
             break;
         case 1:
             [cell.statusButton setTitle:@"待收货" forState:UIControlStateNormal];
