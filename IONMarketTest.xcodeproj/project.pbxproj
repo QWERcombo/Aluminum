@@ -282,6 +282,7 @@
 		A26149CB20C5379E0055BA25 /* WhiteBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26149C920C5379E0055BA25 /* WhiteBarCell.xib */; };
 		A26149CD20C53FCE0055BA25 /* Common.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A26149CC20C53FCE0055BA25 /* Common.storyboard */; };
 		A26149D020C540280055BA25 /* WhiteBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A26149CF20C540280055BA25 /* WhiteBarVC.m */; };
+		A270CD742214187200369801 /* SelectConditionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A270CD732214187200369801 /* SelectConditionView.m */; };
 		A283488E2060AAB200C228AD /* ShopCarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A283488D2060AAB200C228AD /* ShopCarDetailViewController.m */; };
 		A283489220610A8300C228AD /* TradeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A283489120610A8300C228AD /* TradeListViewController.m */; };
 		A283489620610F6900C228AD /* WallentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A283489420610F6900C228AD /* WallentListCell.m */; };
@@ -289,6 +290,10 @@
 		A285A6592076170400D349AB /* BillTicketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A285A6582076170400D349AB /* BillTicketModel.m */; };
 		A289424020B3CAF900D8E9E5 /* BezierCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A289423E20B3CAF800D8E9E5 /* BezierCurveView.xib */; };
 		A289424420B4239500D8E9E5 /* WalletListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A289424320B4239500D8E9E5 /* WalletListModel.m */; };
+		A28C15AC2215060A00272BB2 /* ConditionDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A28C15AB2215060900272BB2 /* ConditionDisplayView.m */; };
+		A28C15AE2215069400272BB2 /* ConditionDisplayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A28C15AD2215069400272BB2 /* ConditionDisplayView.xib */; };
+		A28C15B222151B4100272BB2 /* ConditionDisplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A28C15B022151B4100272BB2 /* ConditionDisplayCell.m */; };
+		A28C15B322151B4100272BB2 /* ConditionDisplayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A28C15B122151B4100272BB2 /* ConditionDisplayCell.xib */; };
 		A293059C217EDCD500D72F4A /* HYStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = A293059B217EDCD500D72F4A /* HYStepper.m */; };
 		A293059F217EFBD800D72F4A /* WholeBoardDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A293059E217EFBD800D72F4A /* WholeBoardDetailVC.m */; };
 		A29305A2217F053200D72F4A /* DisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A29305A1217F053200D72F4A /* DisplayView.m */; };
@@ -909,6 +914,8 @@
 		A26149CC20C53FCE0055BA25 /* Common.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Common.storyboard; sourceTree = "<group>"; };
 		A26149CE20C540280055BA25 /* WhiteBarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WhiteBarVC.h; sourceTree = "<group>"; };
 		A26149CF20C540280055BA25 /* WhiteBarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WhiteBarVC.m; sourceTree = "<group>"; };
+		A270CD722214187200369801 /* SelectConditionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectConditionView.h; sourceTree = "<group>"; };
+		A270CD732214187200369801 /* SelectConditionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectConditionView.m; sourceTree = "<group>"; };
 		A283488C2060AAB200C228AD /* ShopCarDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCarDetailViewController.h; sourceTree = "<group>"; };
 		A283488D2060AAB200C228AD /* ShopCarDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCarDetailViewController.m; sourceTree = "<group>"; };
 		A283489020610A8300C228AD /* TradeListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TradeListViewController.h; sourceTree = "<group>"; };
@@ -921,6 +928,12 @@
 		A289423E20B3CAF800D8E9E5 /* BezierCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BezierCurveView.xib; sourceTree = "<group>"; };
 		A289424220B4239500D8E9E5 /* WalletListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletListModel.h; sourceTree = "<group>"; };
 		A289424320B4239500D8E9E5 /* WalletListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletListModel.m; sourceTree = "<group>"; };
+		A28C15AA2215060900272BB2 /* ConditionDisplayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConditionDisplayView.h; sourceTree = "<group>"; };
+		A28C15AB2215060900272BB2 /* ConditionDisplayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConditionDisplayView.m; sourceTree = "<group>"; };
+		A28C15AD2215069400272BB2 /* ConditionDisplayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConditionDisplayView.xib; sourceTree = "<group>"; };
+		A28C15AF22151B4100272BB2 /* ConditionDisplayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConditionDisplayCell.h; sourceTree = "<group>"; };
+		A28C15B022151B4100272BB2 /* ConditionDisplayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConditionDisplayCell.m; sourceTree = "<group>"; };
+		A28C15B122151B4100272BB2 /* ConditionDisplayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConditionDisplayCell.xib; sourceTree = "<group>"; };
 		A293059A217EDCD400D72F4A /* HYStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYStepper.h; sourceTree = "<group>"; };
 		A293059B217EDCD500D72F4A /* HYStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYStepper.m; sourceTree = "<group>"; };
 		A293059D217EFBD800D72F4A /* WholeBoardDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WholeBoardDetailVC.h; sourceTree = "<group>"; };
@@ -2088,9 +2101,8 @@
 		A23C3939205259F4000A5E99 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A270CD712214184700369801 /* CustomView */,
 				A23C393A20525A02000A5E99 /* Xib */,
-				562D7CAB20CACAF40093367D /* CustomButton.h */,
-				562D7CAC20CACAF40093367D /* CustomButton.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -2228,6 +2240,23 @@
 				A26149C920C5379E0055BA25 /* WhiteBarCell.xib */,
 			);
 			path = "白条";
+			sourceTree = "<group>";
+		};
+		A270CD712214184700369801 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				562D7CAB20CACAF40093367D /* CustomButton.h */,
+				562D7CAC20CACAF40093367D /* CustomButton.m */,
+				A270CD722214187200369801 /* SelectConditionView.h */,
+				A270CD732214187200369801 /* SelectConditionView.m */,
+				A28C15AA2215060900272BB2 /* ConditionDisplayView.h */,
+				A28C15AB2215060900272BB2 /* ConditionDisplayView.m */,
+				A28C15AD2215069400272BB2 /* ConditionDisplayView.xib */,
+				A28C15AF22151B4100272BB2 /* ConditionDisplayCell.h */,
+				A28C15B022151B4100272BB2 /* ConditionDisplayCell.m */,
+				A28C15B122151B4100272BB2 /* ConditionDisplayCell.xib */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		A283488F2060F31B00C228AD /* Mine */ = {
@@ -2484,6 +2513,7 @@
 				563C8D3020C97FB2003C4822 /* WholeChooseView.xib in Resources */,
 				A2301B3C20638AB3006B9F20 /* SmartServiceCell.xib in Resources */,
 				A26149CD20C53FCE0055BA25 /* Common.storyboard in Resources */,
+				A28C15B322151B4100272BB2 /* ConditionDisplayCell.xib in Resources */,
 				A26149CB20C5379E0055BA25 /* WhiteBarCell.xib in Resources */,
 				A22E649F21F94FC20057B433 /* MainEnterCell.xib in Resources */,
 				565086AA205CFF1800FD8497 /* OrderDetailCell.xib in Resources */,
@@ -2491,6 +2521,7 @@
 				A21B4669207B194000802621 /* Mine.storyboard in Resources */,
 				5695BE8120429F1B0036D54B /* LaunchScreen.storyboard in Resources */,
 				56A37FCF212AF27D00701CD8 /* WuLiuCell.xib in Resources */,
+				A28C15AE2215069400272BB2 /* ConditionDisplayView.xib in Resources */,
 				A296427620F5AB5E00B6E8B6 /* FSActionSheet_cancel@2x.png in Resources */,
 				56198BB6217A2DBD009AB9F3 /* WholeBoardTapView.xib in Resources */,
 				A2301B2120635292006B9F20 /* LoginViewController.xib in Resources */,
@@ -2756,6 +2787,7 @@
 				A296427D20F5AB5E00B6E8B6 /* XLProgressView.m in Sources */,
 				56A5746420ADC54F00A458EB /* ApplyWhiteBarVC.m in Sources */,
 				568CB08A2065F90900B48318 /* MainItemTypeModel.m in Sources */,
+				A28C15B222151B4100272BB2 /* ConditionDisplayCell.m in Sources */,
 				A2AC1C652056481B00A3B2F9 /* MainItemViewController.m in Sources */,
 				560212A620596537009EF75D /* ChangeCodeViewController.m in Sources */,
 				56FD469A219C6B4000AC0BA4 /* NSBundle+CYPasswordView.m in Sources */,
@@ -2814,6 +2846,7 @@
 				A22981BC20624B48007B6112 /* AddAddressViewController.m in Sources */,
 				56B78CE02185E5850056D812 /* AAMarker.m in Sources */,
 				56AD6F0720C8391F00344E81 /* ConfirmTicketVC.m in Sources */,
+				A28C15AC2215060A00272BB2 /* ConditionDisplayView.m in Sources */,
 				56B5215A20AB37A100F636BD /* ChoosePayWayView.m in Sources */,
 				56B78CD32185E5850056D812 /* AATooltip.m in Sources */,
 				5654FC1220AC6B9900B7DA4E /* ConfirmOrderVC.m in Sources */,
@@ -2834,6 +2867,7 @@
 				A229819620620596007B6112 /* InOutputView.m in Sources */,
 				56940C492051605B00DFA6D6 /* ShopCarViewController.m in Sources */,
 				5602129620594D0C009EF75D /* AddressViewController.m in Sources */,
+				A270CD742214187200369801 /* SelectConditionView.m in Sources */,
 				56B2150921F3427E004E37A5 /* NewDetailListCell.m in Sources */,
 				A22981C1206260CE007B6112 /* ApplyTicketViewController.m in Sources */,
 				5695BF642042AF8C0036D54B /* Reachability.m in Sources */,
