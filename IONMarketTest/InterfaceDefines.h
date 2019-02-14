@@ -198,6 +198,15 @@
 
 #pragma mark --- V.1.1.3
 
+#pragma mark --- V.1.2.0
+//请选择品类:铝板，圆棒，管材，型材等
+#define Interface_PinLei            @"pinleiList"
+//请选择牌号
+//#define Interface_Cate      @"cateList"
+//请选择状态
+#define Interface_ZhuangTai         @"zhuangtaiList"
+//请选择厚度
+#define Interface_HouDu             @"indexHouduList"
 
 
 
