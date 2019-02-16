@@ -24,7 +24,9 @@
     // Configure the view for the selected state
 }
 
-+ (instancetype)initCell:(UITableView *)tableView cellName:(NSString *)cellName dataObject:(id)dataObject {
++ (instancetype)initCell:(UITableView *)tableView cellName:(NSString *)cellName type:(NSString *)type dataObject:(id)dataObject {
+    
+    //type  1普通  2约包
     
     WholeBoardListCell *cell = [super initCell:tableView cellName:cellName dataObject:dataObject];
     
@@ -45,31 +47,31 @@
         cell.stepper.hidden = YES;
     }
     
-    NSMutableArray *array = [NSMutableArray array];
-    if (dataModel.gongyibiaozhun.length) {
-        [array addObject:dataModel.gongyibiaozhun];
-    }
-    if (dataModel.lasi.length) {
-        [array addObject:dataModel.lasi];
-    }
-    if (dataModel.fumo.length) {
-        [array addObject:dataModel.fumo];
-    }
-    
-    CGFloat totalMargin = 0;
-    for (NSInteger i=0; i<array.count; i++) {
-        
-        CGSize size = [[array objectAtIndex:i] boundingRectWithSize:CGSizeMake(0, 17) font:[UIFont systemFontOfSize:12] lineSpacing:0];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16+totalMargin+(5*i), cell.height-27, size.width+12, 17)];
-        label.text = [array objectAtIndex:i];
-        label.font = [UIFont systemFontOfSize:12];
-        label.textColor = [UIColor colorWithHexString:@"#595E64"];
-        label.backgroundColor = [UIColor colorWithHexString:@"#EDEDED"];
-        label.textAlignment = NSTextAlignmentCenter;
-        
-        totalMargin += (size.width+12);
-        [cell.contentView addSubview:label];
-    }
+//    NSMutableArray *array = [NSMutableArray array];
+//    if (dataModel.gongyibiaozhun.length) {
+//        [array addObject:dataModel.gongyibiaozhun];
+//    }
+//    if (dataModel.lasi.length) {
+//        [array addObject:dataModel.lasi];
+//    }
+//    if (dataModel.fumo.length) {
+//        [array addObject:dataModel.fumo];
+//    }
+//
+//    CGFloat totalMargin = 0;
+//    for (NSInteger i=0; i<array.count; i++) {
+//        
+//        CGSize size = [[array objectAtIndex:i] boundingRectWithSize:CGSizeMake(0, 17) font:[UIFont systemFontOfSize:12] lineSpacing:0];
+//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16+totalMargin+(5*i), cell.height-27, size.width+12, 17)];
+//        label.text = [array objectAtIndex:i];
+//        label.font = [UIFont systemFontOfSize:12];
+//        label.textColor = [UIColor colorWithHexString:@"#595E64"];
+//        label.backgroundColor = [UIColor colorWithHexString:@"#EDEDED"];
+//        label.textAlignment = NSTextAlignmentCenter;
+//        
+//        totalMargin += (size.width+12);
+//        [cell.contentView addSubview:label];
+//    }
     
     cell.danjiaLabel.text = [NSString stringWithFormat:@"￥%@元/公斤", [NSString getStringAfterTwo:dataModel.danjia]];
     NSRange range = [cell.danjiaLabel.text rangeOfString:@"元/公斤"];
@@ -89,6 +91,26 @@
         [cell.addBtn setEnabled:YES];
     }
     
+    if ([type isEqualToString:@"1"]) {
+        
+        cell.xinghaoLab.text = @"6061T";
+        cell.yueBtn.hidden = YES;
+        cell.addBtn.hidden = NO;
+        cell.stepper.hidden = NO;
+        cell.priceLabel.hidden = NO;
+        
+    } else {
+        
+        cell.xinghaoLab.text = @" ";
+        cell.yueBtn.hidden = NO;
+        cell.addBtn.hidden = YES;
+        cell.stepper.hidden = YES;
+        cell.priceLabel.hidden = YES;
+        
+    }
+    
+    
+    
     return cell;
 }
 
@@ -105,6 +127,13 @@
     }
     
 }
+
+- (IBAction)yuebao:(UIButton *)sender {
+    
+    NSLog(@"%@", sender.currentTitle);
+    
+}
+
 
 - (void)showSelectedBlock:(SelectedBlock)selectBlock {
     _selectBlock = selectBlock;

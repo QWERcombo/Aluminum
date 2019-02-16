@@ -299,21 +299,25 @@
     if (sender.tag == 1000) {
         //整件
         WholeBoardVC *inven = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardVC"];
+        inven.showTye = WholeBoardShowType_Zhengban;
         [self.navigationController pushViewController:inven animated:YES];
     }
     else if (sender.tag == 1001) {
         //零切
-        NSLog(@"%@", sender.currentTitle);
         ZeroCutVC *zero = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"ZeroCutVC"];
         [self.navigationController pushViewController:zero animated:YES];
     }
     else if (sender.tag == 1002) {
         //半成品
-        NSLog(@"%@", sender.currentTitle);
+        WholeBoardVC *inven = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardVC"];
+        inven.showTye = WholeBoardShowType_BanChengPin;
+        [self.navigationController pushViewController:inven animated:YES];
     }
     else if (sender.tag == 1003) {
         //淘小料
-        NSLog(@"%@", sender.currentTitle);
+        WholeBoardVC *inven = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardVC"];
+        inven.showTye = WholeBoardShowType_YueBao;
+        [self.navigationController pushViewController:inven animated:YES];
     } else if (sender.tag == 1004) {
         //期货
         NSLog(@"%@", sender.currentTitle);

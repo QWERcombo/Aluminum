@@ -10,7 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, WholeBoardShowType) {
+    WholeBoardShowType_Zhengban,        //整板
+    WholeBoardShowType_BanChengPin,     //半成品
+    WholeBoardShowType_YueBao,          //约包
+};
+
 @interface WholeBoardVC : UIViewController
+
+@property (nonatomic, assign) WholeBoardShowType showTye;
 
 @end
 

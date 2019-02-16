@@ -23,11 +23,15 @@ typedef void(^SelectedBlock)(void);
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;
 @property (weak, nonatomic) IBOutlet HYStepper *stepper;
 
+@property (weak, nonatomic) IBOutlet UIButton *yueBtn;
+@property (weak, nonatomic) IBOutlet UILabel *xinghaoLab;
+
+
 @property (nonatomic, copy) SelectedBlock selectBlock;
 
 
 - (void)showSelectedBlock:(SelectedBlock)selectBlock;
-
++ (instancetype)initCell:(UITableView *)tableView cellName:(NSString *)cellName type:(NSString *)type dataObject:(id)dataObject;
 @end
 
 NS_ASSUME_NONNULL_END

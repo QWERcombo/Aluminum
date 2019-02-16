@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol SelectConditionViewDelegate <NSObject>
 
-- (void)didSelectedConditionIndex:(NSInteger)index;
+- (void)didSelectedConditionIndex:(NSInteger)index conditionTitle:(NSString *)title;
 
 @end
 
@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithFrame:(CGRect)frame titleArray:(NSArray *)titleArray;
 - (void)reset;
+- (void)changeTitle:(NSString *)title index:(NSInteger)index;
 
 @end
 

@@ -19,6 +19,7 @@
         
         self = [[[NSBundle mainBundle] loadNibNamed:@"ConditionDisplayView" owner:self options:nil] firstObject];
         [self.collectionView registerNib:[UINib nibWithNibName:@"ConditionDisplayCell" bundle:nil] forCellWithReuseIdentifier:@"ConditionDisplayCell"];
+        self.collectionView.allowsMultipleSelection = NO;
         self.dataSource = [NSMutableArray arrayWithObjects:@"1",@"2",@"3",@"4", nil];
         self.parameter = parameter;
         
@@ -43,7 +44,7 @@
 
 - (void)removeTap:(UITapGestureRecognizer *)sender {
     if (self.selectedBlock) {
-        self.selectedBlock(@"-1");
+        self.selectedBlock(@"-1", YES);
         [self hideSelf];
     }
 }
@@ -62,12 +63,13 @@
     
 }
 
-+ (void)showConditionDisplayViewWithTitle:(NSString *)title parameter:(NSString *)parameter selectedBlock:(SelectedIndexPath)selectedBlock {
++ (void)showConditionDisplayViewWithTitle:(NSString *)title parameter:(NSString *)parameter selectTitle:(NSString *)title selectedBlock:(SselectedIndexPath)selectedBlock {
     
     UIViewController *rootVC = [UIViewController currentViewController];
     
     ConditionDisplayView *displayV = [[ConditionDisplayView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIGHT, rootVC.view.bounds.size.height-40) parameter:parameter];
     displayV.selectedBlock = selectedBlock;
+    displayV.selectTitle = title;
     displayV.hintLabel.text = [NSString stringWithFormat:@"请选择%@", title];
     displayV.contentView.frame = CGRectMake(0, -320, SCREEN_WIGHT, 320);
     
@@ -105,22 +107,44 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ConditionDisplayCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ConditionDisplayCell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor yellowColor];
+    
     [cell setButtonTitle:[self.dataSource objectAtIndex:indexPath.row]];
+    
+    if (indexPath.row == [self.dataSource indexOfObject:self.selectTitle]) {
+        [cell setSelected:YES];
+    } else {
+        [cell setSelected:NO];
+    }
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    //选中
-    if (self.selectedBlock) {
+
+    for (int i=0; i<self.dataSource.count; i++) {
         
-        self.selectedBlock([self.dataSource objectAtIndex:indexPath.row]);
+        if (i == indexPath.item) {
+            //选中
+            [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:indexPath.section] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+            
+            if (self.selectedBlock) {
+                
+                self.selectedBlock([self.dataSource objectAtIndex:indexPath.row], YES);
+                
+            }
+
+        }else {
+            //未选中
+            [self.collectionView deselectItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:indexPath.section] animated:YES];
+        }
         
-//        [self hideSelf];
+        
     }
     
 }
+
+
+
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake((SCREEN_WIGHT-30-24)/4.0, 36);

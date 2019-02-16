@@ -21,6 +21,7 @@
 
 //@property (strong, nonatomic) UIScrollView *topScrollView;
 @property (nonatomic, strong) SelectConditionView *conditionView;
+
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, assign) NSInteger lastSelected;
 @property (nonatomic, strong) ZeroCutTabVC *zeroTabVC;
@@ -95,19 +96,19 @@
 //    [self.topScrollView setContentSize:CGSizeMake(contentSizeWidth, 40)];
 //
 //}
-- (void)setSelected:(UIButton *)selectedButton {
-    
-    WholeBoardTapView *currentTap = (WholeBoardTapView *)(selectedButton.superview);
-    [currentTap selectedStatus:YES];
-    
-    WholeBoardTapView *lastTap = [self.view viewWithTag:self.lastSelected];
-    [lastTap selectedStatus:NO];
-    
-    self.lastSelected = currentTap.tag;
-    MainItemTypeModel *model = [self.titleArray objectAtIndex:self.lastSelected-200];
-    self.zeroTabVC.erjimulu_id = model;
-    [self.zeroTabVC refreshInfoToReset];
-}
+//- (void)setSelected:(UIButton *)selectedButton {
+//    
+//    WholeBoardTapView *currentTap = (WholeBoardTapView *)(selectedButton.superview);
+//    [currentTap selectedStatus:YES];
+//    
+//    WholeBoardTapView *lastTap = [self.view viewWithTag:self.lastSelected];
+//    [lastTap selectedStatus:NO];
+//    
+//    self.lastSelected = currentTap.tag;
+//    MainItemTypeModel *model = [self.titleArray objectAtIndex:self.lastSelected-200];
+//    self.zeroTabVC.erjimulu_id = model;
+//    [self.zeroTabVC refreshInfoToReset];
+//}
 
 
 #pragma mark - Handle
@@ -156,7 +157,7 @@
 //
 //}
 
-- (void)didSelectedConditionIndex:(NSInteger)index {
+- (void)didSelectedConditionIndex:(NSInteger)index conditionTitle:(NSString *)title {
     NSLog(@"selected-----%ld",(long)index);
     if (index == -1) {
         //收起
@@ -166,16 +167,18 @@
         //选中
         self.mainIndex = index;
         
-        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"" selectedBlock:^(NSString * _Nonnull title) {
+        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"" selectTitle:title selectedBlock:^(NSString * _Nonnull title, BOOL isOver) {
             NSLog(@"----%@", title);
             if ([title isEqualToString:@"-1"]) {
                 //收起子条件时清除主条件选中状态
                 [self.conditionView reset];
                 
             } else {
+                if (isOver) {
+                    [ConditionDisplayView hideConditionDisplayView];
+                }
                 
-                
-                
+                [self.conditionView changeTitle:title index:self.mainIndex];
             }
             
         }];

@@ -13,16 +13,20 @@
 #import "DisplayView.h"
 #import "ShopCarViewController.h"
 #import "ConfirmOrderVC.h"
+#import "ConditionDisplayView.h"
+#import "SelectConditionView.h"
 
-@interface WholeBoardVC ()<UITableViewDataSource, UITableViewDelegate, WholeBoardTapViewDelegate,UIGestureRecognizerDelegate>
+@interface WholeBoardVC ()<UITableViewDataSource, UITableViewDelegate, WholeBoardTapViewDelegate,UIGestureRecognizerDelegate,SelectConditionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *shopCarBtn;
 @property (weak, nonatomic) IBOutlet UIButton *excuteBtn;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) UIScrollView *topScrollView;
+//@property (strong, nonatomic) UIScrollView *topScrollView;
+@property (nonatomic, strong) SelectConditionView *conditionView;
+
 @property (nonatomic, strong) NSMutableArray *dataSource;//數據源
-@property (nonatomic, strong) NSMutableArray *titleArray;//型號數據源
+@property (nonatomic, strong) NSArray *titleArray;//型號數據源
 @property (nonatomic, strong) NSMutableArray *selectArray;//有数量修改的数据源
 @property (nonatomic, assign) NSInteger lastSelected;
 @property (nonatomic, assign) NSInteger cur_page;//当前页数
@@ -31,28 +35,55 @@
 @property (nonatomic, copy) NSDictionary *dataDic;
 @property (nonatomic, assign) NSInteger orderMoney;
 
+@property (nonatomic, assign) NSInteger mainIndex;
+@property (nonatomic, assign) NSInteger subIndex;
+
 
 @end
 
 @implementation WholeBoardVC
 
-- (UIScrollView *)topScrollView {
-    if (!_topScrollView) {
-        _topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT-40, 40)];
-        _topScrollView.showsHorizontalScrollIndicator = NO;
-        [self.view addSubview:_topScrollView];
+//- (UIScrollView *)topScrollView {
+//    if (!_topScrollView) {
+//        _topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT-40, 40)];
+//        _topScrollView.showsHorizontalScrollIndicator = NO;
+//        [self.view addSubview:_topScrollView];
+//    }
+//    return _topScrollView;
+//}
+- (SelectConditionView *)conditionView {
+    if (!_conditionView) {
+        _conditionView = [[SelectConditionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 40) titleArray:self.titleArray];
+        _conditionView.delegate = self;
     }
-    return _topScrollView;
+    return _conditionView;
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"整板";
+    
+    switch (self.showTye) {
+        case WholeBoardShowType_Zhengban:
+            self.title = @"整板";
+            self.titleArray = [NSArray arrayWithObjects:@"品类",@"牌号",@"状态",@"厚度", nil];
+            break;
+        case WholeBoardShowType_BanChengPin:
+            self.title = @"半成品";
+            self.titleArray = [NSArray arrayWithObjects:@"品类",@"牌号",@"状态",@"厚度", nil];
+            break;
+        case WholeBoardShowType_YueBao:
+            self.title = @"约包";
+            self.titleArray = [NSArray arrayWithObjects:@"牌号",@"状态",@"厚度",@"更多", nil];
+            break;
+        default:
+            self.title = @"";
+            break;
+    }
+    
     self.totalLabel.adjustsFontSizeToFitWidth = YES;
     self.dataSource = [NSMutableArray array];
-    self.titleArray = [NSMutableArray array];
     self.selectArray = [NSMutableArray array];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.rowHeight = 100;
@@ -63,7 +94,7 @@
     }];
     
     [self getCateList];
-    
+    [self.view addSubview:self.conditionView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -75,30 +106,31 @@
 
 #pragma mark - TableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataSource.count;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    WholeBoardListCell *cell = [WholeBoardListCell initCell:tableView cellName:@"WholeBoardListCell" dataObject:[self.dataSource objectAtIndex:indexPath.row]];
+    WholeBoardListCell *cell = [WholeBoardListCell initCell:tableView cellName:@"WholeBoardListCell" type:self.showTye == WholeBoardShowType_YueBao ? @"2" : @"1" dataObject:nil];
     //添加手势判断 enable为NO时 不跳转
     UITapGestureRecognizer *cell_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
     cell_tap.delegate = self;
     [cell.contentView addGestureRecognizer:cell_tap];
     
-    WholeBoardModel *model = [self.dataSource objectAtIndex:indexPath.row];
-    MJWeakSelf
-    [cell showSelectedBlock:^{
-        //有值修改的数据
-        if (model.value==0) {
-            [weakSelf.selectArray removeObject:model];
-        } else {
-            if (![weakSelf.selectArray containsObject:model]) {
-                [weakSelf.selectArray addObject:model];
-            }
-        }
-        [weakSelf refreshTotalLabel];
-    }];
+//    WholeBoardModel *model = [self.dataSource objectAtIndex:indexPath.row];
+//    MJWeakSelf
+//    [cell showSelectedBlock:^{
+//        //有值修改的数据
+//        if (model.value==0) {
+//            [weakSelf.selectArray removeObject:model];
+//        } else {
+//            if (![weakSelf.selectArray containsObject:model]) {
+//                [weakSelf.selectArray addObject:model];
+//            }
+//        }
+//        [weakSelf refreshTotalLabel];
+//    }];
+
     return cell;
 }
 
@@ -130,50 +162,77 @@
 
 
 #pragma mark - Layout
-- (void)configurateTopScrollView {
-    
-    CGFloat contentSizeWidth = 0;
-    for (NSInteger i=0; i<_titleArray.count; i++) {
+//- (void)configurateTopScrollView {
+//
+//    CGFloat contentSizeWidth = 0;
+//    for (NSInteger i=0; i<_titleArray.count; i++) {
+//
+//        MainItemTypeModel *dataModel = [_titleArray objectAtIndex:i];
+//
+//        CGSize rect = [dataModel.name boundingRectWithSize:CGSizeMake(0, 38) font:[UIFont systemFontOfSize:14] lineSpacing:0];
+//        WholeBoardTapView *tapView = [[WholeBoardTapView alloc] initWithFrame:CGRectMake(contentSizeWidth, 0, rect.width+40, 40)];
+//        tapView.tag = 100+i;
+//        tapView.delegate = self;
+//        [tapView.showButton setTitle:dataModel.name forState:UIControlStateNormal];
+//
+//        contentSizeWidth += (rect.width+40);
+//
+//        [self.topScrollView addSubview:tapView];
+//
+//        if (i==0) {
+//            //默认选中第一个
+//            [tapView selectedStatus:YES];
+//            self.lastSelected = tapView.tag;
+//            //設置選中型號
+//            self.xinghao = dataModel.name;
+//            //請求列表數據
+//            [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
+//        }
+//    }
+//
+////    [self.topScrollView setContentSize:CGSizeMake(contentSizeWidth, 40)];
+//
+//}
+//- (void)setSelected:(UIButton *)selectedButton {
+//
+//    WholeBoardTapView *currentTap = (WholeBoardTapView *)(selectedButton.superview);
+//    [currentTap selectedStatus:YES];
+//
+//    WholeBoardTapView *lastTap = [self.view viewWithTag:self.lastSelected];
+//    [lastTap selectedStatus:NO];
+//
+//    self.lastSelected = currentTap.tag;
+//    self.xinghao = ((MainItemTypeModel *)[self.titleArray objectAtIndex:self.lastSelected-100]).name;
+//    [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
+//}
+- (void)didSelectedConditionIndex:(NSInteger)index conditionTitle:(NSString *)title {
+    NSLog(@"selected-----%ld",(long)index);
+    if (index == -1) {
+        //收起
+        [ConditionDisplayView hideConditionDisplayView];
         
-        MainItemTypeModel *dataModel = [_titleArray objectAtIndex:i];
+    } else {
+        //选中
+        self.mainIndex = index;
         
-        CGSize rect = [dataModel.name boundingRectWithSize:CGSizeMake(0, 38) font:[UIFont systemFontOfSize:14] lineSpacing:0];
-        WholeBoardTapView *tapView = [[WholeBoardTapView alloc] initWithFrame:CGRectMake(contentSizeWidth, 0, rect.width+40, 40)];
-        tapView.tag = 100+i;
-        tapView.delegate = self;
-        [tapView.showButton setTitle:dataModel.name forState:UIControlStateNormal];
-        
-        contentSizeWidth += (rect.width+40);
-        
-        [self.topScrollView addSubview:tapView];
-        
-        if (i==0) {
-            //默认选中第一个
-            [tapView selectedStatus:YES];
-            self.lastSelected = tapView.tag;
-            //設置選中型號
-            self.xinghao = dataModel.name;
-            //請求列表數據
-            [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
-        }
+        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"" selectTitle:title selectedBlock:^(NSString * _Nonnull title, BOOL isOver) {
+            NSLog(@"----%@", title);
+            if ([title isEqualToString:@"-1"]) {
+                //收起子条件时清除主条件选中状态
+                [self.conditionView reset];
+                
+            } else {
+                if (isOver) {
+                    [ConditionDisplayView hideConditionDisplayView];
+                }
+                
+                [self.conditionView changeTitle:title index:self.mainIndex];
+            }
+            
+        }];
+        [self.view bringSubviewToFront:self.conditionView];
     }
-    
-    [self.topScrollView setContentSize:CGSizeMake(contentSizeWidth, 40)];
-    
 }
-- (void)setSelected:(UIButton *)selectedButton {
-
-    WholeBoardTapView *currentTap = (WholeBoardTapView *)(selectedButton.superview);
-    [currentTap selectedStatus:YES];
-    
-    WholeBoardTapView *lastTap = [self.view viewWithTag:self.lastSelected];
-    [lastTap selectedStatus:NO];
-    
-    self.lastSelected = currentTap.tag;
-    self.xinghao = ((MainItemTypeModel *)[self.titleArray objectAtIndex:self.lastSelected-100]).name;
-    [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
-}
-
 
 #pragma mark - Handle
 
@@ -231,25 +290,25 @@
     }];
 }
 
-- (IBAction)displayBtn:(UIButton *)sender {
-    
-    MJWeakSelf
-    [DisplayView showDisplayViewWithDataSource:self.titleArray selectedIndexPath:^(NSString * _Nonnull title) {
-        
-        [weakSelf scrollTopScrollView:[title integerValue]];
-        
-    }];
-    
-}
+//- (IBAction)displayBtn:(UIButton *)sender {
+//
+//    MJWeakSelf
+//    [DisplayView showDisplayViewWithDataSource:self.titleArray selectedIndexPath:^(NSString * _Nonnull title) {
+//
+//        [weakSelf scrollTopScrollView:[title integerValue]];
+//
+//    }];
+//
+//}
 
-- (void)scrollTopScrollView:(NSInteger)index {
-    
-    WholeBoardTapView *tapV = [self.view viewWithTag:100+index];
-    [self setSelected:tapV.showButton];
-    [self.topScrollView scrollRectToVisible:CGRectMake(tapV.mj_x, tapV.mj_y, tapV.mj_w, tapV.mj_h) animated:YES];
-    self.xinghao = ((MainItemTypeModel *)[self.titleArray objectAtIndex:index]).name;
-    [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
-}
+//- (void)scrollTopScrollView:(NSInteger)index {
+//
+//    WholeBoardTapView *tapV = [self.view viewWithTag:100+index];
+//    [self setSelected:tapV.showButton];
+//    [self.topScrollView scrollRectToVisible:CGRectMake(tapV.mj_x, tapV.mj_y, tapV.mj_w, tapV.mj_h) animated:YES];
+//    self.xinghao = ((MainItemTypeModel *)[self.titleArray objectAtIndex:index]).name;
+//    [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
+//}
 
 #pragma mark --- Data
 - (void)loadHeader {
@@ -309,10 +368,10 @@
         
         for (NSDictionary *dataDic in dataArr) {
             MainItemTypeModel *model = [[MainItemTypeModel alloc] initWithDictionary:dataDic error:nil];
-            [self.titleArray addObject:model];
+//            [self.titleArray addObject:model];
         }
         
-        [self configurateTopScrollView];
+//        [self configurateTopScrollView];
     } failure:^(NSString *error, NSInteger code) {
         
     }];
@@ -389,5 +448,4 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 @end

@@ -39,6 +39,7 @@
             [button setImage:IMG(@"show_down") forState:UIControlStateNormal];
             [button setImage:IMG(@"show_up") forState:UIControlStateSelected];
             button.titleLabel.font = [UIFont systemFontOfSize:14];
+            button.titleLabel.adjustsFontSizeToFitWidth = YES;
             
             [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
             
@@ -65,16 +66,25 @@
     
     if (sender.selected) {
         
-        if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedConditionIndex:)]) {
-            [self.delegate didSelectedConditionIndex:sender.tag-100];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedConditionIndex:conditionTitle:)]) {
+            [self.delegate didSelectedConditionIndex:sender.tag-100 conditionTitle:sender.currentTitle];
         }
         
     } else {
         
-        if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedConditionIndex:)]) {
-            [self.delegate didSelectedConditionIndex:-1];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedConditionIndex:conditionTitle:)]) {
+            [self.delegate didSelectedConditionIndex:-1 conditionTitle:sender.currentTitle];
         }
     }
+    
+}
+
+- (void)changeTitle:(NSString *)title index:(NSInteger)index {
+    
+    UIButton *button = [self viewWithTag:100+index];
+    [button setSelected:NO];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
     
 }
 

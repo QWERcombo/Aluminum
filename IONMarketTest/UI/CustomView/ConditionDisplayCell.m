@@ -18,12 +18,22 @@
 }
 
 
-- (IBAction)buttonClick:(UIButton *)sender {
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
     
-    sender.selected = !sender.selected;
-    
-    
+    if (selected) {
+        self.showButton.backgroundColor = [[UIColor mianColor:2] colorWithAlphaComponent:0.1];
+        self.showButton.layer.borderColor = [UIColor mianColor:2].CGColor;
+        self.showButton.layer.borderWidth = 1;
+        [self.showButton setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
+    } else {
+        self.showButton.layer.borderColor = nil;
+        self.showButton.layer.borderWidth = 0;
+        self.showButton.backgroundColor = [UIColor mianColor:1];
+        [self.showButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
 }
+
 
 - (void)setButtonTitle:(NSString *)title {
     
