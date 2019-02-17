@@ -12,11 +12,11 @@
 //《正式地址》
 //#define  BASE_URL    @"http://118.31.35.233:8080/leqie"
 //《测试地址》
-#define  BASE_URL    @"http://118.31.35.233:8999/leqiev113"
+#define  BASE_URL    @"http://118.31.35.233:8999/leqiev120"
 
 //获取图片地址
 //#define  BASE_URL_IMAGE    @"http://118.31.35.233:8080/leqie/"
-#define  BASE_URL_IMAGE    @"http://118.31.35.233:8999/leqiev113/"
+#define  BASE_URL_IMAGE    @"http://118.31.35.233:8999/leqiev120/"
 
 //登陆
 #define Interface_Login  @"login"
@@ -207,8 +207,10 @@
 #define Interface_ZhuangTai         @"zhuangtaiList"
 //请选择厚度
 #define Interface_HouDu             @"indexHouduList"
-
-
+//按条件查询期货列表
+#define Interface_QiHuo             @"showQiHuo"
+//保存抢约包（期货）数据
+#define Interface_QiHuoOrder             @"user/saveQiHuoOrder"
 
 
 #endif /* InterfaceDefines_h */
