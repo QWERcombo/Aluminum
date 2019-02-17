@@ -18,6 +18,7 @@
 #import "HomeListDetailVC.h"
 #import "CommonItemVC.h"
 #import "DHGuidePageHUD.h"
+#import "TaoLiaoVC.h"
 
 @interface MainViewController ()
 @property (nonatomic, assign) NSInteger pageNumber;
@@ -315,12 +316,14 @@
     }
     else if (sender.tag == 1003) {
         //淘小料
+        TaoLiaoVC *taoliao = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"TaoLiaoVC"];
+        [self.navigationController pushViewController:taoliao animated:YES];
+        
+    } else if (sender.tag == 1004) {
+        //期货
         WholeBoardVC *inven = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardVC"];
         inven.showTye = WholeBoardShowType_YueBao;
         [self.navigationController pushViewController:inven animated:YES];
-    } else if (sender.tag == 1004) {
-        //期货
-        NSLog(@"%@", sender.currentTitle);
     }
     else if (sender.tag == 1005) {
         //切圆棒
