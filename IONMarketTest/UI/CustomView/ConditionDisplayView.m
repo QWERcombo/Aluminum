@@ -8,6 +8,8 @@
 
 #import "ConditionDisplayView.h"
 #import "ConditionDisplayCell.h"
+#import "PinLeiModel.h"
+
 
 @implementation ConditionDisplayView
 
@@ -20,7 +22,7 @@
         self = [[[NSBundle mainBundle] loadNibNamed:@"ConditionDisplayView" owner:self options:nil] firstObject];
         [self.collectionView registerNib:[UINib nibWithNibName:@"ConditionDisplayCell" bundle:nil] forCellWithReuseIdentifier:@"ConditionDisplayCell"];
         self.collectionView.allowsMultipleSelection = NO;
-        self.dataSource = [NSMutableArray arrayWithObjects:@"1",@"2",@"3",@"4", nil];
+        self.dataSource = [NSMutableArray array];
         self.parameter = parameter;
         
         self.frame = frame;
@@ -28,7 +30,8 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeTap:)];
         tap.delegate = self;
         [self addGestureRecognizer:tap];
-        [self.collectionView reloadData];
+        [self getBaseDataWithTitle:parameter];
+        
     }
     return self;
 }
@@ -41,6 +44,73 @@
     }
     
 }
+
+- (void)getBaseDataWithTitle:(NSString *)title {
+    
+    if ([title isEqualToString:@"品类"]) {
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_PinLei andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            NSArray *listArray = resultDic[@"list"];
+            
+            for (NSDictionary *dic in listArray) {
+                
+                PinLeiModel *model = [[PinLeiModel alloc] initWithDictionary:dic error:nil];
+                [self.dataSource addObject:model];
+            }
+            
+            [self.collectionView reloadData];
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+        
+        
+    } else if ([title isEqualToString:@"牌号"]) {
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            
+            
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+        
+        
+    } else if ([title isEqualToString:@"状态"]) {
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_ZhuangTai andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            
+            
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+        
+        
+    } else if ([title isEqualToString:@"厚度"]) {
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_HouDu andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            
+            
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+        
+        
+    } else {
+        
+        
+        
+    }
+    
+}
+
+
 
 - (void)removeTap:(UITapGestureRecognizer *)sender {
     if (self.selectedBlock) {
@@ -63,13 +133,14 @@
     
 }
 
-+ (void)showConditionDisplayViewWithTitle:(NSString *)title parameter:(NSString *)parameter selectTitle:(NSString *)title selectedBlock:(SselectedIndexPath)selectedBlock {
++ (void)showConditionDisplayViewWithTitle:(NSString *)title parameter:(NSString *)parameter selectTitle:(NSString *)selectTitle selectedBlock:(SselectedIndexPath)selectedBlock {
     
     UIViewController *rootVC = [UIViewController currentViewController];
     
-    ConditionDisplayView *displayV = [[ConditionDisplayView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIGHT, rootVC.view.bounds.size.height-40) parameter:parameter];
+    ConditionDisplayView *displayV = [[ConditionDisplayView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIGHT, rootVC.view.bounds.size.height-40) parameter:title];
     displayV.selectedBlock = selectedBlock;
-    displayV.selectTitle = title;
+    displayV.showTitle = title;
+    displayV.selectTitle = selectTitle;
     displayV.hintLabel.text = [NSString stringWithFormat:@"请选择%@", title];
     displayV.contentView.frame = CGRectMake(0, -320, SCREEN_WIGHT, 320);
     
@@ -108,13 +179,7 @@
     
     ConditionDisplayCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ConditionDisplayCell" forIndexPath:indexPath];
     
-    [cell setButtonTitle:[self.dataSource objectAtIndex:indexPath.row]];
-    
-    if (indexPath.row == [self.dataSource indexOfObject:self.selectTitle]) {
-        [cell setSelected:YES];
-    } else {
-        [cell setSelected:NO];
-    }
+    [cell setButtonTitle:self.showTitle selectTitle:self.selectTitle dataObject:[self.dataSource objectAtIndex:indexPath.row]];
     
     return cell;
 }
@@ -159,7 +224,12 @@
 
 
 - (IBAction)all:(UIButton *)sender {
-    
+    //重置
+    self.selectTitle = self.showTitle;
+    [self.collectionView reloadData];
+    if (self.selectedBlock) {
+        self.selectedBlock(@"0", YES);
+    }
     
 }
 

@@ -54,7 +54,7 @@
         //选中
         self.mainIndex = index;
         
-        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"" selectTitle:title selectedBlock:^(NSString * _Nonnull title, BOOL isOver) {
+        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"" selectTitle:title selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
             NSLog(@"----%@", title);
             if ([title isEqualToString:@"-1"]) {
                 //收起子条件时清除主条件选中状态

@@ -15,8 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *showButton;
 
 
-- (void)setButtonTitle:(NSString *)title;
-
+- (void)setButtonTitle:(NSString *)title selectTitle:(NSString *)selectTitle dataObject:(id)dataObject;
 @end
 
 NS_ASSUME_NONNULL_END

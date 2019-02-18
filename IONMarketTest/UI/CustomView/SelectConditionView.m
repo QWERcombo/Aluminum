@@ -82,9 +82,17 @@
 - (void)changeTitle:(NSString *)title index:(NSInteger)index {
     
     UIButton *button = [self viewWithTag:100+index];
-    [button setSelected:NO];
+    
     [button setTitle:title forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
+    [button setSelected:NO];
+    
+    if (![title isEqualToString:[self.titleArray objectAtIndex:index]]) {
+        
+        [button setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
+    } else {
+        
+        [button setTitleColor:[UIColor colorWithHexString:@"#595E64"] forState:UIControlStateNormal];
+    }
     
 }
 

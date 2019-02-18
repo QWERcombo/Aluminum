@@ -15,6 +15,8 @@
 #import "ConfirmOrderVC.h"
 #import "ConditionDisplayView.h"
 #import "SelectConditionView.h"
+#import "PinLeiModel.h"
+
 
 @interface WholeBoardVC ()<UITableViewDataSource, UITableViewDelegate, WholeBoardTapViewDelegate,UIGestureRecognizerDelegate,SelectConditionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *shopCarBtn;
@@ -38,6 +40,8 @@
 @property (nonatomic, assign) NSInteger mainIndex;
 @property (nonatomic, assign) NSInteger subIndex;
 
+@property (nonatomic, strong) PinLeiModel *pinleiModel;//品类
+@property (nonatomic, strong) MainItemTypeModel *cateModel;//牌号
 
 @end
 
@@ -106,7 +110,7 @@
 
 #pragma mark - TableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -206,7 +210,7 @@
 //    [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
 //}
 - (void)didSelectedConditionIndex:(NSInteger)index conditionTitle:(NSString *)title {
-    NSLog(@"selected-----%ld",(long)index);
+//    NSLog(@"selected-----%ld",(long)index);
     if (index == -1) {
         //收起
         [ConditionDisplayView hideConditionDisplayView];
@@ -215,21 +219,38 @@
         //选中
         self.mainIndex = index;
         
-        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"" selectTitle:title selectedBlock:^(NSString * _Nonnull title, BOOL isOver) {
-            NSLog(@"----%@", title);
-            if ([title isEqualToString:@"-1"]) {
-                //收起子条件时清除主条件选中状态
-                [self.conditionView reset];
+        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"" selectTitle:title selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
+
+            if ([dataObject isKindOfClass:[NSString class]]) {
+                
+                NSString *number = (NSString *)dataObject;
+                if ([number integerValue] < 0) {
+                    //收起子条件时清除主条件选中状态
+                    [self.conditionView reset];
+                } else {
+                    //重置子条件
+                    [self.conditionView changeTitle:[self.titleArray objectAtIndex:index] index:self.mainIndex];
+                    [ConditionDisplayView hideConditionDisplayView];
+                }
+                
                 
             } else {
+                
+                NSString *showName = @"";
                 if (isOver) {
                     [ConditionDisplayView hideConditionDisplayView];
                 }
                 
-                [self.conditionView changeTitle:title index:self.mainIndex];
+                if ([dataObject isKindOfClass:[PinLeiModel class]]) {
+                    PinLeiModel *model = (PinLeiModel *)dataObject;
+                    showName = model.name;
+                }
+                
+                
+                [self.conditionView changeTitle:showName index:self.mainIndex];
             }
-            
         }];
+        
         [self.view bringSubviewToFront:self.conditionView];
     }
 }

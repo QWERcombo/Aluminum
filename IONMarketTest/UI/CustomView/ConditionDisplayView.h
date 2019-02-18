@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-typedef void(^SselectedIndexPath)(NSString *title, BOOL isOver);
+typedef void(^SselectedIndexPath)(id dataObject, BOOL isOver);
 @interface ConditionDisplayView : UIView <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -24,15 +24,16 @@ typedef void(^SselectedIndexPath)(NSString *title, BOOL isOver);
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *allButton;
 
-@property (nonatomic, copy) NSMutableArray *groupDataSource;
-@property (nonatomic, copy) NSMutableArray *dataSource;
-@property (nonatomic, copy) NSString *selectTitle;
+@property (nonatomic, strong) NSMutableArray *groupDataSource;
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, copy) NSString *selectTitle;//选中的子条件
+@property (nonatomic, copy) NSString *showTitle;//选中的主条件
 @property (nonatomic, copy) SselectedIndexPath selectedBlock;
 @property (nonatomic, weak) id<ConditionDisplayViewDelegate> delegate;
 @property (nonatomic, copy) NSString *parameter;
 
 
-+ (void)showConditionDisplayViewWithTitle:(NSString *)title parameter:(NSString *)parameter selectTitle:(NSString *)title selectedBlock:(SselectedIndexPath)selectedBlock;
++ (void)showConditionDisplayViewWithTitle:(NSString *)title parameter:(NSString *)parameter selectTitle:(NSString *)selectTitle selectedBlock:(SselectedIndexPath)selectedBlock;
 + (void)hideConditionDisplayView;
 
 @end

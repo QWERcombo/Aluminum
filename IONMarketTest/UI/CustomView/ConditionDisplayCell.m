@@ -7,6 +7,9 @@
 //
 
 #import "ConditionDisplayCell.h"
+#import "PinLeiModel.h"
+#import "MainItemTypeModel.h"
+
 
 @implementation ConditionDisplayCell
 
@@ -35,10 +38,25 @@
 }
 
 
-- (void)setButtonTitle:(NSString *)title {
+- (void)setButtonTitle:(NSString *)title selectTitle:(NSString *)selectTitle dataObject:(id)dataObject {
     
-    [self.showButton setTitle:title forState:UIControlStateNormal];
+    NSString *showName = @"";
+    if ([title isEqualToString:@"品类"]) {
+        
+        PinLeiModel *model = (PinLeiModel *)dataObject;
+        showName = model.name;
+    }
     
+    
+    
+    
+    [self.showButton setTitle:showName forState:UIControlStateNormal];
+    
+    if ([showName isEqualToString:selectTitle]) {
+        [self setSelected:YES];
+    } else {
+        [self setSelected:NO];
+    }
     
 }
 

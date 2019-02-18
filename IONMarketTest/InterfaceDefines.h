@@ -210,7 +210,7 @@
 //按条件查询期货列表
 #define Interface_QiHuo             @"showQiHuo"
 //保存抢约包（期货）数据
-#define Interface_QiHuoOrder             @"user/saveQiHuoOrder"
+#define Interface_QiHuoOrder        @"user/saveQiHuoOrder"
 
 
 #endif /* InterfaceDefines_h */

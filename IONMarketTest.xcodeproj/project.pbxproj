@@ -90,6 +90,7 @@
 		568EFDF6206F1851007E437F /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 568EFDF3206F1850007E437F /* Address.plist */; };
 		568EFDF9206F1F06007E437F /* UnitsPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 568EFDF8206F1F06007E437F /* UnitsPickerView.m */; };
 		568EFDFB206F1FEF007E437F /* UnitsPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568EFDFA206F1FEF007E437F /* UnitsPickerView.xib */; };
+		56900167221ADAD00080F24C /* PinLeiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56900166221ADAD00080F24C /* PinLeiModel.m */; };
 		5691A3D520C833C5008065F4 /* TicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5691A3D420C833C5008065F4 /* TicketViewController.m */; };
 		56940C0120515DB300DFA6D6 /* TBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940BFC20515DB200DFA6D6 /* TBTabBar.m */; };
 		56940C0220515DB300DFA6D6 /* TBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56940BFF20515DB300DFA6D6 /* TBTabBarController.m */; };
@@ -483,6 +484,8 @@
 		568EFDF7206F1F06007E437F /* UnitsPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitsPickerView.h; sourceTree = "<group>"; };
 		568EFDF8206F1F06007E437F /* UnitsPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitsPickerView.m; sourceTree = "<group>"; };
 		568EFDFA206F1FEF007E437F /* UnitsPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnitsPickerView.xib; sourceTree = "<group>"; };
+		56900165221ADAD00080F24C /* PinLeiModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PinLeiModel.h; sourceTree = "<group>"; };
+		56900166221ADAD00080F24C /* PinLeiModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PinLeiModel.m; sourceTree = "<group>"; };
 		5691A3D320C833C5008065F4 /* TicketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketViewController.h; sourceTree = "<group>"; };
 		5691A3D420C833C5008065F4 /* TicketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketViewController.m; sourceTree = "<group>"; };
 		56940BFB20515DB200DFA6D6 /* TBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBNavigationController.h; sourceTree = "<group>"; };
@@ -1369,6 +1372,7 @@
 		568CB0862065F82D00B48318 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				56900164221ADA910080F24C /* 1.2 */,
 				A24B0B6820722BD3009ECD41 /* Order */,
 				560264B7206A7C0A00F9C405 /* ShopCar */,
 				560264B3206A69B500F9C405 /* Mine */,
@@ -1403,6 +1407,15 @@
 				568EFDFA206F1FEF007E437F /* UnitsPickerView.xib */,
 			);
 			path = cityPicker;
+			sourceTree = "<group>";
+		};
+		56900164221ADA910080F24C /* 1.2 */ = {
+			isa = PBXGroup;
+			children = (
+				56900165221ADAD00080F24C /* PinLeiModel.h */,
+				56900166221ADAD00080F24C /* PinLeiModel.m */,
+			);
+			path = 1.2;
 			sourceTree = "<group>";
 		};
 		56940BFA20515D8F00DFA6D6 /* TabBarController */ = {
@@ -2840,6 +2853,7 @@
 				5671DBC8206000D9005F1760 /* MainItemView__Tube.m in Sources */,
 				56B2150E21F342A3004E37A5 /* NewDetailInfoCell.m in Sources */,
 				56B78CD22185E5850056D812 /* AALine.m in Sources */,
+				56900167221ADAD00080F24C /* PinLeiModel.m in Sources */,
 				561A7309218EF8150064294B /* CommonItemTabVC.m in Sources */,
 				5602129020594CF6009EF75D /* ShareViewController.m in Sources */,
 				5695BEC12042A5300036D54B /* BaseModel.m in Sources */,
