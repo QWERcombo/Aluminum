@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^SelectedBlock)(void);
+typedef void(^SelectedBlock)(NSString *value);
 
 @interface WholeBoardListCell : BaseCell
 

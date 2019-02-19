@@ -270,6 +270,7 @@
 		A2301B3C20638AB3006B9F20 /* SmartServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2301B3A20638AB3006B9F20 /* SmartServiceCell.xib */; };
 		A2301B3F20638FA5006B9F20 /* TeleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2301B3E20638FA5006B9F20 /* TeleDetailViewController.m */; };
 		A2309AC420FA294D00D33914 /* WHWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2309AC320FA294D00D33914 /* WHWebViewController.m */; };
+		A2328226221BE9B700360418 /* QiHuoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2328225221BE9B700360418 /* QiHuoModel.m */; };
 		A24B0B6B20722C01009ECD41 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A24B0B6A20722C01009ECD41 /* OrderModel.m */; };
 		A2555F3B20C0DC65000C7E03 /* APRSASigner.m in Sources */ = {isa = PBXBuildFile; fileRef = A2555F3820C0DC64000C7E03 /* APRSASigner.m */; };
 		A2555F3C20C0DC65000C7E03 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A2555F3A20C0DC64000C7E03 /* openssl_wrapper.m */; };
@@ -824,6 +825,8 @@
 		A2301B3E20638FA5006B9F20 /* TeleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeleDetailViewController.m; sourceTree = "<group>"; };
 		A2309AC220FA294C00D33914 /* WHWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWebViewController.h; sourceTree = "<group>"; };
 		A2309AC320FA294D00D33914 /* WHWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWebViewController.m; sourceTree = "<group>"; };
+		A2328224221BE9B700360418 /* QiHuoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiHuoModel.h; sourceTree = "<group>"; };
+		A2328225221BE9B700360418 /* QiHuoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiHuoModel.m; sourceTree = "<group>"; };
 		A24B0B6920722C01009ECD41 /* OrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
 		A24B0B6A20722C01009ECD41 /* OrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
 		A2555F3720C0DC64000C7E03 /* APRSASigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRSASigner.h; sourceTree = "<group>"; };
@@ -1414,6 +1417,8 @@
 			children = (
 				56900165221ADAD00080F24C /* PinLeiModel.h */,
 				56900166221ADAD00080F24C /* PinLeiModel.m */,
+				A2328224221BE9B700360418 /* QiHuoModel.h */,
+				A2328225221BE9B700360418 /* QiHuoModel.m */,
 			);
 			path = 1.2;
 			sourceTree = "<group>";
@@ -2738,6 +2743,7 @@
 				563C8D2E20C97F9D003C4822 /* WholeChooseView.m in Sources */,
 				56B78CDE2185E5850056D812 /* AAAnimation.m in Sources */,
 				561CC0D5206FD24900DB0998 /* MainModel.m in Sources */,
+				A2328226221BE9B700360418 /* QiHuoModel.m in Sources */,
 				56940C2220515DF900DFA6D6 /* UIView+UIViewAddition.m in Sources */,
 				56940C4C2051607500DFA6D6 /* OrderViewController.m in Sources */,
 				56940C462051603600DFA6D6 /* MineViewController.m in Sources */,

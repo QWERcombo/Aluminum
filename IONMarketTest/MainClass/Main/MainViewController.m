@@ -129,7 +129,6 @@
     [mainView addSubview:blank];    
     
     NSArray *nameArr = @[@"整件",@"零切",@"半成品",@"淘小料",@"期货",@"圆棒",@"型材",@"询价"];
-//    NSArray *nameArr = @[@"整板",@"零切",@"圆棒",@"型材",@"管材",@"特殊定制",@"自动下单",@"询价"];
     
     for (NSInteger i=0; i<2; i++) {
         for (NSInteger j=0; j<4; j++) {
@@ -296,7 +295,7 @@
 }
 
 - (void)MainViewEnterClick:(UIButton *)sender {
-//    NSArray *nameArr = @[@"整件",@"零切",@"半成品",@"淘小料",@"期货",@"圆棒",@"型材",@"询价"];
+
     if (sender.tag == 1000) {
         //整件
         WholeBoardVC *inven = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardVC"];

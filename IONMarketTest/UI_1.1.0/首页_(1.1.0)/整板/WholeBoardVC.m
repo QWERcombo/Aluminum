@@ -16,15 +16,14 @@
 #import "ConditionDisplayView.h"
 #import "SelectConditionView.h"
 #import "PinLeiModel.h"
+#import "QiHuoModel.h"
 
-
-@interface WholeBoardVC ()<UITableViewDataSource, UITableViewDelegate, WholeBoardTapViewDelegate,UIGestureRecognizerDelegate,SelectConditionViewDelegate>
+@interface WholeBoardVC ()<UITableViewDataSource, UITableViewDelegate,UIGestureRecognizerDelegate,SelectConditionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *shopCarBtn;
 @property (weak, nonatomic) IBOutlet UIButton *excuteBtn;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-//@property (strong, nonatomic) UIScrollView *topScrollView;
 @property (nonatomic, strong) SelectConditionView *conditionView;
 
 @property (nonatomic, strong) NSMutableArray *dataSource;//數據源
@@ -32,7 +31,6 @@
 @property (nonatomic, strong) NSMutableArray *selectArray;//有数量修改的数据源
 @property (nonatomic, assign) NSInteger lastSelected;
 @property (nonatomic, assign) NSInteger cur_page;//当前页数
-@property (nonatomic, copy) NSString *xinghao;//选中的型号
 
 @property (nonatomic, copy) NSDictionary *dataDic;
 @property (nonatomic, assign) NSInteger orderMoney;
@@ -42,19 +40,13 @@
 
 @property (nonatomic, strong) PinLeiModel *pinleiModel;//品类
 @property (nonatomic, strong) MainItemTypeModel *cateModel;//牌号
-
+@property (nonatomic, copy) NSString *houDu;//厚度
+@property (nonatomic, copy) NSString *zhuangTai;//状态
 @end
 
 @implementation WholeBoardVC
 
-//- (UIScrollView *)topScrollView {
-//    if (!_topScrollView) {
-//        _topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT-40, 40)];
-//        _topScrollView.showsHorizontalScrollIndicator = NO;
-//        [self.view addSubview:_topScrollView];
-//    }
-//    return _topScrollView;
-//}
+
 - (SelectConditionView *)conditionView {
     if (!_conditionView) {
         _conditionView = [[SelectConditionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 40) titleArray:self.titleArray];
@@ -70,7 +62,7 @@
     
     switch (self.showTye) {
         case WholeBoardShowType_Zhengban:
-            self.title = @"整板";
+            self.title = @"整件";
             self.titleArray = [NSArray arrayWithObjects:@"品类",@"牌号",@"状态",@"厚度", nil];
             break;
         case WholeBoardShowType_BanChengPin:
@@ -78,7 +70,7 @@
             self.titleArray = [NSArray arrayWithObjects:@"品类",@"牌号",@"状态",@"厚度", nil];
             break;
         case WholeBoardShowType_YueBao:
-            self.title = @"约包";
+            self.title = @"期货";
             self.titleArray = [NSArray arrayWithObjects:@"牌号",@"状态",@"厚度",@"更多", nil];
             break;
         default:
@@ -97,7 +89,7 @@
     self.tableView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无数据" andDetailStr:@"" withReloadAction:^{
     }];
     
-    [self getCateList];
+    [self getZhengBanListCur_page:1];
     [self.view addSubview:self.conditionView];
 }
 
@@ -115,25 +107,40 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    WholeBoardListCell *cell = [WholeBoardListCell initCell:tableView cellName:@"WholeBoardListCell" type:self.showTye == WholeBoardShowType_YueBao ? @"2" : @"1" dataObject:nil];
-    //添加手势判断 enable为NO时 不跳转
-    UITapGestureRecognizer *cell_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
-    cell_tap.delegate = self;
-    [cell.contentView addGestureRecognizer:cell_tap];
+    WholeBoardListCell *cell = [WholeBoardListCell initCell:tableView cellName:@"WholeBoardListCell" type:self.showTye == WholeBoardShowType_YueBao ? @"2" : @"1" dataObject:[self.dataSource objectAtIndex:indexPath.row]];
     
-//    WholeBoardModel *model = [self.dataSource objectAtIndex:indexPath.row];
-//    MJWeakSelf
-//    [cell showSelectedBlock:^{
-//        //有值修改的数据
-//        if (model.value==0) {
-//            [weakSelf.selectArray removeObject:model];
-//        } else {
-//            if (![weakSelf.selectArray containsObject:model]) {
-//                [weakSelf.selectArray addObject:model];
-//            }
-//        }
-//        [weakSelf refreshTotalLabel];
-//    }];
+    if (self.showTye != WholeBoardShowType_YueBao) {
+        
+        //添加手势判断 enable为NO时 不跳转
+        UITapGestureRecognizer *cell_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+        cell_tap.delegate = self;
+        [cell.contentView addGestureRecognizer:cell_tap];
+        
+    } else {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+    MJWeakSelf
+    [cell showSelectedBlock:^(NSString *value){
+        if ([value isEqualToString:@"0"]) {
+            //有值修改的数据
+            WholeBoardModel *model = [self.dataSource objectAtIndex:indexPath.row];
+            if (model.value==0) {
+                [weakSelf.selectArray removeObject:model];
+            } else {
+                if (![weakSelf.selectArray containsObject:model]) {
+                    [weakSelf.selectArray addObject:model];
+                }
+            }
+            [weakSelf refreshTotalLabel];
+        } else {
+            //约包
+            QiHuoModel *model = [self.dataSource objectAtIndex:indexPath.row];
+            
+            [self qiangYueWithModel:model];
+        }
+        
+    }];
 
     return cell;
 }
@@ -149,66 +156,31 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    WholeBoardDetailVC *detail = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardDetailVC"];
-    WholeBoardModel *model = [self.dataSource objectAtIndex:indexPath.row];
-    detail.wholeModel = model;
-    MJWeakSelf
-    [detail setSelectValue:^(NSInteger selectNumber) {
-        model.value = selectNumber;
-        [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    }];
-    
-    TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:detail];
-    [self presentViewController:nav animated:YES completion:^{
-    }];
+    if (self.showTye == WholeBoardShowType_YueBao) {
+        
+        
+        
+    } else {
+        
+        WholeBoardDetailVC *detail = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardDetailVC"];
+        
+        WholeBoardModel *model = [self.dataSource objectAtIndex:indexPath.row];
+        detail.wholeModel = model;
+        MJWeakSelf
+        [detail setSelectValue:^(NSInteger selectNumber) {
+            model.value = selectNumber;
+            [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }];
+        
+        TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:detail];
+        [self presentViewController:nav animated:YES completion:^{
+        }];
+    }
     
 }
 
 
 #pragma mark - Layout
-//- (void)configurateTopScrollView {
-//
-//    CGFloat contentSizeWidth = 0;
-//    for (NSInteger i=0; i<_titleArray.count; i++) {
-//
-//        MainItemTypeModel *dataModel = [_titleArray objectAtIndex:i];
-//
-//        CGSize rect = [dataModel.name boundingRectWithSize:CGSizeMake(0, 38) font:[UIFont systemFontOfSize:14] lineSpacing:0];
-//        WholeBoardTapView *tapView = [[WholeBoardTapView alloc] initWithFrame:CGRectMake(contentSizeWidth, 0, rect.width+40, 40)];
-//        tapView.tag = 100+i;
-//        tapView.delegate = self;
-//        [tapView.showButton setTitle:dataModel.name forState:UIControlStateNormal];
-//
-//        contentSizeWidth += (rect.width+40);
-//
-//        [self.topScrollView addSubview:tapView];
-//
-//        if (i==0) {
-//            //默认选中第一个
-//            [tapView selectedStatus:YES];
-//            self.lastSelected = tapView.tag;
-//            //設置選中型號
-//            self.xinghao = dataModel.name;
-//            //請求列表數據
-//            [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
-//        }
-//    }
-//
-////    [self.topScrollView setContentSize:CGSizeMake(contentSizeWidth, 40)];
-//
-//}
-//- (void)setSelected:(UIButton *)selectedButton {
-//
-//    WholeBoardTapView *currentTap = (WholeBoardTapView *)(selectedButton.superview);
-//    [currentTap selectedStatus:YES];
-//
-//    WholeBoardTapView *lastTap = [self.view viewWithTag:self.lastSelected];
-//    [lastTap selectedStatus:NO];
-//
-//    self.lastSelected = currentTap.tag;
-//    self.xinghao = ((MainItemTypeModel *)[self.titleArray objectAtIndex:self.lastSelected-100]).name;
-//    [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
-//}
 - (void)didSelectedConditionIndex:(NSInteger)index conditionTitle:(NSString *)title {
 //    NSLog(@"selected-----%ld",(long)index);
     if (index == -1) {
@@ -221,34 +193,81 @@
         
         [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"" selectTitle:title selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
 
-            if ([dataObject isKindOfClass:[NSString class]]) {
+            NSString *showName = @"";
+
+            if (isOver) {
+                [ConditionDisplayView hideConditionDisplayView];
+            }
+            
+            if ([dataObject isKindOfClass:[PinLeiModel class]]) {
+                
+                PinLeiModel *model = (PinLeiModel *)dataObject;
+                self.pinleiModel = model;
+                showName = model.name;
+            } else if ([dataObject isKindOfClass:[MainItemTypeModel class]]) {
+                
+                MainItemTypeModel *model = (MainItemTypeModel *)dataObject;
+                self.cateModel = model;
+                showName = model.name;
+            } else if ([dataObject isKindOfClass:[NSString class]]) {
                 
                 NSString *number = (NSString *)dataObject;
-                if ([number integerValue] < 0) {
+                
+                if ([number integerValue] == -1) {
                     //收起子条件时清除主条件选中状态
                     [self.conditionView reset];
-                } else {
+                } else if ([number integerValue] == -2) {
                     //重置子条件
                     [self.conditionView changeTitle:[self.titleArray objectAtIndex:index] index:self.mainIndex];
                     [ConditionDisplayView hideConditionDisplayView];
+                    
+                    switch (self.mainIndex) {
+                        case 0:
+                            self.pinleiModel = nil;
+                            break;
+                        case 1:
+                            self.cateModel = nil;
+                            break;
+                        case 2:
+                            self.zhuangTai = @"";
+                            break;
+                        case 3:
+                            self.houDu = @"";
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    
+                    showName = number;
+                    
+                    if ([[self.titleArray objectAtIndex:self.mainIndex] isEqualToString:@"状态"]) {
+                        
+                        self.zhuangTai = number;
+                    } else if ([[self.titleArray objectAtIndex:self.mainIndex] isEqualToString:@"厚度"]) {
+                        
+                        self.houDu = number;
+                    } else {
+                        
+                    }
+                    
                 }
-                
                 
             } else {
-                
-                NSString *showName = @"";
-                if (isOver) {
-                    [ConditionDisplayView hideConditionDisplayView];
-                }
-                
-                if ([dataObject isKindOfClass:[PinLeiModel class]]) {
-                    PinLeiModel *model = (PinLeiModel *)dataObject;
-                    showName = model.name;
-                }
-                
-                
-                [self.conditionView changeTitle:showName index:self.mainIndex];
             }
+            
+            if (showName.length) {
+                [self.conditionView changeTitle:showName index:self.mainIndex];
+                
+                [self getZhengBanListCur_page:1];
+            } else {
+                
+                if ([dataObject integerValue] == -2) {
+                    //重置子条件
+                    [self getZhengBanListCur_page:1];
+                }
+            }
+            
         }];
         
         [self.view bringSubviewToFront:self.conditionView];
@@ -311,42 +330,108 @@
     }];
 }
 
-//- (IBAction)displayBtn:(UIButton *)sender {
-//
-//    MJWeakSelf
-//    [DisplayView showDisplayViewWithDataSource:self.titleArray selectedIndexPath:^(NSString * _Nonnull title) {
-//
-//        [weakSelf scrollTopScrollView:[title integerValue]];
-//
-//    }];
-//
-//}
-
-//- (void)scrollTopScrollView:(NSInteger)index {
-//
-//    WholeBoardTapView *tapV = [self.view viewWithTag:100+index];
-//    [self setSelected:tapV.showButton];
-//    [self.topScrollView scrollRectToVisible:CGRectMake(tapV.mj_x, tapV.mj_y, tapV.mj_w, tapV.mj_h) animated:YES];
-//    self.xinghao = ((MainItemTypeModel *)[self.titleArray objectAtIndex:index]).name;
-//    [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
-//}
+//抢约
+- (void)qiangYueWithModel:(QiHuoModel *)model {
+    
+    NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+    [parDic setObject:model.id forKey:@"qihuoId"];
+    [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_QiHuoOrder andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+        
+        NSString *message = @"";
+        if ([model.chang integerValue]>0) {
+            message = [NSString stringWithFormat:@"抢约 %@ \"%@*%@*%@\",工作人员将尽快与您联系", model.hejinpaihao, model.hou, model.kuang, model.chang];
+        } else {
+            message = [NSString stringWithFormat:@"抢约 %@ \"%@*%@\",工作人员将尽快与您联系", model.hejinpaihao, model.hou, model.kuang];
+        }
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alert addAction:ok];
+        [alert addAction:cancel];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            
+        }];
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
+}
 
 #pragma mark --- Data
 - (void)loadHeader {
-    [self getZhengBanListCur_page:1 withXinghao:self.xinghao];
+    [self getZhengBanListCur_page:1];
 }
 - (void)loadFooterMore {
-    [self getZhengBanListCur_page:self.cur_page+1 withXinghao:self.xinghao];
+    [self getZhengBanListCur_page:self.cur_page+1];
 }
-- (void)getZhengBanListCur_page:(NSInteger)cur_page withXinghao:(NSString *)xinghao {
+- (void)getZhengBanListCur_page:(NSInteger)cur_page {
     
     NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
     [parDic setObject:[NSString stringWithFormat:@"%ld", (long)cur_page] forKey:@"pageNum"];
     [parDic setObject:@"10" forKey:@"pageSize"];
-    [parDic setObject:xinghao forKey:@"xinghao"];
-    [parDic setObject:@"整板" forKey:@"zhonglei"];
+    NSString *requestUrl = @"";
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_ZhengbanList andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    if (self.showTye == WholeBoardShowType_Zhengban) {
+        
+        if (self.pinleiModel) {
+            [parDic setObject:self.pinleiModel.name forKey:@"pinlei"];
+        }
+        if (self.cateModel) {
+            [parDic setObject:self.cateModel.name forKey:@"paihao"];
+        }
+        if (self.zhuangTai.length) {
+            [parDic setObject:self.zhuangTai forKey:@"zhuangtai"];
+        }
+        if (self.houDu.length) {
+            [parDic setObject:self.houDu forKey:@"houdu"];
+        }
+        requestUrl = Interface_ZhengbanList;
+        
+    } else if (self.showTye == WholeBoardShowType_BanChengPin) {
+        
+        if (self.pinleiModel) {
+            [parDic setObject:self.pinleiModel.name forKey:@"pinlei"];
+        }
+        if (self.cateModel) {
+            [parDic setObject:self.cateModel.name forKey:@"paihao"];
+        }
+        if (self.zhuangTai.length) {
+            [parDic setObject:self.zhuangTai forKey:@"zhuangtai"];
+        }
+        if (self.houDu.length) {
+            [parDic setObject:self.houDu forKey:@"houdu"];
+        }
+        requestUrl = Interface_ZhengbanList;
+        
+    } else if (self.showTye == WholeBoardShowType_YueBao) {
+        
+        if (self.cateModel) {
+            [parDic setObject:self.cateModel.name forKey:@"hejinpaihao"];
+        }
+        if (self.zhuangTai.length) {
+            [parDic setObject:self.zhuangTai forKey:@"chanpinzhuangtai"];
+        }
+        if (self.houDu.length) {
+            [parDic setObject:self.houDu forKey:@"hou"];
+        }
+        requestUrl = Interface_QiHuo;
+        
+    } else {
+    }
+    
+    
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:requestUrl andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
         NSArray *dataArr = [resultDic objectForKey:@"result"];
         NSString *count = [resultDic objectForKey:@"count"];
@@ -361,9 +446,14 @@
         
         for (NSDictionary *dataDic in dataArr) {
             
-            WholeBoardModel *model = [[WholeBoardModel alloc] initWithDictionary:dataDic error:nil];
+            if (self.showTye == WholeBoardShowType_YueBao) {
+                QiHuoModel *model = [[QiHuoModel alloc] initWithDictionary:dataDic error:nil];
+                [self.dataSource addObject:model];
+            } else {
+                WholeBoardModel *model = [[WholeBoardModel alloc] initWithDictionary:dataDic error:nil];
+                [self.dataSource addObject:model];
+            }
             
-            [self.dataSource addObject:model];
         }
         
         if (self.dataSource.count < [count integerValue]) {
@@ -378,24 +468,6 @@
         [self.tableView.mj_header endRefreshing];
     }];
     
-    
-}
-
-- (void)getCateList {
-    
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
-        
-        NSArray *dataArr = [resultDic objectForKey:@"list"];
-        
-        for (NSDictionary *dataDic in dataArr) {
-            MainItemTypeModel *model = [[MainItemTypeModel alloc] initWithDictionary:dataDic error:nil];
-//            [self.titleArray addObject:model];
-        }
-        
-//        [self configurateTopScrollView];
-    } failure:^(NSString *error, NSInteger code) {
-        
-    }];
     
 }
 

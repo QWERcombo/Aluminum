@@ -47,6 +47,8 @@
 
 - (void)getBaseDataWithTitle:(NSString *)title {
     
+    [self.dataSource removeAllObjects];
+    
     if ([title isEqualToString:@"品类"]) {
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_PinLei andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
@@ -70,8 +72,15 @@
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
+            NSArray *listArray = resultDic[@"list"];
             
+            for (NSDictionary *dic in listArray) {
+                
+                MainItemTypeModel *model = [[MainItemTypeModel alloc] initWithDictionary:dic error:nil];
+                [self.dataSource addObject:model];
+            }
             
+            [self.collectionView reloadData];
             
         } failure:^(NSString *error, NSInteger code) {
             
@@ -82,8 +91,14 @@
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_ZhuangTai andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
+            NSArray *listArray = resultDic[@"list"];
             
+            for (NSString *string in listArray) {
+                
+                [self.dataSource addObject:string];
+            }
             
+            [self.collectionView reloadData];
             
         } failure:^(NSString *error, NSInteger code) {
             
@@ -94,17 +109,22 @@
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_HouDu andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
+            NSArray *listArray = resultDic[@"list"];
             
+            for (NSString *string in listArray) {
+                
+                [self.dataSource addObject:string];
+            }
             
+            [self.collectionView reloadData];
             
         } failure:^(NSString *error, NSInteger code) {
             
         }];
         
         
-    } else {
-        
-        
+    }
+    else {
         
     }
     
@@ -228,7 +248,7 @@
     self.selectTitle = self.showTitle;
     [self.collectionView reloadData];
     if (self.selectedBlock) {
-        self.selectedBlock(@"0", YES);
+        self.selectedBlock(@"-2", YES);
     }
     
 }

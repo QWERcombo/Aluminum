@@ -45,6 +45,22 @@
         
         PinLeiModel *model = (PinLeiModel *)dataObject;
         showName = model.name;
+    } else if ([title isEqualToString:@"牌号"]) {
+        
+        MainItemTypeModel *model = (MainItemTypeModel *)dataObject;
+        showName = model.name;
+    } else if ([title isEqualToString:@"状态"]) {
+        
+        NSString *string = (NSString *)dataObject;
+        showName = string;
+    } else if ([title isEqualToString:@"厚度"]) {
+        
+        NSString *string = (NSString *)dataObject;
+        showName = string;
+    } else if ([title isEqualToString:@"牌号"]) {
+        
+    } else {
+        
     }
     
     
