@@ -50,7 +50,28 @@
     
     [self placeOrder:UseType_OrderMoney];
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case 0:
+            return 78;
+            break;
+        case 2:
+            return 0;
+            break;
+        case 5:
+            return 52;
+            break;
+        case 6:
+            return 52;
+            break;
+        case 7:
+            return 138;
+            break;
+        default:
+            return 44;
+            break;
+    }
+}
 
 #pragma mark - Handle
 //速切

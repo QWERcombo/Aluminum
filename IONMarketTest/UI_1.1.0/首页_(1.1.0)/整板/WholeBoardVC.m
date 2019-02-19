@@ -23,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *excuteBtn;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
+
 
 @property (nonatomic, strong) SelectConditionView *conditionView;
 
@@ -72,6 +75,8 @@
         case WholeBoardShowType_YueBao:
             self.title = @"期货";
             self.titleArray = [NSArray arrayWithObjects:@"牌号",@"状态",@"厚度",@"更多", nil];
+            self.bottomView.hidden = YES;
+            self.bottomViewHeight.constant = 0.0;
             break;
         default:
             self.title = @"";

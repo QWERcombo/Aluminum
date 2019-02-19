@@ -214,6 +214,8 @@
                         <viewLayoutGuide key="safeArea" id="Ue7-ir-AOA"/>
                     </view>
                     <connections>
+                        <outlet property="bottomView" destination="Hkh-6V-m3q" id="Q3s-1f-Frs"/>
+                        <outlet property="bottomViewHeight" destination="4KI-Mu-6wR" id="PnE-5f-mvc"/>
                         <outlet property="excuteBtn" destination="Xrl-HT-ioZ" id="GgW-L4-8dl"/>
                         <outlet property="shopCarBtn" destination="l8S-sg-5BE" id="YU8-uP-0YA"/>
                         <outlet property="tableView" destination="WbW-CN-8AZ" id="keD-gk-Q7r"/>

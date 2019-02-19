@@ -116,6 +116,10 @@
         } else {
             cell.changjiaLabel.text = @"";
         }
+        cell.danjiaLabel.font = [UIFont systemFontOfSize:14];
+        cell.danjiaLabel.textColor = [UIColor colorWithHexString:@"#595E64"];
+        cell.danjiaLabel.text = [NSString stringWithFormat:@"净重:%@kg",dataModel.zhongliang];
+        
         
         NSMutableArray *array = [NSMutableArray array];
         
