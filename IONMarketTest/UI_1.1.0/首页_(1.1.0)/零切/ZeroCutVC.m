@@ -15,7 +15,7 @@
 #import "SelectConditionView.h"
 #import "ConditionDisplayView.h"
 
-@interface ZeroCutVC ()<WholeBoardTapViewDelegate,ZeroCutTabVCDelegate,SelectConditionViewDelegate>
+@interface ZeroCutVC ()<ZeroCutTabVCDelegate,SelectConditionViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UIButton *shopcarBtn;
 
@@ -30,6 +30,7 @@
 
 @property (nonatomic, assign) NSInteger mainIndex;
 @property (nonatomic, assign) NSInteger subIndex;
+@property (nonatomic, copy) NSString *zhuangTai;//状态
 
 @end
 
@@ -158,7 +159,7 @@
 //}
 
 - (void)didSelectedConditionIndex:(NSInteger)index conditionTitle:(NSString *)title {
-    NSLog(@"selected-----%ld",(long)index);
+//    NSLog(@"selected-----%ld",(long)index);
     if (index == -1) {
         //收起
         [ConditionDisplayView hideConditionDisplayView];

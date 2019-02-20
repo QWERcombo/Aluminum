@@ -13,30 +13,38 @@
 #import "ShopCarViewController.h"
 #import "ConfirmOrderVC.h"
 
-@interface CommonItemVC ()<CommonItemTabVCDelegate,WholeBoardTapViewDelegate>
+#import "SelectConditionView.h"
+#import "ConditionDisplayView.h"
+
+@interface CommonItemVC ()<CommonItemTabVCDelegate,SelectConditionViewDelegate>
 
 @property (nonatomic, strong) CommonItemTabVC *commonTabVC;
-@property (strong, nonatomic) UIScrollView *topScrollView;
+//@property (strong, nonatomic) UIScrollView *topScrollView;
+@property (nonatomic, strong) SelectConditionView *conditionView;
+
 @property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, strong) NSMutableArray *titleArray;//型号数据
+@property (nonatomic, strong) NSArray *titleArray;//型号数据
 @property (nonatomic, copy) NSString *xinghao;//选中的型号
 @property (nonatomic, assign) NSInteger lastSelected;
 
 @property (weak, nonatomic) IBOutlet UIButton *shopcatBtn;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 
+@property (nonatomic, assign) NSInteger mainIndex;
+@property (nonatomic, assign) NSInteger subIndex;
+@property (nonatomic, copy) NSString *zhuangTai;//状态
+
 
 @end
 
 @implementation CommonItemVC
 
-- (UIScrollView *)topScrollView {
-    if (!_topScrollView) {
-        _topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT-40, 40)];
-        _topScrollView.showsHorizontalScrollIndicator = NO;
-        [self.view addSubview:_topScrollView];
+- (SelectConditionView *)conditionView {
+    if (!_conditionView) {
+        _conditionView = [[SelectConditionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 40) titleArray:self.titleArray];
+        _conditionView.delegate = self;
     }
-    return _topScrollView;
+    return _conditionView;
 }
 
 - (void)viewDidLoad {
@@ -56,84 +64,47 @@
             break;
     }
     self.dataSource = [NSMutableArray array];
-    self.titleArray = [NSMutableArray array];
+    self.titleArray = [NSArray arrayWithObjects:@"牌号",@"状态", nil];
     self.totalLabel.adjustsFontSizeToFitWidth = YES;
     
-    
-    [self getCateList];
+    [self.view addSubview:self.conditionView];
     [self refreshBottomViewInfo];
 }
 
 #pragma mark - Layout
-- (void)configurateTopScrollView {
-    
-    CGFloat contentSizeWidth = 0;
-    for (NSInteger i=0; i<_titleArray.count; i++) {
+- (void)didSelectedConditionIndex:(NSInteger)index conditionTitle:(NSString *)title {
+    //    NSLog(@"selected-----%ld",(long)index);
+    if (index == -1) {
+        //收起
+        [ConditionDisplayView hideConditionDisplayView];
         
-        MainItemTypeModel *title = [_titleArray objectAtIndex:i];
+    } else {
+        //选中
+        self.mainIndex = index;
         
-        CGSize rect = [title.name boundingRectWithSize:CGSizeMake(0, 38) font:[UIFont systemFontOfSize:14] lineSpacing:0];
-        WholeBoardTapView *tapView = [[WholeBoardTapView alloc] initWithFrame:CGRectMake(contentSizeWidth, 0, rect.width+40, 40)];
-        tapView.tag = 200+i;
-        tapView.delegate = self;
-        [tapView.showButton setTitle:title.name forState:UIControlStateNormal];
-        
-        contentSizeWidth += (rect.width+40);
-        
-        [self.topScrollView addSubview:tapView];
-        
-        if (i==0) {
-            //默认选中第一个
-            [tapView selectedStatus:YES];
-            self.lastSelected = tapView.tag;
-            self.xinghao = title.name;
-            self.commonTabVC.erjimulu_id = title;
+        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"" selectTitle:title selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
+            NSLog(@"----%@", title);
+            if ([title isEqualToString:@"-1"]) {
+                //收起子条件时清除主条件选中状态
+                [self.conditionView reset];
+                
+            } else {
+                if (isOver) {
+                    [ConditionDisplayView hideConditionDisplayView];
+                }
+                
+                [self.conditionView changeTitle:title index:self.mainIndex];
+            }
             
-        }
+        }];
+        
+        [self.view bringSubviewToFront:self.conditionView];
     }
-    
-    [self.topScrollView setContentSize:CGSizeMake(contentSizeWidth, 40)];
-    
-}
-- (void)setSelected:(UIButton *)selectedButton {
-    
-    WholeBoardTapView *currentTap = (WholeBoardTapView *)(selectedButton.superview);
-    [currentTap selectedStatus:YES];
-    
-    WholeBoardTapView *lastTap = [self.view viewWithTag:self.lastSelected];
-    [lastTap selectedStatus:NO];
-    
-    self.lastSelected = currentTap.tag;
-    MainItemTypeModel *model = [self.titleArray objectAtIndex:self.lastSelected-200];
-    self.commonTabVC.erjimulu_id = model;
-    [self.commonTabVC refreshInfoToReset];
 }
 
-- (void)scrollTopScrollView:(NSInteger)index {
-    
-    WholeBoardTapView *tapV = [self.view viewWithTag:200+index];
-    [self setSelected:tapV.showButton];
-    [self.topScrollView scrollRectToVisible:CGRectMake(tapV.mj_x, tapV.mj_y, tapV.mj_w, tapV.mj_h) animated:YES];
-}
 
 #pragma mark --- Data
-- (void)getCateList {
-    
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
-        
-        NSArray *dataArr = [resultDic objectForKey:@"list"];
-        
-        for (NSDictionary *dataDic in dataArr) {
-            MainItemTypeModel *model = [[MainItemTypeModel alloc] initWithDictionary:dataDic error:nil];
-            [self.titleArray addObject:model];
-        }
-        
-        [self configurateTopScrollView];
-    } failure:^(NSString *error, NSInteger code) {
-        
-    }];
-    
-}
+
 
 - (void)refreshBottomViewInfo {
     
@@ -145,17 +116,6 @@
 
 
 #pragma mark - Handle
-
-- (IBAction)display:(UIButton *)sender {
-    
-    MJWeakSelf
-    [DisplayView showDisplayViewWithDataSource:_titleArray selectedIndexPath:^(NSString * _Nonnull title) {
-        
-        [weakSelf scrollTopScrollView:[title integerValue]];
-        
-    }];
-}
-
 - (IBAction)buyNow:(UIButton *)sender {
     
     MJWeakSelf

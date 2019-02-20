@@ -146,7 +146,7 @@
             [cell.contentView addSubview:label];
         }
         
-        cell.xinghaoLab.text = [NSString stringWithFormat:@"  %@  ",dataModel.hejinpaihao];
+        cell.xinghaoLab.text = [NSString stringWithFormat:@"  %@-%@  ",dataModel.hejinpaihao, dataModel.chanpinzhuangtai];
         cell.yueBtn.hidden = NO;
         cell.addBtn.hidden = YES;
         cell.stepper.hidden = YES;

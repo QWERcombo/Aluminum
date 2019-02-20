@@ -45,6 +45,7 @@
 @property (nonatomic, strong) MainItemTypeModel *cateModel;//牌号
 @property (nonatomic, copy) NSString *houDu;//厚度
 @property (nonatomic, copy) NSString *zhuangTai;//状态
+
 @end
 
 @implementation WholeBoardVC

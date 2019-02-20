@@ -85,13 +85,13 @@
             return 50;
             break;
         case 2:
-            return 50;
+            return 0;
             break;
         case 3:
-            return 50;
+            return 0;
             break;
         case 4:
-            return 6;
+            return 0;
             break;
         case 5:
             //长度
