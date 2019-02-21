@@ -20,14 +20,12 @@ typedef void(^SselectedIndexPath)(id dataObject, BOOL isOver);
 @interface ConditionDisplayView : UIView <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UILabel *hintLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *allButton;
 
-@property (nonatomic, strong) NSMutableArray *groupDataSource;
 @property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, copy) NSString *selectTitle;//选中的子条件
-@property (nonatomic, copy) NSString *showTitle;//选中的主条件
+@property (nonatomic, copy) NSString *selectTitle;  //选中的子条件
+@property (nonatomic, copy) NSString *showTitle;    //选中的主条件
 @property (nonatomic, copy) SselectedIndexPath selectedBlock;
 @property (nonatomic, weak) id<ConditionDisplayViewDelegate> delegate;
 @property (nonatomic, copy) NSString *parameter;

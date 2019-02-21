@@ -329,6 +329,8 @@
 		A2AC1C7520565E4600A3B2F9 /* MainItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1C7320565E4600A3B2F9 /* MainItemCell.m */; };
 		A2AC1C7620565E4600A3B2F9 /* MainItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2AC1C7420565E4600A3B2F9 /* MainItemCell.xib */; };
 		A2B8DADC20B27AE300633050 /* PriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B8DADB20B27AE300633050 /* PriceModel.m */; };
+		A2BD6AAD221E5469004F8621 /* ConditionDisplaySectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BD6AAB221E5469004F8621 /* ConditionDisplaySectionView.m */; };
+		A2BD6AAE221E5469004F8621 /* ConditionDisplaySectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2BD6AAC221E5469004F8621 /* ConditionDisplaySectionView.xib */; };
 		A2D709F32184590A00F2157C /* UITextField+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D709F22184590A00F2157C /* UITextField+Extension.m */; };
 		A2DC6FCA20BBB0E600A41184 /* BezierCurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DC6FC920BBB0E500A41184 /* BezierCurveView.m */; };
 		A2F8AEB220C11EBC00D9926F /* OrderPayResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F8AEB120C11EBC00D9926F /* OrderPayResultVC.m */; };
@@ -1005,6 +1007,9 @@
 		A2AC1C7420565E4600A3B2F9 /* MainItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItemCell.xib; sourceTree = "<group>"; };
 		A2B8DADA20B27AE300633050 /* PriceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PriceModel.h; sourceTree = "<group>"; };
 		A2B8DADB20B27AE300633050 /* PriceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PriceModel.m; sourceTree = "<group>"; };
+		A2BD6AAA221E5469004F8621 /* ConditionDisplaySectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConditionDisplaySectionView.h; sourceTree = "<group>"; };
+		A2BD6AAB221E5469004F8621 /* ConditionDisplaySectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConditionDisplaySectionView.m; sourceTree = "<group>"; };
+		A2BD6AAC221E5469004F8621 /* ConditionDisplaySectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConditionDisplaySectionView.xib; sourceTree = "<group>"; };
 		A2D709F12184590A00F2157C /* UITextField+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Extension.h"; sourceTree = "<group>"; };
 		A2D709F22184590A00F2157C /* UITextField+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Extension.m"; sourceTree = "<group>"; };
 		A2DC6FC820BBB0E500A41184 /* BezierCurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierCurveView.h; sourceTree = "<group>"; };
@@ -2285,6 +2290,9 @@
 				562D7CAC20CACAF40093367D /* CustomButton.m */,
 				A270CD722214187200369801 /* SelectConditionView.h */,
 				A270CD732214187200369801 /* SelectConditionView.m */,
+				A2BD6AAA221E5469004F8621 /* ConditionDisplaySectionView.h */,
+				A2BD6AAB221E5469004F8621 /* ConditionDisplaySectionView.m */,
+				A2BD6AAC221E5469004F8621 /* ConditionDisplaySectionView.xib */,
 				A28C15AA2215060900272BB2 /* ConditionDisplayView.h */,
 				A28C15AB2215060900272BB2 /* ConditionDisplayView.m */,
 				A28C15AD2215069400272BB2 /* ConditionDisplayView.xib */,
@@ -2575,6 +2583,7 @@
 				56B2150F21F342A3004E37A5 /* NewDetailInfoCell.xib in Resources */,
 				A29305A4217F054800D72F4A /* DisplayView.xib in Resources */,
 				A22981CC20626193007B6112 /* TicketInfoCell.xib in Resources */,
+				A2BD6AAE221E5469004F8621 /* ConditionDisplaySectionView.xib in Resources */,
 				56B5215C20AB37B700F636BD /* ChoosePayWayView.xib in Resources */,
 				5632BFBA205AB6180009CD34 /* QuotationDetailCell.xib in Resources */,
 				A283489720610F6900C228AD /* WallentListCell.xib in Resources */,
@@ -2891,6 +2900,7 @@
 				56B78CD32185E5850056D812 /* AATooltip.m in Sources */,
 				5654FC1220AC6B9900B7DA4E /* ConfirmOrderVC.m in Sources */,
 				A2301B2E20637ED1006B9F20 /* SmartViewController.m in Sources */,
+				A2BD6AAD221E5469004F8621 /* ConditionDisplaySectionView.m in Sources */,
 				A2309AC420FA294D00D33914 /* WHWebViewController.m in Sources */,
 				5695BE7320429F1B0036D54B /* AppDelegate.m in Sources */,
 				A296427120F5AB5E00B6E8B6 /* UIView+XLExtension.m in Sources */,

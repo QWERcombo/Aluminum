@@ -8,8 +8,8 @@
 
 #import "ConditionDisplayView.h"
 #import "ConditionDisplayCell.h"
+#import "ConditionDisplaySectionView.h"
 #import "PinLeiModel.h"
-
 
 @implementation ConditionDisplayView
 
@@ -21,6 +21,7 @@
         
         self = [[[NSBundle mainBundle] loadNibNamed:@"ConditionDisplayView" owner:self options:nil] firstObject];
         [self.collectionView registerNib:[UINib nibWithNibName:@"ConditionDisplayCell" bundle:nil] forCellWithReuseIdentifier:@"ConditionDisplayCell"];
+        [self.collectionView registerNib:[UINib nibWithNibName:@"ConditionDisplaySectionView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ConditionSectionView"];
         self.collectionView.allowsMultipleSelection = NO;
         self.dataSource = [NSMutableArray array];
         self.parameter = parameter;
@@ -54,12 +55,14 @@
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_PinLei andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSArray *listArray = resultDic[@"list"];
+            NSMutableArray *array = [NSMutableArray array];
             
             for (NSDictionary *dic in listArray) {
                 
                 PinLeiModel *model = [[PinLeiModel alloc] initWithDictionary:dic error:nil];
-                [self.dataSource addObject:model];
+                [array addObject:model];
             }
+            [self.dataSource addObject:array];
             
             [self.collectionView reloadData];
             
@@ -73,12 +76,14 @@
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSArray *listArray = resultDic[@"list"];
+            NSMutableArray *array = [NSMutableArray array];
             
             for (NSDictionary *dic in listArray) {
                 
                 MainItemTypeModel *model = [[MainItemTypeModel alloc] initWithDictionary:dic error:nil];
-                [self.dataSource addObject:model];
+                [array addObject:model];
             }
+            [self.dataSource addObject:array];
             
             [self.collectionView reloadData];
             
@@ -92,11 +97,13 @@
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_ZhuangTai andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSArray *listArray = resultDic[@"list"];
+            NSMutableArray *array = [NSMutableArray array];
             
             for (NSString *string in listArray) {
                 
                 [self.dataSource addObject:string];
             }
+            [array addObject:array];
             
             [self.collectionView reloadData];
             
@@ -110,11 +117,13 @@
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_HouDu andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSArray *listArray = resultDic[@"list"];
+            NSMutableArray *array = [NSMutableArray array];
             
             for (NSString *string in listArray) {
                 
-                [self.dataSource addObject:string];
+                [array addObject:string];
             }
+            [self.dataSource addObject:array];
             
             [self.collectionView reloadData];
             
@@ -165,7 +174,6 @@
     displayV.selectedBlock = selectedBlock;
     displayV.showTitle = title;
     displayV.selectTitle = selectTitle;
-    displayV.hintLabel.text = [NSString stringWithFormat:@"请选择%@", title];
     displayV.contentView.frame = CGRectMake(0, -320, SCREEN_WIGHT, 320);
     
     [UIView animateWithDuration:0.3 animations:^{
@@ -192,25 +200,26 @@
 
 #pragma mark - CollectionView
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
+    return self.dataSource.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.dataSource.count;
+    NSArray *listArray = [self.dataSource objectAtIndex:section];
+    return listArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ConditionDisplayCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ConditionDisplayCell" forIndexPath:indexPath];
     
-    [cell setButtonTitle:self.showTitle selectTitle:self.selectTitle dataObject:[self.dataSource objectAtIndex:indexPath.row]];
+    [cell setButtonTitle:self.showTitle selectTitle:self.selectTitle dataObject:self.dataSource[indexPath.section][indexPath.row]];
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    for (int i=0; i<self.dataSource.count; i++) {
+    NSArray *listArray = [self.dataSource objectAtIndex:indexPath.section];
+    for (int i=0; i<listArray.count; i++) {
         
         if (i == indexPath.item) {
             //选中
@@ -218,7 +227,7 @@
             
             if (self.selectedBlock) {
                 
-                self.selectedBlock([self.dataSource objectAtIndex:indexPath.row], YES);
+                self.selectedBlock(listArray[indexPath.row], YES);
                 
             }
 
@@ -227,14 +236,11 @@
             [self.collectionView deselectItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:indexPath.section] animated:YES];
         }
         
-        
     }
     
 }
 
-
-
-
+#pragma mark - Layout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake((SCREEN_WIGHT-30-24)/4.0, 36);
 }
@@ -244,7 +250,26 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 8;
 }
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString * reuseIdentifier = @"ConditionSectionView";
+    
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        
+        ConditionDisplaySectionView *view =  [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader   withReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+        view.titleLabel.text = [NSString stringWithFormat:@"请选择%@", self.showTitle];
+        
+        return view;
+        
+    } else {
+        
+        return nil;
+    }
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
 
+    return CGSizeMake(SCREEN_WIGHT, 50);
+}
 
 
 - (IBAction)all:(UIButton *)sender {

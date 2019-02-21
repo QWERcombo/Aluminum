@@ -111,6 +111,9 @@
             cell.guigeLabel.text = [NSString stringWithFormat:@"%@*%@", dataModel.hou, dataModel.kuang];
         }
         cell.kucunLabel.text = [NSString stringWithFormat:@"(%@张)", [NSString getStringAfterTwo:dataModel.zhangshu]];
+        cell.changjiaLabel.font = [UIFont systemFontOfSize:13];
+        cell.changjiaLabel.backgroundColor = [[UIColor mianColor:2] colorWithAlphaComponent:0.1];
+        cell.changjiaLabel.textColor = [UIColor mianColor:2];
         if (dataModel.changjia.length) {
             cell.changjiaLabel.text = [NSString stringWithFormat:@"  %@  ", dataModel.changjia];
         } else {

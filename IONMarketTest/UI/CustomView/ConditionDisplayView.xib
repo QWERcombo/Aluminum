@@ -19,12 +19,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipq-S7-2Lo">
                     <rect key="frame" x="0.0" y="20" width="375" height="320"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icf-EQ-Y9y">
-                            <rect key="frame" x="15" y="14" width="41.5" height="19.5"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFh-X9-ibv">
                             <rect key="frame" x="0.0" y="280" width="375" height="40"/>
                             <color key="backgroundColor" red="0.18431372549019609" green="0.45882352941176469" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -38,7 +32,7 @@
                             </connections>
                         </button>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tdK-cX-ZWm">
-                            <rect key="frame" x="15" y="48.5" width="345" height="216.5"/>
+                            <rect key="frame" x="15" y="0.0" width="345" height="265"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0eI-K6-TFb">
                                 <size key="itemSize" width="50" height="50"/>
@@ -55,15 +49,13 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="TFh-X9-ibv" firstAttribute="top" secondItem="tdK-cX-ZWm" secondAttribute="bottom" constant="15" id="0A9-t8-Fgd"/>
-                        <constraint firstItem="Icf-EQ-Y9y" firstAttribute="top" secondItem="ipq-S7-2Lo" secondAttribute="top" constant="14" id="12g-vO-Lb2"/>
                         <constraint firstItem="TFh-X9-ibv" firstAttribute="leading" secondItem="ipq-S7-2Lo" secondAttribute="leading" id="3a6-OW-xUd"/>
                         <constraint firstAttribute="height" constant="320" id="BdE-LB-VNd"/>
+                        <constraint firstItem="tdK-cX-ZWm" firstAttribute="top" secondItem="ipq-S7-2Lo" secondAttribute="top" id="I1p-6k-k21"/>
                         <constraint firstItem="tdK-cX-ZWm" firstAttribute="leading" secondItem="ipq-S7-2Lo" secondAttribute="leading" constant="15" id="IZ1-J3-9wI"/>
                         <constraint firstAttribute="trailing" secondItem="tdK-cX-ZWm" secondAttribute="trailing" constant="15" id="Y24-8a-lJv"/>
                         <constraint firstAttribute="trailing" secondItem="TFh-X9-ibv" secondAttribute="trailing" id="cXa-0k-ZqV"/>
-                        <constraint firstItem="tdK-cX-ZWm" firstAttribute="top" secondItem="Icf-EQ-Y9y" secondAttribute="bottom" constant="15" id="ktc-RW-cOj"/>
                         <constraint firstAttribute="bottom" secondItem="TFh-X9-ibv" secondAttribute="bottom" id="l01-l6-Wyo"/>
-                        <constraint firstItem="Icf-EQ-Y9y" firstAttribute="leading" secondItem="ipq-S7-2Lo" secondAttribute="leading" constant="15" id="rBB-A0-CRA"/>
                     </constraints>
                 </view>
             </subviews>
@@ -78,7 +70,6 @@
                 <outlet property="allButton" destination="TFh-X9-ibv" id="npI-FX-GxM"/>
                 <outlet property="collectionView" destination="tdK-cX-ZWm" id="fG6-Tk-2La"/>
                 <outlet property="contentView" destination="ipq-S7-2Lo" id="LOt-hp-2ca"/>
-                <outlet property="hintLabel" destination="Icf-EQ-Y9y" id="Vgo-Iy-5w2"/>
             </connections>
             <point key="canvasLocation" x="130.40000000000001" y="153.37331334332833"/>
         </view>
