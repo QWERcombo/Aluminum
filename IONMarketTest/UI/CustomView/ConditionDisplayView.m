@@ -101,9 +101,9 @@
             
             for (NSString *string in listArray) {
                 
-                [self.dataSource addObject:string];
+                [array addObject:string];
             }
-            [array addObject:array];
+            [self.dataSource addObject:array];
             
             [self.collectionView reloadData];
             

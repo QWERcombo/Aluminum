@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *jianshu;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UITextField *guigeTF;
+@property (weak, nonatomic) IBOutlet UILabel *moneyLab;//价格
 
 
 @property (nonatomic, copy) NSString *zhengZhi;// 1整只  2零切
@@ -84,15 +85,6 @@
         case 1:
             return 50;
             break;
-        case 2:
-            return 0;
-            break;
-        case 3:
-            return 0;
-            break;
-        case 4:
-            return 0;
-            break;
         case 5:
             //长度
             return 50;
@@ -101,6 +93,9 @@
             return 60;
             break;
         case 7:
+            return 60;
+            break;
+        case 8:
             //价格信息
             return _isShowInfoView?138:0;
             break;
@@ -130,6 +125,10 @@
         }
         
         [self.view endEditing:YES];
+        if (!self.erjimulu_id.id.length) {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择牌号" time:0 aboutType:WHShowViewMode_Text state:NO];
+            return;
+        }
         [SelectThickView showSelectThickViewWithSelectShowType:type getInfoType:GetInfoType_GuiGe erjimulu_id:self.erjimulu_id.id parDic:@{} selectBlock:^(NSString * _Nonnull selectIndexString) {
             switch (self.showType) {
                 case ShowType_YuanBang:

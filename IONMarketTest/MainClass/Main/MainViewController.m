@@ -19,6 +19,7 @@
 #import "CommonItemVC.h"
 #import "DHGuidePageHUD.h"
 #import "TaoLiaoVC.h"
+#import "TaoLiaoListVC.h"
 
 @interface MainViewController ()
 @property (nonatomic, assign) NSInteger pageNumber;
@@ -315,7 +316,7 @@
     }
     else if (sender.tag == 1003) {
         //淘小料
-        TaoLiaoVC *taoliao = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"TaoLiaoVC"];
+        TaoLiaoListVC *taoliao = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"TaoLiaoListVC"];
         [self.navigationController pushViewController:taoliao animated:YES];
         
     } else if (sender.tag == 1004) {

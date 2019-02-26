@@ -126,7 +126,9 @@
         
         NSMutableArray *array = [NSMutableArray array];
         
-        [array addObject:@"美标"];
+        if (dataModel.shifoupaoguang.length) {
+            [array addObject:dataModel.shifoupaoguang];
+        }
         if (dataModel.biaozhun.length) {
             [array addObject:dataModel.biaozhun];
         }

@@ -31,6 +31,7 @@
 @property (nonatomic, assign) NSInteger mainIndex;
 @property (nonatomic, assign) NSInteger subIndex;
 @property (nonatomic, copy) NSString *zhuangTai;//状态
+@property (nonatomic, copy) NSString *houDu;//厚度
 
 @end
 
@@ -169,19 +170,73 @@
         self.mainIndex = index;
         
         [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"" selectTitle:title selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
-            NSLog(@"----%@", title);
-            if ([title isEqualToString:@"-1"]) {
-                //收起子条件时清除主条件选中状态
-                [self.conditionView reset];
-                
-            } else {
-                if (isOver) {
-                    [ConditionDisplayView hideConditionDisplayView];
-                }
-                
-                [self.conditionView changeTitle:title index:self.mainIndex];
+            
+            NSString *showName = @"";
+            
+            if (isOver) {
+                [ConditionDisplayView hideConditionDisplayView];
             }
             
+            if ([dataObject isKindOfClass:[MainItemTypeModel class]]) {
+                
+                MainItemTypeModel *model = (MainItemTypeModel *)dataObject;
+                self.zeroTabVC.erjimulu_id = model;
+                showName = model.name;
+            } else if ([dataObject isKindOfClass:[NSString class]]) {
+                
+                NSString *number = (NSString *)dataObject;
+                
+                if ([number integerValue] == -1) {
+                    //收起子条件时清除主条件选中状态
+                    [self.conditionView reset];
+                } else if ([number integerValue] == -2) {
+                    //重置子条件
+                    [self.conditionView changeTitle:[self.titleArray objectAtIndex:index] index:self.mainIndex];
+                    [ConditionDisplayView hideConditionDisplayView];
+                    
+                    switch (self.mainIndex) {
+                        case 0:
+                            self.zeroTabVC.erjimulu_id = nil;
+                            break;
+                        case 1:
+                            self.zhuangTai = @"";
+                            break;
+                        case 2:
+                            self.houDu = @"";
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    
+                    showName = number;
+                    
+                    if ([[self.titleArray objectAtIndex:self.mainIndex] isEqualToString:@"状态"]) {
+                        
+                        self.zhuangTai = number;
+                    } else if ([[self.titleArray objectAtIndex:self.mainIndex] isEqualToString:@"厚度"]) {
+                        
+                        self.houDu = number;
+                    } else {
+                        
+                    }
+                    
+                }
+                
+            } else {
+            }
+            
+            if (showName.length) {
+                [self.conditionView changeTitle:showName index:self.mainIndex];
+                
+//                [self getZhengBanListCur_page:1];
+            } else {
+                
+                if ([dataObject integerValue] == -2) {
+                    //重置子条件
+//                    [self getZhengBanListCur_page:1];
+                }
+            }
         }];
         [self.view bringSubviewToFront:self.conditionView];
     }

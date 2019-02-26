@@ -52,13 +52,13 @@
     // Do any additional setup after loading the view.
     switch (self.showType) {
         case ShowType_YuanBang:
-            self.title = @"圆棒";
+            self.title = @"切圆棒";
             break;
         case ShowType_XingCai:
-            self.title = @"型材";
+            self.title = @"切型材";
             break;
         case ShowType_GuanCai:
-            self.title = @"管材";
+            self.title = @"切管材";
             break;
         default:
             break;
@@ -83,17 +83,66 @@
         self.mainIndex = index;
         
         [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"" selectTitle:title selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
-            NSLog(@"----%@", title);
-            if ([title isEqualToString:@"-1"]) {
-                //收起子条件时清除主条件选中状态
-                [self.conditionView reset];
+            NSString *showName = @"";
+            
+            if (isOver) {
+                [ConditionDisplayView hideConditionDisplayView];
+            }
+            
+            if ([dataObject isKindOfClass:[MainItemTypeModel class]]) {
                 
-            } else {
-                if (isOver) {
+                MainItemTypeModel *model = (MainItemTypeModel *)dataObject;
+                self.commonTabVC.erjimulu_id = model;
+                showName = model.name;
+            } else if ([dataObject isKindOfClass:[NSString class]]) {
+                
+                NSString *number = (NSString *)dataObject;
+                
+                if ([number integerValue] == -1) {
+                    //收起子条件时清除主条件选中状态
+                    [self.conditionView reset];
+                } else if ([number integerValue] == -2) {
+                    //重置子条件
+                    [self.conditionView changeTitle:[self.titleArray objectAtIndex:index] index:self.mainIndex];
                     [ConditionDisplayView hideConditionDisplayView];
+                    
+                    switch (self.mainIndex) {
+                        case 0:
+                            self.commonTabVC.erjimulu_id = nil;
+                            break;
+                        case 1:
+                            self.zhuangTai = @"";
+                            break;
+                        
+                        default:
+                            break;
+                    }
+                } else {
+                    
+                    showName = number;
+                    
+                    if ([[self.titleArray objectAtIndex:self.mainIndex] isEqualToString:@"状态"]) {
+                        
+                        self.zhuangTai = number;
+                    } else {
+                        
+                    }
+                    
                 }
                 
-                [self.conditionView changeTitle:title index:self.mainIndex];
+            } else {
+            }
+            
+            if (showName.length) {
+                [self.conditionView changeTitle:showName index:self.mainIndex];
+                
+//                [self getZhengBanListCur_page:1];
+            } else {
+                
+                if ([dataObject integerValue] == -2) {
+                    //重置子条件
+//                    [self getZhengBanListCur_page:1];
+                }
             }
             
         }];

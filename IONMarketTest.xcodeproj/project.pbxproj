@@ -271,6 +271,12 @@
 		A2301B3F20638FA5006B9F20 /* TeleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2301B3E20638FA5006B9F20 /* TeleDetailViewController.m */; };
 		A2309AC420FA294D00D33914 /* WHWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2309AC320FA294D00D33914 /* WHWebViewController.m */; };
 		A2328226221BE9B700360418 /* QiHuoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2328225221BE9B700360418 /* QiHuoModel.m */; };
+		A23C46F0221F98F500A66DC9 /* DYScrollRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A23C46EE221F98F500A66DC9 /* DYScrollRulerView.m */; };
+		A23C46F1221F98F500A66DC9 /* ruler.gif in Resources */ = {isa = PBXBuildFile; fileRef = A23C46EF221F98F500A66DC9 /* ruler.gif */; };
+		A23C46F4221F992700A66DC9 /* TaoLiaoListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A23C46F3221F992700A66DC9 /* TaoLiaoListVC.m */; };
+		A23C46F7221F9B1900A66DC9 /* TaoLiaoDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A23C46F6221F9B1900A66DC9 /* TaoLiaoDetailVC.m */; };
+		A23C46FB221F9CFB00A66DC9 /* TaoLiaoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A23C46F9221F9CFB00A66DC9 /* TaoLiaoListCell.m */; };
+		A23C46FC221F9CFB00A66DC9 /* TaoLiaoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23C46FA221F9CFB00A66DC9 /* TaoLiaoListCell.xib */; };
 		A24B0B6B20722C01009ECD41 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A24B0B6A20722C01009ECD41 /* OrderModel.m */; };
 		A2555F3B20C0DC65000C7E03 /* APRSASigner.m in Sources */ = {isa = PBXBuildFile; fileRef = A2555F3820C0DC64000C7E03 /* APRSASigner.m */; };
 		A2555F3C20C0DC65000C7E03 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A2555F3A20C0DC64000C7E03 /* openssl_wrapper.m */; };
@@ -829,6 +835,16 @@
 		A2309AC320FA294D00D33914 /* WHWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWebViewController.m; sourceTree = "<group>"; };
 		A2328224221BE9B700360418 /* QiHuoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiHuoModel.h; sourceTree = "<group>"; };
 		A2328225221BE9B700360418 /* QiHuoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiHuoModel.m; sourceTree = "<group>"; };
+		A23C46ED221F98F500A66DC9 /* DYScrollRulerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYScrollRulerView.h; sourceTree = "<group>"; };
+		A23C46EE221F98F500A66DC9 /* DYScrollRulerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYScrollRulerView.m; sourceTree = "<group>"; };
+		A23C46EF221F98F500A66DC9 /* ruler.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ruler.gif; sourceTree = "<group>"; };
+		A23C46F2221F992700A66DC9 /* TaoLiaoListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaoLiaoListVC.h; sourceTree = "<group>"; };
+		A23C46F3221F992700A66DC9 /* TaoLiaoListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaoLiaoListVC.m; sourceTree = "<group>"; };
+		A23C46F5221F9B1900A66DC9 /* TaoLiaoDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaoLiaoDetailVC.h; sourceTree = "<group>"; };
+		A23C46F6221F9B1900A66DC9 /* TaoLiaoDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaoLiaoDetailVC.m; sourceTree = "<group>"; };
+		A23C46F8221F9CFB00A66DC9 /* TaoLiaoListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaoLiaoListCell.h; sourceTree = "<group>"; };
+		A23C46F9221F9CFB00A66DC9 /* TaoLiaoListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaoLiaoListCell.m; sourceTree = "<group>"; };
+		A23C46FA221F9CFB00A66DC9 /* TaoLiaoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaoLiaoListCell.xib; sourceTree = "<group>"; };
 		A24B0B6920722C01009ECD41 /* OrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
 		A24B0B6A20722C01009ECD41 /* OrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
 		A2555F3720C0DC64000C7E03 /* APRSASigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRSASigner.h; sourceTree = "<group>"; };
@@ -1704,6 +1720,7 @@
 		5695BEB72042A4BA0036D54B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				A23C46EC221F98F500A66DC9 /* DYScorllRuler */,
 				56B4BCA221B2BAEE00C38B8F /* DHGuidePageHUD */,
 				56FD468B219C6B4000AC0BA4 /* CYPasswordView */,
 				56B78C8B2185E5850056D812 /* AAChartKitLib */,
@@ -1834,6 +1851,13 @@
 				569CB57E22192BA100F21AB5 /* TaoLiaoVC.m */,
 				569CB58022192BB800F21AB5 /* TaoLiaoTabVC.h */,
 				569CB58122192BB800F21AB5 /* TaoLiaoTabVC.m */,
+				A23C46F2221F992700A66DC9 /* TaoLiaoListVC.h */,
+				A23C46F3221F992700A66DC9 /* TaoLiaoListVC.m */,
+				A23C46F8221F9CFB00A66DC9 /* TaoLiaoListCell.h */,
+				A23C46F9221F9CFB00A66DC9 /* TaoLiaoListCell.m */,
+				A23C46FA221F9CFB00A66DC9 /* TaoLiaoListCell.xib */,
+				A23C46F5221F9B1900A66DC9 /* TaoLiaoDetailVC.h */,
+				A23C46F6221F9B1900A66DC9 /* TaoLiaoDetailVC.m */,
 			);
 			path = "淘小料";
 			sourceTree = "<group>";
@@ -2178,6 +2202,16 @@
 				563C8D2F20C97FB2003C4822 /* WholeChooseView.xib */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		A23C46EC221F98F500A66DC9 /* DYScorllRuler */ = {
+			isa = PBXGroup;
+			children = (
+				A23C46ED221F98F500A66DC9 /* DYScrollRulerView.h */,
+				A23C46EE221F98F500A66DC9 /* DYScrollRulerView.m */,
+				A23C46EF221F98F500A66DC9 /* ruler.gif */,
+			);
+			path = DYScorllRuler;
 			sourceTree = "<group>";
 		};
 		A24B0B6820722BD3009ECD41 /* Order */ = {
@@ -2566,6 +2600,7 @@
 				5695BE8120429F1B0036D54B /* LaunchScreen.storyboard in Resources */,
 				56A37FCF212AF27D00701CD8 /* WuLiuCell.xib in Resources */,
 				A28C15AE2215069400272BB2 /* ConditionDisplayView.xib in Resources */,
+				A23C46F1221F98F500A66DC9 /* ruler.gif in Resources */,
 				A296427620F5AB5E00B6E8B6 /* FSActionSheet_cancel@2x.png in Resources */,
 				56198BB6217A2DBD009AB9F3 /* WholeBoardTapView.xib in Resources */,
 				A2301B2120635292006B9F20 /* LoginViewController.xib in Resources */,
@@ -2600,6 +2635,7 @@
 				5695BE7920429F1B0036D54B /* Main.storyboard in Resources */,
 				A2301B3320637EE0006B9F20 /* FeedbackViewController.xib in Resources */,
 				5686219A20A9CB6E0030C761 /* ShopCarNewListCell.xib in Resources */,
+				A23C46FC221F9CFB00A66DC9 /* TaoLiaoListCell.xib in Resources */,
 				568EFDFB206F1FEF007E437F /* UnitsPickerView.xib in Resources */,
 				5671DBBC205FF1C7005F1760 /* InventoryCell.xib in Resources */,
 				A2555F9720C0DFF9000C7E03 /* AlipaySDK.bundle in Resources */,
@@ -2719,10 +2755,12 @@
 				56B78CE32185E5850056D812 /* AAPie.m in Sources */,
 				A25C0F3221F5736D00B26A56 /* ExpressInfoManager.m in Sources */,
 				56B78CCD2185E5850056D812 /* AALabels.m in Sources */,
+				A23C46F4221F992700A66DC9 /* TaoLiaoListVC.m in Sources */,
 				A289424420B4239500D8E9E5 /* WalletListModel.m in Sources */,
 				56FD4697219C6B4000AC0BA4 /* CYConst.m in Sources */,
 				56940C3320515E1800DFA6D6 /* NSTimer+WeakTimer.m in Sources */,
 				56198BB0217A2B3E009AB9F3 /* WholeBoardListCell.m in Sources */,
+				A23C46FB221F9CFB00A66DC9 /* TaoLiaoListCell.m in Sources */,
 				569CB57F22192BA100F21AB5 /* TaoLiaoVC.m in Sources */,
 				56FD469B219C6B4000AC0BA4 /* UIView+Extension.m in Sources */,
 				5695BF312042AC120036D54B /* ABBannerView.m in Sources */,
@@ -2785,6 +2823,7 @@
 				A2555F3C20C0DC65000C7E03 /* openssl_wrapper.m in Sources */,
 				A22981CB20626193007B6112 /* TicketInfoCell.m in Sources */,
 				A2A8A63F20B7C1400009792F /* OrderListModel.m in Sources */,
+				A23C46F7221F9B1900A66DC9 /* TaoLiaoDetailVC.m in Sources */,
 				A2F8AEB220C11EBC00D9926F /* OrderPayResultVC.m in Sources */,
 				560264BA206A7C1D00F9C405 /* ShopCar.m in Sources */,
 				A29305A8217F136000D72F4A /* ZeroCutVC.m in Sources */,
@@ -2912,6 +2951,7 @@
 				A296427520F5AB5E00B6E8B6 /* FSActionSheetItem.m in Sources */,
 				56FD4699219C6B4000AC0BA4 /* CYPasswordInputView.m in Sources */,
 				567B14C420C43F1B00B81FD6 /* TradeRecordCell.m in Sources */,
+				A23C46F0221F98F500A66DC9 /* DYScrollRulerView.m in Sources */,
 				A22981D5206261C1007B6112 /* TicketCell.m in Sources */,
 				56B78CD72185E5850056D812 /* AAColumn.m in Sources */,
 				A229819620620596007B6112 /* InOutputView.m in Sources */,
