@@ -418,7 +418,7 @@
         if (self.houDu.length) {
             [parDic setObject:self.houDu forKey:@"houdu"];
         }
-        requestUrl = Interface_ZhengbanList;
+        requestUrl = Interface_Banchengpin;
         
     } else if (self.showTye == WholeBoardShowType_YueBao) {
         
