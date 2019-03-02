@@ -69,6 +69,7 @@
             <connections>
                 <outlet property="allButton" destination="TFh-X9-ibv" id="npI-FX-GxM"/>
                 <outlet property="collectionView" destination="tdK-cX-ZWm" id="fG6-Tk-2La"/>
+                <outlet property="contentHeight" destination="BdE-LB-VNd" id="U5p-sC-ygk"/>
                 <outlet property="contentView" destination="ipq-S7-2Lo" id="LOt-hp-2ca"/>
             </connections>
             <point key="canvasLocation" x="130.40000000000001" y="153.37331334332833"/>

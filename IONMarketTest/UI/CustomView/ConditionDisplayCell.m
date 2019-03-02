@@ -56,9 +56,11 @@
     } else if ([title isEqualToString:@"厚度"]) {
         
         NSString *string = (NSString *)dataObject;
-        showName = string;
-    } else if ([title isEqualToString:@"牌号"]) {
+        showName = [NSString stringWithFormat:@"%@mm", string];
+    } else if ([title isEqualToString:@"更多"]) {
         
+        NSString *string = (NSString *)dataObject;
+        showName = string;
     } else {
         
     }

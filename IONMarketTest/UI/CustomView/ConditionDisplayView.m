@@ -24,6 +24,7 @@
         [self.collectionView registerNib:[UINib nibWithNibName:@"ConditionDisplaySectionView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ConditionSectionView"];
         self.collectionView.allowsMultipleSelection = NO;
         self.dataSource = [NSMutableArray array];
+        self.moreTitleArr = [NSMutableArray array];
         self.parameter = parameter;
         
         self.frame = frame;
@@ -134,8 +135,12 @@
         
     } else if ([title isEqualToString:@"更多"]) {
         
+        [self.dataSource addObject:@[@"全面",@"亮面",@"乌面",@"拉丝"]];
+        [self.dataSource addObject:@[@"全部",@"天津忠旺",@"贵重华科",@"爱丽",@"明泰"]];
+        [self.dataSource addObject:@[@"全部",@"单面膜",@"双面膜",@"衬纸",@"无膜无纸"]];
+        [self.dataSource addObject:@[@"全部",@"喷码",@"不喷吗"]];
         
-        
+        [self.moreTitleArr addObjectsFromArray:@[@"表面工艺",@"生成厂家",@"覆膜类型",@"是否喷码"]];
     }
     else {
         
@@ -168,16 +173,29 @@
 
 + (void)showConditionDisplayViewWithTitle:(NSString *)title parameter:(NSString *)parameter selectTitle:(NSString *)selectTitle selectedBlock:(SselectedIndexPath)selectedBlock {
     
+    [self hideConditionDisplayView];
+    
     UIViewController *rootVC = [UIViewController currentViewController];
     
     ConditionDisplayView *displayV = [[ConditionDisplayView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIGHT, rootVC.view.bounds.size.height-40) parameter:title];
     displayV.selectedBlock = selectedBlock;
     displayV.showTitle = title;
     displayV.selectTitle = selectTitle;
-    displayV.contentView.frame = CGRectMake(0, -320, SCREEN_WIGHT, 320);
+    if ([title isEqualToString:@"更多"]) {
+        displayV.contentView.frame = CGRectMake(0, -420, SCREEN_WIGHT, 420);
+        displayV.contentHeight.constant = 420;
+    } else {
+        displayV.contentView.frame = CGRectMake(0, -320, SCREEN_WIGHT, 320);
+        displayV.contentHeight.constant = 320;
+    }
+    
     
     [UIView animateWithDuration:0.3 animations:^{
-        displayV.contentView.frame = CGRectMake(0, 0, SCREEN_WIGHT, 320);
+        if ([title isEqualToString:@"更多"]) {
+            displayV.contentView.frame = CGRectMake(0, 0, SCREEN_WIGHT, 400);
+        } else {
+            displayV.contentView.frame = CGRectMake(0, 0, SCREEN_WIGHT, 320);
+        }
         
     }];
     
@@ -257,7 +275,13 @@
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         
         ConditionDisplaySectionView *view =  [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader   withReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-        view.titleLabel.text = [NSString stringWithFormat:@"请选择%@", self.showTitle];
+        
+        if ([self.showTitle isEqualToString:@"更多"]) {
+            view.titleLabel.text = [NSString stringWithFormat:@"%@", [self.moreTitleArr objectAtIndex:indexPath.section]];
+        } else {
+             view.titleLabel.text = [NSString stringWithFormat:@"请选择%@", self.showTitle];
+        }
+        
         
         return view;
         

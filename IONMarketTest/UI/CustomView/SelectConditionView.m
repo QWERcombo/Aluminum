@@ -70,6 +70,17 @@
             [self.delegate didSelectedConditionIndex:sender.tag-100 conditionTitle:sender.currentTitle];
         }
         
+        for (int i = 0; i < self.titleArray.count; i++) {
+            
+            UIButton *button = [self viewWithTag:100+i];
+            if (sender.tag-100 != i) {
+                
+                [button setSelected:NO];
+            }
+            
+        }
+        
+        
     } else {
         
         if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedConditionIndex:conditionTitle:)]) {

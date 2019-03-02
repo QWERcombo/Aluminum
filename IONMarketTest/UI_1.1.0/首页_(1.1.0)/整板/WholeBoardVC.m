@@ -431,6 +431,12 @@
         if (self.houDu.length) {
             [parDic setObject:self.houDu forKey:@"hou"];
         }
+        
+//        [parDic setObject:self.zhuangTai forKey:@"biaozhun"];
+//        [parDic setObject:self.zhuangTai forKey:@"fumoleixing"];
+//        [parDic setObject:self.zhuangTai forKey:@"shifoupaoguang"];
+//        [parDic setObject:self.zhuangTai forKey:@"changjia"];
+        
         requestUrl = Interface_QiHuo;
         
     } else {
