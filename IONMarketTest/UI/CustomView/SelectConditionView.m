@@ -94,7 +94,13 @@
     
     UIButton *button = [self viewWithTag:100+index];
     
-    [button setTitle:title forState:UIControlStateNormal];
+    if ([title containsString:@","]) {
+        //更多
+        [button setTitle:@"已选" forState:UIControlStateNormal];
+    } else {
+        [button setTitle:title forState:UIControlStateNormal];
+    }
+    
     [button setSelected:NO];
     
     if (![title isEqualToString:[self.titleArray objectAtIndex:index]]) {
@@ -119,6 +125,29 @@
     
 }
 
-
+- (void)resetTitleWithIndex:(NSInteger)index {
+    
+    for (UIView *subView in self.subviews) {
+        
+        if ([subView isKindOfClass:[UIButton class]]) {
+            
+            UIButton *button = (UIButton *)subView;
+            
+            if (button.tag > (index+100)) {
+                
+                [button setSelected:NO];
+                [button setTitle:[self.titleArray objectAtIndex:button.tag-100] forState:UIControlStateNormal];
+                [button setTitleColor:[UIColor colorWithHexString:@"#595E64"] forState:UIControlStateNormal];
+                [button setImage:IMG(@"show_down") forState:UIControlStateNormal];
+            }
+        }
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(resetTitleInfomationWithIndex:)]) {
+        
+        [self.delegate resetTitleInfomationWithIndex:index];
+    }
+    
+}
 
 @end

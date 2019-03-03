@@ -14,7 +14,7 @@
 @implementation ConditionDisplayView
 
 
-- (instancetype)initWithFrame:(CGRect)frame parameter:(NSString *)parameter
+- (instancetype)initWithFrame:(CGRect)frame parameter:(NSString *)parameter selectTitle:(NSString *)selectTitle
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -22,10 +22,13 @@
         self = [[[NSBundle mainBundle] loadNibNamed:@"ConditionDisplayView" owner:self options:nil] firstObject];
         [self.collectionView registerNib:[UINib nibWithNibName:@"ConditionDisplayCell" bundle:nil] forCellWithReuseIdentifier:@"ConditionDisplayCell"];
         [self.collectionView registerNib:[UINib nibWithNibName:@"ConditionDisplaySectionView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ConditionSectionView"];
-        self.collectionView.allowsMultipleSelection = NO;
+        self.collectionView.allowsMultipleSelection = YES;
         self.dataSource = [NSMutableArray array];
         self.moreTitleArr = [NSMutableArray array];
-        self.parameter = parameter;
+        self.selectArray = [NSMutableArray array];
+        
+        self.showTitle = parameter;
+        self.selectTitle = selectTitle;
         
         self.frame = frame;
         
@@ -135,12 +138,70 @@
         
     } else if ([title isEqualToString:@"更多"]) {
         
-        [self.dataSource addObject:@[@"全面",@"亮面",@"乌面",@"拉丝"]];
-        [self.dataSource addObject:@[@"全部",@"天津忠旺",@"贵重华科",@"爱丽",@"明泰"]];
-        [self.dataSource addObject:@[@"全部",@"单面膜",@"双面膜",@"衬纸",@"无膜无纸"]];
-        [self.dataSource addObject:@[@"全部",@"喷码",@"不喷吗"]];
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_QiHuoMore andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            NSArray *bianmianArr = resultDic[@"biaomiangongyiList"];
+            NSArray *changjiaArr = resultDic[@"changjiaList"];
+            NSArray *fumoArr = resultDic[@"fumoList"];
+            
+            if (bianmianArr.count) {
+                [self.moreTitleArr addObject:@"表面工艺"];
+                
+                NSMutableArray *array = [NSMutableArray array];
+                [array addObject:@"全部"];
+                for (NSString *string in bianmianArr) {
+                    if (![string isEqualToString:@"全部"]) {
+                        [array addObject:string];
+                    }
+                }
+                
+                
+                [self.selectArray addObject:@""];
+                [self.dataSource addObject:array];
+            }
+            if (changjiaArr.count) {
+                [self.moreTitleArr addObject:@"生产厂家"];
+                
+                NSMutableArray *array = [NSMutableArray array];
+                [array addObject:@"全部"];
+                for (NSString *string in changjiaArr) {
+                    if (![string isEqualToString:@"全部"]) {
+                        [array addObject:string];
+                    }
+                }
+                
+                
+                [self.selectArray addObject:@""];
+                [self.dataSource addObject:array];
+            }
+            if (fumoArr.count) {
+                [self.moreTitleArr addObject:@"覆膜类型"];
+                
+                NSMutableArray *array = [NSMutableArray array];
+                [array addObject:@"全部"];
+                for (NSString *string in fumoArr) {
+                    if (![string isEqualToString:@"全部"]) {
+                        [array addObject:string];
+                    }
+                }
+                
+                
+                [self.selectArray addObject:@""];
+                [self.dataSource addObject:array];
+            }
+
+            if ([self.selectTitle containsString:@","]) {
+                //选择过更多条件
+                for (int i=0; i<self.selectArray.count; i++) {
+                    [self.selectArray replaceObjectAtIndex:i withObject:[self.selectTitle componentsSeparatedByString:@","][i]];
+                }
+            }
+            
+            [self.collectionView reloadData];
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
         
-        [self.moreTitleArr addObjectsFromArray:@[@"表面工艺",@"生成厂家",@"覆膜类型",@"是否喷码"]];
     }
     else {
         
@@ -177,16 +238,19 @@
     
     UIViewController *rootVC = [UIViewController currentViewController];
     
-    ConditionDisplayView *displayV = [[ConditionDisplayView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIGHT, rootVC.view.bounds.size.height-40) parameter:title];
+    ConditionDisplayView *displayV = [[ConditionDisplayView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIGHT, rootVC.view.bounds.size.height-40) parameter:title selectTitle:selectTitle];
     displayV.selectedBlock = selectedBlock;
-    displayV.showTitle = title;
-    displayV.selectTitle = selectTitle;
+
     if ([title isEqualToString:@"更多"]) {
         displayV.contentView.frame = CGRectMake(0, -420, SCREEN_WIGHT, 420);
         displayV.contentHeight.constant = 420;
+        displayV.btnWidth.constant = SCREEN_WIGHT/2;
+        [displayV.allButton setTitle:@"确定" forState:UIControlStateNormal];
     } else {
         displayV.contentView.frame = CGRectMake(0, -320, SCREEN_WIGHT, 320);
         displayV.contentHeight.constant = 320;
+        displayV.btnWidth.constant = 0.01;
+        [displayV.allButton setTitle:@"重置/全部" forState:UIControlStateNormal];
     }
     
     
@@ -230,13 +294,15 @@
     
     ConditionDisplayCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ConditionDisplayCell" forIndexPath:indexPath];
     
-    [cell setButtonTitle:self.showTitle selectTitle:self.selectTitle dataObject:self.dataSource[indexPath.section][indexPath.row]];
+    [cell setButtonTitle:self.showTitle selectTitle:self.selectArray.count?[self.selectArray objectAtIndex:indexPath.section]: self.selectTitle dataObject:self.dataSource[indexPath.section][indexPath.row]];
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     NSArray *listArray = [self.dataSource objectAtIndex:indexPath.section];
+    
     for (int i=0; i<listArray.count; i++) {
         
         if (i == indexPath.item) {
@@ -245,7 +311,13 @@
             
             if (self.selectedBlock) {
                 
-                self.selectedBlock(listArray[indexPath.row], YES);
+                if (![self.showTitle isEqualToString:@"更多"]) {
+                    
+                    self.selectedBlock(listArray[indexPath.row], YES);
+                } else {
+                    
+                    [self.selectArray replaceObjectAtIndex:indexPath.section withObject:listArray[indexPath.row]];
+                }
                 
             }
 
@@ -297,6 +369,30 @@
 
 
 - (IBAction)all:(UIButton *)sender {
+    
+    if ([self.showTitle isEqualToString:@"更多"] && (sender.tag == 200)) {
+        //更多是确定
+        if (self.selectedBlock) {
+            
+            NSMutableString *showStr = [NSMutableString string];
+            for (int i=0; i<self.selectArray.count; i++) {
+                
+                NSString *objectS = [self.selectArray objectAtIndex:i];
+                if (objectS.length) {
+                    [showStr appendString:objectS];
+                }
+                
+                if (i != self.selectArray.count-1) {
+                    [showStr appendString:@","];
+                }
+            }
+            
+            self.selectedBlock(showStr, YES);
+            
+        }
+        return;
+    }
+    
     //重置
     self.selectTitle = self.showTitle;
     [self.collectionView reloadData];

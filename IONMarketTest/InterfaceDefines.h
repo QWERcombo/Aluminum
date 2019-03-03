@@ -212,7 +212,10 @@
 //保存抢约包（期货）数据
 #define Interface_QiHuoOrder        @"user/saveQiHuoOrder"
 //获取半成品
-#define Interface_Banchengpin        @"banchengpinList"
+#define Interface_Banchengpin       @"banchengpinList"
+//获取期货更多条件
+#define Interface_QiHuoMore         @"getQihuoSearchMore"
+
 
 
 #endif /* InterfaceDefines_h */

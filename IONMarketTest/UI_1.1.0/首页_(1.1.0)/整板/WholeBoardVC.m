@@ -46,6 +46,11 @@
 @property (nonatomic, copy) NSString *houDu;//厚度
 @property (nonatomic, copy) NSString *zhuangTai;//状态
 
+@property (nonatomic, copy) NSString *bianMianGongyi;//表面工艺
+@property (nonatomic, copy) NSString *changJia;//厂家
+@property (nonatomic, copy) NSString *fuMo;//覆膜
+@property (nonatomic, copy) NSString *moreTitle;//更多
+
 @end
 
 @implementation WholeBoardVC
@@ -197,7 +202,7 @@
         //选中
         self.mainIndex = index;
         
-        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"" selectTitle:title selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
+        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"" selectTitle:self.moreTitle.length?self.moreTitle:title selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
 
             NSString *showName = @"";
 
@@ -229,16 +234,36 @@
                     
                     switch (self.mainIndex) {
                         case 0:
-                            self.pinleiModel = nil;
+                            if (self.showTye == WholeBoardShowType_YueBao) {
+                                self.cateModel = nil;
+                            } else {
+                                self.pinleiModel = nil;
+                            }
                             break;
                         case 1:
-                            self.cateModel = nil;
+                            if (self.showTye == WholeBoardShowType_YueBao) {
+                                self.zhuangTai = @"";
+                            } else {
+                                self.cateModel = nil;
+                            }
                             break;
                         case 2:
-                            self.zhuangTai = @"";
+                            if (self.showTye == WholeBoardShowType_YueBao) {
+                                self.houDu = @"";
+                            } else {
+                                self.zhuangTai = @"";
+                            }
                             break;
                         case 3:
-                            self.houDu = @"";
+                            if (self.showTye == WholeBoardShowType_YueBao) {
+                                //更多
+                                self.bianMianGongyi = @"";
+                                self.fuMo = @"";
+                                self.changJia = @"";
+                                self.moreTitle = @"";
+                            } else {
+                                self.houDu = @"";
+                            }
                             break;
                         default:
                             break;
@@ -250,9 +275,19 @@
                     if ([[self.titleArray objectAtIndex:self.mainIndex] isEqualToString:@"状态"]) {
                         
                         self.zhuangTai = number;
+                        
                     } else if ([[self.titleArray objectAtIndex:self.mainIndex] isEqualToString:@"厚度"]) {
                         
                         self.houDu = number;
+                        
+                    } else if ([[self.titleArray objectAtIndex:self.mainIndex] isEqualToString:@"更多"]) {
+                        
+                        NSArray *infoArr = [number componentsSeparatedByString:@","];
+                        self.moreTitle = number;
+                        self.bianMianGongyi = infoArr[0];
+                        self.changJia = infoArr[1];
+                        self.fuMo = infoArr[2];
+                        
                     } else {
                         
                     }
@@ -431,11 +466,17 @@
         if (self.houDu.length) {
             [parDic setObject:self.houDu forKey:@"hou"];
         }
+        if (self.bianMianGongyi.length) {
+            [parDic setObject:self.bianMianGongyi forKey:@"shifoupaoguang"];
+        }
+        if (self.changJia.length) {
+            [parDic setObject:self.changJia forKey:@"changjia"];
+        }
+        if (self.fuMo.length) {
+            [parDic setObject:self.fuMo forKey:@"fumoleixing"];
+        }
         
 //        [parDic setObject:self.zhuangTai forKey:@"biaozhun"];
-//        [parDic setObject:self.zhuangTai forKey:@"fumoleixing"];
-//        [parDic setObject:self.zhuangTai forKey:@"shifoupaoguang"];
-//        [parDic setObject:self.zhuangTai forKey:@"changjia"];
         
         requestUrl = Interface_QiHuo;
         

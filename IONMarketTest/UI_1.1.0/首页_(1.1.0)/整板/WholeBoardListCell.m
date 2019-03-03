@@ -35,8 +35,8 @@
         
         WholeBoardModel *dataModel = (WholeBoardModel *)dataObject;
         
-//    cell.guigeLabel.text = [NSString stringWithFormat:@"%@*%@*%@", dataModel.arg3, dataModel.arg2, dataModel.arg1];
-        cell.guigeLabel.text = dataModel.guige;
+    cell.guigeLabel.text = [NSString stringWithFormat:@"%@*%@*%@", dataModel.arg3, dataModel.arg2, dataModel.arg1];
+//        cell.guigeLabel.text = dataModel.guige;
         cell.changjiaLabel.text = [NSString stringWithFormat:@"厂家: %@", dataModel.canzhaozhishu];
         cell.priceLabel.text = [NSString stringWithFormat:@"%@元/件", [NSString getStringAfterTwo:dataModel.danpianzhengbanjiage]];
         cell.stepper.maxValue = [dataModel.kucun integerValue];
@@ -106,9 +106,9 @@
         QiHuoModel *dataModel = (QiHuoModel *)dataObject;
         
         if ([dataModel.chang integerValue] > 0) {
-            cell.guigeLabel.text = [NSString stringWithFormat:@"%@*%@*%@", dataModel.hou, dataModel.kuang, dataModel.chang];
+            cell.guigeLabel.text = [NSString stringWithFormat:@"%@*%@*%@", dataModel.chang, dataModel.kuang, dataModel.hou];
         } else {
-            cell.guigeLabel.text = [NSString stringWithFormat:@"%@*%@", dataModel.hou, dataModel.kuang];
+            cell.guigeLabel.text = [NSString stringWithFormat:@"%@*%@", dataModel.kuang, dataModel.hou];
         }
         cell.kucunLabel.text = [NSString stringWithFormat:@"(%@张)", [NSString getStringAfterTwo:dataModel.zhangshu]];
         cell.changjiaLabel.font = [UIFont systemFontOfSize:13];

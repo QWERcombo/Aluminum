@@ -19,7 +19,6 @@
 @interface CommonItemVC ()<CommonItemTabVCDelegate,SelectConditionViewDelegate>
 
 @property (nonatomic, strong) CommonItemTabVC *commonTabVC;
-//@property (strong, nonatomic) UIScrollView *topScrollView;
 @property (nonatomic, strong) SelectConditionView *conditionView;
 
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -32,8 +31,6 @@
 
 @property (nonatomic, assign) NSInteger mainIndex;
 @property (nonatomic, assign) NSInteger subIndex;
-@property (nonatomic, copy) NSString *zhuangTai;//状态
-
 
 @end
 
@@ -111,7 +108,7 @@
                             self.commonTabVC.erjimulu_id = nil;
                             break;
                         case 1:
-                            self.zhuangTai = @"";
+                            self.commonTabVC.zhuangTai = @"";
                             break;
                         
                         default:
@@ -123,7 +120,7 @@
                     
                     if ([[self.titleArray objectAtIndex:self.mainIndex] isEqualToString:@"状态"]) {
                         
-                        self.zhuangTai = number;
+                        self.commonTabVC.zhuangTai = number;
                     } else {
                         
                     }
@@ -135,7 +132,7 @@
             
             if (showName.length) {
                 [self.conditionView changeTitle:showName index:self.mainIndex];
-                
+                [self.conditionView resetTitleWithIndex:index];
 //                [self getZhengBanListCur_page:1];
             } else {
                 
@@ -150,7 +147,19 @@
         [self.view bringSubviewToFront:self.conditionView];
     }
 }
-
+- (void)resetTitleInfomationWithIndex:(NSInteger)index {
+    
+    if (index == 0) {
+        //修改牌号
+        self.commonTabVC.zhuangTai = @"";
+        [self.commonTabVC refreshInfoToReset];
+    } else if (index == 1) {
+        //修改状态
+        [self.commonTabVC placeOrder:UseType_OrderMoney];
+    } else {
+    }
+    
+}
 
 #pragma mark --- Data
 

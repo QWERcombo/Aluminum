@@ -371,7 +371,19 @@ DEF_SINGLETON(PublicFuntionTool);
 }
 
 
-- (void)placeOrderCommonInterfaceWithUseType:(UseType)useType moneyWithOrderType:(GetOrderType)orderType chang:(NSString *)chang kuan:(NSString *)kuan hou:(NSString *)hou amount:(NSString *)amount type:(NSString *)type erjimulu:(MainItemTypeModel *)erjimulu orderMoney:(NSString *)orderMoney successBlock:(GetOrderMoneySuccessBlock)successBlock buyNowSuccessBlock:(GetBuyNowSuccessBlock)buyNowSuccessBlock addCarSuccessBlock:(GetAddCarSuccessBlock)addCarSuccessBlock {
+- (void)placeOrderCommonInterfaceWithUseType:(UseType)useType
+                          moneyWithOrderType:(GetOrderType)orderType
+                                       chang:(NSString *)chang
+                                        kuan:(NSString *)kuan
+                                         hou:(NSString *)hou
+                                   zhuangTai:(NSString *)zhuangTai
+                                      amount:(NSString *)amount
+                                        type:(NSString *)type
+                                    erjimulu:(MainItemTypeModel *)erjimulu
+                                  orderMoney:(NSString *)orderMoney
+                                successBlock:(GetOrderMoneySuccessBlock)successBlock
+                          buyNowSuccessBlock:(GetBuyNowSuccessBlock)buyNowSuccessBlock
+                          addCarSuccessBlock:(GetAddCarSuccessBlock)addCarSuccessBlock {
     
     
     NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
@@ -413,6 +425,7 @@ DEF_SINGLETON(PublicFuntionTool);
     }
     [parDic setObject:kuan forKey:@"kuang"];
     [parDic setObject:type forKey:@"type"];
+    [parDic setObject:zhuangTai forKey:@"zhuangtai"];
     
     switch (orderType) {
         case GetOrderType_ZhengBan:

@@ -308,7 +308,7 @@
     }
     
     
-    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:type chang:chang kuan:kuan hou:hou amount:self.amountTF.text type:showType erjimulu:self.erjimulu_id orderMoney:self.orderMoney successBlock:^(NSDictionary *dataDic) {
+    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:type chang:chang kuan:kuan hou:hou zhuangTai:self.zhuangTai amount:self.amountTF.text type:showType erjimulu:self.erjimulu_id orderMoney:self.orderMoney successBlock:^(NSDictionary *dataDic) {
         
         self.dataDic = dataDic;
         if (useType == UseType_OrderMoney) _isShowInfoView = YES;

@@ -100,7 +100,7 @@
     
     NSString *amount = [NSNumber numberWithFloat:_showVC.stepper.value].stringValue;
     
-    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:_wholeModel.arg3 kuan:_wholeModel.arg2 hou:_wholeModel.arg1 amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:[[NSNumber alloc] initWithInteger:self.orderMoney].stringValue successBlock:^(NSDictionary *dataDic) {
+    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:_wholeModel.arg3 kuan:_wholeModel.arg2 hou:_wholeModel.arg1 zhuangTai:@"" amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:[[NSNumber alloc] initWithInteger:self.orderMoney].stringValue successBlock:^(NSDictionary *dataDic) {
         
         self.dataDic = dataDic;
         self.orderMoney = [self.dataDic[@"orderMoney"] integerValue];

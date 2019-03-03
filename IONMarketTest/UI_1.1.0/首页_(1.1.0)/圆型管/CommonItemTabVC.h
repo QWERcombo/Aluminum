@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<CommonItemTabVCDelegate> delegate;
 @property (nonatomic, assign) ShowType showType;
 @property (nonatomic, strong) MainItemTypeModel *erjimulu_id;
+@property (nonatomic, copy) NSString *zhuangTai;//状态
 
 //重置信息
 - (void)refreshInfoToReset;

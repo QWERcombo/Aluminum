@@ -14,15 +14,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)didSelectedConditionIndex:(NSInteger)index conditionTitle:(NSString *)title;
 
+@optional
+- (void)resetTitleInfomationWithIndex:(NSInteger)index;
+
 @end
 
 @interface SelectConditionView : UIView
 
 @property (nonatomic,weak) id<SelectConditionViewDelegate> delegate;
 
+
 - (instancetype)initWithFrame:(CGRect)frame titleArray:(NSArray *)titleArray;
-- (void)reset;
-- (void)changeTitle:(NSString *)title index:(NSInteger)index;
+- (void)reset;//重置
+- (void)changeTitle:(NSString *)title index:(NSInteger)index;//修改标题
+- (void)resetTitleWithIndex:(NSInteger)index;//重置小于选中的标题
 
 @end
 

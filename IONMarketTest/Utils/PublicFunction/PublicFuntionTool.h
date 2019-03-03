@@ -98,7 +98,19 @@ AS_SINGLETON(PublicFuntionTool);
 
 
 //下单通用接口(价格 购买 加购物车)
-- (void)placeOrderCommonInterfaceWithUseType:(UseType)useType moneyWithOrderType:(GetOrderType)orderType chang:(NSString *)chang kuan:(NSString *)kuan hou:(NSString *)hou amount:(NSString *)amount type:(NSString *)type erjimulu:(MainItemTypeModel *)erjimulu orderMoney:(NSString *)orderMoney successBlock:(GetOrderMoneySuccessBlock)successBlock buyNowSuccessBlock:(GetBuyNowSuccessBlock)buyNowSuccessBlock addCarSuccessBlock:(GetAddCarSuccessBlock)addCarSuccessBlock;
+- (void)placeOrderCommonInterfaceWithUseType:(UseType)useType
+                          moneyWithOrderType:(GetOrderType)orderType
+                                       chang:(NSString *)chang
+                                        kuan:(NSString *)kuan
+                                         hou:(NSString *)hou
+                                   zhuangTai:(NSString *)zhuangTai
+                                      amount:(NSString *)amount
+                                        type:(NSString *)type
+                                    erjimulu:(MainItemTypeModel *)erjimulu
+                                  orderMoney:(NSString *)orderMoney
+                                successBlock:(GetOrderMoneySuccessBlock)successBlock
+                          buyNowSuccessBlock:(GetBuyNowSuccessBlock)buyNowSuccessBlock
+                          addCarSuccessBlock:(GetAddCarSuccessBlock)addCarSuccessBlock;
 
 
 

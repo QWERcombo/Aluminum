@@ -24,7 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZeroCutTabVC : UITableViewController
 
 @property (nonatomic, weak) id<ZeroCutTabVCDelegate> delegate;
+
 @property (nonatomic, strong) MainItemTypeModel *erjimulu_id;
+@property (nonatomic, copy) NSString *zhuangTai;//状态
+@property (nonatomic, copy) NSString *houDu;//厚度
 
 //重置信息
 - (void)refreshInfoToReset;

@@ -42,7 +42,7 @@
     [super viewDidLoad];
     self.lengthTF.delegate = self;
     self.widthTF.delegate = self;
-    self.countTF.delegate = self;
+    self.countTF.delegate = self;    
 }
 
 #pragma mark - Table view data source
@@ -158,7 +158,7 @@
 
 - (void)placeOrder:(UseType)useType {
     
-    if (self.lengthTF.text.length && self.widthTF.text.length && self.thinTF.text.length && self.countTF.text.length) {
+    if (self.lengthTF.text.length && self.widthTF.text.length && self.countTF.text.length) {
         
         NSString *type = @"";
         if (useType == UseType_BuyNow || useType == UseType_AddShopCar) {
@@ -167,7 +167,7 @@
             type = @"全部";
         }
         
-        [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_LingQie chang:self.lengthTF.text kuan:self.widthTF.text hou:self.thinTF.text amount:self.countTF.text type:type erjimulu:self.erjimulu_id orderMoney:self.orderMoney successBlock:^(NSDictionary *dataDic) {
+        [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_LingQie chang:self.lengthTF.text kuan:self.widthTF.text hou:self.houDu zhuangTai:self.zhuangTai amount:self.countTF.text type:type erjimulu:self.erjimulu_id orderMoney:self.orderMoney successBlock:^(NSDictionary *dataDic) {
             
             self.dataDic = dataDic;
             
@@ -208,6 +208,9 @@
         }];
         
         
+    } else {
+        
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先输入长、宽、件数!" time:0 aboutType:WHShowViewMode_Text state:NO];
     }
 
 }
@@ -216,15 +219,15 @@
 //重置信息
 - (void)refreshInfoToReset {
     self.infoView.hidden = YES;
-    _label1.textColor = [UIColor Grey_WordColor];
-    _label2.textColor = [UIColor Grey_WordColor];
+    _label1.textColor = [UIColor mianColor:2];
+    _label2.textColor = [UIColor mianColor:2];
     _label3.textColor = [UIColor Grey_WordColor];
     _label4.textColor = [UIColor Grey_WordColor];
     
     _youqieImgv.image = [UIImage imageNamed:@"select_0"];
     _youqieLab.textColor = [UIColor Grey_WordColor];
     _youqieLab.text = @"";
-    _suqieImgv.image = [UIImage imageNamed:@"select_0"];
+    _suqieImgv.image = [UIImage imageNamed:@"select_1"];
     _suqieLab.textColor = [UIColor Grey_WordColor];
     _suqieLab.text = @"";
     

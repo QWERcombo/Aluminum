@@ -18,6 +18,7 @@
     // Initialization code
     self.showButton.layer.cornerRadius = 2;
     self.showButton.layer.masksToBounds = YES;
+    self.showButton.titleLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 
@@ -65,12 +66,9 @@
         
     }
     
-    
-    
-    
     [self.showButton setTitle:showName forState:UIControlStateNormal];
     
-    if ([showName isEqualToString:selectTitle]) {
+    if ([[showName stringByReplacingOccurrencesOfString:@"mm" withString:@""] isEqualToString:selectTitle]) {
         [self setSelected:YES];
     } else {
         [self setSelected:NO];

@@ -19,8 +19,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipq-S7-2Lo">
                     <rect key="frame" x="0.0" y="20" width="375" height="320"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFh-X9-ibv">
-                            <rect key="frame" x="0.0" y="280" width="375" height="40"/>
+                        <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFh-X9-ibv">
+                            <rect key="frame" x="50" y="280" width="325" height="40"/>
                             <color key="backgroundColor" red="0.18431372549019609" green="0.45882352941176469" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="Kd3-Vh-p95"/>
@@ -45,16 +45,32 @@
                                 <outlet property="delegate" destination="iN0-l3-epB" id="JiF-6D-E5o"/>
                             </connections>
                         </collectionView>
+                        <button opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ucg-Os-xk4">
+                            <rect key="frame" x="0.0" y="280" width="50" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="7dd-5B-eGN"/>
+                                <constraint firstAttribute="height" constant="40" id="v9t-wx-kjJ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="重置">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="all:" destination="iN0-l3-epB" eventType="touchUpInside" id="sfG-Cw-WxP"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="TFh-X9-ibv" firstAttribute="top" secondItem="tdK-cX-ZWm" secondAttribute="bottom" constant="15" id="0A9-t8-Fgd"/>
-                        <constraint firstItem="TFh-X9-ibv" firstAttribute="leading" secondItem="ipq-S7-2Lo" secondAttribute="leading" id="3a6-OW-xUd"/>
+                        <constraint firstItem="TFh-X9-ibv" firstAttribute="leading" secondItem="Ucg-Os-xk4" secondAttribute="trailing" id="1bT-yv-2jc"/>
                         <constraint firstAttribute="height" constant="320" id="BdE-LB-VNd"/>
                         <constraint firstItem="tdK-cX-ZWm" firstAttribute="top" secondItem="ipq-S7-2Lo" secondAttribute="top" id="I1p-6k-k21"/>
                         <constraint firstItem="tdK-cX-ZWm" firstAttribute="leading" secondItem="ipq-S7-2Lo" secondAttribute="leading" constant="15" id="IZ1-J3-9wI"/>
+                        <constraint firstAttribute="bottom" secondItem="Ucg-Os-xk4" secondAttribute="bottom" id="KpK-cI-9G5"/>
                         <constraint firstAttribute="trailing" secondItem="tdK-cX-ZWm" secondAttribute="trailing" constant="15" id="Y24-8a-lJv"/>
                         <constraint firstAttribute="trailing" secondItem="TFh-X9-ibv" secondAttribute="trailing" id="cXa-0k-ZqV"/>
+                        <constraint firstItem="Ucg-Os-xk4" firstAttribute="leading" secondItem="ipq-S7-2Lo" secondAttribute="leading" id="gt3-m8-cMr"/>
                         <constraint firstAttribute="bottom" secondItem="TFh-X9-ibv" secondAttribute="bottom" id="l01-l6-Wyo"/>
                     </constraints>
                 </view>
@@ -68,6 +84,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="allButton" destination="TFh-X9-ibv" id="npI-FX-GxM"/>
+                <outlet property="btnWidth" destination="7dd-5B-eGN" id="NIB-H4-jLP"/>
                 <outlet property="collectionView" destination="tdK-cX-ZWm" id="fG6-Tk-2La"/>
                 <outlet property="contentHeight" destination="BdE-LB-VNd" id="U5p-sC-ygk"/>
                 <outlet property="contentView" destination="ipq-S7-2Lo" id="LOt-hp-2ca"/>
