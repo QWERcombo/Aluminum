@@ -53,6 +53,8 @@
 
 @end
 
+#define DEFAULT_ZHUANGTAI   @"T6"
+
 @implementation WholeBoardVC
 
 
@@ -100,7 +102,7 @@
     self.tableView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无数据" andDetailStr:@"" withReloadAction:^{
     }];
     
-    [self getZhengBanListCur_page:1];
+    [self getZhengBanListCur_page:1 isShowLoading:YES];
     [self.view addSubview:self.conditionView];
 }
 
@@ -177,9 +179,18 @@
         
         WholeBoardModel *model = [self.dataSource objectAtIndex:indexPath.row];
         detail.wholeModel = model;
+        detail.zhuangTai = self.zhuangTai.length?self.zhuangTai:DEFAULT_ZHUANGTAI;
         MJWeakSelf
         [detail setSelectValue:^(NSInteger selectNumber) {
             model.value = selectNumber;
+            if (model.value==0) {
+                [weakSelf.selectArray removeObject:model];
+            } else {
+                if (![weakSelf.selectArray containsObject:model]) {
+                    [weakSelf.selectArray addObject:model];
+                }
+            }
+            [weakSelf refreshTotalLabel];
             [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }];
         
@@ -300,12 +311,12 @@
             if (showName.length) {
                 [self.conditionView changeTitle:showName index:self.mainIndex];
                 
-                [self getZhengBanListCur_page:1];
+                [self getZhengBanListCur_page:1 isShowLoading:YES];
             } else {
                 
                 if ([dataObject integerValue] == -2) {
                     //重置子条件
-                    [self getZhengBanListCur_page:1];
+                    [self getZhengBanListCur_page:1 isShowLoading:YES];
                 }
             }
             
@@ -344,7 +355,9 @@
             car.type = @"整只";
             car.erjimulu = model.lvxing.name;
             car.money = [NSNumber numberWithFloat:[model.danpianzhengbanjiage floatValue]*model.value].stringValue;
-            car.zhonglei = @"整板";
+            car.zhonglei = self.pinleiModel?self.pinleiModel.name:@"整板";
+            car.zhuangtai = self.zhuangTai.length?self.zhuangTai:DEFAULT_ZHUANGTAI;
+            
             car.length = model.arg3;
             car.width = model.arg2;
             car.height = model.arg1;
@@ -411,12 +424,12 @@
 
 #pragma mark --- Data
 - (void)loadHeader {
-    [self getZhengBanListCur_page:1];
+    [self getZhengBanListCur_page:1 isShowLoading:YES];
 }
 - (void)loadFooterMore {
-    [self getZhengBanListCur_page:self.cur_page+1];
+    [self getZhengBanListCur_page:self.cur_page+1 isShowLoading:YES];
 }
-- (void)getZhengBanListCur_page:(NSInteger)cur_page {
+- (void)getZhengBanListCur_page:(NSInteger)cur_page isShowLoading:(BOOL)isShow {
     
     NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
     [parDic setObject:[NSString stringWithFormat:@"%ld", (long)cur_page] forKey:@"pageNum"];
@@ -476,7 +489,6 @@
             [parDic setObject:self.fuMo forKey:@"fumoleixing"];
         }
         
-//        [parDic setObject:self.zhuangTai forKey:@"biaozhun"];
         
         requestUrl = Interface_QiHuo;
         
@@ -484,7 +496,7 @@
     }
     
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:requestUrl andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:requestUrl andCookie:nil showAnimation:isShow success:^(NSDictionary *resultDic, NSString *msg) {
         
         NSArray *dataArr = [resultDic objectForKey:@"result"];
         NSString *count = [resultDic objectForKey:@"count"];
@@ -540,7 +552,7 @@
         [subDataDic setObject:model.arg3 forKey:@"chang"];
         [subDataDic setObject:model.arg2 forKey:@"kuang"];
         [subDataDic setObject:model.arg1 forKey:@"hou"];
-        [subDataDic setObject:@"整板" forKey:@"zhonglei"];
+        [subDataDic setObject:self.pinleiModel?self.pinleiModel.name:@"整板" forKey:@"zhonglei"];
         [subDataDic setObject:@"整只" forKey:@"type"];
         [subDataDic setObject:model.lvxing.name forKey:@"erjimulu"];
         [subDataDic setObject:[NSNumber numberWithFloat:[model.danpianzhengbanjiage floatValue]*model.value].stringValue forKey:@"money"];
@@ -559,7 +571,7 @@
         [self refreshBottomViewInfo];
         [self.selectArray removeAllObjects];
         [self refreshTotalLabel];
-        [self.tableView.mj_header beginRefreshing];
+        [self getZhengBanListCur_page:1 isShowLoading:NO];
     } failure:^(NSString *error, NSInteger code) {
         
     }];

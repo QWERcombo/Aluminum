@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *noteTF;
 @property (weak, nonatomic) IBOutlet UIButton *addressButton;
 
+@property (nonatomic, copy) NSString *totalMoney;
 
 @end
 
@@ -45,7 +46,8 @@
         total += [car.money floatValue];
         shuliang += [car.productNum integerValue];
     }
-    self.moneyLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:[NSNumber numberWithFloat:total].stringValue]];
+    self.totalMoney = [NSNumber numberWithFloat:total].stringValue;
+    self.moneyLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:self.totalMoney]];
     NSString *shuliangStr = [NSString stringWithFormat:@"%ld", (long)shuliang];
     self.shuliangLab.text = [NSString stringWithFormat:@"共 %@ 件", shuliangStr];
 //    self.shuliangLab.attributedText = [UILabel labGetAttributedStringFrom:2 toEnd:shuliangStr.length WithColor:[UIColor colorWithHexString:@"2F75EC"] andFont:nil allFullText:self.shuliangLab.text];
@@ -75,7 +77,8 @@
         [dict setValue:shopcar.productNum forKey:@"amount"];
         [dict setValue:shopcar.zhonglei forKey:@"zhonglei"];
         [dict setValue:shopcar.erjimulu forKey:@"erjimulu"];
-        [dict setValue:shopcar.money forKey:@"money"];
+        [dict setValue:self.totalMoney forKey:@"money"];
+        [dict setValue:shopcar.zhuangtai forKey:@"zhuangtai"];
         [dict setValue:[UserData currentUser].phone forKey:@"phone"];
         if (self.zitiSwitch.isOn) {
             [dict setValue:nil forKey:@"addressId"];
@@ -104,7 +107,6 @@
             [dict setValue:shopcar.width forKey:@"kuang"];
             [dict setValue:shopcar.height forKey:@"hou"];
         }
-
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderSave andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
 //            NSLog(@"buy: +++%@", resultDic);
@@ -132,7 +134,6 @@
             [orderIds appendString:@","];
         }
         [dict setValue:[orderIds substringToIndex:orderIds.length-1] forKey:@"gouwucheIds"];
-//        [dict setValue:self.addressModel.id forKey:@"addressId"];
         [dict setValue:[UserData currentUser].phone forKey:@"phone"];
         if (self.zitiSwitch.isOn) {
             [dict setValue:@"" forKey:@"addressId"];

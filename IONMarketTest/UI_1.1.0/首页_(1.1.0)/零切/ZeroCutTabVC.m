@@ -158,6 +158,20 @@
 
 - (void)placeOrder:(UseType)useType {
     
+    if (!self.erjimulu_id.name.length) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择牌号!" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return;
+    }
+    if (!self.zhuangTai.length) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择状态!" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return;
+    }
+    if (!self.houDu.length) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择厚度!" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return;
+    }
+    
+    
     if (self.lengthTF.text.length && self.widthTF.text.length && self.countTF.text.length) {
         
         NSString *type = @"";
@@ -210,7 +224,7 @@
         
     } else {
         
-        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先输入长、宽、件数!" time:0 aboutType:WHShowViewMode_Text state:NO];
+//        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先输入长、宽、件数!" time:0 aboutType:WHShowViewMode_Text state:NO];
     }
 
 }

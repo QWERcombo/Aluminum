@@ -56,6 +56,7 @@
     
     NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
     [parDic setObject:erjimulu forKey:@"xinghao"];
+    
     switch (self.selectShowType) {
         case SelectShowType_LingQie:
             [parDic setObject:@"零切" forKey:@"zhonglei"];

@@ -481,6 +481,7 @@ DEF_SINGLETON(PublicFuntionTool);
         shopCar.type = type;
         shopCar.erjimulu = erjimulu.name;
         shopCar.money = [NSString stringWithFormat:@"%@", orderMoney];
+        shopCar.zhuangtai = zhuangTai;
         
         buyNowSuccessBlock(shopCar);
         

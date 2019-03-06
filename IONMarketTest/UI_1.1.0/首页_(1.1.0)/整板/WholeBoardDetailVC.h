@@ -17,7 +17,7 @@ typedef void(^SelectedValue)(NSInteger selectNumber);
 @property (nonatomic, strong) WholeBoardModel *wholeModel;
 @property (nonatomic, assign) NSInteger selectCount;
 @property (nonatomic, copy) SelectedValue selectValue;
-
+@property (nonatomic, copy) NSString *zhuangTai;//状态
 @end
 
 NS_ASSUME_NONNULL_END

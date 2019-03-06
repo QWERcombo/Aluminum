@@ -50,6 +50,7 @@
     self.lengthTF.delegate = self;
     self.lengthBtn.hidden = NO;
     _zhengZhi = @"1";
+    
     switch (self.showType) {
         case ShowType_YuanBang:
             self.guigeTF.placeholder = @"请选择直径";
@@ -63,7 +64,6 @@
             self.guigeTF.placeholder = @"请选择规格";
             self.guigeLab.text = @"规格";
             self.zidingyi_right_label.text = @"不可零切";
-            
             break;
         default:
             break;
@@ -253,6 +253,12 @@
 
 - (void)judgePlaceOrder {
     [self.view endEditing:YES];
+    
+    if (!self.zhuangTai.length) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择状态!" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return;
+    }
+    
     if (self.amountTF.text.length && self.guigeTF.text.length && (self.lengthTF.text.length || self.lengthBtn.currentTitle.length)) {
         [self placeOrder:UseType_OrderMoney];
     } else {

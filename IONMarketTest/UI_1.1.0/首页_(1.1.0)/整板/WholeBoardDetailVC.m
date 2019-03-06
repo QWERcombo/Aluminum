@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *shopBtn;
 
 @property (nonatomic, copy) NSDictionary *dataDic;
-@property (nonatomic, assign) NSInteger orderMoney;
+@property (nonatomic, assign) CGFloat orderMoney;
 @property (nonatomic, strong) WholeBoardTableVC *showVC;
 
 @end
@@ -100,10 +100,10 @@
     
     NSString *amount = [NSNumber numberWithFloat:_showVC.stepper.value].stringValue;
     
-    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:_wholeModel.arg3 kuan:_wholeModel.arg2 hou:_wholeModel.arg1 zhuangTai:@"" amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:[[NSNumber alloc] initWithInteger:self.orderMoney].stringValue successBlock:^(NSDictionary *dataDic) {
+    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:_wholeModel.arg3 kuan:_wholeModel.arg2 hou:_wholeModel.arg1 zhuangTai:self.zhuangTai amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:[[NSNumber alloc] initWithFloat:self.orderMoney].stringValue successBlock:^(NSDictionary *dataDic) {
         
         self.dataDic = dataDic;
-        self.orderMoney = [self.dataDic[@"orderMoney"] integerValue];
+        self.orderMoney = [self.dataDic[@"orderMoney"] floatValue];
         [self placeOrder:UseType_AddShopCar];
         
     } buyNowSuccessBlock:^(ShopCar *shopCar) {
@@ -117,7 +117,7 @@
     } addCarSuccessBlock:^{
         
         [self refreshBottomViewInfo];
-        self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithInteger:self.orderMoney]];
+        self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithFloat:self.orderMoney]];
     }];
 }
 

@@ -1702,16 +1702,16 @@
                                                     <rect key="frame" x="0.0" y="225" width="375" height="60"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet_ali" translatesAutoresizingMaskIntoConstraints="NO" id="nqY-Ru-3J8">
-                                                            <rect key="frame" x="15" y="6" width="48" height="48"/>
+                                                            <rect key="frame" x="15" y="18" width="24" height="24"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHv-SC-qMZ">
-                                                            <rect key="frame" x="76" y="19.5" width="52" height="21"/>
+                                                            <rect key="frame" x="52" y="19.5" width="52" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVx-mf-zXU">
-                                                            <rect key="frame" x="316" y="8" width="44" height="44"/>
+                                                            <rect key="frame" x="338" y="19" width="22" height="22"/>
                                                             <state key="normal" image="select_0"/>
                                                             <state key="selected" image="select_1"/>
                                                         </button>
@@ -1741,16 +1741,16 @@
                                                     <rect key="frame" x="0.0" y="285" width="375" height="60"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet_weixin" translatesAutoresizingMaskIntoConstraints="NO" id="9RT-sb-QBE">
-                                                            <rect key="frame" x="15" y="6" width="48" height="48"/>
+                                                            <rect key="frame" x="15" y="18" width="24" height="24"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NH7-LR-yO4">
-                                                            <rect key="frame" x="76" y="19.5" width="35" height="21"/>
+                                                            <rect key="frame" x="52" y="19.5" width="35" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2g-lz-dvd">
-                                                            <rect key="frame" x="316" y="8" width="44" height="44"/>
+                                                            <rect key="frame" x="338" y="19" width="22" height="22"/>
                                                             <state key="normal" image="select_0"/>
                                                             <state key="selected" image="select_1"/>
                                                         </button>
@@ -2859,7 +2859,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="LlJ-B3-iVu">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="LlJ-B3-iVu">
                                         <rect key="frame" x="0.0" y="268" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LlJ-B3-iVu" id="n4s-Rs-Rjk">
@@ -3039,10 +3039,10 @@
         <image name="kuaidi" width="23" height="22"/>
         <image name="login_close" width="24" height="24"/>
         <image name="main_shop" width="38" height="38"/>
-        <image name="select_0" width="44" height="44"/>
-        <image name="select_1" width="44" height="44"/>
-        <image name="wallet_ali" width="48" height="48"/>
-        <image name="wallet_weixin" width="48" height="48"/>
+        <image name="select_0" width="22" height="22"/>
+        <image name="select_1" width="22" height="22"/>
+        <image name="wallet_ali" width="24" height="24"/>
+        <image name="wallet_weixin" width="24" height="24"/>
         <image name="添加" width="164" height="164"/>
         <image name="询价" width="312" height="486"/>
     </resources>
