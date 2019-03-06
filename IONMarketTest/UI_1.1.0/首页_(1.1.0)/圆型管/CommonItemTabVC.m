@@ -126,9 +126,14 @@
         
         [self.view endEditing:YES];
         if (!self.erjimulu_id.id.length) {
-            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择牌号" time:0 aboutType:WHShowViewMode_Text state:NO];
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择牌号!" time:0 aboutType:WHShowViewMode_Text state:NO];
             return;
         }
+        if (!self.zhuangTai.length) {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择状态!" time:0 aboutType:WHShowViewMode_Text state:NO];
+            return;
+        }
+        
         [SelectThickView showSelectThickViewWithSelectShowType:type getInfoType:GetInfoType_GuiGe erjimulu_id:self.erjimulu_id.id parDic:@{} selectBlock:^(NSString * _Nonnull selectIndexString) {
             switch (self.showType) {
                 case ShowType_YuanBang:
