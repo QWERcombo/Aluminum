@@ -395,6 +395,7 @@ DEF_SINGLETON(PublicFuntionTool);
         case UseType_OrderMoney:
             url = Interface_OrderMoney;
             [parDic setObject:erjimulu.id forKey:@"erjimulu"];
+            [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
             break;
         case UseType_AddShopCar:
             url = Interface_SaveToGouwuche;
@@ -409,6 +410,7 @@ DEF_SINGLETON(PublicFuntionTool);
         case UseType_DanJia:
             url = Interface_OrderMoney;
             [parDic setObject:erjimulu.id forKey:@"erjimulu"];
+            [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
             break;
             
         default:

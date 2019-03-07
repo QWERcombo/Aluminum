@@ -53,10 +53,11 @@ typedef NS_ENUM(NSUInteger, GetInfoType) {
 @property (nonatomic, copy) NSString *rightIndex;//选中的右索引
 @property (nonatomic, copy) NSDictionary *parDic;//选整只时选择长度传的参数
 @property (nonatomic, copy) NSString *erjimulu_id;//传入的型号
+@property (nonatomic, copy) NSString *zhuangtai;//传入的状态
 @property (nonatomic, assign) BOOL isRequest;//
 
 
-+ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType getInfoType:(GetInfoType)getInfoType erjimulu_id:(NSString *)erjimulu_id parDic:(NSDictionary *)parDic selectBlock:(SelectThickBlock)selectBlock;
++ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType getInfoType:(GetInfoType)getInfoType erjimulu_id:(NSString *)erjimulu_id zhuangTai:(NSString *)zhuangTai parDic:(NSDictionary *)parDic selectBlock:(SelectThickBlock)selectBlock;
 
 @end
 

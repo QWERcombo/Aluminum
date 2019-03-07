@@ -78,6 +78,7 @@
     if (self.getInfoType == GetInfoType_GuiGe) {
         //获取规格
         request_url = Interface_GetByZhongleiAndXinghao;
+        [parDic setObject:self.zhuangtai forKey:@"zhuangtai"];
     } else {
         //获取长度
         request_url = Inuterface_GetLengthByOthers;
@@ -323,7 +324,7 @@
 }
 
 
-+ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType getInfoType:(GetInfoType)getInfoType erjimulu_id:(NSString *)erjimulu_id parDic:(NSDictionary *)parDic selectBlock:(SelectThickBlock)selectBlock {
++ (void)showSelectThickViewWithSelectShowType:(SelectShowType)selectType getInfoType:(GetInfoType)getInfoType erjimulu_id:(NSString *)erjimulu_id zhuangTai:(NSString *)zhuangTai parDic:(NSDictionary *)parDic selectBlock:(SelectThickBlock)selectBlock {
     
     SelectThickView *selectV = [[SelectThickView alloc] initWithFrame:MY_WINDOW.bounds erjimulu:erjimulu_id];
     selectV.selectBlock = selectBlock;
@@ -331,6 +332,7 @@
     selectV.getInfoType = getInfoType;
     selectV.parDic = parDic;
     selectV.erjimulu_id = erjimulu_id;
+    selectV.zhuangtai = zhuangTai;
     selectV.contentView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIGHT, 320);
     [selectV layoutIfNeeded];
     

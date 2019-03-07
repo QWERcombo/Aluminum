@@ -115,10 +115,10 @@
 //选择厚度
 - (IBAction)selectThin:(UIButton *)sender {
     [self.view endEditing:YES];
-    [SelectThickView showSelectThickViewWithSelectShowType:SelectShowType_LingQie getInfoType:GetInfoType_GuiGe erjimulu_id:self.erjimulu_id.id parDic:@{} selectBlock:^(NSString * _Nonnull selectIndexString) {
-        self.thinTF.text = [NSString stringWithFormat:@"%@", selectIndexString];
-        [self placeOrder:UseType_OrderMoney];
-    }];
+//    [SelectThickView showSelectThickViewWithSelectShowType:SelectShowType_LingQie getInfoType:GetInfoType_GuiGe erjimulu_id:self.erjimulu_id.id parDic:@{} selectBlock:^(NSString * _Nonnull selectIndexString) {
+//        self.thinTF.text = [NSString stringWithFormat:@"%@", selectIndexString];
+//        [self placeOrder:UseType_OrderMoney];
+//    }];
     
 }
 

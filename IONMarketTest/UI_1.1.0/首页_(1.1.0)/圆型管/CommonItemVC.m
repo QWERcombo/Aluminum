@@ -63,7 +63,7 @@
     self.dataSource = [NSMutableArray array];
     self.titleArray = [NSArray arrayWithObjects:@"牌号",@"状态", nil];
     self.totalLabel.adjustsFontSizeToFitWidth = YES;
-    
+//    NSLog(@"%@", [NSString getStringAfterTwo:@"111101.2251"]);
     [self.view addSubview:self.conditionView];
     [self refreshBottomViewInfo];
 }
@@ -155,7 +155,7 @@
         [self.commonTabVC refreshInfoToReset];
     } else if (index == 1) {
         //修改状态
-        [self.commonTabVC placeOrder:UseType_OrderMoney];
+        [self.commonTabVC refreshInfoToReset];
     } else {
     }
     

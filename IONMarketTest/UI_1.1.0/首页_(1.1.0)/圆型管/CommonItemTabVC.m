@@ -49,7 +49,7 @@
     self.amountTF.delegate = self;
     self.lengthTF.delegate = self;
     self.lengthBtn.hidden = NO;
-    _zhengZhi = @"1";
+    _zhengZhi = @"2";//默认零切 整只1.2版本都在整板里
     
     switch (self.showType) {
         case ShowType_YuanBang:
@@ -134,7 +134,7 @@
             return;
         }
         
-        [SelectThickView showSelectThickViewWithSelectShowType:type getInfoType:GetInfoType_GuiGe erjimulu_id:self.erjimulu_id.id parDic:@{} selectBlock:^(NSString * _Nonnull selectIndexString) {
+        [SelectThickView showSelectThickViewWithSelectShowType:type getInfoType:GetInfoType_GuiGe erjimulu_id:self.erjimulu_id.id zhuangTai:self.zhuangTai parDic:@{} selectBlock:^(NSString * _Nonnull selectIndexString) {
             switch (self.showType) {
                 case ShowType_YuanBang:
                     self.guigeTF.text = selectIndexString;
@@ -215,13 +215,18 @@
 - (IBAction)selectLength:(UIButton *)sender {
     [self.view endEditing:YES];
     if (!self.guigeTF.text.length) {
-        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择规格" time:0 aboutType:WHShowViewMode_Text state:NO];
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择规格!" time:0 aboutType:WHShowViewMode_Text state:NO];
+        return;
+    }
+    if (!self.zhuangTai.length) {
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择状态!" time:0 aboutType:WHShowViewMode_Text state:NO];
         return;
     }
     if ([self.zhengZhi integerValue] == 0) {
-        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择类型" time:0 aboutType:WHShowViewMode_Text state:NO];
+        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先选择类型!" time:0 aboutType:WHShowViewMode_Text state:NO];
         return;
     }
+    
     
     SelectShowType type;
     NSDictionary *parDic = nil;
@@ -245,7 +250,7 @@
     }
     
 
-    [SelectThickView showSelectThickViewWithSelectShowType:type getInfoType:GetInfoType_Length erjimulu_id:self.erjimulu_id.id parDic:parDic selectBlock:^(NSString * _Nonnull selectIndexString) {
+    [SelectThickView showSelectThickViewWithSelectShowType:type getInfoType:GetInfoType_Length erjimulu_id:self.erjimulu_id.id zhuangTai:self.zhuangTai parDic:parDic selectBlock:^(NSString * _Nonnull selectIndexString) {
         
         [self.lengthBtn setTitle:selectIndexString forState:UIControlStateNormal];
         self.lengthTF.placeholder = @"";
@@ -400,7 +405,7 @@
 
 
 - (void)refreshInfoToReset {
-    _zhengZhi = @"1";
+    _zhengZhi = @"2";
     _isShowInfoView = NO;
     self.dataDic = nil;
     self.zhengzhiDanJia = @"";
