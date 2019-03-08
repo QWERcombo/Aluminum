@@ -294,7 +294,7 @@
     
     ConditionDisplayCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ConditionDisplayCell" forIndexPath:indexPath];
     
-    [cell setButtonTitle:self.showTitle selectTitle:self.selectArray.count?[self.selectArray objectAtIndex:indexPath.section]: self.selectTitle dataObject:self.dataSource[indexPath.section][indexPath.row]];
+    [cell setButtonTitle:self.showTitle selectTitle:self.selectArray.count?[self.selectArray objectAtIndex:indexPath.section]:self.selectTitle dataObject:self.dataSource[indexPath.section][indexPath.row]];
     
     return cell;
 }
@@ -327,7 +327,7 @@
         }
         
     }
-    
+    [self.collectionView reloadData];
 }
 
 #pragma mark - Layout
