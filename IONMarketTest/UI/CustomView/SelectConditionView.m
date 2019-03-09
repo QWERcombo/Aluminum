@@ -88,6 +88,7 @@
         }
     }
     
+    [sender layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleRight imageTitleSpace:5];
 }
 
 - (void)changeTitle:(NSString *)title index:(NSInteger)index {
@@ -111,6 +112,7 @@
         [button setTitleColor:[UIColor colorWithHexString:@"#595E64"] forState:UIControlStateNormal];
     }
     
+    [button layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleRight imageTitleSpace:5];
 }
 
 - (void)reset {

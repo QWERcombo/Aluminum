@@ -387,11 +387,7 @@
 //抢约
 - (void)qiangYueWithModel:(QiHuoModel *)model {
     
-    NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
-    [parDic setObject:model.id forKey:@"qihuoId"];
-    [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
-    
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_QiHuoOrder andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    [[PublicFuntionTool sharedInstance] isHadLogin:^{
         
         NSString *message = @"";
         if ([model.chang integerValue]>0) {
@@ -404,6 +400,18 @@
         
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
+            NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+            [parDic setObject:model.id forKey:@"qihuoId"];
+            [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
+            
+            [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_QiHuoOrder andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+                
+                [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"已抢约" time:0 aboutType:WHShowViewMode_Text state:YES];
+                
+            } failure:^(NSString *error, NSInteger code) {
+                
+            }];
+            
         }];
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             
@@ -415,8 +423,6 @@
         [self presentViewController:alert animated:YES completion:^{
             
         }];
-        
-    } failure:^(NSString *error, NSInteger code) {
         
     }];
     
@@ -433,7 +439,7 @@
     
     NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
     [parDic setObject:[NSString stringWithFormat:@"%ld", (long)cur_page] forKey:@"pageNum"];
-    [parDic setObject:@"10" forKey:@"pageSize"];
+    [parDic setObject:@"20" forKey:@"pageSize"];
     NSString *requestUrl = @"";
     
     if (self.showTye == WholeBoardShowType_Zhengban) {

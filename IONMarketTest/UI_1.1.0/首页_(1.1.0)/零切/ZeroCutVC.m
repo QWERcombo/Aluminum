@@ -181,6 +181,7 @@
     } else {
         //修改厚度
 //        [self.zeroTabVC placeOrder:UseType_OrderMoney];
+        [self.zeroTabVC refreshInfoToReset];
     }
     
 }

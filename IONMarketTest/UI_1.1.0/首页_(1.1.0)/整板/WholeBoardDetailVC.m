@@ -112,10 +112,18 @@
         shopCar.money = [NSNumber numberWithFloat:[_wholeModel.danpianzhengbanjiage floatValue]*_showVC.stepper.value].stringValue;
         confirm.carArr = @[shopCar];
         confirm.fromtype = FromVCType_Buy;
+        if (self.selectValue) {
+            self.selectValue(0);
+            self.showVC.stepper.value = 0;
+        }
         [self.navigationController pushViewController:confirm animated:YES];
         
     } addCarSuccessBlock:^{
         
+        if (self.selectValue) {
+            self.selectValue(0);
+            self.showVC.stepper.value = 0;
+        }
         [self refreshBottomViewInfo];
         self.totalLabel.text = [NSString stringWithFormat:@"合计:%@", [NSNumber numberWithFloat:self.orderMoney]];
     }];
