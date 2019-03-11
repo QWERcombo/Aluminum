@@ -218,6 +218,14 @@
 #define Interface_Banchengpin       @"banchengpinList"
 //获取期货更多条件
 #define Interface_QiHuoMore         @"getQihuoSearchMore"
+//微信授权成功 判断openid是否存在
+#define Interface_RegisterByWX      @"registerByWX"
+//微信登录，手机号码绑定
+#define Interface_WxBindPhone       @"wxBindPhone"
+//根据OpenId获取用户所有信息
+#define Interface_GetByOpenId       @"user/getByOpenId"
+
+
 
 
 

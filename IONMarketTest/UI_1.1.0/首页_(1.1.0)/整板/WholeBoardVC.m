@@ -440,7 +440,7 @@
     NSString *requestUrl = @"";
     
     if (self.showTye == WholeBoardShowType_Zhengban) {
-        
+        [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
         if (self.pinleiModel) {
             [parDic setObject:self.pinleiModel.name forKey:@"pinlei"];
         }
@@ -456,7 +456,7 @@
         requestUrl = Interface_ZhengbanList;
         
     } else if (self.showTye == WholeBoardShowType_BanChengPin) {
-        
+        [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
         if (self.pinleiModel) {
             [parDic setObject:self.pinleiModel.name forKey:@"pinlei"];
         }
