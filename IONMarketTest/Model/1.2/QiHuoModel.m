@@ -10,4 +10,15 @@
 
 @implementation QiHuoModel
 
+- (NSString *)hou {
+    NSNumber *number = [NSNumber numberWithFloat:[_hou floatValue]];
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setPositiveFormat:@"###0"];
+
+    formatter.maximumFractionDigits = 3;
+    
+    return [formatter stringFromNumber:number];
+}
+
 @end

@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QiHuoModel : BaseModel
 
+@property (nonatomic, copy) NSString *biaomiangongyi;
 @property (nonatomic, copy) NSString *biaozhun;
 @property (nonatomic, copy) NSString *chang;
 @property (nonatomic, copy) NSString *changjia;

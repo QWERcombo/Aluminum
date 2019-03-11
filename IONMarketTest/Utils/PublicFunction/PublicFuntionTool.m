@@ -315,7 +315,7 @@ DEF_SINGLETON(PublicFuntionTool);
             
             NSString *bannerStr = [resultDic objectForKey:[NSString stringWithFormat:@"banner%d", i+1]];
             if (bannerStr.length) {
-                [array addObject:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE,bannerStr]];
+                [array addObject:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE_Service,bannerStr]];
             }
         }
         bannerBlock(array);

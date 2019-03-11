@@ -25,6 +25,7 @@ typedef void(^SelectedBlock)(NSString *value);
 
 @property (weak, nonatomic) IBOutlet UIButton *yueBtn;
 @property (weak, nonatomic) IBOutlet UILabel *xinghaoLab;
+@property (weak, nonatomic) IBOutlet UILabel *zhongleiLabel;
 
 
 @property (nonatomic, copy) SelectedBlock selectBlock;

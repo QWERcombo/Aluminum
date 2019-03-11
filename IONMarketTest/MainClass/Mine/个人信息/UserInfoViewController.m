@@ -30,7 +30,7 @@
     // Do any additional setup after loading the view.
     self.title = @"个人信息";
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    [self.userHeader sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE, [UserData currentUser].headImgUrl]] placeholderImage:IMG(@"head_default")];
+    [self.userHeader sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE_APP, [UserData currentUser].headImgUrl]] placeholderImage:IMG(@"head_default")];
     self.userHeader.contentMode = UIViewContentModeScaleAspectFill;
     self.userHeader.layer.masksToBounds = YES;
     self.userHeader.layer.cornerRadius = 20;

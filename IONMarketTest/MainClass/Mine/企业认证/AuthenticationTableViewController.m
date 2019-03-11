@@ -92,8 +92,8 @@
         [self.dataSource addObject:self.descLab.text];
         
         
-        [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE,self.leftImageUrl]];
-        [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE,self.rightImageUrl]];
+        [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE_APP,self.leftImageUrl]];
+        [self.dataSource addObject:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE_APP,self.rightImageUrl]];
         
     }
     
@@ -209,8 +209,8 @@
                         [self.rightButton sd_setImageWithURL:[NSURL URLWithString:self.authModel.yingyezhizhao] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
                     } else  {
                         
-                        [self.leftButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE,self.authModel.fuzerenshenfenzheng]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
-                        [self.rightButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE,self.authModel.yingyezhizhao]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
+                        [self.leftButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE_APP,self.authModel.fuzerenshenfenzheng]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
+                        [self.rightButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE_APP,self.authModel.yingyezhizhao]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"White_add"]];
                     }
                     
                 }
@@ -442,7 +442,7 @@
     if ([self.authModel.yingyezhizhao hasPrefix:@"http"]) {
         [XLPhotoBrowser showPhotoBrowserWithImages:@[self.authModel.fuzerenshenfenzheng, self.authModel.yingyezhizhao] currentImageIndex:0];
     } else {
-        [XLPhotoBrowser showPhotoBrowserWithImages:@[[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE, self.authModel.fuzerenshenfenzheng], [NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE, self.authModel.yingyezhizhao]] currentImageIndex:0];
+        [XLPhotoBrowser showPhotoBrowserWithImages:@[[NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE_APP, self.authModel.fuzerenshenfenzheng], [NSString stringWithFormat:@"%@%@", BASE_URL_IMAGE_APP, self.authModel.yingyezhizhao]] currentImageIndex:0];
     }
     
 }

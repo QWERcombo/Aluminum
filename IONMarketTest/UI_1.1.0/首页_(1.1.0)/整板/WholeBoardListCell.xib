@@ -67,23 +67,31 @@
                             <constraint firstItem="K9D-Qx-ALh" firstAttribute="top" secondItem="4cn-pd-Yqq" secondAttribute="top" id="vsE-sB-MAN"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAy-V5-Io3">
+                        <rect key="frame" x="16" y="40.5" width="6.5" height="16"/>
+                        <color key="backgroundColor" red="0.1843137255" green="0.45882352939999999" blue="0.92549019610000005" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.1843137255" green="0.45882352939999999" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18*1500*3000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkI-Eq-SWg">
                         <rect key="frame" x="16" y="16" width="125" height="21.5"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAT-F8-f3Z">
-                        <rect key="frame" x="16" y="41.5" width="6.5" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAT-F8-f3Z">
+                        <rect key="frame" x="27.5" y="41.5" width="12.5" height="16"/>
                         <color key="backgroundColor" red="0.1843137255" green="0.45882352939999999" blue="0.92549019610000005" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.1843137255" green="0.45882352939999999" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="厂家：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ds1-l5-CsH">
-                        <rect key="frame" x="32.5" y="40.5" width="43" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.34901960780000002" green="0.36862745099999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ds1-l5-CsH">
+                        <rect key="frame" x="45" y="40.5" width="6.5" height="16"/>
+                        <color key="backgroundColor" red="0.1843137255" green="0.45882352939999999" blue="0.92549019610000005" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.1843137255" green="0.45882352939999999" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥10元/公斤" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKF-XV-Kf0">
@@ -92,7 +100,7 @@
                         <color key="textColor" red="0.90980392156862744" green="0.25098039215686274" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5555元/件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKq-FT-On2">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5555元/件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKq-FT-On2">
                         <rect key="frame" x="247.5" y="40.5" width="58.5" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.55294117649999996" green="0.58431372550000005" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -107,12 +115,13 @@
                 </subviews>
                 <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
+                    <constraint firstItem="MAy-V5-Io3" firstAttribute="leading" secondItem="MkI-Eq-SWg" secondAttribute="leading" id="0MK-ON-8sw"/>
                     <constraint firstItem="shd-Aq-l5A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="66h-jB-NcC"/>
                     <constraint firstAttribute="trailing" secondItem="xKF-XV-Kf0" secondAttribute="trailing" constant="14" id="8FI-Mc-ruG"/>
                     <constraint firstAttribute="trailing" secondItem="wKq-FT-On2" secondAttribute="trailing" constant="14" id="Al9-1S-eak"/>
-                    <constraint firstItem="HAT-F8-f3Z" firstAttribute="leading" secondItem="MkI-Eq-SWg" secondAttribute="leading" id="Mh0-Xh-TaQ"/>
+                    <constraint firstItem="HAT-F8-f3Z" firstAttribute="leading" secondItem="MAy-V5-Io3" secondAttribute="trailing" constant="5" id="EIA-Q1-B8m"/>
                     <constraint firstItem="xKF-XV-Kf0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Mz9-MA-YBF"/>
-                    <constraint firstItem="Ds1-l5-CsH" firstAttribute="leading" secondItem="HAT-F8-f3Z" secondAttribute="trailing" constant="10" id="QsT-YZ-FOB"/>
+                    <constraint firstItem="Ds1-l5-CsH" firstAttribute="leading" secondItem="HAT-F8-f3Z" secondAttribute="trailing" constant="5" id="QsT-YZ-FOB"/>
                     <constraint firstAttribute="bottom" secondItem="shd-Aq-l5A" secondAttribute="bottom" constant="2" id="VDC-7q-kKa"/>
                     <constraint firstItem="Ds1-l5-CsH" firstAttribute="top" secondItem="MkI-Eq-SWg" secondAttribute="bottom" constant="3" id="W8I-A0-blA"/>
                     <constraint firstItem="qiJ-gQ-9k7" firstAttribute="firstBaseline" secondItem="MkI-Eq-SWg" secondAttribute="firstBaseline" id="aZv-yf-ctp"/>
@@ -124,6 +133,7 @@
                     <constraint firstItem="MkI-Eq-SWg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ng9-HF-Drw"/>
                     <constraint firstItem="wKq-FT-On2" firstAttribute="top" secondItem="Ds1-l5-CsH" secondAttribute="top" id="o2u-Vz-S3E"/>
                     <constraint firstItem="shd-Aq-l5A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="oaP-aF-oOp"/>
+                    <constraint firstItem="MAy-V5-Io3" firstAttribute="centerY" secondItem="Ds1-l5-CsH" secondAttribute="centerY" id="y8p-HE-wYw"/>
                     <constraint firstItem="HAT-F8-f3Z" firstAttribute="top" secondItem="qiJ-gQ-9k7" secondAttribute="bottom" constant="5" id="ygx-Ue-l2F"/>
                 </constraints>
             </tableViewCellContentView>
@@ -140,6 +150,7 @@
                 <outlet property="stepper" destination="4cn-pd-Yqq" id="D4S-08-xOl"/>
                 <outlet property="xinghaoLab" destination="HAT-F8-f3Z" id="yey-SH-Kh8"/>
                 <outlet property="yueBtn" destination="xQu-Ra-YgG" id="DXx-hW-B1Y"/>
+                <outlet property="zhongleiLabel" destination="MAy-V5-Io3" id="lDa-ZD-BYw"/>
             </connections>
             <point key="canvasLocation" x="40" y="46.776611694152926"/>
         </tableViewCell>

@@ -28,15 +28,82 @@
 
 + (instancetype)initCell:(UITableView *)tableView cellName:(NSString *)cellName type:(NSString *)type dataObject:(id)dataObject {
     
-    //type  1普通  2约包
+    //type  1整板 2半成品 3约包
     WholeBoardListCell *cell = [super initCell:tableView cellName:cellName dataObject:dataObject];
     
-    if ([type isEqualToString:@"1"]) {
+    if ([type isEqualToString:@"3"]) {
         
+        QiHuoModel *dataModel = (QiHuoModel *)dataObject;
+        cell.changjiaLabel.hidden = YES;
+        
+        if ([dataModel.chang integerValue] > 0) {
+            cell.guigeLabel.text = [NSString stringWithFormat:@"%@*%@*%@", dataModel.hou, dataModel.kuang, dataModel.chang];
+        } else {
+            cell.guigeLabel.text = [NSString stringWithFormat:@"%@*%@", dataModel.hou, dataModel.kuang];
+        }
+        cell.kucunLabel.text = [NSString stringWithFormat:@"(%@张)", [NSString getStringAfterTwo:dataModel.zhangshu]];
+        cell.changjiaLabel.font = [UIFont systemFontOfSize:13];
+        cell.changjiaLabel.backgroundColor = [[UIColor mianColor:2] colorWithAlphaComponent:0.1];
+        cell.changjiaLabel.textColor = [UIColor mianColor:2];
+        if (dataModel.changjia.length) {
+            cell.xinghaoLab.text = [NSString stringWithFormat:@"  %@  ", dataModel.changjia];
+        } else {
+            cell.xinghaoLab.text = @"";
+        }
+        cell.danjiaLabel.font = [UIFont systemFontOfSize:14];
+        cell.danjiaLabel.textColor = [UIColor colorWithHexString:@"#595E64"];
+        cell.danjiaLabel.text = [NSString stringWithFormat:@"净重:%@kg",dataModel.zhongliang];
+        
+        
+        NSMutableArray *array = [NSMutableArray array];
+        
+        if (dataModel.biaozhun.length) {
+            [array addObject:dataModel.biaozhun];
+        }
+        if (dataModel.fumoleixing.length) {
+            [array addObject:dataModel.fumoleixing];
+        }
+        if (dataModel.biaomiangongyi.length) {
+            [array addObject:dataModel.biaomiangongyi];
+        }
+        
+        CGFloat totalMargin = 0;
+        for (NSInteger i=0; i<array.count; i++) {
+            
+            CGSize size = [[array objectAtIndex:i] boundingRectWithSize:CGSizeMake(0, 17) font:[UIFont systemFontOfSize:12] lineSpacing:0];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16+totalMargin+(5*i), cell.height-27, size.width+12, 17)];
+            label.text = [array objectAtIndex:i];
+            label.font = [UIFont systemFontOfSize:12];
+            label.textColor = [UIColor colorWithHexString:@"#595E64"];
+            label.backgroundColor = [UIColor colorWithHexString:@"#EDEDED"];
+            label.textAlignment = NSTextAlignmentCenter;
+            
+            totalMargin += (size.width+12);
+            [cell.contentView addSubview:label];
+        }
+        
+        cell.zhongleiLabel.text = [NSString stringWithFormat:@"  %@-%@  ",dataModel.hejinpaihao, dataModel.chanpinzhuangtai];
+        cell.yueBtn.hidden = NO;
+        cell.addBtn.hidden = YES;
+        cell.stepper.hidden = YES;
+        cell.priceLabel.hidden = YES;
+        
+    } else {
         WholeBoardModel *dataModel = (WholeBoardModel *)dataObject;
         
         cell.guigeLabel.text = dataModel.guige;
-        cell.changjiaLabel.text = [NSString stringWithFormat:@"厂家: %@", dataModel.canzhaozhishu];
+        if ([type isEqualToString:@"1"]) {
+            //整板
+            cell.zhongleiLabel.text = [NSString stringWithFormat:@"  整板  "];
+            cell.xinghaoLab.text = [NSString stringWithFormat:@"  %@-%@  ",dataModel.xinghao,dataModel.zhuangtai];
+            cell.changjiaLabel.text = [NSString stringWithFormat:@"  %@  ", dataModel.canzhaozhishu];
+        } else {
+            //半成品
+            cell.zhongleiLabel.text = [NSString stringWithFormat:@"  %@-%@  ",dataModel.xinghao, dataModel.zhuangtai];
+            cell.xinghaoLab.text = [NSString stringWithFormat:@"  %@  ", dataModel.canzhaozhishu];
+            cell.changjiaLabel.hidden = YES;
+        }
+        
         cell.priceLabel.text = [NSString stringWithFormat:@"%@元/件", [NSString getStringAfterTwo:dataModel.danpianzhengbanjiage]];
         cell.stepper.maxValue = [dataModel.kucun integerValue];
         cell.kucunLabel.text = [NSString stringWithFormat:@"(%@件)", dataModel.kucun];
@@ -94,66 +161,9 @@
         }
         
         
-        cell.xinghaoLab.text = [NSString stringWithFormat:@"  %@  ",dataModel.xinghao];
         cell.yueBtn.hidden = YES;
         cell.addBtn.hidden = NO;
         cell.stepper.hidden = NO;
-        cell.priceLabel.hidden = NO;
-        
-    } else {
-        
-        QiHuoModel *dataModel = (QiHuoModel *)dataObject;
-        
-        if ([dataModel.chang integerValue] > 0) {
-            cell.guigeLabel.text = [NSString stringWithFormat:@"%@*%@*%@", dataModel.hou, dataModel.kuang, dataModel.chang];
-        } else {
-            cell.guigeLabel.text = [NSString stringWithFormat:@"%@*%@", dataModel.hou, dataModel.kuang];
-        }
-        cell.kucunLabel.text = [NSString stringWithFormat:@"(%@张)", [NSString getStringAfterTwo:dataModel.zhangshu]];
-        cell.changjiaLabel.font = [UIFont systemFontOfSize:13];
-        cell.changjiaLabel.backgroundColor = [[UIColor mianColor:2] colorWithAlphaComponent:0.1];
-        cell.changjiaLabel.textColor = [UIColor mianColor:2];
-        if (dataModel.changjia.length) {
-            cell.changjiaLabel.text = [NSString stringWithFormat:@"  %@  ", dataModel.changjia];
-        } else {
-            cell.changjiaLabel.text = @"";
-        }
-        cell.danjiaLabel.font = [UIFont systemFontOfSize:14];
-        cell.danjiaLabel.textColor = [UIColor colorWithHexString:@"#595E64"];
-        cell.danjiaLabel.text = [NSString stringWithFormat:@"净重:%@kg",dataModel.zhongliang];
-        
-        
-        NSMutableArray *array = [NSMutableArray array];
-        
-        if (dataModel.shifoupaoguang.length) {
-            [array addObject:dataModel.shifoupaoguang];
-        }
-        if (dataModel.biaozhun.length) {
-            [array addObject:dataModel.biaozhun];
-        }
-        if (dataModel.fumoleixing.length) {
-            [array addObject:dataModel.fumoleixing];
-        }
-        
-        CGFloat totalMargin = 0;
-        for (NSInteger i=0; i<array.count; i++) {
-            
-            CGSize size = [[array objectAtIndex:i] boundingRectWithSize:CGSizeMake(0, 17) font:[UIFont systemFontOfSize:12] lineSpacing:0];
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16+totalMargin+(5*i), cell.height-27, size.width+12, 17)];
-            label.text = [array objectAtIndex:i];
-            label.font = [UIFont systemFontOfSize:12];
-            label.textColor = [UIColor colorWithHexString:@"#595E64"];
-            label.backgroundColor = [UIColor colorWithHexString:@"#EDEDED"];
-            label.textAlignment = NSTextAlignmentCenter;
-            
-            totalMargin += (size.width+12);
-            [cell.contentView addSubview:label];
-        }
-        
-        cell.xinghaoLab.text = [NSString stringWithFormat:@"  %@-%@  ",dataModel.hejinpaihao, dataModel.chanpinzhuangtai];
-        cell.yueBtn.hidden = NO;
-        cell.addBtn.hidden = YES;
-        cell.stepper.hidden = YES;
         cell.priceLabel.hidden = YES;
         
     }    

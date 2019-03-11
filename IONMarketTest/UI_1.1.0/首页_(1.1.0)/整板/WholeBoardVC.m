@@ -120,7 +120,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    WholeBoardListCell *cell = [WholeBoardListCell initCell:tableView cellName:@"WholeBoardListCell" type:self.showTye == WholeBoardShowType_YueBao ? @"2" : @"1" dataObject:[self.dataSource objectAtIndex:indexPath.row]];
+    WholeBoardListCell *cell = [WholeBoardListCell initCell:tableView cellName:@"WholeBoardListCell" type:[NSString stringWithFormat:@"%ld", self.showTye+1] dataObject:[self.dataSource objectAtIndex:indexPath.row]];
     
     if (self.showTye != WholeBoardShowType_YueBao) {
         
@@ -169,11 +169,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (self.showTye == WholeBoardShowType_YueBao) {
-        
-        
-        
-    } else {
+    if (self.showTye == WholeBoardShowType_Zhengban) {
         
         WholeBoardDetailVC *detail = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardDetailVC"];
         
@@ -197,6 +193,7 @@
         TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:detail];
         [self presentViewController:nav animated:YES completion:^{
         }];
+        
     }
     
 }
