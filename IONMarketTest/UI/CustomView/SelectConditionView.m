@@ -141,6 +141,7 @@
                 [button setTitle:[self.titleArray objectAtIndex:button.tag-100] forState:UIControlStateNormal];
                 [button setTitleColor:[UIColor colorWithHexString:@"#595E64"] forState:UIControlStateNormal];
                 [button setImage:IMG(@"show_down") forState:UIControlStateNormal];
+                [button layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleRight imageTitleSpace:5];
             }
         }
     }

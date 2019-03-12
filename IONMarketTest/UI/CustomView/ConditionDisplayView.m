@@ -14,7 +14,7 @@
 @implementation ConditionDisplayView
 
 
-- (instancetype)initWithFrame:(CGRect)frame parameter:(NSString *)parameter selectTitle:(NSString *)selectTitle
+- (instancetype)initWithFrame:(CGRect)frame parameter:(NSString *)parameter normalTitle:(NSString *)title selectTitle:(NSString *)selectTitle
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -27,7 +27,8 @@
         self.moreTitleArr = [NSMutableArray array];
         self.selectArray = [NSMutableArray array];
         
-        self.showTitle = parameter;
+        self.showTitle = title;
+        self.parameter = parameter;
         self.selectTitle = selectTitle;
         
         self.frame = frame;
@@ -35,7 +36,7 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeTap:)];
         tap.delegate = self;
         [self addGestureRecognizer:tap];
-        [self getBaseDataWithTitle:parameter];
+        [self getBaseDataWithTitle:title type:parameter];
         
     }
     return self;
@@ -50,10 +51,10 @@
     
 }
 
-- (void)getBaseDataWithTitle:(NSString *)title {
+- (void)getBaseDataWithTitle:(NSString *)title type:(NSString *)type {
     
     [self.dataSource removeAllObjects];
-    
+    //type  1整板  2零切
     if ([title isEqualToString:@"品类"]) {
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_PinLei andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
@@ -61,10 +62,9 @@
             NSArray *listArray = resultDic[@"list"];
             NSMutableArray *array = [NSMutableArray array];
             
-            for (NSDictionary *dic in listArray) {
+            for (NSString *string in listArray) {
                 
-                PinLeiModel *model = [[PinLeiModel alloc] initWithDictionary:dic error:nil];
-                [array addObject:model];
+                [array addObject:string];
             }
             [self.dataSource addObject:array];
             
@@ -77,16 +77,23 @@
         
     } else if ([title isEqualToString:@"牌号"]) {
         
-        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_CateList andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:[type intValue]==1?Interface_CateList:Interface_LQPaihao andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSArray *listArray = resultDic[@"list"];
             NSMutableArray *array = [NSMutableArray array];
             
-            for (NSDictionary *dic in listArray) {
-                
-                MainItemTypeModel *model = [[MainItemTypeModel alloc] initWithDictionary:dic error:nil];
-                [array addObject:model];
+            if ([type intValue] == 1) {
+                for (NSString *dic in listArray) {
+
+                    [array addObject:dic];
+                }
+            } else {
+                for (NSDictionary *dic in listArray) {
+                    MainItemTypeModel *model = [[MainItemTypeModel alloc] initWithDictionary:dic error:nil];
+                    [array addObject:model];
+                }
             }
+            
             [self.dataSource addObject:array];
             
             [self.collectionView reloadData];
@@ -98,7 +105,7 @@
         
     } else if ([title isEqualToString:@"状态"]) {
         
-        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_ZhuangTai andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:[type intValue]==1?Interface_ZhuangTai:Interface_LQZhuangtai andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSArray *listArray = resultDic[@"list"];
             NSMutableArray *array = [NSMutableArray array];
@@ -118,7 +125,7 @@
         
     } else if ([title isEqualToString:@"厚度"]) {
         
-        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_HouDu andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:[type intValue]==1?Interface_HouDu:Interface_LQHoudu andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSArray *listArray = resultDic[@"list"];
             NSMutableArray *array = [NSMutableArray array];
@@ -238,7 +245,7 @@
     
     UIViewController *rootVC = [UIViewController currentViewController];
     
-    ConditionDisplayView *displayV = [[ConditionDisplayView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIGHT, rootVC.view.bounds.size.height-40) parameter:title selectTitle:selectTitle];
+    ConditionDisplayView *displayV = [[ConditionDisplayView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIGHT, rootVC.view.bounds.size.height-40) parameter:parameter normalTitle:title selectTitle:selectTitle];
     displayV.selectedBlock = selectedBlock;
 
     if ([title isEqualToString:@"更多"]) {

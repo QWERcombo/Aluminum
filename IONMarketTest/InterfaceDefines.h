@@ -224,6 +224,13 @@
 #define Interface_WxBindPhone       @"wxBindPhone"
 //根据OpenId获取用户所有信息
 #define Interface_GetByOpenId       @"user/getByOpenId"
+//请选择零切牌号
+#define Interface_LQPaihao          @"lingqiepaihaoList"
+//零切状态
+#define Interface_LQZhuangtai       @"lingqiezhuangtaiList"
+//零切厚度
+#define Interface_LQHoudu           @"lingqiehouduList"
+
 
 
 
