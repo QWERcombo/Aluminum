@@ -38,7 +38,7 @@
 
 - (void)configurateInfo {
     
-    self.stepper.maxValue = [_wholeModel.kucun integerValue]>10?10:[_wholeModel.kucun integerValue];
+    self.stepper.maxValue = [_wholeModel.kucun integerValue];
     self.stepper.value = _wholeModel.value;
     [self.show_img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BASE_URL_IMAGE_Service,_wholeModel.picture]] placeholderImage:[UIImage imageNamed:@"temp_0"]];
     self.show_img.layer.cornerRadius = 5;

@@ -44,12 +44,20 @@
     NSString *showName = @"";
     if ([title isEqualToString:@"品类"]) {
         
-        PinLeiModel *model = (PinLeiModel *)dataObject;
-        showName = model.name;
+//        PinLeiModel *model = (PinLeiModel *)dataObject;
+//        showName = model.name;
+        NSString *string = (NSString *)dataObject;
+        showName = string;
     } else if ([title isEqualToString:@"牌号"]) {
         
-        MainItemTypeModel *model = (MainItemTypeModel *)dataObject;
-        showName = model.name;
+        if ([dataObject isKindOfClass:[NSString class]]) {
+            NSString *string = (NSString *)dataObject;
+            showName = string;
+        } else {
+            MainItemTypeModel *model = (MainItemTypeModel *)dataObject;
+            showName = model.name;
+        }
+        
     } else if ([title isEqualToString:@"状态"]) {
         
         NSString *string = (NSString *)dataObject;

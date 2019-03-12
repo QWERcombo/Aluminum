@@ -41,8 +41,10 @@
 @property (nonatomic, assign) NSInteger mainIndex;
 @property (nonatomic, assign) NSInteger subIndex;
 
-@property (nonatomic, strong) PinLeiModel *pinleiModel;//品类
-@property (nonatomic, strong) MainItemTypeModel *cateModel;//牌号
+//@property (nonatomic, strong) PinLeiModel *pinleiModel;//品类
+//@property (nonatomic, strong) MainItemTypeModel *cateModel;//牌号
+@property (nonatomic, copy) NSString *pinLei;//品类
+@property (nonatomic, copy) NSString *paiHao;//牌号
 @property (nonatomic, copy) NSString *houDu;//厚度
 @property (nonatomic, copy) NSString *zhuangTai;//状态
 
@@ -210,7 +212,7 @@
         //选中
         self.mainIndex = index;
         
-        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"" selectTitle:self.moreTitle.length?self.moreTitle:title selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
+        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"1" selectTitle:self.moreTitle.length?self.moreTitle:title selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
 
             NSString *showName = @"";
 
@@ -220,14 +222,14 @@
             
             if ([dataObject isKindOfClass:[PinLeiModel class]]) {
                 
-                PinLeiModel *model = (PinLeiModel *)dataObject;
-                self.pinleiModel = model;
-                showName = model.name;
+//                PinLeiModel *model = (PinLeiModel *)dataObject;
+//                self.pinleiModel = model;
+//                showName = model.name;
             } else if ([dataObject isKindOfClass:[MainItemTypeModel class]]) {
                 
-                MainItemTypeModel *model = (MainItemTypeModel *)dataObject;
-                self.cateModel = model;
-                showName = model.name;
+//                MainItemTypeModel *model = (MainItemTypeModel *)dataObject;
+//                self.cateModel = model;
+//                showName = model.name;
             } else if ([dataObject isKindOfClass:[NSString class]]) {
                 
                 NSString *number = (NSString *)dataObject;
@@ -243,16 +245,16 @@
                     switch (self.mainIndex) {
                         case 0:
                             if (self.showTye == WholeBoardShowType_YueBao) {
-                                self.cateModel = nil;
+                                self.paiHao = @"";
                             } else {
-                                self.pinleiModel = nil;
+                                self.pinLei = @"";
                             }
                             break;
                         case 1:
                             if (self.showTye == WholeBoardShowType_YueBao) {
                                 self.zhuangTai = @"";
                             } else {
-                                self.cateModel = nil;
+                                self.paiHao = @"";
                             }
                             break;
                         case 2:
@@ -296,8 +298,15 @@
                         self.changJia = infoArr[1];
                         self.fuMo = infoArr[2];
                         
-                    } else {
+                    } else if ([[self.titleArray objectAtIndex:self.mainIndex] isEqualToString:@"品类"]) {
                         
+                        self.pinLei = number;
+                        
+                    } else if ([[self.titleArray objectAtIndex:self.mainIndex] isEqualToString:@"牌号"]) {
+                        
+                        self.paiHao = number;
+                        
+                    } else {
                     }
                     
                 }
@@ -352,7 +361,7 @@
             car.type = @"整只";
             car.erjimulu = model.lvxing.name;
             car.money = [NSNumber numberWithFloat:[model.danpianzhengbanjiage floatValue]*model.value].stringValue;
-            car.zhonglei = self.pinleiModel?self.pinleiModel.name:@"整板";
+            car.zhonglei = self.pinLei.length?self.pinLei:@"整板";
             car.zhuangtai = self.zhuangTai.length?self.zhuangTai:DEFAULT_ZHUANGTAI;
             
             car.length = model.arg3;
@@ -440,12 +449,12 @@
     NSString *requestUrl = @"";
     
     if (self.showTye == WholeBoardShowType_Zhengban) {
-        
-        if (self.pinleiModel) {
-            [parDic setObject:self.pinleiModel.name forKey:@"pinlei"];
+        [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
+        if (self.pinLei.length) {
+            [parDic setObject:self.pinLei forKey:@"pinlei"];
         }
-        if (self.cateModel) {
-            [parDic setObject:self.cateModel.name forKey:@"paihao"];
+        if (self.paiHao.length) {
+            [parDic setObject:self.paiHao forKey:@"paihao"];
         }
         if (self.zhuangTai.length) {
             [parDic setObject:self.zhuangTai forKey:@"zhuangtai"];
@@ -456,12 +465,12 @@
         requestUrl = Interface_ZhengbanList;
         
     } else if (self.showTye == WholeBoardShowType_BanChengPin) {
-        
-        if (self.pinleiModel) {
-            [parDic setObject:self.pinleiModel.name forKey:@"pinlei"];
+        [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
+        if (self.pinLei.length) {
+            [parDic setObject:self.pinLei forKey:@"pinlei"];
         }
-        if (self.cateModel) {
-            [parDic setObject:self.cateModel.name forKey:@"paihao"];
+        if (self.paiHao.length) {
+            [parDic setObject:self.paiHao forKey:@"paihao"];
         }
         if (self.zhuangTai.length) {
             [parDic setObject:self.zhuangTai forKey:@"zhuangtai"];
@@ -473,8 +482,8 @@
         
     } else if (self.showTye == WholeBoardShowType_YueBao) {
         
-        if (self.cateModel) {
-            [parDic setObject:self.cateModel.name forKey:@"hejinpaihao"];
+        if (self.paiHao) {
+            [parDic setObject:self.paiHao forKey:@"hejinpaihao"];
         }
         if (self.zhuangTai.length) {
             [parDic setObject:self.zhuangTai forKey:@"chanpinzhuangtai"];
@@ -555,7 +564,7 @@
         [subDataDic setObject:model.arg3 forKey:@"chang"];
         [subDataDic setObject:model.arg2 forKey:@"kuang"];
         [subDataDic setObject:model.arg1 forKey:@"hou"];
-        [subDataDic setObject:self.pinleiModel?self.pinleiModel.name:@"整板" forKey:@"zhonglei"];
+        [subDataDic setObject:self.pinLei.length?self.pinLei:@"整板" forKey:@"zhonglei"];
         [subDataDic setObject:@"整只" forKey:@"type"];
         [subDataDic setObject:model.lvxing.name forKey:@"erjimulu"];
         [subDataDic setObject:[NSNumber numberWithFloat:[model.danpianzhengbanjiage floatValue]*model.value].stringValue forKey:@"money"];

@@ -218,6 +218,15 @@
 #define Interface_Banchengpin       @"banchengpinList"
 //获取期货更多条件
 #define Interface_QiHuoMore         @"getQihuoSearchMore"
+//请选择零切牌号
+#define Interface_LQPaihao          @"lingqiepaihaoList"
+//零切状态
+#define Interface_LQZhuangtai       @"lingqiezhuangtaiList"
+//零切厚度
+#define Interface_LQHoudu           @"lingqiehouduList"
+
+
+
 
 
 
