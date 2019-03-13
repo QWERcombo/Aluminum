@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *phone_img;
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *showLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *closeBtn;
 
 @end
 
@@ -25,6 +26,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UILabel *hint = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.psdTF.frame)-50, 13, 50, 18)];
+    hint.text = @"非必填";
+    hint.textColor = [UIColor colorWithHexString:@"#595E64"];
+    hint.font = [UIFont systemFontOfSize:15];
+    
     switch (_changeType) {
         case ChangeType_None:
             self.title = @"设置支付密码";
@@ -38,7 +45,17 @@
             self.title = @"修改登录密码";
             [self.doneBtn setTitle:@"提交" forState:UIControlStateNormal];
             self.psdTF.placeholder = @"请输入登陆密码";
+            self.psdTF.keyboardType = UIKeyboardTypeAlphabet;
             self.showLabel.text = @"*登录密码8-16个数字和字母组成";
+            break;
+        case ChangeType_WxBind:
+            self.title = @"关联手机号";
+            [self.doneBtn setTitle:@"关联手机号" forState:UIControlStateNormal];
+            self.psdTF.placeholder = @"专属客服手机号";
+            self.showLabel.hidden = YES;
+            self.psd_img.image = [UIImage imageNamed:@"login_account_0"];
+            self.navigationItem.rightBarButtonItem = nil;
+            [self.psdTF addSubview:hint];
             break;
         default:
             break;
@@ -69,6 +86,9 @@
             break;
         case ChangeType_LogPsd:
             [self uploadDataWithType:ChangeType_LogPsd];
+            break;
+        case ChangeType_WxBind:
+            [self uploadDataWithType:ChangeType_WxBind];
             break;
         default:
             break;
@@ -123,13 +143,32 @@
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_setPayPassword andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             //NSLog(@"%@", resultDic);
             [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"修改成功" time:0 aboutType:WHShowViewMode_Text state:YES];
-            [[UserData currentUser] giveData:@{@"zhifumima":@"123456"}];
+            [[UserData currentUser] giveData:@{@"zhifumima":self.psdTF.text}];
             [self dismissViewControllerAnimated:YES completion:nil];
         } failure:^(NSString *error, NSInteger code) {
             
         }];
-    } else {
+    } else if (type == ChangeType_WxBind) {
         
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:self.phoneTF.text forKey:@"phone"];
+        [dict setValue:self.codeTF.text forKey:@"number"];
+        if (self.psdTF.text.length) {
+            [dict setValue:self.psdTF.text forKey:@"promotePhone"];
+        }
+        [dict setValue:self.openId forKey:@"openId"];
+        [dict setValue:self.wxName forKey:@"wxName"];
+        [dict setValue:self.headImgUrl forKey:@"headImgUrl"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WxBindPhone andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+            NSLog(@"%@", resultDic);
+//            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"修改成功" time:0 aboutType:WHShowViewMode_Text state:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
+        
+    } else {
     }
 }
 
@@ -196,16 +235,32 @@
     if (textField == self.psdTF) {
         
         [inputString_psd replaceCharactersInRange:range withString:string];
-        self.psd_img.image = inputString_psd.length?[UIImage imageNamed:@"login_psd"]:[UIImage imageNamed:@"login_psd_0"];
+        if (self.changeType == ChangeType_WxBind) {
+            self.psd_img.image = inputString_psd.length?[UIImage imageNamed:@"login_account"]:[UIImage imageNamed:@"login_account_0"];
+        } else {
+            self.psd_img.image = inputString_psd.length?[UIImage imageNamed:@"login_psd"]:[UIImage imageNamed:@"login_psd_0"];
+        }
     }
     
     
-    if (inputString_phone.length && inputString_code.length && inputString_psd.length) {
-        [self.doneBtn setEnabled:YES];
-        self.doneBtn.backgroundColor = [UIColor mianColor:2];
+    if (self.changeType == ChangeType_WxBind) {
+        
+        if (inputString_phone.length && inputString_code.length) {
+            [self.doneBtn setEnabled:YES];
+            self.doneBtn.backgroundColor = [UIColor mianColor:2];
+        } else {
+            [self.doneBtn setEnabled:NO];
+            self.doneBtn.backgroundColor = [[UIColor mianColor:2] colorWithAlphaComponent:0.5];
+        }
     } else {
-        [self.doneBtn setEnabled:NO];
-        self.doneBtn.backgroundColor = [[UIColor mianColor:2] colorWithAlphaComponent:0.5];
+        
+        if (inputString_phone.length && inputString_code.length && inputString_psd.length) {
+            [self.doneBtn setEnabled:YES];
+            self.doneBtn.backgroundColor = [UIColor mianColor:2];
+        } else {
+            [self.doneBtn setEnabled:NO];
+            self.doneBtn.backgroundColor = [[UIColor mianColor:2] colorWithAlphaComponent:0.5];
+        }
     }
     
     return YES;

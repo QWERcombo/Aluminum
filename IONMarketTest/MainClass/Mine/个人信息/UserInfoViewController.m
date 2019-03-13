@@ -80,10 +80,17 @@
             setting.updateMode = UpdateMode_role;
             [self.navigationController pushViewController:setting animated:YES];
         }
-//        if (indexPath.row == 7 && [_weixinBind.text isEqualToString:@"未绑定"]) {
-//            //微信绑定
-//            [self bindWeiXin];
-//        }
+        if (indexPath.row == 7) {
+            
+            if ([_weixinBind.text isEqualToString:@"未绑定"]) {
+                //微信绑定
+                [self bindWeiXin:NO];
+            } else {
+                //解除绑定
+                [self bindWeiXin:YES];
+            }
+            
+        }
     }
     
     
@@ -122,31 +129,48 @@
     
 }
 
-- (void)bindWeiXin {
+- (void)bindWeiXin:(BOOL)isBind {
     
-    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
-        if (error) {
+    //0绑定  1解绑
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:isBind?@"要解除与微信账号的绑定吗?":@"是否确定绑定微信?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *done = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
             
-            
-        } else {
-            UMSocialUserInfoResponse *resp = result;
-            // 授权信息
-            NSLog(@"Wechat uid: %@", resp.uid);
-            NSLog(@"Wechat openid: %@", resp.openid);
-            NSLog(@"Wechat unionid: %@", resp.unionId);
-            NSLog(@"Wechat accessToken: %@", resp.accessToken);
-            NSLog(@"Wechat refreshToken: %@", resp.refreshToken);
-            NSLog(@"Wechat expiration: %@", resp.expiration);
-            // 用户信息
-            NSLog(@"Wechat name: %@", resp.name);
-            NSLog(@"Wechat iconurl: %@", resp.iconurl);
-            NSLog(@"Wechat gender: %@", resp.unionGender);
-            // 第三方平台SDK源数据
-            NSLog(@"Wechat originalResponse: %@", resp.originalResponse);
-            self.weixinBind.text = @"已绑定";
-            self.weixinBind.textColor = [UIColor mianColor:2];
-        }
+            if (error) {
+                
+            } else {
+                UMSocialUserInfoResponse *resp = result;
+                // 授权信息
+                NSLog(@"Wechat uid: %@", resp.uid);
+                NSLog(@"Wechat openid: %@", resp.openid);
+                NSLog(@"Wechat unionid: %@", resp.unionId);
+                NSLog(@"Wechat accessToken: %@", resp.accessToken);
+                NSLog(@"Wechat refreshToken: %@", resp.refreshToken);
+                NSLog(@"Wechat expiration: %@", resp.expiration);
+                // 用户信息
+                NSLog(@"Wechat name: %@", resp.name);
+                NSLog(@"Wechat iconurl: %@", resp.iconurl);
+                NSLog(@"Wechat gender: %@", resp.unionGender);
+                // 第三方平台SDK源数据
+                NSLog(@"Wechat originalResponse: %@", resp.originalResponse);
+                
+                
+                
+                self.weixinBind.text = @"已绑定";
+                self.weixinBind.textColor = [UIColor mianColor:2];
+            }
+        }];
+        
     }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alert addAction:done];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+    
 }
 
 

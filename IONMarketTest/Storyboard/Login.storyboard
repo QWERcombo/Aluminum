@@ -38,11 +38,11 @@
                         <sections>
                             <tableViewSection id="Rvt-dd-iGD">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="532" id="BYI-pg-RIF">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="532"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="599" id="BYI-pg-RIF">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BYI-pg-RIF" id="5K2-7I-xoU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="532"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎使用乐切" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsJ-Oe-r7i">
@@ -244,7 +244,7 @@
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPj-8h-jAH">
-                                                    <rect key="frame" x="77.5" y="489" width="220.5" height="28"/>
+                                                    <rect key="frame" x="77.5" y="556" width="220.5" height="28"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录即阅读并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oC6-by-eEV">
                                                             <rect key="frame" x="0.0" y="0.0" width="106.5" height="28"/>
@@ -272,11 +272,42 @@
                                                         <constraint firstItem="k3r-jI-YXj" firstAttribute="leading" secondItem="oC6-by-eEV" secondAttribute="trailing" id="yhC-FB-YrY"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKu-f9-PgS">
+                                                    <rect key="frame" x="162.5" y="490" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="Tnp-b8-X0P"/>
+                                                        <constraint firstAttribute="height" constant="50" id="j8W-Yh-vkK"/>
+                                                    </constraints>
+                                                    <state key="normal" image="login_wx"/>
+                                                    <connections>
+                                                        <action selector="weiXinLogin:" destination="CZy-ro-EbJ" eventType="touchUpInside" id="cNG-ic-TUt"/>
+                                                    </connections>
+                                                </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="juh-Os-GOT">
+                                                    <rect key="frame" x="232.5" y="514.5" width="55" height="1"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="Bfu-1H-My7"/>
+                                                        <constraint firstAttribute="width" constant="55" id="Os4-7r-Abg"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yzw-nk-GzO">
+                                                    <rect key="frame" x="87.5" y="514.5" width="55" height="1"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="55" id="Sr6-zD-LTB"/>
+                                                        <constraint firstAttribute="height" constant="1" id="gg3-iV-F2G"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="juh-Os-GOT" firstAttribute="leading" secondItem="gKu-f9-PgS" secondAttribute="trailing" constant="20" id="1eg-99-KVv"/>
+                                                <constraint firstItem="aPj-8h-jAH" firstAttribute="top" secondItem="gKu-f9-PgS" secondAttribute="bottom" constant="16" id="2Iu-7u-aj8"/>
                                                 <constraint firstItem="DR2-Cb-ocC" firstAttribute="top" secondItem="BCc-Dn-6c6" secondAttribute="top" id="2vD-dv-aEF"/>
+                                                <constraint firstItem="Yzw-nk-GzO" firstAttribute="centerY" secondItem="gKu-f9-PgS" secondAttribute="centerY" id="3al-00-ztW"/>
                                                 <constraint firstItem="BCc-Dn-6c6" firstAttribute="top" secondItem="lsJ-Oe-r7i" secondAttribute="bottom" constant="61" id="4qH-5w-6cR"/>
                                                 <constraint firstItem="aPj-8h-jAH" firstAttribute="centerX" secondItem="5K2-7I-xoU" secondAttribute="centerX" id="5tK-rz-cFw"/>
+                                                <constraint firstItem="juh-Os-GOT" firstAttribute="centerY" secondItem="gKu-f9-PgS" secondAttribute="centerY" id="9T0-h3-dAE"/>
                                                 <constraint firstItem="lsJ-Oe-r7i" firstAttribute="top" secondItem="5K2-7I-xoU" secondAttribute="top" constant="43" id="AEK-2u-9jV"/>
                                                 <constraint firstItem="zzD-oM-DdK" firstAttribute="top" secondItem="tN1-wZ-GMi" secondAttribute="bottom" constant="16" id="FKy-vQ-y75"/>
                                                 <constraint firstAttribute="trailing" secondItem="OCA-EA-cPG" secondAttribute="trailing" constant="38" id="FyZ-QN-luM"/>
@@ -287,11 +318,13 @@
                                                 <constraint firstItem="wQW-Aa-2Id" firstAttribute="top" secondItem="tN1-wZ-GMi" secondAttribute="bottom" constant="73" id="SNT-sQ-fqM"/>
                                                 <constraint firstAttribute="trailing" secondItem="wQW-Aa-2Id" secondAttribute="trailing" constant="38" id="Tgz-EP-6r5"/>
                                                 <constraint firstItem="tN1-wZ-GMi" firstAttribute="top" secondItem="OCA-EA-cPG" secondAttribute="bottom" constant="20" id="UYF-mN-wIE"/>
+                                                <constraint firstItem="gKu-f9-PgS" firstAttribute="leading" secondItem="Yzw-nk-GzO" secondAttribute="trailing" constant="20" id="XMP-U8-k84"/>
                                                 <constraint firstItem="zzD-oM-DdK" firstAttribute="trailing" secondItem="tN1-wZ-GMi" secondAttribute="trailing" id="fLf-ix-Zvj"/>
                                                 <constraint firstItem="OCA-EA-cPG" firstAttribute="top" secondItem="DR2-Cb-ocC" secondAttribute="bottom" constant="54" id="gdq-MX-ETT"/>
                                                 <constraint firstItem="tN1-wZ-GMi" firstAttribute="trailing" secondItem="OCA-EA-cPG" secondAttribute="trailing" id="h2b-fa-ZV2"/>
                                                 <constraint firstItem="wQW-Aa-2Id" firstAttribute="leading" secondItem="5K2-7I-xoU" secondAttribute="leading" constant="38" id="hy8-5J-P4s"/>
                                                 <constraint firstItem="OCA-EA-cPG" firstAttribute="leading" secondItem="5K2-7I-xoU" secondAttribute="leading" constant="38" id="oEh-I3-qOe"/>
+                                                <constraint firstItem="gKu-f9-PgS" firstAttribute="centerX" secondItem="5K2-7I-xoU" secondAttribute="centerX" id="pK8-sl-vys"/>
                                                 <constraint firstAttribute="bottom" secondItem="aPj-8h-jAH" secondAttribute="bottom" constant="15" id="x8q-gl-I99"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -909,6 +942,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="closeBtn" destination="9sZ-Ad-y9G" id="aPC-Dv-PHv"/>
                         <outlet property="codeBtn" destination="4tb-D0-pi2" id="74W-Hp-tbn"/>
                         <outlet property="codeTF" destination="vCU-t8-eYb" id="zUw-Y3-xo9"/>
                         <outlet property="code_img" destination="FzJ-AS-VZy" id="57a-TM-oid"/>
@@ -947,5 +981,6 @@
         <image name="login_account_0" width="24" height="24"/>
         <image name="login_close" width="24" height="24"/>
         <image name="login_psd_0" width="24" height="24"/>
+        <image name="login_wx" width="46" height="46"/>
     </resources>
 </document>

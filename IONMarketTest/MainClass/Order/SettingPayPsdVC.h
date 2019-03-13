@@ -20,12 +20,17 @@ typedef NS_ENUM(NSUInteger, ChangeType) {
     ChangeType_None,
     ChangeType_PayPsd,
     ChangeType_LogPsd,
+    ChangeType_WxBind, //绑定微信关联手机号
 };
 
 @interface SettingPayPsdVC : UITableViewController
 
 @property (nonatomic, weak) id<SettingPayPsdVCDelegate> delegate;
 @property (nonatomic, assign) ChangeType changeType;
+
+@property (nonatomic, copy) NSString *openId;
+@property (nonatomic, copy) NSString *wxName;
+@property (nonatomic, copy) NSString *headImgUrl;
 
 @end
 

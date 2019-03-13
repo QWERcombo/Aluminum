@@ -156,10 +156,13 @@ static NSOperationQueue *queue;
                 NSString *message = [result objectForKey:@"message"];
                 
                 if ([[UtilsData sharedInstance] isHasValue:msg] || [[UtilsData sharedInstance] isHasValue:message]) {
-                    [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:[[UtilsData sharedInstance] isHasValue:message]?message:msg time:0.0 aboutType:WHShowViewMode_Text state:NO];
+                    
+                    if (![cookie isEqualToString:@"-1"]) {
+                        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:[[UtilsData sharedInstance] isHasValue:message]?message:msg time:0.0 aboutType:WHShowViewMode_Text state:NO];
+                    }
                 }
                 
-                failure(msg,-1);
+                failure(message, 0);
             }
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

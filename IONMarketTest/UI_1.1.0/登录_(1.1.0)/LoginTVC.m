@@ -10,6 +10,8 @@
 #import "TextTableViewController.h"
 #import "RegisterTVC.h"
 #import "InviteNumberVC.h"
+#import <UMShare/UMShare.h>
+#import "SettingPayPsdVC.h"
 
 typedef NS_ENUM(NSUInteger, LoginType) {
     LoginType_Code,     //短信登陆
@@ -292,6 +294,57 @@ typedef NS_ENUM(NSUInteger, LoginType) {
     }
     
     return YES;
+}
+
+
+- (IBAction)weiXinLogin:(UIButton *)sender {
+    
+    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:nil completion:^(id result, NSError *error) {
+        if (error) {
+        } else {
+            UMSocialUserInfoResponse *resp = result;
+            // 授权信息
+//            NSLog(@"Wechat uid: %@", resp.uid);
+//            NSLog(@"Wechat openid: %@", resp.openid);
+//            NSLog(@"Wechat unionid: %@", resp.unionId);
+//            NSLog(@"Wechat accessToken: %@", resp.accessToken);
+//            NSLog(@"Wechat refreshToken: %@", resp.refreshToken);
+//            NSLog(@"Wechat expiration: %@", resp.expiration);
+//            // 用户信息
+//            NSLog(@"Wechat name: %@", resp.name);
+//            NSLog(@"Wechat iconurl: %@", resp.iconurl);
+//            NSLog(@"Wechat gender: %@", resp.unionGender);
+//            // 第三方平台SDK源数据
+//            NSLog(@"Wechat originalResponse: %@", resp.originalResponse);
+            NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+            [parDic setObject:resp.openid forKey:@"openId"];
+            
+            [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_RegisterByWX andCookie:@"-1" showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+                NSLog(@"---%@", resultDic);
+                //成功直接登录?
+                
+            } failure:^(NSString *error, NSInteger code) {
+                
+                if ([error isEqualToString:@"不存在用户"]) {
+                    //绑定用户
+                    SettingPayPsdVC *payset = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"SettingPayPsdVC"];
+                    payset.changeType = ChangeType_WxBind;
+                    payset.openId = resp.openid;
+                    payset.wxName = resp.name;
+                    payset.headImgUrl = resp.iconurl;
+                    [self.navigationController pushViewController:payset animated:YES];
+                    
+                } else {
+                    
+                }
+                
+            }];
+            
+        }
+    }];
+    
+    
+    
 }
 
 
