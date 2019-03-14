@@ -11,6 +11,7 @@
 @interface InviteNumberVC ()
 @property (weak, nonatomic) IBOutlet UITextField *inviteTF;
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
+@property (weak, nonatomic) IBOutlet UIButton *closeBtn;
 
 @end
 
@@ -20,13 +21,15 @@
     [super viewDidLoad];
     if (self.showType == ShowType_Invite) {
         self.title = @"推荐人";
-        self.inviteTF.placeholder = @"请输入推荐人手机号";
+        self.inviteTF.placeholder = @"请输入专属客服手机号";
     } else {
         self.title = @"设置密码";
         self.inviteTF.placeholder = @"请设置账号密码";
     }
     self.submitBtn.layer.cornerRadius = 4;
     self.submitBtn.layer.masksToBounds = YES;
+    self.closeBtn.layer.cornerRadius = 4;
+    self.closeBtn.layer.masksToBounds = YES;
     [self.inviteTF setValue:[UIFont systemFontOfSize:20 weight:UIFontWeightBold] forKeyPath:@"_placeholderLabel.font"];
     [self.inviteTF setValue:[UIColor colorWithHexString:@"#CED4DA"] forKeyPath:@"_placeholderLabel.textColor"];
 }
@@ -88,13 +91,6 @@
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
-
-
-
-
-
-
-
 
 
 /*

@@ -33,7 +33,8 @@
             button.frame = CGRectMake((BUTTON_WW+1)*i, 0, BUTTON_WW, frame.size.height);
             button.tag = 100+i;
             
-            [button setTitle:[self.titleArray objectAtIndex:i] forState:UIControlStateNormal];
+//            [button setTitle:[self.titleArray objectAtIndex:i] forState:UIControlStateNormal];
+            [button setTitle:@"全部" forState:UIControlStateNormal];
             [button setTitleColor:[UIColor colorWithHexString:@"#595E64"] forState:UIControlStateNormal];
             [button setTitleColor:[UIColor mianColor:2] forState:UIControlStateSelected];
             [button setImage:IMG(@"show_down") forState:UIControlStateNormal];
@@ -104,7 +105,8 @@
     
     [button setSelected:NO];
     
-    if (![title isEqualToString:[self.titleArray objectAtIndex:index]]) {
+    //[title isEqualToString:[self.titleArray objectAtIndex:index]]
+    if (![title isEqualToString:@"全部"]) {
         
         [button setTitleColor:[UIColor mianColor:2] forState:UIControlStateNormal];
     } else {

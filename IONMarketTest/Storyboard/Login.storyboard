@@ -386,7 +386,7 @@
                                                 <view tag="103" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cop-ua-GiV" customClass="BorderView">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="76"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入推荐人手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4M-ZM-Yk2">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入专属客服手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4M-ZM-Yk2">
                                                             <rect key="frame" x="0.0" y="31" width="345" height="45"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="45" id="6FK-9D-cqs"/>
@@ -417,8 +417,15 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="en8-CK-DOh">
-                                                    <rect key="frame" x="306" y="214" width="31" height="30"/>
-                                                    <state key="normal" title="跳过"/>
+                                                    <rect key="frame" x="38" y="214" width="299" height="44"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="2Jn-kh-Yoc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="跳过">
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="close:" destination="wNd-S4-6PU" eventType="touchUpInside" id="6t3-C2-Bpo"/>
                                                     </connections>
@@ -432,6 +439,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="cop-ua-GiV" secondAttribute="trailing" constant="15" id="P7U-kI-2r2"/>
                                                 <constraint firstItem="i3F-Kd-UoF" firstAttribute="top" secondItem="cop-ua-GiV" secondAttribute="bottom" constant="60" id="SED-Aa-PtM"/>
                                                 <constraint firstItem="en8-CK-DOh" firstAttribute="trailing" secondItem="i3F-Kd-UoF" secondAttribute="trailing" id="U6i-lN-XCY"/>
+                                                <constraint firstItem="en8-CK-DOh" firstAttribute="leading" secondItem="i3F-Kd-UoF" secondAttribute="leading" id="g9c-ba-goO"/>
                                                 <constraint firstAttribute="trailing" secondItem="i3F-Kd-UoF" secondAttribute="trailing" constant="38" id="zr1-kO-8J0"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -445,6 +453,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="closeBtn" destination="en8-CK-DOh" id="CS4-gx-kAA"/>
                         <outlet property="inviteTF" destination="d4M-ZM-Yk2" id="NBf-SV-o4E"/>
                         <outlet property="submitBtn" destination="i3F-Kd-UoF" id="Ds9-rL-aIb"/>
                     </connections>
@@ -621,7 +630,7 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_account_0" translatesAutoresizingMaskIntoConstraints="NO" id="IKz-ja-wzo">
                                                             <rect key="frame" x="5" y="10" width="24" height="24"/>
                                                         </imageView>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入推荐人手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kgt-2s-ffV">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入专属客服手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kgt-2s-ffV">
                                                             <rect key="frame" x="47" y="0.0" width="192" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="VDR-7g-PUD"/>

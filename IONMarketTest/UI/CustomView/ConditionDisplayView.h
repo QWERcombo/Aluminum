@@ -34,8 +34,21 @@ typedef void(^SselectedIndexPath)(id dataObject, BOOL isOver);
 @property (nonatomic, weak) id<ConditionDisplayViewDelegate> delegate;
 @property (nonatomic, copy) NSString *parameter;
 
+@property (nonatomic, copy) NSString *zhonglei; //品类
+@property (nonatomic, copy) NSString *paihao;   //牌号
+@property (nonatomic, copy) NSString *houdu;    //厚度
+@property (nonatomic, copy) NSString *zhuangtai;//状态
 
-+ (void)showConditionDisplayViewWithTitle:(NSString *)title parameter:(NSString *)parameter selectTitle:(NSString *)selectTitle selectedBlock:(SselectedIndexPath)selectedBlock;
+
++ (void)showConditionDisplayViewWithTitle:(NSString *)title
+                                parameter:(NSString *)parameter
+                              selectTitle:(NSString *)selectTitle
+                                 zhonglei:(NSString *)zhonglei
+                                   paihao:(NSString *)paihao
+                                zhuangtai:(NSString *)zhuangtai
+                                    houdu:(NSString *)houdu
+                            selectedBlock:(SselectedIndexPath)selectedBlock;
+
 + (void)hideConditionDisplayView;
 
 @end

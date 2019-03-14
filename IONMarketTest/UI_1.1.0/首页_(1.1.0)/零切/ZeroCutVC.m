@@ -94,7 +94,7 @@
         //选中
         self.mainIndex = index;
         
-        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"2" selectTitle:title selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
+        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"2" selectTitle:title zhonglei:@"" paihao:self.zeroTabVC.erjimulu_id.name zhuangtai:self.zeroTabVC.zhuangTai houdu:self.zeroTabVC.houDu selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
             
             NSString *showName = @"";
             
@@ -117,7 +117,8 @@
                     [self.conditionView reset];
                 } else if ([number integerValue] == -2) {
                     //重置子条件
-                    [self.conditionView changeTitle:[self.titleArray objectAtIndex:index] index:self.mainIndex];
+//                    [self.conditionView changeTitle:[self.titleArray objectAtIndex:index] index:self.mainIndex];
+                    [self.conditionView changeTitle:@"全部" index:self.mainIndex];
                     [ConditionDisplayView hideConditionDisplayView];
                     
                     switch (self.mainIndex) {
@@ -154,7 +155,7 @@
             
             if (showName.length) {
                 [self.conditionView changeTitle:showName index:self.mainIndex];
-                [self.conditionView resetTitleWithIndex:index];
+//                [self.conditionView resetTitleWithIndex:index];
 //                [self getZhengBanListCur_page:1];
             } else {
                 

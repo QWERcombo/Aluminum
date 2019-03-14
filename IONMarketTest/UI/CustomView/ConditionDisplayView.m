@@ -14,7 +14,14 @@
 @implementation ConditionDisplayView
 
 
-- (instancetype)initWithFrame:(CGRect)frame parameter:(NSString *)parameter normalTitle:(NSString *)title selectTitle:(NSString *)selectTitle
+- (instancetype)initWithFrame:(CGRect)frame
+                    parameter:(NSString *)parameter
+                  normalTitle:(NSString *)title
+                  selectTitle:(NSString *)selectTitle
+                     zhonglei:(NSString *)zhonglei
+                       paihao:(NSString *)paihao
+                    zhuangtai:(NSString *)zhuangtai
+                        houdu:(NSString *)houdu
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -30,6 +37,11 @@
         self.showTitle = title;
         self.parameter = parameter;
         self.selectTitle = selectTitle;
+        
+        self.zhonglei = zhonglei;
+        self.paihao = paihao;
+        self.zhuangtai = zhuangtai;
+        self.houdu = houdu;
         
         self.frame = frame;
         
@@ -57,7 +69,18 @@
     //type  1整板  2零切
     if ([title isEqualToString:@"品类"]) {
         
-        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:Interface_PinLei andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+        if (self.paihao.length) {
+            [parDic setObject:self.paihao forKey:@"paihao"];
+        }
+        if (self.zhuangtai.length) {
+            [parDic setObject:self.zhuangtai forKey:@"zhuangtai"];
+        }
+        if (self.houdu.length) {
+            [parDic setObject:self.houdu forKey:@"houdu"];
+        }
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_PinLei andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSArray *listArray = resultDic[@"list"];
             NSMutableArray *array = [NSMutableArray array];
@@ -77,7 +100,18 @@
         
     } else if ([title isEqualToString:@"牌号"]) {
         
-        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:[type intValue]==1?Interface_CateList:Interface_LQPaihao andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+        if (self.zhonglei.length) {
+            [parDic setObject:self.zhonglei forKey:@"zhonglei"];
+        }
+        if (self.zhuangtai.length) {
+            [parDic setObject:self.zhuangtai forKey:@"zhuangtai"];
+        }
+        if (self.houdu.length) {
+            [parDic setObject:self.houdu forKey:@"houdu"];
+        }
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:[type intValue]==1?Interface_CateList:Interface_LQPaihao andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSArray *listArray = resultDic[@"list"];
             NSMutableArray *array = [NSMutableArray array];
@@ -105,7 +139,18 @@
         
     } else if ([title isEqualToString:@"状态"]) {
         
-        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:[type intValue]==1?Interface_ZhuangTai:Interface_LQZhuangtai andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+        if (self.zhonglei.length) {
+            [parDic setObject:self.zhonglei forKey:@"zhonglei"];
+        }
+        if (self.paihao.length) {
+            [parDic setObject:self.paihao forKey:@"paihao"];
+        }
+        if (self.houdu.length) {
+            [parDic setObject:self.houdu forKey:@"houdu"];
+        }
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:[type intValue]==1?Interface_ZhuangTai:Interface_LQZhuangtai andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSArray *listArray = resultDic[@"list"];
             NSMutableArray *array = [NSMutableArray array];
@@ -125,7 +170,18 @@
         
     } else if ([title isEqualToString:@"厚度"]) {
         
-        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:nil imageArray:nil WithType:[type intValue]==1?Interface_HouDu:Interface_LQHoudu andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+        if (self.zhonglei.length) {
+            [parDic setObject:self.zhonglei forKey:@"zhonglei"];
+        }
+        if (self.paihao.length) {
+            [parDic setObject:self.paihao forKey:@"paihao"];
+        }
+        if (self.zhuangtai.length) {
+            [parDic setObject:self.zhuangtai forKey:@"zhuangtai"];
+        }
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:[type intValue]==1?Interface_HouDu:Interface_LQHoudu andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSArray *listArray = resultDic[@"list"];
             NSMutableArray *array = [NSMutableArray array];
@@ -239,13 +295,21 @@
     
 }
 
-+ (void)showConditionDisplayViewWithTitle:(NSString *)title parameter:(NSString *)parameter selectTitle:(NSString *)selectTitle selectedBlock:(SselectedIndexPath)selectedBlock {
++ (void)showConditionDisplayViewWithTitle:(NSString *)title
+                                parameter:(NSString *)parameter
+                              selectTitle:(NSString *)selectTitle
+                                 zhonglei:(NSString *)zhonglei
+                                   paihao:(NSString *)paihao
+                                zhuangtai:(NSString *)zhuangtai
+                                    houdu:(NSString *)houdu
+                            selectedBlock:(SselectedIndexPath)selectedBlock {
     
     [self hideConditionDisplayView];
     
     UIViewController *rootVC = [UIViewController currentViewController];
     
-    ConditionDisplayView *displayV = [[ConditionDisplayView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIGHT, rootVC.view.bounds.size.height-40) parameter:parameter normalTitle:title selectTitle:selectTitle];
+    ConditionDisplayView *displayV = [[ConditionDisplayView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIGHT, rootVC.view.bounds.size.height-40) parameter:parameter normalTitle:title selectTitle:selectTitle zhonglei:zhonglei paihao:paihao zhuangtai:zhuangtai houdu:houdu];
+    
     displayV.selectedBlock = selectedBlock;
 
     if ([title isEqualToString:@"更多"]) {
