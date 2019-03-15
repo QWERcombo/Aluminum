@@ -158,7 +158,9 @@ static NSOperationQueue *queue;
                 if ([[UtilsData sharedInstance] isHasValue:msg] || [[UtilsData sharedInstance] isHasValue:message]) {
                     
                     if (![cookie isEqualToString:@"-1"]) {
+                        
                         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:[[UtilsData sharedInstance] isHasValue:message]?message:msg time:0.0 aboutType:WHShowViewMode_Text state:NO];
+                        
                     }
                 }
                 
@@ -170,8 +172,14 @@ static NSOperationQueue *queue;
             //请求失败
             failure(error.localizedFailureReason,1);
 //            [[UtilsData sharedInstance]showAlertTitle:@"" detailsText:@"加载失败，请检查网络是否通畅" time:2.5 aboutType:WHShowViewMode_Text state:NO];
-            [[UtilsData sharedInstance]showAlertTitle:@"" detailsText:@"暂无数据" time:2.5 aboutType:WHShowViewMode_Text state:NO];
-            NSLog(@"failure about error~%@",error);
+            if ((![UserData currentUser].user_id.length) && ([cookie isEqualToString:@"-1"])) {
+                
+                [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先登录!" time:0.0 aboutType:WHShowViewMode_Text state:NO];
+            } else {
+                
+                [[UtilsData sharedInstance]showAlertTitle:@"" detailsText:@"暂无数据" time:2.5 aboutType:WHShowViewMode_Text state:NO];
+                NSLog(@"failure about error~%@",error);
+            }
         }];
     });
     if (animation == YES) {

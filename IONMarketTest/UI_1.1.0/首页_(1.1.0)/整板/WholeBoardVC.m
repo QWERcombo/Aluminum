@@ -239,8 +239,8 @@
                     [self.conditionView reset];
                 } else if ([number integerValue] == -2) {
                     //重置子条件
-//                    [self.conditionView changeTitle:[self.titleArray objectAtIndex:index] index:self.mainIndex];
-                    [self.conditionView changeTitle:@"全部" index:self.mainIndex];
+                    [self.conditionView changeTitle:[self.titleArray objectAtIndex:index] index:self.mainIndex];
+
                     [ConditionDisplayView hideConditionDisplayView];
                     
                     switch (self.mainIndex) {
@@ -362,12 +362,17 @@
             car.type = @"整只";
             car.erjimulu = model.lvxing.name;
             car.money = [NSNumber numberWithFloat:[model.danpianzhengbanjiage floatValue]*model.value].stringValue;
-            car.zhonglei = self.pinLei.length?self.pinLei:@"整板";
+            car.zhonglei = model.zhonglei;
             car.zhuangtai = self.zhuangTai.length?self.zhuangTai:DEFAULT_ZHUANGTAI;
             
-            car.length = model.arg3;
-            car.width = model.arg2;
-            car.height = model.arg1;
+            if ([model.zhonglei isEqualToString:@"圆棒"]) {
+                car.length = model.arg2;
+                car.width = model.arg1;
+            } else {
+                car.length = model.arg1;
+                car.width = model.arg2;
+                car.height = model.arg3;
+            }
             
             [dataArr addObject:car];
         }
@@ -450,7 +455,10 @@
     NSString *requestUrl = @"";
     
     if (self.showTye == WholeBoardShowType_Zhengban) {
-        [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
+        if ([UserData currentUser].user_id.length) {
+            
+            [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
+        }
         if (self.pinLei.length) {
             [parDic setObject:self.pinLei forKey:@"pinlei"];
         }
@@ -466,7 +474,10 @@
         requestUrl = Interface_ZhengbanList;
         
     } else if (self.showTye == WholeBoardShowType_BanChengPin) {
-        [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
+        if ([UserData currentUser].user_id.length) {
+            
+            [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
+        }
         if (self.pinLei.length) {
             [parDic setObject:self.pinLei forKey:@"pinlei"];
         }
@@ -516,6 +527,9 @@
             self.cur_page = 1;
             [self.dataSource removeAllObjects];
             [self.tableView.mj_header endRefreshing];
+            //刷新清空选择
+            [self.selectArray removeAllObjects];
+            [self refreshTotalLabel];
         } else {
             self.cur_page ++;
         }
@@ -560,10 +574,15 @@
         }
         
         NSMutableDictionary *subDataDic = [NSMutableDictionary dictionary];
-        [subDataDic setObject:model.arg3 forKey:@"chang"];
-        [subDataDic setObject:model.arg2 forKey:@"kuang"];
-        [subDataDic setObject:model.arg1 forKey:@"hou"];
-        [subDataDic setObject:self.pinLei.length?self.pinLei:@"整板" forKey:@"zhonglei"];
+        if ([model.arg3 integerValue]>0) {
+            [subDataDic setObject:model.arg3 forKey:@"chang"];
+            [subDataDic setObject:model.arg2 forKey:@"kuang"];
+            [subDataDic setObject:model.arg1 forKey:@"hou"];
+        } else {
+            [subDataDic setObject:model.arg2 forKey:@"chang"];
+            [subDataDic setObject:model.arg1 forKey:@"kuang"];
+        }
+        [subDataDic setObject:model.zhonglei forKey:@"zhonglei"];
         [subDataDic setObject:@"整只" forKey:@"type"];
         [subDataDic setObject:model.lvxing.name forKey:@"erjimulu"];
         [subDataDic setObject:[NSNumber numberWithFloat:[model.danpianzhengbanjiage floatValue]*model.value].stringValue forKey:@"money"];

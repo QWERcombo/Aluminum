@@ -59,7 +59,7 @@
         
         if (_showVC.stepper.value > 0) {
 
-            [self placeOrder:UseType_OrderMoney];
+            [self placeOrder:UseType_AddShopCar];
 
         } else {
             [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先添加数量" time:0 aboutType:WHShowViewMode_Text state:NO];
@@ -100,7 +100,34 @@
     
     NSString *amount = [NSNumber numberWithFloat:_showVC.stepper.value].stringValue;
     
-    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:GetOrderType_ZhengBan chang:_wholeModel.arg3 kuan:_wholeModel.arg2 hou:_wholeModel.arg1 zhuangTai:self.zhuangTai amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:[[NSNumber alloc] initWithFloat:self.orderMoney].stringValue successBlock:^(NSDictionary *dataDic) {
+    GetOrderType orderType;
+    NSString *change = @"";
+    NSString *kuan = @"";
+    NSString *hou = @"";
+    if ([self.wholeModel.zhonglei isEqualToString:@"整板"]) {
+        orderType = GetOrderType_ZhengBan;
+        change = _wholeModel.arg1;
+        kuan = _wholeModel.arg2;
+        hou = _wholeModel.arg3;
+    } else if ([self.wholeModel.zhonglei isEqualToString:@"圆棒"]) {
+        orderType = GetOrderType_YuanBang;
+        change = _wholeModel.arg2;
+        kuan = _wholeModel.arg1;
+    } else if ([self.wholeModel.zhonglei isEqualToString:@"型材"]) {
+        orderType = GetOrderType_XingCai;
+        change = _wholeModel.arg1;
+        kuan = _wholeModel.arg2;
+        hou = _wholeModel.arg3;
+    } else if ([self.wholeModel.zhonglei isEqualToString:@"管材"]) {
+        orderType = GetOrderType_GuanCai;
+        change = _wholeModel.arg1;
+        kuan = _wholeModel.arg2;
+        hou = _wholeModel.arg3;
+    } else {
+        orderType = GetOrderType_ZhengBan;
+    }
+    
+    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:orderType chang:change kuan:kuan hou:hou zhuangTai:self.zhuangTai amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:[[NSNumber alloc] initWithFloat:self.orderMoney].stringValue successBlock:^(NSDictionary *dataDic) {
         
         self.dataDic = dataDic;
         self.orderMoney = [self.dataDic[@"orderMoney"] floatValue];

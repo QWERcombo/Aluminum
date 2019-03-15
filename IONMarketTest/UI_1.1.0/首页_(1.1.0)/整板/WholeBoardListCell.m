@@ -94,7 +94,7 @@
         cell.guigeLabel.text = dataModel.guige;
         if ([type isEqualToString:@"1"]) {
             //整板
-            cell.zhongleiLabel.text = [NSString stringWithFormat:@"  整板  "];
+            cell.zhongleiLabel.text = [NSString stringWithFormat:@"  %@  ", dataModel.zhonglei];
             cell.xinghaoLab.text = [NSString stringWithFormat:@"  %@-%@  ",dataModel.xinghao,dataModel.zhuangtai];
             cell.changjiaLabel.text = [NSString stringWithFormat:@"  %@  ", dataModel.canzhaozhishu];
         } else {

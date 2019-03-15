@@ -299,11 +299,9 @@
 
     if (sender.tag == 1000) {
         //整件
-        [[PublicFuntionTool sharedInstance] isHadLogin:^{
-            WholeBoardVC *inven = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardVC"];
-            inven.showTye = WholeBoardShowType_Zhengban;
-            [self.navigationController pushViewController:inven animated:YES];
-        }];
+        WholeBoardVC *inven = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardVC"];
+        inven.showTye = WholeBoardShowType_Zhengban;
+        [self.navigationController pushViewController:inven animated:YES];
     }
     else if (sender.tag == 1001) {
         //零切
@@ -312,11 +310,9 @@
     }
     else if (sender.tag == 1002) {
         //半成品
-        [[PublicFuntionTool sharedInstance] isHadLogin:^{
-            WholeBoardVC *inven = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardVC"];
-            inven.showTye = WholeBoardShowType_BanChengPin;
-            [self.navigationController pushViewController:inven animated:YES];
-        }];
+        WholeBoardVC *inven = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardVC"];
+        inven.showTye = WholeBoardShowType_BanChengPin;
+        [self.navigationController pushViewController:inven animated:YES];
     }
     else if (sender.tag == 1003) {
         //淘小料
@@ -331,20 +327,20 @@
     }
     else if (sender.tag == 1005) {
         //切圆棒
-        [[PublicFuntionTool sharedInstance] isHadLogin:^{
+//        [[PublicFuntionTool sharedInstance] isHadLogin:^{
             //获取价格需要传userID 因此需登录
             CommonItemVC *common = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"CommonItemVC"];
             common.showType = ShowType_YuanBang;
             [self.navigationController pushViewController:common animated:YES];
-        }];
+//        }];
     } else if (sender.tag == 1006) {
         //切型材
-        [[PublicFuntionTool sharedInstance] isHadLogin:^{
+//        [[PublicFuntionTool sharedInstance] isHadLogin:^{
             //获取价格需要传userID 因此需登录
             CommonItemVC *common = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"CommonItemVC"];
             common.showType = ShowType_XingCai;
             [self.navigationController pushViewController:common animated:YES];
-        }];
+//        }];
     }
 //    else if (sender.tag == 1004) {
 //        //切型材

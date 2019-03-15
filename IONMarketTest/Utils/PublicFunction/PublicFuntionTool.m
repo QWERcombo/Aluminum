@@ -391,30 +391,28 @@ DEF_SINGLETON(PublicFuntionTool);
     NSString *url = @"";
     ShopCar *shopCar = [ShopCar new];
     
-    switch (useType) {
-        case UseType_OrderMoney:
-            url = Interface_OrderMoney;
-            [parDic setObject:erjimulu.id forKey:@"erjimulu"];
+    if (useType == UseType_OrderMoney) {
+        url = Interface_OrderMoney;
+        [parDic setObject:erjimulu.id forKey:@"erjimulu"];
+        [self isHadLogin:^{
             [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
-            break;
-        case UseType_AddShopCar:
-            url = Interface_SaveToGouwuche;
-            [parDic setObject:chang forKey:@"chang"];
-            [parDic setObject:[UserData currentUser].phone forKey:@"phone"];
-            [parDic setObject:orderMoney forKey:@"money"];
-            [parDic setObject:erjimulu.name forKey:@"erjimulu"];
-            break;
-        case UseType_BuyNow:
-            url = @"";
-            break;
-        case UseType_DanJia:
-            url = Interface_OrderMoney;
-            [parDic setObject:erjimulu.id forKey:@"erjimulu"];
+        }];
+    } else if (useType == UseType_AddShopCar) {
+        url = Interface_SaveToGouwuche;
+        [parDic setObject:chang forKey:@"chang"];
+        [parDic setObject:[UserData currentUser].phone forKey:@"phone"];
+        [parDic setObject:orderMoney forKey:@"money"];
+        [parDic setObject:erjimulu.name forKey:@"erjimulu"];
+    } else if (useType == UseType_BuyNow) {
+        url = @"";
+    } else if (useType == UseType_DanJia) {
+        url = Interface_OrderMoney;
+        [parDic setObject:erjimulu.id forKey:@"erjimulu"];
+        [self isHadLogin:^{
             [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
-            break;
-            
-        default:
-            break;
+        }];
+    } else {
+        
     }
     
     if (useType != UseType_DanJia) {
@@ -490,7 +488,7 @@ DEF_SINGLETON(PublicFuntionTool);
         return;
     }
     
-    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:url andCookie:nil showAnimation:useType==UseType_DanJia?NO:YES success:^(NSDictionary *resultDic, NSString *msg) {
+    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:url andCookie:@"-1" showAnimation:useType==UseType_DanJia?NO:YES success:^(NSDictionary *resultDic, NSString *msg) {
         
         if (msg && (useType != UseType_DanJia)) {
             [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:msg time:0 aboutType:WHShowViewMode_Text state:YES];

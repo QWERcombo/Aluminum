@@ -100,8 +100,7 @@
                     [self.conditionView reset];
                 } else if ([number integerValue] == -2) {
                     //重置子条件
-//                    [self.conditionView changeTitle:[self.titleArray objectAtIndex:index] index:self.mainIndex];
-                    [self.conditionView changeTitle:@"全部" index:self.mainIndex];
+                    [self.conditionView changeTitle:[self.titleArray objectAtIndex:index] index:self.mainIndex];
                     [ConditionDisplayView hideConditionDisplayView];
                     
                     switch (self.mainIndex) {

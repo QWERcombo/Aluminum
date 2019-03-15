@@ -34,7 +34,7 @@
         if ([dataM.height floatValue]>0) {
             self.guigeLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.length, dataM.width, dataM.height];
         } else {
-            self.guigeLab.text = [NSString stringWithFormat:@"规格：%@x%@", dataM.length, dataM.width];
+            self.guigeLab.text = [NSString stringWithFormat:@"%@x%@", dataM.length, dataM.width];
         }
         self.countLab.text = [NSString stringWithFormat:@"共%@件",dataM.productNum];
         self.xinghaoLab.text = dataM.erjimulu;
