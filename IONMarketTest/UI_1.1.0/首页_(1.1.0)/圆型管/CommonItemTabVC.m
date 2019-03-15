@@ -49,7 +49,9 @@
     self.amountTF.delegate = self;
     self.lengthTF.delegate = self;
     self.lengthBtn.hidden = NO;
-    _zhengZhi = @"2";//默认零切 整只1.2版本都在整板里
+//    _zhengZhi = @"2";
+    //默认零切 整只1.2版本都在整板里
+    [self ziDingYi:nil];
     
     switch (self.showType) {
         case ShowType_YuanBang:
@@ -151,7 +153,8 @@
             
             
             [self.lengthBtn setTitle:@"" forState:UIControlStateNormal];
-            _lengthTF.placeholder = @"请选择长度";
+//            _lengthTF.placeholder = @"请选择长度";
+            _lengthTF.placeholder = @"请输入长度";
             _amountTF.text = @"";
             _isShowInfoView = NO;
             [self judgePlaceOrder];
@@ -184,8 +187,8 @@
     self.zhengzhi_right_label.textColor = [UIColor Grey_WordColor];
  
 
-    [self judgePlaceOrder];
-    [self.tableView reloadData];
+//    [self judgePlaceOrder];
+//    [self.tableView reloadData];
 }
 
 //整只
@@ -427,7 +430,8 @@
     self.zidingyi_left_label.textColor = [UIColor colorWithHexString:@"#202124"];
     self.zidingyi_right_label.text = @"";
     
-    _lengthTF.placeholder = @"请选择长度";
+//    _lengthTF.placeholder = @"请选择长度";
+    _lengthTF.placeholder = @"请输入长度";
     [_lengthBtn setTitle:@"" forState:UIControlStateNormal];
     
     [self.tableView reloadData];
