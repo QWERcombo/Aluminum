@@ -275,7 +275,7 @@
     if (self.amountTF.text.length && self.guigeTF.text.length && (self.lengthTF.text.length || self.lengthBtn.currentTitle.length)) {
         [self placeOrder:UseType_OrderMoney];
     } else {
-        [self placeOrder:UseType_DanJia];
+//        [self placeOrder:UseType_DanJia];
     }
 }
 

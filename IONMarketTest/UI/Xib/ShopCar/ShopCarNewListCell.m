@@ -58,9 +58,9 @@
         self.typeImgv.image = IMG(@"order_优切");
     }
     if (dataM.height.length) {
-        self.chicunLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.length, dataM.width, dataM.height];
+        self.chicunLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.height, dataM.width, dataM.length];
     } else {
-        self.chicunLab.text = [NSString stringWithFormat:@"%@x%@",dataM.length, dataM.width];
+        self.chicunLab.text = [NSString stringWithFormat:@"%@x%@",dataM.width, dataM.length];
     }
     self.jiageLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:dataM.money]];
     self.shuliangLab.text = [NSString stringWithFormat:@"%@件", dataM.productNum];

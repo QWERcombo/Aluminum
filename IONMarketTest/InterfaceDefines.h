@@ -230,6 +230,12 @@
 #define Interface_LQZhuangtai       @"lingqiezhuangtaiList"
 //零切厚度
 #define Interface_LQHoudu           @"lingqiehouduList"
+//期货状态
+#define Interface_QHZhuangtai       @"qihuozhuangtaiList"
+//期货牌号
+#define Interface_QHPaihao          @"qihuopaihaoList"
+//期货厚度
+#define Interface_QHHoudu           @"qihuohouduList"
 
 
 

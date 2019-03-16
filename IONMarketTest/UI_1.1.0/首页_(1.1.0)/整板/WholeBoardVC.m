@@ -76,7 +76,7 @@
     switch (self.showTye) {
         case WholeBoardShowType_Zhengban:
             self.title = @"整件";
-            self.titleArray = [NSArray arrayWithObjects:@"品类",@"牌号",@"状态",@"厚度", nil];
+            self.titleArray = [NSArray arrayWithObjects:@"牌号",@"状态",@"厚度",@"品类", nil];
             break;
         case WholeBoardShowType_BanChengPin:
             self.title = @"半成品";
@@ -212,7 +212,7 @@
         //选中
         self.mainIndex = index;
         
-        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"1" selectTitle:self.moreTitle.length?self.moreTitle:title zhonglei:self.pinLei paihao:self.paiHao zhuangtai:self.zhuangTai houdu:self.houDu selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
+        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:self.showTye==WholeBoardShowType_YueBao?@"3":@"1" selectTitle:self.moreTitle.length?self.moreTitle:title zhonglei:self.pinLei paihao:self.paiHao zhuangtai:self.zhuangTai houdu:self.houDu selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
 
             NSString *showName = @"";
 
@@ -354,6 +354,11 @@
     MJWeakSelf
     [[PublicFuntionTool sharedInstance] isHadLogin:^{
         
+        if (!weakSelf.selectArray.count) {
+            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请先添加数据" time:0 aboutType:WHShowViewMode_Text state:NO];
+            return ;
+        }
+        
         NSMutableArray *dataArr = [NSMutableArray array];
         for (WholeBoardModel *model in self.selectArray) {
             
@@ -369,9 +374,9 @@
                 car.length = model.arg2;
                 car.width = model.arg1;
             } else {
-                car.length = model.arg1;
+                car.length = model.arg3;
                 car.width = model.arg2;
-                car.height = model.arg3;
+                car.height = model.arg1;
             }
             
             [dataArr addObject:car];
@@ -546,10 +551,20 @@
             
         }
         
-        if (self.dataSource.count < [count integerValue]) {
-            [self.tableView.mj_footer endRefreshing];
+        
+        if (self.showTye == WholeBoardShowType_BanChengPin) {
+            //半成品返回的是页数 其他返回的是个数 傻逼吧
+            if (cur_page < [count integerValue]) {
+                [self.tableView.mj_footer endRefreshing];
+            } else {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
         } else {
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            if (self.dataSource.count < [count integerValue]) {
+                [self.tableView.mj_footer endRefreshing];
+            } else {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
         }
         
         [self.tableView reloadData];

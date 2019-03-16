@@ -32,9 +32,9 @@
         
         self.moneyLab.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:dataM.money]];
         if ([dataM.height floatValue]>0) {
-            self.guigeLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.length, dataM.width, dataM.height];
+            self.guigeLab.text = [NSString stringWithFormat:@"%@x%@x%@",dataM.height, dataM.width, dataM.length];
         } else {
-            self.guigeLab.text = [NSString stringWithFormat:@"%@x%@", dataM.length, dataM.width];
+            self.guigeLab.text = [NSString stringWithFormat:@"%@x%@", dataM.width, dataM.length];
         }
         self.countLab.text = [NSString stringWithFormat:@"共%@件",dataM.productNum];
         self.xinghaoLab.text = dataM.erjimulu;

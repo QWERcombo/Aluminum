@@ -178,8 +178,8 @@ static NSOperationQueue *queue;
             } else {
                 
                 [[UtilsData sharedInstance]showAlertTitle:@"" detailsText:@"暂无数据" time:2.5 aboutType:WHShowViewMode_Text state:NO];
-                NSLog(@"failure about error~%@",error);
             }
+            NSLog(@"failure about error~%@",error);
         }];
     });
     if (animation == YES) {

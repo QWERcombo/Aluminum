@@ -66,7 +66,7 @@
 - (void)getBaseDataWithTitle:(NSString *)title type:(NSString *)type {
     
     [self.dataSource removeAllObjects];
-    //type  1整板  2零切
+    //type  1整板  2零切 3期货
     if ([title isEqualToString:@"品类"]) {
         
         NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
@@ -111,12 +111,22 @@
             [parDic setObject:self.houdu forKey:@"houdu"];
         }
         
-        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:[type intValue]==1?Interface_CateList:Interface_LQPaihao andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        NSString *requestUrl = @"";
+        if ([type isEqualToString:@"1"]) {
+            requestUrl = Interface_CateList;
+        } else if ([type isEqualToString:@"2"]) {
+            requestUrl = Interface_LQPaihao;
+        } else if ([type isEqualToString:@"3"]) {
+            requestUrl = Interface_QHPaihao;
+        } else {
+        }
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:requestUrl andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSArray *listArray = resultDic[@"list"];
             NSMutableArray *array = [NSMutableArray array];
             
-            if ([type intValue] == 1) {
+            if ([type intValue] != 2) {
                 for (NSString *dic in listArray) {
 
                     [array addObject:dic];
@@ -150,7 +160,17 @@
             [parDic setObject:self.houdu forKey:@"houdu"];
         }
         
-        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:[type intValue]==1?Interface_ZhuangTai:Interface_LQZhuangtai andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        NSString *requestUrl = @"";
+        if ([type isEqualToString:@"1"]) {
+            requestUrl = Interface_ZhuangTai;
+        } else if ([type isEqualToString:@"2"]) {
+            requestUrl = Interface_LQZhuangtai;
+        } else if ([type isEqualToString:@"3"]) {
+            requestUrl = Interface_QHZhuangtai;
+        } else {
+        }
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:requestUrl andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSArray *listArray = resultDic[@"list"];
             NSMutableArray *array = [NSMutableArray array];
@@ -181,7 +201,17 @@
             [parDic setObject:self.zhuangtai forKey:@"zhuangtai"];
         }
         
-        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:[type intValue]==1?Interface_HouDu:Interface_LQHoudu andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+        NSString *requestUrl = @"";
+        if ([type isEqualToString:@"1"]) {
+            requestUrl = Interface_HouDu;
+        } else if ([type isEqualToString:@"2"]) {
+            requestUrl = Interface_LQHoudu;
+        } else if ([type isEqualToString:@"3"]) {
+            requestUrl = Interface_QHHoudu;
+        } else {
+        }
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:requestUrl andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
             
             NSArray *listArray = resultDic[@"list"];
             NSMutableArray *array = [NSMutableArray array];

@@ -103,9 +103,9 @@
             [dict setValue:shopcar.length forKey:@"chang"];
             [dict setValue:shopcar.width forKey:@"kuang"];
         } else {
-            [dict setValue:shopcar.height forKey:@"chang"];
+            [dict setValue:shopcar.length forKey:@"chang"];
             [dict setValue:shopcar.width forKey:@"kuang"];
-            [dict setValue:shopcar.length forKey:@"hou"];
+            [dict setValue:shopcar.height forKey:@"hou"];
         }
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_OrderSave andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
