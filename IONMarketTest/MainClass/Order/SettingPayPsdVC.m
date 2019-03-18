@@ -162,8 +162,19 @@
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WxBindPhone andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
             NSLog(@"%@", resultDic);
-//            [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"修改成功" time:0 aboutType:WHShowViewMode_Text state:YES];
-            [self dismissViewControllerAnimated:YES completion:nil];
+
+            //成功直接登录
+            NSString *login_phone = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE];
+            if (![login_phone isEqualToString:self.phoneTF.text]) {
+                [[NSUserDefaults standardUserDefaults] setObject:self.phoneTF.text forKey:LOGIN_PHONE];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+            
+            [[UserData currentUser] giveData:resultDic[@"user"]];
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+            [self.navigationController popViewControllerAnimated:YES];
         } failure:^(NSString *error, NSInteger code) {
             
         }];

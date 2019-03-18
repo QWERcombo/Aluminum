@@ -245,25 +245,13 @@
                     
                     switch (self.mainIndex) {
                         case 0:
-                            if (self.showTye == WholeBoardShowType_YueBao) {
-                                self.paiHao = @"";
-                            } else {
-                                self.pinLei = @"";
-                            }
+                            self.paiHao = @"";
                             break;
                         case 1:
-                            if (self.showTye == WholeBoardShowType_YueBao) {
-                                self.zhuangTai = @"";
-                            } else {
-                                self.paiHao = @"";
-                            }
+                            self.zhuangTai = @"";
                             break;
                         case 2:
-                            if (self.showTye == WholeBoardShowType_YueBao) {
-                                self.houDu = @"";
-                            } else {
-                                self.zhuangTai = @"";
-                            }
+                            self.houDu = @"";
                             break;
                         case 3:
                             if (self.showTye == WholeBoardShowType_YueBao) {
@@ -273,7 +261,7 @@
                                 self.changJia = @"";
                                 self.moreTitle = @"";
                             } else {
-                                self.houDu = @"";
+                                self.pinLei = @"";
                             }
                             break;
                         default:

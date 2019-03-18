@@ -9,6 +9,7 @@
 #import "SettingTVC.h"
 #import "TextTableViewController.h"
 #import "SettingPayPsdVC.h"
+#import "InviteNumberVC.h"
 
 @interface SettingTVC ()
 @property (weak, nonatomic) IBOutlet UILabel *versionLab;
@@ -66,8 +67,36 @@
     
     [[UtilsData sharedInstance] showAlertControllerWithTitle:@"提示" detail:@"是否确定退出登录" doneTitle:@"确定" cancelTitle:@"取消" haveCancel:YES doneAction:^{
         
-        [[UserData currentUser] removeMe];
-        [[UtilsData sharedInstance] postLogoutNotice];
+        NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+        [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
+        
+        [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_hasPassword andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
+            
+            NSString *hasPasswordFlag = [NSString stringWithFormat:@"%@", [resultDic objectForKey:@"hasPasswordFlag"]];
+            if ([hasPasswordFlag integerValue]==0) {
+                //不存在密码去设置
+                InviteNumberVC *invite = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"InviteNumberVC"];
+                invite.showType = ShowType_SetPsd;
+                TBNavigationController *navi = [[TBNavigationController alloc] initWithRootViewController:invite];
+                [self presentViewController:navi animated:YES completion:^{
+                    [invite setCallBlock:^{
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [[UserData currentUser] removeMe];
+                            [[UtilsData sharedInstance] postLogoutNotice];
+                        });
+                        
+                    }];
+                }];
+            } else {
+
+                [[UserData currentUser] removeMe];
+                [[UtilsData sharedInstance] postLogoutNotice];
+            }
+            
+        } failure:^(NSString *error, NSInteger code) {
+            
+        }];
         
     } controller:self];
     

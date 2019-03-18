@@ -10,6 +10,7 @@
 #import "UserInfoSettingViewController.h"
 #import "PhotoAlertController.h"
 #import <UMShare/UMShare.h>
+#import "SettingPayPsdVC.h"
 
 @interface UserInfoViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *userHeader;
@@ -38,9 +39,14 @@
     self.userRole.text = [UserData currentUser].zhiwei;
     self.userCompany.text = [UserData currentUser].company;
     self.userPhone.text = [UserData currentUser].phone;
-    self.weixinBind.text = @"未绑定";
-    self.weixinBind.textColor = [UIColor colorWithHexString:@"#CED4DA"];
     
+    if (![UserData currentUser].openid.length) {
+        self.weixinBind.text = @"未绑定";
+        self.weixinBind.textColor = [UIColor colorWithHexString:@"#CED4DA"];
+    } else {
+        self.weixinBind.text = @"已绑定";
+        self.weixinBind.textColor = [UIColor mianColor:2];
+    }
 }
 
 #pragma mark --- Delegate&DataSource
@@ -130,7 +136,6 @@
 }
 
 - (void)bindWeiXin:(BOOL)isBind {
-    
     //0绑定  1解绑
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:isBind?@"要解除与微信账号的绑定吗?":@"是否确定绑定微信?" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *done = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -142,23 +147,46 @@
             } else {
                 UMSocialUserInfoResponse *resp = result;
                 // 授权信息
-                NSLog(@"Wechat uid: %@", resp.uid);
-                NSLog(@"Wechat openid: %@", resp.openid);
-                NSLog(@"Wechat unionid: %@", resp.unionId);
-                NSLog(@"Wechat accessToken: %@", resp.accessToken);
-                NSLog(@"Wechat refreshToken: %@", resp.refreshToken);
-                NSLog(@"Wechat expiration: %@", resp.expiration);
-                // 用户信息
-                NSLog(@"Wechat name: %@", resp.name);
-                NSLog(@"Wechat iconurl: %@", resp.iconurl);
-                NSLog(@"Wechat gender: %@", resp.unionGender);
-                // 第三方平台SDK源数据
-                NSLog(@"Wechat originalResponse: %@", resp.originalResponse);
-                
-                
-                
-                self.weixinBind.text = @"已绑定";
-                self.weixinBind.textColor = [UIColor mianColor:2];
+//                NSLog(@"Wechat uid: %@", resp.uid);
+//                NSLog(@"Wechat openid: %@", resp.openid);
+//                NSLog(@"Wechat unionid: %@", resp.unionId);
+//                NSLog(@"Wechat accessToken: %@", resp.accessToken);
+//                NSLog(@"Wechat refreshToken: %@", resp.refreshToken);
+//                NSLog(@"Wechat expiration: %@", resp.expiration);
+//                // 用户信息
+//                NSLog(@"Wechat name: %@", resp.name);
+//                NSLog(@"Wechat iconurl: %@", resp.iconurl);
+//                NSLog(@"Wechat gender: %@", resp.unionGender);
+                if (isBind) {
+                    //解绑
+//                    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//                    [dict setValue:self.phoneTF.text forKey:@"phone"];
+//                    [dict setValue:self.codeTF.text forKey:@"number"];
+//                    if (self.psdTF.text.length) {
+//                        [dict setValue:self.psdTF.text forKey:@"promotePhone"];
+//                    }
+//                    [dict setValue:@"" forKey:@"openId"];
+//                    [dict setValue:resp.name forKey:@"wxName"];
+//                    [dict setValue:resp.iconurl forKey:@"headImgUrl"];
+//
+//                    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WxBindPhone andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+//
+//                        [[UserData currentUser] giveData:resultDic[@"user"]];
+//                        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"解绑成功!" time:0 aboutType:WHShowViewMode_Text state:YES];
+//                        [self.navigationController popViewControllerAnimated:YES];
+//
+//                    } failure:^(NSString *error, NSInteger code) {
+//
+//                    }];
+                } else {
+                    //绑定手机号
+                    SettingPayPsdVC *payset = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"SettingPayPsdVC"];
+                    payset.changeType = ChangeType_WxBind;
+                    payset.openId = resp.openid;
+                    payset.wxName = resp.name;
+                    payset.headImgUrl = resp.iconurl;
+                    [self.navigationController pushViewController:payset animated:YES];
+                }
             }
         }];
         

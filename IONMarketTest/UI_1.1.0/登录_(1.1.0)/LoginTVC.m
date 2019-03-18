@@ -202,7 +202,7 @@ typedef NS_ENUM(NSUInteger, LoginType) {
 //        [dict setValue:@"v110" forKey:@"lastVersion"];
         
         [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Login andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-            //NSLog(@"++++%@", resultDic);
+            NSLog(@"++++%@", resultDic);
             //用户手机号存本地
             NSString *login_phone = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE];
             if (![login_phone isEqualToString:self.phoneTF.text]) {
@@ -321,7 +321,17 @@ typedef NS_ENUM(NSUInteger, LoginType) {
             
             [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_RegisterByWX andCookie:@"-1" showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
                 NSLog(@"---%@", resultDic);
-                //成功直接登录?
+                //成功直接登录
+                NSString *login_phone = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_PHONE];
+                if (![login_phone isEqualToString:self.phoneTF.text]) {
+                    [[NSUserDefaults standardUserDefaults] setObject:self.phoneTF.text forKey:LOGIN_PHONE];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                }
+                
+                [[UserData currentUser] giveData:resultDic[@"user"]];
+                [self dismissViewControllerAnimated:YES completion:^{
+                    
+                }];
                 
             } failure:^(NSString *error, NSInteger code) {
                 
