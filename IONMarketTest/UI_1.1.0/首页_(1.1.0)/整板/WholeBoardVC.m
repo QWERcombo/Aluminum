@@ -585,6 +585,7 @@
             [subDataDic setObject:model.arg2 forKey:@"chang"];
             [subDataDic setObject:model.arg1 forKey:@"kuang"];
         }
+        [subDataDic setObject:model.zhuangtai forKey:@"zhuangtai"];
         [subDataDic setObject:model.zhonglei forKey:@"zhonglei"];
         [subDataDic setObject:@"整只" forKey:@"type"];
         [subDataDic setObject:model.lvxing.name forKey:@"erjimulu"];

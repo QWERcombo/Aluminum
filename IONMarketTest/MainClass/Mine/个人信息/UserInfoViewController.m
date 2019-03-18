@@ -26,6 +26,17 @@
 
 @implementation UserInfoViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (![UserData currentUser].openid.length) {
+        self.weixinBind.text = @"未绑定";
+        self.weixinBind.textColor = [UIColor colorWithHexString:@"#CED4DA"];
+    } else {
+        self.weixinBind.text = @"已绑定";
+        self.weixinBind.textColor = [UIColor mianColor:2];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -39,14 +50,6 @@
     self.userRole.text = [UserData currentUser].zhiwei;
     self.userCompany.text = [UserData currentUser].company;
     self.userPhone.text = [UserData currentUser].phone;
-    
-    if (![UserData currentUser].openid.length) {
-        self.weixinBind.text = @"未绑定";
-        self.weixinBind.textColor = [UIColor colorWithHexString:@"#CED4DA"];
-    } else {
-        self.weixinBind.text = @"已绑定";
-        self.weixinBind.textColor = [UIColor mianColor:2];
-    }
 }
 
 #pragma mark --- Delegate&DataSource
@@ -93,7 +96,7 @@
                 [self bindWeiXin:NO];
             } else {
                 //解除绑定
-                [self bindWeiXin:YES];
+//                [self bindWeiXin:YES];
             }
             
         }
