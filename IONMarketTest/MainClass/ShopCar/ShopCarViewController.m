@@ -42,9 +42,9 @@
     //自动更改透明度
     self.tabView.mj_header.automaticallyChangeAlpha = YES;
     //上拉刷新
-    self.tabView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [self getDataSource:self.pageNumber+1];
-    }];
+//    self.tabView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+//        [self getDataSource:self.pageNumber+1];
+//    }];
     
     self.tabView.ly_emptyView = [[PublicFuntionTool sharedInstance] getEmptyViewWithType:WHShowEmptyMode_noData withHintText:@"暂无数据" andDetailStr:@"" withReloadAction:^{
         
@@ -57,7 +57,8 @@
 }
 
 - (void)setupSubViews {
-    self.tabView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    self.tabView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    self.tabView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tabView.delegate = self;
     self.tabView.dataSource = self;
     self.tabView.showsVerticalScrollIndicator = NO;
@@ -146,16 +147,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     __weak typeof(self) weakself = self;
-    return [UtilsMold creatCell:@"ShopCarNewListCell" table:tableView deledate:self model:[self.dataMuArr objectAtIndex:indexPath.row] data:nil andCliker:^(NSDictionary *clueDic) {
+    ShopCar *shopCar = [self.dataMuArr objectAtIndex:indexPath.row];
+    
+    return [UtilsMold creatCell:@"ShopCarNewListCell" table:tableView deledate:self model:shopCar data:nil andCliker:^(NSDictionary *clueDic) {
+        
         if ([clueDic[@"key"] isEqualToString:@"1"]) {
-            [weakself.selectArr addObject:[weakself.dataMuArr objectAtIndex:indexPath.row]];
+            shopCar.isSelectedCard = YES;
+            [weakself.selectArr addObject:shopCar];
         } else if ([clueDic[@"key"] isEqualToString:@"-1"]) {
-            [weakself.selectArr removeObject:[weakself.dataMuArr objectAtIndex:indexPath.row]];
+            shopCar.isSelectedCard = NO;
+            [weakself.selectArr removeObject:shopCar];
         } else {
-            
         }
         
-        weakself.totoal = 0.f;
+        weakself.totoal = 0.0f;
         if (self.selectArr.count) {
             if (self.selectArr.count == self.dataMuArr.count) {
                 allButton.selected = YES;

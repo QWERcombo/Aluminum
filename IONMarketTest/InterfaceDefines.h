@@ -236,7 +236,8 @@
 #define Interface_QHPaihao          @"qihuopaihaoList"
 //期货厚度
 #define Interface_QHHoudu           @"qihuohouduList"
-
+//微信解绑
+#define Interface_Unlinkwx          @"user/unlinkwx"
 
 
 

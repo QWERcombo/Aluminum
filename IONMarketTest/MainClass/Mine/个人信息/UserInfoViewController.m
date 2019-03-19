@@ -96,7 +96,7 @@
                 [self bindWeiXin:NO];
             } else {
                 //解除绑定
-//                [self bindWeiXin:YES];
+                [self bindWeiXin:YES];
             }
             
         }
@@ -162,25 +162,20 @@
 //                NSLog(@"Wechat gender: %@", resp.unionGender);
                 if (isBind) {
                     //解绑
-//                    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//                    [dict setValue:self.phoneTF.text forKey:@"phone"];
-//                    [dict setValue:self.codeTF.text forKey:@"number"];
-//                    if (self.psdTF.text.length) {
-//                        [dict setValue:self.psdTF.text forKey:@"promotePhone"];
-//                    }
-//                    [dict setValue:@"" forKey:@"openId"];
-//                    [dict setValue:resp.name forKey:@"wxName"];
-//                    [dict setValue:resp.iconurl forKey:@"headImgUrl"];
-//
-//                    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_WxBindPhone andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
-//
-//                        [[UserData currentUser] giveData:resultDic[@"user"]];
-//                        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"解绑成功!" time:0 aboutType:WHShowViewMode_Text state:YES];
-//                        [self.navigationController popViewControllerAnimated:YES];
-//
-//                    } failure:^(NSString *error, NSInteger code) {
-//
-//                    }];
+                    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+                    
+                    [dict setValue:[UserData currentUser].user_id forKey:@"userId"];
+
+                    [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dict imageArray:nil WithType:Interface_Unlinkwx andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
+
+                        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"解绑成功" time:0 aboutType:WHShowViewMode_Text state:YES];
+                        self.weixinBind.text = @"未绑定";
+                        self.weixinBind.textColor = [UIColor colorWithHexString:@"#CED4DA"];
+                        [[UserData currentUser] giveData:@{@"openid":@""}];
+
+                    } failure:^(NSString *error, NSInteger code) {
+
+                    }];
                 } else {
                     //绑定手机号
                     SettingPayPsdVC *payset = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"SettingPayPsdVC"];

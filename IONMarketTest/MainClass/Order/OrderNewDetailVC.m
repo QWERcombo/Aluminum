@@ -27,6 +27,7 @@
     self.detailDataSource = [NSMutableArray array];
     self.wuliuArray = [NSMutableArray array];
     [self getOrderDetail:self.orderid];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     /*
     switch (self.orderDetailType) {
         case OrderDetailType_WillPay:
