@@ -153,9 +153,6 @@
         if (self.zhonglei.length) {
             [parDic setObject:self.zhonglei forKey:@"zhonglei"];
         }
-        if (self.paihao.length) {
-            [parDic setObject:self.paihao forKey:@"paihao"];
-        }
         if (self.houdu.length) {
             [parDic setObject:self.houdu forKey:@"houdu"];
         }
@@ -163,10 +160,19 @@
         NSString *requestUrl = @"";
         if ([type isEqualToString:@"1"]) {
             requestUrl = Interface_ZhuangTai;
+            if (self.paihao.length) {
+                [parDic setObject:self.paihao forKey:@"paihao"];
+            }
         } else if ([type isEqualToString:@"2"]) {
             requestUrl = Interface_LQZhuangtai;
+            if (self.paihao.length) {
+                [parDic setObject:self.paihao forKey:@"paihaoId"];
+            }
         } else if ([type isEqualToString:@"3"]) {
             requestUrl = Interface_QHZhuangtai;
+            if (self.paihao.length) {
+                [parDic setObject:self.paihao forKey:@"paihaoName"];
+            }
         } else {
         }
         
@@ -194,19 +200,25 @@
         if (self.zhonglei.length) {
             [parDic setObject:self.zhonglei forKey:@"zhonglei"];
         }
-        if (self.paihao.length) {
-            [parDic setObject:self.paihao forKey:@"paihao"];
-        }
         if (self.zhuangtai.length) {
             [parDic setObject:self.zhuangtai forKey:@"zhuangtai"];
         }
         
         NSString *requestUrl = @"";
         if ([type isEqualToString:@"1"]) {
+            if (self.paihao.length) {
+                [parDic setObject:self.paihao forKey:@"paihao"];
+            }
             requestUrl = Interface_HouDu;
         } else if ([type isEqualToString:@"2"]) {
+            if (self.paihao.length) {
+                [parDic setObject:self.paihao forKey:@"paihaoId"];
+            }
             requestUrl = Interface_LQHoudu;
         } else if ([type isEqualToString:@"3"]) {
+            if (self.paihao.length) {
+                [parDic setObject:self.paihao forKey:@"paihaoName"];
+            }
             requestUrl = Interface_QHHoudu;
         } else {
         }
