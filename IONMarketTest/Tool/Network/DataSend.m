@@ -132,8 +132,6 @@ static NSOperationQueue *queue;
             //打印下上传进度
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
-            [[UtilsData sharedInstance] hideAlert];
-            
             //请求成功
             [DataSend verdictResponseString:responseObject];
             
@@ -167,6 +165,9 @@ static NSOperationQueue *queue;
                 failure(message, 0);
             }
             
+            if (animation) {
+                [[UtilsData sharedInstance] hideAlert];
+            }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [[UtilsData sharedInstance] hideAlert];
             //请求失败
@@ -184,8 +185,6 @@ static NSOperationQueue *queue;
     });
     if (animation == YES) {
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"加载中..." time:30.0 aboutType:WHShowViewMode_Load state:NO];
-    } else {
-        [[UtilsData sharedInstance] hideAlert];
     }
     
 }

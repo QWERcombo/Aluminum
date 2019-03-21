@@ -9,7 +9,7 @@
 #import "TBNavigationController.h"
 #import "UIImage+YXP.h"
 
-@interface TBNavigationController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
+@interface TBNavigationController ()<UINavigationControllerDelegate>
 //返回block回调
 
 @property (nonatomic, strong) id popDelegate;
@@ -62,16 +62,16 @@
 }
 
 
--(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if (self.viewControllers.count > 0) {// 如果现在push的不是栈底控制器(最先push进来的那个控制器)
         viewController.hidesBottomBarWhenPushed = YES;
-    
+
         //设置导航栏的按钮
         UIBarButtonItem *backButton = [self itemWithImageName:@"MGoBack_w" highImageName:@"MGoBack_w" target:self action:@selector(backAction)];
         viewController.navigationItem.leftBarButtonItems = @[backButton];
 
-        // 就有滑动返回功能
+        //就有滑动返回功能
         self.interactivePopGestureRecognizer.delegate = nil;
     }
     [super pushViewController:viewController animated:animated];
@@ -99,11 +99,6 @@
     return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
-/*
--(BOOL) gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
-    return self.childViewControllers.count > 1;
-}
 
 // 完全展示完调用
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
@@ -113,12 +108,6 @@
     }
 }
 
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
-    if (viewController == [self.viewControllers firstObject]) {
-        
-    }
-}
- */
 
 - (void)backAction{
     [self popViewControllerAnimated:YES];

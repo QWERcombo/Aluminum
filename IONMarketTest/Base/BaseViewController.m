@@ -11,7 +11,7 @@
 
 @interface BaseViewController ()
 
-@property (nonatomic,strong) UISwipeGestureRecognizer *swipe;
+//@property (nonatomic,strong) UISwipeGestureRecognizer *swipe;
 
 @property (nonatomic, strong) UIButton *upBtn;
 
@@ -106,11 +106,11 @@
     self.tabView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tabView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
-    if (!self.isDirectionRight) {
-        self.swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(leftBtnClick)];
-        [self.swipe setDirection:UISwipeGestureRecognizerDirectionRight];
-        [self.view addGestureRecognizer:self.swipe];
-    }
+//    if (!self.isDirectionRight) {
+//        self.swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(leftBtnClick)];
+//        [self.swipe setDirection:UISwipeGestureRecognizerDirectionRight];
+//        [self.view addGestureRecognizer:self.swipe];
+//    }
     
 }
 
@@ -142,8 +142,8 @@
 
 -(void)clearSwipe
 {
-    [self.view removeGestureRecognizer:self.swipe];
-    [self.swipe removeTarget:self action:@selector(leftBtnClick)];
+//    [self.view removeGestureRecognizer:self.swipe];
+//    [self.swipe removeTarget:self action:@selector(leftBtnClick)];
 }
 
 -(void)leftBtnClick
