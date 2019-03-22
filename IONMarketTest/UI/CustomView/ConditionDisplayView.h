@@ -12,7 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ConditionDisplayViewDelegate <NSObject>
 
-- (void)didSelectedSubConditionIndex:(NSInteger)index;
+//- (void)didSelectedSubConditionIndex:(NSInteger)index;
+
+@optional
+//选择牌号的时候没有选择状态则默认选中第一条（仅限零切）
+- (void)changePaiHaoWhenZhuangTaiIsNoneToGetShow:(NSString *)zhuangtai;
 
 @end
 

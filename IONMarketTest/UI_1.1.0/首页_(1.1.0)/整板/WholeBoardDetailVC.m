@@ -132,7 +132,7 @@
         orderType = GetOrderType_ZhengBan;
     }
     
-    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:orderType chang:change kuan:kuan hou:hou zhuangTai:self.zhuangTai amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:self.orderMoney.stringValue successBlock:^(NSDictionary *dataDic) {
+    [[PublicFuntionTool sharedInstance] placeOrderCommonInterfaceWithUseType:useType moneyWithOrderType:orderType chang:change kuan:kuan hou:hou zhuangTai:_wholeModel.zhuangtai amount:amount type:@"整只" erjimulu:_wholeModel.lvxing orderMoney:self.orderMoney.stringValue successBlock:^(NSDictionary *dataDic) {
         
         self.dataDic = dataDic;
         self.orderMoney = [NSNumber numberWithFloat:[self.dataDic[@"orderMoney"] floatValue]];

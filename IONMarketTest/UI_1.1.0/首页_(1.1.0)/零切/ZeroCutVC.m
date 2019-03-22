@@ -144,7 +144,6 @@
                         
                         self.zeroTabVC.houDu = number;
                     } else {
-                        
                     }
                     
                 }
@@ -154,18 +153,18 @@
             
             if (showName.length) {
                 [self.conditionView changeTitle:showName index:self.mainIndex];
-//                [self.conditionView resetTitleWithIndex:index];
-//                [self getZhengBanListCur_page:1];
-            } else {
-                
-                if ([dataObject integerValue] == -2) {
-                    //重置子条件
-//                    [self getZhengBanListCur_page:1];
-                }
+
             }
+            
         }];
         [self.view bringSubviewToFront:self.conditionView];
     }
+}
+- (void)changePaiHaoWhenZhuangTaiIsNoneToGetShow:(NSString *)zhuangtai {
+    
+    self.zeroTabVC.zhuangTai = zhuangtai;
+    [self.conditionView changeTitle:zhuangtai index:[self.titleArray indexOfObject:@"状态"]];
+    
 }
 - (void)resetTitleInfomationWithIndex:(NSInteger)index {
     

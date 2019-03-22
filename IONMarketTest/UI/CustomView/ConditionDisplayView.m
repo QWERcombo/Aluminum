@@ -66,7 +66,7 @@
 - (void)getBaseDataWithTitle:(NSString *)title type:(NSString *)type {
     
     [self.dataSource removeAllObjects];
-    //type  1整板  2零切 3期货
+    //type  1整板  2零切  3期货
     if ([title isEqualToString:@"品类"]) {
         
         NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
@@ -188,6 +188,19 @@
             [self.dataSource addObject:array];
             
             [self.collectionView reloadData];
+            
+            //选择牌号的时候没有选择状态则默认选中第一条（仅限零切）
+            if ((!_zhuangtai.length) && ([self.parameter isEqualToString:@"2"]) && [self.showTitle isEqualToString:@"牌号"]) {
+                
+                if (self.delegate && [self.delegate respondsToSelector:@selector(changePaiHaoWhenZhuangTaiIsNoneToGetShow:)]) {
+                    
+                    if (array.count) {
+                        
+                        [self.delegate changePaiHaoWhenZhuangTaiIsNoneToGetShow:[array firstObject]];
+                    }
+                }
+                
+            }
             
         } failure:^(NSString *error, NSInteger code) {
             
@@ -353,6 +366,7 @@
     ConditionDisplayView *displayV = [[ConditionDisplayView alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIGHT, rootVC.view.bounds.size.height-40) parameter:parameter normalTitle:title selectTitle:selectTitle zhonglei:zhonglei paihao:paihao zhuangtai:zhuangtai houdu:houdu];
     
     displayV.selectedBlock = selectedBlock;
+    displayV.delegate = rootVC;
 
     if ([title isEqualToString:@"更多"]) {
         displayV.contentView.frame = CGRectMake(0, -420, SCREEN_WIGHT, 420);
@@ -425,6 +439,13 @@
             if (self.selectedBlock) {
                 
                 if (![self.showTitle isEqualToString:@"更多"]) {
+                    
+                    if ([self.showTitle isEqualToString:@"牌号"] && [self.parameter isEqualToString:@"2"]) {
+                        
+                        MainItemTypeModel *model = listArray[indexPath.row];
+                        self.paihao = model.id;
+                        [self getBaseDataWithTitle:@"状态" type:@"2"];
+                    }
                     
                     self.selectedBlock(listArray[indexPath.row], YES);
                 } else {

@@ -107,14 +107,7 @@
         cell.priceLabel.text = [NSString stringWithFormat:@"%@元/件", [NSString getStringAfterTwo:dataModel.danpianzhengbanjiage]];
         cell.stepper.maxValue = [dataModel.kucun integerValue];
         cell.kucunLabel.text = [NSString stringWithFormat:@"(%@件)", dataModel.kucun];
-        if (dataModel.value>0) {
-            cell.addBtn.hidden = YES;
-            cell.stepper.hidden = NO;
-            cell.stepper.value = dataModel.value;
-        } else {
-            cell.addBtn.hidden = NO;
-            cell.stepper.hidden = YES;
-        }
+        
         
         NSMutableArray *array = [NSMutableArray array];
         if (dataModel.gongyibiaozhun.length) {
@@ -150,6 +143,14 @@
             
             dataModel.value = value;
             
+            if (value==0) {
+                cell.addBtn.hidden = NO;
+                cell.stepper.hidden = YES;
+            } else {
+                cell.addBtn.hidden = YES;
+                cell.stepper.hidden = NO;
+            }
+            
             if (cell.selectBlock) {
                 cell.selectBlock(@"0");
             }
@@ -163,9 +164,18 @@
         
         cell.yueBtn.hidden = YES;
         cell.addBtn.hidden = NO;
-        cell.stepper.hidden = NO;
+        cell.stepper.hidden = YES;
         cell.priceLabel.hidden = YES;
         
+        
+        if (dataModel.value>0) {
+            cell.addBtn.hidden = YES;
+            cell.stepper.hidden = NO;
+            cell.stepper.value = dataModel.value;
+        } else {
+            cell.addBtn.hidden = NO;
+            cell.stepper.hidden = YES;
+        }
     }    
     
     return cell;

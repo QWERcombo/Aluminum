@@ -80,7 +80,7 @@
             break;
         case WholeBoardShowType_BanChengPin:
             self.title = @"半成品";
-            self.titleArray = [NSArray arrayWithObjects:@"品类",@"牌号",@"状态",@"厚度", nil];
+            self.titleArray = [NSArray arrayWithObjects:@"牌号",@"状态",@"厚度",@"品类", nil];
             break;
         case WholeBoardShowType_YueBao:
             self.title = @"期货";
@@ -177,7 +177,7 @@
         
         WholeBoardModel *model = [self.dataSource objectAtIndex:indexPath.row];
         detail.wholeModel = model;
-        detail.zhuangTai = self.zhuangTai.length?self.zhuangTai:DEFAULT_ZHUANGTAI;
+//        detail.zhuangTai = self.zhuangTai.length?self.zhuangTai:DEFAULT_ZHUANGTAI;
         MJWeakSelf
         [detail setSelectValue:^(NSInteger selectNumber) {
             model.value = selectNumber;
