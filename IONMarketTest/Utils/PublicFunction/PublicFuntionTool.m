@@ -394,9 +394,11 @@ DEF_SINGLETON(PublicFuntionTool);
     if (useType == UseType_OrderMoney) {
         url = Interface_OrderMoney;
         [parDic setObject:erjimulu.id forKey:@"erjimulu"];
-        [self isHadLogin:^{
+        if ([UserData currentUser].user_id.length) {
             [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
-        }];
+        }
+//        [self isHadLogin:^{
+//        }];
     } else if (useType == UseType_AddShopCar) {
         url = Interface_SaveToGouwuche;
         [parDic setObject:chang forKey:@"chang"];
@@ -408,11 +410,12 @@ DEF_SINGLETON(PublicFuntionTool);
     } else if (useType == UseType_DanJia) {
         url = Interface_OrderMoney;
         [parDic setObject:erjimulu.id forKey:@"erjimulu"];
-        [self isHadLogin:^{
+        if ([UserData currentUser].user_id.length) {
             [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
-        }];
+        }
+//        [self isHadLogin:^{
+//        }];
     } else {
-        
     }
     
     if (useType != UseType_DanJia) {
