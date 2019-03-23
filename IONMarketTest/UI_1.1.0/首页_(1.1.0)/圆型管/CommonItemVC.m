@@ -79,7 +79,23 @@
         //选中
         self.mainIndex = index;
         
-        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"2" selectTitle:title zhonglei:@"" paihao:self.commonTabVC.erjimulu_id.id zhuangtai:self.commonTabVC.zhuangTai houdu:@"" selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
+        NSString *zhonglei = @"";
+        switch (self.showType) {
+            case ShowType_YuanBang:
+                zhonglei = @"圆棒";
+                break;
+            case ShowType_XingCai:
+                zhonglei = @"型材";
+                break;
+            case ShowType_GuanCai:
+                zhonglei = @"管材";
+                break;
+                
+            default:
+                break;
+        }
+        
+        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"2" selectTitle:title zhonglei:zhonglei paihao:self.commonTabVC.erjimulu_id.id zhuangtai:self.commonTabVC.zhuangTai houdu:@"" selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
             NSString *showName = @"";
             
             if (isOver) {

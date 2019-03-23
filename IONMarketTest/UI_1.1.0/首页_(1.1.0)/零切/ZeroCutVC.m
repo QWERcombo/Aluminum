@@ -94,7 +94,7 @@
         //选中
         self.mainIndex = index;
         
-        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"2" selectTitle:title zhonglei:@"" paihao:self.zeroTabVC.erjimulu_id.id zhuangtai:self.zeroTabVC.zhuangTai houdu:self.zeroTabVC.houDu selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
+        [ConditionDisplayView showConditionDisplayViewWithTitle:[self.titleArray objectAtIndex:index] parameter:@"2" selectTitle:title zhonglei:@"零切" paihao:self.zeroTabVC.erjimulu_id.id zhuangtai:self.zeroTabVC.zhuangTai houdu:self.zeroTabVC.houDu selectedBlock:^(id  _Nonnull dataObject, BOOL isOver) {
             
             NSString *showName = @"";
             
