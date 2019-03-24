@@ -352,7 +352,12 @@
             
             ShopCar *car = [ShopCar new];
             car.productNum = [NSNumber numberWithInteger:model.value].stringValue;
-            car.type = @"整只";
+            if (self.showTye == WholeBoardShowType_Zhengban) {
+                car.type = @"整只";
+            } else if (self.showTye == WholeBoardShowType_BanChengPin) {
+                car.type = @"半成品";
+            } else {
+            }
             car.erjimulu = model.lvxing.name;
             car.money = [NSNumber numberWithFloat:[model.danpianzhengbanjiage floatValue]*model.value].stringValue;
             car.zhonglei = model.zhonglei;
@@ -587,7 +592,12 @@
         }
         [subDataDic setObject:model.zhuangtai forKey:@"zhuangtai"];
         [subDataDic setObject:model.zhonglei forKey:@"zhonglei"];
-        [subDataDic setObject:@"整只" forKey:@"type"];
+        if (self.showTye == WholeBoardShowType_Zhengban) {
+            [subDataDic setObject:@"整只" forKey:@"type"];
+        } else if (self.showTye == WholeBoardShowType_BanChengPin) {
+            [subDataDic setObject:@"半成品" forKey:@"type"];
+        } else {
+        }
         [subDataDic setObject:model.lvxing.name forKey:@"erjimulu"];
         [subDataDic setObject:[NSNumber numberWithFloat:[model.danpianzhengbanjiage floatValue]*model.value].stringValue forKey:@"money"];
         [subDataDic setObject:[NSNumber numberWithInteger:model.value].stringValue forKey:@"amount"];
