@@ -28,6 +28,15 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    self.tableView.hidden = YES;
+    UIImageView *imgv = [[UIImageView alloc] init];
+    imgv.image = IMG(@"taoliao_0");
+    [self.view addSubview:imgv];
+    [imgv mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+    }];
+    
+    
     [self getListDataSource];
 }
 

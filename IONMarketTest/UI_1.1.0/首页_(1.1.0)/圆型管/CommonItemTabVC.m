@@ -390,13 +390,13 @@
         
     } else {
         
-        self.danjianjiage.text = [NSString stringWithFormat:@"%@元/公斤", [self.dataDic objectForKey:@"danpianjiage"]];
+        self.danjianjiage.text = [NSString stringWithFormat:@"%@元", [self.dataDic objectForKey:@"danpianjiage"]];
         self.orderMoney = [self.dataDic objectForKey:@"orderMoney"];
         if (self.orderMoney) {
             self.totalLabel.text = [NSString stringWithFormat:@"%@元", [NSString getStringAfterTwo:self.orderMoney]];
         }
-        self.zidingyi_right_label.text = [NSString stringWithFormat:@"%@元/公斤", [NSString getStringAfterTwo:self.zidingyiDanJia]];
-        self.zidingyi_right_label.attributedText = [UILabel getAttributedFromRange:[self.zidingyi_right_label.text rangeOfString:@"元/公斤"] WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.zidingyi_right_label.text];
+        self.moneyLab.text = [NSString stringWithFormat:@"%@元/公斤", [NSString getStringAfterTwo:self.zidingyiDanJia]];
+        self.moneyLab.attributedText = [UILabel getAttributedFromRange:[self.moneyLab.text rangeOfString:@"元/公斤"] WithColor:[UIColor Grey_OrangeColor] andFont:[UIFont systemFontOfSize:10 weight:UIFontWeightSemibold] allFullText:self.moneyLab.text];
         
     }
     

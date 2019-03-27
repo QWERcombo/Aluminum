@@ -94,7 +94,7 @@
             [self.dataMuArr addObject:model];
         }
         
-        self.huankuanLab.text = [resultDic[@"money"] stringValue];
+        self.huankuanLab.text = [NSString getStringAfterTwo:[resultDic[@"money"] stringValue]];
         
         [self.whiteBarTableView reloadData];
     } failure:^(NSString *error, NSInteger code) {
@@ -110,8 +110,8 @@
     
     [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:dataDic imageArray:nil WithType:Interface_GetBaitiaoEDuById andCookie:nil showAnimation:NO success:^(NSDictionary *resultDic, NSString *msg) {
         
-        self.totalFeeLab.text = [NSString stringWithFormat:@"白条额度:%@", [resultDic[@"zongedu"] stringValue]];
-        self.availFeeLab.text = [NSString stringWithFormat:@"可用额度:%@", [resultDic[@"keyongedu"] stringValue]];
+        self.totalFeeLab.text = [NSString stringWithFormat:@"白条额度:%@", [NSString getStringAfterTwo:[resultDic[@"zongedu"] stringValue]]];
+        self.availFeeLab.text = [NSString stringWithFormat:@"可用额度:%@", [NSString getStringAfterTwo:[resultDic[@"keyongedu"] stringValue]]];
         
     } failure:^(NSString *error, NSInteger code) {
         

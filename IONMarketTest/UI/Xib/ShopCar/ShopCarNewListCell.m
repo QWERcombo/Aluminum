@@ -54,7 +54,9 @@
         self.typeImgv.image = IMG(@"order_整板");
     } else if ([dataM.type isEqualToString:@"快速"]) {
         self.typeImgv.image = IMG(@"order_速切");
-    } else if ([dataM.type isEqualToString:@"半成品"]) {
+    } else if ([dataM.type isEqualToString:@"零切"]) {
+        self.typeImgv.image = IMG(@"order_速切");
+    } else if ([dataM.type isEqualToString:@"半成品铝板"]) {
         self.typeImgv.image = IMG(@"order_半成品");
     } else {
         self.typeImgv.image = IMG(@"order_优切");

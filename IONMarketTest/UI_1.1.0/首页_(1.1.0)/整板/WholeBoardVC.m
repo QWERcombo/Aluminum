@@ -355,7 +355,7 @@
             if (self.showTye == WholeBoardShowType_Zhengban) {
                 car.type = @"整只";
             } else if (self.showTye == WholeBoardShowType_BanChengPin) {
-                car.type = @"半成品";
+                car.type = @"半成品铝板";
             } else {
             }
             car.erjimulu = model.lvxing.name;
@@ -595,7 +595,7 @@
         if (self.showTye == WholeBoardShowType_Zhengban) {
             [subDataDic setObject:@"整只" forKey:@"type"];
         } else if (self.showTye == WholeBoardShowType_BanChengPin) {
-            [subDataDic setObject:@"半成品" forKey:@"type"];
+            [subDataDic setObject:@"半成品铝板" forKey:@"type"];
         } else {
         }
         [subDataDic setObject:model.lvxing.name forKey:@"erjimulu"];

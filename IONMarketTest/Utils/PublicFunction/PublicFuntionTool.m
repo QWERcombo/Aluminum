@@ -397,8 +397,6 @@ DEF_SINGLETON(PublicFuntionTool);
         if ([UserData currentUser].user_id.length) {
             [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
         }
-//        [self isHadLogin:^{
-//        }];
     } else if (useType == UseType_AddShopCar) {
         url = Interface_SaveToGouwuche;
         [parDic setObject:chang forKey:@"chang"];
@@ -413,8 +411,6 @@ DEF_SINGLETON(PublicFuntionTool);
         if ([UserData currentUser].user_id.length) {
             [parDic setObject:[UserData currentUser].user_id forKey:@"userId"];
         }
-//        [self isHadLogin:^{
-//        }];
     } else {
     }
     

@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalLab;
 
 @property (nonatomic, strong) CYPasswordView *passwordView;
+@property (nonatomic, strong) UIButton *selectBtn;
 @end
 
 @implementation OrderPayVC
@@ -36,8 +37,6 @@
 //    NSLog(@"%@", self.orderModel);
     NSNumber *total = [NSNumber numberWithFloat:([self.orderModel.totalMoney floatValue] + [self.orderModel.wuliufei floatValue])];
     self.totalLab.text = [NSString stringWithFormat:@"￥%@", [NSString getStringAfterTwo:total.stringValue]];
-
-    
 }
 
 - (void)resetPasswordView {
@@ -54,20 +53,41 @@
 - (void)cancel {
     
 }
+- (IBAction)payAction:(UIButton *)sender {
+    
+    if (sender != self.selectBtn) {
+        
+        UIImageView *imgv = [self.view viewWithTag:sender.tag+100];
+        imgv.image = IMG(@"select_1");
+        
+        if (self.selectBtn) {
+            UIImageView *imgv1 = [self.view viewWithTag:self.selectBtn.tag+100];
+            imgv1.image = IMG(@"select_0");
+        }
+    }
+    
+    self.selectBtn = sender;
+    
+}
+
 
 - (IBAction)payClicker:(UIButton *)sender {
     
-    if ([self.payWayLab.text isEqualToString:@"选择支付方式"]) {
+//    if ([self.payWayLab.text isEqualToString:@"选择支付方式"]) {
+//        [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请选择支付方式!" time:0 aboutType:WHShowViewMode_Text state:NO];
+//        return;
+//    }
+    if (!self.selectBtn) {
         [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"请选择支付方式!" time:0 aboutType:WHShowViewMode_Text state:NO];
         return;
     }
     
-    if ([self.payWayLab.text isEqualToString:@"微信支付"]) {
+    if (self.selectBtn.tag == 103) {
         [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserWeixiWithOrderId:self.orderModel.no andTotalfee:[self.totalLab.text substringToIndex:1] userPayMode:weixinPayMode_order paySuccessBlock:^{
             [self goToPayResuit];
         }];
     }
-    if ([self.payWayLab.text isEqualToString:@"钱包支付"]) {
+    if (self.selectBtn.tag == 100) {
         
         if ([UserData currentUser].zhifumima.length) {
             [self resetPasswordView];
@@ -88,7 +108,7 @@
         }
         
     }
-    if ([self.payWayLab.text isEqualToString:@"白条支付"]) {
+    if (self.selectBtn.tag == 101) {
         
         if ([UserData currentUser].zhifumima.length) {
             [self resetPasswordView];
@@ -106,7 +126,7 @@
         }
         
     }
-    if ([self.payWayLab.text isEqualToString:@"支付宝支付"]) {
+    if (self.selectBtn.tag == 102) {
         [[ShoppingCarSingle sharedShoppingCarSingle] beginPayUserAliPayWithOrderId:self.orderModel.no andTotalfee:[self.totalLab.text substringToIndex:1] userPayMode:aliPayMode_order paySuccessBlock:^{
             
             [self goToPayResuit];
