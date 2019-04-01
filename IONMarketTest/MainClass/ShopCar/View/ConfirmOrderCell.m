@@ -37,7 +37,7 @@
             self.guigeLab.text = [NSString stringWithFormat:@"%@x%@", dataM.width, dataM.length];
         }
         self.countLab.text = [NSString stringWithFormat:@"共%@件",dataM.productNum];
-        self.xinghaoLab.text = dataM.erjimulu;
+        self.xinghaoLab.text = [NSString stringWithFormat:@"%@-%@",dataM.erjimulu,dataM.zhuangtai];
         
         if ([dataM.type isEqualToString:@"整只"]) {
             self.typeImg.image = IMG(@"order_整板");
@@ -60,7 +60,7 @@
             self.guigeLab.text = [NSString stringWithFormat:@"规格：%@x%@", dataM.width, dataM.length];
         }
         self.countLab.text = [NSString stringWithFormat:@"共%@件",dataM.productNum];
-        self.xinghaoLab.text = dataM.erjimulu;
+        self.xinghaoLab.text = [NSString stringWithFormat:@"%@-%@",dataM.erjimulu,dataM.zhuangtai];
         
         if ([dataM.type isEqualToString:@"整只"]) {
             self.typeImg.image = IMG(@"order_整板");
@@ -76,9 +76,6 @@
     } else {
         
     }
-    
-    
-    
     
 }
 

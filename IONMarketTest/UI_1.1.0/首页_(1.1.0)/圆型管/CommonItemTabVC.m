@@ -422,6 +422,7 @@
     self.amountTF.text = @"";
     self.lengthTF.text = @"";
     self.guigeTF.text = @"";
+    self.moneyLab.text = @"";
     
     self.zhengzhi_imgv.image = [UIImage imageNamed:@"select_1"];
     self.zidingyi_imgv.image = [UIImage imageNamed:@"select_0"];
@@ -430,7 +431,6 @@
     self.zidingyi_left_label.textColor = [UIColor colorWithHexString:@"#202124"];
     self.zidingyi_right_label.text = @"";
     
-//    _lengthTF.placeholder = @"请选择长度";
     _lengthTF.placeholder = @"请输入长度";
     [_lengthBtn setTitle:@"" forState:UIControlStateNormal];
     

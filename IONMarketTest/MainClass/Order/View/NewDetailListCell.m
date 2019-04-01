@@ -35,7 +35,7 @@
         cell.guige.text = [NSString stringWithFormat:@"规格：%@x%@", dataM.width, dataM.length];
     }
     cell.jianshu.text = [NSString stringWithFormat:@"共%@件",dataM.productNum];
-    cell.xinghao.text = dataM.erjimulu;
+    cell.xinghao.text = [NSString stringWithFormat:@"%@-%@", dataM.erjimulu, dataM.zhuangtai];
     cell.zhongliang.text = [NSString stringWithFormat:@"%@kg",dataM.zongzhongliang];
     
     if ([dataM.type isEqualToString:@"整只"]) {

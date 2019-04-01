@@ -249,6 +249,7 @@
     self.widthTF.text = @"";
     self.thinTF.text = @"";
     self.countTF.text = @"";
+    
     self.dataDic = nil;
     
 }

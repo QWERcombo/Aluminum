@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSString *money;
 @property (nonatomic, strong) NSString *productNum;
 @property (nonatomic, strong) NSString *zhonglei;
+@property (nonatomic, strong) NSString *zhuangtai;
 @property (nonatomic, strong) NSString *height;
 @property (nonatomic, strong) NSString *length;
 @property (nonatomic, strong) NSString *width;

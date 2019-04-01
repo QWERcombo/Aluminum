@@ -1702,16 +1702,16 @@
                                                     <rect key="frame" x="0.0" y="225" width="375" height="60"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet_ali" translatesAutoresizingMaskIntoConstraints="NO" id="nqY-Ru-3J8">
-                                                            <rect key="frame" x="15" y="18" width="24" height="24"/>
+                                                            <rect key="frame" x="15" y="6" width="48" height="48"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHv-SC-qMZ">
-                                                            <rect key="frame" x="52" y="19.5" width="52" height="21"/>
+                                                            <rect key="frame" x="76" y="19.5" width="52" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVx-mf-zXU">
-                                                            <rect key="frame" x="338" y="19" width="22" height="22"/>
+                                                            <rect key="frame" x="316" y="8" width="44" height="44"/>
                                                             <state key="normal" image="select_0"/>
                                                             <state key="selected" image="select_1"/>
                                                         </button>
@@ -1741,16 +1741,16 @@
                                                     <rect key="frame" x="0.0" y="285" width="375" height="60"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet_weixin" translatesAutoresizingMaskIntoConstraints="NO" id="9RT-sb-QBE">
-                                                            <rect key="frame" x="15" y="18" width="24" height="24"/>
+                                                            <rect key="frame" x="15" y="6" width="48" height="48"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NH7-LR-yO4">
-                                                            <rect key="frame" x="52" y="19.5" width="35" height="21"/>
+                                                            <rect key="frame" x="76" y="19.5" width="35" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2g-lz-dvd">
-                                                            <rect key="frame" x="338" y="19" width="22" height="22"/>
+                                                            <rect key="frame" x="316" y="8" width="44" height="44"/>
                                                             <state key="normal" image="select_0"/>
                                                             <state key="selected" image="select_1"/>
                                                         </button>
@@ -2645,11 +2645,11 @@
                                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="separatorInset" minX="500" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="Tva-qX-rYZ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="Tva-qX-rYZ">
                                         <rect key="frame" x="0.0" y="8" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tva-qX-rYZ" id="zFL-Ca-F1R">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="规格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTW-ux-KJg">
@@ -2659,21 +2659,21 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择规格" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BJP-gY-lSA">
-                                                    <rect key="frame" x="58" y="5" width="273" height="40"/>
+                                                    <rect key="frame" x="58" y="5" width="307" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="IPl-ef-WIL"/>
                                                     </constraints>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="BJP-gY-lSA" secondAttribute="trailing" constant="10" id="DSw-3b-Dzt"/>
                                                 <constraint firstItem="PTW-ux-KJg" firstAttribute="leading" secondItem="zFL-Ca-F1R" secondAttribute="leading" constant="15" id="QJk-zE-hs3"/>
                                                 <constraint firstItem="BJP-gY-lSA" firstAttribute="centerY" secondItem="zFL-Ca-F1R" secondAttribute="centerY" id="c7y-ht-oKq"/>
                                                 <constraint firstItem="PTW-ux-KJg" firstAttribute="centerY" secondItem="zFL-Ca-F1R" secondAttribute="centerY" id="dFx-jY-nFP"/>
                                                 <constraint firstItem="BJP-gY-lSA" firstAttribute="leading" secondItem="PTW-ux-KJg" secondAttribute="trailing" constant="10" id="km7-5P-2iy"/>
-                                                <constraint firstAttribute="trailing" secondItem="BJP-gY-lSA" secondAttribute="trailing" constant="10" id="ytA-4O-4KQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2876,7 +2876,7 @@
                                                     <rect key="frame" x="58" y="0.0" width="307" height="49.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rp1-tX-qH8">
-                                                            <rect key="frame" x="153.5" y="25" width="0.0" height="0.0"/>
+                                                            <rect key="frame" x="302" y="25" width="0.0" height="0.0"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                             <color key="textColor" red="0.90980392156862744" green="0.25098039215686274" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2885,7 +2885,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="Rp1-tX-qH8" firstAttribute="centerY" secondItem="c1O-5Y-bXl" secondAttribute="centerY" id="Pon-4F-5ty"/>
-                                                        <constraint firstItem="Rp1-tX-qH8" firstAttribute="centerX" secondItem="c1O-5Y-bXl" secondAttribute="centerX" id="VkD-0V-b9m"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Rp1-tX-qH8" secondAttribute="trailing" constant="5" id="fZz-Gt-nqW"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -3039,10 +3039,10 @@
         <image name="kuaidi" width="23" height="22"/>
         <image name="login_close" width="24" height="24"/>
         <image name="main_shop" width="38" height="38"/>
-        <image name="select_0" width="22" height="22"/>
-        <image name="select_1" width="22" height="22"/>
-        <image name="wallet_ali" width="24" height="24"/>
-        <image name="wallet_weixin" width="24" height="24"/>
+        <image name="select_0" width="44" height="44"/>
+        <image name="select_1" width="44" height="44"/>
+        <image name="wallet_ali" width="48" height="48"/>
+        <image name="wallet_weixin" width="48" height="48"/>
         <image name="添加" width="164" height="164"/>
         <image name="询价" width="312" height="486"/>
     </resources>

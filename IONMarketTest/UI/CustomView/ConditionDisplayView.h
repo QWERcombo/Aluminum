@@ -27,7 +27,7 @@ typedef void(^SselectedIndexPath)(id dataObject, BOOL isOver);
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *allButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnWidth;
+@property (weak, nonatomic) IBOutlet UIView *hideView;
 
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) NSMutableArray *moreTitleArr;//更多情况下的title数组

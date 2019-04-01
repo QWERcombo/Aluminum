@@ -30,8 +30,16 @@
 @implementation MainViewController
 
 #define Item_Width      55
-#define Item_Margin     ((SCREEN_WIGHT-(Item_Width*4)-30)/3)
+#define Item_Margin     ((SCREEN_WIGHT-(Item_Width*4)-60)/3)
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -40,7 +48,8 @@
     [self.tabView removeFromSuperview];
     [self.view addSubview:self.tabView];
     [self.tabView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.top.equalTo(self.view);
+        make.left.right.bottom.equalTo(self.view);
+        make.top.equalTo(self.view.mas_top).offset(-20);
     }];
     self.pageNumber = 1;
     [self getDataSource:self.pageNumber];
@@ -92,7 +101,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section==0) {
-        return 311;
+        return 370;
     } else if (section==1) {
         return 72;
     } else if (section==2) {
@@ -114,7 +123,7 @@
 
 #pragma mark ---- CreateSubViews
 - (UIView *)createTopView {
-    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 311)];
+    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIGHT, 370)];
     mainView.backgroundColor = [UIColor whiteColor];
 
 //    @[IMG(@"Banner_0"),IMG(@"Banner_1")]
@@ -125,7 +134,7 @@
     [mainView addSubview:bannerView];
     
     
-    UIView *blank = [[UIView alloc] initWithFrame:CGRectMake(0, 145, SCREEN_WIGHT, 166)];
+    UIView *blank = [[UIView alloc] initWithFrame:CGRectMake(0, 204, SCREEN_WIGHT, 166)];
     blank.backgroundColor = [UIColor whiteColor];
     [mainView addSubview:blank];    
     
@@ -135,7 +144,7 @@
         for (NSInteger j=0; j<4; j++) {
             
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            button.frame = CGRectMake((Item_Margin+Item_Width)*j+15, ((66+19)*i), Item_Width, 66);
+            button.frame = CGRectMake((Item_Margin+Item_Width)*j+30, ((66+19)*i), Item_Width, 66);
             
             NSString *imageName = [NSString stringWithFormat:@"Main_item_%ld", (long)(i*4+j)];
             [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];

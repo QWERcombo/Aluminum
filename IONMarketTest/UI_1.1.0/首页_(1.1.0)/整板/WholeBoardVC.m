@@ -267,6 +267,14 @@
                         default:
                             break;
                     }
+                } else if ([number integerValue] == -3) {
+                    //全部重置
+                    [self.conditionView reset];
+                    self.paiHao = @"";
+                    self.zhuangTai = @"";
+                    self.houDu = @"";
+                    self.pinLei = @"";
+                    [self getZhengBanListCur_page:1 isShowLoading:YES];
                 } else {
                     
                     showName = number;
@@ -352,16 +360,18 @@
             
             ShopCar *car = [ShopCar new];
             car.productNum = [NSNumber numberWithInteger:model.value].stringValue;
+            
             if (self.showTye == WholeBoardShowType_Zhengban) {
+                car.zhonglei = model.zhonglei;
                 car.type = @"整只";
             } else if (self.showTye == WholeBoardShowType_BanChengPin) {
+                car.zhonglei = @"半成品铝板";
                 car.type = @"半成品铝板";
             } else {
             }
             car.erjimulu = model.lvxing.name;
             car.money = [NSNumber numberWithFloat:[model.danpianzhengbanjiage floatValue]*model.value].stringValue;
-            car.zhonglei = model.zhonglei;
-            car.zhuangtai = self.zhuangTai.length?self.zhuangTai:DEFAULT_ZHUANGTAI;
+            car.zhuangtai = model.zhuangtai;
             
             if ([model.zhonglei isEqualToString:@"圆棒"]) {
                 car.length = model.arg2;
@@ -401,9 +411,9 @@
         
         NSString *message = @"";
         if ([model.chang integerValue]>0) {
-            message = [NSString stringWithFormat:@"抢约 %@ \"%@*%@*%@\",工作人员将尽快与您联系", model.hejinpaihao, model.hou, model.kuang, model.chang];
+            message = [NSString stringWithFormat:@"抢约 %@ \"%@*%@*%@\"\n并联系客服人员", model.hejinpaihao, model.hou, model.kuang, model.chang];
         } else {
-            message = [NSString stringWithFormat:@"抢约 %@ \"%@*%@\",工作人员将尽快与您联系", model.hejinpaihao, model.hou, model.kuang];
+            message = [NSString stringWithFormat:@"抢约 %@ \"%@*%@\"\n并联系客服人员", model.hejinpaihao, model.hou, model.kuang];
         }
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
@@ -416,7 +426,9 @@
             
             [DataSend sendPostWastedRequestWithBaseURL:BASE_URL valueDictionary:parDic imageArray:nil WithType:Interface_QiHuoOrder andCookie:nil showAnimation:YES success:^(NSDictionary *resultDic, NSString *msg) {
                 
-                [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"已抢约" time:0 aboutType:WHShowViewMode_Text state:YES];
+//                [[UtilsData sharedInstance] showAlertTitle:@"" detailsText:@"已抢约" time:0 aboutType:WHShowViewMode_Text state:YES];
+                NSMutableString *str = [[NSMutableString alloc] initWithFormat:@"tel:%@",Service_TELL];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
                 
             } failure:^(NSString *error, NSInteger code) {
                 
@@ -591,11 +603,13 @@
             [subDataDic setObject:model.arg1 forKey:@"kuang"];
         }
         [subDataDic setObject:model.zhuangtai forKey:@"zhuangtai"];
-        [subDataDic setObject:model.zhonglei forKey:@"zhonglei"];
+        
         if (self.showTye == WholeBoardShowType_Zhengban) {
             [subDataDic setObject:@"整只" forKey:@"type"];
+            [subDataDic setObject:model.zhonglei forKey:@"zhonglei"];
         } else if (self.showTye == WholeBoardShowType_BanChengPin) {
             [subDataDic setObject:@"半成品铝板" forKey:@"type"];
+            [subDataDic setObject:@"半成品铝板" forKey:@"zhonglei"];
         } else {
         }
         [subDataDic setObject:model.lvxing.name forKey:@"erjimulu"];

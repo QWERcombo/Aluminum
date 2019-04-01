@@ -49,7 +49,7 @@
     self.clikerBlock = click;
     ShopCar *dataM = (ShopCar *)model;
     self.selectBtn.selected = dataM.isSelectedCard;
-    self.xinghaoLab.text = dataM.erjimulu;
+    self.xinghaoLab.text = [NSString stringWithFormat:@"%@-%@",dataM.erjimulu,dataM.zhuangtai];
     if ([dataM.type isEqualToString:@"整只"]) {
         self.typeImgv.image = IMG(@"order_整板");
     } else if ([dataM.type isEqualToString:@"快速"]) {

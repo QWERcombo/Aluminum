@@ -45,23 +45,23 @@
         
         self.frame = frame;
         
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeTap:)];
-        tap.delegate = self;
-        [self addGestureRecognizer:tap];
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeTap:)];
+//        tap.delegate = self;
+//        [self addGestureRecognizer:tap];
         [self getBaseDataWithTitle:title type:parameter];
         
     }
     return self;
 }
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    
-    if ([touch.view isKindOfClass:[ConditionDisplayView class]]) {
-        return YES;
-    } else {
-        return NO;
-    }
-    
-}
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+//
+//    if ([touch.view isKindOfClass:[ConditionDisplayView class]]) {
+//        return YES;
+//    } else {
+//        return NO;
+//    }
+//
+//}
 
 - (void)getBaseDataWithTitle:(NSString *)title type:(NSString *)type {
     
@@ -327,14 +327,14 @@
     
 }
 
-
-
 - (void)removeTap:(UITapGestureRecognizer *)sender {
+    
     if (self.selectedBlock) {
         self.selectedBlock(@"-1", YES);
-        [self hideSelf];
+//        [self hideSelf];
     }
 }
+
 
 - (void)hideSelf {
     
@@ -371,13 +371,11 @@
     if ([title isEqualToString:@"更多"]) {
         displayV.contentView.frame = CGRectMake(0, -420, SCREEN_WIGHT, 420);
         displayV.contentHeight.constant = 420;
-        displayV.btnWidth.constant = SCREEN_WIGHT/2;
         [displayV.allButton setTitle:@"确定" forState:UIControlStateNormal];
     } else {
         displayV.contentView.frame = CGRectMake(0, -320, SCREEN_WIGHT, 320);
         displayV.contentHeight.constant = 320;
-        displayV.btnWidth.constant = 0.01;
-        [displayV.allButton setTitle:@"重置/全部" forState:UIControlStateNormal];
+        [displayV.allButton setTitle:@"当前重置" forState:UIControlStateNormal];
     }
     
     
@@ -531,7 +529,12 @@
     self.selectTitle = self.showTitle;
     [self.collectionView reloadData];
     if (self.selectedBlock) {
-        self.selectedBlock(@"-2", YES);
+        if (sender.tag==200) {
+            self.selectedBlock(@"-2", YES);
+        } else {
+            //全部重置
+            self.selectedBlock(@"-3", YES);
+        }
     }
     
 }

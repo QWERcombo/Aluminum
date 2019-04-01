@@ -136,7 +136,7 @@ return __singleton__; \
 #define Share_URL  @"http://appdown.leqie.cn"
 
 //客服电话
-#define Service_TELL  @"027-87313758"
+#define Service_TELL  @"0510-88996061"
 
 
 //钱包微信充值

@@ -361,7 +361,7 @@ DEF_SINGLETON(UtilsMold);
         for (int i = 0; i < dataSource.count; i ++) {
             [IMGArr addObject:[dataSource objectAtIndex:i]];
         }
-        ABBannerView *bannerView = [[ABBannerView alloc] initPageViewFrame:CGRectMake(0, 0, SCREEN_WIGHT, 132) webImageStr:IMGArr titleStr:nil didSelectPageViewAction:^(NSInteger index) {
+        ABBannerView *bannerView = [[ABBannerView alloc] initPageViewFrame:CGRectMake(0, 0, SCREEN_WIGHT, 188) webImageStr:IMGArr titleStr:nil didSelectPageViewAction:^(NSInteger index) {
 //            NSLog(@"click---%ld", index);
         }];
         
