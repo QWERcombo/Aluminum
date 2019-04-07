@@ -45,23 +45,23 @@
         
         self.frame = frame;
         
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeTap:)];
-//        tap.delegate = self;
-//        [self addGestureRecognizer:tap];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeTap:)];
+        tap.delegate = self;
+        [self addGestureRecognizer:tap];
         [self getBaseDataWithTitle:title type:parameter];
         
     }
     return self;
 }
-//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-//
-//    if ([touch.view isKindOfClass:[ConditionDisplayView class]]) {
-//        return YES;
-//    } else {
-//        return NO;
-//    }
-//
-//}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+
+    if ([touch.view isKindOfClass:[ConditionDisplayView class]]) {
+        return YES;
+    } else {
+        return NO;
+    }
+
+}
 
 - (void)getBaseDataWithTitle:(NSString *)title type:(NSString *)type {
     
@@ -190,7 +190,7 @@
             [self.collectionView reloadData];
             
             //选择牌号的时候没有选择状态则默认选中第一条（仅限零切）
-            if ((!_zhuangtai.length) && ([self.parameter isEqualToString:@"2"]) && [self.showTitle isEqualToString:@"牌号"]) {
+            if (([self.parameter isEqualToString:@"2"]) && [self.showTitle isEqualToString:@"牌号"]) {
                 
                 if (self.delegate && [self.delegate respondsToSelector:@selector(changePaiHaoWhenZhuangTaiIsNoneToGetShow:)]) {
                     
@@ -331,7 +331,7 @@
     
     if (self.selectedBlock) {
         self.selectedBlock(@"-1", YES);
-//        [self hideSelf];
+        [self hideSelf];
     }
 }
 

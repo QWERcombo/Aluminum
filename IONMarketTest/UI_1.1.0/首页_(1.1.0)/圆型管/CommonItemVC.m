@@ -113,7 +113,7 @@
                 
                 if ([number integerValue] == -1) {
                     //收起子条件时清除主条件选中状态
-//                    [self.conditionView reset];
+                    [self.conditionView reset];
                 } else if ([number integerValue] == -2) {
                     //重置子条件
                     [self.conditionView changeTitle:[self.titleArray objectAtIndex:index] index:self.mainIndex];
@@ -132,7 +132,7 @@
                     }
                 } else if ([number integerValue] == -3) {
                     //全部重置
-                    [self.conditionView reset];
+                    [self.conditionView resetAll];
                     self.commonTabVC.erjimulu_id = nil;
                     self.commonTabVC.zhuangTai = @"";
                 } else {
@@ -152,11 +152,12 @@
             if (showName.length) {
                 
                 [self.conditionView changeTitle:showName index:self.mainIndex];
-
-            } else {
-
             }
-            
+
+            if (self.commonTabVC.zhuangTai.length && self.commonTabVC.erjimulu_id) {
+                [self.commonTabVC refreshInfoToReset];
+                [self refreshBottomShopCarNumber];
+            }
         }];
         
         [self.view bringSubviewToFront:self.conditionView];
@@ -166,22 +167,12 @@
     
     self.commonTabVC.zhuangTai = zhuangtai;
     [self.conditionView changeTitle:zhuangtai index:[self.titleArray indexOfObject:@"状态"]];
-    
+    if (self.commonTabVC.zhuangTai.length && self.commonTabVC.erjimulu_id) {
+        [self.commonTabVC refreshInfoToReset];
+        [self refreshBottomShopCarNumber];
+    }
 }
 
-- (void)resetTitleInfomationWithIndex:(NSInteger)index {
-    
-    if (index == 0) {
-        //修改牌号
-        self.commonTabVC.zhuangTai = @"";
-        [self.commonTabVC refreshInfoToReset];
-    } else if (index == 1) {
-        //修改状态
-        [self.commonTabVC refreshInfoToReset];
-    } else {
-    }
-    
-}
 
 #pragma mark --- Data
 

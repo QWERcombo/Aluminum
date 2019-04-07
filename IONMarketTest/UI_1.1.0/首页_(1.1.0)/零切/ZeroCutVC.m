@@ -114,7 +114,7 @@
                 
                 if ([number integerValue] == -1) {
                     //收起子条件时清除主条件选中状态
-//                    [self.conditionView reset];
+                    [self.conditionView reset];
                 } else if ([number integerValue] == -2) {
                     //重置子条件
                     [self.conditionView changeTitle:[self.titleArray objectAtIndex:index] index:self.mainIndex];
@@ -135,7 +135,7 @@
                     }
                 } else if ([number integerValue] == -3) {
                     //全部重置
-                    [self.conditionView reset];
+                    [self.conditionView resetAll];
                     self.zeroTabVC.erjimulu_id = nil;
                     self.zeroTabVC.zhuangTai = @"";
                     self.zeroTabVC.houDu = @"";
@@ -161,7 +161,7 @@
                 [self.conditionView changeTitle:showName index:self.mainIndex];
 
             }
-            
+            [self.conditionView resetTitleWithIndex:index];
         }];
         [self.view bringSubviewToFront:self.conditionView];
     }
@@ -177,16 +177,16 @@
     if (index == 0) {
         //修改牌号
         self.zeroTabVC.houDu = @"";
-        self.zeroTabVC.zhuangTai = @"";
-        [self.zeroTabVC refreshInfoToReset];
+//        self.zeroTabVC.zhuangTai = @"";
+//        [self.zeroTabVC refreshInfoToReset];
     } else if (index == 1) {
         //修改状态
         self.zeroTabVC.houDu = @"";
-        [self.zeroTabVC refreshInfoToReset];
+//        [self.zeroTabVC refreshInfoToReset];
     } else {
         //修改厚度
-//        [self.zeroTabVC placeOrder:UseType_OrderMoney];
-        [self.zeroTabVC refreshInfoToReset];
+        [self.zeroTabVC placeOrder:UseType_OrderMoney];
+//        [self.zeroTabVC refreshInfoToReset];
     }
     
 }

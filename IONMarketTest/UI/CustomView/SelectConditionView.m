@@ -123,6 +123,18 @@
         if ([subView isKindOfClass:[UIButton class]]) {
             UIButton *button = (UIButton *)subView;
             [button setSelected:NO];
+        }
+    }
+    
+}
+
+- (void)resetAll {
+    
+    for (UIView *subView in self.subviews) {
+        
+        if ([subView isKindOfClass:[UIButton class]]) {
+            UIButton *button = (UIButton *)subView;
+            [button setSelected:NO];
             [button setTitle:[self.titleArray objectAtIndex:button.tag-100] forState:UIControlStateNormal];
             [button setTitleColor:[UIColor colorWithHexString:@"#595E64"] forState:UIControlStateNormal];
             [button setImage:IMG(@"show_down") forState:UIControlStateNormal];
@@ -142,11 +154,14 @@
             
             if (button.tag > (index+100)) {
                 
-                [button setSelected:NO];
-                [button setTitle:[self.titleArray objectAtIndex:button.tag-100] forState:UIControlStateNormal];
-                [button setTitleColor:[UIColor colorWithHexString:@"#595E64"] forState:UIControlStateNormal];
-                [button setImage:IMG(@"show_down") forState:UIControlStateNormal];
-                [button layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleRight imageTitleSpace:5];
+                if (button.tag != ([self.titleArray indexOfObject:@"状态"]+100)) {
+                    
+                    [button setSelected:NO];
+                    [button setTitle:[self.titleArray objectAtIndex:button.tag-100] forState:UIControlStateNormal];
+                    [button setTitleColor:[UIColor colorWithHexString:@"#595E64"] forState:UIControlStateNormal];
+                    [button setImage:IMG(@"show_down") forState:UIControlStateNormal];
+                    [button layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleRight imageTitleSpace:5];
+                }
             }
         }
     }

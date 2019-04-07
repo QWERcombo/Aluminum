@@ -269,7 +269,7 @@
                     }
                 } else if ([number integerValue] == -3) {
                     //全部重置
-                    [self.conditionView reset];
+                    [self.conditionView resetAll];
                     self.paiHao = @"";
                     self.zhuangTai = @"";
                     self.houDu = @"";

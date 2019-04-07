@@ -25,7 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (instancetype)initWithFrame:(CGRect)frame titleArray:(NSArray *)titleArray;
-- (void)reset;//重置
+- (void)reset;//结束选择
+- (void)resetAll;//全部重置
 - (void)changeTitle:(NSString *)title index:(NSInteger)index;//修改标题
 - (void)resetTitleWithIndex:(NSInteger)index;//重置小于选中的标题
 
