@@ -10,16 +10,15 @@
 #define InterfaceDefines_h
 
 //《正式地址》
-#define  BASE_URL         @"http://118.31.35.233:8080/leqie"
+//#define  BASE_URL           @"http://118.31.35.233:8080/leqie"
 //《测试地址》
-//#define  BASE_URL           @"http://118.31.35.233:8999/leqiev120"
+#define  BASE_URL           @"http://118.31.35.233:8999/leqiev120"
 
 //获取图片地址
-//#define  BASE_URL_IMAGE_APP         @"http://118.31.35.233:8999/"
 #define  BASE_URL_IMAGE_APP         @"http://118.31.35.233:8999/"
 
-//#define  BASE_URL_IMAGE_Service     @"http://118.31.35.233:8999/leqiev120/"
-#define  BASE_URL_IMAGE_Service     @"http://118.31.35.233:8080/leqie/"
+#define  BASE_URL_IMAGE_Service     @"http://118.31.35.233:8999/leqiev120/"
+//#define  BASE_URL_IMAGE_Service     @"http://118.31.35.233:8080/leqie/"
 
 
 //登陆
