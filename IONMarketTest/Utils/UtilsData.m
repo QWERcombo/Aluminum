@@ -49,24 +49,25 @@ DEF_SINGLETON(UtilsData);
     return header;
 }
 
--(MJRefreshAutoGifFooter *)MJRefreshAutoNormalFooterTarget:(id)target table:(UIScrollView *)scrollView actionSelector:(SEL)action
+-(MJRefreshBackNormalFooter *)MJRefreshAutoNormalFooterTarget:(id)target table:(UIScrollView *)scrollView actionSelector:(SEL)action
 {
-    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingTarget:target refreshingAction:action];
+//    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingTarget:target refreshingAction:action];
+    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:target refreshingAction:action];
     scrollView.mj_footer = footer;
-    NSArray *idleImages = @[IMG(@"Refres_down0"),IMG(@"Refres_down1"),IMG(@"Refres_down2")];
+//    NSArray *idleImages = @[IMG(@"Refres_down0"),IMG(@"Refres_down1"),IMG(@"Refres_down2")];
 
     // 设置普通状态的动画图片
     // [footer setImages:idleImages forState:MJRefreshStateIdle];
     // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
     // 设置正在刷新状态的动画图片
-    [footer setImages:idleImages forState:MJRefreshStateRefreshing];
-    
+//    [footer setImages:idleImages forState:MJRefreshStateRefreshing];
     [footer setTitle:@"" forState:MJRefreshStateIdle];
     [footer setTitle:@"" forState:MJRefreshStateRefreshing];
     [footer setTitle:@"———— 我也是有底线的 ————" forState:MJRefreshStateNoMoreData];
+    footer.labelLeftInset = 0;
     footer.stateLabel.textColor = [UIColor Grey_WordColor];
     footer.stateLabel.font = [UIFont systemFontOfSize:12];
-    footer.refreshingTitleHidden = YES;
+//    footer.refreshingTitleHidden = YES;
 //    footer.stateLabel.hidden = YES;
     return footer;
 }
