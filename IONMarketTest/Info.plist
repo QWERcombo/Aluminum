@@ -176,6 +176,10 @@
 	<string>乐切App会在上传照片时访问您的相册权限，诺不允许，您将无法在乐切中更新头像和上传相应的信息图片</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>乐切App会在上传照片时访问您的相册权限，诺不允许，您将无法在乐切中更新头像和上传相应的信息图片</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

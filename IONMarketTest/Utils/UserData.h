@@ -35,7 +35,7 @@
 @property (nonatomic, copy) NSString *registerIp;
 @property (nonatomic, copy) NSString *remark;
 @property (nonatomic, copy) NSString *renzheng;
-@property (nonatomic, copy) NSString *renzhengTime;
+//@property (nonatomic, copy) NSString *renzhengTime;
 @property (nonatomic, copy) NSString *status;
 @property (nonatomic, copy) NSString *statusDate;
 @property (nonatomic, copy) NSString *superior;

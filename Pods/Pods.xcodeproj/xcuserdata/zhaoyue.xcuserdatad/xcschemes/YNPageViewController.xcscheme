@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9243EE130973516EBAB40742D2A3CBB6"
+               BlueprintIdentifier = "FB2D0D6B9DA9E40DD31008AC077F63C7"
                BlueprintName = "YNPageViewController"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libYNPageViewController.a">

@@ -15,5 +15,10 @@ pod 'WechatOpenSDK'
 pod 'UMCShare/UI'
 pod 'ChameleonFramework'
 pod 'YNPageViewController'
+pod 'UMCCommon'
+pod 'UMCPush'
+pod 'UMCSecurityPlugins'
+
+
 end
 #$ pod update 或  $ pod install

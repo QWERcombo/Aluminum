@@ -15,7 +15,10 @@
 #import "ZYNetworkAccessibity.h"
 #import "LoginTVC.h"
 
-@interface AppDelegate ()<WXApiDelegate>
+#import  <UMCommon/UMCommon.h>
+#import <UMPush/UMessage.h>
+
+@interface AppDelegate ()<WXApiDelegate,UNUserNotificationCenterDelegate>
 
 @end
 
@@ -26,7 +29,7 @@
     // Override point for customization after application launch.
     [NSThread sleepForTimeInterval:1];
     
-    [self settingEasyShowOptions];//配置菊花
+    [self settingEasyShowOptions];//配置Loading
     
     [self setupRootViewController];//设置根视图
     
@@ -35,6 +38,8 @@
     [WXApi registerApp:WeixiPayAppkey];
     
     [self checkNetWork];
+    
+    [self configurateUmengPush:launchOptions];//友盟推送
     
     return YES;
 }
@@ -279,6 +284,82 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+}
+
+#pragma mark - Push
+- (void)configurateUmengPush:(NSDictionary *)launchOptions {
+    
+    [UMConfigure initWithAppkey:@"5cd0411e0cafb2cd0500030a" channel:@"App Store"];
+    
+    if (@available(iOS 10.0, *)) {
+        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+    } else {
+        // Fallback on earlier versions
+    }
+    
+    // Push组件基本功能配置
+    UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
+    //type是对推送的几个参数的选择，可以选择一个或者多个。默认是三个全部打开，即：声音，弹窗，角标
+    entity.types = UMessageAuthorizationOptionBadge|UMessageAuthorizationOptionSound|UMessageAuthorizationOptionAlert;
+
+    [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (granted) {
+            
+        }else{
+            
+        }
+    }];
+
+}
+
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+{
+    
+    [UMessage registerDeviceToken:deviceToken];
+    
+    NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken success");
+    
+    NSLog(@"deviceToken————>>>%@",[[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<"withString: @""]
+                                    
+                                    stringByReplacingOccurrencesOfString: @">"withString: @""]
+                                   
+                                   stringByReplacingOccurrencesOfString: @" "withString: @""]);
+}
+
+//iOS10以下使用这两个方法接收通知
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    [UMessage setAutoAlert:NO];
+    if([[[UIDevice currentDevice] systemVersion]intValue] < 10){
+        [UMessage didReceiveRemoteNotification:userInfo];
+    }
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+
+//iOS10新增：处理前台收到通知的代理方法
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    NSDictionary * userInfo = notification.request.content.userInfo;
+    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        [UMessage setAutoAlert:NO];
+        //应用处于前台时的远程推送接受
+        //必须加这句代码
+        [UMessage didReceiveRemoteNotification:userInfo];
+    }else{
+        //应用处于前台时的本地推送接受
+    }
+    completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert);
+}
+
+//iOS10新增：处理后台点击通知的代理方法
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+    NSDictionary * userInfo = response.notification.request.content.userInfo;
+    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        //应用处于后台时的远程推送接受
+        //必须加这句代码
+        [UMessage didReceiveRemoteNotification:userInfo];
+    }else{
+        //应用处于后台时的本地推送接受
+    }
 }
 
 

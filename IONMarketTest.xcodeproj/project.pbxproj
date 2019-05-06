@@ -32,6 +32,7 @@
 		561A7306218EF7F20064294B /* CommonItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 561A7305218EF7F20064294B /* CommonItemVC.m */; };
 		561A7309218EF8150064294B /* CommonItemTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 561A7308218EF8150064294B /* CommonItemTabVC.m */; };
 		561CC0D5206FD24900DB0998 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 561CC0D4206FD24900DB0998 /* MainModel.m */; };
+		562AB0732280390100459AEE /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 562AB0722280390100459AEE /* UserNotifications.framework */; };
 		562D7CAD20CACAF40093367D /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 562D7CAC20CACAF40093367D /* CustomButton.m */; };
 		562E51CF217F659700C90A9E /* ZeroCutTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 562E51CE217F659700C90A9E /* ZeroCutTabVC.m */; };
 		562E51D2217F6EA300C90A9E /* SelectThickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 562E51D1217F6EA300C90A9E /* SelectThickView.m */; };
@@ -404,6 +405,8 @@
 		561A7308218EF8150064294B /* CommonItemTabVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonItemTabVC.m; sourceTree = "<group>"; };
 		561CC0D3206FD24900DB0998 /* MainModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		561CC0D4206FD24900DB0998 /* MainModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
+		562AB071228038E300459AEE /* IONMarketTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IONMarketTest.entitlements; sourceTree = "<group>"; };
+		562AB0722280390100459AEE /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		562D7CAB20CACAF40093367D /* CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		562D7CAC20CACAF40093367D /* CustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 		562E51CD217F659700C90A9E /* ZeroCutTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZeroCutTabVC.h; sourceTree = "<group>"; };
@@ -1041,6 +1044,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				562AB0732280390100459AEE /* UserNotifications.framework in Frameworks */,
 				5678494F20C02A8E00739A3D /* UIKit.framework in Frameworks */,
 				A2555F9220C0DDE4000C7E03 /* libssl.a in Frameworks */,
 				A2555F9820C0DFF9000C7E03 /* AlipaySDK.framework in Frameworks */,
@@ -1080,6 +1084,7 @@
 		19F71E65DC71090E84D41246 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				562AB0722280390100459AEE /* UserNotifications.framework */,
 				5678495420C02AAC00739A3D /* CoreMotion.framework */,
 				5678495220C02AA300739A3D /* CFNetwork.framework */,
 				5678495020C02A9700739A3D /* Foundation.framework */,
@@ -1619,6 +1624,7 @@
 		5695BE7020429F1B0036D54B /* IONMarketTest */ = {
 			isa = PBXGroup;
 			children = (
+				562AB071228038E300459AEE /* IONMarketTest.entitlements */,
 				5695BE7120429F1B0036D54B /* AppDelegate.h */,
 				5695BE7220429F1B0036D54B /* AppDelegate.m */,
 				5695BEAB2042A2B40036D54B /* Info.plist */,
@@ -2547,6 +2553,14 @@
 					5695BE6D20429F1B0036D54B = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					5695BE8820429F1B0036D54B = {
 						CreatedOnToolsVersion = 9.2;
@@ -2678,7 +2692,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-resources.sh",
 				"${PODS_ROOT}/DateTools/DateTools/DateTools/DateTools.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/UMCShare/UMShare/UMSocialUI/UMSocialSDKResources.bundle",
@@ -2691,7 +2705,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CB912A6F22B0E499BE7214FE /* [CP] Check Pods Manifest.lock */ = {
@@ -3131,6 +3145,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = IONMarketTest/IONMarketTest.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N9944VQXC8;
@@ -3181,6 +3196,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = IONMarketTest/IONMarketTest.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N9944VQXC8;
