@@ -1044,6 +1044,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5605C04220A09BF000E712A3 /* libsqlite3.tbd in Frameworks */,
 				562AB0732280390100459AEE /* UserNotifications.framework in Frameworks */,
 				5678494F20C02A8E00739A3D /* UIKit.framework in Frameworks */,
 				A2555F9220C0DDE4000C7E03 /* libssl.a in Frameworks */,
@@ -1059,7 +1060,6 @@
 				5678494520C02A5E00739A3D /* libz.tbd in Frameworks */,
 				A2555F9120C0DDE4000C7E03 /* libcrypto.a in Frameworks */,
 				5678494320C02A5600739A3D /* libc++.tbd in Frameworks */,
-				5605C04220A09BF000E712A3 /* libsqlite3.tbd in Frameworks */,
 				34E660C443B52A7ED9CA721D /* libPods-IONMarketTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2695,12 +2695,14 @@
 				"${PODS_ROOT}/Target Support Files/Pods-IONMarketTest/Pods-IONMarketTest-resources.sh",
 				"${PODS_ROOT}/DateTools/DateTools/DateTools/DateTools.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/UMCCommonLog/UMCommonLog/UMCommonLog.bundle",
 				"${PODS_ROOT}/UMCShare/UMShare/UMSocialUI/UMSocialSDKResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DateTools.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMCommonLog.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3154,6 +3156,7 @@
 					"$(PROJECT_DIR)/IONMarketTest/Tool/Ali",
 					"$(PROJECT_DIR)/IONMarketTest",
 					"$(PROJECT_DIR)/IONMarketTest/Tool/iOS",
+					"$(PROJECT_DIR)/IONMarketTest/Tool",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/IONMarketTest/Supporting Files/PrefixHeader.pch";
@@ -3205,6 +3208,7 @@
 					"$(PROJECT_DIR)/IONMarketTest/Tool/Ali",
 					"$(PROJECT_DIR)/IONMarketTest",
 					"$(PROJECT_DIR)/IONMarketTest/Tool/iOS",
+					"$(PROJECT_DIR)/IONMarketTest/Tool",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/IONMarketTest/Supporting Files/PrefixHeader.pch";

@@ -20,6 +20,7 @@
 #import "DHGuidePageHUD.h"
 #import "TaoLiaoVC.h"
 #import "TaoLiaoListVC.h"
+#import <UMAnalytics/MobClick.h>
 
 @interface MainViewController ()
 @property (nonatomic, assign) NSInteger pageNumber;
@@ -35,10 +36,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
+//    [MobClick beginLogPageView:NSStringFromClass([self class])];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO];
+//    [MobClick endLogPageView:NSStringFromClass([self class])];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -307,6 +310,7 @@
 - (void)MainViewEnterClick:(UIButton *)sender {
 
     if (sender.tag == 1000) {
+        [MobClick event:[NSString stringWithFormat:@"%ld", sender.tag] attributes:@{@"111":@"222"}];
         //整件
         WholeBoardVC *inven = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"WholeBoardVC"];
         inven.showTye = WholeBoardShowType_Zhengban;

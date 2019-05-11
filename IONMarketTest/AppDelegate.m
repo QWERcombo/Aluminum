@@ -15,8 +15,10 @@
 #import "ZYNetworkAccessibity.h"
 #import "LoginTVC.h"
 
-#import  <UMCommon/UMCommon.h>
+#import <UMCommon/UMCommon.h>
 #import <UMPush/UMessage.h>
+#import <UMAnalytics/MobClick.h>
+#import <UMCommonLog/UMCommonLogHeaders.h>
 
 @interface AppDelegate ()<WXApiDelegate,UNUserNotificationCenterDelegate>
 
@@ -33,7 +35,7 @@
     
     [self setupRootViewController];//设置根视图
     
-    [self configUSharePlatforms];//配置友盟
+//    [self configUSharePlatforms];//配置友盟
     
     [WXApi registerApp:WeixiPayAppkey];
     
@@ -288,6 +290,11 @@
 
 #pragma mark - Push
 - (void)configurateUmengPush:(NSDictionary *)launchOptions {
+    //开发者需要显式的调用此函数，日志系统才能工作
+    [UMCommonLogManager setUpUMCommonLogManager];
+    [UMConfigure setLogEnabled:YES];
+//    [MobClick setAutoPageEnabled:YES];
+    [MobClick setScenarioType:E_UM_NORMAL];
     
     [UMConfigure initWithAppkey:@"5cd0411e0cafb2cd0500030a" channel:@"App Store"];
     
