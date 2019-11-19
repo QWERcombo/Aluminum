@@ -207,7 +207,7 @@
         [self deleteShopCar:car.id];
         [self.dataMuArr removeObject:car];
         [self.tabView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [self.tabView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//        [self.tabView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         
         if ([self.selectArr containsObject:car]) {
             [self.selectArr removeObject:car];

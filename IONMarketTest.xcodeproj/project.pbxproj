@@ -3150,7 +3150,7 @@
 				CODE_SIGN_ENTITLEMENTS = IONMarketTest/IONMarketTest.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N9944VQXC8;
+				DEVELOPMENT_TEAM = GPA44QBD9J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/IONMarketTest/Tool/Ali",
@@ -3202,7 +3202,7 @@
 				CODE_SIGN_ENTITLEMENTS = IONMarketTest/IONMarketTest.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N9944VQXC8;
+				DEVELOPMENT_TEAM = GPA44QBD9J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/IONMarketTest/Tool/Ali",
