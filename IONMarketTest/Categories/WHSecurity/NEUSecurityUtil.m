@@ -105,7 +105,7 @@
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSError *err;
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                        options:NSJSONReadingMutableContainers
+                                                        options:NSJSONReadingMutableContainers|NSJSONReadingFragmentsAllowed
                                                           error:&err];
     if(err) {
         NSLog(@"json解析失败：%@",err);

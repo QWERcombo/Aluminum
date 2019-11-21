@@ -119,8 +119,11 @@ static NSOperationQueue *queue;
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        manager.requestSerializer.timeoutInterval = 20.f;
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json", nil];
+        
+        manager.requestSerializer.timeoutInterval = 20.f;
+        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         
         [manager POST:URLString parameters:valueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             //上传文件参数
@@ -135,12 +138,11 @@ static NSOperationQueue *queue;
             //请求成功
             [DataSend verdictResponseString:responseObject];
             
-            NSError *err;
             NSString *jsonStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-//            NSDictionary *result1 = [NEUSecurityUtil dictionaryWithJsonString:jsonStr];
-//            NSLog(@"---%@++%@", jsonStr,result1);
-            NSData *jsonData = [[self removeUnescapedCharacter:jsonStr] dataUsingEncoding:NSUTF8StringEncoding];
-            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&err];
+            NSDictionary *result = [NEUSecurityUtil dictionaryWithJsonString:[self removeUnescapedCharacter:jsonStr]];
+//            NSLog(@"---%@++%@", jsonStr,result);
+//            NSData *jsonData = [[self removeUnescapedCharacter:jsonStr] dataUsingEncoding:NSUTF8StringEncoding];
+//            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&err];
             
             NSLog(@" 🍔🍔 %@", result);
             NSString *status = [NSString stringWithFormat:@"%@", [result objectForKey:@"status"]];//1为成功
